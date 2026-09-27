@@ -203,8 +203,125 @@ che vale $A^{2}+2AB+B^{2}$ <strong>se e solo se</strong> $AB=BA$. Controesempio 
 $$AB=AC\ \Longrightarrow\ A^{-1}(AB)=A^{-1}(AC)\ \Longrightarrow\ (A^{-1}A)B=(A^{-1}A)C\ \Longrightarrow\ I_nB=I_nC\ \Longrightarrow\ B=C$$
 <em>Attenzione all'ordine:</em> si moltiplica <strong>a sinistra</strong>, perché $A$ sta a sinistra in entrambi i membri. Da $BA=CA$ si concluderebbe moltiplicando a destra. $\blacksquare$` },
 
-/* ============ SEZIONE 3: numeri complessi ============ */
-{ id: 'G3.1', sez: 3, tema: 'Numeri complessi', d: 2,
+/* ====== SEZIONE 2: aggiunte (MEG-J e equazioni di matrici) ====== */
+{ id: 'G2.8', sez: 2, tema: 'Gauss-Jordan', d: 2,
+  t: r`Portare a <strong>forma a scala ridotta</strong> con il MEG-J la matrice $$A=\begin{bmatrix}1&2&-1&3\\2&4&1&9\\1&2&3&7\end{bmatrix}$$ e indicare rango, incognite di base e libere del sistema omogeneo associato.`,
+  hints: [ r`Prima la discesa (MEG normale): annulla sotto i pivot.`,
+           r`Poi la risalita: normalizza ogni pivot a $1$ e annulla anche <em>sopra</em> di esso.`,
+           r`Le colonne <em>senza</em> pivot corrispondono alle incognite libere.` ],
+  sol: r`<strong>Discesa.</strong>
+$$\begin{bmatrix}1&2&-1&3\\2&4&1&9\\1&2&3&7\end{bmatrix}
+\xrightarrow[R_3-R_1]{R_2-2R_1}
+\begin{bmatrix}1&2&-1&3\\0&0&3&3\\0&0&4&4\end{bmatrix}
+\xrightarrow{R_3-\frac43R_2}
+\begin{bmatrix}1&2&-1&3\\0&0&3&3\\0&0&0&0\end{bmatrix}$$
+<strong>Risalita (è ciò che distingue il MEG-J dal MEG).</strong> Normalizzo il pivot della riga 2 e annullo sopra:
+$$\xrightarrow{\frac13R_2}\begin{bmatrix}1&2&-1&3\\0&0&1&1\\0&0&0&0\end{bmatrix}
+\xrightarrow{R_1+R_2}\begin{bmatrix}1&2&0&4\\0&0&1&1\\0&0&0&0\end{bmatrix}$$
+Questa è la <strong>forma a scala ridotta</strong>: ogni pivot vale $1$ ed è l'unico elemento non nullo della sua colonna.<br><br>
+<strong>Lettura.</strong> Pivot nelle colonne 1 e 3 ⟹ $\rg A=2$.
+<ul><li>incognite di base: $x_1,x_3$;</li>
+<li>incognite libere: $x_2,x_4$, cioè $n-r=4-2=2$.</li></ul>
+Dal sistema omogeneo: $x_3=-x_4$ e $x_1=-2x_2-4x_4$, da cui
+$$\vx=t\begin{bmatrix}-2\\1\\0\\0\end{bmatrix}+s\begin{bmatrix}-4\\0\\-1\\1\end{bmatrix}$$
+<em>Perché conviene la forma ridotta:</em> le soluzioni si leggono <strong>senza</strong> sostituzione all'indietro. È lo stesso motivo per cui il MEG-J è il metodo per calcolare l'inversa. $\blacksquare$` },
+
+{ id: 'G2.9', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`Risolvere l'equazione matriciale $AX=B$, dove $$A=\begin{bmatrix}1&2\\1&3\end{bmatrix},\qquad B=\begin{bmatrix}3&1\\5&0\end{bmatrix}.$$`,
+  hints: [ r`Se $A$ è invertibile puoi moltiplicare <strong>a sinistra</strong> per $A^{-1}$: da che lato sta $A$?`,
+           r`Controlla $\det A$ prima di tutto.`,
+           r`In alternativa, e spesso più rapido: riduci $[A\,|\,B]$ con il MEG-J fino a $[I\,|\,X]$.` ],
+  sol: r`<strong>Esiste ed è unica?</strong> $\det A=1\cdot3-2\cdot1=1\ne0$, quindi $A$ è invertibile e la soluzione esiste ed è unica.<br><br>
+<strong>Attenzione al lato.</strong> $A$ moltiplica $X$ <em>da sinistra</em>, quindi si moltiplica a sinistra per $A^{-1}$:
+$$AX=B\ \Longrightarrow\ A^{-1}(AX)=A^{-1}B\ \Longrightarrow\ (A^{-1}A)X=A^{-1}B\ \Longrightarrow\ X=A^{-1}B.$$
+<em>Non</em> $X=BA^{-1}$: il prodotto non è commutativo.<br><br>
+<strong>Metodo 1 — calcolo l'inversa.</strong>
+$$A^{-1}=\frac{1}{\det A}\begin{bmatrix}3&-2\\-1&1\end{bmatrix}=\begin{bmatrix}3&-2\\-1&1\end{bmatrix}$$
+$$X=A^{-1}B=\begin{bmatrix}3&-2\\-1&1\end{bmatrix}\begin{bmatrix}3&1\\5&0\end{bmatrix}=\begin{bmatrix}9-10&3-0\\-3+5&-1+0\end{bmatrix}=\begin{bmatrix}-1&3\\2&-1\end{bmatrix}$$
+<strong>Metodo 2 — MEG-J sulla matrice affiancata</strong> (più rapido, e diagnostica insieme):
+$$[A\,|\,B]=\left[\begin{array}{cc|cc}1&2&3&1\\1&3&5&0\end{array}\right]
+\xrightarrow{R_2-R_1}\left[\begin{array}{cc|cc}1&2&3&1\\0&1&2&-1\end{array}\right]
+\xrightarrow{R_1-2R_2}\left[\begin{array}{cc|cc}1&0&-1&3\\0&1&2&-1\end{array}\right]$$
+$$\boxed{X=\begin{bmatrix}-1&3\\2&-1\end{bmatrix}}$$
+<strong>Verifica:</strong> $AX=\begin{bmatrix}1&2\\1&3\end{bmatrix}\begin{bmatrix}-1&3\\2&-1\end{bmatrix}=\begin{bmatrix}-1+4&3-2\\-1+6&3-3\end{bmatrix}=\begin{bmatrix}3&1\\5&0\end{bmatrix}=B$ ✓<br><br>
+<em>Nota:</em> per $XA=B$ si moltiplica <strong>a destra</strong>: $X=BA^{-1}$. Sbagliare il lato è l'errore più frequente in questi esercizi. $\blacksquare$` },
+
+/* ====== SEZIONE 3: vettori e spazi vettoriali ====== */
+{ id: 'G3.1', sez: 3, tema: 'Spazi vettoriali', d: 2,
+  t: r`Stabilire quali dei seguenti sottoinsiemi di $\R^{2}$ sono spazi vettoriali con le operazioni usuali:
+<ol><li>$U=\{(x,y)\ :\ y=2x\}$</li>
+<li>$W=\{(x,y)\ :\ y=2x+1\}$</li>
+<li>$Z=\{(x,y)\ :\ xy=0\}$</li></ol>`,
+  hints: [ r`Il primo controllo, sempre: contiene il vettore nullo $(0,0)$?`,
+           r`Poi la <strong>chiusura</strong>: sommando due elementi si resta dentro? Moltiplicando per uno scalare?`,
+           r`Per $Z$, prova a sommare $(1,0)$ e $(0,1)$.` ],
+  sol: r`<strong>1. $U=\{(x,y):y=2x\}$ — SÌ.</strong><br>
+Zero: $(0,0)$ ha $0=2\cdot0$ ✓<br>
+Somma: se $(x_1,2x_1)$ e $(x_2,2x_2)$ stanno in $U$, la somma è $(x_1+x_2,\ 2x_1+2x_2)=(x_1+x_2,\ 2(x_1+x_2))\in U$ ✓<br>
+Scalare: $\lambda(x,2x)=(\lambda x,2\lambda x)\in U$ ✓<br>
+Gli otto assiomi si ereditano da $\R^{2}$. È una <strong>retta per l'origine</strong>.<br><br>
+<strong>2. $W=\{(x,y):y=2x+1\}$ — NO.</strong><br>
+Basta il primo controllo: $(0,0)$ richiederebbe $0=1$, falso. <strong>Non contiene il vettore nullo</strong>, quindi l'assioma (iii) non può valere.<br>
+Fallisce anche la chiusura: $(0,1)$ e $(1,3)$ stanno in $W$, ma la loro somma $(1,4)$ no, perché $4\ne2\cdot1+1=3$.<br>
+È una retta che <em>non</em> passa per l'origine.<br><br>
+<strong>3. $Z=\{(x,y):xy=0\}$ — NO.</strong><br>
+Contiene lo zero ✓ ed è chiuso per scalari ✓ (se $xy=0$ allora $(\lambda x)(\lambda y)=\lambda^{2}xy=0$). Ma <strong>non è chiuso per somma</strong>:
+$$(1,0)\in Z,\quad (0,1)\in Z,\quad\text{ma}\quad (1,0)+(0,1)=(1,1)\notin Z$$ perché $1\cdot1=1\ne0$.<br>
+Geometricamente $Z$ è l'unione dei due assi: due rette per l'origine, ma la loro unione non è uno spazio vettoriale.<br><br>
+<div class="box tip" style="margin-bottom:0"><strong>Il metodo, in ordine:</strong> 1) c'è lo zero? 2) chiuso per somma? 3) chiuso per scalare? Se una fallisce, hai finito. Gli otto assiomi non serve verificarli: si ereditano automaticamente dallo spazio più grande.</div> $\blacksquare$` },
+
+{ id: 'G3.2', sez: 3, tema: 'Spazi vettoriali', d: 2,
+  t: r`Dimostrare, usando solo gli assiomi, che in ogni spazio vettoriale vale $$0\cdot\vv=\vzero\qquad\text{per ogni }\vv\in V.$$ Indicare quale assioma si usa a ogni passaggio.`,
+  hints: [ r`$0$ è lo scalare zero, $\vzero$ è il vettore nullo: sono oggetti diversi, ed è proprio questo il punto.`,
+           r`Scrivi $0$ come $0+0$ e usa la distributiva rispetto alla somma di <em>scalari</em>.`,
+           r`Alla fine somma a entrambi i membri l'opposto di $0\vv$, che esiste per l'assioma (iv).` ],
+  sol: r`<strong>Dimostrazione.</strong>
+$$0\vv=(0+0)\vv \overset{\text{(vi)}}{=} 0\vv+0\vv$$
+dove si è usata la proprietà distributiva rispetto alla somma di scalari.<br><br>
+Per l'assioma <strong>(iv)</strong> esiste l'opposto $-(0\vv)$. Sommandolo a entrambi i membri:
+$$0\vv+\bigl(-(0\vv)\bigr)=\bigl(0\vv+0\vv\bigr)+\bigl(-(0\vv)\bigr)$$
+A sinistra si ottiene $\vzero$ per (iv). A destra si applica l'associatività <strong>(ii)</strong>:
+$$\vzero=0\vv+\Bigl(0\vv+\bigl(-(0\vv)\bigr)\Bigr)\overset{\text{(iv)}}{=}0\vv+\vzero\overset{\text{(iii)}}{=}0\vv$$
+$$\boxed{0\cdot\vv=\vzero}$$
+<strong>Assiomi usati:</strong> (vi) distributiva sugli scalari, (iv) esistenza dell'opposto, (ii) associatività, (iii) elemento neutro.<br><br>
+<div class="box trap" style="margin-bottom:0"><strong>Perché non è ovvio.</strong> Sembra «zero per qualcosa fa zero», ma a sinistra $0$ è uno <em>scalare</em> del campo e a destra $\vzero$ è un <em>vettore</em>: sono oggetti di natura diversa, e nessun assioma li collega direttamente. Il legame va costruito, ed è esattamente quello che fa questa dimostrazione.</div> $\blacksquare$` },
+
+{ id: 'G3.3', sez: 3, tema: 'Applicazioni', d: 1,
+  t: r`Sia $f:\R\to\R$ definita da $f(x)=x^{2}$. Calcolare:
+<br>(a) $f^{-1}([1,4])$; &nbsp;(b) $f^{-1}((-4,1))$; &nbsp;(c) $f^{-1}(\{0\})$; &nbsp;(d) $f^{-1}((-\infty,0))$.
+<br>Dire poi se $f$ è iniettiva e se è suriettiva.`,
+  hints: [ r`$f^{-1}(B)=\{x\in\R: f(x)\in B\}$: cerca tutti gli $x$ il cui quadrato cade in $B$.`,
+           r`Ricorda che $x^{2}\ge0$ sempre: i valori negativi non hanno controimmagini.`,
+           r`Per (b) attenzione: la parte negativa di $(-4,1)$ non contribuisce.` ],
+  sol: r`<strong>(a)</strong> $1\le x^{2}\le4\iff 1\le|x|\le2$, quindi
+$$f^{-1}([1,4])=[-2,-1]\cup[1,2]$$
+<strong>(b)</strong> $-4<x^{2}<1$. La condizione $x^{2}>-4$ è sempre vera; resta $x^{2}<1$, cioè $|x|<1$:
+$$f^{-1}((-4,1))=(-1,1)$$
+<strong>(c)</strong> $x^{2}=0\iff x=0$:
+$$f^{-1}(\{0\})=\{0\}$$
+<strong>(d)</strong> Nessun reale ha quadrato negativo:
+$$f^{-1}((-\infty,0))=\emptyset$$
+<strong>Iniettiva?</strong> No: $f(-1)=f(1)=1$, quindi $y=1$ ha <em>due</em> controimmagini, mentre l'iniettività ne richiede al massimo una.<br><br>
+<strong>Suriettiva?</strong> No: $f(\R)=[0,+\infty)\ne\R$, e infatti ogni $y<0$ ha zero controimmagini.<br><br>
+<em>Osservazione:</em> $f^{-1}$ è perfettamente definita in tutti e quattro i casi, benché $f$ <strong>non</strong> sia invertibile. La controimmagine di un <em>insieme</em> esiste sempre. $\blacksquare$` },
+
+{ id: 'G3.4', sez: 3, tema: 'Vettori geometrici', d: 2,
+  t: r`Siano $\vec u=(3,-1)$ e $\vec v=(-1,2)$ vettori del piano. Calcolare $2\vec u-3\vec v$, e stabilire se $\vec w=(7,-5)$ è parallelo a $\vec u$.`,
+  hints: [ r`Le operazioni geometriche si traducono componente per componente.`,
+           r`Due vettori non nulli sono paralleli se uno è multiplo scalare dell'altro: cerca $\lambda$ con $\vec w=\lambda\vec u$.`,
+           r`Il $\lambda$ dev'essere lo <strong>stesso</strong> per entrambe le componenti.` ],
+  sol: r`<strong>Combinazione lineare.</strong>
+$$2\vec u=(6,-2),\qquad 3\vec v=(-3,6)$$
+$$2\vec u-3\vec v=(6-(-3),\ -2-6)=(9,-8)$$
+<strong>Parallelismo.</strong> Cerchiamo $\lambda\in\R$ con $\vec w=\lambda\vec u$, cioè
+$$(7,-5)=\lambda(3,-1)=(3\lambda,\ -\lambda)$$
+Dalla prima componente: $\lambda=\tfrac73$. Dalla seconda: $-\lambda=-5$, cioè $\lambda=5$.<br><br>
+I due valori <strong>non coincidono</strong> ($\tfrac73\ne5$), quindi non esiste un tale $\lambda$:
+$$\boxed{\vec w\ \text{non è parallelo a}\ \vec u}$$
+<em>Controllo rapido:</em> per vettori del piano, $\vec u$ e $\vec w$ sono paralleli se e solo se $$\det\begin{bmatrix}3&7\\-1&-5\end{bmatrix}=3(-5)-7(-1)=-15+7=-8\ne0,$$ e infatti non lo sono. Se il determinante fosse nullo sarebbero paralleli. $\blacksquare$` },
+
+/* ============ SEZIONE 4: numeri complessi ============ */
+{ id: 'G4.1', sez: 4, tema: 'Numeri complessi', d: 2,
   t: r`Risolvere in $\C$ il sistema $$\begin{cases}(1+i)z+w=2\\ z+(1-i)w=0\end{cases}$$`,
   hints: [ r`Il MEG funziona identico su $\C$: le operazioni elementari usano solo somma, prodotto e divisione, tutte disponibili in $\C$.`,
            r`Conviene scambiare le righe per avere il pivot $1$ in alto: risparmia divisioni fra complessi.`,
@@ -224,7 +341,7 @@ $$\boxed{z=2-2i,\qquad w=-2}$$
 $$(1+i)(2-2i)+(-2)=2(1+i)(1-i)-2=2\cdot2-2=2\ ✓$$
 <em>Osservazione:</em> non c'è nulla di speciale nel caso complesso. Rouché-Capelli, rango e struttura delle soluzioni valgono su $\K$ qualunque, e $\C$ è solo una delle due scelte possibili. $\blacksquare$` },
 
-{ id: 'G3.2', sez: 3, tema: 'Numeri complessi', d: 1,
+{ id: 'G4.2', sez: 4, tema: 'Numeri complessi', d: 1,
   t: r`Calcolare $\det A$ e stabilire se $A$ è invertibile, dove $$A=\begin{bmatrix}i&1\\-1&i\end{bmatrix}$$`,
   hints: [ r`La formula $\det=ad-bc$ vale su qualunque campo, quindi anche su $\C$.`,
            r`Attenzione al segno: $bc=1\cdot(-1)$.` ],

@@ -72,6 +72,7 @@
           // vettori e matrici (Geometria e Algebra Lineare)
           '\\vx': '\\mathbf{x}', '\\vy': '\\mathbf{y}', '\\vb': '\\mathbf{b}',
           '\\vv': '\\mathbf{v}', '\\vu': '\\mathbf{u}', '\\vzero': '\\mathbf{0}',
+          '\\M': '\\mathcal{M}', '\\vw': '\\mathbf{w}',
           '\\rg': '\\operatorname{rg}', '\\tr': '\\operatorname{tr}',
           '\\diag': '\\operatorname{diag}', '\\dett': '\\operatorname{det}',
           '\\eps': '\\varepsilon', '\\dd': '\\,\\mathrm{d}',

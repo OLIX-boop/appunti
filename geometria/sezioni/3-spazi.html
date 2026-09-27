@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 3 · Vettori e spazi vettoriali — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260927">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="../../due-parziali.html">Parziali</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 3</h4>
+    <a href="#checklist">Checklist del programma</a>
+    <a href="#prodotto">1 · Invertibilità del prodotto</a>
+    <a href="#vettori">2 · Vettori nella geometria euclidea</a>
+    <a href="#equipollenza" class="sub">Segmenti orientati e vettori liberi</a>
+    <a href="#somma" class="sub">La somma e la sua buona posizione</a>
+    <a href="#scalare" class="sub">Prodotto per uno scalare</a>
+    <a href="#componenti" class="sub">Componenti: dal piano a ℝ²</a>
+    <a href="#spazi">3 · Spazi vettoriali</a>
+    <a href="#assiomi" class="sub">Gli otto assiomi</a>
+    <a href="#esempi" class="sub">Gli esempi che contano</a>
+    <a href="#conseguenze" class="sub">Conseguenze degli assiomi</a>
+    <a href="#applicazioni">4 · Applicazioni</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 3 · Geometria e Algebra Lineare · Lezione 3</div>
+      <h1>Vettori e spazi vettoriali</h1>
+      <p class="lead">Il salto di astrazione del corso: si parte dalle frecce disegnate sul foglio e si arriva a <strong>otto assiomi</strong> che valgono anche per matrici, polinomi e funzioni. Da qui in poi «vettore» smette di voler dire «freccia».</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Perché si astrae</div>
+      <p class="mb0">I vettori del piano e le matrici $m\times n$ si sommano e si moltiplicano per uno scalare <em>con le stesse regole</em>. Invece di dimostrare due volte gli stessi teoremi, si isola ciò che serve — le otto proprietà — e si dimostra una volta sola per <strong>qualunque</strong> insieme che le soddisfi. È lo stesso movimento che in Analisi porta da «$\R$ o $\C$» a $\K$.</p>
+    </div>
+
+    <h2 id="checklist">Checklist del programma</h2>
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Avanzamento Sezione 3</strong>
+        <span class="muted small"><span data-progress-txt="g3">0/16</span> · <span data-progress-pct="g3">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="g3"><span style="width:0"></span></div>
+    </div>
+    <div id="checklist"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="prodotto">1 · Invertibilità del prodotto di matrici <span class="badge star">risultato centrale</span></h2>
+
+    <div class="box teo">
+      <div class="box-title">Teorema</div>
+      <p class="mb0">Siano $A,B$ quadrate dello stesso ordine $n$. Allora
+      $$AB\ \text{è invertibile}\iff A\ \text{e}\ B\ \text{sono entrambe invertibili},$$
+      e in tal caso $\;(AB)^{-1}=B^{-1}A^{-1}$.</p>
+    </div>
+
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Verso $\Leftarrow$ (il più facile)</div>
+            <div class="step-content">Se esistono $A^{-1}$ e $B^{-1}$, si verifica direttamente che $B^{-1}A^{-1}$ è l'inversa di $AB$:
+            $$(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AI_nA^{-1}=I_n,$$ e simmetricamente dall'altro lato.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Verso $\Rightarrow$: quale caratterizzazione conviene usare?</div>
+            <div class="step-content">Quella con il <strong>determinante</strong>, perché è moltiplicativo: $\det(AB)=\det A\cdot\det B$. Se $AB$ è invertibile allora $\det(AB)\ne0$, dunque $\det A\cdot\det B\ne0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Conclusione</div>
+            <div class="step-content">Un prodotto di due numeri è non nullo <em>solo se</em> lo sono entrambi i fattori. Quindi $\det A\ne0$ e $\det B\ne0$, cioè $A$ e $B$ sono invertibili. $\blacksquare$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dimostrazione alternativa, senza determinante</div>
+            <div class="step-content">Se $AB$ è invertibile, posto $C=(AB)^{-1}$ si ha $A(BC)=I_n$, quindi $A$ ha un'inversa destra; e $(CA)B=I_n$, quindi $B$ ha un'inversa sinistra. Per matrici quadrate ciascuna delle due condizioni basta a garantire l'invertibilità.</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box trap">
+      <div class="box-title">✗ Attenzione all'ipotesi «quadrate»</div>
+      <p class="mb0">Per matrici rettangolari l'enunciato è <strong>falso</strong>. Con $A$ di tipo $1\times2$ e $B$ di tipo $2\times1$, il prodotto $AB$ è $1\times1$ e può benissimo essere invertibile, mentre $A$ e $B$ non sono nemmeno quadrate: parlare della loro inversa non ha senso.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="vettori">2 · Vettori nella geometria euclidea</h2>
+
+    <h3 id="equipollenza">Segmenti orientati e vettori liberi</h3>
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p>Un <strong>segmento orientato</strong> $\overrightarrow{AB}$ è una coppia ordinata di punti. Due segmenti orientati si dicono <strong>equipollenti</strong> se hanno la stessa <em>direzione</em>, lo stesso <em>verso</em> e la stessa <em>lunghezza</em>.</p>
+      <p class="mb0">Un <strong>vettore libero</strong> $\vec u$ è una classe di segmenti orientati equipollenti fra loro: è il segmento «a meno di dove lo disegni».</p>
+    </div>
+    <p class="small muted">L'equipollenza è una relazione di equivalenza (riflessiva, simmetrica, transitiva): è questo a rendere lecito parlare della <em>classe</em>. Ogni vettore libero ha un rappresentante che parte da qualunque punto si voglia — proprietà usata subito per definire la somma.</p>
+
+    <h3 id="somma">La somma, e perché è ben posta <span class="badge star">risultato centrale</span></h3>
+    <div class="box def">
+      <div class="box-title">Definizione — regola del triangolo</div>
+      <p>Dati due vettori liberi $\vec u$ e $\vec v$, si fissa un punto <strong>qualsiasi</strong> $A$ e si pone
+      $$B:=\tau_{\vec u}(A),\qquad C:=\tau_{\vec v}(B),$$
+      dove $\tau_{\vec w}$ indica la traslazione secondo $\vec w$.</p>
+      <p class="mb0">Il vettore $\vec w$ rappresentato da $\overrightarrow{AC}$ si chiama <strong>somma</strong> di $\vec u$ e $\vec v$: $\;\vec w=:\vec u+\vec v$.</p>
+    </div>
+
+    <div class="widget">
+      <div class="widget-head"><span>Somma di vettori: la regola del triangolo</span><span class="faint" style="text-transform:none;font-weight:400">trascina $A$, la somma non cambia</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <label class="ctrl"><input type="checkbox" id="vPar" checked> <span>mostra il parallelogramma</span></label>
+          <label class="ctrl"><input type="checkbox" id="vSec"> <span>mostra il cammino $\vec v$ poi $\vec u$</span></label>
+        </div>
+        <canvas class="plot" id="vPlot"></canvas>
+        <div class="readout" id="vOut"></div>
+      </div>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Fatto (è il punto della definizione)</div>
+      <p class="mb0">Il vettore rappresentato da $\overrightarrow{AC}$ <strong>non dipende dalla scelta del punto $A$</strong>: è determinato univocamente da $\vec u$ e $\vec v$.</p>
+    </div>
+    <details class="reveal"><summary>Perché questo «fatto» è indispensabile</summary><div class="reveal-body">
+      <p>Perché senza di esso la definizione sarebbe <strong>mal posta</strong>: la somma dipenderebbe da una scelta arbitraria — il punto $A$ — e quindi non sarebbe una vera operazione fra vettori.</p>
+      <p class="mb0">È la stessa cautela che serve ogni volta che si definisce qualcosa su classi di equivalenza: bisogna controllare che il risultato non cambi cambiando rappresentante. Nel widget qui sopra puoi verificarlo trascinando $A$.</p>
+    </div></details>
+
+    <div class="box prop">
+      <div class="box-title">Proprietà</div>
+      <p class="mb0">$$\vec u+\vec v=\vec v+\vec u\ \ \text{(commutatività)},\qquad \vec u+\vec 0=\vec 0+\vec u=\vec u.$$
+      La commutatività si legge nel <strong>parallelogramma</strong>: partendo da $A$ con $\vec u$ poi $\vec v$, oppure con $\vec v$ poi $\vec u$, si arriva allo stesso punto $C$.</p>
+    </div>
+
+    <h3 id="scalare">Vettore opposto e prodotto per uno scalare</h3>
+    <div class="box def">
+      <div class="box-title">Definizioni</div>
+      <ul class="mb0">
+        <li>L'<strong>opposto</strong> $-\vec v$ è il vettore con stessa direzione e lunghezza di $\vec v$ ma verso contrario; vale $\vec v+(-\vec v)=\vec 0$.</li>
+        <li>La <strong>differenza</strong> è $\vec u-\vec v:=\vec u+(-\vec v)$.</li>
+        <li>Per $\lambda\in\R$, il vettore $\lambda\vec v$ ha lunghezza $|\lambda|$ volte quella di $\vec v$, stessa direzione, e verso concorde se $\lambda>0$, opposto se $\lambda<0$. Se $\lambda=0$ oppure $\vec v=\vec 0$, si ottiene $\vec 0$.</li>
+      </ul>
+    </div>
+    <p class="small muted">Due vettori non nulli si dicono <strong>paralleli</strong> se uno è multiplo scalare dell'altro. Il vettore nullo non ha direzione né verso, e si considera parallelo a tutti.</p>
+
+    <h3 id="componenti">Componenti: dal piano a $\R^{2}$</h3>
+    <div class="box">
+      <p>Fissato un sistema di riferimento, ogni vettore libero del piano si scrive in modo unico come $\vec v=(x,y)$, e la corrispondenza è <strong>biunivoca</strong>. Le operazioni geometriche diventano operazioni sulle componenti:</p>
+      $$\vec u+\vec v=(x_1+x_2,\ y_1+y_2),\qquad \lambda\vec v=(\lambda x,\ \lambda y).$$
+      <p class="mb0">Analogamente per lo spazio con $\R^{3}$. È il ponte fra la geometria del disegno e l'algebra dei conti: da qui in poi si può fare geometria senza disegnare.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="spazi">3 · Spazi vettoriali</h2>
+
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p>Sia $V$ un insieme <strong>non vuoto</strong> su cui sono definite due operazioni:</p>
+      <ul>
+        <li>la <strong>somma</strong>: &nbsp; $V\ni \vu,\vv\ \longmapsto\ \vu+\vv\in V$;</li>
+        <li>il <strong>prodotto per uno scalare</strong>: &nbsp; $\lambda\in\K,\ V\ni\vv\ \longmapsto\ \lambda\vv\in V$.</li>
+      </ul>
+      <p class="mb0">Se queste due operazioni soddisfano le otto proprietà (i)–(viii), allora $V$ si dice <strong>spazio vettoriale</strong> (o spazio lineare) sul campo $\K$.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ Due dettagli che sembrano formalità e non lo sono</div>
+      <ul class="mb0">
+        <li><strong>$V$ non vuoto.</strong> Serve perché esista almeno un elemento su cui applicare gli assiomi; e dall'assioma (iii) segue che $V$ contiene sempre almeno il vettore nullo.</li>
+        <li><strong>Le operazioni devono «restare dentro» $V$</strong> (chiusura): $\vu+\vv$ e $\lambda\vv$ devono appartenere ancora a $V$. È la prima cosa da verificare negli esercizi, e la più dimenticata.</li>
+      </ul>
+    </div>
+
+    <h3 id="assiomi">Gli otto assiomi</h3>
+    <div class="box def">
+      <div class="box-title">(i)–(iv) · riguardano solo la somma</div>
+      <div class="tablewrap" style="margin:0">
+        <table>
+          <tbody>
+            <tr><td class="c"><strong>(i)</strong></td><td>$\vu+\vv=\vv+\vu$</td><td class="muted">commutatività</td></tr>
+            <tr><td class="c"><strong>(ii)</strong></td><td>$(\vu+\vv)+\vw=\vu+(\vv+\vw)$</td><td class="muted">associatività</td></tr>
+            <tr><td class="c"><strong>(iii)</strong></td><td>$\exists\,\vzero$ tale che $\vv+\vzero=\vv$</td><td class="muted">elemento neutro</td></tr>
+            <tr><td class="c"><strong>(iv)</strong></td><td>$\forall\vv\ \exists(-\vv)$ tale che $\vv+(-\vv)=\vzero$</td><td class="muted">opposto</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box def">
+      <div class="box-title">(v)–(viii) · coinvolgono anche il prodotto per scalare</div>
+      <div class="tablewrap" style="margin:0">
+        <table>
+          <tbody>
+            <tr><td class="c"><strong>(v)</strong></td><td>$\lambda(\vu+\vv)=\lambda\vu+\lambda\vv$</td><td class="muted">distributiva</td></tr>
+            <tr><td class="c"><strong>(vi)</strong></td><td>$(\lambda+\mu)\vv=\lambda\vv+\mu\vv$</td><td class="muted">distributiva</td></tr>
+            <tr><td class="c"><strong>(vii)</strong></td><td>$\lambda(\mu\vv)=(\lambda\mu)\vv$</td><td class="muted">associatività del prodotto</td></tr>
+            <tr><td class="c"><strong>(viii)</strong></td><td>$1\,\vv=\vv$</td><td class="muted">normalizzazione</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">✓ Come ricordarli senza impararli a memoria</div>
+      <p class="mb0">I primi quattro dicono che $(V,+)$ è un <strong>gruppo commutativo</strong>: somma commutativa, associativa, con zero e con opposto. Gli altri quattro dicono che il prodotto per scalare <strong>si comporta bene</strong> rispetto alle due somme (quella dei vettori e quella degli scalari), rispetto al prodotto fra scalari, e che l'$1$ non fa niente.<br><br>
+      L'assioma (viii) sembra superfluo ma non lo è: senza di esso si potrebbe definire $\lambda\vv:=\vzero$ per ogni $\lambda$, e tutti gli altri sette sarebbero soddisfatti.</p>
+    </div>
+
+    <h3 id="esempi">Gli esempi che contano</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Spazio</th><th>Campo</th><th>Chi sono i «vettori»</th></tr></thead>
+        <tbody>
+          <tr><td>$\R^{n}$</td><td>$\R$</td><td>$n$-uple di reali</td></tr>
+          <tr><td>$\C^{n}$</td><td>$\C$</td><td>$n$-uple di complessi</td></tr>
+          <tr><td>vettori liberi del piano</td><td>$\R$</td><td>classi di segmenti orientati</td></tr>
+          <tr><td>vettori liberi dello spazio</td><td>$\R$</td><td>idem, in 3D</td></tr>
+          <tr><td>$\M_{\K}(m,n)$</td><td>$\K$</td><td><strong>matrici</strong> $m\times n$ a entrate in $\K$</td></tr>
+          <tr><td>polinomi di grado $\le n$</td><td>$\K$</td><td>polinomi</td></tr>
+          <tr><td>funzioni $f:X\to\R$</td><td>$\R$</td><td>funzioni, sommate punto per punto</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Perché $\M_{\K}(m,n)$ è lo spazio da tenere a mente</div>
+      <p class="mb0">Nella Lezione 2 hai definito la somma di due matrici e il prodotto di una matrice per uno scalare, entrata per entrata. Rispetto a quelle operazioni, l'insieme
+      $$\M_{\K}(m,n):=\{A\ :\ A\ \text{è una matrice}\ m\times n\ \text{a elementi in}\ \K\}$$
+      soddisfa tutti e otto gli assiomi — il «vettore nullo» è la matrice nulla $O$, l'opposto è $-A$. <strong>Una matrice è un vettore.</strong> È il primo esempio in cui la parola «vettore» non ha più niente a che fare con le frecce, ed è esattamente il punto dell'astrazione.</p>
+    </div>
+
+    <details class="reveal"><summary>Un non-esempio: quando la chiusura fallisce</summary><div class="reveal-body">
+      <p>L'insieme delle matrici $2\times2$ <strong>invertibili</strong> <em>non</em> è uno spazio vettoriale: non è chiuso rispetto alla somma. Infatti $I_2$ e $-I_2$ sono entrambe invertibili, ma
+      $$I_2+(-I_2)=O$$
+      che invertibile non è. Manca perfino il vettore nullo, visto che $O$ non appartiene all'insieme.</p>
+      <p class="mb0">Morale: prima di applicare gli assiomi, verifica sempre che le operazioni non ti facciano uscire dall'insieme.</p>
+    </div></details>
+
+    <h3 id="conseguenze">Conseguenze degli assiomi <span class="badge star2">da conoscere</span></h3>
+    <div class="box prop">
+      <div class="box-title">Proposizione</div>
+      <p class="mb0">In ogni spazio vettoriale $V$:
+      <br>(a) il vettore nullo è <strong>unico</strong>;
+      <br>(b) l'opposto di ogni vettore è <strong>unico</strong>;
+      <br>(c) $0\cdot\vv=\vzero$ per ogni $\vv\in V$;
+      <br>(d) $(-1)\vv=-\vv$;
+      <br>(e) $\lambda\vzero=\vzero$ per ogni $\lambda\in\K$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazioni (sono brevi e si chiedono volentieri)</summary><div class="reveal-body">
+      <p><strong>(a) Unicità dello zero.</strong> Se $\vzero$ e $\vzero'$ sono entrambi neutri, allora
+      $$\vzero=\vzero+\vzero'=\vzero',$$ usando la neutralità di $\vzero'$ nella prima uguaglianza e quella di $\vzero$ nella seconda (con la commutatività).</p>
+      <p><strong>(c) $0\cdot\vv=\vzero$.</strong> Per l'assioma (vi):
+      $$0\vv=(0+0)\vv=0\vv+0\vv.$$ Sommando a entrambi i membri l'opposto di $0\vv$ si ottiene $\vzero=0\vv$.</p>
+      <p class="mb0"><strong>(d) $(-1)\vv=-\vv$.</strong> Basta verificare che $(-1)\vv$ si comporta da opposto:
+      $$\vv+(-1)\vv \overset{\text{(viii)}}{=} 1\vv+(-1)\vv \overset{\text{(vi)}}{=} (1+(-1))\vv=0\vv \overset{\text{(c)}}{=}\vzero.$$ Per l'unicità dell'opposto, $(-1)\vv=-\vv$. $\blacksquare$</p>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="applicazioni">4 · Applicazioni: terminologia generale</h2>
+
+    <div class="box def">
+      <div class="box-title">Definizioni</div>
+      <p>Un'<strong>applicazione</strong> $f:X\to Y$ associa a ogni $x\in X$ esattamente un $y=f(x)\in Y$. Si dicono $X$ <em>dominio</em>, $Y$ <em>codominio</em>, e $f(X)=\{f(x):x\in X\}$ <em>immagine</em>.</p>
+      <p class="mb0">Data $B\subseteq Y$, la <strong>controimmagine</strong> di $B$ è
+      $$f^{-1}(B):=\{x\in X\ :\ f(x)\in B\}.$$</p>
+    </div>
+
+    <div class="box">
+      <div class="box-title">L'osservazione da cui discende tutto</div>
+      <p class="mb0">Ogni $x\in X$ ha, <strong>per definizione</strong>, esattamente una immagine. Ma il <em>numero</em> di controimmagini di un $y\in Y$ può variare: zero, una, molte. Le tre proprietà seguenti sono esattamente tre risposte a «quante controimmagini ha ogni $y$?».</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>$f$ è…</th><th>se ogni $y\in Y$ ha…</th><th>condizione equivalente</th></tr></thead>
+        <tbody>
+          <tr><td><strong>iniettiva</strong></td><td><strong>al massimo una</strong> controimmagine</td><td>$x_1\ne x_2\Rightarrow f(x_1)\ne f(x_2)$</td></tr>
+          <tr><td><strong>suriettiva</strong></td><td><strong>almeno una</strong> controimmagine</td><td>$f(X)=Y$</td></tr>
+          <tr><td><strong>biunivoca</strong></td><td><strong>esattamente una</strong> controimmagine</td><td>iniettiva e suriettiva</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Esempio del corso</div>
+      <p>Sia $f:\R\to\R$, $f(x):=x^{2}$. Allora:</p>
+      <ul class="mb0">
+        <li>$f^{-1}([-2,4))=(-2,2)$;</li>
+        <li>$f^{-1}([1,4])=[-2,-1]\cup[1,2]$;</li>
+        <li>$f^{-1}((-1,0))=\emptyset$;</li>
+        <li>l'unica controimmagine di $y=0$ è $x=0$; se $y<0$, nessuna controimmagine.</li>
+      </ul>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">✗ Il simbolo $f^{-1}$ ha due significati diversi</div>
+      <p class="mb0">$f^{-1}(B)$ con $B$ <em>insieme</em> è la <strong>controimmagine</strong>, ed è definita <strong>sempre</strong>, anche se $f$ non è invertibile. $f^{-1}(y)$ come <em>valore</em> ha senso solo se $f$ è biunivoca. Nell'esempio sopra $f$ non è iniettiva, eppure $f^{-1}([1,4])$ è perfettamente definito.<br><br>
+      Confronto utile: $g(x)=e^{x}$ è iniettiva, $f(x)=x^{2}$ no — e lo si vede subito perché $f(-1)=f(1)$.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">✓ Già visto in Analisi</div>
+      <p class="mb0">Questa terminologia è la stessa della <a href="../../analisi/sezioni/2-successioni.html#funzioni">Sezione 2 di Analisi</a>, dove trovi anche il test della retta orizzontale per l'iniettività e la galleria interattiva delle funzioni elementari. Cambia solo l'accento: qui il conteggio delle controimmagini, lì il comportamento del grafico. Non studiarla due volte.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 3</h2>
+    <div class="box trap">
+      <ul class="mb0">
+        <li><strong>Dimenticare la chiusura.</strong> Prima di verificare gli otto assiomi, controlla che $\vu+\vv$ e $\lambda\vv$ restino dentro l'insieme: è lì che quasi tutti i non-esempi falliscono.</li>
+        <li><strong>Credere che «vettore» significhi «freccia».</strong> Dopo la definizione astratta, matrici, polinomi e funzioni sono vettori a tutti gli effetti.</li>
+        <li><strong>Definire la somma di vettori liberi senza dire che non dipende da $A$.</strong> Senza quel «fatto» la definizione è mal posta.</li>
+        <li><strong>Dare per scontato $0\cdot\vv=\vzero$.</strong> Non è un assioma: si dimostra, e la dimostrazione si chiede.</li>
+        <li><strong>Trattare $f^{-1}(B)$ come se richiedesse $f$ invertibile.</strong></li>
+        <li><strong>Confondere «al massimo una» con «almeno una» controimmagine</strong>, cioè iniettiva con suriettiva.</li>
+        <li><strong>Applicare «$AB$ invertibile ⟹ $A$, $B$ invertibili» a matrici non quadrate.</strong></li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="4-complessi.html">Sezione 4 · Numeri complessi →</a>
+      <a class="btn" href="2-matrici.html">← Sezione 2</a>
+      <a class="btn" href="../esercizi.html?sez=3">Esercizi della Sezione 3</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 3 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20260927"></script>
+<script src="../data/topics.js?v=20260927"></script>
+<script src="../data/quiz.js?v=20260927"></script>
+<script src="../../assets/js/plot.js?v=20260927"></script>
+<script src="../../assets/js/app.js?v=20260927"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.renderChecklist('#checklist', 3, 'geometria');
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 3; }), { statKey: 'geo3' });
+
+  /* ---------- somma di vettori: regola del triangolo ---------- */
+  (function () {
+    var A = { x: -2.6, y: -1.1 };
+    var U = { x: 2.4, y: 1.5 }, V = { x: 1.8, y: -1.9 };
+    var out = document.getElementById('vOut');
+    var par = document.getElementById('vPar'), sec = document.getElementById('vSec');
+    var p = new Plot('vPlot', { xmin: -5, xmax: 5, ymin: -3.4, ymax: 3.4, height: 340, equal: true });
+
+    p.draw(function (g) {
+      var B = { x: A.x + U.x, y: A.y + U.y };
+      var C = { x: B.x + V.x, y: B.y + V.y };
+      var Bp = { x: A.x + V.x, y: A.y + V.y };
+
+      if (par.checked) {
+        var c = g.ctx;
+        c.save(); c.globalAlpha = .1; c.fillStyle = g.col('accent');
+        c.beginPath();
+        c.moveTo(g.X(A.x), g.Y(A.y)); c.lineTo(g.X(B.x), g.Y(B.y));
+        c.lineTo(g.X(C.x), g.Y(C.y)); c.lineTo(g.X(Bp.x), g.Y(Bp.y));
+        c.closePath(); c.fill(); c.restore();
+      }
+      if (sec.checked) {
+        g.arrow(A.x, A.y, Bp.x, Bp.y, { color: 'purple', width: 2, alpha: .75, dash: [5, 4] });
+        g.arrow(Bp.x, Bp.y, C.x, C.y, { color: 'accent', width: 2, alpha: .75, dash: [5, 4] });
+        g.dot(Bp.x, Bp.y, { color: 'purple', r: 4, ring: true });
+        g.text(Bp.x, Bp.y, " B'", { color: 'purple', size: 12, bold: true, dy: 15, halo: true });
+      }
+
+      g.arrow(A.x, A.y, B.x, B.y, { color: 'accent', width: 2.8 });
+      g.arrow(B.x, B.y, C.x, C.y, { color: 'purple', width: 2.8 });
+      g.arrow(A.x, A.y, C.x, C.y, { color: 'danger', width: 3 });
+
+      g.text((A.x + B.x) / 2, (A.y + B.y) / 2, ' u', { color: 'accent', size: 15, bold: true, italic: true, dy: -7, halo: true });
+      g.text((B.x + C.x) / 2, (B.y + C.y) / 2, ' v', { color: 'purple', size: 15, bold: true, italic: true, dx: 6, halo: true });
+      g.text((A.x + C.x) / 2, (A.y + C.y) / 2, ' u+v', { color: 'danger', size: 14, bold: true, italic: true, dy: 20, halo: true });
+
+      [[A, 'A', 'muted'], [B, 'B', 'muted'], [C, 'C', 'danger']].forEach(function (q) {
+        g.dot(q[0].x, q[0].y, { color: q[2], r: 5, ring: true });
+        g.text(q[0].x, q[0].y, ' ' + q[1], { color: q[2], size: 13, bold: true, dy: -9, halo: true });
+      });
+    });
+
+    function refresh() {
+      var C = { x: A.x + U.x + V.x, y: A.y + U.y + V.y };
+      out.innerHTML =
+        'A = (' + A.x.toFixed(2) + ', ' + A.y.toFixed(2) + ') &nbsp;·&nbsp; C = (' + C.x.toFixed(2) + ', ' + C.y.toFixed(2) + ')<br>' +
+        'u = (' + U.x.toFixed(1) + ', ' + U.y.toFixed(1) + ') &nbsp; v = (' + V.x.toFixed(1) + ', ' + V.y.toFixed(1) + ') &nbsp; → &nbsp; <b>u + v = (' +
+        (U.x + V.x).toFixed(1) + ', ' + (U.y + V.y).toFixed(1) + ')</b><br>' +
+        '<span style="color:var(--ok)">Trascina A: il punto C si sposta con lui, ma il <b>vettore</b> AC resta sempre lo stesso. È questo a rendere ben posta la definizione.</span>' +
+        (sec.checked ? '<br><span style="color:var(--purple)">Il cammino tratteggiato fa prima v poi u e arriva nello stesso C: è la commutatività.</span>' : '');
+    }
+    p.onDrag(function (pt) { A = pt; p.redraw(); refresh(); });
+    par.onchange = sec.onchange = function () { p.redraw(); refresh(); };
+    refresh();
+  })();
+});
+</script>
+</body>
+</html>

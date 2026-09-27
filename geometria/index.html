@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260927">
 </head>
 <body>
 
@@ -26,7 +26,8 @@
       <a href="sezioni/0-preliminari.html">0 · Preliminari</a>
       <a href="sezioni/1-sistemi.html">1 · Sistemi</a>
       <a href="sezioni/2-matrici.html">2 · Matrici</a>
-      <a href="sezioni/3-complessi.html">3 · Complessi</a>
+      <a href="sezioni/3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="sezioni/4-complessi.html">4 · Complessi</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
     </nav>
@@ -47,7 +48,8 @@
     <a href="sezioni/0-preliminari.html">0 · Preliminari e linguaggio</a>
     <a href="sezioni/1-sistemi.html">1 · Sistemi lineari e MEG</a>
     <a href="sezioni/2-matrici.html">2 · Matrici e invertibilità</a>
-    <a href="sezioni/3-complessi.html">3 · Numeri complessi</a>
+    <a href="sezioni/3-spazi.html">3 · Vettori e spazi vettoriali</a>
+    <a href="sezioni/4-complessi.html">4 · Numeri complessi</a>
     <h4>Strumenti</h4>
     <a href="teoremi.html">Teoremi e dimostrazioni</a>
     <a href="esercizi.html">Palestra esercizi</a>
@@ -75,7 +77,7 @@
     <div class="card" style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
         <strong>Programma svolto finora</strong>
-        <span class="muted small"><span data-progress-txt="geometria">0/44</span> · <span data-progress-pct="geometria">0%</span></span>
+        <span class="muted small"><span data-progress-txt="geometria">0/62</span> · <span data-progress-pct="geometria">0%</span></span>
       </div>
       <div class="pbar" data-progress-for="geometria"><span style="width:0"></span></div>
     </div>
@@ -98,15 +100,21 @@
       </a>
       <a class="card" href="sezioni/2-matrici.html">
         <h3>2 · Algebra delle matrici e invertibilità</h3>
-        <p>Prodotto righe per colonne, struttura delle soluzioni, Rouché-Capelli, matrice inversa, determinante e Cramer.</p>
+        <p>Prodotto righe per colonne, struttura delle soluzioni, Rouché-Capelli, inversa, Cramer, Gauss-Jordan ed equazioni di matrici.</p>
         <div style="margin-top:12px"><div class="pbar" data-progress-for="g2"><span style="width:0"></span></div>
-        <div class="muted small" style="margin-top:5px"><span data-progress-txt="g2">0/16</span> argomenti</div></div>
+        <div class="muted small" style="margin-top:5px"><span data-progress-txt="g2">0/18</span> argomenti</div></div>
       </a>
-      <a class="card" href="sezioni/3-complessi.html">
-        <h3>3 · Numeri complessi</h3>
-        <p>Il campo $\C$ dal lato dell'algebra lineare. Se hai già fatto la Sezione 1 di Analisi, qui trovi soprattutto raccordi.</p>
+      <a class="card" href="sezioni/3-spazi.html">
+        <h3>3 · Vettori e spazi vettoriali</h3>
+        <p>Invertibilità del prodotto, vettori liberi e regola del triangolo, gli otto assiomi, applicazioni e controimmagini.</p>
         <div style="margin-top:12px"><div class="pbar" data-progress-for="g3"><span style="width:0"></span></div>
-        <div class="muted small" style="margin-top:5px"><span data-progress-txt="g3">0/6</span> argomenti</div></div>
+        <div class="muted small" style="margin-top:5px"><span data-progress-txt="g3">0/16</span> argomenti</div></div>
+      </a>
+      <a class="card" href="sezioni/4-complessi.html">
+        <h3>4 · Numeri complessi</h3>
+        <p>Il campo $\C$ dal lato dell'algebra lineare. Se hai già fatto la Sezione 1 di Analisi, qui trovi soprattutto raccordi.</p>
+        <div style="margin-top:12px"><div class="pbar" data-progress-for="g4"><span style="width:0"></span></div>
+        <div class="muted small" style="margin-top:5px"><span data-progress-txt="g4">0/6</span> argomenti</div></div>
       </a>
     </div>
 
@@ -149,6 +157,9 @@
       <a class="card" href="materiale/00%20Materiale%20preliminare.pdf"><h3>📄 Materiale preliminare</h3><p>Slide del prof: insiemi, notazione, $\R^n$ e $\C^n$, quantificatori.</p></a>
       <a class="card" href="materiale/01%20Sistemi%20di%20equazioni%20lineari,%20matrici,%20e%20metodo%20di%20eliminazione%20di%20Gauss.pdf"><h3>📓 Lezione 1</h3><p>Sistemi lineari, matrici, MEG. Riferimento: <em>ALG</em> cap. 2, pp. 67-74 e 84-94.</p></a>
       <a class="card" href="materiale/02%20Algebra%20delle%20matrici.%20Teorema%20di%20Rouche-Capelli.%20Teorema%20di%20Cramer.%20L'inversa%20di%20una%20matrice%20quadrata.%20Condizioni%20di%20invertibilita.pdf"><h3>📓 Lezione 2</h3><p>Algebra delle matrici, Rouché-Capelli, Cramer, inversa. <em>ALG</em> cap. 2 pp. 75-81 e 94-105; cap. 3 §§1-5.</p></a>
+      <a class="card" href="materiale/02%20bis%20Addendum%201.%20MEG-J%20(eliminazione%20di%20Gauss-Jordan).pdf"><h3>📓 Lezione 2 bis</h3><p>Eliminazione di Gauss-Jordan e calcolo della matrice inversa. <em>ALG</em> cap. 3, §6.</p></a>
+      <a class="card" href="materiale/02%20tres%20Addendum%202.%20Equazioni%20di%20matrici.pdf"><h3>📓 Lezione 2 tres</h3><p>Tre esempi di equazioni con matrici incognite.</p></a>
+      <a class="card" href="materiale/03%20Invertibilita%20del%20prodotto.%20Vettori%20nella%20geometria%20euclidea.%20Spazi%20vettoriali.%20Applicazioni.pdf"><h3>📓 Lezione 3</h3><p>Invertibilità del prodotto, vettori euclidei, spazi vettoriali, applicazioni. <em>ALG</em> §1.3, p. 122, §§4.1-4.2.</p></a>
       <a class="card" href="materiale/Numeri%20complessi.pdf"><h3>📄 Numeri complessi</h3><p>Appendice I del libro di teoria.</p></a>
       <a class="card" href="materiale/Pagine%20dal%20Libro%20di%20teoria.pdf"><h3>📖 Pagine dal libro di teoria</h3><p>Capitolo 2, «Sistemi lineari».</p></a>
       <a class="card" href="materiale/Pagine%20dal%20Libro%20di%20esercizi.pdf"><h3>✎ Pagine dal libro di esercizi</h3><p>Esercizi svolti sul capitolo 2.</p></a>
@@ -165,12 +176,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../assets/js/materie.js"></script>
-<script src="data/topics.js"></script>
-<script src="data/teoremi.js"></script>
-<script src="data/esercizi.js"></script>
-<script src="../assets/js/plot.js"></script>
-<script src="../assets/js/app.js"></script>
+<script src="../assets/js/materie.js?v=20260927"></script>
+<script src="data/topics.js?v=20260927"></script>
+<script src="data/teoremi.js?v=20260927"></script>
+<script src="data/esercizi.js?v=20260927"></script>
+<script src="../assets/js/plot.js?v=20260927"></script>
+<script src="../assets/js/app.js?v=20260927"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var tot = AM.contaArgomenti('geometria');

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sezione 3 · Numeri complessi — Geometria</title>
+<title>Sezione 4 · Numeri complessi — Geometria</title>
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
 <link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
 <link rel="manifest" href="../manifest.webmanifest">
@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260927">
 </head>
 <body>
 
@@ -26,7 +26,8 @@
       <a href="0-preliminari.html">0 · Preliminari</a>
       <a href="1-sistemi.html">1 · Sistemi</a>
       <a href="2-matrici.html">2 · Matrici</a>
-      <a href="3-complessi.html">3 · Complessi</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
       <a href="../teoremi.html">Teoremi</a>
       <a href="../esercizi.html">Esercizi</a>
     </nav>
@@ -37,7 +38,7 @@
 
 <div class="layout">
   <aside class="sidebar">
-    <h4>Sezione 3</h4>
+    <h4>Sezione 4</h4>
     <a href="#checklist">Checklist</a>
     <a href="#raccordo">Se hai già fatto Analisi</a>
     <a href="#richiami">1 · Richiami essenziali</a>
@@ -49,7 +50,7 @@
 
   <main>
     <div class="page-head">
-      <div class="eyebrow">Sezione 3 · Geometria e Algebra Lineare</div>
+      <div class="eyebrow">Sezione 4 · Geometria e Algebra Lineare</div>
       <h1>Numeri complessi</h1>
       <p class="lead">Il campo $\C$ visto dal lato dell'algebra lineare: serve a risolvere sistemi su $\C$ e, più avanti, a garantire che ogni matrice quadrata abbia autovalori.</p>
     </div>
@@ -64,10 +65,10 @@
     <h2 id="checklist">Checklist</h2>
     <div class="card" style="margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-        <strong>Avanzamento Sezione 3</strong>
-        <span class="muted small"><span data-progress-txt="g3">0/6</span> · <span data-progress-pct="g3">0%</span></span>
+        <strong>Avanzamento Sezione 4</strong>
+        <span class="muted small"><span data-progress-txt="g4">0/6</span> · <span data-progress-pct="g4">0%</span></span>
       </div>
-      <div class="pbar" data-progress-for="g3"><span style="width:0"></span></div>
+      <div class="pbar" data-progress-for="g4"><span style="width:0"></span></div>
     </div>
     <div id="checklist"></div>
 
@@ -104,7 +105,7 @@
       <p>$$\begin{cases}(1+i)z+w=2\\ z+(1-i)w=0\end{cases}$$</p>
       <p class="mb0">Si scambiano le righe per avere il pivot $1$, poi $R_2\to R_2-(1+i)R_1$. Usando $(1+i)(1-i)=1-i^{2}=2$ si arriva a
       $$\left[\begin{array}{cc|c}1&1-i&0\\0&-1&2\end{array}\right]$$
-      da cui $w=-2$ e $z=2-2i$. Svolgimento completo nell'<a href="../esercizi.html?sez=3">esercizio G3.1</a>.</p>
+      da cui $w=-2$ e $z=2-2i$. Svolgimento completo nell'<a href="../esercizi.html?sez=4">esercizio G3.1</a>.</p>
     </div>
 
     <div class="box trap">
@@ -140,25 +141,25 @@
 
     <div class="btnrow" style="margin-top:36px">
       <a class="btn primary" href="../teoremi.html">Teoremi e dimostrazioni →</a>
-      <a class="btn" href="2-matrici.html">← Sezione 2</a>
+      <a class="btn" href="3-spazi.html">← Sezione 3</a>
       <a class="btn" href="../../analisi/sezioni/1-numeri.html#complessi">Complessi in Analisi 1</a>
     </div>
   </main>
 </div>
 
-<footer>Geometria e Algebra Lineare · Sezione 3 · Appunti non ufficiali</footer>
+<footer>Geometria e Algebra Lineare · Sezione 4 · Appunti non ufficiali</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js"></script>
-<script src="../data/topics.js"></script>
-<script src="../data/quiz.js"></script>
-<script src="../../assets/js/plot.js"></script>
-<script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/materie.js?v=20260927"></script>
+<script src="../data/topics.js?v=20260927"></script>
+<script src="../data/quiz.js?v=20260927"></script>
+<script src="../../assets/js/plot.js?v=20260927"></script>
+<script src="../../assets/js/app.js?v=20260927"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklist', 3, 'geometria');
-  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 3; }), { statKey: 'geo3' });
+  AM.renderChecklist('#checklist', 4, 'geometria');
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 4; }), { statKey: 'geo4' });
 });
 </script>
 </body>

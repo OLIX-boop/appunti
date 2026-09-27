@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260927">
 </head>
 <body>
 
@@ -26,7 +26,8 @@
       <a href="sezioni/0-preliminari.html">0 · Preliminari</a>
       <a href="sezioni/1-sistemi.html">1 · Sistemi</a>
       <a href="sezioni/2-matrici.html">2 · Matrici</a>
-      <a href="sezioni/3-complessi.html">3 · Complessi</a>
+      <a href="sezioni/3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="sezioni/4-complessi.html">4 · Complessi</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
     </nav>
@@ -58,7 +59,8 @@
       <button class="chip" data-f="star">Risultati centrali</button>
       <button class="chip" data-f="g1">Sezione 1 · Sistemi</button>
       <button class="chip" data-f="g2">Sezione 2 · Matrici</button>
-      <button class="chip" data-f="g3">Sezione 3 · Complessi</button>
+      <button class="chip" data-f="g3">Sezione 3 · Spazi vettoriali</button>
+      <button class="chip" data-f="g4">Sezione 4 · Complessi</button>
     </div>
 
     <div class="btnrow">
@@ -75,16 +77,16 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../assets/js/materie.js"></script>
-<script src="data/topics.js"></script>
-<script src="data/teoremi.js"></script>
-<script src="../assets/js/plot.js"></script>
-<script src="../assets/js/app.js"></script>
+<script src="../assets/js/materie.js?v=20260927"></script>
+<script src="data/topics.js?v=20260927"></script>
+<script src="data/teoremi.js?v=20260927"></script>
+<script src="../assets/js/plot.js?v=20260927"></script>
+<script src="../assets/js/app.js?v=20260927"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var T = AM.TEOREMI_GEO, filtro = 'all';
   var list = document.getElementById('list'), toc = document.getElementById('tocList');
-  var SEZNOMI = { 1: 'Sistemi lineari e MEG', 2: 'Algebra delle matrici', 3: 'Numeri complessi' };
+  var SEZNOMI = { 1: 'Sistemi lineari e MEG', 2: 'Algebra delle matrici', 3: 'Vettori e spazi vettoriali', 4: 'Numeri complessi' };
 
   function match(t) {
     if (filtro === 'all') return true;

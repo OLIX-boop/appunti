@@ -69,21 +69,47 @@
         { id: 'g2-13', t: r`Condizioni di invertibilità; $(AB)^{-1}=B^{-1}A^{-1}$`, mark: '*', q: 'cap. 3 §1-5' },
         { id: 'g2-14', t: r`Calcolo dell'inversa con il MEG: $[A\,|\,I]\longrightarrow[I\,|\,A^{-1}]$`, q: 'cap. 3 §1-5' },
         { id: 'g2-15', t: r`Determinante $2\times2$ e $3\times3$; sviluppo di Laplace`, q: 'cap. 3 §1-5' },
-        { id: 'g2-16', t: r`Teorema di Cramer`, mark: '*', q: 'cap. 3 §1-5' }
+        { id: 'g2-16', t: r`Teorema di Cramer`, mark: '*', q: 'cap. 3 §1-5' },
+        { id: 'g2-17', t: r`Eliminazione di Gauss-Jordan (MEG-J); forma a scala <em>ridotta</em>`, q: 'cap. 3 §6' },
+        { id: 'g2-18', t: r`Equazioni con matrici incognite: $AX=B$, $XA=B$, casi misti`, q: 'Lez. 2 tres' }
       ]
     },
     {
       n: 3,
-      slug: 'sezioni/3-complessi.html',
+      slug: 'sezioni/3-spazi.html',
+      titolo: 'Vettori e spazi vettoriali',
+      sommario: r`Dai vettori disegnati con le frecce alla definizione astratta: otto assiomi che si applicano anche alle matrici e ai polinomi.`,
+      topics: [
+        { id: 'g3-01', t: r`Invertibilità del prodotto: $AB$ invertibile $\iff$ lo sono $A$ e $B$`, mark: '*', q: 'Lez. 3' },
+        { id: 'g3-02', t: r`Segmenti orientati ed equipollenza; vettori liberi`, q: 'ALG §1.3' },
+        { id: 'g3-03', t: r`Traslazioni $\tau_{\vv}$; somma di due vettori con la regola del triangolo`, mark: '*', q: 'ALG §1.3' },
+        { id: 'g3-04', t: r`La somma è ben posta: non dipende dal punto $A$ scelto`, mark: '*', q: 'ALG §1.3' },
+        { id: 'g3-05', t: r`Vettore nullo, vettore opposto, differenza`, q: 'ALG §1.3' },
+        { id: 'g3-06', t: r`Prodotto di un vettore per uno scalare; vettori paralleli`, q: 'ALG §1.3' },
+        { id: 'g3-07', t: r`Componenti: i vettori del piano si identificano con $\R^2$, quelli dello spazio con $\R^3$`, q: 'ALG §1.3' },
+        { id: 'g3-08', t: r`Definizione di spazio vettoriale su $\K$: le due operazioni`, mark: '*', q: 'ALG §4.1' },
+        { id: 'g3-09', t: r`Gli otto assiomi (i)–(viii)`, mark: '*', q: 'ALG §4.1' },
+        { id: 'g3-10', t: r`Esempi: $\R^n$, $\C^n$, i vettori liberi del piano e dello spazio`, q: 'ALG §4.1' },
+        { id: 'g3-11', t: r`Lo spazio $\M_{\K}(m,n)$ delle matrici`, q: 'ALG §4.1' },
+        { id: 'g3-12', t: r`Altri esempi: polinomi, funzioni, successioni`, q: 'ALG §4.2' },
+        { id: 'g3-13', t: r`Conseguenze degli assiomi: unicità dello zero, $0\cdot\vv=\vzero$, $(-1)\vv=-\vv$`, mark: '**', q: 'ALG §4.1' },
+        { id: 'g3-14', t: r`Applicazioni $f:X\to Y$: dominio, codominio, immagine`, q: 'ALG p. 122' },
+        { id: 'g3-15', t: r`Controimmagine $f^{-1}(B):=\{x\in X: f(x)\in B\}$`, q: 'ALG p. 122' },
+        { id: 'g3-16', t: r`Iniettiva, suriettiva, biunivoca (secondo il numero di controimmagini)`, mark: '*', q: 'ALG p. 122' }
+      ]
+    },
+    {
+      n: 4,
+      slug: 'sezioni/4-complessi.html',
       titolo: 'Numeri complessi',
       sommario: r`Il campo $\C$ visto dal lato dell'algebra lineare: serve per risolvere sistemi su $\C$ e, più avanti, per gli autovalori.`,
       topics: [
-        { id: 'g3-01', t: r`Costruzione di $\C$; forma algebrica, parte reale e immaginaria`, q: 'App. I' },
-        { id: 'g3-02', t: r`Operazioni, coniugato, modulo; $z\bar z=|z|^{2}$`, q: 'App. I' },
-        { id: 'g3-03', t: r`Piano di Gauss; forma trigonometrica ed esponenziale`, q: 'App. I' },
-        { id: 'g3-04', t: r`Formule di de Moivre; radici $n$-esime`, q: 'App. I' },
-        { id: 'g3-05', t: r`Teorema fondamentale dell'algebra; $\C$ algebricamente chiuso`, q: 'App. I' },
-        { id: 'g3-06', t: r`Sistemi a coefficienti complessi: il MEG funziona identico su $\C$`, q: 'Lez. 1' }
+        { id: 'g4-01', t: r`Costruzione di $\C$; forma algebrica, parte reale e immaginaria`, q: 'App. I' },
+        { id: 'g4-02', t: r`Operazioni, coniugato, modulo; $z\bar z=|z|^{2}$`, q: 'App. I' },
+        { id: 'g4-03', t: r`Piano di Gauss; forma trigonometrica ed esponenziale`, q: 'App. I' },
+        { id: 'g4-04', t: r`Formule di de Moivre; radici $n$-esime`, q: 'App. I' },
+        { id: 'g4-05', t: r`Teorema fondamentale dell'algebra; $\C$ algebricamente chiuso`, q: 'App. I' },
+        { id: 'g4-06', t: r`Sistemi a coefficienti complessi: il MEG funziona identico su $\C$`, q: 'Lez. 1' }
       ]
     }
   ];
@@ -102,5 +128,21 @@
     // segnalano il peso del risultato, non una richiesta della docenza.
     markLabels: { '*': 'risultato centrale', '**': 'da conoscere' },
     sezioni: SEZIONI
+  });
+
+  /* I numeri complessi erano la Sezione 3 e ora sono la 4: sposto gli
+     argomenti gia' spuntati sui nuovi id, una volta sola.
+     Va fatto dopo app.js, che e' quello che definisce AM.store. */
+  if (typeof document === 'undefined') return;   // caricato fuori dal browser (controlli)
+  document.addEventListener('am:ready', function migra() {
+    var S = window.AM && window.AM.store;
+    if (!S || S.get('geo:migrato-sez4', false)) return;
+    for (var i = 1; i <= 6; i++) {
+      var vecchio = 'topic:g3-0' + i, nuovo = 'topic:g4-0' + i;
+      if (S.get(vecchio, null) === true) S.set(nuovo, true);
+      S.del(vecchio);
+    }
+    S.set('geo:migrato-sez4', true);
+    if (S.get('topic:g4-01', false) !== false && AM.refreshProgress) AM.refreshProgress();
   });
 })();

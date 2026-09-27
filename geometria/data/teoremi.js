@@ -187,9 +187,56 @@ dove $A_j$ è la matrice ottenuta da $A$ <strong>sostituendo la $j$-esima colonn
     note: r`Ipotesi da non dimenticare: $A$ <strong>quadrata</strong> e $\det A\ne0$. Se $\det A=0$ la formula non ha senso (si dividerebbe per zero) e il sistema va discusso con Rouché-Capelli: può essere incompatibile oppure avere infinite soluzioni.`
   },
 
-  /* ============ SEZIONE 3: numeri complessi ============ */
+  /* ====== SEZIONE 3: vettori e spazi vettoriali ====== */
   {
-    id: 'G-tfa', sez: 3, mark: '**', q: 'ALG App. I',
+    id: 'G-prod', sez: 3, mark: '*', q: 'Lez. 3',
+    titolo: 'Invertibilità del prodotto di matrici',
+    enunciato: r`Siano $A,B$ matrici <strong>quadrate</strong> dello stesso ordine $n$. Allora
+$$AB\ \text{è invertibile}\iff A\ \text{e}\ B\ \text{sono entrambe invertibili},$$
+e in tal caso $(AB)^{-1}=B^{-1}A^{-1}$.`,
+    idea: r`Un verso si verifica per calcolo diretto; l'altro si legge dalla moltiplicatività del determinante.`,
+    steps: [
+      { cue: r`Verso $\Leftarrow$`, body: r`Se esistono $A^{-1}$ e $B^{-1}$, si verifica che $B^{-1}A^{-1}$ è l'inversa di $AB$: $$(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AI_nA^{-1}=I_n,$$ e simmetricamente $(B^{-1}A^{-1})(AB)=I_n$. Per l'unicità dell'inversa, $(AB)^{-1}=B^{-1}A^{-1}$.` },
+      { cue: r`Verso $\Rightarrow$: quale strumento conviene?`, body: r`Il <strong>determinante</strong>, perché è moltiplicativo: $\det(AB)=\det A\cdot\det B$. Se $AB$ è invertibile allora $\det(AB)\ne0$, dunque $\det A\cdot\det B\ne0$.` },
+      { cue: r`Conclusione`, body: r`Un prodotto di scalari è non nullo solo se entrambi i fattori lo sono: $\det A\ne0$ e $\det B\ne0$, cioè $A$ e $B$ sono invertibili. $\blacksquare$` },
+      { cue: r`Variante senza determinante`, body: r`Posto $C=(AB)^{-1}$: da $A(BC)=I_n$ segue che $A$ ha inversa destra, da $(CA)B=I_n$ che $B$ ha inversa sinistra. Per matrici quadrate ciascuna delle due condizioni implica l'invertibilità.` }
+    ],
+    note: r`L'ipotesi «quadrate» è essenziale. Con $A$ di tipo $1\times2$ e $B$ di tipo $2\times1$, il prodotto $AB$ è $1\times1$ e può essere invertibile, mentre per $A$ e $B$ la parola «inversa» non ha nemmeno senso.`
+  },
+  {
+    id: 'G-somma', sez: 3, mark: '*', q: 'ALG §1.3',
+    titolo: 'La somma di vettori liberi è ben posta',
+    enunciato: r`Siano $\vec u,\vec v$ vettori liberi. Fissato un punto $A$, si pongano $B:=\tau_{\vec u}(A)$ e $C:=\tau_{\vec v}(B)$. Allora il vettore libero rappresentato da $\overrightarrow{AC}$ <strong>non dipende dalla scelta di $A$</strong>, ed è quindi determinato univocamente da $\vec u$ e $\vec v$. Lo si chiama $\vec u+\vec v$.`,
+    idea: r`Cambiando il punto di partenza, tutta la figura trasla: i segmenti orientati ottenuti sono equipollenti, dunque rappresentano lo stesso vettore libero.`,
+    steps: [
+      { cue: r`Perché serve dimostrarlo?`, body: r`Perché la definizione contiene una <strong>scelta arbitraria</strong> — il punto $A$. Se il risultato ne dipendesse, non definirebbe un'operazione fra vettori ma una funzione anche del punto: sarebbe <em>mal posta</em>.` },
+      { cue: r`L'impostazione`, body: r`Siano $A$ e $A'$ due punti qualsiasi, e siano $B=\tau_{\vec u}(A)$, $C=\tau_{\vec v}(B)$, $B'=\tau_{\vec u}(A')$, $C'=\tau_{\vec v}(B')$. Bisogna mostrare che $\overrightarrow{AC}$ e $\overrightarrow{A'C'}$ sono equipollenti.` },
+      { cue: r`Il passaggio chiave`, body: r`La traslazione che porta $A$ in $A'$ porta anche $B$ in $B'$ (entrambi ottenuti applicando $\tau_{\vec u}$) e quindi $C$ in $C'$ (applicando $\tau_{\vec v}$). Le traslazioni <strong>conservano direzione, verso e lunghezza</strong>.` },
+      { cue: r`Conclusione`, body: r`Dunque $\overrightarrow{A'C'}$ si ottiene da $\overrightarrow{AC}$ per traslazione: i due segmenti orientati sono equipollenti e rappresentano lo stesso vettore libero. $\blacksquare$` },
+      { cue: r`Il corollario che si legge nel disegno`, body: r`Partendo da $A$ con $\vec v$ e poi $\vec u$ si arriva allo stesso punto $C$: i due cammini chiudono un <strong>parallelogramma</strong>. È la dimostrazione geometrica di $\vec u+\vec v=\vec v+\vec u$.` }
+    ],
+    note: r`È lo stesso tipo di verifica che serve ogni volta che si definisce un'operazione su <em>classi di equivalenza</em>: bisogna controllare che il risultato non cambi cambiando rappresentante.`
+  },
+  {
+    id: 'G-assiomi', sez: 3, mark: '**', q: 'ALG §4.1',
+    titolo: 'Conseguenze elementari degli assiomi',
+    enunciato: r`In ogni spazio vettoriale $V$ su $\K$:
+<br>(a) il vettore nullo è <strong>unico</strong>; &nbsp;(b) l'opposto di ogni vettore è <strong>unico</strong>;
+<br>(c) $0\cdot\vv=\vzero$; &nbsp;(d) $(-1)\vv=-\vv$; &nbsp;(e) $\lambda\vzero=\vzero$.`,
+    idea: r`Nessuna di queste è un assioma: si ricavano tutte dagli otto, e le dimostrazioni sono di due righe.`,
+    steps: [
+      { cue: r`(a) Unicità dello zero`, body: r`Siano $\vzero$ e $\vzero'$ entrambi neutri. Allora $$\vzero=\vzero+\vzero'=\vzero',$$ dove la prima uguaglianza usa la neutralità di $\vzero'$ e la seconda quella di $\vzero$ (con la commutatività).` },
+      { cue: r`(b) Unicità dell'opposto`, body: r`Se $\vw$ e $\vw'$ sono entrambi opposti di $\vv$: $$\vw=\vw+\vzero=\vw+(\vv+\vw')=(\vw+\vv)+\vw'=\vzero+\vw'=\vw'.$$ Si usano solo (ii), (iii) e (iv).` },
+      { cue: r`(c) $0\cdot\vv=\vzero$ — l'idea è «aggiungi e togli»`, body: r`Per l'assioma (vi): $$0\vv=(0+0)\vv=0\vv+0\vv.$$ Sommando a entrambi i membri l'opposto di $0\vv$ si ottiene $\vzero=0\vv$. $\blacksquare$` },
+      { cue: r`(d) $(-1)\vv=-\vv$`, body: r`Si verifica che $(-1)\vv$ fa da opposto: $$\vv+(-1)\vv\overset{\text{(viii)}}{=}1\vv+(-1)\vv\overset{\text{(vi)}}{=}\bigl(1+(-1)\bigr)\vv=0\vv\overset{\text{(c)}}{=}\vzero.$$ Per l'unicità dell'opposto, $(-1)\vv=-\vv$. $\blacksquare$` },
+      { cue: r`(e) $\lambda\vzero=\vzero$`, body: r`Per (v): $\lambda\vzero=\lambda(\vzero+\vzero)=\lambda\vzero+\lambda\vzero$; sommando l'opposto di $\lambda\vzero$ si conclude. $\blacksquare$` }
+    ],
+    note: r`Nota quali assiomi servono dove: (c) usa la distributiva sugli <em>scalari</em> (vi), mentre (e) usa quella sui <em>vettori</em> (v). Sono simmetriche ma distinte, e all'esame conviene citare il numero dell'assioma usato.`
+  },
+
+  /* ============ SEZIONE 4: numeri complessi ============ */
+  {
+    id: 'G-tfa', sez: 4, mark: '**', q: 'ALG App. I',
     titolo: 'Teorema fondamentale dell\'algebra',
     enunciato: r`Ogni polinomio $P(z)=a_nz^{n}+\dots+a_1z+a_0$ di grado $n\ge1$ a coefficienti in $\C$ ammette almeno una radice in $\C$. Iterando, $$P(z)=a_n(z-z_1)(z-z_2)\cdots(z-z_n),$$ con le radici contate secondo molteplicità.`,
     idea: r`Si enuncia e si usa; la dimostrazione esula dal corso.`,
