@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I primi due parziali — piano di preparazione</title>
+<meta name="description" content="Piano settimanale per i parziali di Geometria (30 ottobre) e Analisi 1 (2 novembre).">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/appunti-32.png">
+<link rel="apple-touch-icon" href="assets/icons/appunti-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f5fa8">
+<meta name="apple-mobile-web-app-title" content="Parziali">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .oggi-box { border:2px solid var(--accent); border-radius:var(--radius-lg); background:var(--bg-elev);
+              box-shadow:var(--shadow-lg); overflow:hidden; margin-bottom:26px; }
+  .oggi-top { background:linear-gradient(135deg,var(--accent),var(--purple)); color:#fff; padding:18px 22px; }
+  .oggi-top .data { font-size:13px; opacity:.9; letter-spacing:.04em; text-transform:uppercase; font-weight:600; }
+  .oggi-top h2 { margin:4px 0 0; border:none; padding:0; font-size:23px; color:#fff; }
+  .oggi-corpo { padding:20px 22px; }
+  .conto { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); margin-bottom:22px; }
+  .conto .card { padding:14px 12px; text-align:center; }
+
+  .sett { border:1px solid var(--border); border-radius:var(--radius); background:var(--bg-elev);
+          margin-bottom:14px; overflow:hidden; }
+  .sett.corrente { border-color:var(--accent); border-width:2px; box-shadow:var(--shadow); }
+  .sett.passata { opacity:.55; }
+  .sett-top { padding:13px 18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+              background:var(--bg-sunken); cursor:pointer; }
+  .sett.corrente .sett-top { background:var(--accent-soft); }
+  .sett-n { width:34px; height:34px; flex:0 0 auto; border-radius:9px; display:grid; place-items:center;
+            font-weight:800; font-size:14px; background:var(--accent); color:#fff; }
+  .sett.passata .sett-n { background:var(--text-faint); }
+  .sett-tit { font-weight:700; font-size:15.5px; }
+  .sett-date { font-size:12.5px; color:var(--text-muted); }
+  .sett-corpo { padding:18px; border-top:1px solid var(--border); }
+  .sett-corpo.chiuso { display:none; }
+
+  .split { display:flex; height:26px; border-radius:6px; overflow:hidden; border:1px solid var(--border); font-size:11.5px; font-weight:700; }
+  .split > div { display:grid; place-items:center; color:#fff; }
+
+  .giorni { display:grid; gap:8px; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); margin:14px 0; }
+  .giorno { border:1px solid var(--border); border-radius:var(--radius-sm); padding:11px 13px; background:var(--bg); }
+  .giorno.oggi { border-color:var(--accent); border-width:2px; background:var(--accent-soft); }
+  .giorno.vuoto { opacity:.5; }
+  .giorno h5 { margin:0 0 3px; font-size:13.5px; display:flex; justify-content:space-between; gap:8px; }
+  .giorno p { margin:0; font-size:12.8px; color:var(--text-muted); line-height:1.5; }
+
+  .cal { display:flex; flex-wrap:wrap; gap:5px; }
+  .cal-g { width:36px; height:42px; border-radius:6px; display:grid; place-items:center; align-content:center;
+           font-size:11px; font-weight:700; border:1px solid var(--border); background:var(--bg-sunken);
+           color:var(--text-faint); line-height:1.15; cursor:default; }
+  .cal-g small { font-size:8.5px; font-weight:600; opacity:.8; }
+  .cal-g.utile { background:var(--ok-soft); color:var(--ok); border-color:var(--ok-border); }
+  .cal-g.pieno { background:var(--accent-soft); color:var(--accent); border-color:var(--accent-border); }
+  .cal-g.oggi  { outline:2px solid var(--accent); outline-offset:1px; }
+  .cal-g.esame { background:var(--danger); color:#fff; border-color:var(--danger); }
+  .cal-g.passato { opacity:.35; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">P</span> Appunti · PoliMi</a>
+    <nav class="topnav">
+      <a href="index.html">Materie</a>
+      <a href="due-parziali.html">Piano parziali</a>
+      <a href="analisi/index.html">Analisi 1</a>
+      <a href="analisi/primo-parziale.html">Allenamento</a>
+      <a href="geometria/index.html">Geometria</a>
+      <a href="informatica/index.html">Informatica</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout no-sidebar">
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Geometria · 30 ottobre &nbsp;—&nbsp; Analisi 1 · 2 novembre</div>
+      <h1>I primi due parziali</h1>
+      <p class="lead">Dove sei adesso, cosa tocca oggi, e cosa deve succedere questa settimana. Aggiornato automaticamente in base alla data.</p>
+    </div>
+
+    <div id="oggi"></div>
+    <div class="conto" id="conto"></div>
+
+    <div class="box trap">
+      <div class="box-title">⚠ Il vincolo che decide tutto il piano</div>
+      <p class="mb0">Fra i due parziali ci sono sabato 31 e domenica 1: <strong>circa un'ora di studio utile</strong>. Analisi <em>non</em> si prepara dopo Geometria — deve essere chiusa entro il <strong>26 ottobre</strong>, e da lì in poi tenuta viva solo con i 15 minuti di <a href="analisi/primo-parziale.html">allenamento quotidiano</a>.</p>
+    </div>
+
+    <h2 id="settimane">Le cinque settimane</h2>
+    <p class="muted small">La settimana in corso è aperta; clicca sulle altre per vederle.</p>
+    <div id="settimane"></div>
+
+    <h2 id="calendario">Il calendario completo</h2>
+    <div class="box">
+      <div class="cal" id="cal"></div>
+      <div id="calLegenda" style="margin-top:14px"></div>
+    </div>
+
+    <h2 id="settimanale">Il ritmo della settimana</h2>
+    <p class="muted small">Vale per tutte le settimane, salvo quando la settimana in corso dice diversamente.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Giorno</th><th class="c">Ore</th><th>Cosa</th></tr></thead>
+        <tbody id="ritmo"></tbody>
+      </table>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">✓ Il martedì è il giorno decisivo</div>
+      <p class="mb0">Sei ore su quattordici: <strong>il 43% della settimana</strong>. È l'unico blocco lungo che hai, quindi lì ci vanno le cose che richiedono continuità — dimostrazioni scritte a mano, simulazioni cronometrate, esercizi lunghi. Usarlo per ripassare quello che già sai sarebbe il singolo spreco più costoso del mese.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ Due cose che dipendono da te</div>
+      <ul class="mb0">
+        <li><strong>Il materiale di Geometria sul sito copre due lezioni.</strong> Da qui al 30 ottobre il corso farà molto altro. Mandami gli appunti man mano che escono, altrimenti quella metà del piano resta scoperta.</li>
+        <li><strong>Non so com'è fatto il parziale di Geometria.</strong> Per Analisi ho le soglie ufficiali; per Geometria no. Sapere se pesa più teoria o esercizi cambia come spendi una trentina di ore.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:34px">
+      <a class="btn primary" href="analisi/primo-parziale.html">🔥 Allenamento di oggi</a>
+      <a class="btn" href="analisi/simulazione.html">Simulazione Analisi</a>
+      <a class="btn" href="geometria/esercizi.html">Esercizi Geometria</a>
+    </div>
+  </main>
+</div>
+
+<footer>Piano di preparazione ai primi due parziali · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
+<script src="assets/js/materie.js"></script>
+<script src="assets/js/plot.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+document.addEventListener('am:ready', function () {
+
+  /* ================= dati del piano ================= */
+  var GIORNI = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'];
+  var MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  var ORE = { 1: 3, 2: 6, 3: 0, 4: 3, 5: 1, 6: 0, 0: 1 };   // indice = getDay()
+
+  var ESAME_GEO = new Date(2026, 9, 30);   // ven 30 ottobre
+  var ESAME_ANA = new Date(2026, 10, 2);   // lun 2 novembre
+
+  // note per giorno della settimana, valide salvo override settimanale
+  var RITMO = {
+    1: { m: 'geo', t: 'Geometria: consolidi la lezione del lunedì e fai esercizi sul tema appena visto.' },
+    2: { m: 'misto', t: 'Blocco lungo: 3 ore Analisi (teoria e dimostrazioni) + 3 ore Geometria (esercizi). È il giorno in cui si fa il lavoro serio.' },
+    3: { m: 'nulla', t: 'Sei in università tutto il giorno. Solo i 15 minuti di allenamento nei ritagli, dal telefono.' },
+    4: { m: 'ana', t: 'Analisi: consolidi la lezione di mercoledì (3 ore, la più densa) e fai esercizi.' },
+    5: { m: 'misto', t: 'Un\'ora: allenamento + una dimostrazione scritta a mano su foglio bianco.' },
+    6: { m: 'bonus', t: 'Non conteggiato nel piano. Se capita, è tutto guadagnato: usalo per gli esercizi lunghi.' },
+    0: { m: 'misto', t: 'Un\'ora: allenamento + rivedi gli errori della settimana nel pannello «schede difficili».' }
+  };
+
+  var SETTIMANE = [
+    { n: 1, da: [2026,8,28], a: [2026,9,4], titolo: 'Mettere le fondamenta', ore: 14,
+      split: { ana: 50, geo: 50 },
+      obiettivo: 'Non accumulare arretrato: ogni lezione dev\'essere consolidata entro 48 ore da quando è stata fatta.',
+      ana: ['Sezione 1 completa e spuntata nella checklist', 'Le prime <strong>2 dimostrazioni</strong>: irrazionalità di √2 e Bernoulli', 'Allenamento quotidiano avviato, taglio impostato dove siete a lezione'],
+      geo: ['Preliminari + Sezione 1 (sistemi, matrici, MEG)', 'Il MEG a mano finché non esce senza pensarci: usa il laboratorio solo per <em>verificare</em>', 'Riconoscere una matrice a scala con il criterio degli ℓᵢ'],
+      trappola: 'Leggere invece di fare. Dopo ogni lezione, almeno due esercizi sul tema: se non ne fai, non l\'hai consolidata.' },
+
+    { n: 2, da: [2026,9,5], a: [2026,9,11], titolo: 'Prendere ritmo sugli esercizi', ore: 14,
+      split: { ana: 50, geo: 50 },
+      obiettivo: 'I conti di base devono diventare automatici: limiti elementari e riduzione a scala senza esitazioni.',
+      ana: ['Segui la Sezione 2 man mano che viene spiegata', 'Dimostrazioni <strong>3-6</strong>: de Moivre, radici n-esime, unicità del limite, convergente ⇒ limitata', 'Esercizi su successioni e forme indeterminate'],
+      geo: ['Sezione 2: algebra delle matrici, Rouché-Capelli, inversa', 'Discussioni di sistemi <strong>con parametro</strong>: è il tipo di esercizio che cade più spesso', 'Calcolo dell\'inversa con [A | I] → [I | A⁻¹]'],
+      trappola: 'Rimandare le dimostrazioni «a quando avrò finito il programma». Sono 14 e non si imparano in una settimana: due a settimana da adesso, e a fine ottobre sono fatte.' },
+
+    { n: 3, da: [2026,9,12], a: [2026,9,18], titolo: 'Analisi in primo piano', ore: 14,
+      split: { ana: 60, geo: 40 },
+      obiettivo: 'Arrivare alla prima simulazione di Analisi e superarla, anche di poco.',
+      ana: ['Sezione 3 (serie) man mano che viene spiegata', '<strong>Prima simulazione cronometrata</strong>, martedì, davvero a tempo', 'Dimostrazioni <strong>7-10</strong>: permanenza del segno, carabinieri, monotòne, condizione necessaria'],
+      geo: ['Mantenimento: esercizi sui temi già visti', 'Segui le lezioni nuove e consolidale, ma senza approfondire ancora'],
+      trappola: 'Fare la simulazione «a metà», senza cronometro e guardando gli appunti. Serve a misurarti, e una misura falsata è peggio di nessuna misura.' },
+
+    { n: 4, da: [2026,9,19], a: [2026,9,25], titolo: 'Chiudere Analisi', ore: 14,
+      split: { ana: 60, geo: 40 },
+      obiettivo: 'Entro domenica 25 Analisi dev\'essere pronta: simulazione superata e 14 dimostrazioni a memoria.',
+      ana: ['<strong>Tutte e 14 le dimostrazioni</strong> scritte a mano su foglio bianco, senza guardare', 'Seconda e terza simulazione', 'Ripassa i box «errori tipici» di tutte e tre le sezioni'],
+      geo: ['Esercizi e ripasso della teoria', 'Inizia a mettere in ordine gli argomenti delle ultime lezioni'],
+      trappola: 'Arrivare a domenica con le dimostrazioni ancora incerte. Se al martedì 20 non escono, usa tutte e sei le ore di quel giorno solo per quelle.' },
+
+    { n: 5, da: [2026,9,26], a: [2026,9,29], titolo: 'Tutto su Geometria', ore: 12,
+      split: { ana: 10, geo: 90 },
+      obiettivo: 'Portare Geometria al massimo, mantenendo Analisi in vita senza toglierle ore.',
+      ana: ['<strong>Solo</strong> i 15 minuti di allenamento. Nient\'altro.', 'È esattamente il lavoro per cui esiste la ripetizione dilazionata: non perdi quello che sai mentre pensi ad altro.'],
+      geo: ['Esercizi a tempo su tutto il programma', 'Ripasso della teoria e degli errori tipici', 'Le dimostrazioni e gli enunciati centrali'],
+      trappola: 'Farsi prendere dal panico su Analisi e rubare ore a Geometria. Se hai seguito il piano, Analisi è già a posto: fidati del lavoro fatto.',
+      giorni: {
+        1: { m: 'geo', t: 'Geometria a tutto campo: esercizi.' },
+        2: { m: 'geo', t: 'Sei ore tutte su Geometria: esercizi a tempo e ripasso teoria.' },
+        3: { m: 'nulla', t: 'Università. Solo allenamento nei ritagli.' },
+        4: { m: 'geo', t: 'Ultimo blocco: esercizi e ripasso degli errori tipici. Vai a letto presto.' }
+      } }
+  ];
+
+  var INTERMEZZO = {
+    titolo: 'Fra i due esami', ore: 1,
+    testo: 'Hai circa <strong>un\'ora</strong>, domenica pomeriggio. Rileggi le 14 dimostrazioni e i box «errori tipici» di Analisi. <strong>Niente di nuovo</strong>: a questo punto studiare cose nuove toglie lucidità invece di aggiungere punti.'
+  };
+
+  /* ================= utilità ================= */
+  function D(a) { return new Date(a[0], a[1], a[2]); }
+  function mezzanotte(d) { var x = new Date(d); x.setHours(0,0,0,0); return x; }
+  function giorniFra(a, b) { return Math.round((mezzanotte(b) - mezzanotte(a)) / 86400000); }
+  function fmt(d) { return d.getDate() + ' ' + MESI[d.getMonth()]; }
+  function fmtBreve(d) { return d.getDate() + '/' + (d.getMonth() + 1); }
+
+  // ?data=AAAA-MM-GG permette di guardare il piano di un altro giorno
+  var simulata = (/[?&]data=(\d{4})-(\d{2})-(\d{2})/.exec(location.search));
+  var oggi = simulata
+    ? new Date(+simulata[1], +simulata[2] - 1, +simulata[3])
+    : mezzanotte(new Date());
+
+  function settimanaDi(d) {
+    for (var i = 0; i < SETTIMANE.length; i++) {
+      var s = SETTIMANE[i];
+      if (d >= D(s.da) && d <= D(s.a)) return s;
+    }
+    return null;
+  }
+
+  function oreRimaste(fino) {
+    var n = 0, d = new Date(oggi);
+    while (d < mezzanotte(fino)) { n += ORE[d.getDay()]; d.setDate(d.getDate() + 1); }
+    return n;
+  }
+
+  /* ================= riquadro "oggi" ================= */
+  var sc = settimanaDi(oggi);
+  var gg = oggi.getDay();
+  var ritmoOggi = (sc && sc.giorni && sc.giorni[gg]) ? sc.giorni[gg] : RITMO[gg];
+  var oreOggi = ORE[gg];
+
+  var testa, corpo;
+  if (giorniFra(oggi, ESAME_GEO) === 0) {
+    testa = 'Oggi è il parziale di Geometria';
+    corpo = '<p class="mb0"><strong>In bocca al lupo.</strong> Ripassa solo gli enunciati principali, niente esercizi nuovi. Documento di riconoscimento, e ricorda che non sono ammessi appunti né calcolatrici.</p>';
+  } else if (giorniFra(oggi, ESAME_ANA) === 0) {
+    testa = 'Oggi è il parziale di Analisi 1';
+    corpo = '<p class="mb0"><strong>In bocca al lupo.</strong> Ricorda le soglie: servono almeno 7/14 nella prima parte e 5/10 nella seconda, e un totale ≥ 15. Se ti blocchi su un esercizio, passa oltre e torna dopo.</p>';
+  } else if (oggi > ESAME_ANA) {
+    testa = 'Parziali superati';
+    corpo = '<p class="mb0">Il piano è concluso. Quando esce il calendario della seconda parte, si riparte.</p>';
+  } else if (oggi > ESAME_GEO) {
+    testa = INTERMEZZO.titolo;
+    corpo = '<p class="mb0">' + INTERMEZZO.testo + '</p>';
+  } else if (!sc) {
+    testa = 'Il piano parte lunedì 28 settembre';
+    corpo = '<p class="mb0">Oggi, se hai un\'ora: apri l\'<a href="analisi/primo-parziale.html">allenamento</a>, imposta il taglio dove siete arrivati a lezione, e fai la prima sessione. Serve a far partire il motore di ripetizione.</p>';
+  } else {
+    testa = 'Settimana ' + sc.n + ' · ' + sc.titolo;
+    var cls = ritmoOggi.m;
+    var etichetta = cls === 'geo' ? 'Geometria' : cls === 'ana' ? 'Analisi' : cls === 'nulla' ? 'Giorno pieno in università' : cls === 'bonus' ? 'Giorno bonus' : 'Analisi + Geometria';
+    corpo = '<p style="font-size:17px;margin-bottom:6px"><strong>' + etichetta + '</strong>' +
+      (oreOggi ? ' · <span class="badge">' + oreOggi + ' ore</span>' : ' · <span class="badge">fuori piano</span>') + '</p>' +
+      '<p class="mb0">' + ritmoOggi.t + '</p>' +
+      '<div class="box tip" style="margin-bottom:0;margin-top:14px"><div class="box-title">Obiettivo della settimana</div><p class="mb0">' + sc.obiettivo + '</p></div>';
+  }
+
+  document.getElementById('oggi').innerHTML =
+    (simulata ? '<div class="box warnb"><p class="mb0">👁 Stai guardando il piano del <strong>' + GIORNI[gg] + ' ' + fmt(oggi) +
+      '</strong>, non di oggi. <a href="due-parziali.html">Torna a oggi</a>.</p></div>' : '') +
+    '<div class="oggi-box"><div class="oggi-top">' +
+    '<div class="data">' + GIORNI[gg] + ' ' + fmt(oggi) + ' ' + oggi.getFullYear() + '</div>' +
+    '<h2>' + testa + '</h2></div>' +
+    '<div class="oggi-corpo">' + corpo + '</div></div>';
+
+  /* ================= contatori ================= */
+  var dGeo = giorniFra(oggi, ESAME_GEO), dAna = giorniFra(oggi, ESAME_ANA);
+  document.getElementById('conto').innerHTML =
+    '<div class="card stat"><div class="stat-val" style="color:' + (dGeo <= 7 ? 'var(--danger)' : 'var(--ok)') + '">' + Math.max(0, dGeo) + '</div><div class="stat-lab">giorni a <strong>Geometria</strong><br><span class="faint">ven 30 ottobre</span></div></div>' +
+    '<div class="card stat"><div class="stat-val" style="color:' + (dAna <= 7 ? 'var(--danger)' : 'var(--accent)') + '">' + Math.max(0, dAna) + '</div><div class="stat-lab">giorni ad <strong>Analisi</strong><br><span class="faint">lun 2 novembre</span></div></div>' +
+    '<div class="card stat"><div class="stat-val">' + oreRimaste(ESAME_GEO) + '</div><div class="stat-lab">ore di studio<br><span class="faint">prima di Geometria</span></div></div>' +
+    '<div class="card stat"><div class="stat-val" style="color:var(--warn)">' + (sc ? sc.n : '—') + '</div><div class="stat-lab">settimana in corso<br><span class="faint">su 5</span></div></div>';
+
+  /* ================= le cinque settimane ================= */
+  function barraSplit(sp) {
+    return '<div class="split">' +
+      '<div style="flex:' + sp.ana + ';background:var(--accent)">Analisi ' + sp.ana + '%</div>' +
+      '<div style="flex:' + sp.geo + ';background:var(--ok)">Geometria ' + sp.geo + '%</div></div>';
+  }
+  function lista(items) { return '<ul class="mb0">' + items.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>'; }
+
+  document.getElementById('settimane').innerHTML = SETTIMANE.map(function (s) {
+    var da = D(s.da), a = D(s.a);
+    var stato = oggi > a ? 'passata' : (sc && sc.n === s.n ? 'corrente' : '');
+    var aperto = stato === 'corrente';
+    return '<div class="sett ' + stato + '" data-n="' + s.n + '">' +
+      '<div class="sett-top"><div class="sett-n">S' + s.n + '</div>' +
+      '<div style="flex:1"><div class="sett-tit">' + s.titolo + '</div>' +
+      '<div class="sett-date">' + fmtBreve(da) + ' – ' + fmtBreve(a) + ' · ' + s.ore + ' ore' +
+      (stato === 'corrente' ? ' · <strong style="color:var(--accent)">sei qui</strong>' : stato === 'passata' ? ' · conclusa' : '') +
+      '</div></div><span class="faint">' + (aperto ? '▾' : '▸') + '</span></div>' +
+      '<div class="sett-corpo' + (aperto ? '' : ' chiuso') + '">' +
+      '<p><strong>Obiettivo:</strong> ' + s.obiettivo + '</p>' +
+      barraSplit(s.split) +
+      '<div class="grid g2" style="margin-top:16px">' +
+      '<div class="box def" style="margin:0"><div class="box-title">Analisi 1</div>' + lista(s.ana) + '</div>' +
+      '<div class="box ex" style="margin:0"><div class="box-title">Geometria</div>' + lista(s.geo) + '</div>' +
+      '</div>' +
+      '<div class="box trap" style="margin-bottom:0"><div class="box-title">✗ La trappola di questa settimana</div><p class="mb0">' + s.trappola + '</p></div>' +
+      '</div></div>';
+  }).join('') +
+  '<div class="sett"><div class="sett-top" style="background:var(--danger-soft)">' +
+  '<div class="sett-n" style="background:var(--danger)">!</div>' +
+  '<div style="flex:1"><div class="sett-tit">' + INTERMEZZO.titolo + '</div>' +
+  '<div class="sett-date">31 ottobre – 1 novembre · ' + INTERMEZZO.ore + ' ora</div></div></div>' +
+  '<div class="sett-corpo"><p class="mb0">' + INTERMEZZO.testo + '</p></div></div>';
+
+  document.querySelectorAll('.sett-top').forEach(function (t) {
+    t.onclick = function () {
+      var c = t.parentElement.querySelector('.sett-corpo');
+      if (!c) return;
+      c.classList.toggle('chiuso');
+      var fr = t.querySelector('.faint');
+      if (fr) fr.textContent = c.classList.contains('chiuso') ? '▸' : '▾';
+    };
+  });
+
+  /* ================= calendario ================= */
+  var cal = document.getElementById('cal');
+  var d = new Date(2026, 8, 28), fine = new Date(2026, 10, 2);
+  var html = '', oreTot = 0;
+  while (d <= fine) {
+    var w = d.getDay(), h = ORE[w];
+    var esame = (giorniFra(d, ESAME_GEO) === 0) ? 'GEO' : (giorniFra(d, ESAME_ANA) === 0) ? 'ANA' : null;
+    var c = ['cal-g'];
+    if (esame) c.push('esame');
+    else if (h >= 6) c.push('pieno');
+    else if (h > 0) c.push('utile');
+    if (giorniFra(d, oggi) === 0) c.push('oggi');
+    if (d < oggi) c.push('passato');
+    if (!esame && d >= oggi) oreTot += h;
+    html += '<div class="' + c.join(' ') + '" title="' + GIORNI[w] + ' ' + fmtBreve(d) + (esame ? ' — ESAME' : ' — ' + h + ' ore') + '">' +
+      d.getDate() + '<small>' + (esame ? esame : h ? h + 'h' : '—') + '</small></div>';
+    d.setDate(d.getDate() + 1);
+  }
+  cal.innerHTML = html;
+  document.getElementById('calLegenda').innerHTML =
+    '<div class="legenda-tipi" style="display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--text-muted)">' +
+    '<span><span class="cal-g pieno" style="display:inline-grid;width:16px;height:16px;vertical-align:-3px"></span> martedì · 6 ore</span>' +
+    '<span><span class="cal-g utile" style="display:inline-grid;width:16px;height:16px;vertical-align:-3px"></span> giorno utile</span>' +
+    '<span><span class="cal-g" style="display:inline-grid;width:16px;height:16px;vertical-align:-3px"></span> mercoledì e sabato</span>' +
+    '<span><span class="cal-g esame" style="display:inline-grid;width:16px;height:16px;vertical-align:-3px"></span> esame</span>' +
+    '</div><p class="small muted" style="margin:10px 0 0">Da oggi al 2 novembre restano <strong>' + oreTot + ' ore</strong> di studio pianificate. Il sabato non è conteggiato: se capita di studiarci, è tutto guadagnato.</p>';
+
+  /* ================= ritmo settimanale ================= */
+  var ordine = [1, 2, 3, 4, 5, 6, 0];
+  document.getElementById('ritmo').innerHTML = ordine.map(function (g) {
+    var r = RITMO[g], h = ORE[g];
+    var evid = (g === oggi.getDay()) ? ' style="background:var(--accent-soft)"' : '';
+    return '<tr' + evid + '><td><strong>' + GIORNI[g].charAt(0).toUpperCase() + GIORNI[g].slice(1) + '</strong>' +
+      (g === oggi.getDay() ? ' <span class="badge star2">oggi</span>' : '') + '</td>' +
+      '<td class="c">' + (h ? h + ' h' : '—') + '</td><td>' + r.t + '</td></tr>';
+  }).join('');
+});
+</script>
+</body>
+</html>
