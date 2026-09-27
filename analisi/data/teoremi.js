@@ -52,18 +52,18 @@
   {
     id: 'T02', n: 2, sez: 1, mark: '*', q: '1.8',
     titolo: 'Disuguaglianza di Bernoulli',
-    enunciato: r`Sia $h\in\R$ con $h\ge-1$. Allora $$(1+h)^n\;\ge\;1+nh\qquad\forall n\in\N.$$`,
+    enunciato: r`Sia $h\in\R$ con $h>-1$. Allora $$(1+h)^n\;\ge\;1+nh\qquad\forall n\in\N.$$`,
     idea: r`Induzione su $n$. Il punto delicato è <em>perché</em> si può moltiplicare per $(1+h)$ senza invertire il verso.`,
     steps: [
       { cue: 'Base $n=0$', body: r`$(1+h)^0=1$ e $1+0\cdot h=1$: la disuguaglianza vale (con l'uguale). $P(0)$ è vera.` },
       { cue: 'Passo induttivo: enunciare ipotesi e tesi', body: r`Ipotesi induttiva: $(1+h)^n\ge 1+nh$. Tesi: $(1+h)^{n+1}\ge 1+(n+1)h$.` },
-      { cue: r`Qual è l'uso cruciale dell'ipotesi $h\ge-1$?`, body: r`Da $h\ge-1$ segue $1+h\ge0$. Moltiplicare i due membri di una disuguaglianza per un numero <strong>non negativo</strong> ne conserva il verso. È esattamente qui che l'ipotesi entra in gioco: se fosse $1+h<0$ il verso si invertirebbe e la dimostrazione crollerebbe.` },
+      { cue: r`Qual è l'uso cruciale dell'ipotesi $h>-1$?`, body: r`Da $h>-1$ segue $1+h>0$. Moltiplicare i due membri di una disuguaglianza per un numero <strong>positivo</strong> ne conserva il verso. È esattamente qui che l'ipotesi entra in gioco: se fosse $1+h<0$ il verso si invertirebbe e la dimostrazione crollerebbe.` },
       { cue: r`Mossa 1: far comparire $(1+h)^n$ — perché è l'unico modo di usare l'ipotesi`, body: r`Per la proprietà delle potenze si stacca un fattore: $$(1+h)^{n+1}=(1+h)^{n}\cdot(1+h).$$ Serve a questo: l'ipotesi induttiva parla di $(1+h)^n$, quindi bisogna prima farlo <em>apparire</em>.` },
-      { cue: r`Mossa 2: sostituire $(1+h)^n$ con $1+nh$ — attenzione, non è un'uguaglianza`, body: r`Si usa il fatto generale: <strong>se $A\ge B$ e $c\ge0$, allora $A\,c\ge B\,c$.</strong><br><br>Qui $A=(1+h)^n$, $B=1+nh$ (è l'<em>ipotesi induttiva</em> $A\ge B$) e $c=1+h\ge0$ (è l'<em>ipotesi $h\ge-1$</em>). Moltiplicando i due membri dell'ipotesi induttiva per $(1+h)$: $$(1+h)^{n}\cdot(1+h)\;\ge\;(1+nh)\cdot(1+h).$$ Il fattore $(1+h)$ resta <strong>identico</strong> da entrambe le parti: cambia solo $(1+h)^n$, che viene rimpiazzato da qualcosa di più piccolo. Un prodotto in cui un fattore diminuisce (e l'altro è $\ge0$) non può crescere.` },
+      { cue: r`Mossa 2: sostituire $(1+h)^n$ con $1+nh$ — attenzione, non è un'uguaglianza`, body: r`Si usa il fatto generale: <strong>se $A\ge B$ e $c\ge0$, allora $A\,c\ge B\,c$.</strong><br><br>Qui $A=(1+h)^n$, $B=1+nh$ (è l'<em>ipotesi induttiva</em> $A\ge B$) e $c=1+h>0$ (è l'<em>ipotesi $h>-1$</em>). Moltiplicando i due membri dell'ipotesi induttiva per $(1+h)$: $$(1+h)^{n}\cdot(1+h)\;\ge\;(1+nh)\cdot(1+h).$$ Il fattore $(1+h)$ resta <strong>identico</strong> da entrambe le parti: cambia solo $(1+h)^n$, che viene rimpiazzato da qualcosa di più piccolo. Un prodotto in cui un fattore diminuisce (e l'altro è $\ge0$) non può crescere.` },
       { cue: 'Mossa 3: svolgere il prodotto', body: r`$$(1+nh)(1+h)=1+h+nh+nh^{2}=1+(n+1)h+nh^{2}.$$ Mettendo insieme le tre mosse: $$(1+h)^{n+1}\;\ge\;1+(n+1)h+nh^{2}.$$` },
       { cue: 'Ultimo passo: come si conclude?', body: r`Poiché $n\ge0$ e $h^2\ge0$, si ha $nh^2\ge0$, dunque $$1+(n+1)h+nh^2\;\ge\;1+(n+1)h.$$ Per transitività $(1+h)^{n+1}\ge 1+(n+1)h$, cioè $P(n+1)$. Per il principio di induzione la tesi vale $\forall n\in\N$. $\blacksquare$` }
     ],
-    note: r`Si ha uguaglianza se e solo se $n=0$, $n=1$ oppure $h=0$. La disuguaglianza è il motore della dimostrazione che $q^n\to+\infty$ per $q>1$ (basta porre $q=1+h$ con $h>0$).`
+    note: r`Si ha uguaglianza se e solo se $n=0$, $n=1$ oppure $h=0$. La disuguaglianza è il motore della dimostrazione che $q^n\to+\infty$ per $q>1$ (basta porre $q=1+h$ con $h>0$). Perché $h>-1$ e non $h\ge-1$? Non per evitare una divisione per zero: nella formula non si divide mai, e con $h=-1$ la disuguaglianza è vera lo stesso ($0^n=0\ge1-n$ per $n\ge1$). Il corso la enuncia con $h>-1$ perché così $1+h>0$ e nel passo induttivo si moltiplica per un numero <em>positivo</em>: all'esame si scrive l'enunciato del corso.`
   },
   {
     id: 'T-geo', sez: 1, mark: '**', q: '1.9',

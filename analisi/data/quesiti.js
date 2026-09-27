@@ -40,7 +40,7 @@ allora $P(n)$ è vera per ogni $n\in\N$.<br><br>
   a: r`$$\sum_{k=0}^{n}k=0+1+2+\dots+n=\frac{n(n+1)}{2}\qquad\forall n\in\N.$$ Si dimostra per induzione (vedi <em>Teoremi</em>). Idea alternativa (Gauss): sommando la lista in avanti e all'indietro si ottengono $n+1$ coppie di somma $n$, da cui $2S=n(n+1)$.` },
 
 { id: '1.8', sez: 1, mark: '*', teo: 'T02', t: r`Scrivere e dimostrare la disuguaglianza di Bernoulli.`,
-  a: r`<strong>Enunciato.</strong> Per ogni $h\in\R$ con $h\ge-1$ e ogni $n\in\N$: $$(1+h)^n\ge 1+nh.$$ Dimostrazione per induzione; il punto chiave è che $h\ge-1$ garantisce $1+h\ge0$, quindi moltiplicare per $(1+h)$ conserva il verso della disuguaglianza. Traccia completa nella pagina <em>Teoremi</em>.` },
+  a: r`<strong>Enunciato.</strong> Per ogni $h\in\R$ con $h>-1$ e ogni $n\in\N$: $$(1+h)^n\ge 1+nh.$$ Dimostrazione per induzione; il punto chiave è che $h>-1$ garantisce $1+h>0$, quindi moltiplicare per $(1+h)$ conserva il verso della disuguaglianza. Traccia completa nella pagina <em>Teoremi</em>.` },
 
 { id: '1.9', sez: 1, mark: '**', teo: 'T-geo', t: r`Cosa si intende per progressione geometrica? Scrivere qual è la sua somma e darne la dimostrazione.`,
   a: r`Una <strong>progressione geometrica</strong> di ragione $q$ è una successione in cui ogni termine si ottiene dal precedente moltiplicando per $q$: $a_0,\,a_0q,\,a_0q^2,\dots$<br><br>Per $q\ne1$: $$\sum_{k=0}^{n}q^k=\frac{1-q^{\,n+1}}{1-q};\qquad\text{se }q=1,\ \sum_{k=0}^n 1=n+1.$$ Dimostrazione per induzione, oppure moltiplicando $S_n$ per $(1-q)$ e osservando che la somma è telescopica (vedi <em>Teoremi</em>).` },

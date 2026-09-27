@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260927">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260927b">
 </head>
 <body>
 
@@ -302,7 +302,12 @@
 
     <div class="box teo">
       <div class="box-title">Teorema</div>
-      <p class="mb0">Sia $h\in\R$ con $h\ge-1$. Allora $$(1+h)^n\ \ge\ 1+nh\qquad\forall n\in\N.$$</p>
+      <p class="mb0">Sia $h\in\R$ con $h>-1$. Allora $$(1+h)^n\ \ge\ 1+nh\qquad\forall n\in\N.$$</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">Perché $h>-1$ e non $h\ge-1$?</div>
+      <p class="mb0">Non per evitare una divisione per zero: nella formula non si divide mai, e con $h=-1$ la disuguaglianza sarebbe vera lo stesso ($0^n=0\ge1-n$ per $n\ge1$). Il corso la enuncia con $h>-1$ perché così $1+h>0$ e nel passo induttivo si moltiplica per un numero <strong>positivo</strong>, senza casi particolari. All'esame scrivi l'enunciato del corso.</p>
     </div>
 
     <div class="widget">
@@ -328,14 +333,14 @@
             <div class="step-cue">Ipotesi induttiva e tesi del passo</div>
             <div class="step-content">Si suppone $(1+h)^n\ge1+nh$ e si vuole $(1+h)^{n+1}\ge1+(n+1)h$.</div></div></div>
           <div class="step"><div class="step-n"></div><div class="step-body">
-            <div class="step-cue">Dove entra l'ipotesi $h\ge-1$? (è la domanda d'esame)</div>
-            <div class="step-content">Da $h\ge-1$ segue $1+h\ge0$: moltiplicare entrambi i membri per un numero <strong>non negativo</strong> conserva il verso della disuguaglianza. Se fosse $1+h<0$ il verso si invertirebbe.</div></div></div>
+            <div class="step-cue">Dove entra l'ipotesi $h>-1$? (è la domanda d'esame)</div>
+            <div class="step-content">Da $h>-1$ segue $1+h>0$: moltiplicare entrambi i membri per un numero <strong>positivo</strong> conserva il verso della disuguaglianza. Se fosse $1+h<0$ il verso si invertirebbe.</div></div></div>
           <div class="step"><div class="step-n"></div><div class="step-body">
             <div class="step-cue">Mossa 1: far comparire $(1+h)^n$ — perché?</div>
             <div class="step-content">Perché l'ipotesi induttiva parla di $(1+h)^n$: bisogna prima farlo <em>apparire</em>. Si stacca un fattore con le proprietà delle potenze: $(1+h)^{n+1}=(1+h)^{n}\cdot(1+h)$.</div></div></div>
           <div class="step"><div class="step-n"></div><div class="step-body">
             <div class="step-cue">Mossa 2: sostituire $(1+h)^n$ con $1+nh$ — non è un'uguaglianza</div>
-            <div class="step-content">Si usa: <strong>se $A\ge B$ e $c\ge0$ allora $Ac\ge Bc$</strong>, con $A=(1+h)^n$, $B=1+nh$ (ipotesi induttiva) e $c=1+h\ge0$ (ipotesi $h\ge-1$). Moltiplicando i due membri dell'ipotesi induttiva per $(1+h)$: $(1+h)^{n}(1+h)\ge(1+nh)(1+h)$. Il fattore $(1+h)$ resta <strong>identico</strong> da entrambe le parti.</div></div></div>
+            <div class="step-content">Si usa: <strong>se $A\ge B$ e $c\ge0$ allora $Ac\ge Bc$</strong>, con $A=(1+h)^n$, $B=1+nh$ (ipotesi induttiva) e $c=1+h>0$ (ipotesi $h>-1$). Moltiplicando i due membri dell'ipotesi induttiva per $(1+h)$: $(1+h)^{n}(1+h)\ge(1+nh)(1+h)$. Il fattore $(1+h)$ resta <strong>identico</strong> da entrambe le parti.</div></div></div>
           <div class="step"><div class="step-n"></div><div class="step-body">
             <div class="step-cue">Mossa 3: svolgere il prodotto</div>
             <div class="step-content">$(1+nh)(1+h)=1+h+nh+nh^2=1+(n+1)h+nh^2$, quindi $(1+h)^{n+1}\ge 1+(n+1)h+nh^2$.</div></div></div>
@@ -768,11 +773,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260927"></script>
-<script src="../data/topics.js?v=20260927"></script>
-<script src="../data/quiz.js?v=20260927"></script>
-<script src="../../assets/js/plot.js?v=20260927"></script>
-<script src="../../assets/js/app.js?v=20260927"></script>
+<script src="../../assets/js/materie.js?v=20260927b"></script>
+<script src="../data/topics.js?v=20260927b"></script>
+<script src="../data/quiz.js?v=20260927b"></script>
+<script src="../../assets/js/plot.js?v=20260927b"></script>
+<script src="../../assets/js/app.js?v=20260927b"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklist', 1);

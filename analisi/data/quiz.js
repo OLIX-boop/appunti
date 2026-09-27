@@ -33,13 +33,13 @@
   why: r`Le altre sono tutte false: $(0,1)$ non ha massimo; $(-1)^n$ è limitata ma non converge. La completezza è proprio ciò che manca a $\Q$: $\{x\in\Q:x>0,\ x^2<2\}$ non ha estremo superiore in $\Q$.` },
 
 { id: 'Q4', sez: 1, tag: 'Bernoulli',
-  q: r`Nella disuguaglianza di Bernoulli $(1+h)^n\ge1+nh$, l'ipotesi $h\ge-1$ serve perché:`,
-  opts: [ r`garantisce $1+h\ge0$, così moltiplicare per $(1+h)$ conserva il verso`,
+  q: r`Nella disuguaglianza di Bernoulli $(1+h)^n\ge1+nh$, l'ipotesi $h>-1$ serve perché:`,
+  opts: [ r`garantisce $1+h>0$, così moltiplicare per $(1+h)$ conserva il verso`,
           r`altrimenti $(1+h)^n$ non sarebbe definito`,
           r`serve a far funzionare la base dell'induzione`,
           r`garantisce che $nh\ge0$` ],
   a: 0,
-  why: r`È esattamente il punto del passo induttivo. La base $n=0$ vale per ogni $h$; e $nh$ può benissimo essere negativo.` },
+  why: r`È esattamente il punto del passo induttivo. La base $n=0$ vale per ogni $h$; e $nh$ può benissimo essere negativo. E non c'entra la divisione per zero: nella formula non si divide mai.` },
 
 { id: 'Q5', sez: 1, tag: 'induzione',
   q: r`In una dimostrazione per induzione, il «passo induttivo» consiste nel:`,
