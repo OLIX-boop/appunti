@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
 </head>
 <body>
 
@@ -126,6 +126,8 @@
         <li><strong>biunivoca:</strong> entrambe. Allora esiste $f^{-1}:B\to A$ con $f^{-1}(y)=x\iff f(x)=y$.</li>
       </ul>
     </div>
+    <p>Dagli appunti: se $f$ è solo <strong>iniettiva</strong>, è comunque invertibile <strong>sulla sua immagine</strong>, con $f^{-1}:f(A)\to A$; se è anche suriettiva è invertibile su tutto il codominio $B$. In entrambi i casi
+    $$(f^{-1}\circ f)(x)=x\quad\forall x\in A,\qquad (f\circ f^{-1})(y)=y\quad\forall y\in f(A).$$</p>
 
     <div class="widget">
       <div class="widget-head"><span>Test della retta orizzontale</span><span class="faint" style="text-transform:none;font-weight:400">trascina la retta</span></div>
@@ -171,6 +173,11 @@
       <p class="mb0">($\Leftarrow$) Se $R(x_1,x_2)\ge0$ e $x_1<x_2$, da $f(x_2)-f(x_1)=R\cdot(x_2-x_1)$ con entrambi i fattori $\ge0$ segue $f(x_1)\le f(x_2)$. $\blacksquare$</p>
       <p class="mb0 small muted" style="margin-top:10px">Il guadagno: $R$ non dipende dall'ordine di $x_1,x_2$, quindi la monotonia diventa una condizione di <em>segno</em>. Nel calcolo differenziale questo segno diventerà quello di $f'$.</p>
     </div></details>
+
+    <div class="box trap">
+      <div class="box-title">✗ L'esempio di $\frac1x$ (Lezione 4)</div>
+      <p class="mb0">$f(x)=\frac1x$ su $\R\setminus\{0\}$ è decrescente su $(0,+\infty)$ e decrescente su $(-\infty,0)$, ma <strong>non</strong> è decrescente su $\R\setminus\{0\}$: con $x_1=-1<x_2=1$ si ha $f(x_1)=-1<1=f(x_2)$. E non è nemmeno crescente, perché con $x_1=1<x_2=2$ si ha $f(x_1)=1>\frac12=f(x_2)$. Quindi <strong>non è monotòna</strong>. La monotonia dipende dall'insieme su cui la guardi: «decrescente su ogni pezzo» non vuol dire «decrescente».</p>
+    </div>
 
     <h3 id="parita">Funzioni pari, dispari, periodiche</h3>
     <div class="tablewrap">
@@ -607,11 +614,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928"></script>
-<script src="../data/topics.js?v=20260928"></script>
-<script src="../data/quiz.js?v=20260928"></script>
-<script src="../../assets/js/plot.js?v=20260928"></script>
-<script src="../../assets/js/app.js?v=20260928"></script>
+<script src="../../assets/js/materie.js?v=20260928b"></script>
+<script src="../data/topics.js?v=20260928b"></script>
+<script src="../data/quiz.js?v=20260928b"></script>
+<script src="../../assets/js/plot.js?v=20260928b"></script>
+<script src="../../assets/js/app.js?v=20260928b"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklist', 2);

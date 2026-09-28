@@ -54,7 +54,7 @@
 { id: 'D15', sez: 1, topic: 's1-19', t: r`Forma trigonometrica ed esponenziale`,
   d: r`Per $z\ne0$, con $\rho=|z|>0$ e $\theta=\arg z$ (tale che $\cos\theta=\frac a\rho$, $\sin\theta=\frac b\rho$):
 $$z=\rho(\cos\theta+i\sin\theta)=\rho e^{i\theta}$$
-<strong>Eulero:</strong> $e^{i\theta}:=\cos\theta+i\sin\theta$. L'argomento è definito a meno di $2k\pi$.` },
+<strong>Eulero:</strong> $e^{i\theta}:=\cos\theta+i\sin\theta$. L'argomento è definito a meno di $2k\pi$; l'argomento principale del corso sta in $\left[-\frac\pi2,\frac32\pi\right)$: $\theta=\arctan\frac yx$ se $x>0$, $\arctan\frac yx+\pi$ se $x<0$.` },
 
 { id: 'D16', sez: 1, topic: 's1-22', t: r`Radici $n$-esime di un numero complesso`,
   d: r`Per $w=\rho(\cos\theta+i\sin\theta)\ne0$, le soluzioni di $z^{n}=w$ sono esattamente $n$:

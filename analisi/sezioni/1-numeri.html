@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
 </head>
 <body>
 
@@ -611,6 +611,18 @@
       <p class="mb0"><strong>Coniugato</strong> $\bar z=a-ib$; <strong>modulo</strong> $|z|=\sqrt{a^2+b^2}$; vale $z\bar z=|z|^2$, da cui la divisione: $\dfrac zw=\dfrac{z\bar w}{|w|^2}$.</p>
     </div>
 
+    <div class="box prop">
+      <div class="box-title">Opposto, inverso, coniugato, modulo: le proprietà della Lezione 3</div>
+      <ul>
+        <li><strong>Opposto</strong> di $z=a+ib$: $-z=-a-ib$, perché $z+(-z)=0$.</li>
+        <li><strong>Inverso</strong> di $z\ne0$: si moltiplica sopra e sotto per il coniugato,
+        $$(a+ib)^{-1}=\frac{1}{a+ib}\cdot\frac{a-ib}{a-ib}=\frac{a-ib}{a^2+b^2}=\frac{a}{a^2+b^2}+i\,\frac{-b}{a^2+b^2}.$$</li>
+        <li><strong>Coniugato:</strong> $z\bar z=a^2+b^2=|z|^2$, &nbsp; $\dfrac1z=\dfrac{\bar z}{|z|^2}$, &nbsp; $\bar{\bar z}=z$, &nbsp; $z+\bar z=2\Real z$, &nbsp; $z-\bar z=2i\Imag z$.</li>
+        <li><strong>Modulo:</strong> $|z|\ge0$ e $|z|=0\iff z=0$; &nbsp; $|\Real z|\le|z|$, &nbsp; $|\Imag z|\le|z|$; &nbsp; $|z+w|\le|z|+|w|$ (disuguaglianza triangolare anche in $\C$).</li>
+      </ul>
+      <p class="mb0"><em>Esempio della lezione:</em> $\dfrac{1-2i}{1+i}=\dfrac{(1-2i)(1-i)}{(1+i)(1-i)}=\dfrac{1-i-2i+2i^2}{2}=\dfrac{-1-3i}{2}=-\dfrac12-\dfrac32\,i.$</p>
+    </div>
+
     <div class="box warnb">
       <div class="box-title">⚠ $\C$ non è ordinato</div>
       <p class="mb0">Non esiste su $\C$ un ordinamento compatibile con le operazioni: scritture come $z>0$ o $z_1<z_2$ sono prive di senso (a meno che i numeri siano reali). Si può confrontare solo il <em>modulo</em>, che è un numero reale.</p>
@@ -634,13 +646,20 @@
       <div class="box-title">Definizione</div>
       <p>Per $z\ne0$, posti $\rho=|z|>0$ e $\theta=\arg z$ (tale che $\cos\theta=\frac a\rho$, $\sin\theta=\frac b\rho$):
       $$z=\rho(\cos\theta+i\sin\theta).$$
-      L'argomento è determinato a meno di multipli di $2\pi$; scegliendolo in $(-\pi,\pi]$ si ha l'<em>argomento principale</em>.</p>
+      L'argomento è determinato a meno di multipli di $2\pi$. Nel corso l'<em>argomento principale</em> si sceglie in $\left[-\frac\pi2,\frac32\pi\right)$.</p>
       <p class="mb0"><strong>Formula di Eulero:</strong> $e^{i\theta}:=\cos\theta+i\sin\theta$, da cui la <strong>forma esponenziale</strong> $z=\rho\,e^{i\theta}$.</p>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">Come si calcola l'argomento principale (convenzione del corso)</div>
+      <p>Per $z=x+iy\ne0$ si ha $\dfrac yx=\dfrac{\rho\sin\theta}{\rho\cos\theta}=\tan\theta$. Ma $\arctan$ restituisce solo angoli in $\left(-\frac\pi2,\frac\pi2\right)$, l'intervallo in cui la tangente è invertibile, quindi:
+      $$\theta=\begin{cases}\arctan\dfrac yx & x>0\\[8pt] \arctan\dfrac yx+\pi & x<0\\[8pt] \ \ \dfrac\pi2 & x=0,\ y>0\\[8pt] -\dfrac\pi2 & x=0,\ y<0\end{cases}$$</p>
+      <p class="mb0">Così $\theta$ cade sempre in $\left[-\frac\pi2,\frac32\pi\right)$: primo e quarto quadrante da $\arctan$, secondo e terzo aggiungendo $\pi$. <span class="small muted">Molti libri usano invece $(-\pi,\pi]$: stesso numero complesso, argomento diverso di $2\pi$ nel terzo quadrante. All'esame usa la convenzione del corso.</span></p>
     </div>
 
     <div class="box trap">
       <div class="box-title">✗ L'errore sull'argomento</div>
-      <p class="mb0">$\theta=\arctan\frac ba$ vale <strong>solo</strong> nel primo e quarto quadrante ($a>0$). Per $a<0$ bisogna aggiungere $\pi$. Esempio: $z=-1+i\sqrt3$ ha $\arctan\frac{\sqrt3}{-1}=-\frac\pi3$, ma l'argomento corretto è $\frac{2\pi}{3}$ — il punto sta nel secondo quadrante. <strong>Disegna sempre il punto prima di scrivere l'argomento.</strong></p>
+      <p class="mb0">$\theta=\arctan\frac yx$ vale <strong>solo</strong> nel primo e quarto quadrante ($x>0$). Per $x<0$ bisogna aggiungere $\pi$. Esempio: $z=-1+i\sqrt3$ ha $\arctan\frac{\sqrt3}{-1}=-\frac\pi3$, ma l'argomento corretto è $-\frac\pi3+\pi=\frac{2\pi}{3}$: il punto sta nel secondo quadrante. E $z=-1-i$ ha argomento $\frac\pi4+\pi=\frac54\pi$ (non $-\frac34\pi$, che è la stessa direzione ma fuori dall'intervallo del corso). <strong>Disegna sempre il punto prima di scrivere l'argomento.</strong></p>
     </div>
 
     <h3 id="demoivre">Formule di de Moivre <span class="badge star">dim. scritto · n° 3</span></h3>
@@ -650,6 +669,7 @@
       <p class="mb0">$$z_1z_2=\rho_1\rho_2\bigl[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\bigr],\qquad z^{\,n}=\rho^{\,n}\bigl[\cos(n\theta)+i\sin(n\theta)\bigr].$$
       In parole: <em>il prodotto moltiplica i moduli e somma gli argomenti</em>.</p>
     </div>
+    <p>Lettura geometrica (Lezione 3): moltiplicare $z$ per $w=R(\cos\varphi+i\sin\varphi)$ agisce come una <strong>dilatazione</strong> ($R>1$) o <strong>compressione</strong> ($R<1$) seguita da una <strong>rotazione di angolo $\varphi$</strong>. Per esempio moltiplicare per $i=\cos\frac\pi2+i\sin\frac\pi2$ ruota di $\frac\pi2$ senza cambiare il modulo: è l'opzione «mostra $iz$» del piano interattivo qui sopra.</p>
 
     <div class="widget">
       <div class="widget-head"><span>de Moivre: le potenze di $z$</span><span class="faint" style="text-transform:none;font-weight:400">una spirale, se $\rho\ne1$</span></div>
@@ -725,8 +745,12 @@
             <div class="step-cue">Si risolve</div>
             <div class="step-content">$r=\sqrt[n]\rho$ (unica radice reale positiva, esiste per completezza) e $\varphi_k=\frac{\theta+2k\pi}{n}$.</div></div></div>
           <div class="step"><div class="step-n"></div><div class="step-body">
-            <div class="step-cue">Perché esattamente $n$ e non infinite?</div>
-            <div class="step-content">$\varphi_k$ e $\varphi_{k'}$ danno lo stesso numero sse $\frac{2\pi(k-k')}{n}\in2\pi\Z$, cioè sse $n$ divide $k-k'$. Quindi $k=0,\dots,n-1$ danno tutte e sole le soluzioni distinte. $\blacksquare$</div></div></div>
+            <div class="step-cue">Perché esattamente $n$ e non infinite? (il ragionamento del prof)</div>
+            <div class="step-content">Si scrive $\varphi_k=\frac\theta n+2\pi\,\frac kn$ e si divide $k$ per $n$ con resto: $k=nq+h$, con quoziente $q\in\Z$ e resto $h\in\{0,1,\dots,n-1\}$. Allora
+            $$\varphi_k=\frac\theta n+\frac{2\pi(nq+h)}{n}=\frac\theta n+\frac{2h\pi}{n}+2q\pi,$$
+            e il termine $2q\pi$ non cambia il numero complesso. Quindi ogni $k\in\Z$ dà la stessa radice di un $h\in\{0,\dots,n-1\}$.<br><br>
+            Queste $n$ sono <strong>distinte</strong>: gli argomenti $\frac\theta n+\frac{2h\pi}{n}$ con $h=0,\dots,n-1$ distano fra loro meno di $2\pi$, quindi non possono differire di un multiplo non nullo di $2\pi$. $\blacksquare$<br>
+            <span class="small muted">Notazione degli appunti: $w=Re^{i\varphi}$, $z=re^{i\theta}$, $\theta_h=\frac\varphi m+\frac{2h\pi}{m}$ con $h=0,\dots,m-1$. A pagina 5 della Lezione 3 c'è scritto «$im\theta=i\varphi+2k\pi$»: la condizione giusta è $m\theta=\varphi+2k\pi$, cioè senza le $i$.</span></div></div></div>
           <div class="step"><div class="step-n"></div><div class="step-body">
             <div class="step-cue">La lettura geometrica</div>
             <div class="step-content">Stesso modulo $\sqrt[n]\rho$, argomenti a distanza $\frac{2\pi}{n}$: sono i <strong>vertici di un poligono regolare di $n$ lati</strong>. Per $w=1$ si ottengono le radici $n$-esime dell'unità $e^{2k\pi i/n}$, la cui somma è $0$ per $n\ge2$.</div></div></div>
@@ -773,11 +797,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928"></script>
-<script src="../data/topics.js?v=20260928"></script>
-<script src="../data/quiz.js?v=20260928"></script>
-<script src="../../assets/js/plot.js?v=20260928"></script>
-<script src="../../assets/js/app.js?v=20260928"></script>
+<script src="../../assets/js/materie.js?v=20260928b"></script>
+<script src="../data/topics.js?v=20260928b"></script>
+<script src="../data/quiz.js?v=20260928b"></script>
+<script src="../../assets/js/plot.js?v=20260928b"></script>
+<script src="../../assets/js/app.js?v=20260928b"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklist', 1);
@@ -1031,6 +1055,7 @@ document.addEventListener('am:ready', function () {
     });
     function refresh() {
       var rho = Math.hypot(z.x, z.y), th = Math.atan2(z.y, z.x);
+      if (th < -Math.PI / 2) th += 2 * Math.PI;   // argomento principale del corso: [−π/2, 3π/2)
       out.innerHTML =
         'z = ' + z.x.toFixed(2) + (z.y >= 0 ? ' + ' : ' − ') + Math.abs(z.y).toFixed(2) + 'i<br>' +
         'ρ = |z| = <b>' + rho.toFixed(3) + '</b> &nbsp;·&nbsp; θ = arg z = <b>' + th.toFixed(3) + '</b> rad = ' + (th * 180 / Math.PI).toFixed(1) + '°<br>' +

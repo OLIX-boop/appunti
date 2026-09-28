@@ -131,6 +131,61 @@ $$x^{2}-2x+1+y^{2}=x^{2}+y^{2}+2y+1\iff -2x=2y\iff y=-x.$$
 <strong>Via geometrica.</strong> $|z-1|$ è la distanza di $z$ dal punto $A=(1,0)$ e $|z+i|=|z-(-i)|$ è la distanza dal punto $B=(0,-1)$. Il luogo dei punti equidistanti da $A$ e $B$ è l'<strong>asse del segmento</strong> $AB$: passa per il punto medio $\left(\frac12,-\frac12\right)$ ed è perpendicolare ad $AB$, che ha direzione $(-1,-1)$. Si ottiene di nuovo la retta $y=-x$.<br><br>
 $$\boxed{\,\{z\in\C\,:\,|z-1|=|z+i|\}=\{x+iy\,:\,y=-x\}\,}$$ $\blacksquare$` },
 
+{ id: 'E1.11', sez: 1, tema: 'Numeri complessi', d: 1,
+  t: r`Calcolare le radici quadrate di $w=-1+\sqrt3\,i$. <span class="small muted">(Lezione 4)</span>`,
+  hints: [ r`Scrivi $w=Re^{i\varphi}$: modulo e argomento. Attenzione al quadrante.`,
+           r`Le radici quadrate hanno modulo $\sqrt R$ e argomenti $\theta_h=\frac{\varphi+2h\pi}{2}=\frac\varphi2+h\pi$, con $h=0,1$.` ],
+  sol: r`<strong>Modulo.</strong> $R=\sqrt{(-1)^2+(\sqrt3)^2}=2$.<br>
+<strong>Argomento.</strong> $\tan\varphi=\frac{\sqrt3}{-1}=-\sqrt3$ con $x<0$: $\varphi=\arctan(-\sqrt3)+\pi=-\frac\pi3+\pi=\frac23\pi$ (secondo quadrante). Quindi $w=2e^{i\frac23\pi}$.<br><br>
+<strong>Radici.</strong> $r=\sqrt2$, $\theta_h=\frac\varphi2+h\pi$:
+$$h=0:\ \theta_0=\frac\pi3,\qquad h=1:\ \theta_1=\frac\pi3+\pi=\frac43\pi.$$
+$$z_0=\sqrt2\,e^{i\frac\pi3}=\sqrt2\left(\frac12+\frac{\sqrt3}{2}i\right),\qquad z_1=\sqrt2\,e^{i\frac43\pi}=\sqrt2\left(-\frac12-\frac{\sqrt3}{2}i\right).$$
+<strong>Controllo:</strong> $z_1=-z_0$, come deve essere per due radici quadrate; e $z_0^2=2e^{i\frac23\pi}=w$ ✓ $\blacksquare$` },
+
+{ id: 'E1.12', sez: 1, tema: 'Numeri complessi', d: 3,
+  t: r`Determinare le soluzioni in $\C$ dell'equazione $$\bigl[z^3-(1+\sqrt3\,i)^9\bigr]\,\bigl(z+\bar z+1\bigr)=0$$ e rappresentarle nel piano complesso. Detto $A$ l'insieme delle soluzioni, rappresentare $B=\{w\in\C\ :\ w=iz,\ z\in A\}$. <span class="small muted">(Lezione 4: è il tipo di esercizio d'esame)</span>`,
+  hints: [ r`Un prodotto è nullo se e solo se è nullo almeno un fattore: le soluzioni sono l'<strong>unione</strong> di quelle dei due fattori.`,
+           r`Per il primo fattore: $1+\sqrt3\,i=2e^{i\frac\pi3}$, quindi $(1+\sqrt3\,i)^9=2^9e^{i3\pi}=2^9e^{i\pi}$. Poi radici cubiche.`,
+           r`Per il secondo: con $z=a+ib$, $z+\bar z=2a$.`,
+           r`Moltiplicare per $i=e^{i\frac\pi2}$ lascia il modulo invariato e aggiunge $\frac\pi2$ all'argomento: è una rotazione.` ],
+  sol: r`<strong>Primo fattore.</strong> $1+\sqrt3\,i$ ha modulo $2$ e argomento $\frac\pi3$, quindi
+$$z^3=(2e^{i\frac\pi3})^9=2^9e^{i3\pi}=2^9e^{i\pi}=:w,\qquad R=2^9,\ \varphi=\pi.$$
+Radici cubiche: $r=\sqrt[3]{2^9}=8$, $\theta_h=\frac{\pi+2h\pi}{3}$, $h=0,1,2$:
+$$z_0=8e^{i\frac\pi3}=4+4\sqrt3\,i,\qquad z_1=8e^{i\pi}=-8,\qquad z_2=8e^{i\frac53\pi}=4-4\sqrt3\,i.$$
+Sono i vertici di un triangolo equilatero sulla circonferenza di raggio $8$.<br><br>
+<strong>Secondo fattore.</strong> Con $z=a+ib$: $a+ib+a-ib+1=0\iff 2a+1=0\iff a=-\frac12$. Sono tutti i $z=-\frac12+ib$, $b\in\R$: la <strong>retta verticale</strong> $\Real z=-\frac12$.<br><br>
+$$A=\left\{z\in\C:\ \Real z=-\tfrac12\right\}\cup\{z_0,z_1,z_2\}.$$
+<strong>L'insieme $B$.</strong> $i=\cos\frac\pi2+i\sin\frac\pi2$: moltiplicare per $i$ lascia il modulo invariato e somma $\frac\pi2$ all'argomento, cioè <strong>ruota di $\frac\pi2$</strong> in senso antiorario.
+<ul><li>i tre punti: $iz_0=-4\sqrt3+4i$, &nbsp; $iz_1=-8i$, &nbsp; $iz_2=4\sqrt3+4i$ (stessa circonferenza di raggio $8$, triangolo ruotato);</li>
+<li>la retta: $i\left(-\frac12+ib\right)=-b-\frac12\,i$, che al variare di $b\in\R$ descrive la <strong>retta orizzontale</strong> $\Imag w=-\frac12$.</li></ul>
+$$B=\left\{w\in\C:\ \Imag w=-\tfrac12\right\}\cup\{-4\sqrt3+4i,\ -8i,\ 4\sqrt3+4i\}.\quad\blacksquare$$` },
+
+{ id: 'E1.13', sez: 1, tema: 'Estremo superiore', d: 2,
+  t: r`Sia $A=\{x\in\R\ :\ x>\sqrt{6-x}\}$. Determinare $\sup A$, $\inf A$ ed eventualmente $\max A$ e $\min A$. <span class="small muted">(Lezione 4)</span>`,
+  hints: [ r`La radice deve essere definita: $6-x\ge0$.`,
+           r`Il secondo membro è $\ge0$, quindi serve $x\ge0$: solo allora si può elevare al quadrato conservando il verso.`,
+           r`Poi $x^2>6-x\iff x^2+x-6>0\iff(x+3)(x-2)>0$.` ],
+  sol: r`$$x>\sqrt{6-x}\iff\begin{cases}6-x\ge0\\ x\ge0\\ x^2>6-x\end{cases}\iff\begin{cases}x\le6\\ x\ge0\\ x<-3\ \vee\ x>2\end{cases}$$
+La seconda condizione serve perché $\sqrt{6-x}\ge0$: se $x<0$ la disuguaglianza è falsa, e solo con entrambi i membri non negativi elevare al quadrato è un'equivalenza.<br><br>
+Intersecando: $A=(2,6]$.
+<ul><li>$\inf A=2$, ma $2\notin A$ (in $x=2$: $2>\sqrt4=2$ è falso): <strong>il minimo non esiste</strong>;</li>
+<li>$\sup A=6$ e $6\in A$ ($6>\sqrt0=0$): $\max A=6$.</li></ul> $\blacksquare$` },
+
+{ id: 'E1.14', sez: 1, tema: 'Estremo superiore', d: 2,
+  t: r`Sia $A=\{x\in\R\ :\ \sqrt{x+3}>x+1\}$. Determinare $\sup A$, $\inf A$ ed eventualmente $\max A$ e $\min A$.`,
+  hints: [ r`Rispetto all'esercizio precedente qui la radice sta a sinistra: il segno di $x+1$ non è fissato.`,
+           r`Se $x+1<0$ la disuguaglianza è vera appena la radice è definita. Se $x+1\ge0$ si può elevare al quadrato.`,
+           r`L'insieme delle soluzioni è l'<strong>unione</strong> dei due casi.` ],
+  sol: r`Condizione di esistenza: $x\ge-3$. Si distinguono due casi.<br><br>
+<strong>Caso $x+1<0$</strong>, cioè $-3\le x<-1$: il primo membro è $\ge0$ e il secondo $<0$, quindi la disuguaglianza è <strong>sempre vera</strong>. Contributo: $[-3,-1)$.<br><br>
+<strong>Caso $x+1\ge0$</strong>, cioè $x\ge-1$: entrambi i membri sono $\ge0$ e si può elevare al quadrato:
+$$x+3>(x+1)^2\iff x^2+x-2<0\iff(x+2)(x-1)<0\iff-2<x<1.$$
+Con $x\ge-1$: contributo $[-1,1)$.<br><br>
+<strong>Unione:</strong> $A=[-3,-1)\cup[-1,1)=[-3,1)$.
+<ul><li>$\min A=\inf A=-3$ ($-3\in A$: $\sqrt0=0>-2$ ✓);</li>
+<li>$\sup A=1$, ma $1\notin A$ ($\sqrt4=2>2$ è falso): <strong>il massimo non esiste</strong>.</li></ul>
+<em>La differenza con E1.13:</em> lì la radice stava a destra, quindi $x\ge0$ era una condizione necessaria; qui sta a sinistra e il caso «secondo membro negativo» dà soluzioni gratis. Dimenticarlo è l'errore più comune. $\blacksquare$` },
+
 /* ======================= SEZIONE 2 ======================= */
 { id: 'E2.1', sez: 2, tema: 'Limiti di successioni', d: 1,
   t: r`Calcolare $\displaystyle\lim_{n\to\infty}\frac{3n^{2}+2n-1}{n^{2}-5n+4}$.`,

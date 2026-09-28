@@ -86,6 +86,27 @@
   a: 0,
   why: r`La dimostrazione conclude che $m$ e $n$ sono entrambi pari, cioè hanno il fattore comune $2$: è la contraddizione con la coprimalità a chiudere il ragionamento. Senza quell'ipotesi non si ottiene alcun assurdo.` },
 
+{ id: 'Q46', sez: 1, tag: 'argomento',
+  q: r`Con la convenzione del corso (argomento principale in $\left[-\frac\pi2,\frac32\pi\right)$), l'argomento principale di $z=-1-i$ è:`,
+  opts: [ r`$\frac54\pi$`, r`$-\frac34\pi$`, r`$\frac\pi4$`, r`$-\frac\pi4$` ],
+  a: 0,
+  why: r`$x=-1<0$, quindi $\theta=\arctan\frac{-1}{-1}+\pi=\frac\pi4+\pi=\frac54\pi$ (terzo quadrante). $-\frac34\pi$ individua lo stesso punto, ma è l'argomento principale nella convenzione $(-\pi,\pi]$ dei libri, non in quella del corso. $\frac\pi4$ è l'errore di chi usa $\arctan$ senza guardare il quadrante.` },
+
+{ id: 'Q47', sez: 1, tag: 'coniugato',
+  q: r`Per ogni $z\in\C$, $z-\bar z$ è uguale a:`,
+  opts: [ r`$2i\,\Imag z$`, r`$2\Imag z$`, r`$2\Real z$`, r`$0$` ],
+  a: 0,
+  why: r`$(a+ib)-(a-ib)=2ib=2i\Imag z$: un numero immaginario puro. Invece $z+\bar z=2\Real z$ è reale. Dimenticare la $i$ è l'errore tipico.` },
+
+{ id: 'Q48', sez: 2, tag: 'monotonia',
+  q: r`La funzione $f(x)=\frac1x$ definita su $\R\setminus\{0\}$:`,
+  opts: [ r`non è monotòna, pur essendo decrescente su $(-\infty,0)$ e su $(0,+\infty)$`,
+          r`è decrescente`,
+          r`è strettamente decrescente`,
+          r`è crescente` ],
+  a: 0,
+  why: r`Con $x_1=-1<x_2=1$ si ha $f(x_1)=-1<1=f(x_2)$, contro la decrescenza; con $x_1=1<x_2=2$ si ha $f(x_1)>f(x_2)$, contro la crescenza. La monotonia dipende dall'insieme: su ciascuna semiretta $f$ è decrescente, sull'unione no.` },
+
 /* ---------------- Sezione 2 ---------------- */
 { id: 'Q11', sez: 2, tag: 'limiti',
   q: r`Se $a_n\to L$ e $a_n>0$ per ogni $n$, allora necessariamente:`,
