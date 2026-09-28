@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928f">
 </head>
 <body>
 
@@ -81,7 +81,7 @@
       </div>
       <div class="pbar" data-progress-for="s3"><span style="width:0"></span></div>
     </div>
-    <div id="checklist"></div>
+    <div id="checklistBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="definizione">1 · Serie, somme parziali, carattere</h2>
@@ -270,7 +270,7 @@
           <div class="step-content">$\eps=\dfrac\ell2>0$. Per definizione di limite, definitivamente $\left|\dfrac{a_n}{b_n}-\ell\right|<\dfrac\ell2$, cioè $\dfrac\ell2<\dfrac{a_n}{b_n}<\dfrac{3\ell}{2}$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Come si trasforma in una disuguaglianza fra $a_n$ e $b_n$?</div>
-          <div class="step-content">Moltiplicando per $b_n>0$ (che conserva il verso): $\dfrac\ell2 b_n<a_n<\dfrac{3\ell}2 b_n$ definitivamente.</div></div></div>
+          <div class="step-content">Moltiplicando per $b_n>0$ (che conserva il verso): $\dfrac\ell2 b_n\lt a_n<\dfrac{3\ell}2 b_n$ definitivamente.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Prima direzione</div>
           <div class="step-content">Se $\sum b_n$ converge, converge $\sum\frac{3\ell}{2}b_n$; dalla disuguaglianza di destra e dal <strong>criterio del confronto</strong>, $\sum a_n$ converge.</div></div></div>
@@ -279,7 +279,7 @@
           <div class="step-content">Se $\sum b_n$ diverge, diverge $\sum\frac\ell2 b_n$; dalla disuguaglianza di sinistra e dal confronto, $\sum a_n$ diverge. Stesso carattere. $\blacksquare$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Casi $\ell=0$ e $\ell=+\infty$</div>
-          <div class="step-content">$\ell=0$: con $\eps=1$ si ottiene $a_n<b_n$ definitivamente. $\ell=+\infty$: definitivamente $\frac{a_n}{b_n}>1$, cioè $a_n>b_n$. In entrambi i casi si conclude col confronto.</div></div></div>
+          <div class="step-content">$\ell=0$: con $\eps=1$ si ottiene $a_n\lt b_n$ definitivamente. $\ell=+\infty$: definitivamente $\frac{a_n}{b_n}>1$, cioè $a_n>b_n$. In entrambi i casi si conclude col confronto.</div></div></div>
       </div>
     </div></details>
 
@@ -319,13 +319,13 @@
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Caso $L<1$: come si sceglie la ragione di confronto?</div>
-          <div class="step-content">Si prende $q$ con $L<q<1$ e si pone $\eps=q-L>0$. Definitivamente $\dfrac{a_{n+1}}{a_n}<L+\eps=q$, cioè $a_{n+1}<q\,a_n$ per $n\ge N$.</div></div></div>
+          <div class="step-content">Si prende $q$ con $L\lt q<1$ e si pone $\eps=q-L>0$. Definitivamente $\dfrac{a_{n+1}}{a_n}\lt L+\eps=q$, cioè $a_{n+1}\lt q\,a_n$ per $n\ge N$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Si itera</div>
-          <div class="step-content">Per induzione: $a_{N+k}<q^{\,k}a_N$ per ogni $k\ge0$.</div></div></div>
+          <div class="step-content">Per induzione: $a_{N+k}\lt q^{\,k}a_N$ per ogni $k\ge0$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Si confronta con una serie nota</div>
-          <div class="step-content">$\sum_{k\ge0}q^{k}a_N=\dfrac{a_N}{1-q}$ converge, perché $0<q<1$: è geometrica. Per il criterio del confronto converge $\sum_{k}a_{N+k}$, e aggiungendo i primi $N$ termini (finiti) converge $\sum a_n$. $\blacksquare$</div></div></div>
+          <div class="step-content">$\sum_{k\ge0}q^{k}a_N=\dfrac{a_N}{1-q}$ converge, perché $0\lt q<1$: è geometrica. Per il criterio del confronto converge $\sum_{k}a_{N+k}$, e aggiungendo i primi $N$ termini (finiti) converge $\sum a_n$. $\blacksquare$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Caso $L>1$</div>
           <div class="step-content">Definitivamente $a_{n+1}>a_n>0$: la successione è definitivamente crescente e positiva, quindi <strong>non tende a $0$</strong>. Per la condizione necessaria la serie non converge; essendo a termini positivi, diverge. $\blacksquare$</div></div></div>
@@ -340,7 +340,7 @@
       <div class="box-title">Teorema</div>
       <p class="mb0">Sia $a_n\ge0$ definitivamente ed esista $L=\displaystyle\lim_{n\to\infty}\sqrt[n]{a_n}$. Allora: $L<1$ ⟹ converge; $L>1$ ⟹ diverge; $L=1$ ⟹ non decide.</p>
     </div>
-    <p><strong>Idea.</strong> Se $L<1$, scelto $q\in(L,1)$, definitivamente $\sqrt[n]{a_n}<q$ cioè $a_n<q^n$: confronto con la geometrica. Se $L>1$, definitivamente $a_n>1$, quindi $a_n\not\to0$.</p>
+    <p><strong>Idea.</strong> Se $L<1$, scelto $q\in(L,1)$, definitivamente $\sqrt[n]{a_n}\lt q$ cioè $a_n\lt q^n$: confronto con la geometrica. Se $L>1$, definitivamente $a_n>1$, quindi $a_n\not\to0$.</p>
     <p class="small muted">Se esiste il limite del rapporto, esiste anche quello della radice e coincide: la radice è (leggermente) più potente. Ma i casi $L=1$ restano indecisi per entrambi.</p>
 
     <div class="box">
@@ -470,14 +470,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928b"></script>
-<script src="../data/topics.js?v=20260928b"></script>
-<script src="../data/quiz.js?v=20260928b"></script>
-<script src="../../assets/js/plot.js?v=20260928b"></script>
-<script src="../../assets/js/app.js?v=20260928b"></script>
+<script src="../../assets/js/materie.js?v=20260928f"></script>
+<script src="../data/topics.js?v=20260928f"></script>
+<script src="../data/quiz.js?v=20260928f"></script>
+<script src="../../assets/js/plot.js?v=20260928f"></script>
+<script src="../../assets/js/app.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklist', 3);
+  AM.renderChecklist('#checklistBox', 3);
   AM.mountQuiz('#quizBox', AM.quizPerSezione(3), { statKey: 'sez3' });
 
   /* ---------- Somme parziali ---------- */

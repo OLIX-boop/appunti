@@ -67,7 +67,7 @@ Il primo vettore è una soluzione particolare $\vx_0$; gli altri due sono $\vv_1
   t: r`Dire quali delle seguenti matrici sono a scala, giustificando con gli $\ell_i$:
 $$A=\begin{bmatrix}0&1&0&0\\0&2&1&2\\0&0&0&5\end{bmatrix},\quad B=\begin{bmatrix}1&2&3\\0&0&0\\0&0&1\end{bmatrix},\quad C=\begin{bmatrix}0&2&3&0\\0&0&0&1\\0&0&0&0\end{bmatrix}$$`,
   hints: [ r`$\ell_i$ è il numero di zeri <em>iniziali</em> della riga $i$ (vale $n$ se la riga è nulla).`,
-           r`La condizione è $\ell_1<\ell_2<\dots$ finché $\ell_i<n$; le righe nulle devono stare in fondo.` ],
+           r`La condizione è $\ell_1<\ell_2<\dots$ finché $\ell_i\lt n$; le righe nulle devono stare in fondo.` ],
   sol: r`<strong>Matrice $A$</strong> ($n=4$): $\ell_1=1$, $\ell_2=1$, $\ell_3=3$.<br>
 Poiché $\ell_1=\ell_2$ la crescita <em>non</em> è stretta: <strong>non è a scala</strong>.<br><br>
 <strong>Matrice $B$</strong> ($n=3$): $\ell_1=0$, $\ell_2=3$ (riga nulla), $\ell_3=2$.<br>
@@ -177,7 +177,7 @@ $$\boxed{y=2}$$
 <strong>2. Quanti parametri.</strong>
 $$n-r=5-2=3$$
 Le soluzioni dipendono da <strong>3 parametri liberi</strong>: ci sono $2$ incognite di base e $3$ libere.<br><br>
-<strong>3. L'omogeneo.</strong> Sì. $A\vx=\vzero$ è sempre compatibile, e ha soluzioni non banali $\iff r<n$; qui $2<5$. Anzi, le sue soluzioni sono $$S_0=\{t_1\vv_1+t_2\vv_2+t_3\vv_3\ :\ t_i\in\K\}$$ con $\vv_1,\vv_2,\vv_3$ dipendenti solo da $A$.<br><br>
+<strong>3. L'omogeneo.</strong> Sì. $A\vx=\vzero$ è sempre compatibile, e ha soluzioni non banali $\iff r\lt n$; qui $2<5$. Anzi, le sue soluzioni sono $$S_0=\{t_1\vv_1+t_2\vv_2+t_3\vv_3\ :\ t_i\in\K\}$$ con $\vv_1,\vv_2,\vv_3$ dipendenti solo da $A$.<br><br>
 <strong>4. La differenza.</strong> Per il teorema sulla struttura,
 $$A(\vx_1-\vx_0)=A\vx_1-A\vx_0=\vb-\vb=\vzero,$$
 quindi $\vx_1-\vx_0=(-1,1,0,1,-2)^{T}$ è una <strong>soluzione del sistema omogeneo</strong> associato — ed è non banale, coerentemente con il punto 3.<br><br>
@@ -345,7 +345,7 @@ $$\boxed{0\cdot\vv=\vzero}$$
            r`Per (b) attenzione: la parte negativa di $(-4,1)$ non contribuisce.` ],
   sol: r`<strong>(a)</strong> $1\le x^{2}\le4\iff 1\le|x|\le2$, quindi
 $$f^{-1}([1,4])=[-2,-1]\cup[1,2]$$
-<strong>(b)</strong> $-4<x^{2}<1$. La condizione $x^{2}>-4$ è sempre vera; resta $x^{2}<1$, cioè $|x|<1$:
+<strong>(b)</strong> $-4\lt x^{2}<1$. La condizione $x^{2}>-4$ è sempre vera; resta $x^{2}<1$, cioè $|x|<1$:
 $$f^{-1}((-4,1))=(-1,1)$$
 <strong>(c)</strong> $x^{2}=0\iff x=0$:
 $$f^{-1}(\{0\})=\{0\}$$

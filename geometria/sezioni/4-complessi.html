@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928f">
 </head>
 <body>
 
@@ -70,7 +70,7 @@
       </div>
       <div class="pbar" data-progress-for="g4"><span style="width:0"></span></div>
     </div>
-    <div id="checklist"></div>
+    <div id="checklistBox"></div>
 
     <h2 id="richiami">1 · Richiami essenziali</h2>
     <div class="box def">
@@ -82,7 +82,7 @@
 
     <div class="box warnb">
       <div class="box-title">⚠ $\C$ è un campo, ma non è ordinato</div>
-      <p class="mb0">In $\C$ si può sempre dividere per elementi non nulli — ed è tutto ciò che serve al MEG. Non esiste però un ordinamento compatibile con le operazioni: scritture come $z>0$ o $z_1<z_2$ non hanno senso, a meno che i numeri non siano reali. Si confronta solo il <strong>modulo</strong>, che è reale.</p>
+      <p class="mb0">In $\C$ si può sempre dividere per elementi non nulli — ed è tutto ciò che serve al MEG. Non esiste però un ordinamento compatibile con le operazioni: scritture come $z>0$ o $z_1\lt z_2$ non hanno senso, a meno che i numeri non siano reali. Si confronta solo il <strong>modulo</strong>, che è reale.</p>
     </div>
 
     <h2 id="sistemi">2 · Sistemi lineari su $\C$</h2>
@@ -151,14 +151,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928b"></script>
-<script src="../data/topics.js?v=20260928b"></script>
-<script src="../data/quiz.js?v=20260928b"></script>
-<script src="../../assets/js/plot.js?v=20260928b"></script>
-<script src="../../assets/js/app.js?v=20260928b"></script>
+<script src="../../assets/js/materie.js?v=20260928f"></script>
+<script src="../data/topics.js?v=20260928f"></script>
+<script src="../data/quiz.js?v=20260928f"></script>
+<script src="../../assets/js/plot.js?v=20260928f"></script>
+<script src="../../assets/js/app.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklist', 4, 'geometria');
+  AM.renderChecklist('#checklistBox', 4, 'geometria');
   AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 4; }), { statKey: 'geo4' });
 });
 </script>

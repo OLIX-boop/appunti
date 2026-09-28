@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="assets/css/style.css?v=20260928f">
 <style>
   .oggi-box { border:2px solid var(--accent); border-radius:var(--radius-lg); background:var(--bg-elev);
               box-shadow:var(--shadow-lg); overflow:hidden; margin-bottom:26px; }
@@ -97,7 +97,7 @@
 
     <h2 id="settimane">Le cinque settimane</h2>
     <p class="muted small">La settimana in corso è aperta; clicca sulle altre per vederle.</p>
-    <div id="settimane"></div>
+    <div id="settimaneBox"></div>
 
     <h2 id="calendario">Il calendario completo</h2>
     <div class="box">
@@ -139,9 +139,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
-<script src="assets/js/materie.js?v=20260928b"></script>
-<script src="assets/js/plot.js?v=20260928b"></script>
-<script src="assets/js/app.js?v=20260928b"></script>
+<script src="assets/js/materie.js?v=20260928f"></script>
+<script src="assets/js/plot.js?v=20260928f"></script>
+<script src="assets/js/app.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
 
@@ -295,7 +295,7 @@ document.addEventListener('am:ready', function () {
   }
   function lista(items) { return '<ul class="mb0">' + items.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>'; }
 
-  document.getElementById('settimane').innerHTML = SETTIMANE.map(function (s) {
+  document.getElementById('settimaneBox').innerHTML = SETTIMANE.map(function (s) {
     var da = D(s.da), a = D(s.a);
     var stato = oggi > a ? 'passata' : (sc && sc.n === s.n ? 'corrente' : '');
     var aperto = stato === 'corrente';

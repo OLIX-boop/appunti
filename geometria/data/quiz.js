@@ -12,7 +12,7 @@
 /* ---------------- Sezione 1: sistemi e MEG ---------------- */
 { id: 'GQ1', sez: 1, tag: 'matrice a scala',
   q: r`Una matrice è a scala quando, detto $\ell_i$ il numero di zeri iniziali della riga $i$:`,
-  opts: [ r`$\ell_1<\ell_2<\dots$ finché $\ell_i<n$, con le righe nulle in fondo`,
+  opts: [ r`$\ell_1<\ell_2<\dots$ finché $\ell_i\lt n$, con le righe nulle in fondo`,
           r`$\ell_1\le\ell_2\le\dots\le\ell_m$`,
           r`tutti gli $\ell_i$ sono uguali`,
           r`tutti gli elementi sotto la diagonale sono nulli` ],
@@ -47,7 +47,7 @@
   q: r`Un sistema compatibile in $n=6$ incognite ha $\rg A=4$. Le incognite libere sono:`,
   opts: [ r`$2$`, r`$4$`, r`$6$`, r`nessuna, la soluzione è unica` ],
   a: 0,
-  why: r`Le incognite libere sono $n-r=6-4=2$. Attenzione: si sottrae dal numero di <strong>incognite</strong>, non di equazioni. Essendo $r<n$, le soluzioni sono infinite.` },
+  why: r`Le incognite libere sono $n-r=6-4=2$. Attenzione: si sottrae dal numero di <strong>incognite</strong>, non di equazioni. Essendo $r\lt n$, le soluzioni sono infinite.` },
 
 { id: 'GQ6', sez: 1, tag: 'sistemi omogenei',
   q: r`Un sistema omogeneo di $4$ equazioni in $6$ incognite:`,
@@ -56,7 +56,7 @@
           r`potrebbe essere incompatibile`,
           r`ha sicuramente esattamente una soluzione` ],
   a: 0,
-  why: r`$r\le\min\{4,6\}=4<6=n$, quindi $r<n$ ed esistono soluzioni non banali. Un omogeneo non è <em>mai</em> incompatibile: $\vx=\vzero$ è sempre soluzione. Regola: più incognite che equazioni ⟹ soluzioni non banali.` },
+  why: r`$r\le\min\{4,6\}=4<6=n$, quindi $r\lt n$ ed esistono soluzioni non banali. Un omogeneo non è <em>mai</em> incompatibile: $\vx=\vzero$ è sempre soluzione. Regola: più incognite che equazioni ⟹ soluzioni non banali.` },
 
 /* ---------------- Sezione 2: matrici ---------------- */
 { id: 'GQ7', sez: 2, tag: 'prodotto',
@@ -205,7 +205,7 @@
           r`ha sempre infinite soluzioni`,
           r`ha una sola soluzione, $X=A^{-1}B$` ],
   a: 0,
-  why: r`Ogni colonna di $X$ risolve un sistema con matrice $A$ e $\rg A<n$: nessuna soluzione o infinite. Basta una colonna di $B$ incompatibile (0-pivot a destra della barra) perché l'equazione non abbia soluzioni. $A^{-1}$ non esiste.` },
+  why: r`Ogni colonna di $X$ risolve un sistema con matrice $A$ e $\rg A\lt n$: nessuna soluzione o infinite. Basta una colonna di $B$ incompatibile (0-pivot a destra della barra) perché l'equazione non abbia soluzioni. $A^{-1}$ non esiste.` },
 
 { id: 'GQ41', sez: 2, tag: 'equazioni di matrici',
   q: r`Per risolvere $YA=B$ quando $A$ non è invertibile, il prof:`,

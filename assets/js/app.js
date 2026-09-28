@@ -81,6 +81,45 @@
         }
       });
     } catch (e) { console.warn('KaTeX:', e); }
+    // Nei menu a tendina KaTeX non può disegnare: le formule diventano testo semplice.
+    (root || document.body).querySelectorAll('option').forEach(function (o) {
+      if (o.textContent.indexOf('$') >= 0) o.textContent = AM.testoPiano(o.textContent);
+    });
+  };
+
+  /* LaTeX semplice → testo Unicode leggibile (x², ∑, √n, 1/n, ≤ …), per <option> e titoli */
+  var APICE = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','n':'ⁿ','x':'ˣ','i':'ⁱ','k':'ᵏ','+':'⁺','-':'⁻','(':'⁽',')':'⁾' };
+  var PEDICE = { '0':'₀','1':'₁','2':'₂','3':'₃','4':'₄','5':'₅','6':'₆','7':'₇','8':'₈','9':'₉','n':'ₙ','k':'ₖ','i':'ᵢ','j':'ⱼ','+':'₊','-':'₋' };
+  var SIMBOLI = { pi:'π', infty:'∞', sum:'∑', le:'≤', leq:'≤', ge:'≥', geq:'≥', lt:'<', gt:'>', ne:'≠', times:'×', cdot:'·',
+                  to:'→', in:'∈', N:'ℕ', Z:'ℤ', Q:'ℚ', R:'ℝ', C:'ℂ', K:'𝕂', eps:'ε', varepsilon:'ε', alpha:'α', theta:'θ', ell:'ℓ' };
+  function mappa(s, tab, segno) {
+    for (var k = 0, o = ''; k < s.length; k++) { if (!tab[s[k]]) return segno + (s.length > 1 ? '(' + s + ')' : s); o += tab[s[k]]; }
+    return o;
+  }
+  function semplice(a) { return /^([\w.√π^]+|√?\([^()]*\)[\w^]*)$/.test(a) ? a : '(' + a + ')'; }
+  AM.testoPiano = function (s) {
+    return s.replace(/\$([^$]+)\$/g, function (_, t) {
+      t = t.replace(/\\left|\\right|\\[,;!]|\\displaystyle/g, '')
+           .replace(/\\\{/g, '\u0001').replace(/\\\}/g, '\u0002')
+           .replace(/\\sqrt\[3\]\{([^{}]*)\}/g, '∛$1')
+           .replace(/\\sqrt\{([^{}]*)\}/g, function (m, a) { return '√' + semplice(a); })
+           .replace(/\\sqrt\s*(\w)/g, '√$1');
+      for (var g = 0; g < 2; g++)
+        t = t.replace(/\\d?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, function (m, a, b) { return '\u0003' + semplice(a) + '/' + semplice(b) + '\u0004'; });
+      t = t.replace(/\\d?frac\s*(\w)\s*(\w)/g, '\u0003$1/$2\u0004')
+           .replace(/\\(sin|cos|tan|ln|log|arctan|lim|max|min|sup|inf)(?![a-z_])\s*/g, '$1 ')
+           // «sin 1/√n» è ambiguo: una frazione subito dopo una funzione va fra parentesi
+           .replace(/(sin|cos|tan|ln|log|arctan) \u0003([^\u0004]*)\u0004/g, '$1($2)')
+           .replace(/[\u0003\u0004]/g, '')
+           .replace(/\\([A-Za-z]+)/g, function (m, c) { return SIMBOLI[c] || c; })
+           .replace(/\^\{([^{}]*)\}/g, function (m, a) { return mappa(a, APICE, '^'); })
+           .replace(/\^(\S)/g, function (m, a) { return mappa(a, APICE, '^'); })
+           .replace(/_\{([^{}]*)\}/g, function (m, a) { return mappa(a, PEDICE, '_'); })
+           .replace(/_(\w)/g, function (m, a) { return mappa(a, PEDICE, '_'); })
+           .replace(/[{}]/g, '').replace(/\u0001/g, '{').replace(/\u0002/g, '}')
+           .replace(/ +\(/g, '(').replace(/\s+/g, ' ').trim();
+      return t;
+    });
   };
 
   /* ---------------- Sidebar mobile ---------------- */

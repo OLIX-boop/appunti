@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928f">
 </head>
 <body>
 
@@ -85,7 +85,7 @@
       </div>
       <div class="pbar" data-progress-for="g2"><span style="width:0"></span></div>
     </div>
-    <div id="checklist"></div>
+    <div id="checklistBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="algebra">1 · Algebra delle matrici</h2>
@@ -203,7 +203,7 @@
     <div class="box teo">
       <div class="box-title">Teorema</div>
       <p>Il sistema $A\vx=\vb$ è <strong>compatibile</strong> se e solo se $$\rg A=\rg[A\,|\,\vb].$$</p>
-      <p class="mb0">In tal caso, detto $r$ il valore comune: se $r=n$ la soluzione è <strong>unica</strong>; se $r<n$ le soluzioni sono <strong>infinite</strong> e dipendono da $n-r$ parametri liberi.</p>
+      <p class="mb0">In tal caso, detto $r$ il valore comune: se $r=n$ la soluzione è <strong>unica</strong>; se $r\lt n$ le soluzioni sono <strong>infinite</strong> e dipendono da $n-r$ parametri liberi.</p>
     </div>
 
     <div class="box">
@@ -228,8 +228,8 @@
     <h3 id="omogenei">Sistemi omogenei</h3>
     <div class="box prop">
       <div class="box-title">Proposizione</div>
-      <p class="mb0">$A\vx=\vzero$ è <strong>sempre compatibile</strong> ($\vx=\vzero$ è la soluzione banale) e ammette soluzioni <strong>non banali</strong> se e solo se $r<n$.<br><br>
-      In particolare, se $m<n$ (meno equazioni che incognite) esistono sempre soluzioni non banali, perché $r\le m<n$.</p>
+      <p class="mb0">$A\vx=\vzero$ è <strong>sempre compatibile</strong> ($\vx=\vzero$ è la soluzione banale) e ammette soluzioni <strong>non banali</strong> se e solo se $r\lt n$.<br><br>
+      In particolare, se $m\lt n$ (meno equazioni che incognite) esistono sempre soluzioni non banali, perché $r\le m\lt n$.</p>
     </div>
     <div class="box tip">
       <div class="box-title">✓ Un corollario che userai per tutto il corso</div>
@@ -281,7 +281,7 @@
     <div class="box">
       <p class="mb0">Si affianca l'identità e si riduce con il <strong>MEG-J</strong> fino a ottenere $I_n$ a sinistra:
       $$[A\,|\,I_n]\ \xrightarrow{\ \text{MEG-J}\ }\ [I_n\,|\,A^{-1}].$$
-      Se già dopo il MEG compare una riga nulla nella parte sinistra, allora $\rg A<n$ e <strong>l'inversa non esiste</strong>: il metodo diagnostica e calcola allo stesso tempo. Il procedimento completo, con l'esempio degli appunti, è nel <a href="#inversa-megj">§6</a>.</p>
+      Se già dopo il MEG compare una riga nulla nella parte sinistra, allora $\rg A\lt n$ e <strong>l'inversa non esiste</strong>: il metodo diagnostica e calcola allo stesso tempo. Il procedimento completo, con l'esempio degli appunti, è nel <a href="#inversa-megj">§6</a>.</p>
     </div>
 
     <!-- ============================================================ -->
@@ -457,7 +457,7 @@
 
     <div class="box warnb">
       <div class="box-title">⚠ Con $A$ singolare la soluzione non è mai unica</div>
-      <p class="mb0">Ogni colonna è un sistema con la stessa $A$ e $\rg A<n$, quindi ognuna ha <strong>nessuna</strong> soluzione oppure <strong>infinite</strong>. Basta <strong>una sola</strong> colonna incompatibile, cioè uno 0-pivot nella parte destra, perché l'equazione di matrici non abbia soluzioni.</p>
+      <p class="mb0">Ogni colonna è un sistema con la stessa $A$ e $\rg A\lt n$, quindi ognuna ha <strong>nessuna</strong> soluzione oppure <strong>infinite</strong>. Basta <strong>una sola</strong> colonna incompatibile, cioè uno 0-pivot nella parte destra, perché l'equazione di matrici non abbia soluzioni.</p>
     </div>
 
     <h3 id="eq-trasposta">Incognita a sinistra e $A$ non invertibile: si traspone</h3>
@@ -515,15 +515,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928b"></script>
-<script src="../data/topics.js?v=20260928b"></script>
-<script src="../data/quiz.js?v=20260928b"></script>
-<script src="../../assets/js/meg.js?v=20260928b"></script>
-<script src="../../assets/js/plot.js?v=20260928b"></script>
-<script src="../../assets/js/app.js?v=20260928b"></script>
+<script src="../../assets/js/materie.js?v=20260928f"></script>
+<script src="../data/topics.js?v=20260928f"></script>
+<script src="../data/quiz.js?v=20260928f"></script>
+<script src="../../assets/js/meg.js?v=20260928f"></script>
+<script src="../../assets/js/plot.js?v=20260928f"></script>
+<script src="../../assets/js/app.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklist', 2, 'geometria');
+  AM.renderChecklist('#checklistBox', 2, 'geometria');
   AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 2; }), { statKey: 'geo2' });
 
   /* ---------- prodotto righe per colonne ---------- */

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928f">
 </head>
 <body>
 
@@ -88,7 +88,7 @@
       </div>
       <div class="pbar" data-progress-for="s2"><span style="width:0"></span></div>
     </div>
-    <div id="checklist"></div>
+    <div id="checklistBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="funzioni">1 · Funzioni tra insiemi</h2>
@@ -160,7 +160,7 @@
     <h3 id="monotonia">Monotonia e rapporto incrementale</h3>
     <div class="box def">
       <div class="box-title">Definizione</div>
-      <p class="mb0">$f$ è <strong>crescente</strong> se $x_1<x_2\Rightarrow f(x_1)\le f(x_2)$; <strong>strettamente crescente</strong> se vale $<$. Analogamente decrescente. <strong>Monotòna</strong> = crescente oppure decrescente.</p>
+      <p class="mb0">$f$ è <strong>crescente</strong> se $x_1\lt x_2\Rightarrow f(x_1)\le f(x_2)$; <strong>strettamente crescente</strong> se vale $<$. Analogamente decrescente. <strong>Monotòna</strong> = crescente oppure decrescente.</p>
     </div>
 
     <div class="box prop">
@@ -169,14 +169,14 @@
       $$f\ \text{crescente su }A\iff R(x_1,x_2)\ge0\ \ \forall x_1\ne x_2\in A,$$ e strettamente crescente $\iff R>0$.</p>
     </div>
     <details class="reveal proof"><summary>Dimostrazione</summary><div class="reveal-body">
-      <p>($\Rightarrow$) Siano $x_1\ne x_2$; a meno di scambiarli, $x_1<x_2$, quindi $x_2-x_1>0$. Se $f$ è crescente allora $f(x_2)-f(x_1)\ge0$, e il quoziente di un numero $\ge0$ per uno $>0$ è $\ge0$.</p>
-      <p class="mb0">($\Leftarrow$) Se $R(x_1,x_2)\ge0$ e $x_1<x_2$, da $f(x_2)-f(x_1)=R\cdot(x_2-x_1)$ con entrambi i fattori $\ge0$ segue $f(x_1)\le f(x_2)$. $\blacksquare$</p>
+      <p>($\Rightarrow$) Siano $x_1\ne x_2$; a meno di scambiarli, $x_1\lt x_2$, quindi $x_2-x_1>0$. Se $f$ è crescente allora $f(x_2)-f(x_1)\ge0$, e il quoziente di un numero $\ge0$ per uno $>0$ è $\ge0$.</p>
+      <p class="mb0">($\Leftarrow$) Se $R(x_1,x_2)\ge0$ e $x_1\lt x_2$, da $f(x_2)-f(x_1)=R\cdot(x_2-x_1)$ con entrambi i fattori $\ge0$ segue $f(x_1)\le f(x_2)$. $\blacksquare$</p>
       <p class="mb0 small muted" style="margin-top:10px">Il guadagno: $R$ non dipende dall'ordine di $x_1,x_2$, quindi la monotonia diventa una condizione di <em>segno</em>. Nel calcolo differenziale questo segno diventerà quello di $f'$.</p>
     </div></details>
 
     <div class="box trap">
       <div class="box-title">✗ L'esempio di $\frac1x$ (Lezione 4)</div>
-      <p class="mb0">$f(x)=\frac1x$ su $\R\setminus\{0\}$ è decrescente su $(0,+\infty)$ e decrescente su $(-\infty,0)$, ma <strong>non</strong> è decrescente su $\R\setminus\{0\}$: con $x_1=-1<x_2=1$ si ha $f(x_1)=-1<1=f(x_2)$. E non è nemmeno crescente, perché con $x_1=1<x_2=2$ si ha $f(x_1)=1>\frac12=f(x_2)$. Quindi <strong>non è monotòna</strong>. La monotonia dipende dall'insieme su cui la guardi: «decrescente su ogni pezzo» non vuol dire «decrescente».</p>
+      <p class="mb0">$f(x)=\frac1x$ su $\R\setminus\{0\}$ è decrescente su $(0,+\infty)$ e decrescente su $(-\infty,0)$, ma <strong>non</strong> è decrescente su $\R\setminus\{0\}$: con $x_1=-1\lt x_2=1$ si ha $f(x_1)=-1<1=f(x_2)$. E non è nemmeno crescente, perché con $x_1=1\lt x_2=2$ si ha $f(x_1)=1>\frac12=f(x_2)$. Quindi <strong>non è monotòna</strong>. La monotonia dipende dall'insieme su cui la guardi: «decrescente su ogni pezzo» non vuol dire «decrescente».</p>
     </div>
 
     <h3 id="parita">Funzioni pari, dispari, periodiche</h3>
@@ -261,7 +261,7 @@
     <div class="box def">
       <div class="box-title">Definizione — limiti infiniti</div>
       <p class="mb0">$$\lim_n a_n=+\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n>M;$$
-      $$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n<M.$$</p>
+      $$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M.$$</p>
     </div>
 
     <p><strong>Come leggerla.</strong> «Comunque si scelga una striscia orizzontale attorno a $L$, per quanto sottile, tutti i termini <em>da un certo indice in poi</em> ci cadono dentro.» Fuori dalla striscia restano al più finiti termini. L'indice $N$ dipende da $\eps$ — più sottile è la striscia, più in là bisogna spostarsi — e per questo si scrive spesso $N(\eps)$.</p>
@@ -312,16 +312,16 @@
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Impostazione</div>
-          <div class="step-content">Per assurdo $L\ne M$; senza perdita di generalità $L<M$.</div></div></div>
+          <div class="step-content">Per assurdo $L\ne M$; senza perdita di generalità $L\lt M$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Qual è la scelta furba di $\eps$, e perché?</div>
           <div class="step-content">$\eps=\dfrac{M-L}{2}>0$: metà della distanza, così gli intorni $(L-\eps,L+\eps)$ e $(M-\eps,M+\eps)$ sono <strong>disgiunti</strong>, perché $L+\eps=M-\eps=\frac{L+M}{2}$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Le due code</div>
-          <div class="step-content">$\exists N_1: n>N_1\Rightarrow a_n<L+\eps=\frac{L+M}{2}$; &nbsp; $\exists N_2: n>N_2\Rightarrow a_n>M-\eps=\frac{L+M}{2}$.</div></div></div>
+          <div class="step-content">$\exists N_1: n>N_1\Rightarrow a_n\lt L+\eps=\frac{L+M}{2}$; &nbsp; $\exists N_2: n>N_2\Rightarrow a_n>M-\eps=\frac{L+M}{2}$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">L'assurdo</div>
-          <div class="step-content">Per $n>\max\{N_1,N_2\}$ si avrebbe $a_n<\frac{L+M}{2}<a_n$: impossibile. Dunque $L=M$. $\blacksquare$</div></div></div>
+          <div class="step-content">Per $n>\max\{N_1,N_2\}$ si avrebbe $a_n<\frac{L+M}{2}\lt a_n$: impossibile. Dunque $L=M$. $\blacksquare$</div></div></div>
       </div>
       <p class="small muted mb0">Errore tipico: scegliere $\eps=M-L$ invece di metà — gli intorni allora si sovrappongono e non nasce alcuna contraddizione.</p>
     </div></details>
@@ -379,13 +379,13 @@
     </div>
     <details class="reveal proof"><summary>Dimostrazione</summary><div class="reveal-body">
       <p>Poiché $L>0$, la scelta $\eps=\frac L2>0$ è lecita. Per definizione $\exists N$ tale che, per $n>N$,
-      $$|a_n-L|<\frac L2\iff L-\frac L2<a_n<L+\frac L2,$$
+      $$|a_n-L|<\frac L2\iff L-\frac L2\lt a_n\lt L+\frac L2,$$
       quindi in particolare $a_n>\frac L2>0$. $\blacksquare$</p>
       <p class="mb0">Se $L=+\infty$: applicando la definizione con $M=1$ si ottiene $a_n>1>0$ definitivamente.</p>
     </div></details>
     <div class="box trap">
       <div class="box-title">✗ La forma inversa — l'errore più frequente del corso</div>
-      <p class="mb0">Se $a_n\ge0$ definitivamente e $a_n\to L$, allora $L\ge0$ — <strong>non</strong> $L>0$. Passando al limite, la disuguaglianza <em>stretta si indebolisce</em>. Controesempio: $a_n=\frac1n>0$ per ogni $n$, ma $L=0$. Lo stesso vale per la proprietà del confronto: da $a_n<b_n$ segue solo $L\le M$.</p>
+      <p class="mb0">Se $a_n\ge0$ definitivamente e $a_n\to L$, allora $L\ge0$ — <strong>non</strong> $L>0$. Passando al limite, la disuguaglianza <em>stretta si indebolisce</em>. Controesempio: $a_n=\frac1n>0$ per ogni $n$, ma $L=0$. Lo stesso vale per la proprietà del confronto: da $a_n\lt b_n$ segue solo $L\le M$.</p>
     </div>
 
     <h3 id="carabinieri">Teorema del confronto (due carabinieri) <span class="badge star">dim. scritto · n° 8</span></h3>
@@ -413,10 +413,10 @@
           <div class="step-content">Sia $\eps>0$ fissato ad arbitrio. Bisogna esibire $N$ tale che $|b_n-L|<\eps$ per $n>N$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Le tre ipotesi tradotte</div>
-          <div class="step-content">$\exists N_1: n>N_1\Rightarrow L-\eps<a_n<L+\eps$; $\exists N_2: n>N_2\Rightarrow L-\eps<c_n<L+\eps$; $\exists N_3: n>N_3\Rightarrow a_n\le b_n\le c_n$.</div></div></div>
+          <div class="step-content">$\exists N_1: n>N_1\Rightarrow L-\eps\lt a_n\lt L+\eps$; $\exists N_2: n>N_2\Rightarrow L-\eps\lt c_n\lt L+\eps$; $\exists N_3: n>N_3\Rightarrow a_n\le b_n\le c_n$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Come si combinano?</div>
-          <div class="step-content">Con $N=\max\{N_1,N_2,N_3\}$ valgono tutte e tre insieme: $L-\eps<a_n\le b_n\le c_n<L+\eps$.</div></div></div>
+          <div class="step-content">Con $N=\max\{N_1,N_2,N_3\}$ valgono tutte e tre insieme: $L-\eps\lt a_n\le b_n\le c_n\lt L+\eps$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Conclusione</div>
           <div class="step-content">Dalla catena, $|b_n-L|<\eps$ per ogni $n>N$. Per l'arbitrarietà di $\eps$, $b_n\to L$. $\blacksquare$</div></div></div>
@@ -449,7 +449,7 @@
           <div class="step-content">Propaga la disuguaglianza da <em>un solo</em> indice a tutta la coda: per $n>N$, $a_n\ge a_N>L-\eps$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">La stima dall'alto e la conclusione</div>
-          <div class="step-content">$L$ è maggiorante, quindi $a_n\le L<L+\eps$ per ogni $n$. Insieme: $L-\eps<a_n<L+\eps$ per $n>N$, cioè $|a_n-L|<\eps$. Dunque $a_n\to L$. $\blacksquare$</div></div></div>
+          <div class="step-content">$L$ è maggiorante, quindi $a_n\le L\lt L+\eps$ per ogni $n$. Insieme: $L-\eps\lt a_n\lt L+\eps$ per $n>N$, cioè $|a_n-L|<\eps$. Dunque $a_n\to L$. $\blacksquare$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Caso illimitato superiormente</div>
           <div class="step-content">Dato $M\in\R$, esso non è maggiorante, quindi $\exists N: a_N>M$; per monotonia $a_n\ge a_N>M$ per $n>N$. Dunque $a_n\to+\infty$. $\blacksquare$</div></div></div>
@@ -614,14 +614,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928b"></script>
-<script src="../data/topics.js?v=20260928b"></script>
-<script src="../data/quiz.js?v=20260928b"></script>
-<script src="../../assets/js/plot.js?v=20260928b"></script>
-<script src="../../assets/js/app.js?v=20260928b"></script>
+<script src="../../assets/js/materie.js?v=20260928f"></script>
+<script src="../data/topics.js?v=20260928f"></script>
+<script src="../data/quiz.js?v=20260928f"></script>
+<script src="../../assets/js/plot.js?v=20260928f"></script>
+<script src="../../assets/js/app.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklist', 2);
+  AM.renderChecklist('#checklistBox', 2);
   AM.mountQuiz('#quizBox', AM.quizPerSezione(2), { statKey: 'sez2' });
 
   /* ---------- Test della retta orizzontale ---------- */

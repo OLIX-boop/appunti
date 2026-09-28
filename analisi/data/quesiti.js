@@ -83,7 +83,7 @@ Negazioni: $E$ è <strong>illimitato superiormente</strong> se $\forall M\in\R\ 
 { id: '1.14', sez: 1, t: r`Descrivere come in $\R$ si definiscono radici, potenze ad esponente razionale e reale, logaritmi. Quale proprietà di $\R$ è fondamentale?`,
   a: r`<strong>Radici.</strong> Per $y\ge0$ e $n\in\N$, $n\ge1$, esiste ed è unico $x\ge0$ con $x^n=y$; si scrive $x=\sqrt[n]y=y^{1/n}$. Se $n$ è dispari la radice si definisce anche per $y<0$.<br><br>
 <strong>Potenze razionali.</strong> Per $a>0$ e $q=\frac mn\in\Q$ ($n\ge1$): $$a^{m/n}:=\sqrt[n]{a^{m}}.$$
-<strong>Potenze reali.</strong> Per $a>0$ e $x\in\R$ si pone $$a^{x}:=\sup\{a^{q}\;:\;q\in\Q,\ q\le x\}\quad (a>1),$$ e analogamente con l'inf per $0<a<1$.<br><br>
+<strong>Potenze reali.</strong> Per $a>0$ e $x\in\R$ si pone $$a^{x}:=\sup\{a^{q}\;:\;q\in\Q,\ q\le x\}\quad (a>1),$$ e analogamente con l'inf per $0\lt a<1$.<br><br>
 <strong>Logaritmi.</strong> Per $a>0$, $a\ne1$, e $y>0$ esiste unico $x\in\R$ con $a^{x}=y$; si pone $x=\log_a y$. La base usuale è $a=e$ (logaritmo naturale, $\ln$).<br><br>
 <strong>Proprietà fondamentale:</strong> la <strong>completezza</strong> di $\R$. Tutte queste definizioni sono estremi superiori di opportuni insiemi, e senza completezza tali estremi potrebbero non esistere — in $\Q$ infatti $\sqrt2$ non esiste.` },
 
@@ -170,13 +170,13 @@ Quando $f$ è assegnata tramite un'espressione analitica senza specificare $A$, 
 <strong>Grafico:</strong> l'insieme $G_f=\{(x,f(x)):x\in A\}$ del piano cartesiano. Un sottoinsieme del piano è grafico di una funzione se e solo se ogni retta verticale lo incontra al più in un punto.` },
 
 { id: '1.27', sez: 2, t: r`Dare la definizione di funzione crescente, decrescente, monotòna. Fornire esempi. Enunciare e dimostrare il collegamento tra monotonia e rapporto incrementale.`,
-  a: r`Sia $f:A\to\R$, $A\subseteq\R$. Per ogni $x_1,x_2\in A$ con $x_1<x_2$:
-<ul><li><strong>crescente</strong> se $f(x_1)\le f(x_2)$; <strong>strettamente crescente</strong> se $f(x_1)<f(x_2)$;</li>
+  a: r`Sia $f:A\to\R$, $A\subseteq\R$. Per ogni $x_1,x_2\in A$ con $x_1\lt x_2$:
+<ul><li><strong>crescente</strong> se $f(x_1)\le f(x_2)$; <strong>strettamente crescente</strong> se $f(x_1)\lt f(x_2)$;</li>
 <li><strong>decrescente</strong> se $f(x_1)\ge f(x_2)$; <strong>strettamente decrescente</strong> se $f(x_1)>f(x_2)$;</li>
 <li><strong>monotòna</strong> se è crescente oppure decrescente.</li></ul>
 <strong>Esempi.</strong> $x^3$ e $e^x$ strettamente crescenti su $\R$; $\ln x$ str. crescente su $(0,+\infty)$; $e^{-x}$ str. decrescente; una funzione costante è sia crescente sia decrescente (non strettamente); $x^2$ non è monotòna su $\R$ ma lo è su $[0,+\infty)$.<br><br>
 <strong>Collegamento con il rapporto incrementale.</strong> Definito, per $x_1\ne x_2$ in $A$, $$R(x_1,x_2)=\frac{f(x_2)-f(x_1)}{x_2-x_1},$$ si ha: <em>$f$ è crescente su $A$ $\iff$ $R(x_1,x_2)\ge0$ per ogni $x_1\ne x_2$</em> (str. crescente $\iff R>0$; decrescente $\iff R\le0$).<br><br>
-<strong>Dimostrazione.</strong> ($\Rightarrow$) Siano $x_1\ne x_2$; a meno di scambiarli supponiamo $x_1<x_2$, cosicché $x_2-x_1>0$. Se $f$ è crescente, $f(x_2)-f(x_1)\ge0$, e il rapporto di un numero $\ge0$ per uno $>0$ è $\ge0$: $R\ge0$. ($\Leftarrow$) Se $R(x_1,x_2)\ge0$ e $x_1<x_2$, allora $x_2-x_1>0$, quindi $f(x_2)-f(x_1)=R\cdot(x_2-x_1)\ge0$, cioè $f(x_1)\le f(x_2)$: $f$ è crescente. $\blacksquare$<br><br>
+<strong>Dimostrazione.</strong> ($\Rightarrow$) Siano $x_1\ne x_2$; a meno di scambiarli supponiamo $x_1\lt x_2$, cosicché $x_2-x_1>0$. Se $f$ è crescente, $f(x_2)-f(x_1)\ge0$, e il rapporto di un numero $\ge0$ per uno $>0$ è $\ge0$: $R\ge0$. ($\Leftarrow$) Se $R(x_1,x_2)\ge0$ e $x_1\lt x_2$, allora $x_2-x_1>0$, quindi $f(x_2)-f(x_1)=R\cdot(x_2-x_1)\ge0$, cioè $f(x_1)\le f(x_2)$: $f$ è crescente. $\blacksquare$<br><br>
 Il vantaggio è che $R$ non dipende dall'ordine di $x_1,x_2$: la monotonia diventa una condizione di <em>segno</em>, che nel calcolo differenziale diventerà il segno di $f'$.` },
 
 { id: '1.28', sez: 2, t: r`Dare le definizioni di funzioni pari e dispari. Fornirne esempi.`,
@@ -201,7 +201,7 @@ Il vantaggio è che $R$ non dipende dall'ordine di $x_1,x_2$: la monotonia diven
 
 { id: '1.31', sez: 2, t: r`Introdurre le funzioni elementari e disegnarne il grafico.`,
   a: r`<strong>Potenze</strong> $x^\alpha$: per $\alpha=n$ intero positivo pari ($x^2$) grafico a parabola, funzione pari, non iniettiva; per $n$ dispari ($x^3$) dispari, str. crescente su $\R$; per $\alpha<0$ ($\frac1x$) iperbole con asintoti; per $\alpha=\frac12$ ($\sqrt x$) definita su $[0,+\infty)$, crescente e concava.<br><br>
-<strong>Esponenziale</strong> $a^x$ ($a>0$, $a\ne1$): dominio $\R$, immagine $(0,+\infty)$, sempre positiva, passa per $(0,1)$; str. crescente se $a>1$, str. decrescente se $0<a<1$; asintoto orizzontale $y=0$.<br><br>
+<strong>Esponenziale</strong> $a^x$ ($a>0$, $a\ne1$): dominio $\R$, immagine $(0,+\infty)$, sempre positiva, passa per $(0,1)$; str. crescente se $a>1$, str. decrescente se $0\lt a<1$; asintoto orizzontale $y=0$.<br><br>
 <strong>Logaritmo</strong> $\log_a x$: inverso dell'esponenziale, dominio $(0,+\infty)$, immagine $\R$, passa per $(1,0)$, asintoto verticale $x=0$; grafico simmetrico a quello di $a^x$ rispetto a $y=x$.<br><br>
 <strong>Trigonometriche</strong> $\sin x$, $\cos x$ (periodo $2\pi$, immagine $[-1,1]$), $\tan x$ (periodo $\pi$, immagine $\R$, asintoti verticali in $\frac\pi2+k\pi$) e le inverse $\arcsin$, $\arccos$, $\arctan$.<br><br>
 <strong>Altre:</strong> $|x|$ (pari, non derivabile in $0$), $\sgn x$, parte intera $\lfloor x\rfloor$ (a gradini).<br><br>
@@ -215,7 +215,7 @@ Il grafico è un insieme di punti isolati $(n,a_n)$ del piano: non una curva.` }
 
 { id: '1.33', sez: 2, t: r`Dare la definizione di successione crescente, decrescente, monotòna. Fornirne esempi.`,
   a: r`$(a_n)$ è
-<ul><li><strong>crescente</strong> se $a_n\le a_{n+1}$ per ogni $n$; <strong>strettamente crescente</strong> se $a_n<a_{n+1}$;</li>
+<ul><li><strong>crescente</strong> se $a_n\le a_{n+1}$ per ogni $n$; <strong>strettamente crescente</strong> se $a_n\lt a_{n+1}$;</li>
 <li><strong>decrescente</strong> se $a_n\ge a_{n+1}$; <strong>strettamente decrescente</strong> se $a_n>a_{n+1}$;</li>
 <li><strong>monotòna</strong> se crescente oppure decrescente.</li></ul>
 Basta confrontare termini <em>consecutivi</em>: per transitività segue $a_n\le a_m$ per ogni $n\le m$.<br><br>
@@ -237,9 +237,9 @@ Le successioni monotòne sono importantissime perché sono sempre <strong>regola
 <strong>Esempi.</strong> $a_n=n-100$ è definitivamente positiva (da $n=101$). La successione $a_n=\frac{(-1)^n}{n}$ non è definitivamente positiva. «$\frac1n<\eps$» è vera definitivamente per ogni $\eps>0$ fissato.` },
 
 { id: '1.36', sez: 2, t: r`Scrivere le definizioni di limite (finito e infinito) di una successione. Spiegarne il significato, servendosi anche di disegni.`,
-  a: r`<strong>Limite finito.</strong> $\displaystyle\lim_{n\to\infty}a_n=L\in\R$ se $$\forall\eps>0\ \ \exists N\in\N\ :\ \forall n>N,\quad |a_n-L|<\eps,$$ cioè $L-\eps<a_n<L+\eps$: <em>comunque si fissi una striscia orizzontale attorno a $L$, tutti i termini da un certo indice in poi vi cadono dentro.</em> Fuori dalla striscia restano al più finiti termini. Nota che $N$ dipende da $\eps$: più stretta è la striscia, più in là bisogna andare.<br><br>
+  a: r`<strong>Limite finito.</strong> $\displaystyle\lim_{n\to\infty}a_n=L\in\R$ se $$\forall\eps>0\ \ \exists N\in\N\ :\ \forall n>N,\quad |a_n-L|<\eps,$$ cioè $L-\eps\lt a_n\lt L+\eps$: <em>comunque si fissi una striscia orizzontale attorno a $L$, tutti i termini da un certo indice in poi vi cadono dentro.</em> Fuori dalla striscia restano al più finiti termini. Nota che $N$ dipende da $\eps$: più stretta è la striscia, più in là bisogna andare.<br><br>
 <strong>Limite $+\infty$.</strong> $\displaystyle\lim_n a_n=+\infty$ se $$\forall M\in\R\ \ \exists N\in\N\ :\ \forall n>N,\quad a_n>M.$$
-<strong>Limite $-\infty$.</strong> $$\forall M\in\R\ \ \exists N\in\N\ :\ \forall n>N,\quad a_n<M.$$
+<strong>Limite $-\infty$.</strong> $$\forall M\in\R\ \ \exists N\in\N\ :\ \forall n>N,\quad a_n\lt M.$$
 In tutti i casi la struttura è la stessa: <em>per ogni intorno del candidato limite, la successione vi appartiene definitivamente.</em> Questo permette di unificare le tre definizioni in un'unica formulazione con gli intorni (anche di $\pm\infty$).<br><br>
 Nella pagina della Sezione 2 c'è un visualizzatore interattivo della striscia $\eps$–$N$.` },
 
@@ -275,10 +275,10 @@ Le forme indeterminate si risolvono con: raccoglimento del termine dominante, ge
   a: r`<strong>Enunciato.</strong> Se $a_n\to L>0$ allora $a_n>\frac L2>0$ definitivamente (simmetricamente per $L<0$).<br><br>Dimostrazione: si applica la definizione con $\eps=\frac L2$. <strong>Forma inversa:</strong> se $a_n\ge0$ definitivamente e $a_n\to L$, allora $L\ge0$ — <em>non</em> $L>0$ (controesempio $\frac1n$). Traccia completa nella pagina <em>Teoremi</em>.` },
 
 { id: '1.43', sez: 2, mark: '**', teo: 'T-conf', t: r`Enunciare e dimostrare la proprietà del confronto (per successioni).`,
-  a: r`<strong>Enunciato.</strong> Se $a_n\to L$, $b_n\to M$ e $a_n\le b_n$ definitivamente, allora $L\le M$.<br><br>Per assurdo, con $\eps=\frac{L-M}2$ se fosse $L>M$. Anche qui la disuguaglianza stretta non si conserva: da $a_n<b_n$ segue solo $L\le M$. Traccia completa nella pagina <em>Teoremi</em>.` },
+  a: r`<strong>Enunciato.</strong> Se $a_n\to L$, $b_n\to M$ e $a_n\le b_n$ definitivamente, allora $L\le M$.<br><br>Per assurdo, con $\eps=\frac{L-M}2$ se fosse $L>M$. Anche qui la disuguaglianza stretta non si conserva: da $a_n\lt b_n$ segue solo $L\le M$. Traccia completa nella pagina <em>Teoremi</em>.` },
 
 { id: '1.44', sez: 2, mark: '*', teo: 'T08', t: r`Enunciare e dimostrare il teorema del confronto (o dei due carabinieri).`,
-  a: r`<strong>Enunciato.</strong> Se $a_n\le b_n\le c_n$ definitivamente e $a_n\to L$, $c_n\to L$ con $L\in\R$, allora $b_n\to L$.<br><br>Dimostrazione: per $\eps>0$ fissato si prende $N=\max\{N_1,N_2,N_3\}$ e si incastra $b_n$ nella catena $L-\eps<a_n\le b_n\le c_n<L+\eps$. Notare che l'esistenza del limite di $(b_n)$ non è un'ipotesi, è la tesi. Traccia completa nella pagina <em>Teoremi</em>.` },
+  a: r`<strong>Enunciato.</strong> Se $a_n\le b_n\le c_n$ definitivamente e $a_n\to L$, $c_n\to L$ con $L\in\R$, allora $b_n\to L$.<br><br>Dimostrazione: per $\eps>0$ fissato si prende $N=\max\{N_1,N_2,N_3\}$ e si incastra $b_n$ nella catena $L-\eps\lt a_n\le b_n\le c_n\lt L+\eps$. Notare che l'esistenza del limite di $(b_n)$ non è un'ipotesi, è la tesi. Traccia completa nella pagina <em>Teoremi</em>.` },
 
 { id: '1.45', sez: 2, t: r`Che proprietà hanno le successioni infinitesime e il loro modulo?`,
   a: r`$(a_n)$ si dice <strong>infinitesima</strong> se $a_n\to0$.<br><br>
@@ -289,7 +289,7 @@ Altre proprietà: somma e differenza di infinitesime è infinitesima; il prodott
 
 { id: '1.46', sez: 2, t: r`Di quale proprietà gode una successione data dal prodotto di una successione infinitesima per una limitata?`,
   a: r`<strong>Teorema.</strong> Se $a_n\to0$ e $(b_n)$ è limitata, allora $a_nb_n\to0$.<br><br>
-<em>Dimostrazione.</em> Per ipotesi $\exists K>0$ con $|b_n|\le K$ per ogni $n$. Sia $\eps>0$: poiché $a_n\to0$, $\exists N$ tale che $|a_n|<\frac\eps K$ per ogni $n>N$. Allora $$|a_nb_n-0|=|a_n||b_n|\le K|a_n|<K\cdot\frac{\eps}{K}=\eps\qquad\forall n>N.$$ Dunque $a_nb_n\to0$. $\blacksquare$<br><br>
+<em>Dimostrazione.</em> Per ipotesi $\exists K>0$ con $|b_n|\le K$ per ogni $n$. Sia $\eps>0$: poiché $a_n\to0$, $\exists N$ tale che $|a_n|<\frac\eps K$ per ogni $n>N$. Allora $$|a_nb_n-0|=|a_n||b_n|\le K|a_n|\lt K\cdot\frac{\eps}{K}=\eps\qquad\forall n>N.$$ Dunque $a_nb_n\to0$. $\blacksquare$<br><br>
 <strong>Perché è utile:</strong> risolve forme $0\cdot(\text{oscillante})$ dove l'algebra dei limiti non si applica, perché $(b_n)$ non deve avere limite — basta che sia limitata.<br><br>
 <strong>Esempi.</strong> $\dfrac{\sin n}{n}=\frac1n\cdot\sin n\to0$; $\dfrac{(-1)^n}{n}\to0$; $\dfrac{\cos(n!)}{\sqrt n}\to0$.` },
 
@@ -301,7 +301,7 @@ Altre proprietà: somma e differenza di infinitesime è infinitesima; il prodott
 <strong>Perché la definizione è ben posta.</strong> Bisogna sapere che il limite <em>esiste</em>. Posto $a_n=\left(1+\frac1n\right)^n$ si dimostra che
 <ol><li>$(a_n)$ è <strong>strettamente crescente</strong>;</li>
 <li>$(a_n)$ è <strong>limitata superiormente</strong> (per esempio da $3$).</li></ol>
-Per il teorema sulla <em>regolarità delle successioni monotòne</em>, $(a_n)$ converge, e il suo limite — che si dimostra essere irrazionale e anzi trascendente — si chiama $e$. Numericamente $e\simeq2{,}718281\dots$, e vale $2<e<3$.<br><br>
+Per il teorema sulla <em>regolarità delle successioni monotòne</em>, $(a_n)$ converge, e il suo limite — che si dimostra essere irrazionale e anzi trascendente — si chiama $e$. Numericamente $e\simeq2{,}718281\dots$, e vale $2\lt e<3$.<br><br>
 Si noti che si tratta di una forma indeterminata $1^{\infty}$: la base tende a $1$ e l'esponente a $+\infty$, e i due effetti si bilanciano. Non si può concludere né $1$ né $+\infty$.<br><br>
 <strong>Generalizzazione utile:</strong> $\left(1+\frac{c}{n}\right)^n\to e^{c}$, e più in generale se $x_n\to0$ con $x_n\ne0$, $(1+x_n)^{1/x_n}\to e$.` },
 
@@ -402,20 +402,20 @@ Dimostrazione: le somme parziali sono crescenti e $A_n\le B_n\le B$, dunque $(A_
 
 { id: '1.62', sez: 3, mark: '*', teo: 'T12', t: r`Enunciare e dimostrare il criterio del confronto asintotico (per le serie). Esplicitarlo nel caso in cui si utilizza la serie armonica.`,
   a: r`<strong>Enunciato.</strong> Siano $a_n\ge0$, $b_n>0$ definitivamente e $\ell=\lim_n\frac{a_n}{b_n}$. Se $\ell\in(0,+\infty)$ le due serie hanno lo stesso carattere; se $\ell=0$ e $\sum b_n$ converge allora $\sum a_n$ converge; se $\ell=+\infty$ e $\sum b_n$ diverge allora $\sum a_n$ diverge.<br><br>
-Dimostrazione: da $\frac\ell2<\frac{a_n}{b_n}<\frac{3\ell}2$ si ricava $\frac\ell2 b_n<a_n<\frac{3\ell}2 b_n$ e si applica il criterio del confronto.<br><br>
+Dimostrazione: da $\frac\ell2<\frac{a_n}{b_n}<\frac{3\ell}2$ si ricava $\frac\ell2 b_n\lt a_n<\frac{3\ell}2 b_n$ e si applica il criterio del confronto.<br><br>
 <strong>Forma con la serie armonica generalizzata (quella che si usa davvero).</strong> Se $a_n\ge0$ e $$a_n\sim\frac{c}{n^{\alpha}}\quad\text{con }c>0,$$ allora $\sum a_n$ converge $\iff\alpha>1$.<br><br>
 <em>Esempio.</em> $a_n=\dfrac{3n+2}{n^3-n+1}\sim\dfrac{3n}{n^3}=\dfrac{3}{n^2}$, e poiché $\alpha=2>1$ la serie converge. Traccia completa nella pagina <em>Teoremi</em>.` },
 
 { id: '1.63', sez: 3, mark: '*', teo: 'T13', t: r`Enunciare e dimostrare il criterio del rapporto (per le serie).`,
   a: r`<strong>Enunciato.</strong> Sia $a_n>0$ definitivamente ed esista $L=\lim_n\frac{a_{n+1}}{a_n}$. Se $L<1$ la serie converge; se $L>1$ diverge; se $L=1$ il criterio non decide.<br><br>
-Dimostrazione: per $L<1$ si sceglie $q\in(L,1)$, si ottiene $a_{N+k}<q^k a_N$ e si confronta con la serie geometrica. Per $L>1$ il termine generale non tende a $0$. Controesempi per $L=1$: $\sum\frac1n$ e $\sum\frac1{n^2}$. Traccia completa nella pagina <em>Teoremi</em>.` },
+Dimostrazione: per $L<1$ si sceglie $q\in(L,1)$, si ottiene $a_{N+k}\lt q^k a_N$ e si confronta con la serie geometrica. Per $L>1$ il termine generale non tende a $0$. Controesempi per $L=1$: $\sum\frac1n$ e $\sum\frac1{n^2}$. Traccia completa nella pagina <em>Teoremi</em>.` },
 
 { id: '1.64', sez: 3, t: r`Enunciare il criterio della radice (per le serie).`,
   a: r`<strong>Criterio della radice.</strong> Sia $a_n\ge0$ definitivamente ed esista $$L=\lim_{n\to\infty}\sqrt[n]{a_n}.$$
 <ul><li>Se $L<1$: la serie $\sum a_n$ <strong>converge</strong>.</li>
 <li>Se $L>1$ (anche $L=+\infty$): la serie <strong>diverge</strong>.</li>
 <li>Se $L=1$: il criterio <strong>non decide</strong>.</li></ul>
-<strong>Idea della dimostrazione.</strong> Se $L<1$, scelto $q\in(L,1)$, definitivamente $\sqrt[n]{a_n}<q$, cioè $a_n<q^{n}$: confronto con la serie geometrica convergente. Se $L>1$, definitivamente $a_n>1$, quindi $a_n\not\to0$.<br><br>
+<strong>Idea della dimostrazione.</strong> Se $L<1$, scelto $q\in(L,1)$, definitivamente $\sqrt[n]{a_n}\lt q$, cioè $a_n\lt q^{n}$: confronto con la serie geometrica convergente. Se $L>1$, definitivamente $a_n>1$, quindi $a_n\not\to0$.<br><br>
 <strong>Quando usarlo:</strong> quando il termine generale contiene <strong>potenze $n$-esime</strong>, per esempio $a_n=\left(\frac{n}{2n+1}\right)^{n}$, dove $\sqrt[n]{a_n}=\frac{n}{2n+1}\to\frac12<1$: converge.<br><br>
 <strong>Relazione col criterio del rapporto:</strong> se esiste il limite del rapporto, esiste anche quello della radice e coincide. La radice è quindi (leggermente) più potente; ma i casi $L=1$ restano indecisi per entrambi.` },
 

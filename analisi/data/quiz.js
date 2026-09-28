@@ -105,7 +105,7 @@
           r`è strettamente decrescente`,
           r`è crescente` ],
   a: 0,
-  why: r`Con $x_1=-1<x_2=1$ si ha $f(x_1)=-1<1=f(x_2)$, contro la decrescenza; con $x_1=1<x_2=2$ si ha $f(x_1)>f(x_2)$, contro la crescenza. La monotonia dipende dall'insieme: su ciascuna semiretta $f$ è decrescente, sull'unione no.` },
+  why: r`Con $x_1=-1\lt x_2=1$ si ha $f(x_1)=-1<1=f(x_2)$, contro la decrescenza; con $x_1=1\lt x_2=2$ si ha $f(x_1)>f(x_2)$, contro la crescenza. La monotonia dipende dall'insieme: su ciascuna semiretta $f$ è decrescente, sull'unione no.` },
 
 /* ---------------- Sezione 2 ---------------- */
 { id: 'Q11', sez: 2, tag: 'limiti',

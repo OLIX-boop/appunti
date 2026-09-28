@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928f">
 </head>
 <body>
 
@@ -74,7 +74,7 @@
       </div>
       <div class="pbar" data-progress-for="g1"><span style="width:0"></span></div>
     </div>
-    <div id="checklist"></div>
+    <div id="checklistBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="sistemi">1 · Che cos'è un sistema lineare</h2>
@@ -152,7 +152,7 @@
     <div class="box def">
       <div class="box-title">Definizione — il criterio degli $\ell_i$</div>
       <p>Per ogni riga $i$ sia $\ell_i$ il <strong>numero di zeri iniziali</strong> della riga (con $\ell_i=n$ se la riga è tutta nulla). La matrice è <strong>a scala</strong> se</p>
-      $$\ell_1<\ell_2<\ell_3<\dots\qquad\text{finché }\ell_i<n,$$
+      $$\ell_1<\ell_2<\ell_3<\dots\qquad\text{finché }\ell_i\lt n,$$
       <p class="mb0">cioè gli zeri iniziali crescono <em>strettamente</em>, e le eventuali righe nulle stanno tutte in fondo.</p>
     </div>
 
@@ -300,15 +300,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928b"></script>
-<script src="../data/topics.js?v=20260928b"></script>
-<script src="../data/quiz.js?v=20260928b"></script>
-<script src="../../assets/js/meg.js?v=20260928b"></script>
-<script src="../../assets/js/plot.js?v=20260928b"></script>
-<script src="../../assets/js/app.js?v=20260928b"></script>
+<script src="../../assets/js/materie.js?v=20260928f"></script>
+<script src="../data/topics.js?v=20260928f"></script>
+<script src="../data/quiz.js?v=20260928f"></script>
+<script src="../../assets/js/meg.js?v=20260928f"></script>
+<script src="../../assets/js/plot.js?v=20260928f"></script>
+<script src="../../assets/js/app.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklist', 1, 'geometria');
+  AM.renderChecklist('#checklistBox', 1, 'geometria');
   AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 1; }), { statKey: 'geo1' });
 
   /* ---------- riconoscere una matrice a scala ---------- */

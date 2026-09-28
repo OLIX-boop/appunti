@@ -38,7 +38,7 @@ allora i due sistemi sono <strong>equivalenti</strong>: hanno esattamente lo ste
     enunciato: r`Esiste un algoritmo — il <strong>metodo di eliminazione di Gauss</strong> — che trasforma una matrice qualsiasi in una matrice <strong>a scala</strong> mediante un numero <em>finito</em> di operazioni elementari sulle righe.`,
     idea: r`A lezione è enunciato <em>senza dimostrazione</em>: quello che conta è saper eseguire l'algoritmo e sapere perché termina.`,
     steps: [
-      { cue: r`Definizione: quando una matrice è a scala?`, body: r`Detto $\ell_i$ il <strong>numero di zeri iniziali</strong> della riga $i$ (con $\ell_i=n$ se la riga è tutta nulla), la matrice è <em>a scala</em> se $$\ell_1<\ell_2<\dots<\ell_k \quad\text{finché }\ell_i<n,$$ cioè gli zeri iniziali crescono strettamente fino alle eventuali righe nulle, che stanno in fondo.` },
+      { cue: r`Definizione: quando una matrice è a scala?`, body: r`Detto $\ell_i$ il <strong>numero di zeri iniziali</strong> della riga $i$ (con $\ell_i=n$ se la riga è tutta nulla), la matrice è <em>a scala</em> se $$\ell_1<\ell_2<\dots<\ell_k \quad\text{finché }\ell_i\lt n,$$ cioè gli zeri iniziali crescono strettamente fino alle eventuali righe nulle, che stanno in fondo.` },
       { cue: r`Che cos'è un pivot?`, body: r`Il <strong>pivot</strong> della riga $i$ (non nulla) è il suo primo elemento non nullo, che occupa il posto $(i,\ \ell_i+1)$. In una matrice a scala i pivot scendono verso destra a ogni riga.` },
       { cue: r`Lo schema dell'algoritmo`, body: r`Si individua la prima colonna non tutta nulla; si porta in cima con uno scambio una riga con elemento non nullo in quella colonna (il pivot); si annullano con l'operazione (3) tutti gli elementi sotto il pivot; si ripete sulla sottomatrice che resta, ignorando la riga e la colonna appena sistemate.` },
       { cue: r`Perché termina?`, body: r`Perché a ogni passo la sottomatrice da trattare perde almeno una riga e una colonna: dopo al più $\min\{m,n\}$ passi non resta nulla da fare. È questo a rendere il numero di operazioni <strong>finito</strong>. $\blacksquare$` }
@@ -108,7 +108,7 @@ Inoltre, se $r=\rg A$, esistono $\vv_1,\dots,\vv_{n-r}\in\K^{n}$ tali che $$S_0=
       { cue: r`Da dove vengono gli $n-r$ parametri?`, body: r`Dal MEG: dopo la riduzione a scala, le colonne con pivot corrispondono alle $r$ <strong>incognite di base</strong>, le altre alle <strong>incognite libere</strong>, che sono $n-r$. Assegnando a turno il valore $1$ a una libera e $0$ alle altre, e risolvendo all'indietro, si ottengono i vettori $\vv_1,\dots,\vv_{n-r}$.` },
       { cue: r`Osservazione che vale punti all'esame`, body: r`I vettori $\vv_1,\dots,\vv_{n-r}$ dipendono <strong>solo da $A$</strong>, non da $\vb$; è $\vx_0$ a dipendere da entrambi. Perciò, cambiando il termine noto, la «direzione» dell'insieme delle soluzioni non cambia: si sposta soltanto.` }
     ],
-    note: r`Lettura geometrica: $S$ è $S_0$ <em>traslato</em> di $\vx_0$. Se $r=n$ non ci sono parametri liberi e la soluzione è unica; se $r<n$ ce ne sono $n-r$ e le soluzioni sono infinite (su $\K$ infinito). Il sistema omogeneo non è mai incompatibile: $\vx=\vzero$ è sempre soluzione.`
+    note: r`Lettura geometrica: $S$ è $S_0$ <em>traslato</em> di $\vx_0$. Se $r=n$ non ci sono parametri liberi e la soluzione è unica; se $r\lt n$ ce ne sono $n-r$ e le soluzioni sono infinite (su $\K$ infinito). Il sistema omogeneo non è mai incompatibile: $\vx=\vzero$ è sempre soluzione.`
   },
   {
     id: 'G-rc', sez: 2, mark: '*', q: 'ALG pp. 94-105',
@@ -117,28 +117,28 @@ Inoltre, se $r=\rg A$, esistono $\vv_1,\dots,\vv_{n-r}\in\K^{n}$ tali che $$S_0=
 $$\rg A=\rg[A\,|\,\vb].$$
 In tal caso, posto $r$ il valore comune:
 <ul><li>se $r=n$ la soluzione è <strong>unica</strong>;</li>
-<li>se $r<n$ le soluzioni sono <strong>infinite</strong>, descritte da $n-r$ parametri liberi.</li></ul>`,
+<li>se $r\lt n$ le soluzioni sono <strong>infinite</strong>, descritte da $n-r$ parametri liberi.</li></ul>`,
     idea: r`È il criterio dello 0-pivot riscritto con i ranghi.`,
     steps: [
       { cue: r`Il legame fra i due ranghi`, body: r`Riduciamo a scala la matrice completa: $[A\,|\,\vb]\to[U\,|\,\vb']$. Le stesse operazioni riducono $A$ a $U$. Ogni pivot di $U$ è un pivot di $[U\,|\,\vb']$, e l'unico pivot in più possibile è quello nella colonna dei termini noti. Quindi $$\rg[A\,|\,\vb]=\rg A\quad\text{oppure}\quad \rg[A\,|\,\vb]=\rg A+1.$$` },
       { cue: r`Traduzione del criterio dello 0-pivot`, body: r`Il secondo caso si verifica <em>esattamente</em> quando compare uno 0-pivot, cioè quando il sistema è incompatibile. Dunque $$\text{compatibile}\iff\rg A=\rg[A\,|\,\vb].$$` },
       { cue: r`Il caso $r=n$`, body: r`Se $r=n$, ogni colonna dei coefficienti contiene un pivot: non restano incognite libere. La sostituzione all'indietro determina univocamente $x_n$, poi $x_{n-1}$, e così via. La soluzione è unica.` },
-      { cue: r`Il caso $r<n$`, body: r`Restano $n-r\ge1$ incognite libere, a cui si può assegnare qualunque valore in $\K$: per ogni scelta si ottiene una soluzione diversa. Le soluzioni sono infinite e formano, per il teorema sulla struttura, un traslato di uno spazio con $n-r$ parametri. $\blacksquare$` }
+      { cue: r`Il caso $r\lt n$`, body: r`Restano $n-r\ge1$ incognite libere, a cui si può assegnare qualunque valore in $\K$: per ogni scelta si ottiene una soluzione diversa. Le soluzioni sono infinite e formano, per il teorema sulla struttura, un traslato di uno spazio con $n-r$ parametri. $\blacksquare$` }
     ],
     note: r`Il teorema <strong>non richiede $m=n$</strong>: vale per matrici rettangolari qualsiasi. Attenzione a non confondere «infinite soluzioni» con «tutte le $\vx$»: sono infinite ma vincolate. E il numero di parametri è $n-r$, dove $n$ è il numero di <em>incognite</em>, non di equazioni.`
   },
   {
     id: 'G-omog', sez: 2, mark: '*', q: 'ALG pp. 94-105',
     titolo: 'Sistemi omogenei: soluzioni non banali',
-    enunciato: r`Il sistema omogeneo $A\vx=\vzero$ è sempre compatibile ($\vx=\vzero$ è soluzione, detta <em>banale</em>). Ammette soluzioni <strong>non banali</strong> se e solo se $r<n$, cioè $\rg A<n$.<br><br>
-In particolare, se $m<n$ (meno equazioni che incognite) esistono sempre soluzioni non banali.`,
+    enunciato: r`Il sistema omogeneo $A\vx=\vzero$ è sempre compatibile ($\vx=\vzero$ è soluzione, detta <em>banale</em>). Ammette soluzioni <strong>non banali</strong> se e solo se $r\lt n$, cioè $\rg A\lt n$.<br><br>
+In particolare, se $m\lt n$ (meno equazioni che incognite) esistono sempre soluzioni non banali.`,
     idea: r`Tutto discende da Rouché-Capelli, perché l'omogeneo non può mai essere incompatibile.`,
     steps: [
       { cue: r`Perché è sempre compatibile?`, body: r`Perché $A\vzero=\vzero$: la soluzione banale c'è sempre. Equivalentemente, la colonna dei termini noti è nulla, quindi non può mai ospitare un pivot: nessuno 0-pivot è possibile e $\rg A=\rg[A\,|\,\vzero]$.` },
-      { cue: r`Quando ci sono anche soluzioni non banali?`, body: r`Per Rouché-Capelli la soluzione è unica se e solo se $r=n$; ma l'unica soluzione, in tal caso, è quella banale. Dunque esistono soluzioni non banali $\iff r<n$.` },
-      { cue: r`Il corollario con $m<n$`, body: r`Sappiamo che $r\le\min\{m,n\}\le m$. Se $m<n$ allora $r\le m<n$, quindi $r<n$ ed esistono soluzioni non banali. $\blacksquare$` }
+      { cue: r`Quando ci sono anche soluzioni non banali?`, body: r`Per Rouché-Capelli la soluzione è unica se e solo se $r=n$; ma l'unica soluzione, in tal caso, è quella banale. Dunque esistono soluzioni non banali $\iff r\lt n$.` },
+      { cue: r`Il corollario con $m\lt n$`, body: r`Sappiamo che $r\le\min\{m,n\}\le m$. Se $m\lt n$ allora $r\le m\lt n$, quindi $r\lt n$ ed esistono soluzioni non banali. $\blacksquare$` }
     ],
-    note: r`Questo corollario è usatissimo: «un sistema omogeneo con più incognite che equazioni ha sempre soluzioni non banali». Più avanti diventerà: $n$ vettori in uno spazio di dimensione $<n$ sono sempre linearmente dipendenti.`
+    note: r`Questo corollario è usatissimo: «un sistema omogeneo con più incognite che equazioni ha sempre soluzioni non banali». Più avanti diventerà: $n$ vettori in uno spazio di dimensione $\lt n$ sono sempre linearmente dipendenti.`
   },
   {
     id: 'G-inv1', sez: 2, mark: '*', q: 'ALG cap. 3',

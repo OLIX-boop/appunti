@@ -128,9 +128,9 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
     enunciato: r`Se una successione $(a_n)$ ammette limite, tale limite è unico: se $a_n\to L$ e $a_n\to M$, allora $L=M$.`,
     idea: r`Per assurdo: se $L\ne M$, scelgo $\eps$ pari a metà della distanza; definitivamente $a_n$ dovrebbe stare in due intorni disgiunti.`,
     steps: [
-      { cue: 'Impostazione', body: r`Per assurdo supponiamo $L\ne M$, e senza perdita di generalità $L<M$.` },
+      { cue: 'Impostazione', body: r`Per assurdo supponiamo $L\ne M$, e senza perdita di generalità $L\lt M$.` },
       { cue: r`Qual è la scelta furba di $\eps$?`, body: r`$$\eps:=\frac{M-L}{2}>0.$$ È metà della distanza fra i due candidati limite: gli intorni $(L-\eps,L+\eps)$ e $(M-\eps,M+\eps)$ risultano <strong>disgiunti</strong>, perché $L+\eps=M-\eps=\frac{L+M}{2}$.` },
-      { cue: 'Tradurre le due ipotesi di limite', body: r`Da $a_n\to L$: $\exists N_1$ tale che $\forall n>N_1$, $|a_n-L|<\eps$, quindi $a_n<L+\eps=\dfrac{L+M}{2}$.<br>Da $a_n\to M$: $\exists N_2$ tale che $\forall n>N_2$, $|a_n-M|<\eps$, quindi $a_n>M-\eps=\dfrac{L+M}{2}$.` },
+      { cue: 'Tradurre le due ipotesi di limite', body: r`Da $a_n\to L$: $\exists N_1$ tale che $\forall n>N_1$, $|a_n-L|<\eps$, quindi $a_n\lt L+\eps=\dfrac{L+M}{2}$.<br>Da $a_n\to M$: $\exists N_2$ tale che $\forall n>N_2$, $|a_n-M|<\eps$, quindi $a_n>M-\eps=\dfrac{L+M}{2}$.` },
       { cue: 'Conclusione', body: r`Posto $N=\max\{N_1,N_2\}$, per ogni $n>N$ varrebbero simultaneamente $$a_n<\frac{L+M}{2}\qquad\text{e}\qquad a_n>\frac{L+M}{2},$$ che è assurdo. Dunque $L=M$. $\blacksquare$` }
     ],
     note: r`Il teorema vale anche con limiti infiniti: se $a_n\to L\in\R$ e $a_n\to+\infty$ si ottiene un assurdo analogo, perché $(a_n)$ dovrebbe essere definitivamente limitata e definitivamente maggiore di ogni $M$. Errore tipico: prendere $\eps=M-L$ invece di metà — gli intorni allora non sono disgiunti.`
@@ -155,7 +155,7 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
     idea: r`Scegliere $\eps=L/2$: l'intorno di $L$ di quel raggio è tutto contenuto nella semiretta positiva.`,
     steps: [
       { cue: r`La scelta di $\eps$`, body: r`Poiché $L>0$, il numero $\eps:=\dfrac L2$ è strettamente positivo ed è quindi una scelta lecita nella definizione di limite.` },
-      { cue: 'Applicare la definizione', body: r`$\exists\,N$ tale che $\forall n>N$: $$|a_n-L|<\frac L2\quad\Longleftrightarrow\quad L-\frac L2<a_n<L+\frac L2.$$` },
+      { cue: 'Applicare la definizione', body: r`$\exists\,N$ tale che $\forall n>N$: $$|a_n-L|<\frac L2\quad\Longleftrightarrow\quad L-\frac L2\lt a_n\lt L+\frac L2.$$` },
       { cue: 'Conclusione', body: r`In particolare $a_n>L-\dfrac L2=\dfrac L2>0$ per ogni $n>N$. $\blacksquare$<br><br>Se $L=+\infty$: applicando la definizione con $M=1$ si ottiene $a_n>1>0$ definitivamente.` },
       { cue: 'Versione simmetrica e versione "inversa"', body: r`Se $L<0$, analogamente $a_n<\dfrac L2<0$ definitivamente.<br><br><strong>Forma inversa (attenzione!)</strong>: se $a_n\ge0$ definitivamente e $a_n\to L$, allora $L\ge0$ — <em>non</em> $L>0$.` }
     ],
@@ -168,9 +168,9 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
     idea: r`Incastrare $b_n$ fra le due code: entrambe finiscono nell'intorno $(L-\eps,L+\eps)$, quindi ci finisce anche ciò che sta in mezzo.`,
     steps: [
       { cue: 'Fissare il dato arbitrario', body: r`Sia $\eps>0$ fissato ad arbitrio. Dobbiamo esibire $N$ tale che $|b_n-L|<\eps$ per ogni $n>N$.` },
-      { cue: 'Tradurre le tre ipotesi', body: r`$\exists N_1:\ \forall n>N_1,\ L-\eps<a_n<L+\eps$;<br>$\exists N_2:\ \forall n>N_2,\ L-\eps<c_n<L+\eps$;<br>$\exists N_3:\ \forall n>N_3,\ a_n\le b_n\le c_n$.` },
-      { cue: 'Come si combinano?', body: r`Posto $N:=\max\{N_1,N_2,N_3\}$, per ogni $n>N$ valgono tutte e tre contemporaneamente, quindi $$L-\eps<a_n\le b_n\le c_n<L+\eps.$$` },
-      { cue: 'Conclusione', body: r`Dalla catena segue $L-\eps<b_n<L+\eps$, cioè $|b_n-L|<\eps$, per ogni $n>N$. Essendo $\eps>0$ arbitrario, $b_n\to L$. $\blacksquare$` }
+      { cue: 'Tradurre le tre ipotesi', body: r`$\exists N_1:\ \forall n>N_1,\ L-\eps\lt a_n\lt L+\eps$;<br>$\exists N_2:\ \forall n>N_2,\ L-\eps\lt c_n\lt L+\eps$;<br>$\exists N_3:\ \forall n>N_3,\ a_n\le b_n\le c_n$.` },
+      { cue: 'Come si combinano?', body: r`Posto $N:=\max\{N_1,N_2,N_3\}$, per ogni $n>N$ valgono tutte e tre contemporaneamente, quindi $$L-\eps\lt a_n\le b_n\le c_n\lt L+\eps.$$` },
+      { cue: 'Conclusione', body: r`Dalla catena segue $L-\eps\lt b_n\lt L+\eps$, cioè $|b_n-L|<\eps$, per ogni $n>N$. Essendo $\eps>0$ arbitrario, $b_n\to L$. $\blacksquare$` }
     ],
     note: r`Osservazioni chiave: (i) <strong>non</strong> si suppone che $(b_n)$ ammetta limite — è proprio la tesi; (ii) l'ipotesi «definitivamente» basta, il comportamento iniziale è irrilevante; (iii) i due limiti devono essere <em>lo stesso</em> $L$ finito. Applicazione tipica: $\left|\frac{\sin n}{n}\right|\le\frac1n\to0$.`
   },
@@ -194,10 +194,10 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
     idea: r`Per assurdo: se $L>M$, gli intorni di raggio $\frac{L-M}{2}$ sono disgiunti e "nell'ordine sbagliato".`,
     steps: [
       { cue: 'Impostazione per assurdo', body: r`Supponiamo $L>M$ e poniamo $\eps=\dfrac{L-M}{2}>0$.` },
-      { cue: 'Le due code', body: r`Definitivamente $a_n>L-\eps=\dfrac{L+M}{2}$ e $b_n<M+\eps=\dfrac{L+M}{2}$.` },
-      { cue: 'Assurdo', body: r`Dunque definitivamente $b_n<\dfrac{L+M}{2}<a_n$, cioè $b_n<a_n$, contro l'ipotesi $a_n\le b_n$. Quindi $L\le M$. $\blacksquare$` }
+      { cue: 'Le due code', body: r`Definitivamente $a_n>L-\eps=\dfrac{L+M}{2}$ e $b_n\lt M+\eps=\dfrac{L+M}{2}$.` },
+      { cue: 'Assurdo', body: r`Dunque definitivamente $b_n<\dfrac{L+M}{2}\lt a_n$, cioè $b_n\lt a_n$, contro l'ipotesi $a_n\le b_n$. Quindi $L\le M$. $\blacksquare$` }
     ],
-    note: r`Anche qui la disuguaglianza <strong>stretta non si conserva</strong>: da $a_n<b_n$ segue solo $L\le M$. Controesempio: $a_n=0<\frac1n=b_n$, ma entrambi i limiti valgono $0$.`
+    note: r`Anche qui la disuguaglianza <strong>stretta non si conserva</strong>: da $a_n\lt b_n$ segue solo $L\le M$. Controesempio: $a_n=0<\frac1n=b_n$, ma entrambi i limiti valgono $0$.`
   },
   {
     id: 'T09', n: 9, sez: 2, mark: '*', q: '1.47',
@@ -208,7 +208,7 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
       { cue: 'Caso crescente e limitata superiormente: chi è il candidato limite?', body: r`L'insieme $E=\{a_n:n\in\N\}$ è non vuoto e limitato superiormente; per la <strong>proprietà di completezza</strong> di $\R$ esiste finito $$L:=\sup E.$$ Dimostriamo che $a_n\to L$.` },
       { cue: 'Usare la caratterizzazione del sup', body: r`Sia $\eps>0$. Per la seconda proprietà caratteristica del sup, $L-\eps$ non è un maggiorante di $E$: dunque $$\exists\,N\in\N\ \text{tale che}\ a_N>L-\eps.$$` },
       { cue: 'Dove entra la monotonia?', body: r`Poiché $(a_n)$ è crescente, per ogni $n>N$ si ha $a_n\ge a_N>L-\eps$. La disuguaglianza trovata su <em>un solo</em> indice si propaga a tutta la coda.` },
-      { cue: r`Chiudere la stima dall'alto`, body: r`D'altra parte $L$ è un maggiorante di $E$, quindi $a_n\le L<L+\eps$ per ogni $n$. Mettendo insieme: $$\forall n>N:\quad L-\eps<a_n\le L<L+\eps\ \Longrightarrow\ |a_n-L|<\eps.$$ Per l'arbitrarietà di $\eps$, $a_n\to L$. $\blacksquare$` },
+      { cue: r`Chiudere la stima dall'alto`, body: r`D'altra parte $L$ è un maggiorante di $E$, quindi $a_n\le L\lt L+\eps$ per ogni $n$. Mettendo insieme: $$\forall n>N:\quad L-\eps\lt a_n\le L\lt L+\eps\ \Longrightarrow\ |a_n-L|<\eps.$$ Per l'arbitrarietà di $\eps$, $a_n\to L$. $\blacksquare$` },
       { cue: 'Caso crescente e illimitata superiormente', body: r`Sia $M\in\R$ arbitrario. Poiché $E$ non è limitato superiormente, $M$ non è un maggiorante: $\exists N$ con $a_N>M$. Per monotonia $a_n\ge a_N>M$ per ogni $n>N$. Per l'arbitrarietà di $M$ segue $a_n\to+\infty$. $\blacksquare$` }
     ],
     note: r`È il teorema che rende «ben posta» la definizione del numero di Nepero: $\left(1+\frac1n\right)^n$ è crescente e limitata superiormente, dunque converge, e il suo limite si chiama $e$. Nota che il teorema garantisce l'<em>esistenza</em> del limite senza calcolarlo: è il prototipo dei risultati di esistenza basati sulla completezza.`
@@ -312,7 +312,7 @@ dove $x_n\ll y_n$ significa $\dfrac{x_n}{y_n}\to0$.`,
       { cue: 'Sciogliere in una doppia disuguaglianza', body: r`Poiché $b_n>0$, moltiplicando per $b_n$ si conserva il verso: $$\frac{\ell}{2}\,b_n\;<\;a_n\;<\;\frac{3\ell}{2}\,b_n\qquad\forall n>N.$$` },
       { cue: 'Prima direzione', body: r`Se $\sum b_n$ converge, converge anche $\sum\frac{3\ell}{2}b_n$ (linearità); dalla disuguaglianza di destra e dal <strong>criterio del confronto</strong> segue che $\sum a_n$ converge.` },
       { cue: 'Seconda direzione', body: r`Se $\sum b_n$ diverge, diverge anche $\sum\frac{\ell}{2}b_n$; dalla disuguaglianza di sinistra e dal criterio del confronto segue che $\sum a_n$ diverge. Quindi le due serie hanno lo stesso carattere. $\blacksquare$` },
-      { cue: r`Casi $\ell=0$ e $\ell=+\infty$`, body: r`Se $\ell=0$: con $\eps=1$ si ottiene $a_n<b_n$ definitivamente, e si conclude col confronto.<br>Se $\ell=+\infty$: definitivamente $\frac{a_n}{b_n}>1$, cioè $a_n>b_n$, e di nuovo si conclude col confronto.` },
+      { cue: r`Casi $\ell=0$ e $\ell=+\infty$`, body: r`Se $\ell=0$: con $\eps=1$ si ottiene $a_n\lt b_n$ definitivamente, e si conclude col confronto.<br>Se $\ell=+\infty$: definitivamente $\frac{a_n}{b_n}>1$, cioè $a_n>b_n$, e di nuovo si conclude col confronto.` },
       { cue: 'Forma operativa con la serie armonica generalizzata', body: r`Se $a_n\sim\dfrac{c}{n^\alpha}$ con $c>0$ (cioè $\ell=c$ scegliendo $b_n=n^{-\alpha}$), allora $$\sum a_n\ \text{converge}\iff\alpha>1.$$ È il modo in cui il criterio si usa il 90% delle volte.` }
     ],
     note: r`Attenzione: se $\ell=0$ e $\sum b_n$ <em>diverge</em>, non si può concludere nulla. Stesso discorso se $\ell=+\infty$ e $\sum b_n$ converge. Le implicazioni «mancanti» sono false: cercale nel test a risposta multipla.`
@@ -324,9 +324,9 @@ dove $x_n\ll y_n$ significa $\dfrac{x_n}{y_n}\to0$.`,
 Se $L<1$ la serie $\sum a_n$ converge; se $L>1$ (anche $L=+\infty$) la serie diverge; se $L=1$ il criterio non decide.`,
     idea: r`Se $L<1$, la successione è definitivamente dominata da una geometrica di ragione $q\in(L,1)$; si conclude col confronto.`,
     steps: [
-      { cue: 'Caso $L<1$: come si sceglie la ragione di confronto?', body: r`Poiché $L<1$, esiste $q$ con $L<q<1$. Posto $\eps=q-L>0$, per definizione di limite $\exists N$ tale che $$\forall n\ge N:\quad \frac{a_{n+1}}{a_n}<L+\eps=q.$$` },
-      { cue: 'Iterare la disuguaglianza', body: r`Da $a_{n+1}<q\,a_n$ per $n\ge N$, per induzione si ottiene $$a_{N+k}\;<\;q^{\,k}a_N\qquad\forall k\ge0.$$` },
-      { cue: 'Confrontare con la geometrica', body: r`La serie $\displaystyle\sum_{k\ge0}q^{\,k}a_N=a_N\sum_{k\ge0}q^k=\frac{a_N}{1-q}$ converge, perché $0<q<1$. Per il criterio del confronto, $\displaystyle\sum_{k\ge0}a_{N+k}$ converge; aggiungendo i primi $N$ termini (in numero finito) si conclude che $\sum a_n$ converge. $\blacksquare$` },
+      { cue: 'Caso $L<1$: come si sceglie la ragione di confronto?', body: r`Poiché $L<1$, esiste $q$ con $L\lt q<1$. Posto $\eps=q-L>0$, per definizione di limite $\exists N$ tale che $$\forall n\ge N:\quad \frac{a_{n+1}}{a_n}\lt L+\eps=q.$$` },
+      { cue: 'Iterare la disuguaglianza', body: r`Da $a_{n+1}\lt q\,a_n$ per $n\ge N$, per induzione si ottiene $$a_{N+k}\;<\;q^{\,k}a_N\qquad\forall k\ge0.$$` },
+      { cue: 'Confrontare con la geometrica', body: r`La serie $\displaystyle\sum_{k\ge0}q^{\,k}a_N=a_N\sum_{k\ge0}q^k=\frac{a_N}{1-q}$ converge, perché $0\lt q<1$. Per il criterio del confronto, $\displaystyle\sum_{k\ge0}a_{N+k}$ converge; aggiungendo i primi $N$ termini (in numero finito) si conclude che $\sum a_n$ converge. $\blacksquare$` },
       { cue: 'Caso $L>1$', body: r`Definitivamente $\dfrac{a_{n+1}}{a_n}>1$, cioè $a_{n+1}>a_n>0$: la successione $(a_n)$ è definitivamente crescente e positiva, dunque <strong>non tende a $0$</strong>. Per la condizione necessaria la serie non converge; essendo a termini positivi, diverge a $+\infty$. $\blacksquare$` },
       { cue: 'Caso $L=1$: perché non decide?', body: r`Perché esistono entrambi i comportamenti con $L=1$: $$\sum\frac1n\ \text{diverge},\qquad \sum\frac1{n^2}\ \text{converge},$$ e in entrambi i casi $\frac{a_{n+1}}{a_n}\to1$. I due controesempi vanno citati.` }
     ],

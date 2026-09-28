@@ -71,7 +71,7 @@ Infatti $-1$ è un minorante (tutti gli elementi dispari sono $>-1$, tutti i par
 { id: 'E1.6', sez: 1, tema: 'Valore assoluto', d: 2,
   t: r`Risolvere la disequazione $$|2x-3|<|x+1|.$$`,
   hints: [ r`Entrambi i membri sono $\ge0$: puoi elevare al quadrato conservando l'equivalenza.`,
-           r`$|a|<|b|\iff a^2<b^2\iff a^2-b^2<0$: fattorizza come differenza di quadrati.`,
+           r`$|a|<|b|\iff a^2\lt b^2\iff a^2-b^2<0$: fattorizza come differenza di quadrati.`,
            r`$(2x-3)^2-(x+1)^2=\bigl[(2x-3)-(x+1)\bigr]\bigl[(2x-3)+(x+1)\bigr]$.` ],
   sol: r`Poiché entrambi i membri sono non negativi, la disequazione equivale a $(2x-3)^{2}<(x+1)^{2}$, cioè $(2x-3)^{2}-(x+1)^{2}<0$. Fattorizzando la differenza di quadrati:
 $$\bigl[(2x-3)-(x+1)\bigr]\cdot\bigl[(2x-3)+(x+1)\bigr]<0\iff (x-4)(3x-2)<0.$$
@@ -179,7 +179,7 @@ Intersecando: $A=(2,6]$.
   sol: r`Condizione di esistenza: $x\ge-3$. Si distinguono due casi.<br><br>
 <strong>Caso $x+1<0$</strong>, cioè $-3\le x<-1$: il primo membro è $\ge0$ e il secondo $<0$, quindi la disuguaglianza è <strong>sempre vera</strong>. Contributo: $[-3,-1)$.<br><br>
 <strong>Caso $x+1\ge0$</strong>, cioè $x\ge-1$: entrambi i membri sono $\ge0$ e si può elevare al quadrato:
-$$x+3>(x+1)^2\iff x^2+x-2<0\iff(x+2)(x-1)<0\iff-2<x<1.$$
+$$x+3>(x+1)^2\iff x^2+x-2<0\iff(x+2)(x-1)<0\iff-2\lt x<1.$$
 Con $x\ge-1$: contributo $[-1,1)$.<br><br>
 <strong>Unione:</strong> $A=[-3,-1)\cup[-1,1)=[-3,1)$.
 <ul><li>$\min A=\inf A=-3$ ($-3\in A$: $\sqrt0=0>-2$ ✓);</li>
@@ -194,7 +194,7 @@ Con $x\ge-1$: contributo $[-1,1)$.<br><br>
   sol: r`Forma indeterminata $\frac\infty\infty$. Raccogliamo $n^{2}$:
 $$\frac{3n^{2}+2n-1}{n^{2}-5n+4}=\frac{n^{2}\left(3+\frac2n-\frac1{n^{2}}\right)}{n^{2}\left(1-\frac5n+\frac4{n^{2}}\right)}=\frac{3+\frac2n-\frac1{n^{2}}}{1-\frac5n+\frac4{n^{2}}}\longrightarrow\frac{3+0-0}{1-0+0}=3.$$
 $$\boxed{\,\lim=3\,}$$
-<em>Regola generale:</em> per un quoziente di polinomi di gradi $p$ e $q$, il limite è $0$ se $p<q$, $\pm\infty$ se $p>q$, e il rapporto dei coefficienti direttivi se $p=q$. $\blacksquare$` },
+<em>Regola generale:</em> per un quoziente di polinomi di gradi $p$ e $q$, il limite è $0$ se $p\lt q$, $\pm\infty$ se $p>q$, e il rapporto dei coefficienti direttivi se $p=q$. $\blacksquare$` },
 
 { id: 'E2.2', sez: 2, tema: 'Limiti di successioni', d: 2,
   t: r`Calcolare $\displaystyle\lim_{n\to\infty}\left(\sqrt{n^{2}+n}-n\right)$.`,
@@ -433,7 +433,7 @@ $$\frac{a_{n+1}}{a_n}=\frac{x^{\,n+1}}{n+1}\cdot\frac{n}{x^{n}}=x\cdot\frac{n}{n
 <ul><li>Se $x<1$: il limite è $<1$, la serie <strong>converge</strong>.</li>
 <li>Se $x>1$: il limite è $>1$, la serie <strong>diverge</strong>.</li>
 <li>Se $x=1$: il criterio non decide. Ma la serie diventa $\sum\frac1n$, la serie <strong>armonica</strong>, che <strong>diverge</strong>.</li></ul>
-$$\boxed{\,\text{converge}\iff 0<x<1\,}$$
+$$\boxed{\,\text{converge}\iff 0\lt x<1\,}$$
 <em>Completamento (fuori dal parametro richiesto).</em> Per $x=-1$ si ottiene $\sum\frac{(-1)^{n}}{n}$, che converge per Leibniz ma non assolutamente; per $x<-1$ il termine generale non tende a $0$ e la serie è indeterminata. L'insieme di convergenza è dunque $[-1,1)$. $\blacksquare$` }
 
   ];

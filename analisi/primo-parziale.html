@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260928f">
 <style>
   .oggi-hero { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin-bottom:22px; }
   .serie-fiamma { font-size:30px; line-height:1; }
@@ -70,7 +70,7 @@
 
     <!-- ============================================================ -->
     <h2 id="sessione">La sessione di oggi</h2>
-    <div id="sessione"></div>
+    <div id="sessioneBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="impostazioni">Impostazioni</h2>
@@ -96,7 +96,7 @@
 
     <h3 id="difficili">Le tue schede difficili</h3>
     <p class="muted small">Quelle su cui hai sbagliato di più. Il motore già le ripropone più spesso, ma vale la pena guardarle: spesso raccontano un buco preciso.</p>
-    <div id="difficili"></div>
+    <div id="difficiliBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="promemoria">Promemoria sul telefono</h2>
@@ -188,15 +188,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../assets/js/materie.js?v=20260928b"></script>
-<script src="data/topics.js?v=20260928b"></script>
-<script src="data/definizioni.js?v=20260928b"></script>
-<script src="data/quesiti.js?v=20260928b"></script>
-<script src="data/teoremi.js?v=20260928b"></script>
-<script src="data/quiz.js?v=20260928b"></script>
-<script src="../assets/js/plot.js?v=20260928b"></script>
-<script src="../assets/js/app.js?v=20260928b"></script>
-<script src="../assets/js/srs.js?v=20260928b"></script>
+<script src="../assets/js/materie.js?v=20260928f"></script>
+<script src="data/topics.js?v=20260928f"></script>
+<script src="data/definizioni.js?v=20260928f"></script>
+<script src="data/quesiti.js?v=20260928f"></script>
+<script src="data/teoremi.js?v=20260928f"></script>
+<script src="data/quiz.js?v=20260928f"></script>
+<script src="../assets/js/plot.js?v=20260928f"></script>
+<script src="../assets/js/app.js?v=20260928f"></script>
+<script src="../assets/js/srs.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
 
@@ -257,7 +257,7 @@ document.addEventListener('am:ready', function () {
 
   var selC = document.getElementById('cutoff');
   selC.innerHTML = TOPICS.map(function (t, i) {
-    return '<option value="' + t.id + '">' + (i + 1) + '. [Sez. ' + t.sez + '] ' + t.t.replace(/\$[^$]*\$/g, '…') + '</option>';
+    return '<option value="' + t.id + '">' + (i + 1) + '. [Sez. ' + t.sez + '] ' + AM.testoPiano(t.t.replace(/<[^>]*>/g, '')).replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</option>';
   }).join('');
   selC.value = cfg.cutoff;
   document.getElementById('dataP').value = cfg.data;
@@ -290,7 +290,7 @@ document.addEventListener('am:ready', function () {
   }
 
   function disegnaSessione() {
-    var el = document.getElementById('sessione');
+    var el = document.getElementById('sessioneBox');
 
     if (!coda.length) {
       var st = AM.SRS.statistiche(poolAttivo());
@@ -444,7 +444,7 @@ document.addEventListener('am:ready', function () {
       '<p class="small muted mb0" style="margin-top:6px">Consolidate (intervallo ≥ 14 giorni): <strong>' + st.consolidate + '</strong> · in apprendimento: <strong>' + st.apprendimento + '</strong></p></div>';
 
     var dur = AM.SRS.difficili(pool, 6);
-    document.getElementById('difficili').innerHTML = dur.length
+    document.getElementById('difficiliBox').innerHTML = dur.length
       ? '<div class="tablewrap"><table><thead><tr><th>Scheda</th><th>Tipo</th><th class="c">errori</th><th class="c">facilità</th></tr></thead><tbody>' +
         dur.map(function (x) {
           var s = AM.SRS.stato(x.id);

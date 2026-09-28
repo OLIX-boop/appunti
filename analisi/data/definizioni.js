@@ -75,7 +75,7 @@ Sono i vertici di un poligono regolare di $n$ lati.` },
   d: r`Con $f(A)\subseteq C$: $\ (g\circ f)(x):=g(f(x))$ — prima $f$, poi $g$.<br><br><strong>Associativa</strong> ma <strong>non commutativa</strong>: $f(x)=x^2$, $g(x)=x+1$ danno $g\circ f=x^2+1\ne(x+1)^2=f\circ g$.` },
 
 { id: 'D21', sez: 2, topic: 's2-05', t: r`Funzione monotòna`,
-  d: r`Per $x_1<x_2$ in $A$: <strong>crescente</strong> se $f(x_1)\le f(x_2)$, <strong>strettamente crescente</strong> se $<$; analogamente decrescente. <strong>Monotòna</strong> = crescente oppure decrescente.<br><br>Equivale al segno del rapporto incrementale $R=\frac{f(x_2)-f(x_1)}{x_2-x_1}$.` },
+  d: r`Per $x_1\lt x_2$ in $A$: <strong>crescente</strong> se $f(x_1)\le f(x_2)$, <strong>strettamente crescente</strong> se $<$; analogamente decrescente. <strong>Monotòna</strong> = crescente oppure decrescente.<br><br>Equivale al segno del rapporto incrementale $R=\frac{f(x_2)-f(x_1)}{x_2-x_1}$.` },
 
 { id: 'D22', sez: 2, topic: 's2-06', t: r`Funzione pari e dispari`,
   d: r`Su dominio <strong>simmetrico</strong>: <strong>pari</strong> se $f(-x)=f(x)$ (grafico simmetrico rispetto all'asse $y$); <strong>dispari</strong> se $f(-x)=-f(x)$ (simmetrico rispetto all'origine).<br><br>Se dispari e definita in $0$: $f(0)=0$.` },
@@ -98,7 +98,7 @@ Comunque si fissi una striscia attorno a $L$, tutti i termini da un certo indice
 
 { id: 'D28', sez: 2, topic: 's2-12', t: r`Limite infinito`,
   d: r`$$\lim_n a_n=+\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n>M$$
-$$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n<M$$` },
+$$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M$$` },
 
 { id: 'D29', sez: 2, topic: 's2-13', t: r`Convergente, divergente, regolare, irregolare`,
   d: r`<strong>Convergente:</strong> limite finito. <strong>Divergente:</strong> limite $\pm\infty$. <strong>Regolare:</strong> ammette limite (finito o infinito). <strong>Irregolare:</strong> non ammette limite.<br><br>$(-1)^n$ è irregolare; lo si prova con due sottosuccessioni di limiti diversi.` },

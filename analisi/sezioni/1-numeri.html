@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928f">
 </head>
 <body>
 
@@ -85,7 +85,7 @@
       </div>
       <div class="pbar" data-progress-for="s1"><span style="width:0"></span></div>
     </div>
-    <div id="checklist"></div>
+    <div id="checklistBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="insiemi">1 · Gli insiemi numerici</h2>
@@ -515,7 +515,7 @@
       <table>
         <thead><tr><th>Oggetto</th><th>Cosa sai già fare</th><th>L'insieme $E$</th></tr></thead>
         <tbody>
-          <tr><td>$\sqrt[n]{y}$&nbsp; ($y\ge0$)</td><td>elevare a potenza intera</td><td>$\{t\ge0\ :\ t^{n}<y\}$</td></tr>
+          <tr><td>$\sqrt[n]{y}$&nbsp; ($y\ge0$)</td><td>elevare a potenza intera</td><td>$\{t\ge0\ :\ t^{n}\lt y\}$</td></tr>
           <tr><td>$a^{x}$&nbsp; ($a>1$, $x\in\R$)</td><td>$a^{q}$ per $q$ <strong>razionale</strong>, via le radici: $a^{m/n}=\sqrt[n]{a^{m}}$</td><td>$\{a^{q}\ :\ q\in\Q,\ q\le x\}$</td></tr>
           <tr><td>$\log_a y$&nbsp; ($a>1$, $y>0$)</td><td>$a^{q}$ per $q$ razionale</td><td>$\{q\in\Q\ :\ a^{q}\le y\}$</td></tr>
         </tbody>
@@ -531,7 +531,7 @@
         $$2^{3},\quad 2^{3{,}1}=2^{31/10}=\sqrt[10]{2^{31}},\quad 2^{3{,}14}=\sqrt[100]{2^{314}},\quad 2^{3{,}141},\ \dots$$
         <p>— tutte potenze a esponente <strong>razionale</strong>, quindi radici, quindi già definite. Questi numeri crescono e restano limitati superiormente (per esempio da $2^{4}=16$). Allora si pone</p>
         $$2^{\pi}:=\sup\{2^{q}\ :\ q\in\Q,\ q\le\pi\}\approx 8{,}8249778\dots$$
-        <p class="mb0">Con $0<a<1$ la funzione $q\mapsto a^q$ è <em>decrescente</em>, quindi si usa l'estremo <strong>inferiore</strong> (o si passa a $1/a$). È l'unico dettaglio che cambia.</p>
+        <p class="mb0">Con $0\lt a<1$ la funzione $q\mapsto a^q$ è <em>decrescente</em>, quindi si usa l'estremo <strong>inferiore</strong> (o si passa a $1/a$). È l'unico dettaglio che cambia.</p>
       </div>
     </details>
 
@@ -625,7 +625,7 @@
 
     <div class="box warnb">
       <div class="box-title">⚠ $\C$ non è ordinato</div>
-      <p class="mb0">Non esiste su $\C$ un ordinamento compatibile con le operazioni: scritture come $z>0$ o $z_1<z_2$ sono prive di senso (a meno che i numeri siano reali). Si può confrontare solo il <em>modulo</em>, che è un numero reale.</p>
+      <p class="mb0">Non esiste su $\C$ un ordinamento compatibile con le operazioni: scritture come $z>0$ o $z_1\lt z_2$ sono prive di senso (a meno che i numeri siano reali). Si può confrontare solo il <em>modulo</em>, che è un numero reale.</p>
     </div>
 
     <h3 id="argand">Il piano di Argand-Gauss</h3>
@@ -797,14 +797,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928b"></script>
-<script src="../data/topics.js?v=20260928b"></script>
-<script src="../data/quiz.js?v=20260928b"></script>
-<script src="../../assets/js/plot.js?v=20260928b"></script>
-<script src="../../assets/js/app.js?v=20260928b"></script>
+<script src="../../assets/js/materie.js?v=20260928f"></script>
+<script src="../data/topics.js?v=20260928f"></script>
+<script src="../data/quiz.js?v=20260928f"></script>
+<script src="../../assets/js/plot.js?v=20260928f"></script>
+<script src="../../assets/js/app.js?v=20260928f"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklist', 1);
+  AM.renderChecklist('#checklistBox', 1);
   AM.mountQuiz('#quizBox', AM.quizPerSezione(1), { statKey: 'sez1' });
 
   /* ---------- Domino dell'induzione ---------- */
