@@ -67,11 +67,11 @@
         { id: 'g2-11', t: r`Discussione di un sistema al variare di un parametro`, q: 'pp. 94-105' },
         { id: 'g2-12', t: r`Matrice inversa: definizione e unicità`, mark: '*', q: 'cap. 3 §1-5' },
         { id: 'g2-13', t: r`Condizioni di invertibilità; $(AB)^{-1}=B^{-1}A^{-1}$`, mark: '*', q: 'cap. 3 §1-5' },
-        { id: 'g2-14', t: r`Calcolo dell'inversa con il MEG: $[A\,|\,I]\longrightarrow[I\,|\,A^{-1}]$`, q: 'cap. 3 §1-5' },
+        { id: 'g2-14', t: r`Calcolo dell'inversa con il MEG-J: $[A\,|\,I]\longrightarrow[I\,|\,A^{-1}]$`, q: 'Lez. 2 bis' },
         { id: 'g2-15', t: r`Determinante $2\times2$ e $3\times3$; sviluppo di Laplace`, q: 'cap. 3 §1-5' },
         { id: 'g2-16', t: r`Teorema di Cramer`, mark: '*', q: 'cap. 3 §1-5' },
-        { id: 'g2-17', t: r`Eliminazione di Gauss-Jordan (MEG-J); forma a scala <em>ridotta</em>`, q: 'cap. 3 §6' },
-        { id: 'g2-18', t: r`Equazioni con matrici incognite: $AX=B$, $XA=B$, casi misti`, q: 'Lez. 2 tres' }
+        { id: 'g2-17', t: r`Eliminazione di Gauss-Jordan (MEG-J); matrice <em>totalmente ridotta</em> (unica)`, q: 'Lez. 2 bis' },
+        { id: 'g2-18', t: r`Equazioni con matrici incognite: $AX=B$, $YA=B$, $A$ singolare, trasposizione`, q: 'Lez. 2 tres' }
       ]
     },
     {

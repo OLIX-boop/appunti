@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260927b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20260928">
 </head>
 <body>
 
@@ -51,8 +51,16 @@
     <a href="#omogenei" class="sub">Sistemi omogenei</a>
     <a href="#inversa">4 · Matrice inversa</a>
     <a href="#condizioni" class="sub">Condizioni di invertibilità</a>
-    <a href="#calcolo" class="sub">Calcolo con il MEG</a>
+    <a href="#calcolo" class="sub">Calcolo dell'inversa</a>
     <a href="#cramer">5 · Determinante e Cramer</a>
+    <a href="#megj">6 · Gauss-Jordan (MEG-J)</a>
+    <a href="#totridotta" class="sub">Totalmente ridotta</a>
+    <a href="#labj" class="sub">Laboratorio MEG-J</a>
+    <a href="#inversa-megj" class="sub">Inversa con il MEG-J</a>
+    <a href="#eqmatrici">7 · Equazioni di matrici</a>
+    <a href="#eq-invertibile" class="sub">$A$ invertibile</a>
+    <a href="#eq-singolare" class="sub">$A$ singolare</a>
+    <a href="#eq-trasposta" class="sub">Incognita a sinistra</a>
     <a href="#test">Mettiti alla prova</a>
     <a href="#errori">Errori tipici</a>
   </aside>
@@ -269,11 +277,11 @@
       </ul>
     </div>
 
-    <h3 id="calcolo">Calcolare l'inversa con il MEG</h3>
+    <h3 id="calcolo">Calcolare l'inversa</h3>
     <div class="box">
-      <p class="mb0">Si affianca l'identità e si riduce fino a ottenere $I_n$ a sinistra:
-      $$[A\,|\,I_n]\ \xrightarrow{\ \text{MEG + risalita}\ }\ [I_n\,|\,A^{-1}].$$
-      Se durante la riduzione compare una riga nulla nella parte sinistra, allora $\rg A<n$ e <strong>l'inversa non esiste</strong>: il metodo diagnostica e calcola allo stesso tempo.</p>
+      <p class="mb0">Si affianca l'identità e si riduce con il <strong>MEG-J</strong> fino a ottenere $I_n$ a sinistra:
+      $$[A\,|\,I_n]\ \xrightarrow{\ \text{MEG-J}\ }\ [I_n\,|\,A^{-1}].$$
+      Se già dopo il MEG compare una riga nulla nella parte sinistra, allora $\rg A<n$ e <strong>l'inversa non esiste</strong>: il metodo diagnostica e calcola allo stesso tempo. Il procedimento completo, con l'esempio degli appunti, è nel <a href="#inversa-megj">§6</a>.</p>
     </div>
 
     <!-- ============================================================ -->
@@ -300,6 +308,184 @@
     </div>
 
     <!-- ============================================================ -->
+    <h2 id="megj">6 · Eliminazione di Gauss-Jordan (MEG-J)</h2>
+    <p class="small muted">Dagli appunti: <em>Fatica 2 bis</em>, addendum alla Lezione 2 (libro: cap. 3, §6).</p>
+
+    <h3 id="totridotta">Molte matrici a scala, una sola totalmente ridotta</h3>
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p class="mb0">Due matrici si dicono <strong>equivalenti per righe</strong> se una si ottiene dall'altra con una successione finita di operazioni elementari sulle righe: scambio di due righe, somma a una riga di un multiplo di un'altra, moltiplicazione di una riga per uno scalare non nullo.</p>
+    </div>
+
+    <p>Il MEG non dà un risultato unico: dipende dalle scelte fatte. Nell'Esempio 1 del prof, lo stesso sistema
+    $$\begin{cases}2x_1-2x_2+x_3+x_4=2\\ x_1-x_2+2x_4=2\\ x_3-3x_4=-2\end{cases}$$
+    ridotto così com'è dà una matrice a scala $U$, mentre scambiando prima le due righe iniziali ne dà un'altra, $U_0$:</p>
+    $$U=\left[\begin{array}{cccc|c}2&-2&1&1&2\\0&0&-\frac12&\frac32&1\\0&0&0&0&0\end{array}\right]\qquad
+      U_0=\left[\begin{array}{cccc|c}1&-1&0&2&2\\0&0&1&-3&-2\\0&0&0&0&0\end{array}\right]$$
+    <p>Sono entrambe a scala ed entrambe equivalenti per righe alla matrice di partenza. Le soluzioni sono le stesse, $x_1=2+t-2s$, $x_3=-2+3s$ con $x_2=t$, $x_4=s$, ma da $U_0$ si leggono <strong>subito</strong>, mentre da $U$ bisogna ancora fare dei conti.</p>
+
+    <div class="box prop">
+      <div class="box-title">Proposizione</div>
+      <p class="mb0">Sia $A$ una matrice qualsiasi. Fra le matrici a scala equivalenti per righe ad $A$ ce n'è <strong>una sola</strong>, $U_0$, in cui ogni riga non nulla ha il primo elemento non nullo
+      (i) uguale a $1$, e (ii) con tutti gli elementi <strong>sopra</strong> di lui, nella stessa colonna, nulli.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p class="mb0">Quella $U_0$ si chiama <strong>(matrice) totalmente ridotta</strong> di $A$. L'algoritmo che la trova è l'<strong>eliminazione di Gauss-Jordan</strong>, <strong>MEG-J</strong>.</p>
+    </div>
+    <p>Nell'esempio, $U$ è <em>una delle</em> ridotte a scala della matrice completa; $U_0$ è <em>l'unica</em> totalmente ridotta. Non conta da dove parti: il MEG-J arriva sempre lì. Nel laboratorio qui sotto puoi controllarlo sugli esempi «Esempio 1» e «Esempio 1, righe scambiate».</p>
+
+    <h3 id="treparti">Le tre parti del MEG-J</h3>
+    <div class="box">
+      <ol class="mb0">
+        <li><strong>Parte 1 · MEG.</strong> La riduzione a scala che già conosci: zeri <em>sotto</em> i pivot.</li>
+        <li><strong>Parte 2 · Normalizzazione.</strong> Si divide ogni riga non nulla per il suo pivot, così tutti i pivot valgono $1$.</li>
+        <li><strong>Parte 3 · Seconda eliminazione.</strong> Si annullano gli elementi <em>sopra</em> i pivot, partendo dall'ultimo pivot e risalendo.</li>
+      </ol>
+    </div>
+    <div class="box tip">
+      <div class="box-title">↳ Cosa si guadagna</div>
+      <p class="mb0">Dalla totalmente ridotta ogni incognita dipendente compare in una sola equazione, insieme alle sole incognite libere. <strong>La sostituzione all'indietro non serve più</strong>: le soluzioni si leggono direttamente.</p>
+    </div>
+
+    <h3 id="labj">Laboratorio: il MEG-J passo per passo</h3>
+    <div class="widget">
+      <div class="widget-head"><span>MEG-J interattivo</span><span class="faint" style="text-transform:none;font-weight:400">aritmetica esatta · gli esempi sono quelli degli appunti</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="mjSel">esempio</label><select id="mjSel"></select></div>
+        </div>
+        <div class="btnrow" style="margin:0 0 10px">
+          <button class="btn sm" id="mjPrev">← indietro</button>
+          <button class="btn sm primary" id="mjNext">avanti →</button>
+          <button class="btn sm ghost" id="mjAll">vai alla fine</button>
+          <button class="btn sm ghost" id="mjReset">ricomincia</button>
+          <span class="small muted" style="align-self:center" id="mjPos"></span>
+        </div>
+        <div class="meg-op" id="mjOp"></div>
+        <div class="meg-spiega" id="mjSpiega"></div>
+        <div class="matrice-wrap" id="mjMat"></div>
+        <div class="readout" id="mjOut"></div>
+      </div>
+    </div>
+
+    <h3 id="inversa-megj">Calcolare l'inversa con il MEG-J</h3>
+    <div class="box prop">
+      <div class="box-title">Proposizione</div>
+      <p class="mb0">Una matrice quadrata $A$ è invertibile se e solo se la totalmente ridotta di $[A\,|\,I]$ è della forma $[I\,|\,B]$. In tal caso $A^{-1}=B$.</p>
+    </div>
+
+    <details class="reveal proof">
+      <summary>Esempio 2 degli appunti, a passi coperti</summary>
+      <div class="reveal-body">
+        <p>Stabilire se $A=\begin{bmatrix}1&2&-1\\1&3&0\\0&1&0\end{bmatrix}$ è invertibile e, se sì, trovare $A^{-1}$.</p>
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Parte 1 · MEG su $[A\,|\,I]$</div>
+            <div class="step-content">$$\left[\begin{array}{ccc|ccc}1&2&-1&1&0&0\\1&3&0&0&1&0\\0&1&0&0&0&1\end{array}\right]
+            \xrightarrow{R_2\to R_2-R_1}
+            \left[\begin{array}{ccc|ccc}1&2&-1&1&0&0\\0&1&1&-1&1&0\\0&1&0&0&0&1\end{array}\right]
+            \xrightarrow{R_3\to R_3-R_2}
+            \left[\begin{array}{ccc|ccc}1&2&-1&1&0&0\\0&1&1&-1&1&0\\0&0&-1&1&-1&1\end{array}\right]$$
+            Tre pivot nella parte sinistra: $\rg A=3$, quindi <strong>$A$ è già sicuramente invertibile</strong>. Il resto serve solo a trovare $A^{-1}$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Parte 2 · normalizzazione</div>
+            <div class="step-content">L'unico pivot diverso da $1$ è il $-1$ della terza riga:
+            $$\xrightarrow{R_3\to -R_3}\left[\begin{array}{ccc|ccc}1&2&-1&1&0&0\\0&1&1&-1&1&0\\0&0&1&-1&1&-1\end{array}\right]$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Parte 3 · zeri sopra il pivot della riga 3</div>
+            <div class="step-content">$$\xrightarrow[R_2\to R_2-R_3]{R_1\to R_1+R_3}\left[\begin{array}{ccc|ccc}1&2&0&0&1&-1\\0&1&0&0&0&1\\0&0&1&-1&1&-1\end{array}\right]$$
+            <span class="small muted">Negli appunti la seconda operazione è scritta «$R_2\to R_2-R_1$»: è un refuso, quella giusta è $R_2\to R_2-R_3$. Il risultato scritto dal prof è quello corretto.</span></div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Parte 3 · zeri sopra il pivot della riga 2</div>
+            <div class="step-content">$$\xrightarrow{R_1\to R_1-2R_2}\left[\begin{array}{ccc|ccc}1&0&0&0&1&-3\\0&1&0&0&0&1\\0&0&1&-1&1&-1\end{array}\right]=[\,I\,|\,A^{-1}\,]$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Controllo (l'esercizio che lascia il prof)</div>
+            <div class="step-content">$$AA^{-1}=\begin{bmatrix}1&2&-1\\1&3&0\\0&1&0\end{bmatrix}\begin{bmatrix}0&1&-3\\0&0&1\\-1&1&-1\end{bmatrix}=\begin{bmatrix}0+0+1&1+0-1&-3+2+1\\0&1&-3+3\\0&0&1\end{bmatrix}=I_3\ \checkmark$$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ Osservazione del prof (Esempio 3)</div>
+      <p class="mb0">Per decidere <em>se</em> una matrice quadrata è invertibile o singolare <strong>basta ridurla a scala</strong>. Con $A=\begin{bmatrix}1&0&0\\1&4&2\\0&2&1\end{bmatrix}$ il MEG dà una riga nulla nella parte sinistra: $\rg A=2<3$, quindi $A$ è <strong>singolare</strong> e ci si ferma lì. La riduzione completa serve solo quando $A$ è invertibile e si vuole trovare $A^{-1}$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="eqmatrici">7 · Equazioni con matrici incognite</h2>
+    <p class="small muted">Dagli appunti: <em>Fatica 2 tres</em>, secondo addendum alla Lezione 2.</p>
+
+    <div class="box def">
+      <div class="box-title">Notazione</div>
+      <p class="mb0">$\M_{\K}(m,n)$, con $\K\in\{\R,\C\}$, indica l'insieme delle matrici $m\times n$ con elementi nel campo $\K$.</p>
+    </div>
+
+    <h3 id="eq-tipo">Primo passo, sempre: il tipo dell'incognita</h3>
+    <p>In $\begin{bmatrix}1&2\\3&4\end{bmatrix}X=\begin{bmatrix}1&3&5\\2&4&6\end{bmatrix}$ il prodotto a sinistra è definito solo se $X$ ha $2$ righe, cioè $X$ è $2\times m$; allora anche il prodotto è $2\times m$, e confrontandolo con il lato destro $m=3$. Quindi risolvere l'equazione vuol dire trovare tutte le $X\in\M_{\K}(2,3)$ che la verificano.</p>
+
+    <h3 id="eq-colonne">Un'equazione di matrici è un gruppo di sistemi</h3>
+    <p>Chiamando $\vx,\vx',\vx''$ le colonne di $X$, cioè $X=[\,\vx\,|\,\vx'\,|\,\vx''\,]$, si ha
+    $$A\,[\,\vx\,|\,\vx'\,|\,\vx''\,]=[\,A\vx\,|\,A\vx'\,|\,A\vx''\,],$$
+    quindi $AX=B$ equivale a tre sistemi lineari <strong>con la stessa matrice $A$</strong>, uno per ogni colonna di $B$:
+    $$A\vx=\begin{bmatrix}1\\2\end{bmatrix},\qquad A\vx'=\begin{bmatrix}3\\4\end{bmatrix},\qquad A\vx''=\begin{bmatrix}5\\6\end{bmatrix}.$$
+    Siccome la matrice è la stessa, non serve risolverli uno alla volta: si riduce con il MEG-J la matrice affiancata $[A\,|\,B]$ e si risolvono <strong>tutti insieme</strong>.</p>
+
+    <h3 id="eq-invertibile">Se $A$ è invertibile: si moltiplica dal lato giusto</h3>
+    <div class="box teo">
+      <div class="box-title">Regola</div>
+      <p>Se $A$ è quadrata e invertibile (e i tipi sono compatibili), la soluzione esiste ed è <strong>unica</strong>:</p>
+      <ul class="mb0">
+        <li>$AX=B\ \Longrightarrow\ X=A^{-1}B$ &nbsp;(si moltiplica per $A^{-1}$ <strong>a sinistra</strong>);</li>
+        <li>$YA=B\ \Longrightarrow\ Y=BA^{-1}$ &nbsp;(si moltiplica per $A^{-1}$ <strong>a destra</strong>).</li>
+      </ul>
+    </div>
+    <details class="reveal proof"><summary>Perché $X=A^{-1}B$: i passaggi</summary><div class="reveal-body">
+      <p class="mb0">Moltiplicando a sinistra entrambi i lati di $AX=B$ per $A^{-1}$ e usando l'associatività:
+      $$A^{-1}(AX)=(A^{-1}A)X=I\,X=X,\qquad\text{quindi}\qquad X=A^{-1}B.$$
+      <span class="small muted">Negli appunti, a pagina 6, c'è scritto $(AA^{-1})X$: il risultato è lo stesso, ma il prodotto che compare davvero è $A^{-1}A$, perché $A^{-1}$ sta a sinistra di $A$.</span></p>
+    </div></details>
+    <p>Negli appunti: con $A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$ si ha $\det A=-2\ne0$, $A^{-1}=-\frac12\begin{bmatrix}4&-2\\-3&1\end{bmatrix}$, e
+    $$X=A^{-1}\begin{bmatrix}1&3&5\\2&4&6\end{bmatrix}=\begin{bmatrix}0&-2&-4\\\frac12&\frac52&\frac92\end{bmatrix},\qquad
+      Y=\begin{bmatrix}1&4\\2&5\\3&6\end{bmatrix}A^{-1}=\begin{bmatrix}4&-1\\\frac72&-\frac12\\3&0\end{bmatrix}.$$</p>
+
+    <h3 id="eq-singolare">Se $A$ non è invertibile: MEG-J su $[A\,|\,B]$</h3>
+    <p>Esempio 2 degli appunti: $A=\begin{bmatrix}1&0&4\\2&0&5\\3&0&6\end{bmatrix}$, $B=\begin{bmatrix}4&3\\5&3\\6&3\end{bmatrix}$. Qui $A$ è singolare: ogni vettore $(0,t,0)$ risolve $A\vx=\vzero$, quindi l'omogeneo ha infinite soluzioni. Il MEG-J porta $[A\,|\,B]$ alla totalmente ridotta
+    $$\left[\begin{array}{ccc|cc}1&0&0&0&-1\\0&0&1&1&1\\0&0&0&0&0\end{array}\right]$$
+    da cui, colonna per colonna ($x_2$ e $x_2'$ libere):
+    $$X=\begin{bmatrix}0&-1\\t&t'\\1&1\end{bmatrix},\qquad t,t'\in\K .$$</p>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ Con $A$ singolare la soluzione non è mai unica</div>
+      <p class="mb0">Ogni colonna è un sistema con la stessa $A$ e $\rg A<n$, quindi ognuna ha <strong>nessuna</strong> soluzione oppure <strong>infinite</strong>. Basta <strong>una sola</strong> colonna incompatibile, cioè uno 0-pivot nella parte destra, perché l'equazione di matrici non abbia soluzioni.</p>
+    </div>
+
+    <h3 id="eq-trasposta">Incognita a sinistra e $A$ non invertibile: si traspone</h3>
+    <p>Esempio 3 degli appunti: data $A=\begin{bmatrix}1&4\\2&5\\3&6\end{bmatrix}$ ($3\times2$), trovare $C$ con $CA=I$. Perché $CA$ sia definita e quadrata serve $C\in\M_{\K}(2,3)$, e allora $CA$ è $2\times2$: si cerca $Y\in\M_{\K}(2,3)$ con
+    $$YA=I_2 .\tag{4}$$
+    Il metodo dei sistemi colonna per colonna funziona quando l'incognita sta <em>a destra</em>. Per portarla lì si traspone: da $I_2^T=I_2$ e $(YA)^T=A^TY^T$,
+    $$YA=I_2\iff A^TX=I_2,\qquad X:=Y^T\in\M_{\K}(3,2).$$
+    Il MEG-J su $[A^T\,|\,I_2]$ dà $\left[\begin{array}{ccc|cc}1&0&-1&-\frac53&\frac23\\0&1&2&\frac43&-\frac13\end{array}\right]$, con $x_3$ libera, e quindi <strong>infinite</strong> soluzioni:
+    $$C=X^T=\begin{bmatrix}t-\frac53&\frac43-2t&t\\ t'+\frac23&-\frac13-2t'&t'\end{bmatrix},\qquad t,t'\in\K .$$</p>
+
+    <details class="reveal"><summary>E la parte (a) dell'Esempio 3, cioè $AB=I$? (negli appunti non è svolta)</summary><div class="reveal-body">
+      <p>Servirebbe $B\in\M_{\K}(2,3)$ con $AB=I_3$. <strong>Non esiste.</strong> Il sistema omogeneo $B\vx=\vzero$ ha $2$ equazioni in $3$ incognite, quindi ha una soluzione $\vx\ne\vzero$. Ma allora
+      $$\vx=I_3\vx=(AB)\vx=A(B\vx)=A\vzero=\vzero,$$
+      assurdo.</p>
+      <p class="mb0">Quindi $A$ ha infinite «inverse sinistre» e nessuna «inversa destra». Per le matrici non quadrate le due cose si separano, e per questo la definizione di inversa è data solo per le quadrate. <span class="small muted">(Questo ragionamento l'ho aggiunto io: negli appunti la parte (a) resta non svolta.)</span></p>
+    </div></details>
+
+    <div class="box trap">
+      <div class="box-title">✗ Errori tipici con le equazioni di matrici</div>
+      <ul class="mb0">
+        <li><strong>Moltiplicare dal lato sbagliato.</strong> $AX=B$ dà $A^{-1}B$, non $BA^{-1}$: il prodotto non è commutativo.</li>
+        <li><strong>Dimenticare di stabilire il tipo di $X$</strong> prima di iniziare.</li>
+        <li><strong>Scrivere $X=\dfrac{B}{A}$.</strong> La divisione fra matrici non esiste.</li>
+        <li><strong>Usare $A^{-1}$ senza aver verificato che $A$ sia quadrata e invertibile.</strong> Se non lo è, si passa al MEG-J su $[A\,|\,B]$.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
     <h2 id="test">Mettiti alla prova</h2>
     <div id="quizBox"></div>
 
@@ -318,7 +504,7 @@
     </div>
 
     <div class="btnrow" style="margin-top:36px">
-      <a class="btn primary" href="4-complessi.html">Sezione 3 · Numeri complessi →</a>
+      <a class="btn primary" href="3-spazi.html">Sezione 3 · Vettori e spazi vettoriali →</a>
       <a class="btn" href="1-sistemi.html">← Sezione 1</a>
       <a class="btn" href="../esercizi.html?sez=2">Esercizi della Sezione 2</a>
     </div>
@@ -329,12 +515,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260927b"></script>
-<script src="../data/topics.js?v=20260927b"></script>
-<script src="../data/quiz.js?v=20260927b"></script>
-<script src="../../assets/js/meg.js?v=20260927b"></script>
-<script src="../../assets/js/plot.js?v=20260927b"></script>
-<script src="../../assets/js/app.js?v=20260927b"></script>
+<script src="../../assets/js/materie.js?v=20260928"></script>
+<script src="../data/topics.js?v=20260928"></script>
+<script src="../data/quiz.js?v=20260928"></script>
+<script src="../../assets/js/meg.js?v=20260928"></script>
+<script src="../../assets/js/plot.js?v=20260928"></script>
+<script src="../../assets/js/app.js?v=20260928"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklist', 2, 'geometria');
@@ -431,6 +617,84 @@ document.addEventListener('am:ready', function () {
     ['rcB1','rcB2','rcB3'].forEach(function (id, k) {
       plotSlider(id, function (v) { b[k] = v; aggiorna(); });
     });
+  })();
+
+  /* ---------- MEG-J interattivo ---------- */
+  (function () {
+    var FASI = ['Partenza', 'Parte 1 · MEG', 'Parte 2 · normalizzazione', 'Parte 3 · seconda eliminazione'];
+    // tipo: 'inv' = [A | I], 'sis' = sistema [A | b], 'mat' = equazione AX = B
+    var ES = [
+      { nome: 'Esempio 2 · inversa di una 3×3', tipo: 'inv', nA: 3,
+        M: [[1,2,-1,1,0,0],[1,3,0,0,1,0],[0,1,0,0,0,1]] },
+      { nome: 'Esempio 3 · matrice singolare', tipo: 'inv', nA: 3,
+        M: [[1,0,0,1,0,0],[1,4,2,0,1,0],[0,2,1,0,0,1]] },
+      { nome: 'Esempio 1 · sistema, come è scritto', tipo: 'sis', nA: 4,
+        M: [[2,-2,1,1,2],[1,-1,0,2,2],[0,0,1,-3,-2]] },
+      { nome: 'Esempio 1 · righe 1 e 2 scambiate', tipo: 'sis', nA: 4,
+        M: [[1,-1,0,2,2],[2,-2,1,1,2],[0,0,1,-3,-2]] },
+      { nome: 'Equazione AX = B con A singolare', tipo: 'mat', nA: 3,
+        M: [[1,0,4,4,3],[2,0,5,5,3],[3,0,6,6,3]] },
+      { nome: 'Aᵀ X = I₂ (matrice 2×3)', tipo: 'mat', nA: 3,
+        M: [[1,2,3,1,0],[4,5,6,0,1]] }
+    ];
+
+    var sel = document.getElementById('mjSel');
+    sel.innerHTML = ES.map(function (e, k) { return '<option value="' + k + '">' + e.nome + '</option>'; }).join('');
+
+    var idx = 0, passo = 0, passi = [], res = null, fermo = false;
+    var mat = document.getElementById('mjMat'), op = document.getElementById('mjOp');
+    var spiega = document.getElementById('mjSpiega'), out = document.getElementById('mjOut'), pos = document.getElementById('mjPos');
+
+    function carica() {
+      var E = ES[idx];
+      res = MEG.riduciJ(MEG.da(E.M), E.nA);
+      passi = res.passi;
+      // Come negli appunti: se A è singolare ci si ferma dopo il MEG.
+      fermo = E.tipo === 'inv' && res.rangoA < E.nA;
+      if (fermo) passi = passi.filter(function (p) { return p.fase <= 1; });
+      passo = 0; mostra();
+    }
+
+    function esito() {
+      var E = ES[idx], n = E.nA, F = res.finale;
+      if (E.tipo === 'inv') {
+        if (fermo) return '<span style="color:var(--danger)"><b>A è singolare</b>: dopo il MEG la parte sinistra ha una riga nulla, quindi rg A = ' + res.rangoA + ' &lt; ' + n + '. Come dice il prof, ci si ferma qui: la riduzione completa servirebbe solo a calcolare un\'inversa che non esiste.</span>';
+        var inv = F.map(function (r) { return r.slice(n); });
+        return '<span style="color:var(--ok)"><b>A è invertibile</b>: la totalmente ridotta è [ I | B ], quindi A<sup>−1</sup> = B, cioè la parte a destra della barra.</span>' +
+               '<div style="margin-top:8px">' + MEG.html(inv, { nA: n }) + '</div>';
+      }
+      if (res.zeroPivot) return '<span style="color:var(--danger)"><b>Nessuna soluzione</b>: c\'è uno 0-pivot a destra della barra.</span>';
+      var libere = n - res.rangoA;
+      var nomi = [];
+      for (var j = 0; j < n; j++) if (!res.pivot.some(function (p) { return p.j === j; })) nomi.push('x<sub>' + (j + 1) + '</sub>');
+      var txt = libere === 0
+        ? '<b>Soluzione unica</b>: si legge direttamente a destra della barra.'
+        : '<b>Infinite soluzioni</b>: ' + libere + ' incognit' + (libere === 1 ? 'a libera' : 'e libere') + ' (' + nomi.join(', ') + ')' +
+          (E.tipo === 'mat' ? ' per ogni colonna di B.' : '.');
+      return '<span style="color:var(--ok)">' + txt + '</span><br>Matrice <b>totalmente ridotta</b>: ogni pivot vale 1 ed è l\'unico elemento non nullo della sua colonna. Le soluzioni si leggono senza sostituzione all\'indietro.' +
+        (E.tipo === 'sis' ? '<br><span style="color:var(--text-faint)">Confronta i due «Esempio 1»: partono da matrici diverse ma arrivano alla stessa totalmente ridotta.</span>' : '');
+    }
+
+    function mostra() {
+      var p = passi[passo], E = ES[idx];
+      mat.innerHTML = MEG.html(p.M, { nA: E.nA, pivot: p.pivot, attive: p.attive });
+      op.innerHTML = '<span class="badge">' + FASI[p.fase] + '</span> ' + (p.fase === 0 ? '' : p.op);
+      spiega.textContent = p.spiega || (p.fase === 0
+        ? (E.tipo === 'inv' ? 'Si affianca la matrice identità: [ A | I ].' : E.tipo === 'mat' ? 'Si affianca B: [ A | B ]. Ogni colonna di B è un sistema con la stessa A.' : 'Matrice completa [ A | b ] del sistema.')
+        : '');
+      pos.textContent = 'passo ' + passo + ' di ' + (passi.length - 1);
+      document.getElementById('mjPrev').disabled = passo === 0;
+      document.getElementById('mjNext').disabled = passo === passi.length - 1;
+      out.innerHTML = passo === passi.length - 1 ? esito()
+        : '<span style="color:var(--text-faint)">Vai avanti fino all\'ultimo passo per leggere il risultato.</span>';
+    }
+
+    document.getElementById('mjPrev').onclick = function () { if (passo > 0) { passo--; mostra(); } };
+    document.getElementById('mjNext').onclick = function () { if (passo < passi.length - 1) { passo++; mostra(); } };
+    document.getElementById('mjAll').onclick = function () { passo = passi.length - 1; mostra(); };
+    document.getElementById('mjReset').onclick = function () { passo = 0; mostra(); };
+    sel.onchange = function () { idx = +this.value; carica(); };
+    carica();
   })();
 });
 </script>

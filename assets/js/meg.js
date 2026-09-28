@@ -76,7 +76,7 @@
         for (var j = 0; j < tot; j++) M[k][j] = F.sub(M[k][j], F.mul(f, M[riga][j]));
         passi.push({
           M: clone(M), tipo: 'elimina',
-          op: 'R<sub>' + (k + 1) + '</sub> → R<sub>' + (k + 1) + '</sub> − (' + F.str(f) + ')·R<sub>' + (riga + 1) + '</sub>',
+          op: combina(k, f, riga),
           spiega: 'Si annulla l\'elemento sotto il pivot, sottraendo un multiplo della riga del pivot.',
           pivot: pivot.slice(), attive: [k]
         });
@@ -97,6 +97,72 @@
     return {
       passi: passi, finale: M, pivot: pivot,
       rangoA: rangoA, rangoTot: rangoTot, zeroPivot: zeroPivot, nA: nA, m: m
+    };
+  }
+
+  /** «R_k − (f)·R_p» scritto in modo leggibile: f = 1 → «− R_p», f = −1 → «+ R_p» */
+  function combina(k, f, p) {
+    var R = function (i) { return 'R<sub>' + (i + 1) + '</sub>'; };
+    var segno = f.n > 0 ? ' − ' : ' + ', a = F(Math.abs(f.n), f.d);
+    return R(k) + ' → ' + R(k) + segno + (F.eq(a, F(1)) ? '' : F.str(a) + '·') + R(p);
+  }
+
+  /**
+   * MEG-J (eliminazione di Gauss-Jordan) nelle tre parti degli appunti:
+   *   Parte 1 — MEG (a scala);  Parte 2 — normalizzazione (pivot = 1);
+   *   Parte 3 — seconda eliminazione (zeri sopra i pivot, dall'ultimo al primo).
+   * Il risultato è la matrice totalmente ridotta, che è unica.
+   * Ogni passo porta il campo fase (0 = partenza, 1, 2, 3).
+   */
+  function riduciJ(M, nA) {
+    var r = riduci(M, nA);
+    var passi = r.passi.map(function (p, k) {
+      var q = {}; for (var c in p) q[c] = p[c];
+      q.fase = k === 0 ? 0 : 1; delete q.finale;
+      return q;
+    });
+    var A = clone(r.finale), piv = r.pivot, tot = A[0].length;
+    var R = function (i) { return 'R<sub>' + (i + 1) + '</sub>'; };
+
+    // Parte 2: normalizzazione, tutte le righe in un passo (come negli appunti)
+    var ops = [], righe = [];
+    piv.forEach(function (p) {
+      var v = A[p.i][p.j];
+      if (F.eq(v, F(1))) return;
+      var inv = F.div(F(1), v);
+      for (var j = 0; j < tot; j++) A[p.i][j] = F.mul(A[p.i][j], inv);
+      var coef = F.eq(inv, F(-1)) ? '−' : (inv.d === 1 && inv.n > 0 ? F.str(inv) : '(' + F.str(inv) + ')') + '·';
+      ops.push(R(p.i) + ' → ' + coef + R(p.i));
+      righe.push(p.i);
+    });
+    if (ops.length) passi.push({
+      M: clone(A), fase: 2, tipo: 'normalizza', op: ops.join(', &nbsp;'),
+      spiega: 'Ogni riga non nulla si divide per il proprio pivot: ora tutti i pivot valgono 1.',
+      pivot: piv.slice(), attive: righe
+    });
+
+    // Parte 3: seconda eliminazione, dal pivot più in basso verso l'alto
+    for (var q = piv.length - 1; q >= 0; q--) {
+      var p = piv[q];
+      ops = []; righe = [];
+      for (var k = 0; k < p.i; k++) {
+        var f = A[k][p.j];
+        if (F.isZero(f)) continue;
+        for (var j = 0; j < tot; j++) A[k][j] = F.sub(A[k][j], F.mul(f, A[p.i][j]));
+        ops.push(combina(k, f, p.i));
+        righe.push(k);
+      }
+      if (ops.length) passi.push({
+        M: clone(A), fase: 3, tipo: 'risali', op: ops.join(', &nbsp;'),
+        spiega: 'Si annullano gli elementi sopra il pivot della riga ' + (p.i + 1) + ', usando quella riga (che ha il pivot uguale a 1).',
+        pivot: piv.slice(), attive: righe
+      });
+    }
+    passi[passi.length - 1].finale = true;
+
+    return {
+      passi: passi, finale: A, pivot: piv,
+      rangoA: r.rangoA, rangoTot: r.rangoTot, zeroPivot: r.zeroPivot, nA: nA, m: r.m
     };
   }
 
@@ -165,7 +231,7 @@
   }
 
   window.MEG = {
-    F: F, riduci: riduci, html: html, elle: elle, aScala: aScala, analizza: analizza,
+    F: F, riduci: riduci, riduciJ: riduciJ, html: html, elle: elle, aScala: aScala, analizza: analizza,
     /** comodo: costruisce una matrice di frazioni da numeri interi */
     da: function (righe) { return righe.map(function (r) { return r.map(function (x) { return F(x); }); }); }
   };

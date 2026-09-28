@@ -205,26 +205,26 @@ $$AB=AC\ \Longrightarrow\ A^{-1}(AB)=A^{-1}(AC)\ \Longrightarrow\ (A^{-1}A)B=(A^
 
 /* ====== SEZIONE 2: aggiunte (MEG-J e equazioni di matrici) ====== */
 { id: 'G2.8', sez: 2, tema: 'Gauss-Jordan', d: 2,
-  t: r`Portare a <strong>forma a scala ridotta</strong> con il MEG-J la matrice $$A=\begin{bmatrix}1&2&-1&3\\2&4&1&9\\1&2&3&7\end{bmatrix}$$ e indicare rango, incognite di base e libere del sistema omogeneo associato.`,
-  hints: [ r`Prima la discesa (MEG normale): annulla sotto i pivot.`,
-           r`Poi la risalita: normalizza ogni pivot a $1$ e annulla anche <em>sopra</em> di esso.`,
+  t: r`Trovare con il MEG-J la <strong>totalmente ridotta</strong> della matrice $$A=\begin{bmatrix}1&2&-1&3\\2&4&1&9\\1&2&3&7\end{bmatrix}$$ e indicare rango, incognite dipendenti e libere del sistema omogeneo associato.`,
+  hints: [ r`Parte 1 (MEG): annulla sotto i pivot.`,
+           r`Parte 2: normalizza ogni pivot a $1$. Parte 3: annulla anche <em>sopra</em> i pivot, dall'ultimo al primo.`,
            r`Le colonne <em>senza</em> pivot corrispondono alle incognite libere.` ],
-  sol: r`<strong>Discesa.</strong>
+  sol: r`<strong>Parte 1 · MEG.</strong>
 $$\begin{bmatrix}1&2&-1&3\\2&4&1&9\\1&2&3&7\end{bmatrix}
 \xrightarrow[R_3-R_1]{R_2-2R_1}
 \begin{bmatrix}1&2&-1&3\\0&0&3&3\\0&0&4&4\end{bmatrix}
 \xrightarrow{R_3-\frac43R_2}
 \begin{bmatrix}1&2&-1&3\\0&0&3&3\\0&0&0&0\end{bmatrix}$$
-<strong>Risalita (è ciò che distingue il MEG-J dal MEG).</strong> Normalizzo il pivot della riga 2 e annullo sopra:
+<strong>Parte 2 · normalizzazione e Parte 3 · seconda eliminazione</strong> (è ciò che distingue il MEG-J dal MEG). Normalizzo il pivot della riga 2 e annullo sopra:
 $$\xrightarrow{\frac13R_2}\begin{bmatrix}1&2&-1&3\\0&0&1&1\\0&0&0&0\end{bmatrix}
 \xrightarrow{R_1+R_2}\begin{bmatrix}1&2&0&4\\0&0&1&1\\0&0&0&0\end{bmatrix}$$
-Questa è la <strong>forma a scala ridotta</strong>: ogni pivot vale $1$ ed è l'unico elemento non nullo della sua colonna.<br><br>
+Questa è la <strong>totalmente ridotta</strong> di $A$: ogni pivot vale $1$ ed è l'unico elemento non nullo della sua colonna. È unica: qualunque sequenza di operazioni si usi, si arriva qui.<br><br>
 <strong>Lettura.</strong> Pivot nelle colonne 1 e 3 ⟹ $\rg A=2$.
-<ul><li>incognite di base: $x_1,x_3$;</li>
+<ul><li>incognite dipendenti: $x_1,x_3$;</li>
 <li>incognite libere: $x_2,x_4$, cioè $n-r=4-2=2$.</li></ul>
 Dal sistema omogeneo: $x_3=-x_4$ e $x_1=-2x_2-4x_4$, da cui
 $$\vx=t\begin{bmatrix}-2\\1\\0\\0\end{bmatrix}+s\begin{bmatrix}-4\\0\\-1\\1\end{bmatrix}$$
-<em>Perché conviene la forma ridotta:</em> le soluzioni si leggono <strong>senza</strong> sostituzione all'indietro. È lo stesso motivo per cui il MEG-J è il metodo per calcolare l'inversa. $\blacksquare$` },
+<em>Perché conviene la totalmente ridotta:</em> le soluzioni si leggono <strong>senza</strong> sostituzione all'indietro. È lo stesso motivo per cui il MEG-J è il metodo per calcolare l'inversa. $\blacksquare$` },
 
 { id: 'G2.9', sez: 2, tema: 'Equazioni di matrici', d: 2,
   t: r`Risolvere l'equazione matriciale $AX=B$, dove $$A=\begin{bmatrix}1&2\\1&3\end{bmatrix},\qquad B=\begin{bmatrix}3&1\\5&0\end{bmatrix}.$$`,
@@ -245,6 +245,56 @@ $$[A\,|\,B]=\left[\begin{array}{cc|cc}1&2&3&1\\1&3&5&0\end{array}\right]
 $$\boxed{X=\begin{bmatrix}-1&3\\2&-1\end{bmatrix}}$$
 <strong>Verifica:</strong> $AX=\begin{bmatrix}1&2\\1&3\end{bmatrix}\begin{bmatrix}-1&3\\2&-1\end{bmatrix}=\begin{bmatrix}-1+4&3-2\\-1+6&3-3\end{bmatrix}=\begin{bmatrix}3&1\\5&0\end{bmatrix}=B$ ✓<br><br>
 <em>Nota:</em> per $XA=B$ si moltiplica <strong>a destra</strong>: $X=BA^{-1}$. Sbagliare il lato è l'errore più frequente in questi esercizi. $\blacksquare$` },
+
+{ id: 'G2.10', sez: 2, tema: 'Gauss-Jordan', d: 2,
+  t: r`Stabilire se $A=\begin{bmatrix}1&1&0\\0&1&1\\1&0&2\end{bmatrix}$ è invertibile e, in caso affermativo, calcolare $A^{-1}$ con il MEG-J.`,
+  hints: [ r`Riduci $[A\,|\,I_3]$. Dopo la Parte 1 sai già se $A$ è invertibile: conta i pivot nella parte sinistra.`,
+           r`Parte 2: l'unico pivot da normalizzare è quello della terza riga.`,
+           r`Parte 3: parti dal pivot della riga 3 e risali.` ],
+  sol: r`<strong>Parte 1 · MEG.</strong>
+$$\left[\begin{array}{ccc|ccc}1&1&0&1&0&0\\0&1&1&0&1&0\\1&0&2&0&0&1\end{array}\right]
+\xrightarrow{R_3\to R_3-R_1}
+\left[\begin{array}{ccc|ccc}1&1&0&1&0&0\\0&1&1&0&1&0\\0&-1&2&-1&0&1\end{array}\right]
+\xrightarrow{R_3\to R_3+R_2}
+\left[\begin{array}{ccc|ccc}1&1&0&1&0&0\\0&1&1&0&1&0\\0&0&3&-1&1&1\end{array}\right]$$
+Tre pivot a sinistra: $\rg A=3$, quindi <strong>$A$ è invertibile</strong>.<br><br>
+<strong>Parte 2 · normalizzazione.</strong>
+$$\xrightarrow{R_3\to\frac13R_3}\left[\begin{array}{ccc|ccc}1&1&0&1&0&0\\0&1&1&0&1&0\\0&0&1&-\frac13&\frac13&\frac13\end{array}\right]$$
+<strong>Parte 3 · seconda eliminazione.</strong>
+$$\xrightarrow{R_2\to R_2-R_3}\left[\begin{array}{ccc|ccc}1&1&0&1&0&0\\0&1&0&\frac13&\frac23&-\frac13\\0&0&1&-\frac13&\frac13&\frac13\end{array}\right]
+\xrightarrow{R_1\to R_1-R_2}\left[\begin{array}{ccc|ccc}1&0&0&\frac23&-\frac23&\frac13\\0&1&0&\frac13&\frac23&-\frac13\\0&0&1&-\frac13&\frac13&\frac13\end{array}\right]$$
+$$\boxed{A^{-1}=\frac13\begin{bmatrix}2&-2&1\\1&2&-1\\-1&1&1\end{bmatrix}}$$
+<strong>Controllo:</strong> $A\cdot\begin{bmatrix}2&-2&1\\1&2&-1\\-1&1&1\end{bmatrix}=\begin{bmatrix}3&0&0\\0&3&0\\0&0&3\end{bmatrix}$, e diviso per $3$ dà $I_3$ ✓ $\blacksquare$` },
+
+{ id: 'G2.11', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`Sia $A=\begin{bmatrix}1&2\\2&4\end{bmatrix}$. Risolvere $AX=B$ nei due casi
+<ol><li>$B=\begin{bmatrix}3&1\\6&3\end{bmatrix}$</li><li>$B=\begin{bmatrix}3&1\\6&2\end{bmatrix}$</li></ol>`,
+  hints: [ r`$\det A=4-4=0$: $A$ è singolare, quindi $X=A^{-1}B$ non si può usare.`,
+           r`Riduci $[A\,|\,B]$: ogni colonna di $B$ è un sistema con la stessa $A$.`,
+           r`Se anche una sola colonna è incompatibile, l'equazione di matrici non ha soluzioni.` ],
+  sol: r`$A$ è $2\times2$ e $B$ è $2\times2$, quindi $X\in\M_{\K}(2,2)$. $\det A=0$: $A$ è <strong>singolare</strong>, si usa il MEG su $[A\,|\,B]$.<br><br>
+<strong>1.</strong> $$\left[\begin{array}{cc|cc}1&2&3&1\\2&4&6&3\end{array}\right]\xrightarrow{R_2\to R_2-2R_1}\left[\begin{array}{cc|cc}1&2&3&1\\0&0&0&1\end{array}\right]$$
+La seconda colonna di $B$ dà uno <strong>0-pivot</strong>: la seconda riga dice $0=1$ per il sistema $A\vx'=\begin{bmatrix}1\\3\end{bmatrix}$. La prima colonna sarebbe risolubile, ma non basta: <strong>l'equazione non ha soluzioni</strong>.<br><br>
+<strong>2.</strong> $$\left[\begin{array}{cc|cc}1&2&3&1\\2&4&6&2\end{array}\right]\xrightarrow{R_2\to R_2-2R_1}\left[\begin{array}{cc|cc}1&2&3&1\\0&0&0&0\end{array}\right]$$
+È già totalmente ridotta. Per ogni colonna $x_2$ è libera: $x_1=3-2t$, $x_2=t$ e $x_1'=1-2t'$, $x_2'=t'$.
+$$X=\begin{bmatrix}3-2t&1-2t'\\t&t'\end{bmatrix},\qquad t,t'\in\K .$$
+<em>Morale:</em> con $A$ singolare la soluzione non è mai unica. O non c'è, o ce ne sono infinite. $\blacksquare$` },
+
+{ id: 'G2.12', sez: 2, tema: 'Equazioni di matrici', d: 3,
+  t: r`Sia $A=\begin{bmatrix}1&0\\0&1\\1&1\end{bmatrix}$. Trovare tutte le matrici $C$ tali che $CA=I$, e stabilire se esiste $B$ tale che $AB=I$.`,
+  hints: [ r`Tipi: perché $CA$ sia definita e quadrata, $C$ deve essere $2\times3$ e $CA=I_2$.`,
+           r`L'incognita sta a sinistra: trasponi. $(CA)^T=A^TC^T$, quindi $A^TX=I_2$ con $X=C^T$.`,
+           r`Per $AB=I_3$: il sistema omogeneo $B\vx=\vzero$ ha $2$ equazioni e $3$ incognite.` ],
+  sol: r`<strong>$CA=I_2$.</strong> $C\in\M_{\K}(2,3)$. Trasponendo: $A^TX=I_2$ con $X=C^T\in\M_{\K}(3,2)$, e
+$$[A^T\,|\,I_2]=\left[\begin{array}{ccc|cc}1&0&1&1&0\\0&1&1&0&1\end{array}\right]$$
+è <strong>già totalmente ridotta</strong>. $x_3$ è libera in entrambe le colonne:
+$$x_1=1-t,\ x_2=-t,\ x_3=t;\qquad x_1'=-t',\ x_2'=1-t',\ x_3'=t'.$$
+$$X=\begin{bmatrix}1-t&-t'\\-t&1-t'\\t&t'\end{bmatrix}\quad\Longrightarrow\quad C=X^T=\begin{bmatrix}1-t&-t&t\\-t'&1-t'&t'\end{bmatrix},\qquad t,t'\in\K .$$
+<strong>Controllo:</strong> prima riga di $C$ per le colonne di $A$: $(1-t)+t=1$ e $-t+t=0$; seconda riga: $-t'+t'=0$ e $(1-t')+t'=1$ ✓<br><br>
+<strong>$AB=I_3$: impossibile.</strong> $B$ sarebbe $2\times3$. Il sistema $B\vx=\vzero$ ha $2$ equazioni in $3$ incognite, quindi ha una soluzione $\vx\ne\vzero$. Allora
+$$\vx=I_3\vx=(AB)\vx=A(B\vx)=A\vzero=\vzero,$$
+assurdo.<br><br>
+<em>Morale:</em> per una matrice non quadrata possono esserci infinite «inverse da un lato» e nessuna dall'altro. È il motivo per cui l'inversa si definisce solo per le quadrate (Esempio 3 degli appunti). $\blacksquare$` },
 
 /* ====== SEZIONE 3: vettori e spazi vettoriali ====== */
 { id: 'G3.1', sez: 3, tema: 'Spazi vettoriali', d: 2,
