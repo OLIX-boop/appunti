@@ -47,6 +47,7 @@
     <a href="#trasposta" class="sub">Trasposta</a>
     <a href="#struttura">2 · Struttura delle soluzioni</a>
     <a href="#rc">3 · Rouché-Capelli</a>
+    <a href="#trecasi" class="sub">I tre casi in una tabella</a>
     <a href="#laboratorio" class="sub">Laboratorio: $\vb$ che cambia</a>
     <a href="#omogenei" class="sub">Sistemi omogenei</a>
     <a href="#inversa">4 · Matrice inversa</a>
@@ -209,6 +210,50 @@
     <div class="box">
       <div class="box-title">Perché è vero (in una riga)</div>
       <p class="mb0">Riducendo a scala, $\rg[A\,|\,\vb]$ vale $\rg A$ oppure $\rg A+1$, e il secondo caso si verifica <em>esattamente</em> quando compare uno <strong>0-pivot</strong>. Rouché-Capelli è il criterio dello 0-pivot riscritto con i ranghi.</p>
+    </div>
+
+    <h3 id="trecasi">I tre casi in una tabella</h3>
+    <p>Dopo aver ridotto $[A\,|\,\vb]$ a scala, con $n$ = numero di <strong>incognite</strong> (colonne di $A$) e $r=\rg A$:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Caso</th><th>Cosa vedi nella matrice a scala</th><th>Ranghi</th><th>Soluzioni</th><th>Esempio</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--danger)">Incompatibile</strong></td>
+            <td>uno <strong>0-pivot</strong>: un pivot nella colonna dei termini noti, cioè una riga $[\,0\ \cdots\ 0\ |\ c\,]$ con $c\ne0$</td>
+            <td>$\rg A\ne\rg[A\,|\,\vb]$<br><span class="small muted">($\rg[A\,|\,\vb]=r+1$)</span></td>
+            <td><strong>nessuna</strong></td>
+            <td>$\left[\begin{array}{cc|c}1&2&3\\0&0&5\end{array}\right]$<br><span class="small muted">la riga 2 dice $0=5$</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--ok)">Soluzione unica</strong></td>
+            <td>niente 0-pivot e <strong>un pivot in ogni colonna di $A$</strong></td>
+            <td>$\rg A=\rg[A\,|\,\vb]=n$</td>
+            <td><strong>una sola</strong></td>
+            <td>$\left[\begin{array}{cc|c}1&2&3\\0&1&4\end{array}\right]$<br><span class="small muted">$r=2=n$</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent)">Infinite soluzioni</strong></td>
+            <td>niente 0-pivot e <strong>almeno una colonna di $A$ senza pivot</strong></td>
+            <td>$\rg A=\rg[A\,|\,\vb]=r\lt n$</td>
+            <td><strong>infinite</strong>, con $n-r$ parametri liberi</td>
+            <td>$\left[\begin{array}{ccc|c}1&2&1&3\\0&0&1&2\end{array}\right]$<br><span class="small muted">$r=2$, $n=3$: $x_2$ libera</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">✓ L'ordine dei controlli</div>
+      <ol class="mb0">
+        <li><strong>Prima</strong> cerca lo 0-pivot. Se c'è, hai finito: nessuna soluzione, e non ha senso contare le incognite libere.</li>
+        <li><strong>Solo se non c'è</strong>, confronta $r$ con $n$: $r=n$ dà una soluzione, $r\lt n$ ne dà infinite.</li>
+      </ol>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ «Colonna senza pivot», non «colonna nulla»</div>
+      <p class="mb0">Nell'esempio delle infinite soluzioni la colonna di $x_2$ è $\begin{bmatrix}2\\0\end{bmatrix}$: <strong>non è nulla</strong>, ma non contiene un pivot, e questo basta a rendere $x_2$ libera. Una colonna nulla di $A$ dà sempre un'incognita libera, ma è solo un caso particolare. Si confronta sempre con $n$, il numero di <strong>incognite</strong>, mai con $m$, il numero di equazioni.</p>
     </div>
 
     <h3 id="laboratorio">Laboratorio: stesso $A$, termini noti diversi</h3>
