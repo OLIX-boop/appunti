@@ -47,11 +47,14 @@
     <a href="#proprieta">2 · Proprietà delle funzioni</a>
     <a href="#monotonia" class="sub">Monotonia</a>
     <a href="#parita" class="sub">Pari, dispari, periodiche</a>
-    <a href="#limitate" class="sub">Sup e inf di funzioni</a>
+    <a href="#limitate" class="sub">Funzioni limitate, sup e inf</a>
     <a href="#elementari" class="sub">Galleria delle elementari</a>
+    <a href="#scheda" class="sub">Scheda delle elementari</a>
     <a href="#successioni">3 · Successioni</a>
+    <a href="#succ-def" class="sub">Monotonia, sup e inf</a>
     <a href="#definitivamente" class="sub">Definitivamente</a>
     <a href="#limite">4 · Il limite</a>
+    <a href="#notazione-limite" class="sub">Notazione del prof</a>
     <a href="#epsN" class="sub">Il gioco di ε e N</a>
     <a href="#unicita" class="sub">Unicità del limite</a>
     <a href="#limitata" class="sub">Convergente ⇒ limitata</a>
@@ -73,6 +76,18 @@
       <div class="eyebrow">Sezione 2 · Prima parte</div>
       <h1>Funzioni, successioni e limiti</h1>
       <p class="lead">Qui nasce l'Analisi vera e propria. La prima metà è linguaggio — indispensabile ma familiare. La seconda introduce <strong>il limite</strong>, la definizione che riassume l'intero corso: tutto ciò che verrà dopo (continuità, derivate, integrali, serie) è un limite travestito.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">★ Novità delle Lezioni 5 e 6 (aggiunte il 1° ottobre)</div>
+      <ul class="mb0">
+        <li><a href="#limitate">Funzioni limitate e illimitate</a>, con la tabella degli esempi della lezione</li>
+        <li><a href="#scheda">Scheda delle funzioni elementari</a>: domini, immagini, parte intera, segno, iperboliche, convenzione su $x^{p/q}$; la <a href="#elementari">galleria</a> ora ha 22 funzioni</li>
+        <li><a href="#succ-def">Successioni</a>: monotonia, max/min/sup/inf con la caratterizzazione a $\eps$, esempi svolti</li>
+        <li><a href="#notazione-limite">Il limite con la notazione del prof</a> ($\ell$, $\nu_\eps$) e le due verifiche fatte a lezione</li>
+        <li><a href="#unicita">Unicità del limite</a> riscritta come a lezione, con la disuguaglianza triangolare</li>
+        <li>Esercizi nuovi <a href="../esercizi.html?sez=2">E2.10–E2.13</a>; nuove domande e flashcard nell'<a href="../primo-parziale.html">allenamento quotidiano</a></li>
+      </ul>
     </div>
 
     <div class="box tip">
@@ -308,7 +323,7 @@
 
     <p>Notazione degli appunti: $\{a_n\}_{n\in\N}$ per la successione, $\operatorname{Im}a_n$ per l'insieme dei suoi valori. Per esempio $a_n=(-1)^n$ ha $\operatorname{Im}a_n=\{-1,1\}$. Altri esempi della lezione: $a_n=n^2$ (cioè $0,1,4,9,\dots$) e $a_n=n!$, con $n!=n(n-1)\cdots1$ e $0!=1$ (cioè $1,1,2,6,24,\dots$).</p>
 
-    <div class="box def">
+    <div class="box def" id="succ-def">
       <div class="box-title">Definizioni (Lezione 6)</div>
       <ul>
         <li><strong>limitata superiormente</strong> (inferiormente) se $\operatorname{Im}a_n$ lo è: $\exists M\in\R:\ a_n\le M\ \forall n$ $\bigl(\exists m\in\R:\ a_n\ge m\ \forall n\bigr)$;</li>
@@ -355,7 +370,7 @@
       $$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M.$$</p>
     </div>
 
-    <div class="box tip">
+    <div class="box tip" id="notazione-limite">
       <div class="box-title">↳ Le stesse definizioni con la notazione degli appunti (Lezione 6)</div>
       <p>Il prof scrive $\ell$ per il limite e $\nu_\eps$ (si legge «nu epsilon») per l'indice:
       $$\lim_{n\to+\infty}a_n=\ell\iff\forall\eps>0\ \exists\nu_\eps\in\N:\ |a_n-\ell|\lt\eps\quad\forall n>\nu_\eps$$
