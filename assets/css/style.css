@@ -126,7 +126,11 @@
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
+/* --tb = altezza reale della barra in alto (la aggiorna app.js: sul telefono è su due righe) */
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--tb, 58px) + 18px); -webkit-text-size-adjust: 100%; }
+/* La copia MathML nascosta di KaTeX è position:absolute: senza un antenato posizionato
+   sfugge ai contenitori scorrevoli (tabelle) e allarga tutta la pagina sul telefono. */
+.katex { position: relative; }
 
 body {
   margin: 0;
@@ -201,8 +205,8 @@ button { font: inherit; cursor: pointer; }
 .layout.no-sidebar { grid-template-columns: minmax(0, 1fr); max-width: 980px; }
 
 .sidebar {
-  position: sticky; top: 58px;
-  max-height: calc(100vh - 58px);
+  position: sticky; top: var(--tb, 58px);
+  max-height: calc(100vh - var(--tb, 58px));
   overflow-y: auto; overscroll-behavior: contain;
   padding: 24px 0 48px;
   font-size: 13.5px;
@@ -402,7 +406,9 @@ a.card:hover { border-color: var(--accent-border); box-shadow: var(--shadow-lg);
   padding: 13px 16px; background: var(--bg-sunken);
   border: 1px solid var(--border); border-radius: var(--radius); margin: 16px 0;
 }
-.ctrl { display: flex; align-items: center; gap: 9px; font-size: 13.5px; }
+.ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; font-size: 13.5px; min-width: 0; max-width: 100%; }
+/* un <select> si allarga quanto la sua voce più lunga: senza limiti sfonda la pagina sul telefono */
+.ctrl select { min-width: 0; max-width: 100%; text-overflow: ellipsis; }
 .ctrl label { color: var(--text-muted); font-weight: 600; white-space: nowrap; }
 .ctrl output { font-family: var(--font-mono); font-size: 13px; min-width: 46px; color: var(--accent); font-weight: 600; }
 
@@ -610,7 +616,7 @@ footer {
   .layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .menu-btn { display: grid; }
   .sidebar {
-    position: fixed; top: 58px; left: 0; bottom: 0; width: 280px; z-index: 55;
+    position: fixed; top: var(--tb, 58px); left: 0; bottom: 0; width: 280px; z-index: 55;
     background: var(--bg-elev); border-right: 1px solid var(--border);
     padding: 20px 14px 40px; max-height: none;
     transform: translateX(-102%); transition: transform .24s ease;
@@ -618,11 +624,24 @@ footer {
   }
   .sidebar.open { transform: translateX(0); }
   .scrim {
-    position: fixed; inset: 58px 0 0 0; background: rgba(0,0,0,.35);
+    position: fixed; inset: var(--tb, 58px) 0 0 0; background: rgba(0,0,0,.35);
     z-index: 54; opacity: 0; pointer-events: none; transition: opacity .24s;
   }
   .scrim.on { opacity: 1; pointer-events: auto; }
-  .topnav { display: none; }
+  /* Sul telefono la navigazione non si nasconde: diventa una seconda riga di pulsanti
+     grandi, scorrevole col dito. */
+  .topbar-inner { height: auto; min-height: 58px; flex-wrap: wrap; row-gap: 0; }
+  .topbar-inner > .brand, .topbar-inner > .icon-btn { margin: 12px 0; }
+  .topnav {
+    order: 10; flex: 0 0 calc(100% + 32px); margin: 0 -16px; padding: 0 16px 10px;
+    gap: 6px; scroll-padding: 0 16px; -webkit-overflow-scrolling: touch;
+  }
+  .topnav a {
+    display: flex; align-items: center; min-height: 40px; padding: 8px 14px;
+    font-size: 14.5px; border-radius: 999px;
+    background: var(--bg-sunken); border: 1px solid var(--border); color: var(--text);
+  }
+  .topnav a.active { border-color: var(--accent); }
   main { padding: 24px 0 90px; }
 }
 

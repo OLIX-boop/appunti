@@ -127,10 +127,40 @@
     });
   };
 
+  /* ---------------- Barra in alto ---------------- */
+  (function topbar() {
+    const bar = document.querySelector('.topbar');
+    if (!bar) return;
+    // Sul telefono la barra va su due righe: menu laterale, velo e salti alle ancore
+    // devono partire dalla sua altezza reale, non da 58px fissi.
+    const nav = bar.querySelector('.topnav');
+    let centrata = false;
+    const sistema = () => {
+      document.documentElement.style.setProperty('--tb', bar.offsetHeight + 'px');
+      // la pagina corrente, nella riga di pulsanti scorrevole, deve essere in vista
+      // (una volta sola: poi lo scorrimento è dell'utente). La classe .active spesso la
+      // mette init() più tardi, quindi va cercata a ogni tentativo.
+      const att = nav && nav.querySelector('a.active');
+      if (!centrata && att && nav.scrollWidth > nav.clientWidth) {
+        nav.scrollLeft = att.offsetLeft - nav.offsetLeft - (nav.clientWidth - att.offsetWidth) / 2;
+        centrata = true;
+      }
+    };
+    sistema();
+    addEventListener('resize', sistema);
+    addEventListener('load', sistema);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sistema);
+  })();
+
   /* ---------------- Sidebar mobile ---------------- */
   (function sidebar() {
     const sb = document.querySelector('.sidebar');
-    if (!sb) return;
+    if (!sb) {
+      // senza indice laterale il pulsante ☰ non aprirebbe niente
+      const mb = document.getElementById('menuBtn');
+      if (mb) mb.style.display = 'none';
+      return;
+    }
     let scrim = document.querySelector('.scrim');
     if (!scrim) { scrim = document.createElement('div'); scrim.className = 'scrim'; document.body.appendChild(scrim); }
     const close = () => { sb.classList.remove('open'); scrim.classList.remove('on'); };
