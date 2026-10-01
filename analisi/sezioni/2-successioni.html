@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20260928f">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261001b">
 </head>
 <body>
 
@@ -192,7 +192,25 @@
     </div>
     <p class="small muted">Il dominio deve essere simmetrico rispetto all'origine perché la parità abbia senso. Se $f$ è dispari ed è definita in $0$, allora $f(0)=0$. La maggior parte delle funzioni non è né pari né dispari.</p>
 
-    <h3 id="limitate">Massimo, minimo, sup e inf di funzioni</h3>
+    <h3 id="limitate">Funzioni limitate; massimo, minimo, sup e inf di funzioni</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 5)</div>
+      <p>$f:A\subseteq\R\to\R$ è <strong>limitata superiormente</strong> (inferiormente) se l'insieme immagine $f(A)\subseteq\R$ è limitato superiormente (inferiormente), cioè
+      $$\exists M\in\R:\ f(x)\le M\ \ \forall x\in A\qquad\Bigl(\exists m\in\R:\ f(x)\ge m\ \ \forall x\in A\Bigr).$$
+      È <strong>limitata</strong> se è limitata sia superiormente sia inferiormente.</p>
+      <p class="mb0">Negando: $f$ è <strong>illimitata superiormente</strong> se $\forall M\in\R\ \exists x\in A:\ f(x)>M$.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Esempio della lezione</th><th>$f(A)$</th><th>$\sup$</th><th>$\inf$</th><th>max / min</th></tr></thead>
+        <tbody>
+          <tr><td>$\arctan x$ su $\R$</td><td>$\left(-\frac\pi2,\frac\pi2\right)$</td><td>$\frac\pi2$</td><td>$-\frac\pi2$</td><td>né max né min: <strong>limitata</strong></td></tr>
+          <tr><td>$\frac1x$ su $(0,+\infty)$</td><td>$(0,+\infty)$</td><td>$+\infty$</td><td>$0$</td><td>né max né min: illimitata sup., limitata inf.</td></tr>
+          <tr><td>$\sin x$ su $\R$</td><td>$[-1,1]$</td><td>$1$</td><td>$-1$</td><td>$\max=1$, $\min=-1$</td></tr>
+          <tr><td>$|x|$ su $\R$</td><td>$[0,+\infty)$</td><td>$+\infty$</td><td>$0$</td><td>$\min=0$, niente max</td></tr>
+        </tbody>
+      </table>
+    </div>
     <div class="box def">
       <div class="box-title">Definizione</div>
       <p class="mb0">Tutte le nozioni si ottengono applicando quelle insiemistiche all'<strong>immagine</strong>:
@@ -217,6 +235,12 @@
               <option value="sin">$\sin x$</option><option value="cos">$\cos x$</option>
               <option value="tan">$\tan x$</option><option value="abs">$|x|$</option>
               <option value="atan">$\arctan x$</option>
+              <option value="cbrt">$\sqrt[3]{x}$</option><option value="xm12">$x^{-1/2}$</option>
+              <option value="cot">$\cot x$</option><option value="asin">$\arcsin x$</option>
+              <option value="acos">$\arccos x$</option><option value="acot">$\operatorname{arccot} x$</option>
+              <option value="floor">$[x]$ parte intera</option><option value="sgn">$\operatorname{sgn} x$</option>
+              <option value="sinh">$\sinh x$</option><option value="cosh">$\cosh x$</option>
+              <option value="tanh">$\tanh x$</option>
             </select>
           </div>
           <div class="ctrl"><label for="elA">$a$</label><input type="range" id="elA" min="-3" max="3" value="1" step="0.1"><output data-out="elA">1</output></div>
@@ -230,6 +254,50 @@
       </div>
     </div>
 
+    <h3 id="scheda">Scheda delle funzioni elementari (Lezione 5)</h3>
+    <p class="small muted">Stesso ordine degli appunti. Tutte le funzioni del menu qui sopra sono disegnabili.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Funzione</th><th>Insieme di definizione</th><th>Immagine</th><th>Proprietà da sapere</th></tr></thead>
+        <tbody>
+          <tr><td><strong>(a)</strong> $ax+b$ (lineare/affine)</td><td>$\R$</td><td>$\R$ se $a\ne0$</td><td>grafico: una retta</td></tr>
+          <tr><td><strong>(b)</strong> $x^n$, $n\in\N$</td><td>$\R$</td><td>$n$ pari: $[0,+\infty)$; $n$ dispari: $\R$</td><td>$n$ pari: pari, non iniettiva; $n$ dispari: dispari, strettamente crescente</td></tr>
+          <tr><td>$x^{p/q}$, $p,q$ coprimi</td><td>$q$ pari: $[0,+\infty)$<br>$q$ dispari: $\R$</td><td>dipende da $p$</td><td>es. $x^{1/2}=\sqrt x$ su $[0,+\infty)$, $x^{1/3}=\sqrt[3]x$ su tutto $\R$</td></tr>
+          <tr><td>$x^{-p/q}=\dfrac1{x^{p/q}}$</td><td>$q$ pari: $(0,+\infty)$<br>$q$ dispari: $\R\setminus\{0\}$</td><td>—</td><td>es. $x^{-1/2}=\frac1{\sqrt x}$ su $(0,+\infty)$; $\frac1x$ su $\R\setminus\{0\}$</td></tr>
+          <tr><td><strong>(c)</strong> $\sin x$, $\cos x$</td><td>$\R$</td><td>$[-1,1]$</td><td>periodo $2\pi$; $\sin$ dispari, $\cos$ pari; $\max=1$, $\min=-1$</td></tr>
+          <tr><td>$\tan x=\frac{\sin x}{\cos x}$</td><td>$\R\setminus\left\{\frac\pi2+k\pi\right\}$</td><td>$\R$</td><td>periodo $\pi$; illimitata: $\sup=+\infty$, $\inf=-\infty$</td></tr>
+          <tr><td>$\cot x=\frac{\cos x}{\sin x}$</td><td>$\R\setminus\{k\pi\}$</td><td>$\R$</td><td>periodo $\pi$; illimitata</td></tr>
+          <tr><td><strong>(d)</strong> $\arcsin x$</td><td>$[-1,1]$</td><td>$\left[-\frac\pi2,\frac\pi2\right]$</td><td>inversa di $\sin$ ristretto a $\left[-\frac\pi2,\frac\pi2\right]$; crescente</td></tr>
+          <tr><td>$\arccos x$</td><td>$[-1,1]$</td><td>$[0,\pi]$</td><td>inversa di $\cos$ ristretto a $[0,\pi]$; decrescente</td></tr>
+          <tr><td>$\arctan x$</td><td>$\R$</td><td>$\left(-\frac\pi2,\frac\pi2\right)$</td><td>inversa di $\tan$ ristretta a $\left(-\frac\pi2,\frac\pi2\right)$; crescente, limitata</td></tr>
+          <tr><td>$\operatorname{arccot} x$</td><td>$\R$</td><td>$(0,\pi)$</td><td>inversa di $\cot$ ristretta a $(0,\pi)$; decrescente, limitata</td></tr>
+          <tr><td><strong>(e)</strong> $a^x$, $a>0$, $a\ne1$</td><td>$\R$</td><td>$(0,+\infty)$</td><td>$a>1$ crescente, $0\lt a\lt 1$ decrescente; $\inf=0$ (non è minimo), $\sup=+\infty$; <strong>biettiva</strong> su $(0,+\infty)$</td></tr>
+          <tr><td>$\log_a x$</td><td>$(0,+\infty)$</td><td>$\R$</td><td>inversa di $a^x$: $a^x=y\iff x=\log_a y$</td></tr>
+          <tr><td><strong>(g)</strong> $|x|$</td><td>$\R$</td><td>$[0,+\infty)$</td><td>pari; $\min=0$, $\sup=+\infty$</td></tr>
+          <tr><td><strong>(h)</strong> $[x]$, parte intera</td><td>$\R$</td><td>$\Z$</td><td>il più grande intero $\le x$; grafico «a gradini»</td></tr>
+          <tr><td><strong>(i)</strong> $\operatorname{sgn}x$</td><td>$\R$</td><td>$\{-1,0,1\}$</td><td>$1$ se $x>0$, $0$ se $x=0$, $-1$ se $x\lt 0$; dispari</td></tr>
+          <tr><td><strong>(l)</strong> $\sinh x=\frac{e^x-e^{-x}}2$</td><td>$\R$</td><td>$\R$</td><td>dispari, strettamente crescente</td></tr>
+          <tr><td>$\cosh x=\frac{e^x+e^{-x}}2$</td><td>$\R$</td><td>$[1,+\infty)$</td><td>pari, $\min=\cosh0=1$</td></tr>
+          <tr><td>$\tanh x=\frac{\sinh x}{\cosh x}$</td><td>$\R$</td><td>$(-1,1)$</td><td>dispari, crescente, limitata: $\sup=1$, $\inf=-1$, né max né min</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">L'identità fondamentale delle funzioni iperboliche</div>
+      <p class="mb0">$$\cosh^2x-\sinh^2x=1\qquad\forall x\in\R.$$
+      <em>Verifica:</em> $\cosh^2x-\sinh^2x=\frac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}{4}=\frac{4\,e^xe^{-x}}{4}=1$. Quindi il punto $(\cosh x,\sinh x)$ sta sull'iperbole equilatera $x^2-y^2=1$: è da qui che viene il nome «iperboliche», come $(\cos x,\sin x)$ sta sulla circonferenza $x^2+y^2=1$.</p>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">✗ Tre trappole</div>
+      <ul class="mb0">
+        <li><strong>La parte intera dei negativi.</strong> $[-0{,}5]=-1$, non $0$; $[-\pi]=-4$, non $-3$. È il più grande intero <em>minore o uguale</em> a $x$, quindi per i negativi si va «verso sinistra».</li>
+        <li><strong>$x^{1/3}$ sui negativi.</strong> Nel corso $x^{p/q}$ con $q$ dispari è definita su tutto $\R$, per esempio $\sqrt[3]{-8}=-2$. Molti libri e la calcolatrice la definiscono solo per $x\ge0$: segui il corso.</li>
+        <li><strong>Gli estremi di $\arctan$ e $\operatorname{arccot}$.</strong> La tangente si restringe all'intervallo <em>aperto</em> $\left(-\frac\pi2,\frac\pi2\right)$, perché in $\pm\frac\pi2$ non è definita. Negli appunti a pagina 7 l'intervallo è scritto chiuso: è un refuso. Lo stesso vale per la cotangente su $(0,\pi)$.</li>
+      </ul>
+    </div>
+
     <!-- ============================================================ -->
     <h2 id="successioni">3 · Successioni numeriche</h2>
 
@@ -238,7 +306,30 @@
       <p class="mb0">Una <strong>successione</strong> è una funzione $a:\N\to\R$; si scrive $a_n$ per $a(n)$ e $(a_n)_{n\in\N}$ per la successione. Il dominio può essere $\{n\ge n_0\}$. Il grafico è un insieme di <em>punti isolati</em> $(n,a_n)$, non una curva.</p>
     </div>
 
-    <p>Monotonia, limitatezza, sup e inf si definiscono esattamente come per le funzioni. In pratica, per studiare la monotonia si guarda il segno di $a_{n+1}-a_n$, oppure — se $a_n>0$ — si confronta $\frac{a_{n+1}}{a_n}$ con $1$.</p>
+    <p>Notazione degli appunti: $\{a_n\}_{n\in\N}$ per la successione, $\operatorname{Im}a_n$ per l'insieme dei suoi valori. Per esempio $a_n=(-1)^n$ ha $\operatorname{Im}a_n=\{-1,1\}$. Altri esempi della lezione: $a_n=n^2$ (cioè $0,1,4,9,\dots$) e $a_n=n!$, con $n!=n(n-1)\cdots1$ e $0!=1$ (cioè $1,1,2,6,24,\dots$).</p>
+
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 6)</div>
+      <ul>
+        <li><strong>limitata superiormente</strong> (inferiormente) se $\operatorname{Im}a_n$ lo è: $\exists M\in\R:\ a_n\le M\ \forall n$ $\bigl(\exists m\in\R:\ a_n\ge m\ \forall n\bigr)$;</li>
+        <li><strong>strettamente crescente</strong> se $a_n\lt a_{n+1}\ \forall n$; <strong>crescente</strong> se $a_n\le a_{n+1}\ \forall n$; analogamente (strettamente) decrescente;</li>
+        <li><strong>monotòna</strong> se vale una delle quattro; <strong>strettamente monotòna</strong> se vale una delle due strette.</li>
+      </ul>
+      <p class="mb0">$\max\{a_n\}:=\max\operatorname{Im}a_n$, e così $\min$, $\sup$, $\inf$. In pratica:
+      $$\sup\{a_n\}=\Lambda\iff\begin{cases}\text{(i)}\ a_n\le\Lambda\quad\forall n\\ \text{(ii)}\ \forall\eps>0\ \exists n_\eps:\ a_{n_\eps}>\Lambda-\eps\end{cases}\qquad
+        \inf\{a_n\}=\lambda\iff\begin{cases}\text{(i)}\ a_n\ge\lambda\quad\forall n\\ \text{(ii)}\ \forall\eps>0\ \exists n_\eps:\ a_{n_\eps}\lt\lambda+\eps\end{cases}$$
+      e $\max\{a_n\}=M$ se $a_n\le M$ per ogni $n$ <strong>e</strong> $\exists n_0$ con $a_{n_0}=M$.</p>
+    </div>
+
+    <p>Per la monotonia si studia la disuguaglianza $a_n\lt a_{n+1}$ (o il segno di $a_{n+1}-a_n$; se $a_n>0$ si può confrontare $\frac{a_{n+1}}{a_n}$ con $1$).</p>
+
+    <details class="reveal"><summary>Gli esempi svolti a lezione</summary><div class="reveal-body">
+      <p><strong>$a_n=n^3$ è strettamente crescente:</strong> $n^3\lt(n+1)^3=n^3+3n^2+3n+1$, vero per ogni $n$ perché $3n^2+3n+1>0$.</p>
+      <p><strong>$b_n=\frac1n$ è strettamente decrescente:</strong> $\frac1n>\frac1{n+1}\iff n+1>n$, sempre vero.</p>
+      <p><strong>$c_n=(-1)^n$ non è monotòna:</strong> i termini alternano $1,-1,1,\dots$</p>
+      <p><strong>$a_n=n^3$ è illimitata superiormente:</strong> si deve mostrare che $\forall M\ \exists n_0:\ a_{n_0}>M$. Fissato $M$, si ha $n^3>M\iff n>\sqrt[3]M$, e basta prendere $n_0=\left[\sqrt[3]M\right]+1$. Se $M\lt 0$ va bene qualunque $n$: per stare sicuri si può prendere $n_0=\max\left\{0,\left[\sqrt[3]M\right]+1\right\}$, che è sempre un naturale.</p>
+      <p class="mb0"><strong>$b_n=\frac1n$ ($n\ge1$): $\max=1$, $\inf=0$ ma niente minimo.</strong> Il massimo: $\frac1n\le1$ per ogni $n$ e $b_1=1$. L'estremo inferiore: (i) $\frac1n\ge0$ per ogni $n$; (ii) fissato $\eps>0$, si cerca $n_\eps$ con $\frac1{n_\eps}\lt 0+\eps\iff n_\eps>\frac1\eps$, e basta $n_\eps=\left[\frac1\eps\right]+1$. Il minimo non c'è perché $0\notin\operatorname{Im}b_n$. <span class="small muted">In alternativa: i minoranti di $\operatorname{Im}b_n$ sono $(-\infty,0]$, e $\inf=\max(-\infty,0]=0$.</span></p>
+    </div></details>
 
     <h3 id="definitivamente">Proprietà vere definitivamente</h3>
     <div class="box def">
@@ -263,6 +354,20 @@
       <p class="mb0">$$\lim_n a_n=+\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n>M;$$
       $$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M.$$</p>
     </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Le stesse definizioni con la notazione degli appunti (Lezione 6)</div>
+      <p>Il prof scrive $\ell$ per il limite e $\nu_\eps$ (si legge «nu epsilon») per l'indice:
+      $$\lim_{n\to+\infty}a_n=\ell\iff\forall\eps>0\ \exists\nu_\eps\in\N:\ |a_n-\ell|\lt\eps\quad\forall n>\nu_\eps$$
+      $$\lim_{n\to+\infty}a_n=+\infty\iff\forall M>0\ \exists\nu_M\in\N:\ a_n>M\quad\forall n>\nu_M$$
+      $$\lim_{n\to+\infty}a_n=-\infty\iff\forall M>0\ \exists\nu_M\in\N:\ a_n\lt -M\quad\forall n>\nu_M$$</p>
+      <p class="mb0">Sono le definizioni del riquadro sopra con altre lettere: chiedere $M>0$ invece di $M\in\R$ non cambia nulla. Lettura geometrica: i punti $P_n=(n,a_n)$ stanno <strong>definitivamente</strong> nella striscia $S_{\ell,\eps}=\{(x,y):|y-\ell|\lt\eps\}$, oppure nel semipiano $\{y>M\}$ per $+\infty$ e $\{y\lt -M\}$ per $-\infty$. All'esame usa pure la notazione del prof.</p>
+    </div>
+
+    <details class="reveal"><summary>Le due verifiche con la definizione svolte a lezione</summary><div class="reveal-body">
+      <p><strong>$\lim\frac1n=0$.</strong> Fissato $\eps>0$: $\left|\frac1n-0\right|\lt\eps\iff-\eps\lt\frac1n\lt\eps$. La disuguaglianza di sinistra è sempre vera, quella di destra equivale a $n>\frac1\eps$. Si prende $\nu_\eps=\left[\frac1\eps\right]+1$, e allora $\left|\frac1n-0\right|\lt\eps$ per ogni $n>\nu_\eps$.</p>
+      <p class="mb0"><strong>$\lim n^2=+\infty$.</strong> Fissato $M>0$: $n^2>M\iff n>\sqrt M$, perché $n\ge0$ e la soluzione $n\lt -\sqrt M$ va scartata. Si prende $\nu_M=\left[\sqrt M\right]+1$, e allora $n^2>M$ per ogni $n>\nu_M$.</p>
+    </div></details>
 
     <p><strong>Come leggerla.</strong> «Comunque si scelga una striscia orizzontale attorno a $L$, per quanto sottile, tutti i termini <em>da un certo indice in poi</em> ci cadono dentro.» Fuori dalla striscia restano al più finiti termini. L'indice $N$ dipende da $\eps$ — più sottile è la striscia, più in là bisogna spostarsi — e per questo si scrive spesso $N(\eps)$.</p>
 
@@ -300,30 +405,35 @@
     </div>
     <details class="reveal"><summary>Come si dimostra che una successione è irregolare?</summary><div class="reveal-body">
       <p class="mb0">Esibendo <strong>due sottosuccessioni con limiti diversi</strong>. Se il limite esistesse, per unicità ogni sottosuccessione dovrebbe tendere allo stesso valore. Per $a_n=(-1)^n$: $a_{2k}=1\to1$ e $a_{2k+1}=-1\to-1$, dunque il limite non esiste. È l'unico metodo che ti serve nella prima parte del corso.</p>
+      <p><strong>Negare la definizione</strong> (Lezione 6): $a_n\not\to\ell$ se $\exists\eps>0$ tale che <em>infiniti</em> punti $P_n=(n,a_n)$ stanno fuori dalla striscia $S_{\ell,\eps}$. Se questo vale per ogni $\ell\in\R$, la successione non ha limite finito.</p>
+      <p class="mb0"><strong>Gli esempi della lezione.</strong> $a_n=\sin(n\pi)$ vale $0$ per ogni $n$, quindi ha limite $0$, anche se «sembra» oscillare. Invece $a_n=\sin\left(n\frac\pi2\right)$ vale $0,1,0,-1,0,1,\dots$: $a_{2k}\to0$, $a_{4k+1}\to1$, $a_{4k+3}\to-1$, quindi <strong>non ammette limite</strong>.</p>
     </div></details>
 
     <h3 id="unicita">Unicità del limite <span class="badge star">dim. scritto · n° 5</span></h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
-      <p class="mb0">Se $a_n\to L$ e $a_n\to M$, allora $L=M$.</p>
+      <p class="mb0">Se una successione $\{a_n\}$ ammette limite, allora questo è <strong>unico</strong>: se $a_n\to\ell_1$ e $a_n\to\ell_2$, allora $\ell_1=\ell_2$.</p>
     </div>
     <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Impostazione</div>
-          <div class="step-content">Per assurdo $L\ne M$; senza perdita di generalità $L\lt M$.</div></div></div>
+          <div class="step-cue">Impostazione (per assurdo, come negli appunti)</div>
+          <div class="step-content">Supponiamo che $\{a_n\}$ abbia due limiti diversi, $\ell_1\ne\ell_2$. Dalla definizione:
+          $$\forall\eps>0\ \exists\nu_{1,\eps}:\ |a_n-\ell_1|\lt\eps\ \ \forall n>\nu_{1,\eps},\qquad \forall\eps>0\ \exists\nu_{2,\eps}:\ |a_n-\ell_2|\lt\eps\ \ \forall n>\nu_{2,\eps}.$$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Qual è la scelta furba di $\eps$, e perché?</div>
-          <div class="step-content">$\eps=\dfrac{M-L}{2}>0$: metà della distanza, così gli intorni $(L-\eps,L+\eps)$ e $(M-\eps,M+\eps)$ sono <strong>disgiunti</strong>, perché $L+\eps=M-\eps=\frac{L+M}{2}$.</div></div></div>
+          <div class="step-cue">Da quale indice valgono entrambe?</div>
+          <div class="step-content">Posto $\nu_\eps:=\max\{\nu_{1,\eps},\nu_{2,\eps}\}$, per ogni $n>\nu_\eps$ valgono <strong>insieme</strong> $|a_n-\ell_1|\lt\eps$ e $|a_n-\ell_2|\lt\eps$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Le due code</div>
-          <div class="step-content">$\exists N_1: n>N_1\Rightarrow a_n\lt L+\eps=\frac{L+M}{2}$; &nbsp; $\exists N_2: n>N_2\Rightarrow a_n>M-\eps=\frac{L+M}{2}$.</div></div></div>
+          <div class="step-cue">Si stima $|\ell_1-\ell_2|$: quale strumento?</div>
+          <div class="step-content">Si aggiunge e toglie $a_n$ e si usa la <strong>disuguaglianza triangolare</strong>: per $n>\nu_\eps$
+          $$|\ell_1-\ell_2|=|\ell_1-a_n+a_n-\ell_2|\le|a_n-\ell_1|+|a_n-\ell_2|\lt 2\eps.$$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">L'assurdo</div>
-          <div class="step-content">Per $n>\max\{N_1,N_2\}$ si avrebbe $a_n<\frac{L+M}{2}\lt a_n$: impossibile. Dunque $L=M$. $\blacksquare$</div></div></div>
+          <div class="step-cue">La scelta di $\eps$ che produce l'assurdo</div>
+          <div class="step-content">La stima vale per <em>ogni</em> $\eps>0$. Si sceglie $\eps:=\dfrac{|\ell_1-\ell_2|}{2}$, che è $>0$ perché $\ell_1\ne\ell_2$: si ottiene $|\ell_1-\ell_2|\lt 2\eps=|\ell_1-\ell_2|$, cioè un numero strettamente minore di sé stesso. Assurdo, quindi $\ell_1=\ell_2$. $\blacksquare$</div></div></div>
       </div>
-      <p class="small muted mb0">Errore tipico: scegliere $\eps=M-L$ invece di metà — gli intorni allora si sovrappongono e non nasce alcuna contraddizione.</p>
+      <p class="small muted">Lettura geometrica (il disegno degli appunti): con quell'$\eps$ le strisce $S_{\ell_1,\eps}$ e $S_{\ell_2,\eps}$ sono <strong>disgiunte</strong>, ma i punti $P_n$ dovrebbero stare definitivamente in entrambe.</p>
+      <p class="small muted mb0"><strong>Altra versione possibile</strong> (equivalente): con $\ell_1\lt\ell_2$ e $\eps=\frac{\ell_2-\ell_1}{2}$ si trova definitivamente $a_n\lt\frac{\ell_1+\ell_2}2\lt a_n$. Errore tipico in entrambe: prendere $\eps=|\ell_1-\ell_2|$ invece della metà, perché allora le strisce si sovrappongono e non nasce alcuna contraddizione.</p>
     </div></details>
 
     <h3 id="limitata">Ogni successione convergente è limitata <span class="badge star">dim. scritto · n° 6</span></h3>
@@ -345,7 +455,8 @@
           <div class="step-content">Sono in numero <strong>finito</strong>: l'insieme $\{|a_0|,\dots,|a_N|\}$ è finito, quindi ammette massimo.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">La conclusione</div>
-          <div class="step-content">$M:=\max\{|a_0|,\dots,|a_N|,\,1+|L|\}$ maggiora tutti i termini. $\blacksquare$</div></div></div>
+          <div class="step-content">$M:=\max\{|a_0|,\dots,|a_N|,\,1+|L|\}$ maggiora tutti i termini. $\blacksquare$<br>
+          <span class="small muted">Negli appunti la costante si chiama $K$ e l'indice $\nu_1$: $K:=\max\{|a_0|,\dots,|a_{\nu_1}|,\,1+|\ell|\}$, da cui $|a_n|\le K$ per ogni $n$. A pagina 6 i primi termini sono scritti senza valore assoluto: servono i moduli, altrimenti un termine molto negativo non verrebbe controllato.</span></div></div></div>
       </div>
       <div class="box trap" style="margin-bottom:0">
         <div class="box-title">✗ Il viceversa è falso</div>
@@ -614,11 +725,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20260928f"></script>
-<script src="../data/topics.js?v=20260928f"></script>
-<script src="../data/quiz.js?v=20260928f"></script>
-<script src="../../assets/js/plot.js?v=20260928f"></script>
-<script src="../../assets/js/app.js?v=20260928f"></script>
+<script src="../../assets/js/materie.js?v=20261001b"></script>
+<script src="../data/topics.js?v=20261001b"></script>
+<script src="../data/quiz.js?v=20261001b"></script>
+<script src="../../assets/js/plot.js?v=20261001b"></script>
+<script src="../../assets/js/app.js?v=20261001b"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 2);
@@ -671,7 +782,18 @@ document.addEventListener('am:ready', function () {
       ln: { f: function (x) { return x > 0 ? Math.log(x) : NaN; }, n: 'ln x' },
       sin: { f: Math.sin, n: 'sen x' }, cos: { f: Math.cos, n: 'cos x' },
       tan: { f: function (x) { var t = Math.tan(x); return Math.abs(t) > 40 ? NaN : t; }, n: 'tan x' },
-      abs: { f: Math.abs, n: '|x|' }, atan: { f: Math.atan, n: 'arctan x' }
+      abs: { f: Math.abs, n: '|x|' }, atan: { f: Math.atan, n: 'arctan x' },
+      // radice cubica reale: definita su tutto R (convenzione del corso per q dispari)
+      cbrt: { f: Math.cbrt, n: '∛x' },
+      xm12: { f: function (x) { return x > 1e-3 ? 1 / Math.sqrt(x) : NaN; }, n: 'x^(−1/2)' },
+      cot: { f: function (x) { var t = 1 / Math.tan(x); return Math.abs(t) > 40 ? NaN : t; }, n: 'cotg x' },
+      asin: { f: function (x) { return Math.abs(x) <= 1 ? Math.asin(x) : NaN; }, n: 'arcsen x' },
+      acos: { f: function (x) { return Math.abs(x) <= 1 ? Math.acos(x) : NaN; }, n: 'arccos x' },
+      acot: { f: function (x) { return Math.PI / 2 - Math.atan(x); }, n: 'arccotg x' },
+      // NaN vicino ai salti, così il grafico non disegna segmenti verticali
+      floor: { f: function (x) { return x - Math.floor(x) < 0.02 ? NaN : Math.floor(x); }, n: '[x]' },
+      sgn: { f: function (x) { return Math.abs(x) < 0.02 ? NaN : Math.sign(x); }, n: 'sgn x' },
+      sinh: { f: Math.sinh, n: 'senh x' }, cosh: { f: Math.cosh, n: 'cosh x' }, tanh: { f: Math.tanh, n: 'tgh x' }
     };
     var key = 'x2', a = 1, b = 1, c = 0, d = 0, out = document.getElementById('elOut');
     var orig = document.getElementById('elOrig');

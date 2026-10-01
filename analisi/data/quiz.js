@@ -207,6 +207,48 @@
   a: 0,
   why: r`Formalmente: $\exists N:\forall n>N,\ P(n)$ vera. Attenzione alla differenza con «per infiniti indici»: $(-1)^n>0$ vale per infiniti $n$, ma non definitivamente.` },
 
+{ id: 'Q49', sez: 2, tag: 'funzioni elementari',
+  q: r`Nella convenzione del corso, l'insieme di definizione di $f(x)=x^{1/3}$ è:`,
+  opts: [ r`$\R$`, r`$[0,+\infty)$`, r`$(0,+\infty)$`, r`$\R\setminus\{0\}$` ],
+  a: 0,
+  why: r`$x^{p/q}$ con $q$ dispari è definita su tutto $\R$: per esempio $(-8)^{1/3}=-2$. Con $q$ pari, come in $x^{1/2}$, servirebbe $x\ge0$. Molti libri e le calcolatrici usano $[0,+\infty)$ anche per $q$ dispari, ma nel corso no (Lezione 5).` },
+
+{ id: 'Q50', sez: 2, tag: 'funzioni elementari',
+  q: r`L'immagine di $\arccos x$ è:`,
+  opts: [ r`$[0,\pi]$`, r`$\left[-\frac\pi2,\frac\pi2\right]$`, r`$[-1,1]$`, r`$(0,\pi)$` ],
+  a: 0,
+  why: r`$\arccos$ è l'inversa di $\cos$ ristretto a $[0,\pi]$, dove è iniettivo; quindi va da $[-1,1]$ a $[0,\pi]$, estremi inclusi. $\left[-\frac\pi2,\frac\pi2\right]$ è l'immagine di $\arcsin$; $(0,\pi)$ quella di $\operatorname{arccot}$.` },
+
+{ id: 'Q51', sez: 2, tag: 'parte intera',
+  q: r`Quanto vale la parte intera $[-2{,}5]$?`,
+  opts: [ r`$-3$`, r`$-2$`, r`$-2{,}5$`, r`$2$` ],
+  a: 0,
+  why: r`$[x]$ è il più grande intero <em>minore o uguale</em> a $x$. Gli interi $\le-2{,}5$ sono $-3,-4,\dots$, e il più grande è $-3$. Per i negativi la parte intera non è «togliere i decimali»: $[-0{,}5]=-1$, $[-\pi]=-4$.` },
+
+{ id: 'Q52', sez: 2, tag: 'funzioni iperboliche',
+  q: r`L'immagine di $\cosh x=\frac{e^x+e^{-x}}2$ è:`,
+  opts: [ r`$[1,+\infty)$`, r`$\R$`, r`$(0,+\infty)$`, r`$(-1,1)$` ],
+  a: 0,
+  why: r`$\cosh$ è pari, con minimo $\cosh0=1$, e cresce senza limite per $|x|\to+\infty$. $\R$ è l'immagine di $\sinh$, $(-1,1)$ quella di $\tanh$. Vale $\cosh^2x-\sinh^2x=1$.` },
+
+{ id: 'Q53', sez: 2, tag: 'definizione di limite',
+  q: r`Nella forma degli appunti, $\displaystyle\lim_{n\to+\infty}a_n=-\infty$ significa:`,
+  opts: [ r`$\forall M>0\ \exists\nu_M:\ a_n\lt -M\ \ \forall n>\nu_M$`,
+          r`$\exists M>0:\ a_n\lt -M\ \ \forall n$`,
+          r`$\forall M>0\ \exists n:\ a_n\lt -M$`,
+          r`$\forall M>0\ \exists\nu_M:\ a_n>-M\ \ \forall n>\nu_M$` ],
+  a: 0,
+  why: r`Per ogni soglia $-M$, per quanto bassa, i termini stanno <em>definitivamente</em> sotto di essa. La seconda dice solo che la successione è limitata superiormente. La terza chiede un solo termine sotto la soglia, non tutti da un certo indice in poi: la soddisfa anche $(-1)^nn$, che non ha limite. La quarta ha il verso sbagliato.` },
+
+{ id: 'Q54', sez: 2, tag: 'estremi di successioni',
+  q: r`Per $b_n=\frac1n$ ($n\ge1$) vale:`,
+  opts: [ r`$\max=1$, $\inf=0$, nessun minimo`,
+          r`$\sup=1$, nessun massimo, $\min=0$`,
+          r`$\max=1$, $\min=0$`,
+          r`nessun massimo né minimo` ],
+  a: 0,
+  why: r`$b_1=1$ e $\frac1n\le1$: il massimo è $1$. $\inf=0$, perché $\frac1n\ge0$ e per ogni $\eps>0$ esiste $n_\eps=\left[\frac1\eps\right]+1$ con $\frac1{n_\eps}\lt\eps$; ma $0$ non è un valore della successione, quindi non è minimo (Lezione 6).` },
+
 /* ---------------- Sezione 3 ---------------- */
 { id: 'Q25', sez: 3, tag: 'condizione necessaria',
   q: r`Se $a_n\to0$, allora la serie $\sum a_n$:`,

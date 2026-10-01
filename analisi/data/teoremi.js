@@ -125,15 +125,15 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
   {
     id: 'T05', n: 5, sez: 2, mark: '*', q: '1.38',
     titolo: 'Unicità del limite',
-    enunciato: r`Se una successione $(a_n)$ ammette limite, tale limite è unico: se $a_n\to L$ e $a_n\to M$, allora $L=M$.`,
-    idea: r`Per assurdo: se $L\ne M$, scelgo $\eps$ pari a metà della distanza; definitivamente $a_n$ dovrebbe stare in due intorni disgiunti.`,
+    enunciato: r`Se una successione $\{a_n\}$ ammette limite, allora questo è <strong>unico</strong>: se $a_n\to\ell_1$ e $a_n\to\ell_2$, allora $\ell_1=\ell_2$.`,
+    idea: r`Per assurdo, con la disuguaglianza triangolare (è la versione della Lezione 6): da un certo indice in poi $a_n$ è vicino sia a $\ell_1$ sia a $\ell_2$, quindi $|\ell_1-\ell_2|\lt 2\eps$ per ogni $\eps>0$; con $\eps=\frac{|\ell_1-\ell_2|}{2}$ si ha l'assurdo.`,
     steps: [
-      { cue: 'Impostazione', body: r`Per assurdo supponiamo $L\ne M$, e senza perdita di generalità $L\lt M$.` },
-      { cue: r`Qual è la scelta furba di $\eps$?`, body: r`$$\eps:=\frac{M-L}{2}>0.$$ È metà della distanza fra i due candidati limite: gli intorni $(L-\eps,L+\eps)$ e $(M-\eps,M+\eps)$ risultano <strong>disgiunti</strong>, perché $L+\eps=M-\eps=\frac{L+M}{2}$.` },
-      { cue: 'Tradurre le due ipotesi di limite', body: r`Da $a_n\to L$: $\exists N_1$ tale che $\forall n>N_1$, $|a_n-L|<\eps$, quindi $a_n\lt L+\eps=\dfrac{L+M}{2}$.<br>Da $a_n\to M$: $\exists N_2$ tale che $\forall n>N_2$, $|a_n-M|<\eps$, quindi $a_n>M-\eps=\dfrac{L+M}{2}$.` },
-      { cue: 'Conclusione', body: r`Posto $N=\max\{N_1,N_2\}$, per ogni $n>N$ varrebbero simultaneamente $$a_n<\frac{L+M}{2}\qquad\text{e}\qquad a_n>\frac{L+M}{2},$$ che è assurdo. Dunque $L=M$. $\blacksquare$` }
+      { cue: 'Impostazione (per assurdo)', body: r`Supponiamo $\ell_1\ne\ell_2$ entrambi limiti. Dalla definizione: $$\forall\eps>0\ \exists\nu_{1,\eps}:\ |a_n-\ell_1|\lt\eps\ \ \forall n>\nu_{1,\eps},\qquad \forall\eps>0\ \exists\nu_{2,\eps}:\ |a_n-\ell_2|\lt\eps\ \ \forall n>\nu_{2,\eps}.$$` },
+      { cue: 'Da quale indice valgono entrambe?', body: r`Posto $\nu_\eps:=\max\{\nu_{1,\eps},\nu_{2,\eps}\}$, per ogni $n>\nu_\eps$ valgono <strong>insieme</strong> $|a_n-\ell_1|\lt\eps$ e $|a_n-\ell_2|\lt\eps$.` },
+      { cue: r`Si stima $|\ell_1-\ell_2|$: quale strumento?`, body: r`Si aggiunge e toglie $a_n$ e si usa la <strong>disuguaglianza triangolare</strong>: $$|\ell_1-\ell_2|=|\ell_1-a_n+a_n-\ell_2|\le|a_n-\ell_1|+|a_n-\ell_2|\lt 2\eps.$$` },
+      { cue: r`La scelta di $\eps$ che produce l'assurdo`, body: r`La stima vale per ogni $\eps>0$: con $\eps:=\dfrac{|\ell_1-\ell_2|}{2}>0$ si ottiene $|\ell_1-\ell_2|\lt|\ell_1-\ell_2|$. Assurdo, quindi $\ell_1=\ell_2$. $\blacksquare$` }
     ],
-    note: r`Il teorema vale anche con limiti infiniti: se $a_n\to L\in\R$ e $a_n\to+\infty$ si ottiene un assurdo analogo, perché $(a_n)$ dovrebbe essere definitivamente limitata e definitivamente maggiore di ogni $M$. Errore tipico: prendere $\eps=M-L$ invece di metà — gli intorni allora non sono disgiunti.`
+    note: r`Lettura geometrica: con quell'$\eps$ le strisce $S_{\ell_1,\eps}$ e $S_{\ell_2,\eps}$ sono disgiunte, ma i punti $(n,a_n)$ dovrebbero stare definitivamente in entrambe. Versione equivalente: con $\ell_1\lt\ell_2$ e $\eps=\frac{\ell_2-\ell_1}2$ si trova definitivamente $a_n\lt\frac{\ell_1+\ell_2}2\lt a_n$. Il teorema vale anche con limiti infiniti. Errore tipico: prendere $\eps=|\ell_1-\ell_2|$ invece della metà, perché allora le strisce si sovrappongono.`
   },
   {
     id: 'T06', n: 6, sez: 2, mark: '*', q: '1.39',

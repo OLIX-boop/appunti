@@ -86,6 +86,31 @@ Sono i vertici di un poligono regolare di $n$ lati.` },
 { id: 'D24', sez: 2, topic: 's2-08', t: r`Sup, inf, max, min di una funzione`,
   d: r`Si applicano le nozioni insiemistiche all'<strong>immagine</strong>: $\sup_A f:=\sup f(A)$, ecc.<br><br>Se $f(x_0)=\max_A f$, $x_0$ è <strong>punto</strong> di massimo. Il massimo è un valore (asse $y$), il punto un'ascissa.` },
 
+{ id: 'D45', sez: 2, topic: 's2-08', t: r`Funzione limitata (superiormente, inferiormente)`,
+  d: r`$f:A\to\R$ è <strong>limitata superiormente</strong> se $f(A)$ lo è: $\exists M\in\R:\ f(x)\le M\ \forall x\in A$ (inferiormente: $\exists m:\ f(x)\ge m$). <strong>Limitata</strong> = entrambe.<br><br><strong>Illimitata superiormente:</strong> $\forall M\ \exists x\in A:\ f(x)>M$. Esempio: $\frac1x$ su $(0,+\infty)$, con $\sup=+\infty$ e $\inf=0$, senza max né min.` },
+
+{ id: 'D46', sez: 2, topic: 's2-09', t: r`Parte intera e funzione segno`,
+  d: r`$[x]$ = il più grande intero <strong>minore o uguale</strong> a $x$: $[\pi]=3$, $[2]=2$, $[-\pi]=-4$, $[-0{,}5]=-1$. Immagine $\Z$, grafico a gradini.<br><br>$\operatorname{sgn}x=1$ se $x>0$, $0$ se $x=0$, $-1$ se $x\lt 0$.` },
+
+{ id: 'D47', sez: 2, topic: 's2-09', t: r`Funzioni circolari inverse`,
+  d: r`Si restringe la funzione diretta a un intervallo dove è iniettiva:
+<ul><li>$\arcsin:[-1,1]\to\left[-\frac\pi2,\frac\pi2\right]$, crescente;</li>
+<li>$\arccos:[-1,1]\to[0,\pi]$, decrescente;</li>
+<li>$\arctan:\R\to\left(-\frac\pi2,\frac\pi2\right)$, crescente;</li>
+<li>$\operatorname{arccot}:\R\to(0,\pi)$, decrescente.</li></ul>` },
+
+{ id: 'D48', sez: 2, topic: 's2-09', t: r`Funzioni iperboliche`,
+  d: r`$$\sinh x=\frac{e^x-e^{-x}}2,\quad \cosh x=\frac{e^x+e^{-x}}2,\quad \tanh x=\frac{\sinh x}{\cosh x}$$
+$\sinh$: dispari, immagine $\R$. $\cosh$: pari, immagine $[1,+\infty)$. $\tanh$: immagine $(-1,1)$.<br>Identità: $\cosh^2x-\sinh^2x=1$ (iperbole equilatera $x^2-y^2=1$).` },
+
+{ id: 'D49', sez: 2, topic: 's2-09', t: r`Potenze ad esponente razionale: dove sono definite`,
+  d: r`$x^{p/q}$ con $p,q$ coprimi: su $[0,+\infty)$ se $q$ è pari, su <strong>tutto $\R$</strong> se $q$ è dispari (convenzione del corso).<br>$x^{-p/q}=\frac1{x^{p/q}}$: su $(0,+\infty)$ se $q$ è pari, su $\R\setminus\{0\}$ se $q$ è dispari.` },
+
+{ id: 'D50', sez: 2, topic: 's2-10', t: r`Sup e inf di una successione: caratterizzazione`,
+  d: r`$$\sup\{a_n\}=\Lambda\iff\text{(i) } a_n\le\Lambda\ \forall n;\ \ \text{(ii) }\forall\eps>0\ \exists n_\eps:\ a_{n_\eps}>\Lambda-\eps$$
+$$\inf\{a_n\}=\lambda\iff\text{(i) } a_n\ge\lambda\ \forall n;\ \ \text{(ii) }\forall\eps>0\ \exists n_\eps:\ a_{n_\eps}\lt\lambda+\eps$$
+È massimo (minimo) se in più è un valore della successione.` },
+
 { id: 'D25', sez: 2, topic: 's2-10', t: r`Successione numerica`,
   d: r`Una funzione $a:\N\to\R$; si scrive $a_n$ per $a(n)$ e $(a_n)_{n\in\N}$.<br><br>Il grafico è un insieme di <strong>punti isolati</strong> $(n,a_n)$, non una curva. Il dominio può essere $\{n\ge n_0\}$.` },
 
@@ -94,11 +119,12 @@ Sono i vertici di un poligono regolare di $n$ lati.` },
 
 { id: 'D27', sez: 2, topic: 's2-12', t: r`Limite finito di una successione`,
   d: r`$$\lim_{n\to\infty}a_n=L\in\R\ \overset{\text{def}}{\iff}\ \forall\eps>0\ \exists N\in\N:\ \forall n>N,\ |a_n-L|<\eps$$
-Comunque si fissi una striscia attorno a $L$, tutti i termini da un certo indice in poi vi cadono dentro. $N$ dipende da $\eps$.` },
+Comunque si fissi una striscia attorno a $L$, tutti i termini da un certo indice in poi vi cadono dentro. $N$ dipende da $\eps$.<br><br><em>Negli appunti:</em> $\forall\eps>0\ \exists\nu_\eps\in\N:\ |a_n-\ell|\lt\eps\ \ \forall n>\nu_\eps$.` },
 
 { id: 'D28', sez: 2, topic: 's2-12', t: r`Limite infinito`,
   d: r`$$\lim_n a_n=+\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n>M$$
-$$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M$$` },
+$$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M$$
+<em>Negli appunti:</em> $\forall M>0\ \exists\nu_M:\ a_n>M$ (risp. $a_n\lt -M$) $\forall n>\nu_M$. È equivalente.` },
 
 { id: 'D29', sez: 2, topic: 's2-13', t: r`Convergente, divergente, regolare, irregolare`,
   d: r`<strong>Convergente:</strong> limite finito. <strong>Divergente:</strong> limite $\pm\infty$. <strong>Regolare:</strong> ammette limite (finito o infinito). <strong>Irregolare:</strong> non ammette limite.<br><br>$(-1)^n$ è irregolare; lo si prova con due sottosuccessioni di limiti diversi.` },

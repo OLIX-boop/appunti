@@ -93,13 +93,17 @@
   var SIMBOLI = { pi:'π', infty:'∞', sum:'∑', le:'≤', leq:'≤', ge:'≥', geq:'≥', lt:'<', gt:'>', ne:'≠', times:'×', cdot:'·',
                   to:'→', in:'∈', N:'ℕ', Z:'ℤ', Q:'ℚ', R:'ℝ', C:'ℂ', K:'𝕂', eps:'ε', varepsilon:'ε', alpha:'α', theta:'θ', ell:'ℓ' };
   function mappa(s, tab, segno) {
-    for (var k = 0, o = ''; k < s.length; k++) { if (!tab[s[k]]) return segno + (s.length > 1 ? '(' + s + ')' : s); o += tab[s[k]]; }
+    // se un carattere non ha l'apice/pedice Unicode si scrive ^(…): il segno è un segnaposto,
+    // altrimenti la regola successiva su «^x» riconvertirebbe la parentesi
+    var mark = segno === '^' ? '\u0006' : '\u0007';
+    for (var k = 0, o = ''; k < s.length; k++) { if (!tab[s[k]]) return mark + (s.length > 1 ? '(' + s + ')' : s); o += tab[s[k]]; }
     return o;
   }
   function semplice(a) { return /^([\w.√π^]+|√?\([^()]*\)[\w^]*)$/.test(a) ? a : '(' + a + ')'; }
   AM.testoPiano = function (s) {
     return s.replace(/\$([^$]+)\$/g, function (_, t) {
       t = t.replace(/\\left|\\right|\\[,;!]|\\displaystyle/g, '')
+           .replace(/\\operatorname\{([^{}]*)\}/g, '$1')
            .replace(/\\\{/g, '\u0001').replace(/\\\}/g, '\u0002')
            .replace(/\\sqrt\[3\]\{([^{}]*)\}/g, '∛$1')
            .replace(/\\sqrt\{([^{}]*)\}/g, function (m, a) { return '√' + semplice(a); })
@@ -117,6 +121,7 @@
            .replace(/_\{([^{}]*)\}/g, function (m, a) { return mappa(a, PEDICE, '_'); })
            .replace(/_(\w)/g, function (m, a) { return mappa(a, PEDICE, '_'); })
            .replace(/[{}]/g, '').replace(/\u0001/g, '{').replace(/\u0002/g, '}')
+           .replace(/\u0006/g, '^').replace(/\u0007/g, '_')
            .replace(/ +\(/g, '(').replace(/\s+/g, ' ').trim();
       return t;
     });

@@ -308,6 +308,50 @@ Al denominatore $\ln\left(1+\frac1n\right)=\frac1n+o\!\left(\frac1n\right)\sim\f
 $$\frac{-\frac{1}{6n}+o\!\left(\frac1n\right)}{\frac1n+o\!\left(\frac1n\right)}\longrightarrow-\frac16.$$
 $$\boxed{\,\tfrac12\quad\text{e}\quad-\tfrac16\,}$$ $\blacksquare$` },
 
+{ id: 'E2.10', sez: 2, tema: 'Funzioni elementari', d: 1,
+  t: r`Determinare l'insieme di definizione di
+<ol><li>$f(x)=\dfrac{\sqrt{1-x^2}}{x^{1/3}}$</li><li>$g(x)=\arcsin(2x-1)+\ln x$</li><li>$h(x)=x^{-1/2}+[x]$</li></ol>
+<span class="small muted">(Usa le convenzioni del corso, Lezione 5.)</span>`,
+  hints: [ r`Radice quadrata: argomento $\ge0$. Denominatore: diverso da zero. E $x^{1/3}$, con $q=3$ dispari, nel corso è definita su tutto $\R$.`,
+           r`$\arcsin$ è definita solo su $[-1,1]$; $\ln$ solo su $(0,+\infty)$.`,
+           r`$x^{-1/2}=\frac1{\sqrt x}$ ha $q=2$ pari: serve $x>0$. La parte intera è definita ovunque.` ],
+  sol: r`<strong>1.</strong> Serve $1-x^2\ge0\iff-1\le x\le1$, e $x^{1/3}\ne0\iff x\ne0$. Il denominatore $x^{1/3}$, con $q=3$ dispari, è definito anche per $x\lt 0$ (convenzione del corso). Quindi $$D_f=[-1,0)\cup(0,1].$$
+<em>Attenzione:</em> con la convenzione dei libri, che definiscono $x^{1/3}$ solo per $x\ge0$, verrebbe $(0,1]$. All'esame segui il corso.<br><br>
+<strong>2.</strong> $-1\le2x-1\le1\iff0\le x\le1$, e $x>0$. Intersecando: $$D_g=(0,1].$$
+<strong>3.</strong> $x^{-1/2}=\frac1{\sqrt x}$ richiede $x>0$; $[x]$ è definita su tutto $\R$. Quindi $$D_h=(0,+\infty).\quad\blacksquare$$` },
+
+{ id: 'E2.11', sez: 2, tema: 'Estremi di successioni', d: 2,
+  t: r`Sia $a_n=\dfrac{n-1}{n+1}$, $n\in\N$. Stabilire se è monotòna e determinarne $\sup$, $\inf$ ed eventualmente $\max$ e $\min$, verificando il $\sup$ con la caratterizzazione.`,
+  hints: [ r`Riscrivi $a_n=1-\frac{2}{n+1}$.`,
+           r`Il primo termine è $a_0=-1$. Che cosa fa $\frac2{n+1}$ al crescere di $n$?`,
+           r`Per il $\sup=\Lambda$: (i) $a_n\le\Lambda$ per ogni $n$; (ii) $\forall\eps>0\ \exists n_\eps:\ a_{n_\eps}>\Lambda-\eps$.` ],
+  sol: r`$a_n=\dfrac{(n+1)-2}{n+1}=1-\dfrac{2}{n+1}$.<br><br>
+<strong>Monotonia.</strong> $\frac2{n+1}$ è strettamente decrescente, quindi $a_n$ è <strong>strettamente crescente</strong>. In modo diretto: $a_n\lt a_{n+1}\iff\frac2{n+2}\lt\frac2{n+1}\iff n+1\lt n+2$, sempre vero.<br><br>
+<strong>Minimo.</strong> Essendo crescente, il più piccolo è il primo termine: $\min\{a_n\}=\inf\{a_n\}=a_0=-1$.<br><br>
+<strong>Estremo superiore: $\Lambda=1$.</strong>
+<ul><li>(i) $a_n=1-\frac2{n+1}\lt 1$ per ogni $n$: $1$ è un maggiorante.</li>
+<li>(ii) Fissato $\eps>0$: $a_n>1-\eps\iff\frac2{n+1}\lt\eps\iff n>\frac2\eps-1$. Basta prendere $n_\eps=\left[\frac2\eps\right]$, che è $>\frac2\eps-1$.</li></ul>
+<strong>Massimo.</strong> Non esiste: $a_n=1$ richiederebbe $\frac2{n+1}=0$, impossibile.<br><br>
+<em>In sintesi:</em> $a_n$ è limitata, $\min=\inf=-1$, $\sup=1$, nessun massimo. $\blacksquare$` },
+
+{ id: 'E2.12', sez: 2, tema: 'Definizione di limite', d: 2,
+  t: r`Verificare con la definizione che
+<ol><li>$\displaystyle\lim_{n\to+\infty}\sqrt n=+\infty$;</li><li>$\displaystyle\lim_{n\to+\infty}(3-n)=-\infty$.</li></ol>
+<span class="small muted">Usa la forma degli appunti: $\forall M>0\ \exists\nu_M$ …</span>`,
+  hints: [ r`Per $+\infty$: fissato $M>0$, risolvi $\sqrt n>M$ rispetto a $n$.`,
+           r`Per $-\infty$ la condizione è $a_n\lt -M$: risolvi $3-n\lt -M$.`,
+           r`$\nu$ va scelto naturale: usa la parte intera.` ],
+  sol: r`<strong>1.</strong> Fissato $M>0$: $\sqrt n>M\iff n>M^2$, perché entrambi i membri sono $\ge0$. Con $\nu_M:=\left[M^2\right]$, per ogni $n>\nu_M$ si ha $n\ge[M^2]+1>M^2$, quindi $\sqrt n>M$. Questa è la definizione di $\sqrt n\to+\infty$.<br><br>
+<strong>2.</strong> Fissato $M>0$: $3-n\lt -M\iff n>M+3$. Con $\nu_M:=[M]+3$, per ogni $n>\nu_M$ si ha $n\ge[M]+4>M+3$, quindi $a_n\lt -M$. Questa è la definizione di $a_n\to-\infty$. $\blacksquare$` },
+
+{ id: 'E2.13', sez: 2, tema: 'Non esistenza del limite', d: 2,
+  t: r`Stabilire se ammettono limite:
+<ol><li>$a_n=(-1)^n\dfrac{n}{n+1}$;</li><li>$b_n=(-1)^n\,n$.</li></ol>`,
+  hints: [ r`Separa gli indici pari ($n=2k$) da quelli dispari ($n=2k+1$).`,
+           r`Se due sottosuccessioni hanno limiti diversi, il limite non esiste (per l'unicità).` ],
+  sol: r`<strong>1.</strong> $a_{2k}=\dfrac{2k}{2k+1}\to1$ e $a_{2k+1}=-\dfrac{2k+1}{2k+2}\to-1$. Due sottosuccessioni con limiti diversi: <strong>il limite non esiste</strong>. La successione però è limitata, perché $|a_n|\lt 1$: limitata non vuol dire convergente.<br><br>
+<strong>2.</strong> $b_{2k}=2k\to+\infty$ e $b_{2k+1}=-(2k+1)\to-\infty$. <strong>Il limite non esiste</strong>, nemmeno infinito. È illimitata sia superiormente sia inferiormente, eppure non è divergente: divergere vuol dire tendere a $+\infty$ <em>oppure</em> a $-\infty$, non «diventare grande in modulo». $\blacksquare$` },
+
 /* ======================= SEZIONE 3 ======================= */
 { id: 'E3.1', sez: 3, tema: 'Serie telescopiche', d: 1,
   t: r`Studiare il carattere e, se possibile, calcolare la somma di $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n(n+1)}$.`,

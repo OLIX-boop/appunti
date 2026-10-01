@@ -200,12 +200,13 @@ Il vantaggio è che $R$ non dipende dall'ordine di $x_1,x_2$: la monotonia diven
 <strong>Esempi.</strong> $f(x)=\arctan x$ su $\R$: $\sup=\frac\pi2$, $\inf=-\frac\pi2$, nessun massimo né minimo. $f(x)=\sin x$ su $\R$: $\max=1$, $\min=-1$, assunti in infiniti punti. Distinguere sempre il <em>valore</em> (massimo) dal <em>punto</em> in cui è assunto.` },
 
 { id: '1.31', sez: 2, t: r`Introdurre le funzioni elementari e disegnarne il grafico.`,
-  a: r`<strong>Potenze</strong> $x^\alpha$: per $\alpha=n$ intero positivo pari ($x^2$) grafico a parabola, funzione pari, non iniettiva; per $n$ dispari ($x^3$) dispari, str. crescente su $\R$; per $\alpha<0$ ($\frac1x$) iperbole con asintoti; per $\alpha=\frac12$ ($\sqrt x$) definita su $[0,+\infty)$, crescente e concava.<br><br>
+  a: r`<strong>Potenze</strong> $x^\alpha$: per $\alpha=n$ intero positivo pari ($x^2$) grafico a parabola, funzione pari, non iniettiva; per $n$ dispari ($x^3$) dispari, str. crescente su $\R$; per $\alpha<0$ ($\frac1x$) iperbole con asintoti; per $\alpha=\frac12$ ($\sqrt x$) definita su $[0,+\infty)$, crescente e concava. Nel corso, $x^{p/q}$ ($p,q$ coprimi) è definita su $[0,+\infty)$ se $q$ è pari e su tutto $\R$ se $q$ è dispari; $x^{-p/q}=\frac1{x^{p/q}}$ su $(0,+\infty)$ o su $\R\setminus\{0\}$.<br><br>
 <strong>Esponenziale</strong> $a^x$ ($a>0$, $a\ne1$): dominio $\R$, immagine $(0,+\infty)$, sempre positiva, passa per $(0,1)$; str. crescente se $a>1$, str. decrescente se $0\lt a<1$; asintoto orizzontale $y=0$.<br><br>
 <strong>Logaritmo</strong> $\log_a x$: inverso dell'esponenziale, dominio $(0,+\infty)$, immagine $\R$, passa per $(1,0)$, asintoto verticale $x=0$; grafico simmetrico a quello di $a^x$ rispetto a $y=x$.<br><br>
-<strong>Trigonometriche</strong> $\sin x$, $\cos x$ (periodo $2\pi$, immagine $[-1,1]$), $\tan x$ (periodo $\pi$, immagine $\R$, asintoti verticali in $\frac\pi2+k\pi$) e le inverse $\arcsin$, $\arccos$, $\arctan$.<br><br>
-<strong>Altre:</strong> $|x|$ (pari, non derivabile in $0$), $\sgn x$, parte intera $\lfloor x\rfloor$ (a gradini).<br><br>
-Sulla pagina della Sezione 2 c'è una galleria interattiva con tutti questi grafici e le trasformazioni $af(bx+c)+d$.` },
+<strong>Trigonometriche</strong> $\sin x$, $\cos x$ (periodo $2\pi$, immagine $[-1,1]$), $\tan x$ e $\cot x$ (periodo $\pi$, immagine $\R$, asintoti verticali in $\frac\pi2+k\pi$ e in $k\pi$). <strong>Inverse:</strong> $\arcsin:[-1,1]\to\left[-\frac\pi2,\frac\pi2\right]$, $\arccos:[-1,1]\to[0,\pi]$, $\arctan:\R\to\left(-\frac\pi2,\frac\pi2\right)$, $\operatorname{arccot}:\R\to(0,\pi)$, ottenute restringendo la funzione diretta a un intervallo dove è iniettiva.<br><br>
+<strong>Altre:</strong> $|x|$ (pari, $\min=0$), $\sgn x$ (valori $-1,0,1$), parte intera $[x]$, il più grande intero $\le x$ (a gradini; $[-0{,}5]=-1$).<br><br>
+<strong>Iperboliche:</strong> $\sinh x=\frac{e^x-e^{-x}}2$ (dispari, crescente), $\cosh x=\frac{e^x+e^{-x}}2$ (pari, $\min=1$), $\tanh x=\frac{\sinh x}{\cosh x}$ (immagine $(-1,1)$), con $\cosh^2x-\sinh^2x=1$.<br><br>
+Sulla pagina della Sezione 2 c'è la scheda completa (dominio, immagine, proprietà) e una galleria interattiva con tutti questi grafici e le trasformazioni $af(bx+c)+d$.` },
 
 { id: '1.32', sez: 2, t: r`Dare la definizione di successione numerica. Fornirne esempi.`,
   a: r`Una <strong>successione numerica</strong> è una funzione $a:\N\to\R$. Si scrive $a_n$ invece di $a(n)$, e la successione si indica con $(a_n)_{n\in\N}$ o $\{a_n\}$. Il dominio può anche essere $\{n\in\N: n\ge n_0\}$ (per esempio $\frac1n$ richiede $n\ge1$).<br><br>
@@ -252,7 +253,7 @@ Nella pagina della Sezione 2 c'è un visualizzatore interattivo della striscia $
 <strong>Come si prova l'irregolarità:</strong> esibendo due sottosuccessioni con limiti diversi. Per $(-1)^n$: $a_{2k}=1\to1$ e $a_{2k+1}=-1\to-1$; se il limite esistesse, per unicità ogni sottosuccessione dovrebbe tendere allo stesso valore.` },
 
 { id: '1.38', sez: 2, mark: '*', teo: 'T05', t: r`Enunciare e dimostrare il teorema di unicità del limite.`,
-  a: r`<strong>Enunciato.</strong> Se $a_n\to L$ e $a_n\to M$, allora $L=M$.<br><br>Dimostrazione per assurdo con $\eps=\frac{|M-L|}{2}$: gli intorni risultano disgiunti, ma definitivamente $a_n$ dovrebbe stare in entrambi. Traccia completa nella pagina <em>Teoremi</em>.` },
+  a: r`<strong>Enunciato.</strong> Se una successione ammette limite, questo è unico: $a_n\to\ell_1$ e $a_n\to\ell_2$ implicano $\ell_1=\ell_2$.<br><br>Dimostrazione per assurdo, come a lezione: per $n>\nu_\eps=\max\{\nu_{1,\eps},\nu_{2,\eps}\}$, con la disuguaglianza triangolare, $|\ell_1-\ell_2|\le|a_n-\ell_1|+|a_n-\ell_2|\lt 2\eps$; scegliendo $\eps=\frac{|\ell_1-\ell_2|}{2}$ si ottiene $|\ell_1-\ell_2|\lt|\ell_1-\ell_2|$, assurdo. Traccia completa nella pagina <em>Teoremi</em>.` },
 
 { id: '1.39', sez: 2, mark: '*', teo: 'T06', t: r`Dimostrare che una successione convergente è limitata.`,
   a: r`<strong>Enunciato.</strong> $a_n\to L\in\R\ \Rightarrow\ \exists M>0: |a_n|\le M\ \forall n$.<br><br>Si applica la definizione con $\eps=1$ per stimare la coda ($|a_n|<1+|L|$) e si prende il massimo con i finitamente molti termini iniziali. Il viceversa è falso: $(-1)^n$. Traccia completa nella pagina <em>Teoremi</em>.` },
