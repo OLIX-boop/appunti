@@ -145,6 +145,19 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - Commit in italiano, all'imperativo, con il perché nel corpo; poi push su `main`. Lo studente ha
   chiesto commit e push senza conferma ogni volta.
 
+### Automazione dei PDF nuovi
+
+- All'accesso a Windows (con 10 minuti di ritardo) l'attività pianificata «Aggiorna Appunti»
+  lancia `.claude/aggiorna-appunti.ps1`: cerca PDF nuovi o cambiati in `analisi/materiale/` e
+  `geometria/materiale/`, avvia `claude -p "/aggiorna-appunti"` (comando in
+  `.claude/commands/aggiorna-appunti.md`), poi fa commit e push. Log in `logs/` (ignorata da git).
+- I PDF già elaborati sono registrati in `.appunti-state.json` (percorso → dimensione, ignorato da
+  git). **Se integri un PDF a mano in una sessione, aggiungilo lì**, altrimenti al prossimo
+  accesso l'automazione lo rielabora.
+- In Windows PowerShell 5.1 non chiamare comandi esterni con `2>$null` o `2>&1` quando
+  `$ErrorActionPreference = "Stop"`: ogni riga su stderr, anche un avviso di git, diventa un
+  errore fatale. Nello script c'è la funzione `Esegui` apposta.
+
 ### Cose da non fare
 
 - Non usare `<` seguito da una lettera nelle formule; non usare stringhe non `String.raw` per il

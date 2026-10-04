@@ -6,3 +6,7 @@ desktop.ini
 # editor
 .vscode/
 .idea/
+.appunti-state.json
+.nuovi-file.txt
+# automazione aggiorna-appunti
+logs/
