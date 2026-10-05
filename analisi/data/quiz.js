@@ -249,6 +249,21 @@
   a: 0,
   why: r`$b_1=1$ e $\frac1n\le1$: il massimo è $1$. $\inf=0$, perché $\frac1n\ge0$ e per ogni $\eps>0$ esiste $n_\eps=\left[\frac1\eps\right]+1$ con $\frac1{n_\eps}\lt\eps$; ma $0$ non è un valore della successione, quindi non è minimo (Lezione 6).` },
 
+{ id: 'Q55', sez: 2, tag: 'proprietà del confronto',
+  q: r`Se $a_n\to a$, $b_n\to b$ e $a_n>b_n$ per ogni $n$, che cosa si può concludere?`,
+  opts: [ r`$a\ge b$`, r`$a>b$`, r`$a=b$`, r`nulla sul confronto fra $a$ e $b$` ],
+  a: 0,
+  why: r`È la proprietà del confronto (corollario 2 della permanenza del segno): la disuguaglianza passa al limite, ma da stretta diventa larga. $a>b$ è falso in generale: con $a_n=\frac1n>0=b_n$ i due limiti sono entrambi $0$. $a=b$ è solo un caso possibile, non una conseguenza.` },
+
+{ id: 'Q56', sez: 2, tag: 'proprietà del confronto',
+  q: r`Nella dimostrazione vista a lezione della proprietà del confronto ($a_n\ge b_n\Rightarrow a\ge b$), il passaggio chiave è:`,
+  opts: [ r`applicare il corollario 1 a $c_n=a_n-b_n$, che tende ad $a-b$ per l'algebra dei limiti`,
+          r`applicare il teorema dei due carabinieri ad $a_n$ e $b_n$`,
+          r`dimostrare che $a_n$ e $b_n$ sono limitate`,
+          r`osservare che $a_n$ e $b_n$ sono monotòne` ],
+  a: 0,
+  why: r`$c_n=a_n-b_n\ge0$ definitivamente e $c_n\to a-b$; per il corollario 1 (se $c_n\ge0$ e $c_n\to c$ allora $c\ge0$) si ha $a-b\ge0$. I carabinieri servono a <em>dimostrare</em> che un limite esiste; qui i limiti esistono già per ipotesi. Limitatezza e monotonia non c'entrano.` },
+
 /* ---------------- Sezione 3 ---------------- */
 { id: 'Q25', sez: 3, tag: 'condizione necessaria',
   q: r`Se $a_n\to0$, allora la serie $\sum a_n$:`,

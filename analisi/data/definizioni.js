@@ -129,6 +129,12 @@ $$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M$$
 { id: 'D29', sez: 2, topic: 's2-13', t: r`Convergente, divergente, regolare, irregolare`,
   d: r`<strong>Convergente:</strong> limite finito. <strong>Divergente:</strong> limite $\pm\infty$. <strong>Regolare:</strong> ammette limite (finito o infinito). <strong>Irregolare:</strong> non ammette limite.<br><br>$(-1)^n$ è irregolare; lo si prova con due sottosuccessioni di limiti diversi.` },
 
+{ id: 'D51', sez: 2, topic: 's2-19', t: r`Corollario 1 della permanenza del segno`,
+  d: r`Se $a_n\to a$ e $a_n\ge0$ definitivamente, allora $a\ge0$.<br><br>Per assurdo: se $a\lt 0$, per la permanenza del segno $a_n\lt 0$ definitivamente. Anche con $a_n>0$ la tesi resta $a\ge0$: controesempio $\frac1n\to0$.` },
+
+{ id: 'D52', sez: 2, topic: 's2-20', t: r`Proprietà del confronto (corollario 2)`,
+  d: r`Se $a_n\to a$, $b_n\to b$ (finiti) e $a_n\ge b_n$ definitivamente, allora $a\ge b$.<br><br>Dimostrazione: $c_n=a_n-b_n\ge0$ e $c_n\to a-b$ (algebra dei limiti); per il corollario 1, $a-b\ge0$. Da $a_n>b_n$ segue solo $a\ge b$.` },
+
 { id: 'D30', sez: 2, topic: 's2-18', t: r`Forme indeterminate`,
   d: r`Le sette combinazioni in cui il limite <strong>non è determinato</strong> dai soli limiti dei fattori:
 $$\infty-\infty,\quad 0\cdot\infty,\quad \frac\infty\infty,\quad \frac00,\quad 1^{\infty},\quad \infty^{0},\quad 0^{0}$$

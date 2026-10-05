@@ -157,9 +157,10 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
       { cue: r`La scelta di $\eps$`, body: r`Poiché $L>0$, il numero $\eps:=\dfrac L2$ è strettamente positivo ed è quindi una scelta lecita nella definizione di limite.` },
       { cue: 'Applicare la definizione', body: r`$\exists\,N$ tale che $\forall n>N$: $$|a_n-L|<\frac L2\quad\Longleftrightarrow\quad L-\frac L2\lt a_n\lt L+\frac L2.$$` },
       { cue: 'Conclusione', body: r`In particolare $a_n>L-\dfrac L2=\dfrac L2>0$ per ogni $n>N$. $\blacksquare$<br><br>Se $L=+\infty$: applicando la definizione con $M=1$ si ottiene $a_n>1>0$ definitivamente.` },
-      { cue: 'Versione simmetrica e versione "inversa"', body: r`Se $L<0$, analogamente $a_n<\dfrac L2<0$ definitivamente.<br><br><strong>Forma inversa (attenzione!)</strong>: se $a_n\ge0$ definitivamente e $a_n\to L$, allora $L\ge0$ — <em>non</em> $L>0$.` }
+      { cue: 'Versione simmetrica', body: r`Se $L<0$, analogamente $a_n<\dfrac L2<0$ definitivamente.` },
+      { cue: 'Corollario 1 (Lezione 7): il teorema letto al contrario', body: r`<strong>Se $a_n\to a$ e $a_n\ge0$ definitivamente, allora $a\ge0$.</strong><br><br><em>Dimostrazione per assurdo.</em> Se fosse $a<0$, per la permanenza del segno (versione simmetrica) sarebbe $a_n<0$ definitivamente, contro l'ipotesi $a_n\ge0$. Quindi $a\ge0$. $\blacksquare$<br><br>Vale anche con l'ipotesi $a_n>0$, ma la tesi resta $a\ge0$: <strong>non</strong> $a>0$.` }
     ],
-    note: r`Controesempio da citare: $a_n=\dfrac1n>0$ per ogni $n$, ma $L=0$. La disuguaglianza <em>stretta</em> non si conserva al limite: passando al limite $>$ diventa $\ge$. È l'errore più frequente su questo teorema.`
+    note: r`Controesempio da citare: $a_n=\dfrac1n>0$ per ogni $n$, ma $a=0$. La disuguaglianza <em>stretta</em> non si conserva al limite: passando al limite $>$ diventa $\ge$. È l'errore più frequente su questo teorema. Dal corollario 1 segue il corollario 2, la proprietà del confronto.`
   },
   {
     id: 'T08', n: 8, sez: 2, mark: '*', q: '1.44',
@@ -189,15 +190,15 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
   },
   {
     id: 'T-conf', sez: 2, mark: '**', q: '1.43',
-    titolo: 'Proprietà del confronto',
-    enunciato: r`Siano $a_n\to L$ e $b_n\to M$ (finiti), con $a_n\le b_n$ definitivamente. Allora $L\le M$.`,
-    idea: r`Per assurdo: se $L>M$, gli intorni di raggio $\frac{L-M}{2}$ sono disgiunti e "nell'ordine sbagliato".`,
+    titolo: 'Proprietà del confronto (corollario 2 della permanenza del segno)',
+    enunciato: r`Siano $a_n\to a$ e $b_n\to b$ (finiti), con $a_n\ge b_n$ definitivamente. Allora $a\ge b$.`,
+    idea: r`Come a lezione: si riduce al corollario 1 guardando la differenza $c_n=a_n-b_n$, che è $\ge0$ e tende ad $a-b$.`,
     steps: [
-      { cue: 'Impostazione per assurdo', body: r`Supponiamo $L>M$ e poniamo $\eps=\dfrac{L-M}{2}>0$.` },
-      { cue: 'Le due code', body: r`Definitivamente $a_n>L-\eps=\dfrac{L+M}{2}$ e $b_n\lt M+\eps=\dfrac{L+M}{2}$.` },
-      { cue: 'Assurdo', body: r`Dunque definitivamente $b_n<\dfrac{L+M}{2}\lt a_n$, cioè $b_n\lt a_n$, contro l'ipotesi $a_n\le b_n$. Quindi $L\le M$. $\blacksquare$` }
+      { cue: 'Quale successione conviene guardare?', body: r`La differenza $c_n:=a_n-b_n$. Per ipotesi $c_n\ge0$ definitivamente.` },
+      { cue: r`A che cosa tende $c_n$?`, body: r`Per l'<strong>algebra dei limiti</strong> (entrambi i limiti sono finiti): $c_n=a_n-b_n\to a-b$.` },
+      { cue: 'Conclusione', body: r`$c_n\ge0$ definitivamente e $c_n\to a-b$: per il <strong>corollario 1</strong> (permanenza del segno letta al contrario) $a-b\ge0$, cioè $a\ge b$. $\blacksquare$` }
     ],
-    note: r`Anche qui la disuguaglianza <strong>stretta non si conserva</strong>: da $a_n\lt b_n$ segue solo $L\le M$. Controesempio: $a_n=0<\frac1n=b_n$, ma entrambi i limiti valgono $0$.`
+    note: r`Anche qui la disuguaglianza <strong>stretta non si conserva</strong>: da $a_n>b_n$ segue solo $a\ge b$. Controesempio: $a_n=\frac1n>0=b_n$, ma entrambi i limiti valgono $0$.<br><br><em>Dimostrazione alternativa, diretta.</em> Per assurdo $a\lt b$; con $\eps=\frac{b-a}{2}$ definitivamente $a_n\lt\frac{a+b}{2}\lt b_n$, contro $a_n\ge b_n$.`
   },
   {
     id: 'T09', n: 9, sez: 2, mark: '*', q: '1.47',

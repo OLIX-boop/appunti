@@ -352,6 +352,20 @@ $$\boxed{\,\tfrac12\quad\text{e}\quad-\tfrac16\,}$$ $\blacksquare$` },
   sol: r`<strong>1.</strong> $a_{2k}=\dfrac{2k}{2k+1}\to1$ e $a_{2k+1}=-\dfrac{2k+1}{2k+2}\to-1$. Due sottosuccessioni con limiti diversi: <strong>il limite non esiste</strong>. La successione però è limitata, perché $|a_n|\lt 1$: limitata non vuol dire convergente.<br><br>
 <strong>2.</strong> $b_{2k}=2k\to+\infty$ e $b_{2k+1}=-(2k+1)\to-\infty$. <strong>Il limite non esiste</strong>, nemmeno infinito. È illimitata sia superiormente sia inferiormente, eppure non è divergente: divergere vuol dire tendere a $+\infty$ <em>oppure</em> a $-\infty$, non «diventare grande in modulo». $\blacksquare$` },
 
+{ id: 'E2.14', sez: 2, tema: 'Permanenza del segno e confronto', d: 1,
+  t: r`Sia $(a_n)$ una successione convergente ad $a$.
+<ol><li>Se $2\le a_n\le5$ per ogni $n$, dimostrare che $2\le a\le5$.</li>
+<li>Se $a_n\lt 5$ per ogni $n$, è vero che $a\lt 5$?</li>
+<li>Se $a_n\to a$ e $a_n^2\le a_n$ per ogni $n$, dimostrare che $0\le a\le1$.</li></ol>`,
+  hints: [ r`Una costante è una successione: $b_n=2$ tende a $2$. Usa la proprietà del confronto due volte.`,
+           r`Al limite «$\lt$» diventa «$\le$»: cerca una successione che si avvicina a $5$ da sotto.`,
+           r`Per l'algebra dei limiti $a_n^2\to a^2$. Applica il confronto ad $a_n^2\le a_n$ e risolvi la disuguaglianza in $a$.` ],
+  sol: r`<strong>1.</strong> Le successioni costanti $b_n=2$ e $c_n=5$ tendono a $2$ e a $5$. Da $a_n\ge b_n$ e dalla proprietà del confronto segue $a\ge2$; da $c_n\ge a_n$ segue $5\ge a$. Quindi $2\le a\le5$.<br><br>
+<strong>2.</strong> <strong>No.</strong> Controesempio: $a_n=5-\frac1n\lt 5$ per ogni $n\ge1$, ma $a_n\to5$. Si può concludere solo $a\le5$: passando al limite la disuguaglianza stretta diventa larga.<br><br>
+<strong>3.</strong> Per l'algebra dei limiti $a_n^2\to a^2$. Da $a_n^2\le a_n$ e dalla proprietà del confronto: $a^2\le a$, cioè $a(a-1)\le0$, cioè $0\le a\le1$.<br>
+<em>Controllo:</em> con $a_n=\frac12+\frac1{4n}$ si ha $a_n\in\left(\frac12,1\right)$, quindi $a_n^2\le a_n$, e il limite $\frac12$ sta in $[0,1]$ ✓.<br><br>
+<em>Morale:</em> il confronto si applica anche alle costanti, e trasforma una disuguaglianza fra successioni in una disuguaglianza fra limiti, sempre larga. $\blacksquare$` },
+
 /* ======================= SEZIONE 3 ======================= */
 { id: 'E3.1', sez: 3, tema: 'Serie telescopiche', d: 1,
   t: r`Studiare il carattere e, se possibile, calcolare la somma di $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n(n+1)}$.`,

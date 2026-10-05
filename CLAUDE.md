@@ -20,7 +20,9 @@ aggiungere una materia sono nel `README.md`.
     ($\arctan\frac yx$ se $x>0$, $+\pi$ se $x<0$); $x^{p/q}$ con $q$ dispari definita su tutto
     $\R$; limite scritto con $\ell$ e $\nu_\eps$, e $\forall M>0$ per i limiti infiniti;
     radici $n$-esime con $w=Re^{i\varphi}$, $z=re^{i\theta}$, $h=0,\dots,m-1$ e il ragionamento
-    $k=mq+h$; unicità del limite dimostrata con la disuguaglianza triangolare.
+    $k=mq+h$; unicità del limite dimostrata con la disuguaglianza triangolare; dopo la permanenza
+    del segno due corollari (Lezione 7): $a_n\ge0\Rightarrow a\ge0$ per assurdo, e la proprietà
+    del confronto dimostrata da quello applicato a $a_n-b_n$.
   - Geometria: $\K$ per il campo, $\M_{\K}(m,n)$ per le matrici, $\tau_{\vv}$ per le traslazioni,
     gli assiomi di spazio vettoriale numerati (i)–(viii) nel suo ordine, «matrice
     **totalmente ridotta**» (non «forma a scala ridotta»), MEG-J in tre parti (MEG,

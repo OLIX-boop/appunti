@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261001f">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261005">
 </head>
 <body>
 
@@ -60,6 +60,7 @@
     <a href="#limitata" class="sub">Convergente ⇒ limitata</a>
     <a href="#teoremi">5 · I teoremi sui limiti</a>
     <a href="#segno" class="sub">Permanenza del segno</a>
+    <a href="#corollari" class="sub">Corollari: segno e confronto</a>
     <a href="#carabinieri" class="sub">Due carabinieri</a>
     <a href="#monotone" class="sub">Successioni monotòne</a>
     <a href="#nepero" class="sub">Il numero e</a>
@@ -79,8 +80,9 @@
     </div>
 
     <div class="box warnb">
-      <div class="box-title">★ Novità delle Lezioni 5 e 6 (aggiunte il 1° ottobre)</div>
+      <div class="box-title">★ Novità delle Lezioni 5, 6 e 7</div>
       <ul class="mb0">
+        <li><strong>Lezione 7 (5 ottobre):</strong> <a href="#corollari">i due corollari della permanenza del segno</a>, cioè il segno del limite e la proprietà del confronto, con dimostrazioni a passi coperti</li>
         <li><a href="#limitate">Funzioni limitate e illimitate</a>, con la tabella degli esempi della lezione</li>
         <li><a href="#scheda">Scheda delle funzioni elementari</a>: domini, immagini, parte intera, segno, iperboliche, convenzione su $x^{p/q}$; la <a href="#elementari">galleria</a> ora ha 22 funzioni</li>
         <li><a href="#succ-def">Successioni</a>: monotonia, max/min/sup/inf con la caratterizzazione a $\eps$, esempi svolti</li>
@@ -509,9 +511,60 @@
       quindi in particolare $a_n>\frac L2>0$. $\blacksquare$</p>
       <p class="mb0">Se $L=+\infty$: applicando la definizione con $M=1$ si ottiene $a_n>1>0$ definitivamente.</p>
     </div></details>
+
+    <h3 id="corollari">I due corollari: il segno del limite e il confronto <span class="badge star2">dim. orale</span></h3>
+    <p class="small muted">Lezione 7 (5 ottobre). La proprietà del confronto è nel programma con (**).</p>
+
+    <div class="box teo">
+      <div class="box-title">Corollario 1 · la permanenza del segno letta al contrario</div>
+      <p class="mb0">Se $a_n\to a$ e $a_n\ge0$ definitivamente, allora $$a\ge0.$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che tecnica si usa?</div>
+          <div class="step-content">Per assurdo: si suppone che la tesi sia falsa, cioè $a\lt 0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale teorema si può applicare, e che cosa dice?</div>
+          <div class="step-content">La permanenza del segno nella versione con limite negativo: se $a\lt 0$, allora $a_n\lt 0$ <strong>definitivamente</strong>.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dov'è l'assurdo?</div>
+          <div class="step-content">Per ipotesi $a_n\ge0$ definitivamente. Da un certo indice in poi varrebbero insieme $a_n\ge0$ e $a_n\lt 0$: impossibile. Quindi $a\ge0$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <div class="box teo">
+      <div class="box-title">Corollario 2 · proprietà del confronto</div>
+      <p class="mb0">Se $a_n\to a$, $b_n\to b$ (finiti) e $a_n\ge b_n$ definitivamente, allora $$a\ge b.$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Come ci si riporta al corollario 1?</div>
+          <div class="step-content">Guardando la differenza $c_n:=a_n-b_n$, che per ipotesi è $\ge0$ definitivamente.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">A che cosa tende $c_n$, e perché?</div>
+          <div class="step-content">Ad $a-b$, per l'<strong>algebra dei limiti</strong>: entrambi i limiti sono finiti, quindi il limite della differenza è la differenza dei limiti.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Conclusione</div>
+          <div class="step-content">$c_n\ge0$ definitivamente e $c_n\to a-b$: per il corollario 1, $a-b\ge0$, cioè $a\ge b$. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Alternativa diretta, senza corollario 1: per assurdo $a\lt b$; con $\eps=\frac{b-a}2$ si trova definitivamente $a_n\lt\frac{a+b}2\lt b_n$, contro $a_n\ge b_n$.</p>
+    </div></details>
+
     <div class="box trap">
-      <div class="box-title">✗ La forma inversa — l'errore più frequente del corso</div>
-      <p class="mb0">Se $a_n\ge0$ definitivamente e $a_n\to L$, allora $L\ge0$ — <strong>non</strong> $L>0$. Passando al limite, la disuguaglianza <em>stretta si indebolisce</em>. Controesempio: $a_n=\frac1n>0$ per ogni $n$, ma $L=0$. Lo stesso vale per la proprietà del confronto: da $a_n\lt b_n$ segue solo $L\le M$.</p>
+      <div class="box-title">✗ Passando al limite, «&gt;» diventa «≥» — l'errore più frequente del corso</div>
+      <p>Anche con l'ipotesi <strong>stretta</strong> la tesi resta <strong>larga</strong>:</p>
+      <ul class="mb0">
+        <li>$a_n>0$ per ogni $n$ e $a_n\to a$ $\Rightarrow$ $a\ge0$, <strong>non</strong> $a>0$. Controesempio: $a_n=\frac1n>0$, ma $a=0$.</li>
+        <li>$a_n>b_n$ per ogni $n$ $\Rightarrow$ $a\ge b$, <strong>non</strong> $a>b$. Controesempio: $a_n=\frac1n>0=b_n$, ma i due limiti valgono entrambi $0$.</li>
+      </ul>
+    </div>
+    <div class="box tip">
+      <div class="box-title">↳ Permanenza e corollario 1: due facce della stessa idea</div>
+      <p class="mb0">La permanenza va <strong>dal limite alla successione</strong>: limite $>0$ $\Rightarrow$ termini $>0$ definitivamente (stretto, perché la striscia attorno ad $a$ sta tutta sopra lo zero). Il corollario 1 va <strong>dalla successione al limite</strong>: termini $\ge0$ $\Rightarrow$ limite $\ge0$ (largo, perché i termini possono avvicinarsi a $0$ quanto vogliono). Non sono la stessa frase al contrario: cambia anche il tipo di disuguaglianza.</p>
     </div>
 
     <h3 id="carabinieri">Teorema del confronto (due carabinieri) <span class="badge star">dim. scritto · n° 8</span></h3>
@@ -740,11 +793,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261001f"></script>
-<script src="../data/topics.js?v=20261001f"></script>
-<script src="../data/quiz.js?v=20261001f"></script>
-<script src="../../assets/js/plot.js?v=20261001f"></script>
-<script src="../../assets/js/app.js?v=20261001f"></script>
+<script src="../../assets/js/materie.js?v=20261005"></script>
+<script src="../data/topics.js?v=20261005"></script>
+<script src="../data/quiz.js?v=20261005"></script>
+<script src="../../assets/js/plot.js?v=20261005"></script>
+<script src="../../assets/js/app.js?v=20261005"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 2);
