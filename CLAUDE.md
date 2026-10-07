@@ -172,7 +172,14 @@ Lo script `.claude/aggiorna-appunti.ps1` **legge questa tabella**: tienila nel f
   lancia `.claude/aggiorna-appunti.ps1`: cerca PDF nuovi o cambiati nelle cartelle sorgente dei
   corsi attivi della «Mappa corsi», li copia in `materiale/`, avvia `claude -p "/aggiorna-appunti"`
   (comando in `.claude/commands/aggiorna-appunti.md`), poi fa commit e push e mostra un popup con
-  l'esito. Log in `logs/` (ignorata da git). Prova a vuoto: lo script con `-DryRun`.
+  l'esito. Prova a vuoto: lo script con `-DryRun`.
+- In `logs/` (ignorata da git): `storico-aggiornamenti.md` ha una scheda per ogni avvio, la più
+  recente in cima, con il riepilogo di Claude (`ultimo-aggiornamento.md`) e un resoconto
+  **ricavato da git** (paragrafi `h2`/`h3` nuovi, id nuovi in `data/*.js`, file toccati, link al
+  confronto su GitHub); `run-*.log` è il log tecnico. Per rileggere un intervallo qualsiasi:
+  `-ProvaResoconto <da>..<a>`. Il resoconto riconosce i contenuti nuovi dagli **id**: per questo
+  ogni paragrafo nuovo deve avere un `id` e ogni esercizio, domanda o flashcard un id mai usato.
+- Lo script è salvato in UTF-8 **con BOM**: senza, Windows PowerShell 5.1 legge male gli accenti.
 - Un PDF identico (stesso SHA-256) a uno già elaborato non viene rielaborato, anche se sta in
   un'altra cartella.
 - I PDF già elaborati sono registrati in `.appunti-state.json` (percorso → dimensione, ignorato da
