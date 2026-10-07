@@ -147,12 +147,34 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - Commit in italiano, all'imperativo, con il perché nel corpo; poi push su `main`. Lo studente ha
   chiesto commit e push senza conferma ogni volta.
 
+### Mappa corsi
+
+Lo script `.claude/aggiorna-appunti.ps1` **legge questa tabella**: tienila nel formato attuale
+(percorsi tra backtick; più cartelle sorgente separate da «·»; «Attivo» = `sì` o `no`).
+
+| Corso | Cartella sorgente | Pagina HTML | Copia i PDF in | Attivo |
+|---|---|---|---|---|
+| Analisi Matematica 1 | `C:\WeBeep\ANALISI MATEMATICA 1` · `analisi\materiale` | `analisi/index.html`, `analisi/sezioni/*.html` | `analisi\materiale` | sì |
+| Geometria e Algebra Lineare | `C:\WeBeep\[2026-27] GEOMETRIA E ALGEBRA LINEARE 082747 (GUMENYUK PAVEL)` · `geometria\materiale` | `geometria/index.html`, `geometria/sezioni/*.html` | `geometria\materiale` | sì |
+| Fondamenti di Informatica | `C:\WeBeep\FONDAMENTI DI INFORMATICA` | `informatica/index.html` | `informatica\materiale` | no |
+
+- I PDF di WeBeep vengono **copiati** nella cartella «Copia i PDF in» del corso prima
+  dell'integrazione, perché le pagine li linkano da lì (`materiale/...`).
+- Fondamenti è `no`: `informatica/` è un'app a pagina singola presa da un altro repository, con una
+  struttura che i «Criteri appunti» non descrivono. Va attivato solo dopo aver deciso come integrarlo.
+- Sottocartelle **escluse** in ogni caso (variabile `$Escludi` nello script): esami degli anni
+  precedenti, temi d'esame vecchi, l'edizione 2025-2026 di Fondamenti, file vuoti come
+  `000BLANK.pdf`. Non sono lezioni del corso di quest'anno.
+
 ### Automazione dei PDF nuovi
 
 - All'accesso a Windows (con 10 minuti di ritardo) l'attività pianificata «Aggiorna Appunti»
-  lancia `.claude/aggiorna-appunti.ps1`: cerca PDF nuovi o cambiati in `analisi/materiale/` e
-  `geometria/materiale/`, avvia `claude -p "/aggiorna-appunti"` (comando in
-  `.claude/commands/aggiorna-appunti.md`), poi fa commit e push. Log in `logs/` (ignorata da git).
+  lancia `.claude/aggiorna-appunti.ps1`: cerca PDF nuovi o cambiati nelle cartelle sorgente dei
+  corsi attivi della «Mappa corsi», li copia in `materiale/`, avvia `claude -p "/aggiorna-appunti"`
+  (comando in `.claude/commands/aggiorna-appunti.md`), poi fa commit e push e mostra un popup con
+  l'esito. Log in `logs/` (ignorata da git). Prova a vuoto: lo script con `-DryRun`.
+- Un PDF identico (stesso SHA-256) a uno già elaborato non viene rielaborato, anche se sta in
+  un'altra cartella.
 - I PDF già elaborati sono registrati in `.appunti-state.json` (percorso → dimensione, ignorato da
   git). **Se integri un PDF a mano in una sessione, aggiungilo lì**, altrimenti al prossimo
   accesso l'automazione lo rielabora.
