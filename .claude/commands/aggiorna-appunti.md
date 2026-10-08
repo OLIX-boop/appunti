@@ -1,30 +1,15 @@
 ---
-description: Integra nel sito i nuovi PDF delle lezioni e aggiunge esercizi
+description: Integra i nuovi PDF delle lezioni nel sito Appunti e genera esercizi
 ---
-Stai girando senza nessuno davanti: non fare domande, prendi la scelta più ragionevole e annotala
-nel riepilogo. Commit e push li fa lo script che ti ha avviato: tu **non** usare git.
+Stai girando senza nessuno davanti: non fare domande, prendi la scelta più ragionevole e annotala nel riepilogo.
 
-1. Leggi `.nuovi-file.txt`: un percorso di PDF per riga. Stanno in `analisi/materiale/` o
-   `geometria/materiale/`, e la cartella ti dice la materia.
+1. Leggi `.nuovi-file.txt`: un percorso di PDF per riga.
 2. Per ogni PDF:
-   - leggilo **tutto, pagina per pagina**. Se è scritto a mano `pdftotext` non basta: renderizza
-     le pagine in PNG con PyMuPDF (`python`, modulo `pymupdf`) in una cartella temporanea fuori
-     dal progetto e guardale;
-   - confrontalo con quello che il sito ha già e integra solo ciò che manca, seguendo
-     **esattamente** la sezione «Criteri appunti» di `CLAUDE.md`: convenzioni del prof,
-     ordine delle lezioni, struttura delle pagine, formule, formato di esercizi, quiz e
-     flashcard, cose da non fare;
-   - non riscrivere né riformulare sezioni esistenti: aggiungi o completa. Se una convenzione del
-     sito contraddice quella del prof, correggi il sito e annotalo;
-   - se il PDF è una versione aggiornata di uno già integrato, aggiorna solo la parte
-     corrispondente;
-   - per ogni argomento nuovo aggiungi esercizi con soluzione verificata, domande di quiz e, per
-     Analisi, flashcard; per Analisi aggiorna anche il `cutoff` predefinito e la card della lezione
-     in `analisi/index.html`;
-   - in cima alla pagina toccata metti o aggiorna il riquadro «★ Novità delle Lezioni …».
-3. Prima di finire: aggiorna `?v=` sui riferimenti locali se hai toccato CSS o JS, e controlla che
-   nelle formule non ci sia `<` seguito da una lettera e che i file `data/*.js` si carichino con
-   `node` senza errori.
-4. Se un PDF è illeggibile o non riguarda una lezione (avvisi, orari), saltalo.
-5. Scrivi `logs/ultimo-aggiornamento.md` con: file elaborati, pagine toccate, esercizi e domande
-   aggiunti, file saltati e perché, scelte dubbie da ricontrollare.
+   - smistalo nel corso giusto usando la tabella "Mappa corsi" di CLAUDE.md: confronta il percorso del file con la colonna "Cartella sorgente". Se nessuna riga corrisponde, ricava il corso dal contenuto del PDF, crea la pagina del corso con la stessa struttura delle altre, aggiungi la riga mancante alla tabella e segnalalo nel riepilogo;
+   - ricava l'argomento dal contenuto;
+   - integra il contenuto nella pagina HTML di quel corso seguendo **esattamente** i criteri della sezione "Criteri appunti" di CLAUDE.md (struttura, stile, formule, ordine cronologico);
+   - non riscrivere né riformulare sezioni già esistenti: aggiungi o completa;
+   - se il PDF è una versione aggiornata di uno già integrato, aggiorna solo la parte corrispondente;
+   - per ogni argomento nuovo aggiungi esercizi con soluzione, come da CLAUDE.md.
+3. Se un PDF è una scansione illeggibile o non riguarda la lezione (es. avvisi, orari), saltalo.
+4. Alla fine scrivi `logs/ultimo-aggiornamento.md` con: file elaborati, pagine toccate, esercizi aggiunti, file saltati e perché, scelte dubbie da ricontrollare.
