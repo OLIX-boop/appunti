@@ -135,6 +135,30 @@ $$\lim_n a_n=-\infty\iff \forall M\in\R\ \exists N:\ \forall n>N,\ a_n\lt M$$
 { id: 'D52', sez: 2, topic: 's2-20', t: r`Proprietà del confronto (corollario 2)`,
   d: r`Se $a_n\to a$, $b_n\to b$ (finiti) e $a_n\ge b_n$ definitivamente, allora $a\ge b$.<br><br>Dimostrazione: $c_n=a_n-b_n\ge0$ e $c_n\to a-b$ (algebra dei limiti); per il corollario 1, $a-b\ge0$. Da $a_n>b_n$ segue solo $a\ge b$.` },
 
+{ id: 'D53', sez: 2, topic: 's2-18', t: r`Quoziente con denominatore infinitesimo`,
+  d: r`Se $a_n\to a>0$ e $b_n\to0$: $\dfrac{a_n}{b_n}\to+\infty$ se $b_n>0$ definitivamente, $\to-\infty$ se $b_n\lt 0$ definitivamente, <strong>non esiste</strong> altrimenti.<br><br>Esempio: $\dfrac{1}{(-1)^n/n}=(-1)^nn$ non ha limite. Non è una forma indeterminata: è un limite che non esiste.` },
+
+{ id: 'D54', sez: 2, topic: 's2-22', t: r`Lemma sul modulo e infinitesima per limitata`,
+  d: r`<strong>Lemma:</strong> $a_n\to0\iff|a_n|\to0$.<br><strong>Teorema:</strong> $\{a_n\}$ limitata, $b_n\to0$ $\Rightarrow$ $a_nb_n\to0$, perché $0\le|a_nb_n|\le M|b_n|\to0$ (carabinieri).<br>Controesempio senza limitatezza: $n\cdot\frac1n=1$.` },
+
+{ id: 'D55', sez: 2, topic: 's2-21', t: r`Confronto per limiti infiniti`,
+  d: r`Se $a_n\le b_n$ e $a_n\to+\infty$, allora $b_n\to+\infty$.<br>Se $a_n\le b_n$ e $b_n\to-\infty$, allora $a_n\to-\infty$.<br>Basta un solo «carabiniere».` },
+
+{ id: 'D56', sez: 2, topic: 's2-25', t: r`Limiti notevoli (a) e (b)`,
+  d: r`$$a^n\to\begin{cases}+\infty&a>1\\1&a=1\\0&|a|\lt 1\\\nexists&a\le-1\end{cases}\qquad\qquad \sqrt[n]a\to1\ \ (a>0),\qquad \sqrt[n]{n^b}\to1\ \ (b\in\R)$$
+Entrambi con Bernoulli.` },
+
+{ id: 'D57', sez: 2, topic: 's2-25', t: r`Limiti notevoli (d) ed (e), per $a_n\to0$`,
+  d: r`$$\frac{\sin a_n}{a_n}\to1,\quad \frac{1-\cos a_n}{a_n^2}\to\frac12,\quad (1+a_n)^{1/a_n}\to e,$$
+$$\frac{\log(1+a_n)}{a_n}\to1,\quad \frac{e^{a_n}-1}{a_n}\to1,\quad \frac{(1+a_n)^\alpha-1}{a_n}\to\alpha.$$
+Base: $\cos x\lt\frac{\sin x}x\lt1$ per $0\lt|x|\le\frac\pi2$.` },
+
+{ id: 'D58', sez: 2, topic: 's2-25', t: r`Rapporto tra polinomi`,
+  d: r`$\dfrac{a_kn^k+\dots}{b_hn^h+\dots}$ tende a: $\pm\infty$ se $k>h$ (segno di $\frac{a_k}{b_h}$), $\dfrac{a_k}{b_h}$ se $k=h$, $0$ se $k\lt h$.<br>Si raccoglie il monomio di grado massimo sopra e sotto.` },
+
+{ id: 'D59', sez: 2, topic: 's2-26', t: r`Criterio del rapporto per successioni`,
+  d: r`Se $a_n>0$ e $\dfrac{a_{n+1}}{a_n}\to b\lt 1$, allora $a_n\to0$.<br>Applicazioni: $\frac{n^b}{\alpha^n}\to0$ ($\alpha>1$), $\frac{\alpha^n}{n!}\to0$, $\frac{n!}{n^n}\to0$ (il rapporto tende a $\frac1e$).` },
+
 { id: 'D30', sez: 2, topic: 's2-18', t: r`Forme indeterminate`,
   d: r`Le sette combinazioni in cui il limite <strong>non è determinato</strong> dai soli limiti dei fattori:
 $$\infty-\infty,\quad 0\cdot\infty,\quad \frac\infty\infty,\quad \frac00,\quad 1^{\infty},\quad \infty^{0},\quad 0^{0}$$

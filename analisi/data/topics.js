@@ -68,7 +68,7 @@
         { id: 's2-19', t: 'Permanenza del segno', mark: '*', q: '1.42' },
         { id: 's2-20', t: 'Proprietà del confronto', mark: '**', q: '1.43' },
         { id: 's2-21', t: 'Teorema del confronto (dei due carabinieri)', mark: '*', q: '1.44' },
-        { id: 's2-22', t: 'Successioni infinitesime; infinitesima × limitata', q: '1.45–1.46' },
+        { id: 's2-22', t: 'Successioni infinitesime; infinitesima × limitata', mark: '**', q: '1.45–1.46' },
         { id: 's2-23', t: 'Regolarità delle successioni monotòne', mark: '*', q: '1.47' },
         { id: 's2-24', t: 'Il numero di Nepero $e$', q: '1.48' },
         { id: 's2-25', t: 'Limiti notevoli di successioni', mark: '**', q: '1.49' },

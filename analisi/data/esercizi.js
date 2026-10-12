@@ -186,6 +186,275 @@ Con $x\ge-1$: contributo $[-1,1)$.<br><br>
 <li>$\sup A=1$, ma $1\notin A$ ($\sqrt4=2>2$ è falso): <strong>il massimo non esiste</strong>.</li></ul>
 <em>La differenza con E1.13:</em> lì la radice stava a destra, quindi $x\ge0$ era una condizione necessaria; qui sta a sinistra e il caso «secondo membro negativo» dà soluzioni gratis. Dimenticarlo è l'errore più comune. $\blacksquare$` },
 
+/* ====== SEZIONE 1: dalle Esercitazioni 1-3 (soluzioni del tutor) ====== */
+{ id: 'E1.15', sez: 1, tema: 'Disequazioni', d: 2,
+  t: r`Risolvere $x+1>\sqrt{-x^2-2x}$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Prima il dominio della radice: $-x^2-2x\ge0$.`,
+           r`Se $x+1\lt 0$ la disuguaglianza è falsa, perché il secondo membro è $\ge0$. Dove $x+1\ge0$ si può elevare al quadrato.`,
+           r`Al quadrato: $2x^2+4x+1>0$; tieni solo le soluzioni in $(-1,0]$.` ],
+  sol: r`<strong>Dominio.</strong> $-x^2-2x\ge0\iff x(x+2)\le0\iff-2\le x\le0$.<br><br>
+<strong>Dove il primo membro è negativo.</strong> Per $x\in[-2,-1)$ si ha $x+1\lt 0\le\sqrt{\cdots}$: falsa. In $x=-1$ diventa $0>1$: falsa.<br><br>
+<strong>Per $x\in(-1,0]$</strong> entrambi i membri sono $\ge0$ e si può elevare al quadrato:
+$$(x+1)^2>-x^2-2x\iff2x^2+4x+1>0\iff x\lt -1-\tfrac{\sqrt2}2\ \vee\ x>-1+\tfrac{\sqrt2}2.$$
+La prima è fuori da $(-1,0]$; resta
+$$\boxed{-1+\frac{\sqrt2}{2}\lt x\le0.}$$
+<em>Controllo:</em> in $x=0$: $1>0$ ✓; in $x=-0{,}5$ (fuori, perché $-1+\frac{\sqrt2}2\approx-0{,}29$): $0{,}5>\sqrt{0{,}75}\approx0{,}87$ è falso ✓. $\blacksquare$` },
+
+{ id: 'E1.16', sez: 1, tema: 'Disequazioni', d: 2,
+  t: r`Risolvere $\dfrac{\log_{1/2}(x^2-1)}{2^x-\frac{1}{2\sqrt2}}>0$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Esistenza del logaritmo: $x^2-1>0$.`,
+           r`$\log_{1/2}$ è decrescente: $\log_{1/2}(y)>0\iff0\lt y\lt 1$. Il verso <strong>cambia</strong>.`,
+           r`Denominatore: $\frac1{2\sqrt2}=2^{-3/2}$. Poi tabella dei segni.` ],
+  sol: r`<strong>Esistenza:</strong> $x^2-1>0\iff x\lt -1\vee x>1$.<br><br>
+<strong>Numeratore $>0$.</strong> La base $\frac12$ è minore di $1$, quindi il verso cambia: $x^2-1\lt 1\iff-\sqrt2\lt x\lt\sqrt2$.<br>
+<strong>Denominatore $>0$.</strong> $2^x>2^{-3/2}\iff x>-\frac32$ (base $2>1$, il verso resta).<br><br>
+<strong>Tabella dei segni</strong> sul dominio $(-\infty,-1)\cup(1,+\infty)$, con i punti $-\frac32\lt-\sqrt2\lt-1$ e $1\lt\sqrt2$:
+<ul><li>$x\lt -\frac32$: num $-$, den $-$ ⇒ $+$;</li><li>$-\frac32\lt x\lt -\sqrt2$: num $-$, den $+$ ⇒ $-$;</li><li>$-\sqrt2\lt x\lt -1$: $+$, $+$ ⇒ $+$;</li><li>$1\lt x\lt\sqrt2$: $+$, $+$ ⇒ $+$;</li><li>$x>\sqrt2$: $-$, $+$ ⇒ $-$.</li></ul>
+$$\boxed{x\lt -\frac32\ \ \vee\ \ -\sqrt2\lt x\lt -1\ \ \vee\ \ 1\lt x\lt\sqrt2.}$$
+<em>Attenzione:</em> l'errore tipico è non cambiare verso con la base $\frac12$. $\blacksquare$` },
+
+{ id: 'E1.17', sez: 1, tema: 'Disequazioni', d: 2,
+  t: r`Risolvere $2^{\,2\cos^2x+5\sin x-3}-4^{\sin x}>0$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Scrivi $4^{\sin x}=2^{2\sin x}$: con la stessa base $2>1$ si confrontano gli esponenti.`,
+           r`$\cos^2x=1-\sin^2x$, poi poni $t=\sin x$.`,
+           r`Viene $\frac12\lt\sin x\lt1$: disegna la circonferenza goniometrica.` ],
+  sol: r`Con base $2>1$ il verso si conserva:
+$$2\cos^2x+5\sin x-3>2\sin x\iff2-2\sin^2x+3\sin x-3>0.$$
+Con $t=\sin x$: $-2t^2+3t-1>0\iff2t^2-3t+1\lt 0\iff\frac12\lt t\lt 1$.<br><br>
+Torniamo a $x$: $\sin x=\frac12$ per $x=\frac\pi6+2k\pi$ o $x=\frac56\pi+2k\pi$, e $\sin x=1$ per $x=\frac\pi2+2k\pi$. Quindi
+$$\boxed{\frac\pi6+2k\pi\lt x\lt\frac56\pi+2k\pi,\quad x\ne\frac\pi2+2k\pi,\quad k\in\Z.}$$
+<em>Controllo:</em> $x=\frac\pi2$ va escluso perché lì $t=1$ e $2t^2-3t+1=0$, non $\lt 0$. $\blacksquare$` },
+
+{ id: 'E1.18', sez: 1, tema: 'Disequazioni', d: 3,
+  t: r`Risolvere $\sqrt{\log^2x-3\log x+2}>2(\log x-1)$, dove $\log$ è il logaritmo naturale. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Esistenza: $x>0$. Poni $t=\log x$: $\sqrt{t^2-3t+2}>2(t-1)$.`,
+           r`La radice esiste per $t\le1$ o $t\ge2$. Per $t\le1$ il secondo membro è $\le0$: basta capire quando la radice è $>0$.`,
+           r`Per $t\ge2$ entrambi i membri sono $\ge0$: eleva al quadrato.` ],
+  sol: r`Esistenza del logaritmo: $x>0$. Con $t=\log x$: $\sqrt{t^2-3t+2}>2(t-1)$.<br><br>
+<strong>Esistenza della radice:</strong> $(t-1)(t-2)\ge0\iff t\le1\vee t\ge2$, cioè $0\lt x\le e$ oppure $x\ge e^2$.<br><br>
+<strong>Caso $t\le1$.</strong> Il secondo membro è $\le0$ e la radice è $\ge0$, nulla solo per $t=1$: la disuguaglianza è vera per $t\lt 1$ ($0\lt x\lt e$) e falsa per $t=1$ ($x=e$, dove diventa $0>0$).<br><br>
+<strong>Caso $t\ge2$.</strong> Entrambi i membri sono $\ge0$: $t^2-3t+2>4(t-1)^2\iff3t^2-5t+2\lt 0\iff\frac23\lt t\lt 1$, incompatibile con $t\ge2$.<br><br>
+$$\boxed{0\lt x\lt e.}$$
+<em>Controllo:</em> $x=e^3$, $t=3$: $\sqrt2\approx1{,}41>4$ è falso ✓. $\blacksquare$` },
+
+{ id: 'E1.19', sez: 1, tema: 'Disequazioni', d: 2,
+  t: r`Risolvere $\log_2(\arctan x+4)\ge\cos^2x$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Non si risolve con i conti: si stimano i due membri.`,
+           r`$\arctan x>-\frac\pi2$ per ogni $x$. Quanto vale almeno $\arctan x+4$?`,
+           r`$\log_2$ è crescente e $\cos^2x\le1$.` ],
+  sol: r`<strong>Dominio.</strong> Serve $\arctan x+4>0$, e poiché $\arctan x>-\frac\pi2$: $\arctan x+4>4-\frac\pi2=\frac12(8-\pi)>0$. Il dominio è tutto $\R$.<br><br>
+<strong>Stima.</strong> $\log_2$ è strettamente crescente, e $4-\frac\pi2>4-2=2$, quindi per ogni $x$
+$$\log_2(\arctan x+4)>\log_2\!\left(4-\frac\pi2\right)>\log_2 2=1\ge\cos^2x.$$
+$$\boxed{\text{vera per ogni }x\in\R.}$$
+<em>Morale:</em> quando compaiono funzioni diverse (logaritmo, arcotangente, coseno) che non si possono «mescolare», si cerca una costante che separi i due membri. $\blacksquare$` },
+
+{ id: 'E1.20', sez: 1, tema: 'Insieme di definizione', d: 3,
+  t: r`Determinare l'insieme di definizione di $f(x)=\dfrac{\left[\log\left(\sqrt x+\sqrt{|1-x|}\right)\right]^{3/4}}{e^{\sin(x^2)}}$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Elenca le condizioni: radice di $x$, argomento del logaritmo, base della potenza $\frac34$, denominatore.`,
+           r`$(\dots)^{3/4}=\sqrt[4]{(\dots)^3}$ richiede base $\ge0$ ($q=4$ pari): $\log(\dots)\ge0\iff\sqrt x+\sqrt{|1-x|}\ge1$.`,
+           r`Scrivi $\sqrt{|1-x|}\ge1-\sqrt x$ e distingui $x>1$, $x=1$, $0\le x\lt 1$.` ],
+  sol: r`<strong>Condizioni:</strong> $x\ge0$; $\sqrt x+\sqrt{|1-x|}>0$; $\log\left(\sqrt x+\sqrt{|1-x|}\right)\ge0$ (potenza $\frac34$, cioè radice quarta); $e^{\sin(x^2)}\ne0$.<br>
+L'ultima è sempre vera; la seconda vale per ogni $x\ge0$, perché i due addendi sono $\ge0$ e non si annullano insieme. Resta $\sqrt x+\sqrt{|1-x|}\ge1$, cioè $\sqrt{|1-x|}\ge1-\sqrt x$.
+<ul><li>$x>1$: il secondo membro è $\lt 0$, vera.</li><li>$x=1$: $0\ge0$, vera.</li>
+<li>$0\le x\lt 1$: entrambi i membri sono $\ge0$, si eleva al quadrato: $1-x\ge1-2\sqrt x+x\iff2\sqrt x(\sqrt x-1)\le0$, vera perché $\sqrt x\ge0$ e $\sqrt x-1\lt 0$.</li></ul>
+$$\boxed{\text{dom}\,f=[0,+\infty).}$$ $\blacksquare$` },
+
+{ id: 'E1.21', sez: 1, tema: 'Estremo superiore', d: 2,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\{\log(1+3x):\ x\in\R,\ |x-2|\le\sqrt x\}$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Prima risolvi $|x-2|\le\sqrt x$ (con $x\ge0$): entrambi i membri sono $\ge0$.`,
+           r`Viene un intervallo chiuso. Su di esso $x\mapsto\log(1+3x)$ è composizione di funzioni crescenti.` ],
+  sol: r`$|x-2|\le\sqrt x$, con $x\ge0$: elevando al quadrato, $x^2-5x+4\le0\iff(x-1)(x-4)\le0\iff1\le x\le4$. Lì $1+3x>0$, quindi il logaritmo è definito.<br><br>
+$g(x)=1+3x$ è strettamente crescente e $\log$ pure: la composta $\log(1+3x)$ è strettamente crescente su $[1,4]$. Quindi
+$$\min S=\inf S=\log4,\qquad \max S=\sup S=\log13.$$ $\blacksquare$` },
+
+{ id: 'E1.22', sez: 1, tema: 'Estremo superiore', d: 2,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\left\{x\in\R:\ x>0,\ \cos\frac1x=0\right\}$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`$\cos t=0\iff t=\frac\pi2+k\pi$. Ricava $x$.`,
+           r`Con $x>0$ restano $x=\frac{2}{\pi(1+2k)}$ con $k\in\N$: una successione decrescente.`,
+           r`Per l'$\inf$: dato $\eps>0$, trova $k$ con $\frac2{\pi(1+2k)}\lt\eps$.` ],
+  sol: r`$\cos\frac1x=0\iff\frac1x=\frac\pi2+k\pi\iff x=\frac{2}{\pi(1+2k)}$, $k\in\Z$; con $x>0$ servono $k\in\N$. Quindi $S=\{a_k\}_{k\in\N}$ con $a_k=\frac2{\pi(1+2k)}$, strettamente decrescente.<br><br>
+<strong>Massimo:</strong> $\max S=\sup S=a_0=\frac2\pi$.<br>
+<strong>Estremo inferiore: $0$.</strong> (1) $0\lt x$ per ogni $x\in S$. (2) Dato $\eps>0$: $\frac2{\pi(1+2m)}\lt\eps\iff m>\frac12\left(\frac2{\pi\eps}-1\right)$, e un tale $m\in\N$ esiste. Quindi nessun $\eps>0$ è un minorante.<br>
+<strong>Minimo:</strong> non esiste, perché $0\notin S$. $\blacksquare$` },
+
+{ id: 'E1.23', sez: 1, tema: 'Estremo superiore', d: 1,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\left\{x\in\R:\ \log x\ge\sqrt[3]{\sin x}\right\}\cap[e,+\infty)$. <span class="small muted">(Esercitazione 1)</span>`,
+  hints: [ r`Non serve risolvere la disuguaglianza: su $[e,+\infty)$ quanto vale almeno $\log x$?`,
+           r`E quanto vale al più $\sqrt[3]{\sin x}$?` ],
+  sol: r`Per $x\ge e$: $\log x\ge1$. Per ogni $x$: $\sin x\le1$, quindi $\sqrt[3]{\sin x}\le1$. Allora $\log x\ge1\ge\sqrt[3]{\sin x}$ su tutto $[e,+\infty)$, e $S=[e,+\infty)$.
+$$\min S=\inf S=e,\qquad\sup S=+\infty,\ \text{nessun massimo}.$$ $\blacksquare$` },
+
+{ id: 'E1.24', sez: 1, tema: 'Estremo superiore', d: 2,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\{a\in\R:\ \log(x^2-2ax+a)\ \text{è definita per ogni }x\in\R\}$. <span class="small muted">(Esercitazione 1, svolto nell'Esercitazione 2)</span>`,
+  hints: [ r`Serve $x^2-2ax+a>0$ per ogni $x$: una parabola rivolta verso l'alto sempre positiva.`,
+           r`Quando succede? Guarda il discriminante.` ],
+  sol: r`Serve $x^2-2ax+a>0$ per ogni $x\in\R$: la parabola è rivolta verso l'alto, quindi ciò accade se e solo se $\Delta=4a^2-4a=4a(a-1)\lt 0\iff0\lt a\lt 1$.
+$$S=(0,1):\quad\sup S=1,\quad\inf S=0,\quad\text{né massimo né minimo}.$$
+<em>Controllo:</em> per $a=0$ si ha $x^2$, che si annulla in $0$; per $a=1$ si ha $(x-1)^2$, nulla in $1$: gli estremi sono davvero esclusi. $\blacksquare$` },
+
+{ id: 'E1.25', sez: 1, tema: 'Estremo superiore', d: 2,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\left\{x\in\R\setminus\{\pm2\}:\ \dfrac{2x+1}{x-2}-\dfrac{5}{2(x+2)}\lt\dfrac12\right\}$. <span class="small muted">(Esercitazione 1, svolto nell'Esercitazione 2)</span>`,
+  hints: [ r`Porta tutto a sinistra e fai il denominatore comune $2(x-2)(x+2)$.`,
+           r`Il numeratore viene $3x^2+5x+18$: che segno ha?` ],
+  sol: r`Portando tutto a primo membro, con denominatore comune $2(x-2)(x+2)$, il numeratore è
+$$2(2x+1)(x+2)-5(x-2)-(x-2)(x+2)=3x^2+5x+18.$$
+Il suo discriminante è $25-216\lt 0$: è sempre positivo. La disuguaglianza equivale quindi a $(x-2)(x+2)\lt 0\iff-2\lt x\lt 2$.
+$$S=(-2,2):\quad\sup S=2,\quad\inf S=-2,\quad\text{né massimo né minimo}.$$ $\blacksquare$` },
+
+{ id: 'E1.26', sez: 1, tema: 'Estremo superiore', d: 3,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\{x\in\Q:\ x\ge-1,\ x^2-2\le(2-x)(x+\sqrt2)\}$. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Prima in $\R$: $(x+\sqrt2)(x-\sqrt2)\le(2-x)(x+\sqrt2)$. Raccogli $x+\sqrt2$.`,
+           r`In $\R$ viene $[-\sqrt2,\,1+\frac{\sqrt2}2]$. Poi interseca con $[-1,+\infty)$ e con $\Q$.`,
+           r`Il $\sup$ è un elemento di $S$? Per rispondere: $1+\frac{\sqrt2}2$ è razionale?` ],
+  sol: r`In $\R$: $(x+\sqrt2)(x-\sqrt2)-(2-x)(x+\sqrt2)\le0\iff(x+\sqrt2)(2x-2-\sqrt2)\le0\iff-\sqrt2\le x\le1+\frac{\sqrt2}2$.<br>
+Intersecando: $S=\left[-1,\,1+\frac{\sqrt2}2\right]\cap\Q$.<br><br>
+<ul><li>$\inf S=-1$, e $-1\in\Q$: $\min S=-1$.</li>
+<li>$\sup S=1+\frac{\sqrt2}2$ (i razionali sono densi, quindi se ne trovano vicini quanto si vuole). Ma $1+\frac{\sqrt2}2\notin\Q$: altrimenti $2\left(1+\frac{\sqrt2}2\right)-2=\sqrt2$ sarebbe razionale, assurdo. Quindi <strong>il massimo non esiste</strong>.</li></ul>
+<em>Morale:</em> in $\Q$ un insieme limitato può non avere massimo anche se in $\R$ ce l'avrebbe: è l'incompletezza di $\Q$. $\blacksquare$` },
+
+{ id: 'E1.27', sez: 1, tema: 'Estremo superiore', d: 2,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\{x\in\R:\ x\lt 0,\ |3x+1|\ge|2-2x|\}$. <span class="small muted">(Esercitazione 2, soluzione degli esercizi assegnati)</span>`,
+  hints: [ r`Con due valori assoluti, i due membri sono $\ge0$: si può elevare al quadrato.`,
+           r`Viene $5x^2+14x-3\ge0$. Poi interseca con $x\lt 0$.` ],
+  sol: r`Entrambi i membri sono $\ge0$: $(3x+1)^2\ge(2-2x)^2\iff5x^2+14x-3\ge0\iff x\le-3\ \vee\ x\ge\frac15$.<br>
+<span class="small muted">Il tutor arriva allo stesso risultato dividendo per $|2-2x|$ e studiando $\left|\frac{3x+1}{2-2x}\right|\ge1$; il quadrato è più rapido.</span><br><br>
+Con $x\lt 0$: $S=(-\infty,-3]$.
+$$\max S=\sup S=-3,\qquad\inf S=-\infty,\ \text{nessun minimo}.$$
+<em>Controllo:</em> $x=-3$: $|-8|=8\ge|8|=8$ ✓; $x=-1$: $2\ge4$ è falso ✓. $\blacksquare$` },
+
+{ id: 'E1.28', sez: 1, tema: 'Estremo superiore', d: 3,
+  t: r`Trovare $\sup$, $\inf$, ed eventualmente $\max$ e $\min$, di $S=\{a\in\R:\ a-a|x|\le|x-1|\ \ \forall x\in\R\}$. <span class="small muted">(Esercitazione 2, soluzione degli esercizi assegnati)</span>`,
+  hints: [ r`Scrivi la condizione come $a(1-|x|)\le|x-1|$ e prova valori particolari di $x$: $x=0$ e $|x|$ grande.`,
+           r`Da $x=0$ viene $a\le1$; facendo crescere $|x|$ viene $a\ge-1$.`,
+           r`Poi verifica che ogni $a\in[-1,1]$ va bene, separando $|x|\le1$ e $|x|>1$.` ],
+  sol: r`La condizione è $a(1-|x|)\le|x-1|$ per ogni $x$.<br><br>
+<strong>Condizioni necessarie.</strong> Con $x=0$: $a\le1$. Con $x>1$: $-a(x-1)\le x-1$, cioè $a\ge-1$.<br><br>
+<strong>Sono sufficienti.</strong> Sia $a\in[-1,1]$.
+<ul><li>Se $|x|\le1$: $1-|x|\ge0$, quindi $a(1-|x|)\le1-|x|\le|1-x|$ (disuguaglianza triangolare: $1\le|1-x|+|x|$).</li>
+<li>Se $|x|>1$: $a(1-|x|)=-a(|x|-1)\le|x|-1\le|x-1|$.</li></ul>
+$$S=[-1,1]:\quad\max S=\sup S=1,\quad\min S=\inf S=-1.$$
+<span class="small muted">Il tutor lo risolve confrontando i grafici di $|x-1|$ e di $a(1-|x|)$ al variare di $a$: stesso risultato.</span> $\blacksquare$` },
+
+{ id: 'E1.29', sez: 1, tema: 'Numeri complessi', d: 1,
+  t: r`Scrivere in forma algebrica $(2+3i)^2$, $\dfrac{3-i}{3+i}$ e $\dfrac{(1+i)^2}{1-i}$; calcolare $i^{22}$ e $i^{1361}$. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Per il quoziente si moltiplica sopra e sotto per il coniugato del denominatore.`,
+           r`Le potenze di $i$ si ripetono ogni $4$: scrivi l'esponente come $4k+r$.` ],
+  sol: r`$(2+3i)^2=4+12i+9i^2=-5+12i$.<br>
+$\dfrac{3-i}{3+i}=\dfrac{(3-i)^2}{9+1}=\dfrac{8-6i}{10}=\dfrac45-\dfrac35i$.<br>
+$\dfrac{(1+i)^2}{1-i}=\dfrac{2i}{1-i}=\dfrac{2i(1+i)}{2}=i+i^2=-1+i$.<br><br>
+<strong>Potenze di $i$:</strong> $i^0=1$, $i^1=i$, $i^2=-1$, $i^3=-i$, poi si ripete. Con $m=4k+r$, $r\in\{0,1,2,3\}$: $i^m=(i^4)^k\,i^r=i^r$.<br>
+$22=5\cdot4+2\Rightarrow i^{22}=i^2=-1$; $\ 1361=340\cdot4+1\Rightarrow i^{1361}=i$.<br>
+<em>Potenze negative:</em> $i^{-1}=\frac1i=\frac{\bar i}{|i|^2}=-i$. $\blacksquare$` },
+
+{ id: 'E1.30', sez: 1, tema: 'Numeri complessi', d: 1,
+  t: r`Calcolare il modulo di $z=-2i(3+i)(2+4i)(1+i)$ e di $w=\dfrac{(3+4i)(-1+2i)}{(-1-i)(3-i)}$. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Non moltiplicare: il modulo di un prodotto è il prodotto dei moduli.`,
+           r`E il modulo di un quoziente è il quoziente dei moduli.` ],
+  sol: r`$|z|=|-2i|\cdot|3+i|\cdot|2+4i|\cdot|1+i|=2\cdot\sqrt{10}\cdot\sqrt{20}\cdot\sqrt2=2\cdot\sqrt2\sqrt5\cdot2\sqrt5\cdot\sqrt2=\boxed{40}$.<br><br>
+$|w|=\dfrac{|3+4i|\,|-1+2i|}{|-1-i|\,|3-i|}=\dfrac{5\sqrt5}{\sqrt2\sqrt{10}}=\dfrac{5\sqrt5}{2\sqrt5}=\boxed{\dfrac52}$. $\blacksquare$` },
+
+{ id: 'E1.31', sez: 1, tema: 'Numeri complessi', d: 2,
+  t: r`Risolvere in $\C$, in forma algebrica, $z\bar z-z+\dfrac i4=0$. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Con $z=a+ib$: $z\bar z=a^2+b^2$.`,
+           r`Un numero complesso è nullo se e solo se parte reale e parte immaginaria sono nulle: viene un sistema reale.` ],
+  sol: r`Con $z=a+ib$: $a^2+b^2-a-ib+\frac i4=0\iff(a^2+b^2-a)+i\left(\frac14-b\right)=0$, cioè
+$$\begin{cases}a^2+b^2-a=0\\ \frac14-b=0\end{cases}\Longrightarrow b=\frac14,\quad a^2-a+\frac1{16}=0\Longrightarrow a=\frac12\pm\frac{\sqrt3}4.$$
+$$\boxed{z_{1,2}=\left(\frac12\pm\frac{\sqrt3}4\right)+\frac14\,i.}$$ $\blacksquare$` },
+
+{ id: 'E1.32', sez: 1, tema: 'Numeri complessi', d: 2,
+  t: r`Scrivere in forma trigonometrica ed esponenziale $z=i$ e $z=\dfrac{1}{-3+3i}$. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Per il secondo conviene passare dal reciproco: $w=-3+3i$, e $\frac1w=\frac{\bar w}{|w|^2}$.`,
+           r`Il coniugato ha lo stesso modulo e argomento opposto.` ],
+  sol: r`$i=1\cdot\left[\cos\frac\pi2+i\sin\frac\pi2\right]=e^{i\pi/2}$.<br><br>
+$w=-3+3i$: $|w|=3\sqrt2$ e $\arg w=\frac34\pi$ (II quadrante). Allora
+$$\frac1w=\frac{\bar w}{|w|^2}=\frac{3\sqrt2\,e^{-i\frac34\pi}}{18}=\frac{1}{3\sqrt2}\left[\cos\left(-\tfrac34\pi\right)+i\sin\left(-\tfrac34\pi\right)\right]=\frac{1}{3\sqrt2}\,e^{-i\frac34\pi}.$$
+<span class="small muted">Con la convenzione del corso, l'argomento <em>principale</em> sta in $\left[-\frac\pi2,\frac32\pi\right)$: è $\frac54\pi$, che individua lo stesso numero. Come forma trigonometrica va bene qualunque argomento.</span><br>
+<em>Controllo:</em> $\frac1{-3+3i}=\frac{-3-3i}{18}=-\frac16-\frac16i$, e $\frac{1}{3\sqrt2}\cos\left(-\frac34\pi\right)=-\frac16$ ✓. $\blacksquare$` },
+
+{ id: 'E1.33', sez: 1, tema: 'Numeri complessi', d: 2,
+  t: r`Dato $z=\dfrac{\sqrt3}2-\dfrac i2$, calcolare $z^6$ e $z^{22}$. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Scrivi $z$ in forma trigonometrica: $|z|=1$, e un argomento è $-\frac\pi6$.`,
+           r`De Moivre per $z^6$. Per $z^{22}$ usa $22=3\cdot6+4$.` ],
+  sol: r`$|z|=1$ e $z=\cos\left(-\frac\pi6\right)+i\sin\left(-\frac\pi6\right)$. Per de Moivre
+$$z^6=\cos(-\pi)+i\sin(-\pi)=-1.$$
+$$z^{22}=(z^6)^3\,z^4=(-1)^3z^4=-\left[\cos\left(-\tfrac23\pi\right)+i\sin\left(-\tfrac23\pi\right)\right]=-\left[-\tfrac12-\tfrac{\sqrt3}2i\right]=\boxed{\tfrac12+\tfrac{\sqrt3}2\,i=e^{i\pi/3}}.$$
+<em>Controllo diretto:</em> $22\cdot\left(-\frac\pi6\right)=-\frac{11}3\pi\equiv\frac\pi3$ a meno di $4\pi$ ✓. $\blacksquare$` },
+
+{ id: 'E1.34', sez: 1, tema: 'Numeri complessi', d: 3,
+  t: r`Risolvere in $\C$: $\dfrac{i}{z^2}=(1+i)\,\bar z\,|z|$. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Serve $z\ne0$. Forma esponenziale: $z=\rho e^{i\theta}$, $i=e^{i\pi/2}$, $1+i=\sqrt2e^{i\pi/4}$.`,
+           r`Uguaglia i moduli e gli argomenti (questi a meno di $2k\pi$).` ],
+  sol: r`Con $z=\rho e^{i\theta}$, $\rho>0$:
+$$\frac{e^{i\pi/2}}{\rho^2e^{2i\theta}}=\sqrt2e^{i\pi/4}\cdot\rho e^{-i\theta}\cdot\rho\iff e^{i(\frac\pi2-2\theta)}=\sqrt2\rho^4e^{i(\frac\pi4-\theta)}.$$
+<strong>Moduli:</strong> $\sqrt2\rho^4=1\Rightarrow\rho=2^{-1/8}$. <strong>Argomenti:</strong> $\frac\pi2-2\theta=\frac\pi4-\theta+2k\pi\Rightarrow\theta=\frac\pi4-2k\pi$: un solo numero complesso.
+$$\boxed{z=\frac{e^{i\pi/4}}{\sqrt[8]2}=\frac{1+i}{\sqrt[8]{2^5}}.}$$ $\blacksquare$` },
+
+{ id: 'E1.35', sez: 1, tema: 'Numeri complessi', d: 2,
+  t: r`(Prima prova in itinere 2018.) Risolvere in $\C$ $(z+\bar z)(z^6+11i)=0$ e rappresentare le soluzioni. <span class="small muted">(Esercitazione 2)</span>`,
+  hints: [ r`Un prodotto è nullo se e solo se lo è uno dei fattori: unisci le soluzioni dei due.`,
+           r`$z+\bar z=2\,\Real z$. E $z^6=-11i$: radici seste di $11e^{i\frac32\pi}$.` ],
+  sol: r`<strong>$z+\bar z=0$</strong> $\iff\Real z=0$: tutto l'<strong>asse immaginario</strong>.<br><br>
+<strong>$z^6=-11i$.</strong> $|-11i|=11$, $\arg(-11i)=\frac32\pi$. Per la formula delle radici:
+$$z_k=\sqrt[6]{11}\left[\cos\left(\frac\pi4+k\frac\pi3\right)+i\sin\left(\frac\pi4+k\frac\pi3\right)\right],\quad k=0,\dots,5,$$
+cioè gli argomenti $\frac\pi4,\frac7{12}\pi,\frac{11}{12}\pi,\frac54\pi,\frac{19}{12}\pi,\frac{23}{12}\pi$: i vertici di un <strong>esagono regolare</strong> sulla circonferenza di raggio $\sqrt[6]{11}$.<br><br>
+Le soluzioni sono l'asse immaginario unito ai sei vertici. $\blacksquare$` },
+
+{ id: 'E1.36', sez: 1, tema: 'Numeri complessi', d: 2,
+  t: r`Risolvere in $\C$: $(z-2)^3=-i$. <span class="small muted">(Esercitazione 2, svolto nell'Esercitazione 3)</span>`,
+  hints: [ r`Poni $w=z-2$: le soluzioni di $w^3=-i$ sono le radici terze di $-i=e^{-i\pi/2}$.`,
+           r`Poi torna a $z=w+2$: è una traslazione di $2$ verso destra.` ],
+  sol: r`$w^3=-i=e^{-i\pi/2}$: $w_k=\cos\left(-\frac\pi6+\frac{2\pi}3k\right)+i\sin\left(-\frac\pi6+\frac{2\pi}3k\right)$, $k=0,1,2$:
+$$w_0=\frac{\sqrt3}2-\frac12i,\qquad w_1=i,\qquad w_2=-\frac{\sqrt3}2-\frac12i.$$
+Con $z=w+2$:
+$$\boxed{z_0=\frac{4+\sqrt3-i}{2},\qquad z_1=2+i,\qquad z_2=\frac{4-\sqrt3-i}{2}.}$$
+Sono i vertici di un triangolo equilatero sulla circonferenza di centro $2$ e raggio $1$.<br>
+<em>Controllo:</em> $(z_1-2)^3=i^3=-i$ ✓. $\blacksquare$` },
+
+{ id: 'E1.37', sez: 1, tema: 'Numeri complessi', d: 2,
+  t: r`Risolvere in $\C$: $z^2=\bar z^{\,3}$. <span class="small muted">(Esercitazione 2, svolto nell'Esercitazione 3)</span>`,
+  hints: [ r`Forma esponenziale: $z=\rho e^{i\theta}$ e $\bar z=\rho e^{-i\theta}$.`,
+           r`Moduli: $\rho^2=\rho^3$, quindi $\rho=0$ o $\rho=1$. Argomenti: $2\theta=-3\theta+2k\pi$.` ],
+  sol: r`$\rho^2e^{2i\theta}=\rho^3e^{-3i\theta}$: $\rho^2=\rho^3\Rightarrow\rho=0$ (cioè $z=0$) o $\rho=1$; e $5\theta=2k\pi\Rightarrow\theta=\frac{2k\pi}5$.
+$$\boxed{z=0\quad\text{e}\quad z_k=e^{\frac{2k\pi}5i},\ k=0,1,2,3,4:}$$
+l'origine e le cinque radici quinte dell'unità, vertici di un pentagono regolare. $\blacksquare$` },
+
+{ id: 'E1.38', sez: 1, tema: 'Numeri complessi', d: 3,
+  t: r`Risolvere in $\C$: $(z+\bar z)\left(\dfrac1{z^2}+2z^2-i\sqrt3\,\dfrac{\bar z}{z}\right)=0$. <span class="small muted">(Esercitazione 2, svolto nell'Esercitazione 3)</span>`,
+  hints: [ r`Serve $z\ne0$. Primo fattore: $z+\bar z=0$.`,
+           r`Secondo: moltiplica per $z^2$ e usa $z\bar z=|z|^2$: $2z^4=-1+\sqrt3|z|^2i$.`,
+           r`In forma esponenziale uguaglia i moduli: $2\rho^4=\sqrt{1+3\rho^4}$. Con $t=\rho^4$ è un'equazione di secondo grado.` ],
+  sol: r`Serve $z\ne0$.<br>
+<strong>Primo fattore:</strong> $z+\bar z=2\,\Real z=0$: l'asse immaginario <strong>senza l'origine</strong>.<br><br>
+<strong>Secondo fattore.</strong> Moltiplicando per $z^2$: $1+2z^4-i\sqrt3|z|^2=0$, cioè $2z^4=-1+\sqrt3\rho^2i$. Moduli: $2\rho^4=\sqrt{1+3\rho^4}\Rightarrow4\rho^8=1+3\rho^4$; con $t=\rho^4$: $4t^2-3t-1=0\Rightarrow t=1$ (l'altra, $-\frac14$, è negativa). Quindi $\rho=1$ e $2e^{4i\theta}=-1+\sqrt3i=2e^{i\frac23\pi}$ (II quadrante: $\arctan(-\sqrt3)+\pi=\frac23\pi$).<br>
+$4\theta=\frac23\pi+2k\pi\Rightarrow\theta=\frac\pi6+k\frac\pi2$, $k=0,1,2,3$:
+$$z_0=\tfrac{\sqrt3}2+\tfrac12i,\quad z_1=-\tfrac12+\tfrac{\sqrt3}2i,\quad z_2=-z_0,\quad z_3=-z_1.$$
+Soluzioni: l'asse immaginario privato dell'origine, più i quattro vertici del quadrato. $\blacksquare$` },
+
+{ id: 'E1.39', sez: 1, tema: 'Numeri complessi', d: 3,
+  t: r`Risolvere in $\C$: $z^2+\dfrac i{z^2}=-\dfrac{\bar z^{\,2}}{2}$. <span class="small muted">(Esercitazione 2, svolto nell'Esercitazione 3)</span>`,
+  hints: [ r`Moltiplica per $z^2$ ($z\ne0$) e usa $z^2\bar z^2=|z|^4$: $z^4=-\frac{|z|^4}2-i$.`,
+           r`Uguaglia i moduli: $\rho^4=\sqrt{\frac{\rho^8}4+1}$.`,
+           r`Trovato $\rho$, il secondo membro è un numero preciso: scrivilo in forma esponenziale e prendi le radici quarte.` ],
+  sol: r`Moltiplicando per $z^2$: $z^4+i=-\frac{|z|^4}2$, cioè $z^4=w:=-\frac{\rho^4}2-i$.<br>
+<strong>Moduli:</strong> $\rho^4=\sqrt{\frac{\rho^8}4+1}\Rightarrow\frac34\rho^8=1\Rightarrow\rho=\left(\frac43\right)^{1/8}$.<br>
+Allora $w=-\frac1{\sqrt3}-i$, con $|w|=\frac2{\sqrt3}$ e argomento $\arctan\sqrt3+\pi=\frac43\pi$ (III quadrante).<br>
+<strong>Argomenti:</strong> $4\theta=\frac43\pi+2k\pi\Rightarrow\theta=\frac\pi3+k\frac\pi2$.
+$$\boxed{z_k=\left(\tfrac43\right)^{1/8}e^{i\left(\frac\pi3+k\frac\pi2\right)},\quad k=0,1,2,3,}$$
+con $z_2=-z_0$ e $z_3=-z_1$. $\blacksquare$` },
+
+{ id: 'E1.40', sez: 1, tema: 'Numeri complessi', d: 2,
+  t: r`Rappresentare nel piano complesso:
+<ol><li>$A=\left\{2\le|z|\le3,\ \frac\pi6\le\arg z\le\frac\pi3\right\}$ e $B=\left\{\frac{-1+i}{\sqrt2}\,z:\ z\in A\right\}$;</li>
+<li>$A=\{0\le\Real z\le1,\ 0\le\Imag z\le1\}$ e $B=\{iz+1+i:\ z\in A\}$;</li>
+<li>$A=\{(\Real z-2)^2+(\Imag z+1)^2=1\}$, $B=\{3z:\ z\in A\}$, $C=\left\{\frac1i\,w+2:\ w\in B\right\}$.</li></ol>
+<span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`Moltiplicare per $e^{i\varphi}$ ruota di $\varphi$; per un reale $r>0$ dilata; sommare una costante trasla.`,
+           r`$\frac{-1+i}{\sqrt2}=e^{i\frac34\pi}$, $\ i=e^{i\pi/2}$, $\ \frac1i=-i=e^{-i\pi/2}$.` ],
+  sol: r`<strong>1.</strong> $A$ è uno spicchio di corona circolare fra i raggi $2$ e $3$ e gli angoli $\frac\pi6$, $\frac\pi3$. Poiché $\frac{-1+i}{\sqrt2}=e^{i\frac34\pi}$ ha modulo $1$, $B$ è $A$ <strong>ruotato di $\frac34\pi$</strong>: stessi raggi, angoli fra $\frac{11}{12}\pi$ e $\frac{13}{12}\pi$.<br><br>
+<strong>2.</strong> $A$ è il quadrato $[0,1]\times[0,1]$. Moltiplicare per $i$ ruota di $\frac\pi2$ in senso antiorario: $[-1,0]\times[0,1]$; $+1$ trasla a destra: $[0,1]\times[0,1]$; $+i$ trasla in alto: $B=[0,1]\times[1,2]$.<br><br>
+<strong>3.</strong> $A$ è la circonferenza di centro $P=2-i$ e raggio $1$. $B$: moltiplicare per $3$ dilata, quindi centro $3P=6-3i$ e raggio $3$. $C$: $\frac1i=-i$ ruota di $\frac\pi2$ in senso <strong>orario</strong> e poi $+2$ trasla: centro $-i(6-3i)+2=-1-6i$, raggio $3$.<br>
+<em>Controllo:</em> il centro si trasforma come un punto qualsiasi: $-i\cdot6+(-i)(-3i)+2=-6i-3+2$ ✓. $\blacksquare$` },
+
 /* ======================= SEZIONE 2 ======================= */
 { id: 'E2.1', sez: 2, tema: 'Limiti di successioni', d: 1,
   t: r`Calcolare $\displaystyle\lim_{n\to\infty}\frac{3n^{2}+2n-1}{n^{2}-5n+4}$.`,
@@ -365,6 +634,92 @@ $$\boxed{\,\tfrac12\quad\text{e}\quad-\tfrac16\,}$$ $\blacksquare$` },
 <strong>3.</strong> Per l'algebra dei limiti $a_n^2\to a^2$. Da $a_n^2\le a_n$ e dalla proprietà del confronto: $a^2\le a$, cioè $a(a-1)\le0$, cioè $0\le a\le1$.<br>
 <em>Controllo:</em> con $a_n=\frac12+\frac1{4n}$ si ha $a_n\in\left(\frac12,1\right)$, quindi $a_n^2\le a_n$, e il limite $\frac12$ sta in $[0,1]$ ✓.<br><br>
 <em>Morale:</em> il confronto si applica anche alle costanti, e trasforma una disuguaglianza fra successioni in una disuguaglianza fra limiti, sempre larga. $\blacksquare$` },
+
+/* ====== SEZIONE 2: dall'Esercitazione 3 (soluzioni del tutor) ====== */
+{ id: 'E2.15', sez: 2, tema: 'Insieme di definizione', d: 2,
+  t: r`Trovare il dominio di $f(x)=\dfrac{\log\big(\tan(\arcsin x)\big)}{(1-2x)^{2/3}}$. <span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`Dall'interno verso l'esterno: $\arcsin$ vuole $x\in[-1,1]$; $\tan$ vuole un argomento diverso da $\pm\frac\pi2$.`,
+           r`Il logaritmo vuole $\tan(\arcsin x)>0$, cioè $\arcsin x\in\left(0,\frac\pi2\right)$.`,
+           r`$(1-2x)^{2/3}=\sqrt[3]{(1-2x)^2}$ è definita ovunque ($q=3$ dispari), ma sta al denominatore.` ],
+  sol: r`<ul><li>$\arcsin x$: $x\in[-1,1]$;</li>
+<li>$\tan(\arcsin x)$: $\arcsin x\ne\pm\frac\pi2\iff x\in(-1,1)$;</li>
+<li>$\log(\dots)$: $\tan(\arcsin x)>0\iff\arcsin x>0\iff x\in(0,1)$;</li>
+<li>denominatore: $(1-2x)^{2/3}\ne0\iff x\ne\frac12$.</li></ul>
+$$\boxed{\text{dom}\,f=(0,1)\setminus\left\{\tfrac12\right\}.}$$ $\blacksquare$` },
+
+{ id: 'E2.16', sez: 2, tema: 'Insieme di definizione', d: 1,
+  t: r`Trovare il dominio di $g(x)=\dfrac{\log|1-\sin(2x)|}{\sqrt{\cos x+2}}$. <span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`Quanto vale al minimo $\cos x+2$?`,
+           r`$|1-\sin2x|\ge0$ sempre: il logaritmo chiede solo che non sia $0$.` ],
+  sol: r`$-1\le\cos x\le1\Rightarrow1\le\cos x+2\le3$: radice e frazione non danno problemi.<br>
+Il logaritmo chiede $|1-\sin2x|>0\iff\sin2x\ne1\iff2x\ne\frac\pi2+2k\pi\iff x\ne\frac\pi4+k\pi$.
+$$\boxed{\text{dom}\,g=\R\setminus\left\{\tfrac\pi4+k\pi:\ k\in\Z\right\}.}$$ $\blacksquare$` },
+
+{ id: 'E2.17', sez: 2, tema: 'Insieme di definizione', d: 3,
+  t: r`Trovare il dominio di $f(x)=\arcsin(\arccos x)\cdot\log\big(x|x|-2x+3\big)$. <span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`$\arcsin$ vuole l'argomento in $[-1,1]$: serve $-1\le\arccos x\le1$, con $x\in[-1,1]$.`,
+           r`$\arccos x\ge0$ sempre; $\arccos x\le1\iff x\ge\cos1$, perché $\arccos$ è decrescente.`,
+           r`Su $[\cos1,1]$ si ha $x>0$, quindi $|x|=x$: l'argomento del logaritmo è $x^2-2x+3$.` ],
+  sol: r`<strong>$\arcsin(\arccos x)$.</strong> Serve $x\in[-1,1]$ e $-1\le\arccos x\le1$. La prima disuguaglianza è sempre vera ($\arccos x\in[0,\pi]$); la seconda, poiché $\arccos$ è strettamente decrescente e $\arccos(\cos1)=1$, dà $x\ge\cos1$. Quindi $x\in[\cos1,1]$, e $\cos1>0$ perché $1\lt\frac\pi2$.<br><br>
+<strong>Logaritmo.</strong> Per $x>0$: $x|x|-2x+3=x^2-2x+3$, con $\Delta=4-12\lt 0$: sempre positivo.
+$$\boxed{\text{dom}\,f=[\cos1,\,1].}$$ $\blacksquare$` },
+
+{ id: 'E2.18', sez: 2, tema: 'Funzione inversa', d: 3,
+  t: r`Sia $f(x)=\arctan\left(\log\dfrac{x-1}{x+1}\right)$.
+<ol><li>Determinarne il dominio.</li><li>Verificare che è iniettiva.</li><li>Scrivere esplicitamente l'inversa e l'immagine.</li></ol>
+<span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`$\arctan$ e $\log$ sono iniettive: basta che lo sia $g(x)=\frac{x-1}{x+1}$.`,
+           r`Per l'inversa risolvi $f(x)=y$ in $x$: serve $y\in\left(-\frac\pi2,\frac\pi2\right)$, poi $\log g(x)=\tan y$.`,
+           r`Arrivi a $x=\frac{1+e^{\tan y}}{1-e^{\tan y}}$: per quali $y$ esiste?` ],
+  sol: r`<strong>1.</strong> Solo il logaritmo pone condizioni: $\frac{x-1}{x+1}>0\iff x\lt -1\vee x>1$. Dominio: $(-\infty,-1)\cup(1,+\infty)$.<br><br>
+<strong>2.</strong> Composizione di iniettive è iniettiva; basta $g(x)=\frac{x-1}{x+1}$: $g(x)=g(y)\iff(x-1)(y+1)=(x+1)(y-1)\iff2x=2y$.<br><br>
+<strong>3.</strong> $f(x)=y$ richiede $y\in\left(-\frac\pi2,\frac\pi2\right)$ e poi
+$$\log\frac{x-1}{x+1}=\tan y\iff x-1=e^{\tan y}(x+1)\iff x=\frac{1+e^{\tan y}}{1-e^{\tan y}},$$
+che esiste per $e^{\tan y}\ne1$, cioè $y\ne0$. Quindi
+$$\text{Im}\,f=\left(-\tfrac\pi2,\tfrac\pi2\right)\setminus\{0\},\qquad f^{-1}(y)=\frac{1+e^{\tan y}}{1-e^{\tan y}}.$$
+<em>Controllo:</em> $f(3)=\arctan\log\frac12$; con $y=\arctan\log\frac12$ si ha $e^{\tan y}=\frac12$ e $f^{-1}(y)=\frac{3/2}{1/2}=3$ ✓. $\blacksquare$` },
+
+{ id: 'E2.19', sez: 2, tema: 'Iniettività', d: 2,
+  t: r`Sia $f(x)=e^{\sqrt{|x^2-2x-3|}}$.
+<ol><li>Determinarne dominio e immagine.</li><li>Verificare che non è iniettiva.</li><li>Trovare sottoinsiemi del dominio su cui è iniettiva, la cui unione dia tutto il dominio.</li></ol>
+<span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`$|x^2-2x-3|\ge0$ sempre: il dominio è $\R$.`,
+           r`$x^2-2x-3=(x+1)(x-3)$: dove si annulla $f$ vale $e^0=1$.`,
+           r`$|x^2-2x-3|$ è monotòna su $(-\infty,-1]$, $[-1,1]$, $[1,3]$, $[3,+\infty)$.` ],
+  sol: r`<strong>1.</strong> Dominio $\R$. L'immagine di $|x^2-2x-3|$ è $[0,+\infty)$, quella di $\sqrt{\ }$ su $[0,+\infty)$ è $[0,+\infty)$, e $e^t$ per $t\ge0$ ha immagine $[1,+\infty)$. Quindi $\text{Im}\,f=[1,+\infty)$.<br><br>
+<strong>2.</strong> $f(-1)=e^0=1=f(3)$: non è iniettiva.<br><br>
+<strong>3.</strong> $|x^2-2x-3|$ è iniettiva separatamente su $I_1=(-\infty,-1]$, $I_2=[-1,1]$, $I_3=[1,3]$, $I_4=[3,+\infty)$, e $e^x$, $\sqrt x$ sono iniettive: $f$ lo è su ciascun $I_j$, e $I_1\cup I_2\cup I_3\cup I_4=\R$. $\blacksquare$` },
+
+{ id: 'E2.20', sez: 2, tema: 'Monotonia e parità', d: 1,
+  t: r`<ol><li>Quali fra $f(x)=\log(2-x^5)$, $g(x)=\sqrt{\arcsin(x^3+x)}$, $h(x)=x\sin x$ sono monotòne nel proprio dominio?</li>
+<li>Quali fra $\log|x|+x^4$, $1+x^6$, $\arctan(x^3)$, $1+x^5$ sono pari o dispari?</li></ol>
+<span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`Composizione di due strettamente crescenti è crescente; di una crescente e una decrescente è decrescente.`,
+           r`Per $h$ basta un controesempio con tre punti. Per la parità calcola $f(-x)$, dopo aver controllato che il dominio sia simmetrico.` ],
+  sol: r`<strong>1.</strong> $f$: dominio $x\lt\sqrt[5]2$; $2-x^5$ è strettamente decrescente e $\log$ crescente, quindi $f$ è <strong>strettamente decrescente</strong>.<br>
+$g$: $x^3+x$, $\arcsin$ e $\sqrt{\ }$ sono strettamente crescenti, quindi $g$ è <strong>strettamente crescente</strong> sul suo dominio.<br>
+$h$: <strong>non monotòna</strong>: $0\lt\frac\pi2\lt\pi$ ma $h(0)=h(\pi)=0$ e $h\left(\frac\pi2\right)=\frac\pi2$.<br><br>
+<strong>2.</strong> $\log|x|+x^4$ (dominio $\R\setminus\{0\}$): <strong>pari</strong>. $1+x^6$: <strong>pari</strong>. $\arctan(x^3)$: <strong>dispari</strong>, composizione di due dispari. $1+x^5$: <strong>né pari né dispari</strong>, perché $1-x^5$ non è né $1+x^5$ né $-(1+x^5)$. $\blacksquare$` },
+
+{ id: 'E2.21', sez: 2, tema: 'Estremi di successioni', d: 2,
+  t: r`Stabilire se $a_n=\log\dfrac{n+3}{n+1}$ e $b_n=\dfrac1{n^2+1}+(-1)^nn+n$ ($n\in\N$) sono limitate superiormente o inferiormente; calcolarne $\sup$ e $\inf$. <span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`$\frac{n+3}{n+1}=1+\frac2{n+1}$: che monotonia ha $a_n$?`,
+           r`Per l'$\inf$ di $a_n$ verifica $a_n\to0$ con la definizione.`,
+           r`$b_n$: separa $n$ pari ($\frac1{n^2+1}+2n$) da $n$ dispari ($\frac1{n^2+1}$).` ],
+  sol: r`<strong>$a_n$.</strong> $a_n=\log\left(1+\frac2{n+1}\right)$: composizione di $\log$ crescente e di $1+\frac2{n+1}$ strettamente decrescente, quindi <strong>strettamente decrescente</strong>. $\max=\sup=a_0=\log3$. Inoltre $a_n>\log1=0$.<br>
+$a_n\to0$: dato $\eps>0$, $\log\left(1+\frac2{n+1}\right)\lt\eps\iff n>\frac{2}{e^\eps-1}-1$, quindi basta $\nu_\eps=\left[\frac2{e^\eps-1}-1\right]+1$. Allora $\inf a_n=0$, e non è minimo.<br><br>
+<strong>$b_n$.</strong> Per $n$ pari $b_n=\frac1{n^2+1}+2n$, per $n$ dispari $b_n=\frac1{n^2+1}$. Sempre $b_n>0$: limitata inferiormente. Sui pari $b_n\to+\infty$: $\sup b_n=+\infty$. Sui dispari $b_n\to0$: $\inf b_n=0$, non raggiunto. Le due sottosuccessioni hanno limiti diversi: $\lim b_n$ <strong>non esiste</strong>. $\blacksquare$` },
+
+{ id: 'E2.22', sez: 2, tema: 'Definizione di limite', d: 2,
+  t: r`Verificare con la definizione che $\displaystyle\lim_{n\to\infty}\frac{n}{n^2+2}=0$, mentre $\displaystyle\lim_{n\to\infty}\log n\cdot\left|\sin\left(\frac\pi2n\right)\right|$ non esiste. <span class="small muted">(Esercitazione 3)</span>`,
+  hints: [ r`$0\lt\frac{n}{n^2+2}\lt\frac n{n^2}=\frac1n$: basta $\frac1n\lt\eps$.`,
+           r`Per la seconda guarda gli $n$ pari e quelli dispari: quanto vale $\left|\sin\frac{\pi n}2\right|$?`,
+           r`Escludi sia un limite finito sia $+\infty$ (non può essere $-\infty$, perché i termini sono $\ge0$).` ],
+  sol: r`<strong>1.</strong> $0\lt\frac{n}{n^2+2}\lt\frac1n\lt\eps$ per $n>\frac1\eps$: basta $\nu_\eps=\left[\frac1\eps\right]+1$.<br><br>
+<strong>2.</strong> Sia $b_n=\log n\cdot\left|\sin\frac{\pi n}2\right|$. Per $n$ dispari $\left|\sin\frac{\pi n}2\right|=1$ e $b_n=\log n\to+\infty$; per $n$ pari $b_n=0$.
+<ul><li>Un limite finito $\ell$ non c'è: sui dispari $|b_n-\ell|\lt\eps$ non può valere definitivamente, perché $\log n\to+\infty$.</li>
+<li>Nemmeno $+\infty$: dovrebbe essere $b_n>M$ definitivamente, ma $b_n=0$ per ogni $n$ pari.</li></ul>
+Il limite non esiste. <span class="small muted">Più rapido: due sottosuccessioni con limiti diversi, $0$ e $+\infty$.</span> $\blacksquare$` },
 
 /* ======================= SEZIONE 3 ======================= */
 { id: 'E3.1', sez: 3, tema: 'Serie telescopiche', d: 1,

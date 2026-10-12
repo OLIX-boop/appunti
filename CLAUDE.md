@@ -140,7 +140,7 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 
 - Dopo modifiche a CSS o JS: `?v=AAAAMMGG` (con suffisso a, b, c…) su **tutti** i riferimenti
   locali, sennò il browser serve il file vecchio.
-- Verifica nel browser (server `sito` in `.claude/launch.json`, porta 8765), non solo a codice:
+- Verifica nel browser (server `sito` in `.claude/launch.json`, porta 8766), non solo a codice:
   nessun `.katex-error`, nessun testo visibile con `$` o `\frac` rimasto, nessun tag spurio, nessun
   id duplicato; per le modifiche di layout anche a 375px di larghezza, dove la pagina non deve
   superare lo schermo e la riga di pulsanti della `topnav` deve essere toccabile.

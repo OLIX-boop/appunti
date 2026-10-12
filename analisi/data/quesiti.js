@@ -288,9 +288,10 @@ Le forme indeterminate si risolvono con: raccoglimento del termine dominante, ge
 <strong>Attenzione:</strong> questa equivalenza vale <em>solo</em> per il limite $0$. In generale $|a_n|\to|L|$ non implica $a_n\to L$: per $a_n=(-1)^n$ si ha $|a_n|=1\to1$, ma $(a_n)$ è irregolare.<br><br>
 Altre proprietà: somma e differenza di infinitesime è infinitesima; il prodotto di un'infinitesima per una limitata è infinitesimo (quesito successivo); se $a_n\to L$ allora $a_n-L$ è infinitesima — è il modo standard di ricondurre un limite qualunque a un limite nullo.` },
 
-{ id: '1.46', sez: 2, t: r`Di quale proprietà gode una successione data dal prodotto di una successione infinitesima per una limitata?`,
-  a: r`<strong>Teorema.</strong> Se $a_n\to0$ e $(b_n)$ è limitata, allora $a_nb_n\to0$.<br><br>
-<em>Dimostrazione.</em> Per ipotesi $\exists K>0$ con $|b_n|\le K$ per ogni $n$. Sia $\eps>0$: poiché $a_n\to0$, $\exists N$ tale che $|a_n|<\frac\eps K$ per ogni $n>N$. Allora $$|a_nb_n-0|=|a_n||b_n|\le K|a_n|\lt K\cdot\frac{\eps}{K}=\eps\qquad\forall n>N.$$ Dunque $a_nb_n\to0$. $\blacksquare$<br><br>
+{ id: '1.46', sez: 2, mark: '**', teo: 'T-infl', t: r`Di quale proprietà gode una successione data dal prodotto di una successione infinitesima per una limitata?`,
+  a: r`<strong>Teorema.</strong> Se $\{a_n\}$ è limitata e $\{b_n\}$ è infinitesima, allora $a_nb_n\to0$.<br><br>
+<em>Dimostrazione (come a lezione).</em> Per ipotesi $\exists M>0$ con $|a_n|\le M$ per ogni $n$, e per il lemma $|b_n|\to0$. Allora $$0\le|a_nb_n|=|a_n|\,|b_n|\le M|b_n|\longrightarrow0,$$ e per i due carabinieri $|a_nb_n|\to0$; per il lemma ($x_n\to0\iff|x_n|\to0$) anche $a_nb_n\to0$. $\blacksquare$<br><br>
+<em>La limitatezza è necessaria:</em> $n\cdot\frac1n=1\not\to0$.<br><br>
 <strong>Perché è utile:</strong> risolve forme $0\cdot(\text{oscillante})$ dove l'algebra dei limiti non si applica, perché $(b_n)$ non deve avere limite — basta che sia limitata.<br><br>
 <strong>Esempi.</strong> $\dfrac{\sin n}{n}=\frac1n\cdot\sin n\to0$; $\dfrac{(-1)^n}{n}\to0$; $\dfrac{\cos(n!)}{\sqrt n}\to0$.` },
 
@@ -311,6 +312,7 @@ Si noti che si tratta di una forma indeterminata $1^{\infty}$: la base tende a $
 $$\frac{\sin x_n}{x_n}\to1,\quad \frac{1-\cos x_n}{x_n^{2}}\to\frac12,\quad \frac{\tan x_n}{x_n}\to1,\quad \frac{\arctan x_n}{x_n}\to1,$$
 $$\frac{e^{x_n}-1}{x_n}\to1,\quad \frac{\ln(1+x_n)}{x_n}\to1,\quad \frac{(1+x_n)^{\alpha}-1}{x_n}\to\alpha.$$
 Inoltre $\left(1+\frac1n\right)^n\to e$ e $\sqrt[n]{n}\to1$.<br><br>
+<strong>L'elenco della Lezione 8</strong>, con le dimostrazioni nella Sezione 2: (a) $a^n$ ($+\infty$, $1$, $0$ o non esiste, secondo $a$), con Bernoulli; (b) $\sqrt[n]a\to1$ per $a>0$, con Bernoulli e i carabinieri, e $\sqrt[n]{n^b}\to1$; (c) $\left(1+\frac{\alpha}{a_n}\right)^{a_n}\to e^\alpha$ se $a_n\to\pm\infty$; la disuguaglianza $\cos x\lt\frac{\sin x}{x}\lt1$ con le aree; (d) $\sin a_n\to0$, $\cos a_n\to1$, $\frac{\sin a_n}{a_n}\to1$, $\frac{1-\cos a_n}{a_n^2}\to\frac12$; (e) $(1+a_n)^{1/a_n}\to e$, $\frac{\log(1+a_n)}{a_n}\to1$, $\frac{e^{a_n}-1}{a_n}\to1$, $\frac{(1+a_n)^\alpha-1}{a_n}\to\alpha$; (f) rapporto tra polinomi; (g)–(h) gerarchia degli infiniti.<br><br>
 Equivalentemente, con gli o-piccoli per $x\to0$: $\sin x=x+o(x)$, $\cos x=1-\frac{x^2}2+o(x^2)$, $e^x=1+x+o(x)$, $\ln(1+x)=x+o(x)$, $(1+x)^\alpha=1+\alpha x+o(x)$. Vedi <em>Teoremi</em> per il dettaglio.` },
 
 { id: '1.50', sez: 2, t: r`Enunciare il criterio del rapporto per successioni.`,

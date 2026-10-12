@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261005">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261012">
 </head>
 <body>
 
@@ -59,13 +59,18 @@
     <a href="#unicita" class="sub">Unicità del limite</a>
     <a href="#limitata" class="sub">Convergente ⇒ limitata</a>
     <a href="#teoremi">5 · I teoremi sui limiti</a>
+    <a href="#algebra-limiti" class="sub">Algebra dei limiti in tabelle</a>
     <a href="#segno" class="sub">Permanenza del segno</a>
     <a href="#corollari" class="sub">Corollari: segno e confronto</a>
     <a href="#carabinieri" class="sub">Due carabinieri</a>
+    <a href="#infinitesime" class="sub">Infinitesima per limitata</a>
     <a href="#monotone" class="sub">Successioni monotòne</a>
     <a href="#nepero" class="sub">Il numero e</a>
     <a href="#calcolo">6 · Calcolo dei limiti</a>
     <a href="#notevoli" class="sub">Limiti notevoli</a>
+    <a href="#notevoli-lezione" class="sub">Notevoli (a)–(h) dimostrati</a>
+    <a href="#polinomi" class="sub">Rapporto tra polinomi</a>
+    <a href="#criterio-rapporto" class="sub">Criterio del rapporto</a>
     <a href="#gerarchia" class="sub">Gerarchia degli infiniti</a>
     <a href="#asintotico" class="sub">Equivalenze e o-piccoli</a>
     <a href="#test">Mettiti alla prova</a>
@@ -80,8 +85,11 @@
     </div>
 
     <div class="box warnb">
-      <div class="box-title">★ Novità delle Lezioni 5, 6 e 7</div>
+      <div class="box-title">★ Novità delle Lezioni 5–8 e delle Esercitazioni 1–3</div>
       <ul class="mb0">
+        <li><strong>Lezione 7:</strong> <a href="#algebra-limiti">l'algebra dei limiti nelle tabelle del prof</a>, le forme indeterminate con gli esempi e la dimostrazione della somma</li>
+        <li><strong>Lezione 8:</strong> <a href="#infinitesime">infinitesima per limitata</a> (dim. orale), il confronto per limiti infiniti, <a href="#notevoli-lezione">i limiti notevoli (a)–(h) con le dimostrazioni</a>, <a href="#polinomi">rapporto tra polinomi</a> e <a href="#criterio-rapporto">criterio del rapporto</a></li>
+        <li><strong>Esercitazioni 1–3:</strong> gli esercizi svolti dal tutor sono nella palestra, <a href="../esercizi.html?sez=1">Sezione 1</a> e <a href="../esercizi.html?sez=2">Sezione 2</a></li>
         <li><strong>Lezione 7 (5 ottobre):</strong> <a href="#corollari">i due corollari della permanenza del segno</a>, cioè il segno del limite e la proprietà del confronto, con dimostrazioni a passi coperti</li>
         <li><a href="#limitate">Funzioni limitate e illimitate</a>, con la tabella degli esempi della lezione</li>
         <li><a href="#scheda">Scheda delle funzioni elementari</a>: domini, immagini, parte intera, segno, iperboliche, convenzione su $x^{p/q}$; la <a href="#elementari">galleria</a> ora ha 22 funzioni</li>
@@ -500,6 +508,74 @@
       <p class="mb0">Perché il limite esiste eccome, ma <em>non è determinato dai soli limiti dei fattori</em>. Con $a_n=n^2$ e $b_n=n$, entrambe $\to+\infty$: $a_n-b_n\to+\infty$; $b_n-a_n\to-\infty$; ma $(n+1)-n\to1$. Stessa forma $\infty-\infty$, tre risultati diversi. Servono informazioni più fini: gerarchia degli infiniti, limiti notevoli, o-piccoli.</p>
     </div></details>
 
+    <h3 id="algebra-limiti">L'algebra dei limiti in tabelle (Lezione 7)</h3>
+    <p>Le tabelle della lezione, con $a_n\to a$ e $b_n\to b$. Una casella con «f.i.» è una <strong>forma indeterminata</strong>: il risultato dipende dalle successioni, non solo dai loro limiti.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th colspan="3">Somma $a_n+b_n$</th><th colspan="3">Prodotto $a_n\,b_n$</th></tr>
+          <tr><th>$a$</th><th>$b$</th><th>limite</th><th>$a$</th><th>$b$</th><th>limite</th></tr></thead>
+        <tbody>
+          <tr><td>$a\in\R$</td><td>$b\in\R$</td><td>$a+b$</td><td>$a\in\R$</td><td>$b\in\R$</td><td>$ab$</td></tr>
+          <tr><td>$a\in\R$</td><td>$\pm\infty$</td><td>$\pm\infty$</td><td>$a>0$</td><td>$\pm\infty$</td><td>$\pm\infty$</td></tr>
+          <tr><td>$+\infty$</td><td>$+\infty$</td><td>$+\infty$</td><td>$a\lt 0$</td><td>$\pm\infty$</td><td>$\mp\infty$</td></tr>
+          <tr><td>$-\infty$</td><td>$-\infty$</td><td>$-\infty$</td><td>$\pm\infty$</td><td>$\pm\infty$</td><td>$+\infty$</td></tr>
+          <tr><td>$+\infty$</td><td>$-\infty$</td><td><strong>f.i.</strong></td><td>$\pm\infty$</td><td>$\mp\infty$</td><td>$-\infty$</td></tr>
+          <tr><td></td><td></td><td></td><td>$0$</td><td>$\pm\infty$</td><td><strong>f.i.</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th colspan="3">Quoziente $\dfrac{a_n}{b_n}$ ($b_n\ne0$ definitivamente)</th><th colspan="3">Potenza $a_n^{\,b_n}$ ($a_n>0$)</th></tr>
+          <tr><th>$a$</th><th>$b$</th><th>limite</th><th>$a$</th><th>$b$</th><th>limite</th></tr></thead>
+        <tbody>
+          <tr><td>$a\in\R$</td><td>$b\ne0$</td><td>$\dfrac ab$</td><td>$a>0$</td><td>$b\in\R$</td><td>$a^b$</td></tr>
+          <tr><td>$a\in\R$</td><td>$\pm\infty$</td><td>$0$</td><td>$0\le a\lt 1$</td><td>$+\infty$</td><td>$0$</td></tr>
+          <tr><td>$\pm\infty$</td><td>$b>0$</td><td>$\pm\infty$</td><td>$0\le a\lt 1$</td><td>$-\infty$</td><td>$+\infty$</td></tr>
+          <tr><td>$\pm\infty$</td><td>$b\lt 0$</td><td>$\mp\infty$</td><td>$a>1$</td><td>$+\infty$</td><td>$+\infty$</td></tr>
+          <tr><td>$a>0$</td><td>$0$</td><td>$+\infty$ se $b_n>0$ def.<br>$-\infty$ se $b_n\lt 0$ def.<br><strong>non esiste</strong> altrimenti</td><td>$a>1$</td><td>$-\infty$</td><td>$0$</td></tr>
+          <tr><td>$0$</td><td>$0$</td><td><strong>f.i.</strong></td><td>$+\infty$</td><td>$b>0$ / $b\lt 0$</td><td>$+\infty$ / $0$</td></tr>
+          <tr><td>$\pm\infty$</td><td>$\pm\infty$</td><td><strong>f.i.</strong></td><td>$+\infty$</td><td>$+\infty$ / $-\infty$</td><td>$+\infty$ / $0$</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Per $a\lt 0$ nel quoziente per $0$ i segni si scambiano. Il caso $a_n\to-\infty$ nelle potenze la lezione lo tralascia: apre troppi casi.</p>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ Le sette forme indeterminate, nella forma del prof</div>
+      <p class="mb0">$$+\infty-\infty,\qquad 0\cdot(\pm\infty),\qquad \frac00,\qquad \frac{\pm\infty}{\pm\infty},\qquad 0^0,\qquad 1^{\pm\infty},\qquad (+\infty)^0.$$
+      E un caso che <strong>non</strong> è indeterminato ma spesso non esiste: $\dfrac{a}{b_n}$ con $a\ne0$ e $b_n\to0$ <strong>senza segno costante</strong>. Esempio della lezione: $a_n=1$, $b_n=\frac{(-1)^n}{n}\to0$, e $\frac{a_n}{b_n}=(-1)^n n$ non ha limite ($+\infty$ sui pari, $-\infty$ sui dispari).</p>
+    </div>
+
+    <details class="reveal"><summary>Gli esempi della lezione: come si scioglie una forma indeterminata</summary><div class="reveal-body">
+      <ul class="mb0">
+        <li>$(n+1)^2-(n-1)^2$ è $+\infty-\infty$; svolgendo i quadrati vale $4n\to+\infty$.</li>
+        <li>$(n+1)^2-(n+3)^2$ è $+\infty-\infty$; vale $-4n-8\to-\infty$. Stessa forma, risultato opposto.</li>
+        <li>$\dfrac{n+1}{n^2}=\dfrac{1+\frac1n}{n}\to0$ e $\dfrac{n-1}{n}=1-\dfrac1n\to1$: due forme $\frac{\infty}{\infty}$ con limiti diversi.</li>
+        <li>$\dfrac{1/n^2}{1/n}=\dfrac1n\to0$ e $\dfrac{1/n^2}{1/n^3}=n\to+\infty$: due forme $\frac00$ con limiti diversi.</li>
+      </ul>
+    </div></details>
+
+    <details class="reveal proof"><summary>Teorema: limite della somma, dimostrato come a lezione <span class="badge star2">dim. orale</span></summary><div class="reveal-body">
+      <p><strong>Enunciato.</strong> Se $a_n\to a\in\R$ e $b_n\to b\in\R$, allora $a_n+b_n\to a+b$.</p>
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Le due ipotesi tradotte</div>
+          <div class="step-content">$\forall\eps>0\ \exists\nu_{\eps,1}:\ |a_n-a|\lt\eps\ \ \forall n>\nu_{\eps,1}$ &nbsp;e&nbsp; $\forall\eps>0\ \exists\nu_{\eps,2}:\ |b_n-b|\lt\eps\ \ \forall n>\nu_{\eps,2}$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Da quale indice valgono entrambe?</div>
+          <div class="step-content">Da $\nu_\eps:=\max\{\nu_{\eps,1},\nu_{\eps,2}\}$ in poi.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Lo strumento per stimare la somma</div>
+          <div class="step-content">La disuguaglianza triangolare: per $n>\nu_\eps$
+          $$|(a_n+b_n)-(a+b)|=|a_n-a+b_n-b|\le|a_n-a|+|b_n-b|\lt 2\eps.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Perché «$\lt 2\eps$» basta?</div>
+          <div class="step-content">Perché $\eps$ è arbitrario: $2\eps$ è a sua volta un numero positivo arbitrario. Se si vuole proprio «$\lt\eps$», si parte da $\frac\eps2$ al posto di $\eps$. Quindi $a_n+b_n\to a+b$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
     <h3 id="segno">Permanenza del segno <span class="badge star">dim. scritto · n° 7</span></h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
@@ -600,13 +676,48 @@
           <div class="step-cue">Conclusione</div>
           <div class="step-content">Dalla catena, $|b_n-L|<\eps$ per ogni $n>N$. Per l'arbitrarietà di $\eps$, $b_n\to L$. $\blacksquare$</div></div></div>
       </div>
+      <p class="small muted">Negli appunti le lettere sono diverse: $a_n\le c_n\le b_n$, quindi la successione «in mezzo» è $c_n$ e i carabinieri sono $a_n$ e $b_n$. Il ragionamento è identico.</p>
       <p class="small muted mb0"><strong>Nota cruciale:</strong> l'esistenza del limite di $(b_n)$ non è ipotesi — è la tesi. È proprio questo a rendere il teorema utile su successioni «brutte» come $\frac{\sin n}{n}$.</p>
     </div></details>
 
     <div class="box prop">
-      <div class="box-title">Corollario — infinitesima × limitata</div>
-      <p class="mb0">Se $a_n\to0$ e $(b_n)$ è limitata, allora $a_nb_n\to0$. <em>Dimostrazione:</em> con $|b_n|\le K$, si ha $|a_nb_n|\le K|a_n|\to0$, e $|x_n|\to0\iff x_n\to0$. $\blacksquare$<br><br>
-      Risolve forme $0\cdot(\text{oscillante})$ dove l'algebra dei limiti non si applica: $\frac{\sin n}{n}\to0$, $\frac{(-1)^n}{n}\to0$, $\frac{\cos(n!)}{\sqrt n}\to0$. Non serve che $(b_n)$ abbia limite.</p>
+      <div class="box-title">Confronto per limiti infiniti (Lezione 8)</div>
+      <p class="mb0">Per i limiti infiniti basta <strong>un solo</strong> carabiniere:
+      $$a_n\le b_n\ \ \forall n,\ \ a_n\to+\infty\ \Longrightarrow\ b_n\to+\infty;\qquad\qquad a_n\le b_n\ \ \forall n,\ \ b_n\to-\infty\ \Longrightarrow\ a_n\to-\infty.$$
+      <em>Perché:</em> se $a_n>M$ da un certo indice in poi, a maggior ragione $b_n\ge a_n>M$. È quello che si usa per dimostrare $a^n\to+\infty$ con Bernoulli.</p>
+    </div>
+
+    <h3 id="infinitesime">Successioni infinitesime; infinitesima per limitata <span class="badge star2">dim. orale</span></h3>
+    <p class="small muted">Lezione 8. Il (**) viene dalla guida allo studio della settimana 4.</p>
+    <div class="box def">
+      <div class="box-title">Definizione e lemma</div>
+      <p class="mb0">$\{a_n\}$ si dice <strong>infinitesima</strong> se $a_n\to0$.<br>
+      <strong>Lemma.</strong> $a_n\to0\iff|a_n|\to0$. <span class="small muted">(Basta guardare la definizione: $|a_n-0|=\bigl||a_n|-0\bigr|$.)</span></p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema</div>
+      <p class="mb0">Siano $\{a_n\}$ <strong>limitata</strong> e $\{b_n\}$ <strong>infinitesima</strong>. Allora $a_nb_n\to0$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa danno le due ipotesi?</div>
+          <div class="step-content">$\{a_n\}$ limitata: $\exists M>0$ con $|a_n|\le M$ per ogni $n$. $\{b_n\}$ infinitesima: per il lemma anche $|b_n|\to0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quali sono i due carabinieri?</div>
+          <div class="step-content">$$0\le|a_nb_n|=|a_n|\,|b_n|\le M|b_n|\longrightarrow0.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Conclusione</div>
+          <div class="step-content">Per i due carabinieri $|a_nb_n|\to0$, e per il lemma $a_nb_n\to0$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box tip">
+      <div class="box-title">↳ Gli esempi della lezione</div>
+      <ul class="mb0">
+        <li>$\dfrac{\sin n}{n}=\sin n\cdot\dfrac1n\to0$: $|\sin n|\le1$ è limitata e $\frac1n$ è infinitesima. L'algebra dei limiti qui non serve a niente, perché $\sin n$ non ha limite.</li>
+        <li>$a_n=n$ e $b_n=\frac1n$: $a_nb_n=1\to1$, non $0$. <strong>La limitatezza è necessaria</strong>: senza, il teorema è falso.</li>
+      </ul>
     </div>
 
     <h3 id="monotone">Regolarità delle successioni monotòne <span class="badge star">dim. scritto · n° 9</span></h3>
@@ -684,6 +795,164 @@
       </div>
     </div>
 
+    <h3 id="notevoli-lezione">I limiti notevoli della Lezione 8, con le dimostrazioni</h3>
+    <p>Nell'ordine e con le lettere della lezione. Sono il (**) «limiti notevoli» del programma: all'orale si chiede di dimostrarli.</p>
+
+    <div class="box teo">
+      <div class="box-title">(a) La successione geometrica $a^n$</div>
+      <p class="mb0">$$\lim_{n\to\infty}a^n=\begin{cases}+\infty & a>1\\ 1 & a=1\\ 0 & -1\lt a\lt 1\\ \text{non esiste} & a\le-1\end{cases}$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$a>1$: quale disuguaglianza si usa, con quale $x$?</div>
+          <div class="step-content">Bernoulli, $(1+x)^n\ge1+nx$ per $x>-1$, con $x=a-1>0$: $$a^n=(1+(a-1))^n\ge1+n(a-1)\longrightarrow+\infty,$$ perché $a-1>0$. Per il confronto per limiti infiniti, $a^n\to+\infty$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$a=1$</div>
+          <div class="step-content">$1^n=1$ per ogni $n$: è costante.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$-1\lt a\lt 1$, $a\ne0$: come ci si riporta al primo caso?</div>
+          <div class="step-content">$$|a^n|=|a|^n=\frac{1}{\left(\frac1{|a|}\right)^n}\longrightarrow0,$$ perché $\frac1{|a|}>1$ e quindi $\left(\frac1{|a|}\right)^n\to+\infty$ per il primo caso. Per il lemma, $a^n\to0$. (Per $a=0$ è ovvio.)</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$a\le-1$: perché non esiste?</div>
+          <div class="step-content">Due sottosuccessioni con limiti diversi: $a^{2k}\to1$ se $a=-1$ e $\to+\infty$ se $a\lt -1$; $a^{2k+1}\to-1$ se $a=-1$ e $\to-\infty$ se $a\lt -1$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <div class="box teo">
+      <div class="box-title">(b) La radice $n$-esima</div>
+      <p class="mb0">Se $a>0$, allora $\displaystyle\lim_{n\to\infty}\sqrt[n]{a}=1$. Inoltre, per ogni $b\in\R$, $\displaystyle\lim_{n\to\infty}\sqrt[n]{n^b}=1$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (il caso $\sqrt[n]a$)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Caso $a\ge1$: quale successione si studia?</div>
+          <div class="step-content">$b_n:=\sqrt[n]a-1$, che è $\ge0$ perché $a\ge1$. Bisogna mostrare $b_n\to0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Di nuovo Bernoulli: che cosa dà?</div>
+          <div class="step-content">Con $x=b_n>-1$: $(1+b_n)^n\ge1+nb_n$, cioè $\left(\sqrt[n]a\right)^n=a\ge1+nb_n$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">I due carabinieri</div>
+          <div class="step-content">$$0\le b_n\le\frac{a-1}{n}\longrightarrow0,$$ quindi $b_n\to0$, cioè $\sqrt[n]a\to1$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Caso $0\lt a\lt 1$: come ci si riporta al caso precedente?</div>
+          <div class="step-content">$\dfrac1a>1$, quindi $\sqrt[n]a=\dfrac{1}{\sqrt[n]{1/a}}\to\dfrac11=1$ per l'algebra dei limiti. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <div class="box teo">
+      <div class="box-title">(c) Il numero $e$ con una successione qualsiasi</div>
+      <p class="mb0">Se $a_n\to+\infty$ oppure $a_n\to-\infty$, allora per ogni $\alpha\in\R$ $$\left(1+\frac{\alpha}{a_n}\right)^{a_n}\longrightarrow e^{\alpha}.$$</p>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">La disuguaglianza fondamentale</div>
+      <p class="mb0">Per $0\lt |x|\le\dfrac\pi2$: $$\cos x\lt\frac{\sin x}{x}\lt 1.$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione con le aree (il disegno della lezione)</summary><div class="reveal-body">
+      <p>Nella circonferenza unitaria con centro $A$, sia $B=(1,0)$, $C$ il punto dell'arco a distanza angolare $x\in\left(0,\frac\pi2\right)$ da $B$, e $D$ il punto della retta tangente in $B$ allineato con $A$ e $C$. Le tre figure sono una dentro l'altra:
+      $$\text{triangolo }ABC\ \subset\ \text{settore }ACB\ \subset\ \text{triangolo }ABD\quad\Longrightarrow\quad \frac{\sin x}{2}\lt\frac x2\lt\frac{\tan x}{2}.$$</p>
+      <p>Moltiplicando per $\frac{2}{\sin x}>0$: $1\lt\dfrac{x}{\sin x}\lt\dfrac{1}{\cos x}$. Sono tutti positivi, quindi passando ai reciproci il verso si inverte: $\cos x\lt\dfrac{\sin x}{x}\lt1$.</p>
+      <p>Per $x\lt 0$: $\cos x$ è pari e $\frac{\sin x}{x}$ è pari (rapporto di due funzioni dispari), quindi la disuguaglianza vale anche in $\left[-\frac\pi2,0\right)$. $\blacksquare$</p>
+      <p class="small muted mb0">Il disegno funziona per $0\lt x\lt\frac\pi2$: in $x=\frac\pi2$ la tangente non è definita e il triangolo $ABD$ non esiste. Lì la disuguaglianza si verifica a mano: $0\lt\frac2\pi\lt1$.</p>
+    </div></details>
+
+    <div class="box teo">
+      <div class="box-title">(d) Seno e coseno di una successione infinitesima</div>
+      <p class="mb0">Se $a_n\to0$ (e $a_n\ne0$ dove serve dividere):
+      $$\sin a_n\to0,\qquad \cos a_n\to1,\qquad \frac{\sin a_n}{a_n}\to1,\qquad \frac{1-\cos a_n}{a_n^2}\to\frac12.$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\sin a_n\to0$: da dove si parte?</div>
+          <div class="step-content">Dalla disuguaglianza fondamentale (vale definitivamente, perché $a_n\to0$ fa sì che $|a_n|\le\frac\pi2$ da un certo indice): $\left|\frac{\sin a_n}{a_n}\right|\lt1$, cioè $0\le|\sin a_n|\lt|a_n|\to0$. Carabinieri e lemma: $\sin a_n\to0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\cos a_n\to1$: il trucco del prodotto notevole</div>
+          <div class="step-content">Definitivamente $\cos a_n>0$, quindi $1+\cos a_n>1$ e $$0\le1-\cos a_n=\frac{(1-\cos a_n)(1+\cos a_n)}{1+\cos a_n}=\frac{\sin^2a_n}{1+\cos a_n}\lt\sin^2a_n\to0$$ per l'algebra dei limiti. Carabinieri: $1-\cos a_n\to0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\frac{\sin a_n}{a_n}\to1$</div>
+          <div class="step-content">$\cos a_n\lt\dfrac{\sin a_n}{a_n}\lt1$, e $\cos a_n\to1$: i due carabinieri tendono entrambi a $1$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\frac{1-\cos a_n}{a_n^2}\to\frac12$</div>
+          <div class="step-content">$$\frac{1-\cos a_n}{a_n^2}\cdot\frac{1+\cos a_n}{1+\cos a_n}=\left(\frac{\sin a_n}{a_n}\right)^2\cdot\frac{1}{1+\cos a_n}\longrightarrow1\cdot\frac12. \quad\blacksquare$$</div></div></div>
+      </div>
+    </div></details>
+
+    <div class="box teo">
+      <div class="box-title">(e) Esponenziale e logaritmo di una successione infinitesima</div>
+      <p class="mb0">Se $a_n\to0$ con $a_n\ne0$, e $\alpha\in\R$:
+      $$(1+a_n)^{1/a_n}\to e,\qquad \frac{\log(1+a_n)}{a_n}\to1,\qquad \frac{e^{a_n}-1}{a_n}\to1,\qquad \frac{(1+a_n)^{\alpha}-1}{a_n}\to\alpha.$$
+      <span class="small muted">Negli appunti «$\log$» è il logaritmo naturale, in base $e$.</span></p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione dei primi tre (a passi coperti)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$(1+a_n)^{1/a_n}\to e$: a quale limite notevole si riduce?</div>
+          <div class="step-content">Alla (c) con $\alpha=1$: posto $b_n=\frac1{a_n}$, si ha $(1+a_n)^{1/a_n}=\left(1+\frac1{b_n}\right)^{b_n}\to e$.<br><span class="small muted">Serve che $b_n\to+\infty$ o $b_n\to-\infty$, cioè che $a_n$ abbia segno costante definitivamente; se cambia segno infinite volte si ragiona separatamente sui termini positivi e su quelli negativi.</span></div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\frac{\log(1+a_n)}{a_n}\to1$: quale proprietà del logaritmo?</div>
+          <div class="step-content">$\dfrac{\log(1+a_n)}{a_n}=\dfrac1{a_n}\log(1+a_n)=\log(1+a_n)^{1/a_n}\to\log e=1$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\frac{e^{a_n}-1}{a_n}\to1$: quale sostituzione?</div>
+          <div class="step-content">$b_n:=e^{a_n}-1\to0$, e $a_n=\log(1+b_n)$. Allora $$\frac{e^{a_n}-1}{a_n}=\frac{b_n}{\log(1+b_n)}=\frac{1}{\;\frac{\log(1+b_n)}{b_n}\;}\to\frac11=1$$ per il punto precedente. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">L'ultimo, $\frac{(1+a_n)^\alpha-1}{a_n}\to\alpha$, a lezione è stato solo enunciato.</p>
+    </div></details>
+
+    <h3 id="polinomi">(f) Rapporto tra polinomi</h3>
+    <div class="box prop">
+      <div class="box-title">Regola</div>
+      <p>Siano $P(n)=a_kn^k+\dots+a_0$ di grado $k$ ($a_k\ne0$) e $Q(n)=b_hn^h+\dots+b_0$ di grado $h$ ($b_h\ne0$). Per $k,h\ge1$ il rapporto è una forma $\frac{\pm\infty}{\pm\infty}$; raccogliendo il monomio di grado massimo sopra e sotto:
+      $$\frac{P(n)}{Q(n)}=\frac{n^k\left(a_k+a_{k-1}\frac1n+\dots+a_0\frac1{n^k}\right)}{n^h\left(b_h+b_{h-1}\frac1n+\dots+b_0\frac1{n^h}\right)}\longrightarrow\begin{cases}+\infty & k>h,\ \frac{a_k}{b_h}>0\\[3pt] -\infty & k>h,\ \frac{a_k}{b_h}\lt 0\\[3pt] \frac{a_k}{b_h} & k=h\\[3pt] 0 & k\lt h\end{cases}$$</p>
+      <p class="mb0"><em>Esempio della lezione:</em> $\dfrac{n^5+n^4-2n^2}{-2n^3-n^2-2n}=n^2\cdot\dfrac{1+\frac1n-\frac2{n^3}}{-2-\frac1n-\frac2{n^2}}\to-\infty$: $k=5>h=3$ e $\frac{a_k}{b_h}=-\frac12\lt 0$.</p>
+    </div>
+
+    <h3 id="criterio-rapporto">Criterio del rapporto per successioni</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema</div>
+      <p class="mb0">Sia $a_n>0$ e $b_n:=\dfrac{a_{n+1}}{a_n}$. Se $b_n\to b\lt 1$, allora $a_n\to0$.</p>
+    </div>
+    <details class="reveal proof"><summary>Perché funziona (a lezione solo enunciato)</summary><div class="reveal-body">
+      <p class="mb0">Si sceglie $q$ con $b\lt q\lt 1$. Definitivamente, da un certo $N$ in poi, $\frac{a_{n+1}}{a_n}\lt q$, cioè $a_{n+1}\lt q\,a_n$. Iterando, $0\lt a_{N+k}\lt q^k a_N$, e $q^ka_N\to0$ per la (a), perché $0\lt q\lt 1$. Carabinieri: $a_n\to0$. $\blacksquare$<br>
+      <span class="small muted">Se $b>1$ invece $a_n\to+\infty$; se $b=1$ il criterio non dice niente ($\frac1n$ e $n$ hanno entrambe rapporto che tende a $1$).</span></p>
+    </div></details>
+
+    <div class="box teo">
+      <div class="box-title">(g) Le tre applicazioni della lezione</div>
+      <p class="mb0">$$\frac{n^b}{\alpha^n}\to0\ \ (b>0,\ \alpha>1),\qquad\frac{\alpha^n}{n!}\to0\ \ (\alpha>1),\qquad\frac{n!}{n^n}\to0.$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazioni con il criterio del rapporto</summary><div class="reveal-body">
+      <ul class="mb0">
+        <li>$a_n=\dfrac{n^b}{\alpha^n}$: $\ \dfrac{a_{n+1}}{a_n}=\left(\dfrac{n+1}{n}\right)^b\dfrac1\alpha=\left(1+\dfrac1n\right)^b\dfrac1\alpha\to\dfrac1\alpha\lt 1$.</li>
+        <li>$a_n=\dfrac{\alpha^n}{n!}$: $\ \dfrac{a_{n+1}}{a_n}=\dfrac{\alpha^{n+1}}{(n+1)!}\cdot\dfrac{n!}{\alpha^n}=\dfrac{\alpha}{n+1}\to0\lt 1$, perché $(n+1)!=(n+1)\,n!$.</li>
+        <li>$a_n=\dfrac{n!}{n^n}$: $\ \dfrac{a_{n+1}}{a_n}=\dfrac{(n+1)!}{(n+1)^{n+1}}\cdot\dfrac{n^n}{n!}=\left(\dfrac{n}{n+1}\right)^n=\dfrac{1}{\left(1+\frac1n\right)^n}\to\dfrac1e\lt 1$.</li>
+      </ul>
+    </div></details>
+
+    <div class="box teo">
+      <div class="box-title">(h) Logaritmo contro potenza</div>
+      <p class="mb0">Per $a>1$ e $b>0$: $\displaystyle\lim_{n\to\infty}\frac{\log_a n}{n^b}=0$ (forma $\frac\infty\infty$).</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">La disuguaglianza di partenza</div>
+          <div class="step-content">$2^x>x$ per ogni $x>0$: $\ 2^x\ge2^{[x]}=(1+1)^{[x]}\ge1+[x]>x$, usando Bernoulli e $[x]>x-1$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Passare ai logaritmi</div>
+          <div class="step-content">$\log_a$ è crescente ($a>1$): $\log_a x\lt\log_a 2^x=x\log_a2$. Con $x=n^{b/2}$: $$\frac b2\log_a n=\log_a n^{b/2}\lt n^{b/2}\log_a 2\ \Longrightarrow\ \frac{\log_a n}{n^{b/2}}\lt\frac2b\log_a 2.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Perché si è usato $n^{b/2}$ e non $n^b$?</div>
+          <div class="step-content">Per avere un fattore $\frac1{n^{b/2}}$ in più che va a zero: per $n\ge2$ $$0\lt\frac{\log_a n}{n^b}=\frac{\log_a n}{n^{b/2}}\cdot\frac1{n^{b/2}}\lt\frac2b\,\frac{\log_a 2}{n^{b/2}}\longrightarrow0.$$ Carabinieri. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
     <h3 id="gerarchia">Gerarchia degli infiniti <span class="badge star2">dim. orale</span></h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
@@ -709,7 +978,7 @@
         <li>$\dfrac{n^\alpha}{a^n}$: &nbsp; $\dfrac{c_{n+1}}{c_n}=\left(\dfrac{n+1}{n}\right)^{\alpha}\cdot\dfrac1a\to\dfrac1a<1$.</li>
         <li>$\dfrac{a^n}{n!}$: &nbsp; $\dfrac{c_{n+1}}{c_n}=\dfrac{a}{n+1}\to0<1$.</li>
         <li>$\dfrac{n!}{n^n}$: &nbsp; $\dfrac{c_{n+1}}{c_n}=\left(\dfrac{n}{n+1}\right)^{n}=\dfrac{1}{\left(1+\frac1n\right)^{n}}\to\dfrac1e<1$.</li>
-        <li>$\dfrac{(\ln n)^\beta}{n^\alpha}$: &nbsp; con $n=e^{t}$ diventa $\dfrac{t^\beta}{(e^{\alpha})^{t}}\to0$, cioè il primo caso.</li>
+        <li>$\dfrac{(\ln n)^\beta}{n^\alpha}=\left(\dfrac{\ln n}{n^{\alpha/\beta}}\right)^{\beta}$, e $\dfrac{\ln n}{n^{\alpha/\beta}}\to0$ per il limite notevole <a href="#notevoli-lezione">(h)</a>, quello dimostrato a lezione con $2^x>x$.</li>
       </ul>
     </div></details>
 
@@ -793,11 +1062,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261005"></script>
-<script src="../data/topics.js?v=20261005"></script>
-<script src="../data/quiz.js?v=20261005"></script>
-<script src="../../assets/js/plot.js?v=20261005"></script>
-<script src="../../assets/js/app.js?v=20261005"></script>
+<script src="../../assets/js/materie.js?v=20261012"></script>
+<script src="../data/topics.js?v=20261012"></script>
+<script src="../data/quiz.js?v=20261012"></script>
+<script src="../../assets/js/plot.js?v=20261012"></script>
+<script src="../../assets/js/app.js?v=20261012"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 2);

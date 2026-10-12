@@ -107,6 +107,15 @@
   a: 0,
   why: r`Con $x_1=-1\lt x_2=1$ si ha $f(x_1)=-1<1=f(x_2)$, contro la decrescenza; con $x_1=1\lt x_2=2$ si ha $f(x_1)>f(x_2)$, contro la crescenza. La monotonia dipende dall'insieme: su ciascuna semiretta $f$ è decrescente, sull'unione no.` },
 
+{ id: 'Q57', sez: 1, tag: 'piano complesso',
+  q: r`(Prima prova in itinere 2018, svolta in Esercitazione 2.) L'insieme delle soluzioni in $\C$ di $\arg(iz)=\frac76\pi$ è:`,
+  opts: [ r`una semiretta contenuta nel II quadrante`,
+          r`una semiretta contenuta nel IV quadrante`,
+          r`una circonferenza`,
+          r`una retta privata dell'origine` ],
+  a: 0,
+  why: r`Moltiplicare per $i=e^{i\pi/2}$ ruota di $\frac\pi2$ in senso antiorario. Se $iz$ ha argomento $\frac76\pi$ (III quadrante), allora $z$ ha argomento $\frac76\pi-\frac\pi2=\frac23\pi$: è la semiretta uscente dall'origine (esclusa) con quell'angolo, nel II quadrante. Il modulo è libero, quindi non è una circonferenza; e l'argomento fissa un solo verso, quindi non è una retta intera.` },
+
 /* ---------------- Sezione 2 ---------------- */
 { id: 'Q11', sez: 2, tag: 'limiti',
   q: r`Se $a_n\to L$ e $a_n>0$ per ogni $n$, allora necessariamente:`,
@@ -263,6 +272,30 @@
           r`osservare che $a_n$ e $b_n$ sono monotòne` ],
   a: 0,
   why: r`$c_n=a_n-b_n\ge0$ definitivamente e $c_n\to a-b$; per il corollario 1 (se $c_n\ge0$ e $c_n\to c$ allora $c\ge0$) si ha $a-b\ge0$. I carabinieri servono a <em>dimostrare</em> che un limite esiste; qui i limiti esistono già per ipotesi. Limitatezza e monotonia non c'entrano.` },
+
+{ id: 'Q58', sez: 2, tag: 'algebra dei limiti',
+  q: r`Se $a_n=1$ e $b_n=\dfrac{(-1)^n}{n}$, il limite di $\dfrac{a_n}{b_n}$:`,
+  opts: [ r`non esiste`, r`è $+\infty$`, r`è $0$`, r`è una forma indeterminata $\frac10$` ],
+  a: 0,
+  why: r`$\frac{a_n}{b_n}=(-1)^nn$: vale $+\infty$ sui pari e $-\infty$ sui dispari. Un quoziente $\frac{a}{0}$ con $a\ne0$ dà $\pm\infty$ solo se il denominatore ha <strong>segno costante</strong> definitivamente; qui no. Non è una forma indeterminata: le sette f.i. non comprendono $\frac a0$ con $a\ne0$ (Lezione 7).` },
+
+{ id: 'Q59', sez: 2, tag: 'limiti notevoli',
+  q: r`$\displaystyle\lim_{n\to\infty}(-1)^n$ e $\displaystyle\lim_{n\to\infty}\left(-\tfrac12\right)^n$ valgono rispettivamente:`,
+  opts: [ r`non esiste; $0$`, r`$1$; $0$`, r`non esiste; non esiste`, r`$-1$; $-\infty$` ],
+  a: 0,
+  why: r`Limite notevole (a): $a^n\to0$ per $-1\lt a\lt 1$, anche se $a$ è negativo (i termini oscillano di segno ma $|a^n|\to0$); per $a\le-1$ il limite non esiste, perché pari e dispari hanno limiti diversi.` },
+
+{ id: 'Q60', sez: 2, tag: 'rapporto tra polinomi',
+  q: r`$\displaystyle\lim_{n\to\infty}\frac{3n^4-n+7}{1-2n^4}$ vale:`,
+  opts: [ r`$-\dfrac32$`, r`$3$`, r`$-\infty$`, r`$0$` ],
+  a: 0,
+  why: r`Stesso grado $k=h=4$: il limite è il rapporto dei coefficienti direttivi, $\frac{3}{-2}$. Chi risponde $3$ guarda solo il numeratore; $-\infty$ sarebbe il caso $k>h$.` },
+
+{ id: 'Q61', sez: 2, tag: 'criterio del rapporto',
+  q: r`Per $a_n=\dfrac{n!}{n^n}$ il rapporto $\dfrac{a_{n+1}}{a_n}$ tende a:`,
+  opts: [ r`$\dfrac1e$, quindi $a_n\to0$`, r`$1$, quindi il criterio non decide`, r`$e$, quindi $a_n\to+\infty$`, r`$0$, quindi $a_n\to0$` ],
+  a: 0,
+  why: r`$\frac{a_{n+1}}{a_n}=\left(\frac{n}{n+1}\right)^n=\frac{1}{\left(1+\frac1n\right)^n}\to\frac1e\lt 1$, e per il criterio del rapporto $a_n\to0$: $n^n$ batte $n!$. L'errore tipico è semplificare $(n+1)^{n+1}$ con $n^n$ come se fossero la stessa potenza.` },
 
 /* ---------------- Sezione 3 ---------------- */
 { id: 'Q25', sez: 3, tag: 'condizione necessaria',

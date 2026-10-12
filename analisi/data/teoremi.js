@@ -176,10 +176,22 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
     note: r`Osservazioni chiave: (i) <strong>non</strong> si suppone che $(b_n)$ ammetta limite — è proprio la tesi; (ii) l'ipotesi «definitivamente» basta, il comportamento iniziale è irrilevante; (iii) i due limiti devono essere <em>lo stesso</em> $L$ finito. Applicazione tipica: $\left|\frac{\sin n}{n}\right|\le\frac1n\to0$.`
   },
   {
+    id: 'T-infl', sez: 2, mark: '**', q: '1.46',
+    titolo: 'Infinitesima per limitata è infinitesima',
+    enunciato: r`Siano $\{a_n\}$ una successione <strong>limitata</strong> e $\{b_n\}$ una successione <strong>infinitesima</strong> ($b_n\to0$). Allora $a_nb_n\to0$.`,
+    idea: r`Si incastra $|a_nb_n|$ fra $0$ e $M|b_n|$ e si usano i due carabinieri, passando per il lemma $x_n\to0\iff|x_n|\to0$ (Lezione 8).`,
+    steps: [
+      { cue: 'Le due ipotesi tradotte', body: r`$\{a_n\}$ limitata: $\exists M>0$ con $|a_n|\le M$ per ogni $n$. $\{b_n\}$ infinitesima: per il lemma anche $|b_n|\to0$.` },
+      { cue: 'I due carabinieri', body: r`$$0\le|a_nb_n|=|a_n|\,|b_n|\le M|b_n|\longrightarrow0.$$ Per il teorema dei due carabinieri $|a_nb_n|\to0$.` },
+      { cue: 'Conclusione', body: r`Per il lemma, da $|a_nb_n|\to0$ segue $a_nb_n\to0$. $\blacksquare$` }
+    ],
+    note: r`Esempio della lezione: $\frac{\sin n}{n}=\sin n\cdot\frac1n\to0$, perché $|\sin n|\le1$. La limitatezza è necessaria: con $a_n=n$ e $b_n=\frac1n$ si ha $a_nb_n=1$. Il (**) viene dalla guida allo studio della settimana 4.`
+  },
+  {
     id: 'T-alg', sez: 2, mark: '**', q: '1.40',
     titolo: 'Algebra dei limiti (caso somma e prodotto)',
     enunciato: r`Se $a_n\to L\in\R$ e $b_n\to M\in\R$, allora $a_n+b_n\to L+M$, $a_nb_n\to LM$ e, se $M\ne0$, $\dfrac{a_n}{b_n}\to\dfrac LM$.`,
-    idea: r`Per la somma si spezza l'errore con la disuguaglianza triangolare e si usa $\eps/2$; per il prodotto si aggiunge e toglie un termine e si usa la limitatezza di $(a_n)$.`,
+    idea: r`Per la somma si spezza l'errore con la disuguaglianza triangolare e si usa $\eps/2$; per il prodotto si aggiunge e toglie un termine e si usa la limitatezza di $(a_n)$. A lezione (Lezione 7) è stata dimostrata la somma, usando $\eps$ per entrambe le successioni e arrivando a $\lt 2\eps$: va bene lo stesso, perché $2\eps$ è un positivo arbitrario.`,
     steps: [
       { cue: 'Somma: la stima di partenza', body: r`$$|(a_n+b_n)-(L+M)|=|(a_n-L)+(b_n-M)|\le|a_n-L|+|b_n-M|.$$` },
       { cue: r`Somma: la scelta di $\eps/2$`, body: r`Sia $\eps>0$. Poiché $a_n\to L$, $\exists N_1:\ n>N_1\Rightarrow|a_n-L|<\eps/2$; poiché $b_n\to M$, $\exists N_2:\ n>N_2\Rightarrow|b_n-M|<\eps/2$. Per $n>\max\{N_1,N_2\}$ la somma delle due stime dà $<\eps$. $\blacksquare$` },
@@ -220,8 +232,12 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
     enunciato: r`Per $x_n\to0$ con $x_n\ne0$ definitivamente:
 $$\frac{\sin x_n}{x_n}\to1,\quad \frac{1-\cos x_n}{x_n^2}\to\frac12,\quad \frac{e^{x_n}-1}{x_n}\to1,\quad \frac{\ln(1+x_n)}{x_n}\to1,\quad \frac{(1+x_n)^\alpha-1}{x_n}\to\alpha,\quad \frac{\tan x_n}{x_n}\to 1,\quad\frac{\arctan x_n}{x_n}\to1.$$
 Inoltre $\left(1+\dfrac1n\right)^n\to e$ e, più in generale, $\left(1+\dfrac{c}{n}\right)^n\to e^{c}$.`,
-    idea: r`Tutti si riducono a equivalenze asintotiche di ordine 1 attorno a $0$; sono la base del calcolo dei limiti con gli o-piccoli.`,
+    idea: r`Tutti si riducono a equivalenze asintotiche di ordine 1 attorno a $0$; sono la base del calcolo dei limiti con gli o-piccoli. Le dimostrazioni chieste all'orale sono quelle della Lezione 8: Bernoulli per $a^n$ e $\sqrt[n]a$, la disuguaglianza $\cos x\lt\frac{\sin x}x\lt1$ per seno e coseno, il limite del numero $e$ per logaritmo ed esponenziale.`,
     steps: [
+      { cue: r`(a) $a^n\to+\infty$ per $a>1$: come?`, body: r`Bernoulli con $x=a-1>0$: $a^n\ge1+n(a-1)\to+\infty$, e si conclude con il confronto per limiti infiniti. Per $|a|\lt 1$: $|a^n|=\frac{1}{(1/|a|)^n}\to0$. Per $a\le-1$: $a^{2k}$ e $a^{2k+1}$ hanno limiti diversi, quindi il limite non esiste.` },
+      { cue: r`(b) $\sqrt[n]a\to1$ per $a\ge1$: come?`, body: r`$b_n=\sqrt[n]a-1\ge0$ e, per Bernoulli, $a=(1+b_n)^n\ge1+nb_n$, quindi $0\le b_n\le\frac{a-1}{n}\to0$: carabinieri. Per $0\lt a\lt 1$ si passa al reciproco.` },
+      { cue: r`(d) $\frac{\sin a_n}{a_n}\to1$: da quale disuguaglianza?`, body: r`$\cos x\lt\frac{\sin x}{x}\lt1$ per $0\lt|x|\le\frac\pi2$, dal confronto fra le aree di triangolo, settore e triangolo. Prima si mostra $\cos a_n\to1$ (con $0\le1-\cos a_n\lt\sin^2a_n$ e $|\sin a_n|\lt|a_n|$), poi i due carabinieri.` },
+      { cue: r`(e) $\frac{\log(1+a_n)}{a_n}\to1$ e $\frac{e^{a_n}-1}{a_n}\to1$: come?`, body: r`$\frac{\log(1+a_n)}{a_n}=\log(1+a_n)^{1/a_n}\to\log e=1$. Poi, con $b_n=e^{a_n}-1\to0$: $\frac{e^{a_n}-1}{a_n}=\frac{b_n}{\log(1+b_n)}\to1$.` },
       { cue: 'Forma equivalente con gli o-piccoli (da memorizzare)', body: r`Per $x\to0$: $$\sin x=x+o(x),\quad \cos x=1-\frac{x^2}{2}+o(x^2),\quad e^x=1+x+o(x),$$ $$\ln(1+x)=x+o(x),\quad (1+x)^\alpha=1+\alpha x+o(x),\quad \tan x=x+o(x),\quad \arctan x=x+o(x).$$` },
       { cue: 'Il ruolo del teorema-ponte / della composizione', body: r`I limiti notevoli si enunciano per la <em>variabile reale</em> $x\to0$; per trasferirli a una successione $x_n\to0$ si usa il teorema sul limite della funzione composta (oppure il teorema ponte). All'esame basta citarlo.` },
       { cue: 'Errore classico', body: r`$\dfrac{1-\cos x}{x^2}\to\dfrac12$, <strong>non</strong> $1$. E $\dfrac{1-\cos x}{x}\to0$: la scelta della potenza al denominatore cambia tutto.` }
@@ -239,7 +255,7 @@ dove $x_n\ll y_n$ significa $\dfrac{x_n}{y_n}\to0$.`,
       { cue: r`$n^\alpha \ll a^n$`, body: r`Posto $c_n=\dfrac{n^\alpha}{a^n}$, si ha $$\frac{c_{n+1}}{c_n}=\left(\frac{n+1}{n}\right)^\alpha\cdot\frac1a\longrightarrow\frac1a<1.$$ Per il <strong>criterio del rapporto per successioni</strong> ($\ell<1\Rightarrow c_n\to0$), segue $c_n\to0$.` },
       { cue: r`$a^n \ll n!$`, body: r`Con $c_n=\dfrac{a^n}{n!}$: $\dfrac{c_{n+1}}{c_n}=\dfrac{a}{n+1}\to0<1$, dunque $c_n\to0$.` },
       { cue: r`$n!\ll n^n$`, body: r`Con $c_n=\dfrac{n!}{n^n}$: $\dfrac{c_{n+1}}{c_n}=\left(\dfrac{n}{n+1}\right)^{n}=\dfrac{1}{\left(1+\frac1n\right)^{n}}\to\dfrac1e<1$, dunque $c_n\to0$.` },
-      { cue: r`$(\ln n)^\beta \ll n^\alpha$`, body: r`Si riconduce al primo caso ponendo $n=e^{t}$: diventa $\dfrac{t^\beta}{(e^{\alpha})^{t}}\to0$, che è il confronto potenza/esponenziale già dimostrato.` }
+      { cue: r`$\log_a n \ll n^b$: la dimostrazione della lezione`, body: r`Da $2^x\ge2^{[x]}=(1+1)^{[x]}\ge1+[x]>x$ segue $\log_a x\lt x\log_a2$. Con $x=n^{b/2}$: $\frac{\log_a n}{n^{b/2}}\lt\frac2b\log_a2$, quindi $$0\lt\frac{\log_a n}{n^b}=\frac{\log_a n}{n^{b/2}}\cdot\frac1{n^{b/2}}\lt\frac2b\,\frac{\log_a2}{n^{b/2}}\to0.$$ Carabinieri. Per $(\ln n)^\beta\ll n^\alpha$ basta elevare alla $\beta$: $\frac{(\ln n)^\beta}{n^\alpha}=\left(\frac{\ln n}{n^{\alpha/\beta}}\right)^\beta$.` }
     ],
     note: r`Regola operativa: «logaritmi &lt; potenze &lt; esponenziali &lt; fattoriali &lt; $n^n$». Nei quozienti, il termine dominante detta il risultato — ed è quasi sempre il modo più rapido per risolvere una forma $\frac\infty\infty$ senza de l'Hôpital.`
   },
