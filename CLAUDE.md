@@ -147,47 +147,34 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - Commit in italiano, all'imperativo, con il perché nel corpo; poi push su `main`. Lo studente ha
   chiesto commit e push senza conferma ogni volta.
 
-### Mappa corsi
+### Sincronizzazione con WeBeep (a richiesta)
 
-Lo script `.claude/aggiorna-appunti.ps1` **legge questa tabella**: tienila nel formato attuale
-(percorsi tra backtick; più cartelle sorgente separate da «·»; «Attivo» = `sì` o `no`).
+Non c'è nessuna automazione: l'aggiornamento si fa in sessione, quando lo studente chiede di
+«controllare gli appunti». WeBeep Sync scarica il materiale dei corsi in `C:\WeBeep`.
 
-| Corso | Cartella sorgente | Pagina HTML | Copia i PDF in | Attivo |
-|---|---|---|---|---|
-| Analisi Matematica 1 | `C:\WeBeep\ANALISI MATEMATICA 1` · `analisi\materiale` | `analisi/index.html`, `analisi/sezioni/*.html` | `analisi\materiale` | sì |
-| Geometria e Algebra Lineare | `C:\WeBeep\[2026-27] GEOMETRIA E ALGEBRA LINEARE 082747 (GUMENYUK PAVEL)` · `geometria\materiale` | `geometria/index.html`, `geometria/sezioni/*.html` | `geometria\materiale` | sì |
-| Fondamenti di Informatica | `C:\WeBeep\FONDAMENTI DI INFORMATICA` | `informatica/index.html` | `informatica\materiale` | no |
+| Corso | Cartella WeBeep | Pagine | PDF copiati in |
+|---|---|---|---|
+| Analisi Matematica 1 | `C:\WeBeep\ANALISI MATEMATICA 1` | `analisi/` | `analisi\materiale` |
+| Geometria e Algebra Lineare | `C:\WeBeep\[2026-27] GEOMETRIA E ALGEBRA LINEARE 082747 (GUMENYUK PAVEL)` | `geometria/` | `geometria\materiale` |
+| Fondamenti di Informatica | `C:\WeBeep\FONDAMENTI DI INFORMATICA` | `informatica/` | — (da decidere) |
 
-- I PDF di WeBeep vengono **copiati** nella cartella «Copia i PDF in» del corso prima
-  dell'integrazione, perché le pagine li linkano da lì (`materiale/...`).
-- Fondamenti è `no`: `informatica/` è un'app a pagina singola presa da un altro repository, con una
-  struttura che i «Criteri appunti» non descrivono. Va attivato solo dopo aver deciso come integrarlo.
-- Sottocartelle **escluse** in ogni caso (variabile `$Escludi` nello script): esami degli anni
-  precedenti, temi d'esame vecchi, l'edizione 2025-2026 di Fondamenti, file vuoti come
-  `000BLANK.pdf`. Non sono lezioni del corso di quest'anno.
+Procedura:
 
-### Automazione dei PDF nuovi
+1. **Cosa c'è di nuovo**: confronta i PDF della cartella WeBeep del corso con quelli in
+   `materiale/` per **contenuto** (SHA-256), non per nome. Un PDF con lo stesso nome ma impronta
+   diversa è una versione aggiornata dal prof. In PowerShell i percorsi vanno sempre passati con
+   `-LiteralPath`: la cartella di Geometria ha le parentesi quadre, che altrimenti sono caratteri jolly.
+2. **Cosa non è materiale da integrare**: esami degli anni precedenti, temi d'esame vecchi,
+   edizioni passate dei corsi, file vuoti come `000BLANK.pdf`. Si elencano allo studente, non si
+   integrano come lezioni.
+3. **Copia** i PDF nuovi nella cartella `materiale/` del corso: le pagine li linkano da lì.
+4. **Integra** ogni lezione seguendo i «Criteri appunti», nell'ordine delle lezioni; le note delle
+   esercitazioni diventano esercizi con la soluzione del prof.
+5. **Riepilogo** allo studente: file trovati, cosa è stato integrato e dove, cosa è stato saltato e
+   perché.
 
-- All'accesso a Windows (con 10 minuti di ritardo) l'attività pianificata «Aggiorna Appunti»
-  lancia `.claude/aggiorna-appunti.ps1`: cerca PDF nuovi o cambiati nelle cartelle sorgente dei
-  corsi attivi della «Mappa corsi», li copia in `materiale/`, avvia `claude -p "/aggiorna-appunti"`
-  (comando in `.claude/commands/aggiorna-appunti.md`), poi fa commit e push e mostra un popup con
-  l'esito. Prova a vuoto: lo script con `-DryRun`.
-- In `logs/` (ignorata da git): `storico-aggiornamenti.md` ha una scheda per ogni avvio, la più
-  recente in cima, con il riepilogo di Claude (`ultimo-aggiornamento.md`) e un resoconto
-  **ricavato da git** (paragrafi `h2`/`h3` nuovi, id nuovi in `data/*.js`, file toccati, link al
-  confronto su GitHub); `run-*.log` è il log tecnico. Per rileggere un intervallo qualsiasi:
-  `-ProvaResoconto <da>..<a>`. Il resoconto riconosce i contenuti nuovi dagli **id**: per questo
-  ogni paragrafo nuovo deve avere un `id` e ogni esercizio, domanda o flashcard un id mai usato.
-- Lo script è salvato in UTF-8 **con BOM**: senza, Windows PowerShell 5.1 legge male gli accenti.
-- Un PDF identico (stesso SHA-256) a uno già elaborato non viene rielaborato, anche se sta in
-  un'altra cartella.
-- I PDF già elaborati sono registrati in `.appunti-state.json` (percorso → dimensione, ignorato da
-  git). **Se integri un PDF a mano in una sessione, aggiungilo lì**, altrimenti al prossimo
-  accesso l'automazione lo rielabora.
-- In Windows PowerShell 5.1 non chiamare comandi esterni con `2>$null` o `2>&1` quando
-  `$ErrorActionPreference = "Stop"`: ogni riga su stderr, anche un avviso di git, diventa un
-  errore fatale. Nello script c'è la funzione `Esegui` apposta.
+`informatica/` è un'app a pagina singola presa da un altro repository, con una struttura che i
+«Criteri appunti» non descrivono: va deciso con lo studente come integrarla prima di farlo.
 
 ### Cose da non fare
 
