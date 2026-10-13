@@ -122,14 +122,27 @@
       slug: 'sezioni/5-lineari.html',
       titolo: 'Applicazioni lineari, basi, dimensione, rango',
       sommario: r`Le mappe che rispettano somma e prodotto per scalare: nucleo, immagine, dipendenza lineare e il teorema di rango + nullità.`,
-      // Gli id restano stabili: le voci della Lezione 4 (pp. 21-84) e della
-      // Lezione 5 (pp. 1-28) si aggiungeranno con numeri nuovi, nella posizione giusta.
+      // Gli id non seguono l'ordine di lettura: g5-18..g5-30 (Lezione 4 pp. 21-84 e
+      // Lezione 5 pp. 1-28) sono arrivati dopo e stanno nella posizione delle lezioni.
       topics: [
         { id: 'g5-01', t: r`Applicazione lineare: additività e omogeneità; $L(\vzero)=\vzero$`, mark: '*', q: 'Lez. 4' },
         { id: 'g5-02', t: r`Esempi: $ax+b$ è lineare $\iff b=0$; la derivata; l'integrale su $C[0,1]$`, q: 'Lez. 4' },
         { id: 'g5-03', t: r`$L_A(\vx)=A\vx$; la composta di lineari è lineare e $L_B\circ L_A=L_{BA}$`, mark: '**', q: 'Lez. 4' },
         { id: 'g5-04', t: r`Nucleo e immagine; sono sottospazi`, mark: '*', q: 'Lez. 4' },
         { id: 'g5-05', t: r`Struttura delle controimmagini; $L$ iniettiva $\iff\ker L=\{\vzero\}$`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-18', t: r`Applicazione inversa; l'inversa di una lineare biettiva è lineare`, q: 'Lez. 4' },
+        { id: 'g5-19', t: r`$L_A$ biettiva $\iff A$ invertibile, e $L_A^{-1}=L_{A^{-1}}$`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-20', t: r`Sistemi di riferimento nel piano e nello spazio; coordinate di vettori e di punti`, q: 'Lez. 4' },
+        { id: 'g5-21', t: r`Base di uno spazio vettoriale e vettore delle coordinate`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-22', t: r`Teorema sulla dimensione; $\dim V$, $\dim P_n=n+1$, spazi di dimensione infinita`, mark: '**', q: 'Lez. 4' },
+        { id: 'g5-23', t: r`Teorema di rappresentazione: $A=[L(\mathbf e_1)|\dots|L(\mathbf e_n)]$`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-24', t: r`Mappa di parametrizzazione e mappa delle coordinate: $\mathbf c=S^{-1}\vx$`, q: 'Lez. 4' },
+        { id: 'g5-25', t: r`Matrice rappresentativa rispetto a due basi (Teorema 5)`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-26', t: r`Isomorfismi; ogni spazio di dimensione $n$ è isomorfo a $\K^n$`, mark: '**', q: 'Lez. 4' },
+        { id: 'g5-27', t: r`Basi in $\K^n$: $B$ è una base $\iff S=[\vv_1|\dots|\vv_n]$ è invertibile`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-28', t: r`Passaggio tra due basi: $\mathbf c=S\tilde{\mathbf c}$`, mark: '*', q: 'Lez. 5' },
+        { id: 'g5-29', t: r`Come cambia la matrice rappresentativa: $\tilde A=S_W^{-1}AS_V$`, mark: '**', q: 'Lez. 5' },
+        { id: 'g5-30', t: r`Passaggio tra sistemi di riferimento; rotazione degli assi`, q: 'Lez. 5' },
         { id: 'g5-06', t: r`Cambio di origine: $[x;y]=[x_{O'};y_{O'}]+S\,[x';y']$`, q: 'Lez. 5' },
         { id: 'g5-07', t: r`Rette in forma parametrica $\mathbf r=\mathbf r_0+t\mathbf a$; l'esempio dell'ellisse`, q: 'Lez. 5' },
         { id: 'g5-08', t: r`Piani in forma parametrica $\mathbf r=\mathbf r_0+t\mathbf u+s\mathbf v$`, q: 'Lez. 5' },

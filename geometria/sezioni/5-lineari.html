@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261013">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261013a">
 </head>
 <body>
 
@@ -46,23 +46,37 @@
     <a href="#composta" class="sub">$L_A$ e la composizione</a>
     <a href="#nucleo">2 · Nucleo e immagine</a>
     <a href="#controimmagini" class="sub">Struttura delle controimmagini</a>
-    <a href="#rette-piani">3 · Rette e piani</a>
+    <a href="#inversa">3 · L'applicazione inversa</a>
+    <a href="#basi">4 · Riferimenti, basi, dimensione</a>
+    <a href="#riferimento" class="sub">Sistemi di riferimento</a>
+    <a href="#base-def" class="sub">Basi e coordinate</a>
+    <a href="#dimensione" class="sub">Dimensione</a>
+    <a href="#rappresentativa">5 · Matrice rappresentativa</a>
+    <a href="#rappr-kn" class="sub">Da $\K^n$ a $\K^m$</a>
+    <a href="#parametrizzazione" class="sub">Coordinate: $\mathbf c=S^{-1}\vx$</a>
+    <a href="#rappr-generale" class="sub">Il caso generale</a>
+    <a href="#isomorfismi">6 · Basi e isomorfismi</a>
+    <a href="#basi-kn" class="sub">Basi in $\K^n$</a>
+    <a href="#passaggio">7 · Passaggio tra basi</a>
+    <a href="#trasformazione" class="sub">La matrice rappresentativa cambia</a>
+    <a href="#passaggio-riferimenti" class="sub">Tra sistemi di riferimento</a>
+    <a href="#rette-piani">8 · Rette e piani</a>
     <a href="#cambio-origine" class="sub">Cambio di origine</a>
     <a href="#retta-param" class="sub">Rette in forma parametrica</a>
     <a href="#ellisse" class="sub">L'ellisse della lezione</a>
     <a href="#piano-param" class="sub">Piani in forma parametrica</a>
     <a href="#cart-param" class="sub">Da cartesiana a parametrica</a>
     <a href="#param-cart" class="sub">Da parametrica a cartesiana</a>
-    <a href="#dipendenza">4 · Dipendenza lineare</a>
+    <a href="#dipendenza">9 · Dipendenza lineare</a>
     <a href="#davvero" class="sub">Quando è davvero una retta</a>
     <a href="#dip-def" class="sub">Definizione ed esempi</a>
     <a href="#condizioni-base" class="sub">Condizioni di base</a>
     <a href="#metodo-rango" class="sub">Il metodo del rango</a>
     <a href="#dip-lineari" class="sub">Coordinate e mappe lineari</a>
     <a href="#osservazioni" class="sub">Tre osservazioni</a>
-    <a href="#basi-span">5 · Basi di span e nucleo</a>
+    <a href="#basi-span">10 · Basi di span e nucleo</a>
     <a href="#esempio-p2" class="sub">Un esempio completo su $P_2$</a>
-    <a href="#rango">6 · Rango</a>
+    <a href="#rango">11 · Rango</a>
     <a href="#righe-colonne" class="sub">Per righe e per colonne</a>
     <a href="#nullita" class="sub">Rango + nullità</a>
     <a href="#punti-piano" class="sub">Punti e piani col rango</a>
@@ -83,12 +97,11 @@
     </div>
 
     <div class="box warnb">
-      <div class="box-title">★ Novità delle Lezioni 4–6 · e che cosa manca ancora</div>
+      <div class="box-title">★ Novità delle Lezioni 4–6</div>
       <ul class="mb0">
-        <li><strong>Lezione 4 (pp. 1–20):</strong> <a href="#lineari-def">applicazioni lineari</a>, <a href="#composta">composizione</a>, <a href="#nucleo">nucleo e immagine</a>, <a href="#controimmagini">struttura delle controimmagini</a>.</li>
-        <li><strong>Lezione 5 (pp. 29–72):</strong> <a href="#cambio-origine">cambio di origine</a>, <a href="#retta-param">rette</a> e <a href="#piano-param">piani</a> parametrici, <a href="#ellisse">l'ellisse</a> con widget, <a href="#param-cart">equazioni cartesiane</a>.</li>
+        <li><strong>Lezione 4:</strong> <a href="#lineari-def">applicazioni lineari</a>, <a href="#composta">composizione</a>, <a href="#nucleo">nucleo e immagine</a>, <a href="#controimmagini">struttura delle controimmagini</a>, <a href="#inversa">inversa</a>, <a href="#riferimento">sistemi di riferimento</a>, <a href="#base-def">basi</a> e <a href="#dimensione">dimensione</a>, <a href="#rappresentativa">matrice rappresentativa</a>, <a href="#isomorfismi">isomorfismi</a> e <a href="#basi-kn">basi in $\K^n$</a>.</li>
+        <li><strong>Lezione 5:</strong> <a href="#passaggio">passaggio tra basi</a>, <a href="#trasformazione">come cambia la matrice rappresentativa</a>, <a href="#passaggio-riferimenti">rotazione degli assi</a>, <a href="#cambio-origine">cambio di origine</a>, <a href="#retta-param">rette</a> e <a href="#piano-param">piani</a> parametrici, <a href="#ellisse">l'ellisse</a> con widget, <a href="#param-cart">equazioni cartesiane</a>.</li>
         <li><strong>Lezione 6:</strong> <a href="#dipendenza">dipendenza lineare</a>, <a href="#condizioni-base">condizioni di base</a>, <a href="#basi-span">basi di span e nucleo</a>, <a href="#rango">rango</a> e <a href="#nullita">rango + nullità</a>.</li>
-        <li><strong>In arrivo:</strong> sistemi di riferimento, basi e dimensione, coordinate e matrice rappresentativa (Lezione 4, pp. 21–84) e passaggio tra basi (Lezione 5, pp. 1–28). Nel frattempo base e dimensione si usano con la <a href="#base-richiamo">definizione standard</a>.</li>
       </ul>
     </div>
 
@@ -96,7 +109,7 @@
     <div class="card" style="margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
         <strong>Avanzamento Sezione 5</strong>
-        <span class="muted small"><span data-progress-txt="g5">0/17</span> · <span data-progress-pct="g5">0%</span></span>
+        <span class="muted small"><span data-progress-txt="g5">0/30</span> · <span data-progress-pct="g5">0%</span></span>
       </div>
       <div class="pbar" data-progress-for="g5"><span style="width:0"></span></div>
     </div>
@@ -266,12 +279,337 @@
     </div>
 
     <!-- ============================================================ -->
-    <h2 id="rette-piani">3 · Rette e piani</h2>
+    <h2 id="inversa">3 · L'applicazione inversa</h2>
+
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 4)</div>
+      <p class="mb0">Sia $f:X\to Y$ <strong>biettiva</strong>: per ogni $y\in Y$ esiste un unico $x\in X$ con $f(x)=y$. L'applicazione che associa a $y$ quell'unico $x$ si chiama <strong>inversa</strong> di $f$ e si indica con $f^{-1}:Y\to X$. «Applicazione», «mappa» e «funzione» sono sinonimi.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Tre esempi (Lezione 4)</div>
+      <ul class="mb0">
+        <li>$f:\R\to\R$, $f(x)=x^{3}$, è biettiva: $x^{3}=y$ ha l'unica soluzione $x=\sqrt[3]{y}$, quindi $f^{-1}(y)=\sqrt[3]{y}$.</li>
+        <li>$L:\R^{2}\to\R^{2}$, $L(x_1,x_2)=(x_2+x_1,\ x_2-x_1)$. L'equazione $L(\vx)=\vy$ è il sistema $x_2+x_1=y_1$, $x_2-x_1=y_2$, con l'unica soluzione
+        $$L^{-1}(y_1,y_2)=\left(\tfrac12(y_1-y_2),\ \tfrac12(y_1+y_2)\right).$$</li>
+        <li>Se $f$ è solo <strong>iniettiva</strong>, l'inversa si definisce lo stesso, ma sull'immagine: $f^{-1}:\Imag f\to X$. Per $f(x)=e^{x}$ si ha $\Imag f=(0,+\infty)\ne\R$ e $f^{-1}:(0,+\infty)\to\R$, $f^{-1}(y)=\ln y$.
+        <br><span class="small muted">Negli appunti (p. 25) c'è scritto «$f(y)=\ln y$»: va letto $f^{-1}(y)=\ln y$.</span></li>
+      </ul>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Teorema 3 (Lezione 4), senza dimostrazione</div>
+      <p class="mb0">Se $L:V\to W$ è lineare e biettiva, anche l'inversa $L^{-1}:W\to V$ è <strong>lineare</strong>.</p>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Proposizione 2 (Lezione 4) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Sia $A\in\M_{\K}(n,n)$. Allora $L_A:\K^{n}\to\K^{n}$ è biettiva se e solo se $A$ è invertibile, e in tal caso
+      $$L_A^{-1}=L_{A^{-1}}.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa vuol dire «$L_A$ biettiva» in termini di sistemi?</div>
+            <div class="step-content">Che per ogni $\vy\in\K^{n}$ esiste un unico $\vx$ con $L_A(\vx)=\vy$, cioè che il sistema $A\vx=\vy$ ha <strong>una e una sola</strong> soluzione per ogni termine noto $\vy$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quale teorema già noto si applica?</div>
+            <div class="step-content">Le <a href="2-matrici.html">condizioni di invertibilità</a> (Teorema 4 della Lezione 2): per una matrice quadrata, $A\vx=\vy$ ha un'unica soluzione per ogni $\vy$ se e solo se $A$ è invertibile, e la soluzione è $\vx=A^{-1}\vy$. Quindi $L_A$ biettiva $\iff$ $A$ invertibile.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Chi è l'inversa?</div>
+            <div class="step-content">$L_A^{-1}(\vy)$ è l'unica controimmagine di $\vy$, cioè l'unica soluzione di $A\vx=\vy$, cioè $A^{-1}\vy=L_{A^{-1}}(\vy)$, per ogni $\vy$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- ============================================================ -->
+    <h2 id="basi">4 · Sistemi di riferimento, basi, dimensione</h2>
+
+    <h3 id="riferimento">Sistemi di riferimento nel piano e nello spazio</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 4)</div>
+      <p>Un <strong>sistema di riferimento nel piano</strong> è una terna $(O,A,B)$ di punti non allineati: $O$ è l'<em>origine</em>, le rette $OA$ e $OB$ sono gli <em>assi</em>. Equivalentemente si dà $(O,\vec u,\vec v)$ con $\vec u=\overrightarrow{OA}$ e $\vec v=\overrightarrow{OB}$.</p>
+      <p class="mb0">Nello spazio servono quattro punti non complanari $(O,A_1,A_2,A_3)$, con $\vec v_j:=\overrightarrow{OA_j}$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Coordinate (Lezione 4)</div>
+      <p>Fissato $(O,\vec u,\vec v)$, ogni vettore libero $\vec r$ del piano si scrive in modo <strong>unico</strong> come
+      $$\vec r=x\,\vec u+y\,\vec v,\qquad (x,y)\in\R^{2}.$$
+      I numeri $x,y$ sono le <strong>coordinate</strong> (o componenti) di $\vec r$; le coordinate di un punto $P$ sono quelle del suo <em>vettore di posizione</em> $\overrightarrow{OP}$. Nello spazio, allo stesso modo, $\vec r=x_1\vec v_1+x_2\vec v_2+x_3\vec v_3$.</p>
+      <p class="mb0">Fissato un riferimento si ha quindi una corrispondenza biunivoca fra vettori liberi, punti e coppie (terne) di numeri reali.</p>
+    </div>
+    <details class="reveal"><summary>Perché le coordinate esistono: la costruzione della lezione</summary><div class="reveal-body">
+      <p>Sia $P$ il punto con $\vec r=\overrightarrow{OP}$. Per $P$ si tracciano le parallele ai due assi, che li tagliano in $Q$ (sull'asse $OA$) e $S$ (sull'asse $OB$). Allora $\vec r=\overrightarrow{OS}+\overrightarrow{OQ}$ per la regola del parallelogramma.</p>
+      <p class="mb0">$O,A,Q$ sono allineati, quindi $\overrightarrow{OQ}=x\vec u$ per un $x\in\R$; $O,B,S$ sono allineati, quindi $\overrightarrow{OS}=y\vec v$. Insomma $\vec r=x\vec u+y\vec v$. L'unicità segue dall'assioma delle parallele. Nota che <strong>non</strong> si chiede che gli assi siano perpendicolari, né che $\vec u$ e $\vec v$ abbiano lunghezza $1$.</p>
+    </div></details>
+
+    <h3 id="base-def">Basi e coordinate <span class="badge star">risultato centrale</span></h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 4)</div>
+      <p class="mb0">Sia $V$ uno spazio vettoriale su $\K$. I vettori $\vv_1,\dots,\vv_n$ formano una <strong>base</strong> di $V$ se
+      $$\forall\,\vv\in V\quad\exists!\ \mathbf c=(c_1,\dots,c_n)\in\K^{n}\ \text{ tale che }\ \vv=\sum_{j=1}^{n}c_j\vv_j.$$
+      Il vettore $\mathbf c$ si chiama <strong>vettore delle coordinate</strong> di $\vv$ rispetto alla base $B:=\{\vv_1,\dots,\vv_n\}$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 4)</div>
+      <ul class="mb0">
+        <li><strong>B1.</strong> In un riferimento $(O,\vec u,\vec v)$ del piano, $\{\vec u,\vec v\}$ è una base dello spazio dei vettori liberi del piano; nello spazio, $\{\vec v_1,\vec v_2,\vec v_3\}$.</li>
+        <li><strong>B2.</strong> Le colonne $\mathbf e_1,\dots,\mathbf e_n$ di $I_n$ sono la <strong>base canonica</strong> di $\K^{n}$, e il vettore delle coordinate di $\vx$ è $\vx$ stesso: $\vx=x_1\mathbf e_1+\dots+x_n\mathbf e_n$.</li>
+        <li><strong>B3.</strong> $P_2$, i polinomi di grado $\le2$ a coefficienti in $\K$, è uno spazio vettoriale, e $p_0=1$, $p_1=x$, $p_2=x^{2}$ ne sono una base: $p=a_0p_0+a_1p_1+a_2p_2$ con coefficienti unici.</li>
+        <li><strong>Troppo pochi.</strong> $q_1=x^{2}-x+1$, $q_2=x^{2}+x+1$ non sono una base di $P_2$: da $2x+1=\alpha q_1+\beta q_2=(\alpha+\beta)x^{2}+(\beta-\alpha)x+(\alpha+\beta)$ il coefficiente di $x^{2}$ dà $\alpha+\beta=0$ e il termine noto $\alpha+\beta=1$. Contraddizione.</li>
+        <li><strong>Troppi.</strong> $p_0,p_1,p_2,q_1$ non sono una base: $x^{2}+1=p_2+p_0=q_1+p_1$, due scritture diverse dello stesso polinomio.</li>
+      </ul>
+    </div>
+
+    <h3 id="dimensione">Dimensione</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema sulla dimensione (Lezione 4), senza dimostrazione <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">Se uno spazio vettoriale $V$ ha una base di $n$ vettori, allora <strong>ogni</strong> base di $V$ ha $n$ vettori. Il numero $n$ si chiama <strong>dimensione</strong> di $V$: $\dim V=n$.
+      <br><span class="small muted">Negli appunti questo teorema e il teorema di rappresentazione sono numerati entrambi «Teorema 4».</span></p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Quando non c'è una base finita</div>
+      <p class="mb0">(i) $V=\{\vzero\}$, «troppo piccolo»: per definizione $\dim V:=0$. (ii) $V$ «troppo grande»: per ogni sistema finito di vettori esiste un $\vu\in V$ che non ne è combinazione lineare, e per ogni $n$ c'è un sottospazio di dimensione $n$. Per definizione $\dim V:=+\infty$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 4)</div>
+      <ul class="mb0">
+        <li><strong>D1.</strong> $\dim\K^{n}=n$: la base canonica ha $n$ vettori.</li>
+        <li><strong>D2.</strong> I vettori liberi del piano hanno dimensione $2$, quelli dello spazio $3$.</li>
+        <li><strong>D3.</strong> $1,x,\dots,x^{n}$ sono una base di $P_n$ (polinomi di grado $\le n$), quindi $\dim P_n=n+1$, non $n$.</li>
+        <li><strong>D4.</strong> Se $W$ è un sottospazio di $V$, allora $\dim W\le\dim V$. Ogni $P_n$ sta dentro lo spazio $P$ di tutti i polinomi, quindi $\dim P\ge n$ per ogni $n$: $\dim P=+\infty$. E $P$ sta dentro le funzioni derivabili $\R\to\R$, che hanno dunque dimensione infinita.</li>
+      </ul>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ L'idea dell'esempio B3, in una riga</div>
+      <p class="mb0">Due vettori sono pochi per $P_2$, quattro sono troppi, tre sono «la quantità giusta». Il teorema sulla dimensione dice che questa quantità giusta non dipende dalla base scelta.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rappresentativa">5 · La matrice rappresentativa</h2>
+
+    <h3 id="rappr-kn">Mappe lineari da $\K^{n}$ a $\K^{m}$</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema di rappresentazione (Lezione 4) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Per ogni mappa lineare $L:\K^{n}\to\K^{m}$ esiste un'unica matrice $A\in\M_{\K}(m,n)$ tale che $L=L_A$, e
+      $$A=\big[\,L(\mathbf e_1)\,\big|\,L(\mathbf e_2)\,\big|\cdots\big|\,L(\mathbf e_n)\,\big].$$
+      $A$ si chiama <strong>matrice rappresentativa</strong> di $L$ (rispetto alle basi canoniche).</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Perché le colonne sono le immagini della base canonica</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Se $L=L_A$, chi è $L(\mathbf e_j)$?</div>
+            <div class="step-content">$L(\mathbf e_j)=A\mathbf e_j=(a_{1j},\dots,a_{mj})$, cioè la $j$-esima colonna di $A$: moltiplicare per $\mathbf e_j$ «estrae» la colonna $j$. Quindi $A$ può essere solo quella: unicità.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché quella $A$ funziona davvero su ogni $\vx$?</div>
+            <div class="step-content">Per la linearità: $L(\vx)=L\big(\sum_j x_j\mathbf e_j\big)=\sum_j x_jL(\mathbf e_j)$, e una combinazione delle colonne di $A$ con coefficienti $x_j$ è proprio $A\vx$ (osservazione della lezione: $A\mathbf c$ è la combinazione delle colonne con coefficienti $c_j$). $\blacksquare$</div></div></div>
+        </div>
+        <p class="small muted mb0">A lezione la dimostrazione formale è saltata; questi due passi sono l'idea data dal prof.</p>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 4)</div>
+      <ul class="mb0">
+        <li>$L:\R^{2}\to\R^{3}$, $L(x,y)=(x+y,\ x-y,\ 2x)$: $L(\mathbf e_1)=(1,1,2)$, $L(\mathbf e_2)=(1,-1,0)$, quindi $A=\begin{bmatrix}1&1\\1&-1\\2&0\end{bmatrix}$, di tipo $3\times2$.</li>
+        <li>$L:\C^{3}\to\C$, $L(z_1,z_2,z_3)=z_1+i(z_2-z_3)+2z_3$: $L(\mathbf e_1)=1$, $L(\mathbf e_2)=i$, $L(\mathbf e_3)=2-i$, quindi $A=[\,1\ \ i\ \ 2-i\,]$, una matrice riga. Controllo: $z_1+iz_2+(2-i)z_3=z_1+i(z_2-z_3)+2z_3$ ✓.</li>
+        <li>La mappa $L:\R^{3}\to\R^{2}$ con $L(\mathbf e_1)=(0,1)$, $L(\mathbf e_2)=(1,1)$, $L(\mathbf e_3)=(3,2)$ è $L(x,y,z)=\begin{bmatrix}0&1&3\\1&1&2\end{bmatrix}\begin{bmatrix}x\\y\\z\end{bmatrix}=(y+3z,\ x+y+2z)$.</li>
+      </ul>
+    </div>
+
+    <h3 id="parametrizzazione">Coordinate in $\K^{n}$: $\mathbf c=S^{-1}\vx$</h3>
+    <div class="box prop">
+      <div class="box-title">Come si trovano le coordinate (Lezione 4)</div>
+      <p>Sia $B=\{\vv_1,\dots,\vv_n\}$ una base di $\K^{n}$ e $\mathbf c$ il vettore delle coordinate di $\vx$. Allora
+      $$\vx=c_1\vv_1+\dots+c_n\vv_n=S\mathbf c,\qquad S:=[\,\vv_1\,|\,\vv_2\,|\cdots|\,\vv_n\,].$$
+      La mappa $P_B:\K^{n}\to\K^{n}$, $P_B(\mathbf c)=\vx$, è lineare con matrice $S$, ed è biettiva per la definizione di base. Per la <a href="#inversa">Proposizione 2</a> $S$ è invertibile e
+      $$\mathbf c=P_B^{-1}(\vx)=S^{-1}\vx.$$</p>
+      <p class="mb0">$P_B$ si chiama <strong>mappa di parametrizzazione</strong>, $P_B^{-1}$ <strong>mappa delle coordinate</strong>, e $S$ <strong>matrice di passaggio</strong> dalla base canonica alla base $B$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 4)</div>
+      <p class="mb0">$\vv_1=(1,2)$, $\vv_2=(2,1)$. Allora $S=\begin{bmatrix}1&2\\2&1\end{bmatrix}$, $\det S=1-4=-3$, e
+      $$S^{-1}=\frac{1}{-3}\begin{bmatrix}1&-2\\-2&1\end{bmatrix}=\frac13\begin{bmatrix}-1&2\\2&-1\end{bmatrix},\qquad \mathbf c=S^{-1}\begin{bmatrix}x\\y\end{bmatrix}=\begin{bmatrix}\frac{2y-x}{3}\\[3pt]\frac{2x-y}{3}\end{bmatrix}.$$
+      <strong>Controllo:</strong> $\frac{2y-x}{3}(1,2)+\frac{2x-y}{3}(2,1)=(x,y)$ ✓.
+      <br><span class="small muted">Negli appunti (p. 63), nella seconda riga del controllo, il secondo addendo è moltiplicato per $2$: va moltiplicato per $1$, la seconda componente di $\vv_2$.</span></p>
+    </div>
+
+    <h3 id="rappr-generale">Il caso generale: due basi qualsiasi</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema 5 (Lezione 4), senza dimostrazione <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Siano $\dim V=n$, $\dim W=m$ finite, $B=\{\vv_1,\dots,\vv_n\}$ base di $V$, $C=\{\vw_1,\dots,\vw_m\}$ base di $W$, e $L:V\to W$ lineare. Allora per ogni $\vv\in V$
+      $$\mathbf c=A\,\mathbf b,$$
+      dove $\mathbf b$ sono le coordinate di $\vv$ rispetto a $B$, $\mathbf c$ quelle di $L(\vv)$ rispetto a $C$, e $A\in\M_{\K}(m,n)$ ha come $j$-esima colonna le <strong>coordinate di $L(\vv_j)$ rispetto a $C$</strong>. $A$ è la matrice rappresentativa di $L$ rispetto alle basi $B$ e $C$, e si indica anche con $M^{B}_{C}(L)$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 4): la derivata da $P_2$ a $P_1$</div>
+      <p class="mb0">$L(p)=p'$, con basi $B=\{1,x,x^{2}\}$ e $C=\{1,x\}$. Poiché $L(1)=0$, $L(x)=1=1\cdot1+0\cdot x$, $L(x^{2})=2x=0\cdot1+2\cdot x$:
+      $$A=\begin{bmatrix}0&1&0\\0&0&2\end{bmatrix}.$$
+      Per $p=a_0+a_1x+a_2x^{2}$ si ha $\mathbf b=(a_0,a_1,a_2)$ e $A\mathbf b=(a_1,2a_2)$: sono proprio le coordinate di $p'=a_1+2a_2x$ ✓.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="isomorfismi">6 · Basi e isomorfismi</h2>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 4)</div>
+      <p class="mb0">Un <strong>isomorfismo</strong> fra due spazi vettoriali $V$ e $W$ sullo stesso campo è una mappa lineare biettiva $L:V\to W$; la sua inversa è un isomorfismo di $W$ su $V$. $V$ e $W$ si dicono <strong>isomorfi</strong> se esiste un isomorfismo fra loro.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ L'interpretazione «filosofica» del prof</div>
+      <p class="mb0">Un isomorfismo <strong>cambia i nomi</strong> degli elementi ma conserva la struttura: se $\vw=\alpha\vv+\beta\vu$, allora $L(\vw)=\alpha L(\vv)+\beta L(\vu)$. Ne segue che manda basi in basi: se $\{\vv_1,\dots,\vv_n\}$ è una base di $V$, allora $\{L(\vv_1),\dots,L(\vv_n)\}$ è una base di $W$. In particolare spazi isomorfi hanno la <strong>stessa dimensione</strong>, e in dimensione finita vale anche il viceversa.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 4) <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">Sia $\dim V=n\lt+\infty$ e $B=\{\vv_1,\dots,\vv_n\}$ una base di $V$. La mappa di parametrizzazione
+      $$P_B:\K^{n}\to V,\qquad P_B(\vx)=x_1\vv_1+\dots+x_n\vv_n,$$
+      e la sua inversa, la mappa delle coordinate $P_B^{-1}:V\to\K^{n}$, sono isomorfismi. Quindi <strong>ogni spazio di dimensione $n$ è isomorfo a $\K^{n}$</strong>, e due spazi della stessa dimensione finita (sullo stesso $\K$) sono isomorfi fra loro.</p>
+    </div>
+    <p>Esempio: $P_2$ a coefficienti reali è isomorfo a $\R^{3}$, quello a coefficienti complessi a $\C^{3}$. È il motivo per cui la <a href="#dip-lineari">Proposizione 2 della Lezione 6</a> permette di studiare i polinomi passando alle coordinate.</p>
+
+    <h3 id="basi-kn">Basi in $\K^{n}$ <span class="badge star">risultato centrale</span></h3>
+    <div class="box teo">
+      <div class="box-title">Criterio (Lezione 4)</div>
+      <p class="mb0">Un sistema $B=\{\vv_1,\dots,\vv_m\}$ di vettori di $\K^{n}$ può essere una base solo se $m=n$. In tal caso, con $S=[\,\vv_1\,|\cdots|\,\vv_n\,]$,
+      $$B\ \text{è una base di}\ \K^{n}\iff S\ \text{è invertibile}.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa chiede la definizione di base?</div>
+            <div class="step-content">Che per ogni $\vv\in\K^{n}$ esista un unico $\vx\in\K^{n}$ con $\sum_k x_k\vv_k=\vv$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si riscrive il primo membro?</div>
+            <div class="step-content">Come $S\vx$: una combinazione delle colonne di $S$ con coefficienti $x_k$. Quindi $B$ è una base se e solo se il sistema $S\vx=\vv$ ha un'unica soluzione per ogni $\vv$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché si conclude con l'invertibilità?</div>
+            <div class="step-content">Perché $S$ è <strong>quadrata</strong>, e per le condizioni di invertibilità della Lezione 2 il sistema ha un'unica soluzione per ogni termine noto se e solo se $S$ è invertibile. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 4)</div>
+      <p><strong>(a)</strong> $B_1=\{(1,2),(3,6)\}$: $S=\begin{bmatrix}1&3\\2&6\end{bmatrix}$ ha $ad-bc=6-6=0$, non è invertibile, quindi $B_1$ <strong>non</strong> è una base di $\R^{2}$.</p>
+      <p><strong>(b)</strong> $B_2=\{(1,0,1),(1,2,3),(1,1,1)\}$ e $\vv=(2,1,4)$. Si riduce la matrice completa $[S|\vv]$:
+      $$\left[\begin{array}{ccc|c}1&1&1&2\\0&2&1&1\\1&3&1&4\end{array}\right]\xrightarrow{R_3-R_1}\left[\begin{array}{ccc|c}1&1&1&2\\0&2&1&1\\0&2&0&2\end{array}\right]\xrightarrow{R_3-R_2}\left[\begin{array}{ccc|c}1&1&1&2\\0&2&1&1\\0&0&-1&1\end{array}\right]$$
+      Rango $3$: $S$ è invertibile e $B_2$ è una base. Le coordinate: $x_3=-1$, $x_2=1$, $x_1=2$, cioè $(2,1,-1)$. Controllo: $2(1,0,1)+(1,2,3)-(1,1,1)=(2,1,4)$ ✓.</p>
+      <p class="mb0"><strong>(c) Polinomi.</strong> $q_0=x^{2}$, $q_1=(x+1)^{2}$, $q_2=(x+2)^{2}$ sono una base di $P_2$? Si passa a $\R^{3}$ con la mappa delle coordinate rispetto a $\{1,x,x^{2}\}$, che è un isomorfismo: $q_0\mapsto(0,0,1)$, $q_1\mapsto(1,2,1)$, $q_2\mapsto(4,4,1)$. La matrice ha rango $3$, quindi è una base. Le coordinate di $p=(x-1)^{2}\mapsto(1,-2,1)$ si trovano risolvendo il sistema: $(3,-3,1)$. Controllo: $3x^{2}-3(x+1)^{2}+(x+2)^{2}=x^{2}-2x+1$ ✓.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="passaggio">7 · Passaggio tra basi</h2>
+
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 5) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Siano $B=\{\vv_1,\dots,\vv_n\}$ e $\tilde B=\{\tilde\vv_1,\dots,\tilde\vv_n\}$ due basi di $V$. Se $\mathbf c$ e $\tilde{\mathbf c}$ sono le coordinate dello stesso $\vv$ rispetto a $B$ e a $\tilde B$, allora
+      $$\mathbf c=S\,\tilde{\mathbf c},\qquad \tilde{\mathbf c}=S^{-1}\mathbf c,$$
+      dove la $j$-esima colonna di $S$ è il vettore delle coordinate di $\tilde\vv_j$ <strong>rispetto alla base vecchia $B$</strong>. $S$ è invertibile e si chiama <strong>matrice di passaggio</strong> dalla base $B$ alla base $\tilde B$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Perché vale (dimostrazione a passi coperti)</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Da dove si parte?</div>
+            <div class="step-content">Da $\vv=\sum_j\tilde c_j\tilde\vv_j$ e dalla definizione di $S=[s_{ij}]$: $\tilde\vv_j=\sum_i s_{ij}\vv_i$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Si sostituisce e si raccoglie: rispetto a quali vettori?</div>
+            <div class="step-content">Rispetto ai $\vv_i$ della base vecchia:
+            $$\vv=\sum_j\tilde c_j\sum_i s_{ij}\vv_i=\sum_i\Big(\sum_j s_{ij}\tilde c_j\Big)\vv_i.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dove entra l'ipotesi «$B$ è una base»?</div>
+            <div class="step-content">Nell'<strong>unicità</strong> delle coordinate: i coefficienti trovati devono essere le $c_i$, quindi $c_i=\sum_j s_{ij}\tilde c_j$, cioè $\mathbf c=S\tilde{\mathbf c}$. Scambiando i ruoli delle due basi si vede che $S$ ha un'inversa. $\blacksquare$</div></div></div>
+        </div>
+        <p class="small muted mb0">Negli appunti il teorema è enunciato senza questo conto: è la verifica diretta dalla definizione.</p>
+      </div>
+    </details>
+    <div class="box warnb">
+      <div class="box-title">⚠ La direzione è controintuitiva</div>
+      <p class="mb0">$S$ va «dalla base vecchia alla nuova» perché le sue colonne sono i vettori <em>nuovi</em> scritti nella base <em>vecchia</em>; ma trasforma le coordinate <strong>nuove</strong> in quelle <strong>vecchie</strong>: $\mathbf c=S\tilde{\mathbf c}$. Per avere le nuove serve $S^{-1}$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 5)</div>
+      <p class="mb0">$B=\{(1,2),(2,1)\}$, $\tilde B=\{(1,1),(1,-1)\}$. Si ha $\tilde\vv_1=\tfrac13(\vv_1+\vv_2)$ e $\tilde\vv_2=\vv_2-\vv_1$, quindi
+      $$S=\begin{bmatrix}\tfrac13&-1\\[2pt]\tfrac13&1\end{bmatrix},\qquad S^{-1}=\frac{1}{\frac13+\frac13}\begin{bmatrix}1&1\\-\tfrac13&\tfrac13\end{bmatrix}=\begin{bmatrix}\tfrac32&\tfrac32\\[2pt]-\tfrac12&\tfrac12\end{bmatrix},$$
+      $$\tilde c_1=\tfrac32(c_1+c_2),\qquad \tilde c_2=\tfrac12(c_2-c_1).$$</p>
+    </div>
+
+    <h3 id="trasformazione">Come cambia la matrice rappresentativa</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 5) <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">Sia $L:V\to W$ lineare, $B,\tilde B$ basi di $V$ e $C,\tilde C$ basi di $W$. Se $A$ è la matrice rappresentativa di $L$ rispetto a $B,C$ e $\tilde A$ quella rispetto a $\tilde B,\tilde C$, allora
+      $$\tilde A=S_W^{-1}\,A\,S_V,$$
+      con $S_V$ matrice di passaggio da $B$ a $\tilde B$ e $S_W$ matrice di passaggio da $C$ a $\tilde C$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quali coordinate si introducono?</div>
+            <div class="step-content">Fissato $\vv\in V$: $\mathbf b,\tilde{\mathbf b}$ le sue coordinate rispetto a $B,\tilde B$; $\mathbf c,\tilde{\mathbf c}$ quelle di $L(\vv)$ rispetto a $C,\tilde C$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa dicono i due teoremi già noti?</div>
+            <div class="step-content">Rappresentazione: (1) $\mathbf c=A\mathbf b$ e (2) $\tilde{\mathbf c}=\tilde A\tilde{\mathbf b}$. Passaggio tra basi: (3) $\mathbf b=S_V\tilde{\mathbf b}$ e (4) $\tilde{\mathbf c}=S_W^{-1}\mathbf c$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si combinano?</div>
+            <div class="step-content">Da (1) e (3): $\mathbf c=AS_V\tilde{\mathbf b}$. Con (4): $\tilde{\mathbf c}=S_W^{-1}AS_V\tilde{\mathbf b}$. Confrontando con (2): $\tilde A\tilde{\mathbf b}=(S_W^{-1}AS_V)\tilde{\mathbf b}$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché si può «semplificare» $\tilde{\mathbf b}$?</div>
+            <div class="step-content">Perché $\vv$ è arbitrario, quindi l'uguaglianza vale per <strong>ogni</strong> $\tilde{\mathbf b}\in\K^{n}$; con $\tilde{\mathbf b}=\mathbf e_j$ si ottiene l'uguaglianza delle $j$-esime colonne, per ogni $j$. Dunque $\tilde A=S_W^{-1}AS_V$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box prop">
+      <div class="box-title">Due letture della matrice di passaggio (Lezione 5)</div>
+      <p>Con la notazione $M^{B}_{C}(L)$ (base $B$ nel dominio, $C$ nel codominio), la matrice di passaggio da $B$ a $\tilde B$ è $S=M^{\tilde B}_{B}(I)$, la matrice dell'<strong>identità</strong> $I(\vv)=\vv$ con $\tilde B$ in partenza e $B$ in arrivo; ed è anche la matrice di $P_B^{-1}\circ P_{\tilde B}$ rispetto alla base canonica. La sua inversa è $S^{-1}=M^{B}_{\tilde B}(I)$, il passaggio contrario. Il Teorema 2 si legge allora come una composizione:</p>
+      $$M^{\tilde B}_{\tilde C}(L)=M^{C}_{\tilde C}(I)\,M^{B}_{C}(L)\,M^{\tilde B}_{B}(I),\qquad (V,\tilde B)\xrightarrow{\ I\ }(V,B)\xrightarrow{\ L\ }(W,C)\xrightarrow{\ I\ }(W,\tilde C).$$
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 1 (Lezione 5)</div>
+      <p class="mb0">$L:\R^{3}\to\R^{2}$ con $A=\begin{bmatrix}1&3&5\\2&4&6\end{bmatrix}$ rispetto alle basi canoniche. Nel dominio si passa alla base $\vv_1=(-3,3,-1)$, $\vv_2=(2,1,-1)$, $\vv_3=(1,-2,1)$; nel codominio la base resta canonica, quindi $S_W=I_2$ e
+      $$\tilde A=AS_V=\begin{bmatrix}1&3&5\\2&4&6\end{bmatrix}\begin{bmatrix}-3&2&1\\3&1&-2\\-1&-1&1\end{bmatrix}=\begin{bmatrix}1&0&0\\0&2&0\end{bmatrix}.$$
+      Nelle coordinate nuove $\tilde{\mathbf b}=(b_1,b_2,b_3)$ la mappa è semplicissima: $L(\vx)=(b_1,\,2b_2)$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 2 (Lezione 5): la rotazione diventa diagonale su $\C$</div>
+      <p>La rotazione di angolo $\theta$ in senso antiorario, $L(x,y)=(x\cos\theta-y\sin\theta,\ x\sin\theta+y\cos\theta)$, ha matrice $A=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$. La stessa $A$ definisce la mappa «complessificata» $L_{\C}:\C^{2}\to\C^{2}$. Con la base $\{(1,i),(1,-i)\}$ sia nel dominio sia nel codominio, $S_V=S_W=S=\begin{bmatrix}1&1\\i&-i\end{bmatrix}$, $S^{-1}=\tfrac12\begin{bmatrix}1&-i\\1&i\end{bmatrix}$ e
+      $$\tilde A=S^{-1}AS=\begin{bmatrix}e^{-i\theta}&0\\0&e^{i\theta}\end{bmatrix}=\diag\!\left(e^{-i\theta},e^{i\theta}\right).$$
+      <span class="small muted">Negli appunti (p. 14) si cita il «Teorema 1», ma la formula $\tilde A=S_W^{-1}AS_V$ è il Teorema 2.</span></p>
+      <p class="mb0">Il prof osserva che per una $L:V\to V$ c'è un metodo per stabilire se esiste una base in cui la matrice rappresentativa è <strong>diagonale</strong>, e per trovarla: è quello che arriverà con gli autovalori.</p>
+    </div>
+
+    <h3 id="passaggio-riferimenti">Passaggio tra sistemi di riferimento</h3>
+    <div class="box prop">
+      <div class="box-title">Vettori (Lezione 5)</div>
+      <p class="mb0">Siano $(O,\vec u,\vec v)$ e $(O',\vec u',\vec v')$ due riferimenti del piano. Le coordinate $(x,y)$ e $(x',y')$ di uno stesso vettore libero sono legate da
+      $$\begin{bmatrix}x\\y\end{bmatrix}=S\begin{bmatrix}x'\\y'\end{bmatrix},\qquad S=\begin{bmatrix}u'_x&v'_x\\u'_y&v'_y\end{bmatrix},$$
+      dove $(u'_x,u'_y)$ e $(v'_x,v'_y)$ sono le coordinate di $\vec u'$ e $\vec v'$ rispetto a $(O,\vec u,\vec v)$. Le origini non contano: un vettore libero non ha un punto di applicazione. $S^{-1}$ ha per colonne le coordinate di $\vec u,\vec v$ rispetto al riferimento nuovo.</p>
+    </div>
+    <p>Per i <strong>punti</strong> le origini contano. Se $O'=O$ i vettori di posizione coincidono, $\overrightarrow{OP}=\overrightarrow{O'P}$, e vale la stessa formula; se $O'\ne O$ si aggiunge la traslazione, come nel <a href="#cambio-origine">cambio di origine</a> più sotto.</p>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 5): assi ruotati di $\theta$</div>
+      <p>$(O,\vec u,\vec v)$ <strong>cartesiano</strong>: $\vec u\perp\vec v$ e $|\vec u|=|\vec v|=1$ (vettori di lunghezza $1$ si chiamano <em>versori</em>). Ruotando gli assi di $\theta$ in senso antiorario attorno a $O$:
+      $$\vec u'=\cos\theta\,\vec u+\sin\theta\,\vec v,\qquad \vec v'=-\sin\theta\,\vec u+\cos\theta\,\vec v,$$
+      $$S=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix},\qquad S^{-1}=\begin{bmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{bmatrix}.$$</p>
+      <p class="mb0"><strong>Oss. 1:</strong> $S^{-1}$ si ottiene da $S$ sostituendo $-\theta$ a $\theta$: ruotare indietro. <strong>Oss. 2:</strong> $S$ coincide con la matrice della rotazione di angolo $\theta$ dell'Esempio 2.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rette-piani">8 · Rette e piani</h2>
 
     <h3 id="cambio-origine">Cambio di origine</h3>
     <div class="box prop">
       <div class="box-title">Formula (Lezione 5)</div>
-      <p>Nel piano siano dati due sistemi di riferimento: quello «vecchio» con origine $O$ e quello «nuovo» con origine $O'$. Sia $S$ la matrice le cui <strong>colonne</strong> sono i vettori della base nuova scritti nelle coordinate vecchie. Allora, per ogni punto $P$,
+      <p>Nel piano siano dati due sistemi di riferimento: quello «vecchio» con origine $O$ e quello «nuovo» con origine $O'$. Sia $S$ la <a href="#passaggio-riferimenti">matrice di passaggio</a>, le cui <strong>colonne</strong> sono i vettori della base nuova scritti nelle coordinate vecchie. Allora, per ogni punto $P$,
       $$\begin{bmatrix}x_P\\y_P\end{bmatrix}=\begin{bmatrix}x_{O'}\\y_{O'}\end{bmatrix}+S\begin{bmatrix}x'_P\\y'_P\end{bmatrix},\qquad
       \begin{bmatrix}x'_P\\y'_P\end{bmatrix}=S^{-1}\left(\begin{bmatrix}x_P\\y_P\end{bmatrix}-\begin{bmatrix}x_{O'}\\y_{O'}\end{bmatrix}\right).$$</p>
       <p class="mb0">Si legge così: per andare in $P$ si va prima in $O'$, poi ci si sposta di $x'_P$ volte il primo vettore nuovo e di $y'_P$ volte il secondo. $S$ è invertibile perché le sue colonne formano una base.</p>
@@ -357,7 +695,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <h2 id="dipendenza">4 · Dipendenza lineare</h2>
+    <h2 id="dipendenza">9 · Dipendenza lineare</h2>
 
     <h3 id="davvero">Quando $\mathbf r_0+t\mathbf a$ è davvero una retta</h3>
     <div class="box prop">
@@ -419,10 +757,7 @@
     </div>
 
     <h3 id="condizioni-base">Condizioni di base <span class="badge star2">da conoscere</span></h3>
-    <div class="box warnb" id="base-richiamo">
-      <div class="box-title">⚠ Richiamo provvisorio: base e dimensione</div>
-      <p class="mb0">Il prof le definisce nella Lezione 4 (pp. 21–84), che sarà integrata nel prossimo aggiornamento. Fino ad allora vale la <strong>definizione standard</strong>: un sistema ordinato $B=(\vv_1,\dots,\vv_n)$ è una <strong>base</strong> di $V$ se ogni $\vv\in V$ si scrive <em>in modo unico</em> come $\vv=\sum_j x_j\vv_j$; gli scalari $x_j$ sono le <strong>coordinate</strong> di $\vv$ rispetto a $B$. Tutte le basi di $V$ hanno lo stesso numero di vettori, che si chiama <strong>dimensione</strong> $\dim V$. Per esempio $\dim\K^{n}=n$ e $\dim P_2=3$, con base $(1,x,x^{2})$.</p>
-    </div>
+    <p>Ricorda la <a href="#base-def">definizione di base</a> della Lezione 4: ogni vettore si scrive <em>in modo unico</em> come combinazione dei $\vv_j$. Ora la si collega all'indipendenza.</p>
     <div class="box teo">
       <div class="box-title">Teorema 2 (Lezione 6), senza dimostrazione</div>
       <p>Sia $V$ di dimensione finita e $B=(\vv_1,\dots,\vv_n)$ un sistema di vettori di $V$. Sono equivalenti:</p>
@@ -461,7 +796,7 @@
       <div class="box-title">Proposizione 2 (Lezione 6)</div>
       <p class="mb0">Fissata una base di $V$, i vettori $\vv_1,\dots,\vv_k$ sono indipendenti $\iff$ lo sono i loro <strong>vettori delle coordinate</strong> in $\K^{n}$.</p>
     </div>
-    <p>È ciò che permette di usare il metodo del rango anche fuori da $\K^{m}$: polinomi, matrici, funzioni.</p>
+    <p>Il motivo è che la mappa delle coordinate è un <a href="#isomorfismi">isomorfismo</a>, e un isomorfismo conserva le combinazioni lineari in entrambi i versi. È ciò che permette di usare il metodo del rango anche fuori da $\K^{m}$: polinomi, matrici, funzioni.</p>
     <div class="box ex">
       <div class="box-title">Esempio (Lezione 6)</div>
       <p class="mb0">$q_1=x^{2}-x+1$, $q_2=x^{2}+x-1$, $q_3=x^{2}+x+1$ in $P_2$. Le coordinate rispetto a $(1,x,x^{2})$ sono $(1,-1,1)$, $(-1,1,1)$, $(1,1,1)$, e
@@ -509,7 +844,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <h2 id="basi-span">5 · Basi di span e nucleo</h2>
+    <h2 id="basi-span">10 · Basi di span e nucleo</h2>
 
     <div class="box def">
       <div class="box-title">Definizione</div>
@@ -559,7 +894,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <h2 id="rango">6 · Rango</h2>
+    <h2 id="rango">11 · Rango</h2>
 
     <h3 id="righe-colonne">Rango per righe e per colonne</h3>
     <div class="box def">
@@ -606,7 +941,7 @@
           <div class="step"><div class="step-n"></div><div class="step-body">
             <div class="step-cue">Conclusione</div>
             <div class="step-content">$$r(L_A)+\dim\ker L_A=r(A)+\big(n-r(A)\big)=n=\dim\K^{n}.\qquad\blacksquare$$
-            Per una $L$ qualunque si passa alle coordinate: scelte le basi, $L$ si rappresenta con una matrice $A$, e nucleo e immagine corrispondono a $\ker A$ e $\operatorname{Col}(A)$ (Lezione 4, matrice rappresentativa).</div></div></div>
+            Per una $L$ qualunque si passa alle coordinate: scelte le basi, $L$ si rappresenta con la <a href="#rappr-generale">matrice rappresentativa</a> $A$ (Teorema 5 della Lezione 4), e le mappe delle coordinate, che sono isomorfismi, portano $\ker L$ su $\ker A$ e $\Imag L$ su $\operatorname{Col}(A)$ conservando le dimensioni.</div></div></div>
         </div>
       </div>
     </details>
@@ -646,6 +981,10 @@
       <ul class="mb0">
         <li><strong>Chiamare lineare $f(x)=ax+b$ con $b\ne0$.</strong> Non manda $0$ in $0$: è affine. Il test $L(\vzero)=\vzero$ si fa per primo.</li>
         <li><strong>Scrivere $L_B\circ L_A=L_{AB}$.</strong> Si applica prima $A$: la matrice è $BA$.</li>
+        <li><strong>Mettere $L(\mathbf e_j)$ nelle righe</strong> della matrice rappresentativa. Vanno nelle <em>colonne</em>; e con basi non canoniche nelle colonne vanno le <em>coordinate</em> di $L(\vv_j)$ rispetto alla base del codominio, non i vettori $L(\vv_j)$.</li>
+        <li><strong>Dire $\dim P_n=n$.</strong> La base $1,x,\dots,x^{n}$ ha $n+1$ elementi.</li>
+        <li><strong>Usare $S$ al posto di $S^{-1}$.</strong> $\mathbf c=S\tilde{\mathbf c}$ dà le coordinate <em>vecchie</em> da quelle nuove; per le nuove serve $\tilde{\mathbf c}=S^{-1}\mathbf c$.</li>
+        <li><strong>Cercare una base di $\K^{n}$ con un numero sbagliato di vettori.</strong> Prima si contano: devono essere esattamente $n$, e solo allora si controlla che $S$ sia invertibile.</li>
         <li><strong>Dimostrare l'iniettività confrontando coppie</strong> invece di calcolare $\ker L$.</li>
         <li><strong>Dire «indipendenti» perché nessuno è multiplo di un altro.</strong> Con tre o più vettori non basta: $(1,2,3)$, $(1,1,1)$, $(3,2,1)$ sono a due a due non proporzionali, eppure sono dipendenti.</li>
         <li><strong>Prendere le colonne della matrice ridotta</strong> come base dello span. Vanno prese le colonne della matrice di partenza, nelle posizioni dei pivot.</li>
@@ -667,11 +1006,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261013"></script>
-<script src="../data/topics.js?v=20261013"></script>
-<script src="../data/quiz.js?v=20261013"></script>
-<script src="../../assets/js/plot.js?v=20261013"></script>
-<script src="../../assets/js/app.js?v=20261013"></script>
+<script src="../../assets/js/materie.js?v=20261013a"></script>
+<script src="../data/topics.js?v=20261013a"></script>
+<script src="../data/quiz.js?v=20261013a"></script>
+<script src="../../assets/js/plot.js?v=20261013a"></script>
+<script src="../../assets/js/app.js?v=20261013a"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 5, 'geometria');

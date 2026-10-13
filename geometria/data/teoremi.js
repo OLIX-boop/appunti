@@ -313,6 +313,67 @@ $$\operatorname{span}\{\vv_1,\dots,\vv_n\}=\Big\{\sum_{j=1}^{n}\alpha_j\vv_j\ :\
     note: r`Il guadagno pratico: per decidere l'iniettività non si confrontano coppie di vettori, si risolve <strong>un</strong> sistema omogeneo. Per $L_A$: iniettiva $\iff$ $A\vx=\vzero$ ha solo la soluzione banale $\iff r(A)=n$.`
   },
   {
+    id: 'G-LAinv', sez: 5, mark: '*', q: 'Lez. 4, Prop. 2',
+    titolo: r`$L_A$ è biettiva se e solo se $A$ è invertibile`,
+    enunciato: r`Sia $A$ una matrice quadrata di ordine $n$ a elementi in $\K$. La mappa $L_A:\K^n\to\K^n$ è biettiva se e solo se $A$ è invertibile, e in tal caso $$L_A^{-1}=L_{A^{-1}}.$$`,
+    idea: r`«$L_A$ biettiva» vuol dire «$A\vx=\vy$ ha una e una sola soluzione per ogni $\vy$»: è una delle condizioni di invertibilità della Lezione 2.`,
+    steps: [
+      { cue: r`Traduci la biettività in un enunciato sui sistemi`, body: r`$L_A$ è biettiva se e solo se per ogni $\vy\in\K^n$ esiste un unico $\vx\in\K^n$ con $L_A(\vx)=\vy$, cioè se il sistema $A\vx=\vy$ ha un'unica soluzione per ogni $\vy$.` },
+      { cue: r`Quale teorema si usa?`, body: r`Le condizioni di invertibilità (Teorema 4 della Lezione 2): per $A$ quadrata, $A\vx=\vy$ ha un'unica soluzione per ogni $\vy$ se e solo se $A$ è invertibile, e la soluzione è $\vx=A^{-1}\vy$.` },
+      { cue: r`Chi è l'inversa?`, body: r`$L_A^{-1}(\vy)$ è l'unica controimmagine di $\vy$, cioè l'unica soluzione di $A\vx=\vy$: $A^{-1}\vy=L_{A^{-1}}(\vy)$ per ogni $\vy$. $\blacksquare$` }
+    ],
+    note: r`Serve $A$ quadrata: per $A$ di tipo $m\times n$ con $m\ne n$ la mappa $L_A$ non è mai biettiva (lo si vede con rango + nullità). Prima di questa proposizione, a lezione: se $L$ è lineare e biettiva, anche $L^{-1}$ è lineare (Teorema 3, senza dimostrazione).`
+  },
+  {
+    id: 'G-rappr', sez: 5, mark: '*', q: 'Lez. 4, teorema di rappresentazione',
+    titolo: 'Teorema di rappresentazione',
+    enunciato: r`Per ogni mappa lineare $L:\K^n\to\K^m$ esiste un'unica matrice $A\in\M_{\K}(m,n)$ tale che $L=L_A$, e $$A=\big[L(\mathbf e_1)\,|\,L(\mathbf e_2)\,|\cdots|\,L(\mathbf e_n)\big].$$ Più in generale (Teorema 5), scelte una base $B=\{\vv_j\}$ di $V$ e una base $C$ di $W$, le coordinate di $L(\vv)$ sono $\mathbf c=A\mathbf b$, dove la colonna $j$ di $A$ contiene le coordinate di $L(\vv_j)$ rispetto a $C$.`,
+    idea: r`Una mappa lineare è determinata dalle immagini dei vettori di una base: si mettono in colonna.`,
+    steps: [
+      { cue: r`Se $L=L_A$, quanto vale $L(\mathbf e_j)$?`, body: r`$A\mathbf e_j$, cioè la $j$-esima colonna di $A$. Quindi le colonne di $A$ sono obbligate: unicità.` },
+      { cue: r`Perché quella matrice funziona su ogni $\vx$?`, body: r`$L(\vx)=L\big(\sum_j x_j\mathbf e_j\big)=\sum_j x_jL(\mathbf e_j)$ per linearità, e una combinazione delle colonne di $A$ con coefficienti $x_j$ è proprio $A\vx$. $\blacksquare$` },
+      { cue: r`Un esempio della lezione`, body: r`$L(x,y)=(x+y,\ x-y,\ 2x)$: $L(\mathbf e_1)=(1,1,2)$ e $L(\mathbf e_2)=(1,-1,0)$, quindi $A=\begin{bmatrix}1&1\\1&-1\\2&0\end{bmatrix}$. Per la derivata $P_2\to P_1$, con basi $\{1,x,x^2\}$ e $\{1,x\}$, $A=\begin{bmatrix}0&1&0\\0&0&2\end{bmatrix}$.` }
+    ],
+    note: r`A lezione la dimostrazione formale è saltata e il caso generale è senza dimostrazione: questi passi sono l'idea data dal prof. Con basi non canoniche, nelle colonne vanno le <strong>coordinate</strong> di $L(\vv_j)$ rispetto alla base del codominio.`
+  },
+  {
+    id: 'G-basiKn', sez: 5, mark: '*', q: 'Lez. 4, basi in K^n',
+    titolo: r`Basi in $\K^n$ e matrici invertibili`,
+    enunciato: r`Siano $\vv_1,\dots,\vv_n\in\K^n$ e $S=[\vv_1|\vv_2|\cdots|\vv_n]$. Allora $\{\vv_1,\dots,\vv_n\}$ è una base di $\K^n$ se e solo se $S$ è invertibile, e in tal caso il vettore delle coordinate di $\vx$ è $\mathbf c=S^{-1}\vx$.`,
+    idea: r`$\sum_k x_k\vv_k=S\vx$: la definizione di base diventa «$S\vx=\vv$ ha un'unica soluzione per ogni $\vv$».`,
+    steps: [
+      { cue: r`Che cosa chiede la definizione di base?`, body: r`Che per ogni $\vv\in\K^n$ esista un unico $\vx$ con $\sum_k x_k\vv_k=\vv$.` },
+      { cue: r`Come si riscrive?`, body: r`Come il sistema $S\vx=\vv$, perché $S\vx$ è la combinazione delle colonne di $S$ con coefficienti $x_k$.` },
+      { cue: r`Perché si conclude?`, body: r`$S$ è quadrata: per le condizioni di invertibilità, $S\vx=\vv$ ha un'unica soluzione per ogni $\vv$ se e solo se $S$ è invertibile, e la soluzione è $S^{-1}\vv$. $\blacksquare$` }
+    ],
+    note: r`Prima di tutto si contano i vettori: una base di $\K^n$ ne ha esattamente $n$. Esempi del prof: $\{(1,2),(3,6)\}$ non è una base di $\R^2$ ($\det=0$); $\{(1,0,1),(1,2,3),(1,1,1)\}$ lo è, e $(2,1,4)$ ha coordinate $(2,1,-1)$.`
+  },
+  {
+    id: 'G-passaggio', sez: 5, mark: '*', q: 'Lez. 5, Teor. 1',
+    titolo: 'Passaggio tra due basi',
+    enunciato: r`Siano $B=\{\vv_1,\dots,\vv_n\}$ e $\tilde B=\{\tilde\vv_1,\dots,\tilde\vv_n\}$ basi di $V$, e siano $\mathbf c$, $\tilde{\mathbf c}$ le coordinate dello stesso $\vv$ rispetto a $B$ e a $\tilde B$. Allora $$\mathbf c=S\tilde{\mathbf c},\qquad\tilde{\mathbf c}=S^{-1}\mathbf c,$$ dove la colonna $j$ di $S$ contiene le coordinate di $\tilde\vv_j$ rispetto a $B$ ($S$ = matrice di passaggio da $B$ a $\tilde B$).`,
+    idea: r`Si scrivono i vettori nuovi nella base vecchia e si sostituisce: l'unicità delle coordinate fa il resto.`,
+    steps: [
+      { cue: r`I due ingredienti`, body: r`$\vv=\sum_j\tilde c_j\tilde\vv_j$ e $\tilde\vv_j=\sum_i s_{ij}\vv_i$.` },
+      { cue: r`Si sostituisce e si raccoglie`, body: r`$$\vv=\sum_i\Big(\sum_j s_{ij}\tilde c_j\Big)\vv_i.$$` },
+      { cue: r`Dove si usa che $B$ è una base?`, body: r`Nell'unicità delle coordinate rispetto a $B$: deve essere $c_i=\sum_j s_{ij}\tilde c_j$, cioè $\mathbf c=S\tilde{\mathbf c}$. Scambiando i ruoli delle basi si trova una matrice $T$ con $\tilde{\mathbf c}=T\mathbf c$ per ogni $\mathbf c$, quindi $ST=TS=I$: $S$ è invertibile e $T=S^{-1}$. $\blacksquare$` }
+    ],
+    note: r`$S$ porta le coordinate <strong>nuove</strong> in quelle <strong>vecchie</strong>. Negli appunti il teorema è enunciato senza questo conto. Esempio del prof: da $\{(1,2),(2,1)\}$ a $\{(1,1),(1,-1)\}$ si ha $S=\begin{bmatrix}1/3&-1\\1/3&1\end{bmatrix}$ e $\tilde c_1=\frac32(c_1+c_2)$, $\tilde c_2=\frac12(c_2-c_1)$.`
+  },
+  {
+    id: 'G-trasf', sez: 5, mark: '**', q: 'Lez. 5, Teor. 2',
+    titolo: 'Come cambia la matrice rappresentativa',
+    enunciato: r`Sia $L:V\to W$ lineare; $B,\tilde B$ basi di $V$ e $C,\tilde C$ basi di $W$. Se $A$ rappresenta $L$ rispetto a $B,C$ e $\tilde A$ rispetto a $\tilde B,\tilde C$, allora $$\tilde A=S_W^{-1}AS_V,$$ con $S_V$ passaggio da $B$ a $\tilde B$ e $S_W$ passaggio da $C$ a $\tilde C$.`,
+    idea: r`Si va dalle coordinate nuove alle vecchie nel dominio ($S_V$), si applica $A$, si torna alle nuove nel codominio ($S_W^{-1}$).`,
+    steps: [
+      { cue: r`Le notazioni`, body: r`Per $\vv\in V$: $\mathbf b,\tilde{\mathbf b}$ coordinate di $\vv$; $\mathbf c,\tilde{\mathbf c}$ coordinate di $L(\vv)$.` },
+      { cue: r`Le quattro relazioni note`, body: r`(1) $\mathbf c=A\mathbf b$; (2) $\tilde{\mathbf c}=\tilde A\tilde{\mathbf b}$ (rappresentazione); (3) $\mathbf b=S_V\tilde{\mathbf b}$; (4) $\tilde{\mathbf c}=S_W^{-1}\mathbf c$ (passaggio).` },
+      { cue: r`Combinale`, body: r`$\tilde{\mathbf c}=S_W^{-1}\mathbf c=S_W^{-1}A\mathbf b=S_W^{-1}AS_V\tilde{\mathbf b}$; confrontando con (2), $\tilde A\tilde{\mathbf b}=(S_W^{-1}AS_V)\tilde{\mathbf b}$.` },
+      { cue: r`Perché si conclude l'uguaglianza delle matrici?`, body: r`Perché vale per ogni $\tilde{\mathbf b}\in\K^n$ ($\vv$ è arbitrario): con $\tilde{\mathbf b}=\mathbf e_j$ coincidono le colonne $j$. $\blacksquare$` }
+    ],
+    note: r`Esempio del prof: la rotazione $R_\theta$, vista su $\C^2$ nella base $\{(1,i),(1,-i)\}$, diventa $\operatorname{diag}(e^{-i\theta},e^{i\theta})$. Trovare una base che renda diagonale la matrice è il problema degli autovalori.`
+  },
+  {
     id: 'G-dip', sez: 5, mark: '*', q: 'Lez. 6, Prop. 1',
     titolo: 'Dipendenti se e solo se uno è combinazione degli altri',
     enunciato: r`Siano $n\ge2$ e $\vv_1,\dots,\vv_n\in V$. Sono linearmente dipendenti se e solo se almeno uno di essi è combinazione lineare degli altri. In particolare, due vettori sono dipendenti se e solo se uno è multiplo dell'altro.`,

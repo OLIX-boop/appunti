@@ -648,7 +648,128 @@ $$36(x'+1)^{2}+36y'^{2}-72(x'+1)=36\,(x'^{2}+y'^{2}-1)=0\quad\Longrightarrow\qua
 $$x=\tfrac32\cos t-\sin t+\tfrac32,\qquad y=\tfrac32\cos t+\sin t+\tfrac32,\qquad t\in[0,2\pi).$$
 È un'ellisse di centro $C=O'$; i semiassi sono $CP$ e $CQ$ con $P=A'(3,3)$ e $Q=B'\left(\tfrac12,\tfrac52\right)$, lunghi $\left|\left(\tfrac32,\tfrac32\right)\right|=\tfrac{3\sqrt2}2$ e $|(-1,1)|=\sqrt2$, e ortogonali fra loro ($\tfrac32\cdot(-1)+\tfrac32\cdot1=0$).<br><br>
 <strong>Controllo:</strong> $P(3,3)$: $117-90+117-72-72=0$ ✓. $Q\left(\tfrac12,\tfrac52\right)$: $\tfrac{13}4-\tfrac{50}4+\tfrac{325}4-12-60=\tfrac{288}4-72=0$ ✓.<br><br>
-<strong>Morale:</strong> $S=R_{\pi/4}\diag\!\left(\tfrac{3\sqrt2}2,\sqrt2\right)$: la circonferenza unitaria viene dilatata lungo gli assi, ruotata di $\tfrac\pi4$ e traslata in $O'$. $\blacksquare$` }
+<strong>Morale:</strong> $S=R_{\pi/4}\diag\!\left(\tfrac{3\sqrt2}2,\sqrt2\right)$: la circonferenza unitaria viene dilatata lungo gli assi, ruotata di $\tfrac\pi4$ e traslata in $O'$. $\blacksquare$` },
+
+{ id: 'G5.13', sez: 5, tema: 'Applicazioni lineari', d: 1,
+  t: r`(Lezione 4.) Sia $L:\R^{2}\to\R^{2}$, $L(x_1,x_2)=(x_2+x_1,\ x_2-x_1)$. Dimostrare che $L$ è biettiva e trovare $L^{-1}$, in due modi: risolvendo $L(\vx)=\vy$ e con la matrice inversa.`,
+  hints: [ r`$L(\vx)=\vy$ è un sistema $2\times2$ nelle incognite $x_1,x_2$.`,
+           r`Sommando e sottraendo le due equazioni si isola subito $x_2$ e poi $x_1$.`,
+           r`Con le matrici: $L=L_A$, e $L_A^{-1}=L_{A^{-1}}$ se $A$ è invertibile.` ],
+  sol: r`<strong>Col sistema.</strong> $x_2+x_1=y_1$, $x_2-x_1=y_2$. Sommando: $2x_2=y_1+y_2$; sottraendo: $2x_1=y_1-y_2$. Per ogni $\vy$ c'è una e una sola soluzione, quindi $L$ è biettiva e
+$$L^{-1}(y_1,y_2)=\left(\tfrac12(y_1-y_2),\ \tfrac12(y_1+y_2)\right).$$
+<strong>Con le matrici.</strong> $A=\begin{bmatrix}1&1\\-1&1\end{bmatrix}$, $\det A=1+1=2\ne0$, quindi $A$ è invertibile e
+$$A^{-1}=\frac12\begin{bmatrix}1&-1\\1&1\end{bmatrix},\qquad L^{-1}=L_{A^{-1}}.$$
+Le righe di $A^{-1}$ danno proprio $\tfrac12(y_1-y_2)$ e $\tfrac12(y_1+y_2)$ ✓.<br><br>
+<strong>Controllo:</strong> $L\big(\tfrac12(y_1-y_2),\tfrac12(y_1+y_2)\big)=\big(\tfrac12(y_1+y_2)+\tfrac12(y_1-y_2),\ \tfrac12(y_1+y_2)-\tfrac12(y_1-y_2)\big)=(y_1,y_2)$ ✓. $\blacksquare$` },
+
+{ id: 'G5.14', sez: 5, tema: 'Matrice rappresentativa', d: 1,
+  t: r`(Lezione 4.) Scrivere la matrice rappresentativa (rispetto alle basi canoniche) di:
+<br>(a) $L:\R^{2}\to\R^{3}$, $L(x,y)=(x+y,\ x-y,\ 2x)$;
+<br>(b) $L:\C^{3}\to\C$, $L(z_1,z_2,z_3)=z_1+i(z_2-z_3)+2z_3$;
+<br>(c) l'unica $L:\R^{3}\to\R^{2}$ lineare con $L(\mathbf e_1)=(0,1)$, $L(\mathbf e_2)=(1,1)$, $L(\mathbf e_3)=(3,2)$, e scriverne la formula.`,
+  hints: [ r`Le colonne della matrice rappresentativa sono $L(\mathbf e_1),\dots,L(\mathbf e_n)$.`,
+           r`Controlla il tipo: con $L:\K^{n}\to\K^{m}$ la matrice è $m\times n$.`,
+           r`Per (c) la formula è $L(x,y,z)=A\,(x,y,z)^{T}$.` ],
+  sol: r`<strong>(a)</strong> $L(\mathbf e_1)=(1,1,2)$, $L(\mathbf e_2)=(1,-1,0)$:
+$$A=\begin{bmatrix}1&1\\1&-1\\2&0\end{bmatrix}\quad(3\times2),\qquad A\begin{bmatrix}x\\y\end{bmatrix}=\begin{bmatrix}x+y\\x-y\\2x\end{bmatrix}\ ✓$$
+<strong>(b)</strong> $L(\mathbf e_1)=1$, $L(\mathbf e_2)=i$, $L(\mathbf e_3)=-i+2=2-i$:
+$$A=\begin{bmatrix}1&i&2-i\end{bmatrix}\quad(1\times3).$$
+Controllo: $z_1+iz_2+(2-i)z_3=z_1+i(z_2-z_3)+2z_3$ ✓.<br><br>
+<strong>(c)</strong> Le colonne sono le immagini date:
+$$A=\begin{bmatrix}0&1&3\\1&1&2\end{bmatrix},\qquad L(x,y,z)=(y+3z,\ x+y+2z).$$
+Controllo: $L(0,0,1)=(3,2)$ ✓. $\blacksquare$` },
+
+{ id: 'G5.15', sez: 5, tema: 'Basi e coordinate', d: 2,
+  t: r`(Lezione 4.) Verificare che $\vv_1=(1,2)$, $\vv_2=(2,1)$ formano una base $B$ di $\R^{2}$ e trovare le coordinate di un vettore generico $(x,y)$ rispetto a $B$. Quali sono le coordinate di $(3,3)$?`,
+  hints: [ r`$B$ è una base di $\R^{2}$ se e solo se $S=[\vv_1|\vv_2]$ è invertibile.`,
+           r`Le coordinate sono $\mathbf c=S^{-1}\vx$. Per una $2\times2$: $\begin{bmatrix}a&b\\c&d\end{bmatrix}^{-1}=\frac1{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}$.` ],
+  sol: r`$S=\begin{bmatrix}1&2\\2&1\end{bmatrix}$, $\det S=1-4=-3\ne0$: $S$ è invertibile, quindi $B$ è una base.
+$$S^{-1}=-\frac13\begin{bmatrix}1&-2\\-2&1\end{bmatrix}=\frac13\begin{bmatrix}-1&2\\2&-1\end{bmatrix},\qquad \mathbf c=S^{-1}\begin{bmatrix}x\\y\end{bmatrix}=\begin{bmatrix}\frac{2y-x}3\\[3pt]\frac{2x-y}3\end{bmatrix}.$$
+Per $(3,3)$: $\mathbf c=(1,1)$, infatti $(3,3)=\vv_1+\vv_2$ ✓.<br><br>
+<strong>Controllo generale:</strong> $\frac{2y-x}3(1,2)+\frac{2x-y}3(2,1)=\left(\frac{2y-x+4x-2y}3,\ \frac{4y-2x+2x-y}3\right)=(x,y)$ ✓. $\blacksquare$` },
+
+{ id: 'G5.16', sez: 5, tema: 'Basi e coordinate', d: 2,
+  t: r`(Lezione 4.) (a) $B_1=\{(1,2),(3,6)\}$ è una base di $\R^{2}$? (b) $B_2=\{(1,0,1),(1,2,3),(1,1,1)\}$ è una base di $\R^{3}$? In caso affermativo trovare le coordinate di $\vv=(2,1,4)$ rispetto a $B_2$.`,
+  hints: [ r`Metti i vettori in colonna nella matrice $S$: sono una base se e solo se $S$ è invertibile.`,
+           r`Per (b) conviene ridurre direttamente la matrice completa $[S\,|\,\vv]$: lo stesso MEG decide l'invertibilità e dà le coordinate.` ],
+  sol: r`<strong>(a)</strong> $S=\begin{bmatrix}1&3\\2&6\end{bmatrix}$, $\det S=6-6=0$: non invertibile, $B_1$ <strong>non</strong> è una base. Infatti $(3,6)=3(1,2)$.<br><br>
+<strong>(b)</strong>
+$$[S|\vv]=\left[\begin{array}{ccc|c}1&1&1&2\\0&2&1&1\\1&3&1&4\end{array}\right]\xrightarrow{R_3-R_1}\left[\begin{array}{ccc|c}1&1&1&2\\0&2&1&1\\0&2&0&2\end{array}\right]\xrightarrow{R_3-R_2}\left[\begin{array}{ccc|c}1&1&1&2\\0&2&1&1\\0&0&-1&1\end{array}\right]$$
+Tre pivot: $r(S)=3$, $S$ è invertibile e $B_2$ è una base. Sostituzione all'indietro: $x_3=-1$, $2x_2=1+1$ quindi $x_2=1$, $x_1=2-1+1=2$:
+$$\boxed{\mathbf c=(2,1,-1)}$$
+<strong>Controllo:</strong> $2(1,0,1)+1(1,2,3)-1(1,1,1)=(2,1,4)$ ✓. $\blacksquare$` },
+
+{ id: 'G5.17', sez: 5, tema: 'Basi e coordinate', d: 2,
+  t: r`(Lezione 4.) Stabilire se $q_0=x^{2}$, $q_1=(x+1)^{2}$, $q_2=(x+2)^{2}$ formano una base di $P_2$ e, in caso affermativo, trovare le coordinate di $p=(x-1)^{2}$.`,
+  hints: [ r`Traduci tutto in $\R^{3}$ con la mappa delle coordinate rispetto a $\{1,x,x^{2}\}$, che è un isomorfismo.`,
+           r`$q_1=1+2x+x^{2}\mapsto(1,2,1)$, $q_2=4+4x+x^{2}\mapsto(4,4,1)$, $p=1-2x+x^{2}\mapsto(1,-2,1)$.`,
+           r`Riduci $[\,\tilde q_0|\tilde q_1|\tilde q_2\,|\,\tilde p\,]$.` ],
+  sol: r`<strong>Traduzione.</strong> Coordinate rispetto a $\{1,x,x^{2}\}$: $q_0\mapsto(0,0,1)$, $q_1\mapsto(1,2,1)$, $q_2\mapsto(4,4,1)$, $p\mapsto(1,-2,1)$. Poiché la mappa delle coordinate è un isomorfismo, $\{q_0,q_1,q_2\}$ è una base di $P_2$ se e solo se i tre vettori lo sono di $\R^{3}$, e le coordinate di $p$ sono quelle di $(1,-2,1)$.<br><br>
+<strong>Riduzione</strong> (scambio $R_1\leftrightarrow R_3$, poi $R_2\leftrightarrow R_3$ e $R_3-2R_2$):
+$$\left[\begin{array}{ccc|c}0&1&4&1\\0&2&4&-2\\1&1&1&1\end{array}\right]\longrightarrow\left[\begin{array}{ccc|c}1&1&1&1\\0&1&4&1\\0&0&-4&-4\end{array}\right]$$
+Tre pivot: è una <strong>base</strong>. Poi $x_3=1$, $x_2=1-4=-3$, $x_1=1+3-1=3$:
+$$\boxed{(x-1)^{2}=3q_0-3q_1+q_2}$$
+<strong>Controllo:</strong> $3x^{2}-3(x^{2}+2x+1)+(x^{2}+4x+4)=x^{2}-2x+1$ ✓. $\blacksquare$` },
+
+{ id: 'G5.18', sez: 5, tema: 'Matrice rappresentativa', d: 2,
+  t: r`(Lezione 4.) Sia $L:P_2\to P_1$, $L(p)=p'$. Scrivere la matrice rappresentativa di $L$ rispetto alle basi $B=\{1,x,x^{2}\}$ e $C=\{1,x\}$, e verificarla su $p=5-3x+7x^{2}$.`,
+  hints: [ r`La colonna $j$ contiene le coordinate di $L(\vv_j)$ rispetto a $C$.`,
+           r`$L(1)=0$, $L(x)=1$, $L(x^{2})=2x$: scrivile come combinazioni di $1$ e $x$.` ],
+  sol: r`$L(1)=0=0\cdot1+0\cdot x$, $L(x)=1=1\cdot1+0\cdot x$, $L(x^{2})=2x=0\cdot1+2\cdot x$:
+$$A=M^{B}_{C}(L)=\begin{bmatrix}0&1&0\\0&0&2\end{bmatrix}\quad(2\times3).$$
+<strong>Verifica.</strong> $p=5-3x+7x^{2}$ ha coordinate $\mathbf b=(5,-3,7)$, e $A\mathbf b=(-3,\ 14)$. Direttamente: $p'=-3+14x$, con coordinate $(-3,14)$ rispetto a $C$ ✓.<br><br>
+<strong>Osservazione:</strong> il tipo è $2\times3$ perché $\dim P_1=2$ e $\dim P_2=3$. $\ker L$ sono le costanti ($\dim1$) e $\Imag L=P_1$ ($\dim2$): $1+2=3$, rango + nullità ✓. $\blacksquare$` },
+
+{ id: 'G5.19', sez: 5, tema: 'Passaggio tra basi', d: 2,
+  t: r`(Lezione 5.) Siano $B=\{(1,2),(2,1)\}$ e $\tilde B=\{(1,1),(1,-1)\}$. Se $(c_1,c_2)$ sono le coordinate di $\vx$ rispetto a $B$, quali sono quelle rispetto a $\tilde B$?`,
+  hints: [ r`Scrivi $\tilde\vv_1$ e $\tilde\vv_2$ come combinazioni di $\vv_1,\vv_2$: i coefficienti sono le colonne di $S$.`,
+           r`$\vv_1+\vv_2=(3,3)$ e $\vv_2-\vv_1=(1,-1)$.`,
+           r`Le coordinate nuove sono $\tilde{\mathbf c}=S^{-1}\mathbf c$.` ],
+  sol: r`$\tilde\vv_1=(1,1)=\tfrac13(\vv_1+\vv_2)$ e $\tilde\vv_2=(1,-1)=\vv_2-\vv_1$, quindi
+$$S=\begin{bmatrix}\tfrac13&-1\\[2pt]\tfrac13&1\end{bmatrix},\qquad\det S=\tfrac13+\tfrac13=\tfrac23,\qquad S^{-1}=\tfrac32\begin{bmatrix}1&1\\-\tfrac13&\tfrac13\end{bmatrix}=\begin{bmatrix}\tfrac32&\tfrac32\\[2pt]-\tfrac12&\tfrac12\end{bmatrix}.$$
+$$\boxed{\tilde c_1=\tfrac32(c_1+c_2),\qquad\tilde c_2=\tfrac12(c_2-c_1)}$$
+<strong>Controllo diretto:</strong> $\vx=c_1\vv_1+c_2\vv_2=(c_1+2c_2,\ 2c_1+c_2)$. Rispetto a $\tilde B$, $\tilde c_1=\frac{x_1+x_2}2=\frac{3c_1+3c_2}2$ ✓ e $\tilde c_2=\frac{x_1-x_2}2=\frac{c_2-c_1}2$ ✓. $\blacksquare$` },
+
+{ id: 'G5.20', sez: 5, tema: 'Passaggio tra basi', d: 2,
+  t: r`(Lezione 5.) $L:\R^{3}\to\R^{2}$ ha matrice $A=\begin{bmatrix}1&3&5\\2&4&6\end{bmatrix}$ rispetto alle basi canoniche. Trovare la matrice rappresentativa rispetto alla base canonica nel codominio e alla base $\vv_1=(-3,3,-1)$, $\vv_2=(2,1,-1)$, $\vv_3=(1,-2,1)$ nel dominio.`,
+  hints: [ r`Usa $\tilde A=S_W^{-1}AS_V$: chi sono $S_V$ e $S_W$?`,
+           r`Nel codominio la base non cambia, quindi $S_W=I_2$.`,
+           r`$S_V=[\vv_1|\vv_2|\vv_3]$; ogni colonna di $AS_V$ è $A\vv_j$.` ],
+  sol: r`$S_W=I_2$ e $S_V=\begin{bmatrix}-3&2&1\\3&1&-2\\-1&-1&1\end{bmatrix}$, quindi
+$$\tilde A=AS_V=\begin{bmatrix}1&3&5\\2&4&6\end{bmatrix}\begin{bmatrix}-3&2&1\\3&1&-2\\-1&-1&1\end{bmatrix}=\begin{bmatrix}1&0&0\\0&2&0\end{bmatrix}.$$
+Conti: $A\vv_1=(-3+9-5,\ -6+12-6)=(1,0)$; $A\vv_2=(2+3-5,\ 4+4-6)=(0,2)$; $A\vv_3=(1-6+5,\ 2-8+6)=(0,0)$.<br><br>
+<strong>Lettura:</strong> nelle coordinate $(b_1,b_2,b_3)$ rispetto alla nuova base, $L(\vx)=(b_1,\,2b_2)$; in particolare $\vv_3\in\ker L$.<br>
+<strong>Controllo:</strong> $S_V$ è invertibile (rango $3$), quindi $\{\vv_1,\vv_2,\vv_3\}$ è davvero una base. $\blacksquare$` },
+
+{ id: 'G5.21', sez: 5, tema: 'Cambio di riferimento', d: 2,
+  t: r`(Lezione 5.) Il riferimento cartesiano $(O,\vec u,\vec v)$ viene ruotato di $\theta=\tfrac\pi4$ in senso antiorario attorno a $O$. Quali sono le coordinate nuove del punto $P$ di coordinate vecchie $(2,0)$? Verificare tornando indietro.`,
+  hints: [ r`$[x;y]=S[x';y']$ con $S=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$; quindi $[x';y']=S^{-1}[x;y]$.`,
+           r`$S^{-1}$ si ottiene da $S$ sostituendo $-\theta$ a $\theta$.` ],
+  sol: r`$S^{-1}=\begin{bmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{bmatrix}$, e con $\theta=\tfrac\pi4$ ($\cos=\sin=\tfrac{\sqrt2}2$):
+$$\begin{bmatrix}x'\\y'\end{bmatrix}=\frac{\sqrt2}2\begin{bmatrix}1&1\\-1&1\end{bmatrix}\begin{bmatrix}2\\0\end{bmatrix}=\begin{bmatrix}\sqrt2\\-\sqrt2\end{bmatrix}.$$
+<strong>Controllo:</strong> $S[\sqrt2;-\sqrt2]=\frac{\sqrt2}2\big(\sqrt2+\sqrt2,\ \sqrt2-\sqrt2\big)=(2,0)$ ✓. Anche la distanza da $O$ si conserva: $\sqrt{2+2}=2$ ✓.<br><br>
+<strong>Lettura geometrica:</strong> gli assi ruotano di $45°$ in senso antiorario, quindi il punto, fermo, appare ruotato di $45°$ in senso <em>orario</em> rispetto agli assi nuovi: $y'\lt0$. $\blacksquare$` },
+
+{ id: 'G5.22', sez: 5, tema: 'Passaggio tra basi', d: 3,
+  t: r`(Lezione 5.) Sia $A=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$, vista come matrice di $L_{\C}:\C^{2}\to\C^{2}$. Con la base $\{(1,i),(1,-i)\}$ sia nel dominio sia nel codominio, calcolare la nuova matrice rappresentativa.`,
+  hints: [ r`$S=\begin{bmatrix}1&1\\i&-i\end{bmatrix}$ e $\tilde A=S^{-1}AS$.`,
+           r`$\det S=-i-i=-2i$, quindi $S^{-1}=\frac1{-2i}\begin{bmatrix}-i&-1\\-i&1\end{bmatrix}$.`,
+           r`$\cos\theta\mp i\sin\theta=e^{\mp i\theta}$. Conviene calcolare prima $A$ per le colonne di $S$.` ],
+  sol: r`$S^{-1}=\frac1{-2i}\begin{bmatrix}-i&-1\\-i&1\end{bmatrix}=\frac12\begin{bmatrix}1&-i\\1&i\end{bmatrix}$ (moltiplica per $\frac{i}{i}$: $\frac{-1}{-2i}=\frac1{2i}=-\frac i2$).<br><br>
+<strong>$A$ sulle colonne di $S$:</strong>
+$$A\begin{bmatrix}1\\i\end{bmatrix}=\begin{bmatrix}\cos\theta-i\sin\theta\\\sin\theta+i\cos\theta\end{bmatrix}=e^{-i\theta}\begin{bmatrix}1\\i\end{bmatrix},\qquad A\begin{bmatrix}1\\-i\end{bmatrix}=e^{i\theta}\begin{bmatrix}1\\-i\end{bmatrix}$$
+(per la seconda componente: $i\,e^{-i\theta}=i\cos\theta+\sin\theta$ ✓). Quindi $AS=S\,\diag(e^{-i\theta},e^{i\theta})$ e
+$$\boxed{\tilde A=S^{-1}AS=\begin{bmatrix}e^{-i\theta}&0\\0&e^{i\theta}\end{bmatrix}}$$
+<strong>Controllo</strong> con il calcolo del prof: $\frac12\big(e^{-i\theta}(1+(-i)i)\big)=\frac12e^{-i\theta}\cdot2=e^{-i\theta}$ e $\frac12e^{-i\theta}(1+(-i)(-i))=0$ ✓.<br><br>
+<strong>Morale:</strong> su $\R$ una rotazione non ha direzioni invarianti, su $\C$ sì: $(1,\pm i)$. È la prima apparizione degli autovettori. $\blacksquare$` },
+
+{ id: 'G5.23', sez: 5, tema: 'Basi e coordinate', d: 1,
+  t: r`(Lezione 4.) Mostrare che $q_1=x^{2}-x+1$, $q_2=x^{2}+x+1$ non sono una base di $P_2$, e che nemmeno $1,\ x,\ x^{2},\ q_1$ lo sono. Che cosa va storto nei due casi?`,
+  hints: [ r`Per il primo caso cerca un polinomio che non si scrive come $\alpha q_1+\beta q_2$: prova $2x+1$.`,
+           r`Per il secondo cerca un polinomio con <em>due</em> scritture diverse: prova $x^{2}+1$.` ],
+  sol: r`<strong>Troppo pochi.</strong> $\alpha q_1+\beta q_2=(\alpha+\beta)x^{2}+(\beta-\alpha)x+(\alpha+\beta)$. Per ottenere $2x+1$ servirebbe $\alpha+\beta=0$ (coefficiente di $x^{2}$) e $\alpha+\beta=1$ (termine noto): contraddizione. Manca l'<strong>esistenza</strong> della scrittura.<br><br>
+<strong>Troppi.</strong> $x^{2}+1=1\cdot x^{2}+1\cdot1=1\cdot q_1+1\cdot x$: due scritture diverse dello stesso polinomio. Manca l'<strong>unicità</strong>.<br><br>
+<strong>Controllo:</strong> $q_1+x=x^{2}-x+1+x=x^{2}+1$ ✓. Coerente con $\dim P_2=3$: due vettori sono pochi, quattro sono troppi. $\blacksquare$` }
 
   ];
 
