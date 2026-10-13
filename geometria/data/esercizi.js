@@ -77,6 +77,90 @@ Crescita stretta fino alla riga nulla, che è l'ultima: <strong>è a scala</stro
 I pivot sono nei posti $(1,2)$ e $(2,4)$, quindi $\rg C=2$. $\blacksquare$<br><br>
 <em>Nota:</em> il criterio guarda solo la <em>posizione</em> degli zeri iniziali, non i valori. $C$ è a scala anche se i pivot non valgono $1$.` },
 
+{ id: 'G1.5', sez: 1, tema: 'Riduzione a scala', d: 1,
+  t: r`(Esercitazione del 23 settembre.) Ridurre a scala con il MEG e calcolare il rango di $$A=\begin{bmatrix}1&-1&0&3\\3&-1&1&10\\-1&5&2&1\end{bmatrix}.$$`,
+  hints: [ r`Pivot $a_{11}=1$: annulla la prima colonna con $R_2-3R_1$ e $R_3+R_1$.`,
+           r`Dopo il primo passo la terza riga ha in seconda e terza posizione il doppio della seconda riga.` ],
+  sol: r`$$A\xrightarrow[R_3+R_1]{R_2-3R_1}\begin{bmatrix}1&-1&0&3\\0&2&1&1\\0&4&2&4\end{bmatrix}\xrightarrow{R_3-2R_2}\begin{bmatrix}1&-1&0&3\\0&2&1&1\\0&0&0&2\end{bmatrix}$$
+I pivot sono $a_{11}=1$, $a_{22}=2$, $a_{34}=2$:
+$$\boxed{\rg A=3}$$
+<strong>Controllo:</strong> $\ell_1=0\lt\ell_2=1\lt\ell_3=3$ ✓, e $r\le\min\{3,4\}=3$: il rango è massimo.<br>
+<em>Attenzione:</em> il terzo pivot sta nella colonna $4$, non nella $3$. I pivot non devono stare sulla diagonale. $\blacksquare$` },
+
+{ id: 'G1.6', sez: 1, tema: 'Riduzione a scala', d: 2,
+  t: r`(Esercitazione del 23 settembre.) Ridurre a scala e calcolare il rango di $$B=\begin{bmatrix}1&2&1&0&3\\-3&-4&-4&3&0\\2&2&3&-3&-6\\3&10&3&3&1\end{bmatrix}.$$`,
+  hints: [ r`Primo passo: $R_2+3R_1$, $R_3-2R_1$, $R_4-3R_1$.`,
+           r`Dopo $R_3+R_2$ la terza riga diventa $(0,0,0,0,-3)$: non è ancora a scala, perché sotto c'è una riga con meno zeri iniziali.`,
+           r`Scambia $R_3\leftrightarrow R_4$ e continua.` ],
+  sol: r`$$B\longrightarrow\begin{bmatrix}1&2&1&0&3\\0&2&-1&3&9\\0&-2&1&-3&-12\\0&4&0&3&-8\end{bmatrix}\xrightarrow{R_3+R_2}\begin{bmatrix}1&2&1&0&3\\0&2&-1&3&9\\0&0&0&0&-3\\0&4&0&3&-8\end{bmatrix}$$
+La terza riga ha $\ell_3=4$, la quarta $\ell_4=1$: si scambiano e si annulla sotto il secondo pivot.
+$$\xrightarrow{R_3\leftrightarrow R_4}\ \xrightarrow{R_3-2R_2}\begin{bmatrix}1&2&1&0&3\\0&2&-1&3&9\\0&0&2&-3&-26\\0&0&0&0&-3\end{bmatrix}$$
+Pivot $a_{11}$, $a_{22}$, $a_{33}$, $a_{45}$:
+$$\boxed{\rg B=4}$$
+<strong>Controllo:</strong> $(0,4,0,3,-8)-2(0,2,-1,3,9)=(0,0,2,-3,-26)$ ✓. Rango massimo per una $4\times5$. $\blacksquare$` },
+
+{ id: 'G1.7', sez: 1, tema: 'Riduzione a scala', d: 2,
+  t: r`(Esercitazione del 23 settembre.) Ridurre a scala e calcolare il rango di $$C=\begin{bmatrix}1&-1&3&-2&0\\-2&2&-4&0&2\\3&-4&8&-3&1\\2&-1&8&-4&1\end{bmatrix}.$$`,
+  hints: [ r`Dopo $R_2+2R_1$ la seconda riga comincia con <strong>due</strong> zeri: il secondo pivot va cercato in un'altra riga.`,
+           r`Il tutor scambia $R_2\leftrightarrow R_4$ dopo aver annullato la prima colonna.` ],
+  sol: r`Con $R_2+2R_1$, $R_3-3R_1$, $R_4-2R_1$:
+$$\begin{bmatrix}1&-1&3&-2&0\\0&0&2&-4&2\\0&-1&-1&3&1\\0&1&2&0&1\end{bmatrix}\xrightarrow{R_2\leftrightarrow R_4}\begin{bmatrix}1&-1&3&-2&0\\0&1&2&0&1\\0&-1&-1&3&1\\0&0&2&-4&2\end{bmatrix}$$
+$$\xrightarrow{R_3+R_2}\begin{bmatrix}1&-1&3&-2&0\\0&1&2&0&1\\0&0&1&3&2\\0&0&2&-4&2\end{bmatrix}\xrightarrow{R_4-2R_3}\begin{bmatrix}1&-1&3&-2&0\\0&1&2&0&1\\0&0&1&3&2\\0&0&0&-10&-2\end{bmatrix}$$
+Quattro pivot:
+$$\boxed{\rg C=4}$$
+<strong>Controllo</strong> con un'altra strada (scambiando invece $R_2\leftrightarrow R_3$, come fa il laboratorio del MEG): si arriva a pivot $1,-1,2,5$ sulle stesse colonne $1,2,3,4$. Le forme a scala sono diverse, il numero di pivot no. $\blacksquare$` },
+
+{ id: 'G1.8', sez: 1, tema: 'Rango con parametro', d: 2,
+  t: r`(Esercitazione del 23 settembre.) Determinare al variare di $\alpha\in\R$ il rango di $$A=\begin{bmatrix}1&2&-1&-1&0\\2&5&2&-2&0\\-1&-1&5&3&1\\3&8&5&-1&1\\3&9&9&1&\alpha\end{bmatrix}.$$`,
+  hints: [ r`Il parametro sta solo nell'ultima riga: riduci normalmente, e tienilo per ultimo.`,
+           r`Dopo il secondo passo la terza e la quarta riga coincidono.`,
+           r`Alla fine resta una riga $(0,0,0,0,\alpha-2)$: quando è un pivot?` ],
+  sol: r`$$\xrightarrow[\substack{R_4-3R_1\\R_5-3R_1}]{\substack{R_2-2R_1\\R_3+R_1}}\begin{bmatrix}1&2&-1&-1&0\\0&1&4&0&0\\0&1&4&2&1\\0&2&8&2&1\\0&3&12&4&\alpha\end{bmatrix}\xrightarrow[\substack{R_4-2R_2\\R_5-3R_2}]{R_3-R_2}\begin{bmatrix}1&2&-1&-1&0\\0&1&4&0&0\\0&0&0&2&1\\0&0&0&2&1\\0&0&0&4&\alpha\end{bmatrix}$$
+$$\xrightarrow[R_5-2R_3]{R_4-R_3}\begin{bmatrix}1&2&-1&-1&0\\0&1&4&0&0\\0&0&0&2&1\\0&0&0&0&0\\0&0&0&0&\alpha-2\end{bmatrix}\xrightarrow{R_4\leftrightarrow R_5}\begin{bmatrix}1&2&-1&-1&0\\0&1&4&0&0\\0&0&0&2&1\\0&0&0&0&\alpha-2\\0&0&0&0&0\end{bmatrix}$$
+Pivot sicuri: $a_{11}=1$, $a_{22}=1$, $a_{34}=2$. Il quarto, $a_{45}=\alpha-2$, c'è solo se $\alpha\ne2$:
+$$\boxed{\rg A=4\ \text{se}\ \alpha\ne2,\qquad \rg A=3\ \text{se}\ \alpha=2}$$
+<strong>Controllo</strong> con $\alpha=2$ e $\alpha=0$ nel laboratorio: ranghi $3$ e $4$ ✓. Il rango non è mai $5$: la terza colonna, dopo la riduzione, non ha pivot. $\blacksquare$` },
+
+{ id: 'G1.9', sez: 1, tema: 'Rango', d: 3,
+  t: r`(Esercitazione del 23 settembre.) Dimostrare che se $A\in\M_{\K}(2,n)$ ha rango $\lt2$, allora o la prima riga è nulla, oppure la seconda è un multiplo scalare della prima.`,
+  hints: [ r`Chiama $A_1$, $A_2$ le due righe. Se una delle due è nulla hai quasi finito: attenzione a quale.`,
+           r`Se entrambe sono non nulle il rango è $1$. Siano $a_{1i}$ e $a_{2j}$ i primi elementi non nulli delle due righe: che cosa succederebbe se $i\lt j$?`,
+           r`Con $i=j$, fai $R_2-\frac{a_{2i}}{a_{1i}}R_1$: se il risultato non fosse nullo, quanti pivot avresti?` ],
+  sol: r`Siano $A_1$, $A_2$ le righe di $A$.<br><br>
+<strong>Casi banali.</strong> Se $A_1=\vzero$ la tesi vale. Se $A_2=\vzero$, allora $A_2=0\cdot A_1$ è un multiplo della prima. Resta il caso $A_1\ne\vzero$, $A_2\ne\vzero$: allora $\rg A\ge1$, e per ipotesi $\rg A=1$.<br><br>
+<strong>I primi elementi non nulli stanno nella stessa colonna.</strong> Siano $a_{1i}$ e $a_{2j}$ i primi elementi non nulli delle due righe. Se fosse $i\lt j$, la matrice sarebbe già a scala con <em>due</em> pivot, contro $\rg A=1$. Se fosse $i>j$, scambiando le righe si ricade nel caso precedente. Dunque $i=j$.<br><br>
+<strong>Conclusione.</strong> Con $R_2\to R_2-\frac{a_{2i}}{a_{1i}}R_1$ la nuova seconda riga ha zeri fino alla colonna $i$ compresa. Se avesse un elemento non nullo in una colonna $k>i$, ci sarebbero due pivot. Quindi è nulla:
+$$A_2-\frac{a_{2i}}{a_{1i}}A_1=\vzero\quad\Longrightarrow\quad A_2=\frac{a_{2i}}{a_{1i}}A_1.\qquad\blacksquare$$
+<strong>Collegamento:</strong> nel linguaggio della Lezione 6 è il corollario «due vettori sono dipendenti se e solo se uno è multiplo dell'altro», applicato alle righe. <strong>Attenzione</strong> all'«o la prima riga è nulla»: se è nulla, la seconda può essere qualsiasi e non è un suo multiplo.` },
+
+{ id: 'G1.10', sez: 1, tema: 'Risoluzione di sistemi', d: 2,
+  t: r`(Esercitazione del 23 settembre.) Risolvere con il MEG:
+$$\text{(a)}\ \begin{cases}x+2y=4\\2x+5y-3z=0\\x+4y-8z=-18\end{cases}\qquad\text{(b)}\ \begin{cases}x+2y-z=2\\3x+8y-2z=2\\2x-2z=8\\3x+4y-8z=18\end{cases}\qquad\text{(c)}\ \begin{cases}2x+y+3z=-1\\4x+4y+6z=1\\6x+5y+6z=-1\\6x+y+3z=-11\end{cases}$$`,
+  hints: [ r`Riduci ogni matrice completa e confronta i pivot di $A$ e di $[A|\vb]$.`,
+           r`(b) ha quattro equazioni e tre incognite: non per questo è impossibile.`,
+           r`In (c) dopo tre passi compare una riga $(0\ 0\ 0\,|\,k)$ con $k\ne0$.` ],
+  sol: r`<strong>(a)</strong>
+$$\left[\begin{array}{ccc|c}1&2&0&4\\2&5&-3&0\\1&4&-8&-18\end{array}\right]\xrightarrow[R_3-R_1]{R_2-2R_1}\left[\begin{array}{ccc|c}1&2&0&4\\0&1&-3&-8\\0&2&-8&-22\end{array}\right]\xrightarrow{R_3-2R_2}\left[\begin{array}{ccc|c}1&2&0&4\\0&1&-3&-8\\0&0&-2&-6\end{array}\right]$$
+$\rg A=\rg[A|\vb]=3=n$: soluzione unica. $z=3$, $y=-8+9=1$, $x=4-2=2$: $\ \boxed{(2,1,3)}$. Controllo nella terza: $2+4-24=-18$ ✓.<br><br>
+<strong>(b)</strong> Con $R_2-3R_1$, $R_3-2R_1$, $R_4-3R_1$, poi $R_3+2R_2$, $R_4+R_2$ e infine $R_4+2R_3$:
+$$\left[\begin{array}{ccc|c}1&2&-1&2\\0&2&1&-4\\0&0&2&-4\\0&0&0&0\end{array}\right]$$
+$\rg A=\rg[A|\vb]=3$: soluzione unica (una equazione era superflua). $z=-2$, $y=\frac{-4-z}2=-1$, $x=2-2y+z=2$: $\ \boxed{(2,-1,-2)}$. Controllo nella quarta: $6-4+16=18$ ✓.<br><br>
+<strong>(c)</strong> Con $R_2-2R_1$, $R_3-3R_1$, $R_4-3R_1$, poi $R_3-R_2$, $R_4+R_2$ e $R_4-2R_3$:
+$$\left[\begin{array}{ccc|c}2&1&3&-1\\0&2&0&3\\0&0&-3&-1\\0&0&0&-3\end{array}\right]$$
+L'ultima riga è $0=-3$: uno 0-pivot. $\rg A=3\lt4=\rg[A|\vb]$, il sistema è <strong>impossibile</strong>.<br><br>
+<strong>Morale:</strong> il numero di equazioni non decide nulla; decidono i pivot. $\blacksquare$` },
+
+{ id: 'G1.11', sez: 1, tema: 'Risoluzione di sistemi', d: 1,
+  t: r`(Esercitazione del 23 settembre.) Fra le parabole $y=ax^{2}+bx+c$ determinare quelle che passano per $A(-1,2)$, $B(0,3)$, $C(1,6)$. È un problema di primo o di secondo grado?`,
+  hints: [ r`Imponi il passaggio per ciascun punto: ottieni un'equazione nelle incognite $a,b,c$.`,
+           r`Le incognite sono i coefficienti, e compaiono al primo grado.` ],
+  sol: r`Il passaggio per i tre punti dà
+$$\begin{cases}a-b+c=2\\c=3\\a+b+c=6\end{cases}\qquad\left[\begin{array}{ccc|c}1&-1&1&2\\0&0&1&3\\1&1&1&6\end{array}\right]\xrightarrow{R_3-R_1}\ \xrightarrow{R_2\leftrightarrow R_3}\left[\begin{array}{ccc|c}1&-1&1&2\\0&2&0&4\\0&0&1&3\end{array}\right]$$
+Tre pivot in $A$ e in $[A|\vb]$: soluzione unica. $c=3$, $b=2$, $a=b-c+2=1$:
+$$\boxed{y=x^{2}+2x+3}$$
+<strong>Controllo:</strong> $A$: $1-2+3=2$ ✓; $B$: $3$ ✓; $C$: $1+2+3=6$ ✓.<br><br>
+<strong>Risposta alla domanda:</strong> la curva è di secondo grado in $x$, ma il problema è <strong>lineare</strong> nelle incognite $a,b,c$: per questo si risolve con un sistema lineare. $\blacksquare$` },
+
 /* ============= SEZIONE 2: matrici e teoremi ============= */
 { id: 'G2.1', sez: 2, tema: 'Prodotto di matrici', d: 1,
   t: r`Date $$A=\begin{bmatrix}1&2\\0&-1\\3&1\end{bmatrix},\qquad B=\begin{bmatrix}2&0&1\\1&3&-2\end{bmatrix}$$ calcolare, quando è possibile, $AB$ e $BA$.`,
@@ -296,6 +380,48 @@ $$\vx=I_3\vx=(AB)\vx=A(B\vx)=A\vzero=\vzero,$$
 assurdo.<br><br>
 <em>Morale:</em> per una matrice non quadrata possono esserci infinite «inverse da un lato» e nessuna dall'altro. È il motivo per cui l'inversa si definisce solo per le quadrate (Esempio 3 degli appunti). $\blacksquare$` },
 
+{ id: 'G2.13', sez: 2, tema: 'Rouché-Capelli', d: 2,
+  t: r`(Esercitazione del 23 settembre.) Risolvere con il MEG, commentando secondo Rouché-Capelli:
+$$\text{(a)}\ \begin{cases}x_1+3x_2+2x_3=5\\2x_1+5x_2+4x_3+x_4=5\\x_1+5x_2+4x_3-x_4=10\\3x_1+10x_2+8x_3+x_4=12\end{cases}\qquad\text{(b)}\ \begin{cases}x_1+2x_3+x_4=3\\2x_1+2x_2+5x_3+x_4=7\\3x_1-2x_2+5x_3+6x_4=10\\-x_1+6x_2+x_3=3\end{cases}$$`,
+  hints: [ r`Prima di risolvere, chiediti che cosa dice Rouché-Capelli su esistenza e numero di soluzioni: servono $\rg A$ e $\rg[A|\vb]$.`,
+           r`(a) Primo passo: $R_2-2R_1$, $R_3-R_1$, $R_4-3R_1$.`,
+           r`(b) Dopo due passi le ultime due righe hanno solo l'ultima incognita: confrontale.` ],
+  sol: r`<strong>(a)</strong>
+$$\left[\begin{array}{cccc|c}1&3&2&0&5\\2&5&4&1&5\\1&5&4&-1&10\\3&10&8&1&12\end{array}\right]\longrightarrow\left[\begin{array}{cccc|c}1&3&2&0&5\\0&-1&0&1&-5\\0&2&2&-1&5\\0&1&2&1&-3\end{array}\right]\xrightarrow[R_4+R_2]{R_3+2R_2}\ \xrightarrow{R_4-R_3}\left[\begin{array}{cccc|c}1&3&2&0&5\\0&-1&0&1&-5\\0&0&2&1&-5\\0&0&0&1&-3\end{array}\right]$$
+Niente 0-pivot e quattro pivot: $\rg A=\rg[A|\vb]=4=n$, quindi per Rouché-Capelli una <strong>sola</strong> soluzione ($\infty^{n-r}=\infty^{0}$). All'indietro: $x_4=-3$, $x_3=\frac{-5-x_4}2=-1$, $x_2=x_4+5=2$, $x_1=5-3x_2-2x_3=1$:
+$$\boxed{(x_1,x_2,x_3,x_4)=(1,2,-1,-3)}$$
+Controllo: seconda equazione $2+10-4-3=5$ ✓, terza $1+10-4+3=10$ ✓, quarta $3+20-8-3=12$ ✓.<br><br>
+<strong>(b)</strong> Con $R_2-2R_1$, $R_3-3R_1$, $R_4+R_1$, poi $R_3+R_2$, $R_4-3R_2$ e infine $R_4-2R_3$:
+$$\left[\begin{array}{cccc|c}1&0&2&1&3\\0&2&1&-1&1\\0&0&0&2&2\\0&0&0&0&-1\end{array}\right]$$
+L'ultima riga è $0=-1$. $\rg A=3$ (pivot $a_{11},a_{22},a_{34}$) mentre $\rg[A|\vb]=4$: per Rouché-Capelli il sistema è <strong>impossibile</strong>. $\blacksquare$` },
+
+{ id: 'G2.14', sez: 2, tema: 'Discussione con parametro', d: 3,
+  t: r`(Esercitazione del 23 settembre.) Determinare al variare di $\alpha\in\R$ le soluzioni del sistema
+$$\begin{cases}x-y+\alpha z=-1\\\alpha x+2z=-2\\y+z=-1\end{cases}$$
+e darne un'interpretazione geometrica.`,
+  hints: [ r`Per non dividere per espressioni con il parametro, dopo $R_2-\alpha R_1$ conviene scambiare la seconda e la terza riga.`,
+           r`Si arriva al pivot $-\alpha^{2}-\alpha+2=-(\alpha+2)(\alpha-1)$: i casi speciali sono $\alpha=1$ e $\alpha=-2$.`,
+           r`Ogni equazione è un piano di $\R^{3}$: quando non hanno punti comuni, controlla se due di essi sono paralleli guardando i vettori dei coefficienti.` ],
+  sol: r`<strong>Riduzione.</strong>
+$$\left[\begin{array}{ccc|c}1&-1&\alpha&-1\\\alpha&0&2&-2\\0&1&1&-1\end{array}\right]\xrightarrow{R_2-\alpha R_1}\left[\begin{array}{ccc|c}1&-1&\alpha&-1\\0&\alpha&2-\alpha^{2}&\alpha-2\\0&1&1&-1\end{array}\right]\xrightarrow{R_2\leftrightarrow R_3}\ \xrightarrow{R_3-\alpha R_2}\left[\begin{array}{ccc|c}1&-1&\alpha&-1\\0&1&1&-1\\0&0&-\alpha^{2}-\alpha+2&2\alpha-2\end{array}\right]$$
+Il terzo pivot è $-\alpha^{2}-\alpha+2=-(\alpha+2)(\alpha-1)$, nullo per $\alpha=-2$ e $\alpha=1$.<br><br>
+<strong>Caso $\alpha\ne1,-2$.</strong> $\rg A=\rg[A|\vb]=3$: soluzione unica. Dall'ultima riga $-(\alpha+2)(\alpha-1)z=2(\alpha-1)$, quindi $z=-\frac2{\alpha+2}$; poi $y=-1-z=-\frac{\alpha}{\alpha+2}$ e $x=-1+y-\alpha z=-\frac2{\alpha+2}$:
+$$\boxed{(x,y,z)=\left(-\tfrac{2}{\alpha+2},\ -\tfrac{\alpha}{\alpha+2},\ -\tfrac{2}{\alpha+2}\right)}$$
+Controllo nella seconda equazione: $\alpha x+2z=\frac{-2\alpha-4}{\alpha+2}=-2$ ✓. Tre piani che si incontrano in un punto.<br><br>
+<strong>Caso $\alpha=1$.</strong> L'ultima riga diventa $(0\ 0\ 0\,|\,0)$: $\rg A=\rg[A|\vb]=2$, $\infty^{1}$ soluzioni. Con $z=t$: $y=-1-t$, $x=-2-2t$,
+$$\begin{bmatrix}x\\y\\z\end{bmatrix}=\begin{bmatrix}-2\\-1\\0\end{bmatrix}+t\begin{bmatrix}-2\\-1\\1\end{bmatrix},$$
+una retta: i tre piani appartengono a un fascio e hanno una retta in comune.<br><br>
+<strong>Caso $\alpha=-2$.</strong> L'ultima riga è $(0\ 0\ 0\,|\,-6)$: $\rg A=2\ne3=\rg[A|\vb]$, nessuna soluzione. I vettori dei coefficienti $(1,-1,-2)$, $(-2,0,2)$, $(0,1,1)$ sono a due a due non proporzionali, quindi nessuna coppia di piani è parallela: i piani si tagliano a due a due in tre rette parallele (tutte di direzione $(1,-1,1)$), senza un punto comune, come le facce laterali di un prisma.<br>
+<span class="small muted">Negli appunti del tutor, per $\alpha=-2$, c'è scritto «2 piani sono paralleli»: con questi coefficienti non succede, perché nessuna coppia di vettori $(a,b,c)$ è proporzionale.</span> $\blacksquare$` },
+
+{ id: 'G2.15', sez: 2, tema: 'Struttura delle soluzioni', d: 1,
+  t: r`(Esercitazione del 23 settembre.) Siano $S_1:\ A\vx=\vb_1$, $S_2:\ A\vx=\vb_2$ e $S_3:\ A\vx=\vb_1+\vb_2$. Dimostrare che se $\vv_1$ risolve $S_1$ e $\vv_2$ risolve $S_2$, allora $\vv_1+\vv_2$ risolve $S_3$.`,
+  hints: [ r`Quale proprietà del prodotto di matrici lega $A(\vv_1+\vv_2)$ ad $A\vv_1$ e $A\vv_2$?` ],
+  sol: r`Per ipotesi $A\vv_1=\vb_1$ e $A\vv_2=\vb_2$. Per la <strong>distributività</strong> del prodotto rispetto alla somma:
+$$A(\vv_1+\vv_2)=A\vv_1+A\vv_2=\vb_1+\vb_2,$$
+quindi $\vv_1+\vv_2$ è soluzione di $S_3$. $\blacksquare$<br><br>
+<strong>Collegamento:</strong> è la linearità di $L_A(\vx)=A\vx$ (Sezione 5). Con $\vb_2=\vzero$ dice che sommando a una soluzione di $A\vx=\vb_1$ una soluzione dell'omogeneo si ottiene ancora una soluzione: metà della <a href="sezioni/2-matrici.html#struttura">struttura delle soluzioni</a>.` },
+
 /* ====== SEZIONE 3: vettori e spazi vettoriali ====== */
 { id: 'G3.1', sez: 3, tema: 'Spazi vettoriali', d: 2,
   t: r`Stabilire quali dei seguenti sottoinsiemi di $\R^{2}$ sono spazi vettoriali con le operazioni usuali:
@@ -440,6 +566,54 @@ $$\boxed{x^{3}\notin\operatorname{span}\{x^{2},x^{4},\cos x\}}$$
 <br>• Multipli: $A(\lambda\vx)=\lambda A\vx=\lambda\vzero=\vzero$.
 $$\boxed{S\ \text{sottospazio}\iff\vb=\vzero}$$
 <strong>Controllo con la Lezione 3:</strong> per Rouché-Capelli le soluzioni dell'omogeneo sono $\{\vzero\}$ oppure $\operatorname{span}\{\vv_1,\dots,\vv_{n-r}\}$, entrambi sottospazi. Con $\vb\ne\vzero$ il sistema può anche essere compatibile con infinite soluzioni, ma l'insieme è $\vx_0+$ (sottospazio): un sottospazio <em>traslato</em>, che non passa per $\vzero$. $\blacksquare$` },
+
+{ id: 'G3.10', sez: 3, tema: 'Sottospazi', d: 2,
+  t: r`(Esercitazione del 7 ottobre.) Dimostrare che l'insieme $X$ dei polinomi di $\R[x]$ a coefficienti reali con soli esponenti <strong>pari</strong> è un sottospazio di $\R[x]$. E quelli con soli esponenti dispari?`,
+  hints: [ r`$\vzero\in X$ è necessario ma non basta: serve la chiusura.`,
+           r`Scrivi $p(x)=\sum_{i=0}^{n}a_ix^{2i}$ e $q(x)=\sum_{i=0}^{m}b_ix^{2i}$ con $m\ge n$, e calcola $\alpha p+\beta q$.`,
+           r`Per i dispari pensa a $p(-x)=-p(x)$: che cosa succede al polinomio nullo?` ],
+  sol: r`<strong>Esponenti pari.</strong> Il polinomio nullo ha solo esponenti pari ($0=0\cdot x^{0}$), quindi $X\ne\emptyset$. Siano $p(x)=\sum_{i=0}^{n}a_ix^{2i}$ e $q(x)=\sum_{i=0}^{m}b_ix^{2i}$ in $X$, con $m\ge n$. Per ogni $\alpha,\beta\in\R$:
+$$\alpha p+\beta q=\sum_{i=0}^{n}(\alpha a_i+\beta b_i)x^{2i}+\sum_{i=n+1}^{m}\beta b_ix^{2i}\in X,$$
+perché compaiono ancora solo potenze pari. $X$ è chiuso per combinazioni lineari, quindi è un sottospazio di $\R[x]$. $\blacksquare$<br><br>
+<strong>Esponenti dispari.</strong> Lo stesso conto funziona con $x^{2i+1}$, e il polinomio nullo si scrive anche $0=0\cdot x$: con la definizione naturale, $D=\{p:\ p(-x)=-p(x)\}=\operatorname{span}\{x,x^{3},x^{5},\dots\}$, è <strong>anch'esso un sottospazio</strong>, come ogni span.<br>
+<span class="small muted">Nella soluzione del tutor si conclude il contrario, perché il polinomio nullo non viene considerato «a esponenti dispari». Ma allora l'insieme non sarebbe nemmeno chiuso per la somma ($x+(-x)=0$): la scelta che rende le due situazioni simmetriche è includere $0$ in entrambe. Se all'esame compare, conviene dichiarare la convenzione usata.</span>` },
+
+{ id: 'G3.11', sez: 3, tema: 'Sottospazi', d: 1,
+  t: r`(Esercitazione del 7 ottobre, da temi d'esame.) Stabilire se sono sottospazi:
+<br>(a) $W=\{(x,y,z)\in\R^{3}:\ x\ge0\}$; &nbsp;(b) $S=\{(a,b,c,d)\in\R^{4}:\ 2a^{2}+b^{2}+c^{2}+d^{2}=1\}$.`,
+  hints: [ r`Per (b) basta il test del vettore nullo.`,
+           r`Per (a) $\vzero\in W$, quindi serve un'altra strada: prova a moltiplicare per uno scalare negativo.` ],
+  sol: r`<strong>(a)</strong> $\vzero\in W$, ma $W$ non è chiuso per il prodotto per scalare: con $\vv=(1,0,0)\in W$ e $\lambda=-1$,
+$$\lambda\vv=(-1,0,0)\notin W\quad\text{perché }-1\lt0.$$
+$W$ <strong>non</strong> è un sottospazio (è un semispazio). In generale ogni $\vv\in W$ con $x>0$ fa fallire la chiusura con $\lambda=-1$.<br><br>
+<strong>(b)</strong> Se $S$ fosse un sottospazio conterrebbe $\vzero=(0,0,0,0)$; ma $2\cdot0+0+0+0=0\ne1$. Quindi $\vzero\notin S$ e $S$ <strong>non</strong> è un sottospazio.<br><br>
+<strong>Morale:</strong> in (b) il test di $\vzero$ chiude subito la questione; in (a) no, e serve un controesempio alla chiusura. È lo stesso schema della sfera della Lezione 3. $\blacksquare$` },
+
+{ id: 'G3.12', sez: 3, tema: 'Sottospazi', d: 1,
+  t: r`(Esercitazione del 7 ottobre.) Verificare che $V=\left\{\begin{bmatrix}a&b\\b&a\end{bmatrix}:\ a,b\in\R\right\}$ è un sottospazio di $\M_{\R}(2,2)$.`,
+  hints: [ r`Prendi due elementi generici di $V$ e controlla che somma e multipli abbiano ancora la forma $\begin{bmatrix}\bar a&\bar b\\\bar b&\bar a\end{bmatrix}$.` ],
+  sol: r`<strong>Non vuoto:</strong> con $a=b=0$ si ha la matrice nulla, quindi $O\in V$.<br>
+<strong>Multipli:</strong> per $\lambda\in\R$,
+$$\lambda\begin{bmatrix}a&b\\b&a\end{bmatrix}=\begin{bmatrix}\lambda a&\lambda b\\\lambda b&\lambda a\end{bmatrix}\in V,\quad\text{con } a'=\lambda a,\ b'=\lambda b.$$
+<strong>Somma:</strong>
+$$\begin{bmatrix}a&b\\b&a\end{bmatrix}+\begin{bmatrix}a'&b'\\b'&a'\end{bmatrix}=\begin{bmatrix}a+a'&b+b'\\b+b'&a+a'\end{bmatrix}\in V.$$
+Quindi $V$ è un sottospazio. $\blacksquare$<br><br>
+<strong>In più:</strong> $V=\operatorname{span}\left\{I_2,\begin{bmatrix}0&1\\1&0\end{bmatrix}\right\}$, e le due matrici sono indipendenti: $\dim V=2$. Scriverlo come span è un modo alternativo, e più veloce, di dimostrare che è un sottospazio.` },
+
+{ id: 'G3.13', sez: 3, tema: 'Combinazioni lineari e span', d: 2,
+  t: r`(Esercitazione del 7 ottobre.) Determinare per quali $k\in\R$ il vettore $\vv=(-2,1,k)$ è combinazione lineare di $\vv_1=(0,3,-2)$ e $\vv_2=(-1,2,5)$, e in quel caso trovare i coefficienti.`,
+  hints: [ r`Cerca $x_1,x_2$ con $x_1\vv_1+x_2\vv_2=\vv$: è un sistema $3\times2$ con matrice $[\vv_1|\vv_2]$ e termine noto $\vv$.`,
+           r`Con il MEG, la condizione è che non compaia uno 0-pivot. In alternativa: $\vv$ è combinazione di $\vv_1,\vv_2$ (indipendenti) se e solo se $\det[\vv_1|\vv_2|\vv]=0$.` ],
+  sol: r`<strong>Col MEG.</strong>
+$$\left[\begin{array}{cc|c}0&-1&-2\\3&2&1\\-2&5&k\end{array}\right]\xrightarrow{R_1\leftrightarrow R_2}\ \xrightarrow{R_3\to3R_3+2R_1}\left[\begin{array}{cc|c}3&2&1\\0&-1&-2\\0&19&3k+2\end{array}\right]\xrightarrow{R_3+19R_2}\left[\begin{array}{cc|c}3&2&1\\0&-1&-2\\0&0&3k-36\end{array}\right]$$
+$\rg A=2$; $\rg[A|\vb]=2$ se $3k-36=0$, altrimenti $3$. Quindi $\vv\in\operatorname{span}\{\vv_1,\vv_2\}\iff k=12$, e in quel caso la soluzione è unica.<br><br>
+<strong>Col determinante</strong> (sviluppo lungo la prima riga):
+$$\det\begin{bmatrix}0&-1&-2\\3&2&1\\-2&5&k\end{bmatrix}=+1\begin{vmatrix}3&1\\-2&k\end{vmatrix}-2\begin{vmatrix}3&2\\-2&5\end{vmatrix}=3k+2-38=3k-36,$$
+nullo se e solo se $k=12$ ✓.<br><br>
+<strong>Coefficienti per $k=12$:</strong> $-x_2=-2$ dà $x_2=2$, e $3x_1+2x_2=1$ dà $x_1=-1$:
+$$\boxed{\vv=-\vv_1+2\vv_2}$$
+<strong>Controllo:</strong> $-(0,3,-2)+2(-1,2,5)=(-2,\,1,\,12)$ ✓.<br>
+<span class="small muted">L'operazione $R_3\to3R_3+2R_1$ del tutor unisce due operazioni elementari (moltiplicare per $3\ne0$ e sommare un multiplo di $R_1$): è lecita perché il coefficiente della riga modificata non è zero.</span> $\blacksquare$` },
 
 /* ============ SEZIONE 4: numeri complessi ============ */
 { id: 'G4.1', sez: 4, tema: 'Numeri complessi', d: 2,
@@ -769,7 +943,21 @@ $$\boxed{\tilde A=S^{-1}AS=\begin{bmatrix}e^{-i\theta}&0\\0&e^{i\theta}\end{bmat
            r`Per il secondo cerca un polinomio con <em>due</em> scritture diverse: prova $x^{2}+1$.` ],
   sol: r`<strong>Troppo pochi.</strong> $\alpha q_1+\beta q_2=(\alpha+\beta)x^{2}+(\beta-\alpha)x+(\alpha+\beta)$. Per ottenere $2x+1$ servirebbe $\alpha+\beta=0$ (coefficiente di $x^{2}$) e $\alpha+\beta=1$ (termine noto): contraddizione. Manca l'<strong>esistenza</strong> della scrittura.<br><br>
 <strong>Troppi.</strong> $x^{2}+1=1\cdot x^{2}+1\cdot1=1\cdot q_1+1\cdot x$: due scritture diverse dello stesso polinomio. Manca l'<strong>unicità</strong>.<br><br>
-<strong>Controllo:</strong> $q_1+x=x^{2}-x+1+x=x^{2}+1$ ✓. Coerente con $\dim P_2=3$: due vettori sono pochi, quattro sono troppi. $\blacksquare$` }
+<strong>Controllo:</strong> $q_1+x=x^{2}-x+1+x=x^{2}+1$ ✓. Coerente con $\dim P_2=3$: due vettori sono pochi, quattro sono troppi. $\blacksquare$` },
+
+{ id: 'G5.24', sez: 5, tema: 'Dipendenza lineare', d: 2,
+  t: r`(Esercitazione del 7 ottobre.) Determinare $k\in\R$ tale che $\vv_1=(0,1,1,2)$, $\vv_2=(-1,0,1,2)$, $\vv_3=(1,2,k,k+1)$ siano linearmente indipendenti. Per i valori esclusi, scrivere una relazione di dipendenza.`,
+  hints: [ r`Sono indipendenti se e solo se la matrice che li contiene ha rango $3$ (righe o colonne, per il teorema sul rango è lo stesso).`,
+           r`Il tutor li mette come righe e porta in cima $\vv_2$, che ha il primo elemento non nullo.`,
+           r`Alla fine resta una riga $(0,0,k-1,k-1)$.` ],
+  sol: r`<strong>Col MEG</strong>, vettori come righe ($R_1\leftrightarrow R_2$, poi $R_1\to-R_1$):
+$$\begin{bmatrix}1&0&-1&-2\\0&1&1&2\\1&2&k&k+1\end{bmatrix}\xrightarrow{R_3-R_1}\begin{bmatrix}1&0&-1&-2\\0&1&1&2\\0&2&k+1&k+3\end{bmatrix}\xrightarrow{R_3-2R_2}\begin{bmatrix}1&0&-1&-2\\0&1&1&2\\0&0&k-1&k-1\end{bmatrix}$$
+Tre pivot $\iff k-1\ne0$:
+$$\boxed{\vv_1,\vv_2,\vv_3\ \text{indipendenti}\iff k\ne1}$$
+<strong>Per $k=1$:</strong> $\vv_3=(1,2,1,2)$ e cerchiamo $\vv_3=a\vv_1+b\vv_2=(-b,\ a,\ a+b,\ 2a+2b)$: $b=-1$, $a=2$, e le ultime due componenti tornano ($1$ e $2$). Quindi
+$$2\vv_1-\vv_2-\vv_3=\vzero.$$
+<strong>Controllo:</strong> $2(0,1,1,2)-(-1,0,1,2)=(1,2,1,2)$ ✓.<br><br>
+<strong>Il metodo dei minori del tutor.</strong> Nell'esercitazione il rango si calcola anche con i determinanti delle sottomatrici quadrate («teorema di Kronecker», o degli orlati, non ancora visto a lezione): il minore $\begin{vmatrix}0&1\\-1&0\end{vmatrix}=1\ne0$ dà rango $\ge2$; orlandolo con la terza riga e la terza colonna si ottiene $k-1$; per $k=1$ anche l'orlato con la quarta colonna vale $0$, quindi il rango è $2$. Stessa conclusione. $\blacksquare$` }
 
   ];
 
