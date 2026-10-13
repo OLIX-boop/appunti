@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 5 · Applicazioni lineari, basi, dimensione, rango — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261013">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="../../due-parziali.html">Parziali</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 5</h4>
+    <a href="#checklist">Checklist del programma</a>
+    <a href="#lineari">1 · Applicazioni lineari</a>
+    <a href="#lineari-def" class="sub">Definizione ed esempi</a>
+    <a href="#composta" class="sub">$L_A$ e la composizione</a>
+    <a href="#nucleo">2 · Nucleo e immagine</a>
+    <a href="#controimmagini" class="sub">Struttura delle controimmagini</a>
+    <a href="#rette-piani">3 · Rette e piani</a>
+    <a href="#cambio-origine" class="sub">Cambio di origine</a>
+    <a href="#retta-param" class="sub">Rette in forma parametrica</a>
+    <a href="#ellisse" class="sub">L'ellisse della lezione</a>
+    <a href="#piano-param" class="sub">Piani in forma parametrica</a>
+    <a href="#cart-param" class="sub">Da cartesiana a parametrica</a>
+    <a href="#param-cart" class="sub">Da parametrica a cartesiana</a>
+    <a href="#dipendenza">4 · Dipendenza lineare</a>
+    <a href="#davvero" class="sub">Quando è davvero una retta</a>
+    <a href="#dip-def" class="sub">Definizione ed esempi</a>
+    <a href="#condizioni-base" class="sub">Condizioni di base</a>
+    <a href="#metodo-rango" class="sub">Il metodo del rango</a>
+    <a href="#dip-lineari" class="sub">Coordinate e mappe lineari</a>
+    <a href="#osservazioni" class="sub">Tre osservazioni</a>
+    <a href="#basi-span">5 · Basi di span e nucleo</a>
+    <a href="#esempio-p2" class="sub">Un esempio completo su $P_2$</a>
+    <a href="#rango">6 · Rango</a>
+    <a href="#righe-colonne" class="sub">Per righe e per colonne</a>
+    <a href="#nullita" class="sub">Rango + nullità</a>
+    <a href="#punti-piano" class="sub">Punti e piani col rango</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 5 · Geometria e Algebra Lineare · Lezioni 4–6</div>
+      <h1>Applicazioni lineari, basi, dimensione, rango</h1>
+      <p class="lead">Le funzioni che rispettano somma e prodotto per scalare. Con loro il sistema $A\vx=\vb$ diventa una domanda su una mappa — «chi va in $\vb$?» — e il rango smette di essere un conteggio di pivot per diventare una <strong>dimensione</strong>.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Tutta la sezione converge su un'uguaglianza: <strong>rango + nullità = dimensione del dominio</strong>. Dice che una mappa lineare non può «perdere» dimensioni senza che queste ricompaiano nel nucleo. È la versione adulta di «$n-r$ incognite libere» della <a href="1-sistemi.html">Sezione 1</a>: lì contavi parametri, qui misuri sottospazi.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">★ Novità delle Lezioni 4–6 · e che cosa manca ancora</div>
+      <ul class="mb0">
+        <li><strong>Lezione 4 (pp. 1–20):</strong> <a href="#lineari-def">applicazioni lineari</a>, <a href="#composta">composizione</a>, <a href="#nucleo">nucleo e immagine</a>, <a href="#controimmagini">struttura delle controimmagini</a>.</li>
+        <li><strong>Lezione 5 (pp. 29–72):</strong> <a href="#cambio-origine">cambio di origine</a>, <a href="#retta-param">rette</a> e <a href="#piano-param">piani</a> parametrici, <a href="#ellisse">l'ellisse</a> con widget, <a href="#param-cart">equazioni cartesiane</a>.</li>
+        <li><strong>Lezione 6:</strong> <a href="#dipendenza">dipendenza lineare</a>, <a href="#condizioni-base">condizioni di base</a>, <a href="#basi-span">basi di span e nucleo</a>, <a href="#rango">rango</a> e <a href="#nullita">rango + nullità</a>.</li>
+        <li><strong>In arrivo:</strong> sistemi di riferimento, basi e dimensione, coordinate e matrice rappresentativa (Lezione 4, pp. 21–84) e passaggio tra basi (Lezione 5, pp. 1–28). Nel frattempo base e dimensione si usano con la <a href="#base-richiamo">definizione standard</a>.</li>
+      </ul>
+    </div>
+
+    <h2 id="checklist">Checklist del programma</h2>
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Avanzamento Sezione 5</strong>
+        <span class="muted small"><span data-progress-txt="g5">0/17</span> · <span data-progress-pct="g5">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="g5"><span style="width:0"></span></div>
+    </div>
+    <div id="checklistBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="lineari">1 · Applicazioni lineari</h2>
+
+    <h3 id="lineari-def">Definizione ed esempi <span class="badge star">risultato centrale</span></h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 4)</div>
+      <p>Siano $V$ e $W$ spazi vettoriali sullo stesso campo $\K$. Un'applicazione $L:V\to W$ si dice <strong>lineare</strong> se</p>
+      <ol class="mb0">
+        <li><strong>additività:</strong> $L(\vu+\vv)=L(\vu)+L(\vv)$ per ogni $\vu,\vv\in V$;</li>
+        <li><strong>omogeneità:</strong> $L(\lambda\vu)=\lambda L(\vu)$ per ogni $\vu\in V$ e $\lambda\in\K$.</li>
+      </ol>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">Osservazioni (Lezione 4)</div>
+      <ul class="mb0">
+        <li>$L(\vzero)=\vzero$. Infatti $L(\vzero)=L(0\cdot\vzero)=0\cdot L(\vzero)=\vzero$, per l'omogeneità e la <a href="3-spazi.html#conseguenze">conseguenza (c)</a> degli assiomi. Di nuovo il test più rapido: se $L(\vzero)\ne\vzero$, $L$ non è lineare.</li>
+        <li>(i) e (ii) insieme equivalgono all'unica condizione
+        $$L(\alpha\vu+\beta\vv)=\alpha L(\vu)+\beta L(\vv)\qquad\forall\,\vu,\vv\in V,\ \forall\,\alpha,\beta\in\K.$$
+        Con $\alpha=\beta=1$ si ritrova (i), con $\beta=0$ si ritrova (ii); il viceversa si ottiene applicando prima (i) e poi (ii). Per induzione, $L$ manda combinazioni lineari in combinazioni lineari con gli <strong>stessi coefficienti</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Tre esempi (Lezione 4)</div>
+      <p><strong>Es. 1.</strong> $f:\R\to\R$, $f(x)=ax+b$, è lineare $\iff b=0$. Se $b\ne0$ allora $f(0)=b\ne0$, e la prima osservazione la esclude. Se $b=0$:
+      $$f(x+y)=a(x+y)=ax+ay=f(x)+f(y),\qquad f(\lambda x)=a\lambda x=\lambda f(x).$$
+      <span class="small muted">Refuso negli appunti (p. 3): il prof scrive «$f(x+y)=a(x+b)$», ma va letto $a(x+y)$.</span></p>
+      <p>Attenzione al nome: in Analisi $ax+b$ si chiama «funzione lineare» anche con $b\ne0$. In algebra lineare quella è una funzione <strong>affine</strong>; lineare è solo $ax$.</p>
+      <p><strong>Es. 2.</strong> La <strong>derivata</strong> $D(f)=f'$, dalle funzioni derivabili alle funzioni, è lineare: $(f+g)'=f'+g'$ e $(\lambda f)'=\lambda f'$.</p>
+      <p class="mb0"><strong>Es. 3.</strong> L'<strong>integrale</strong> $I(f)=\displaystyle\int_0^1 f(x)\dd x$, da $C[0,1]$ (le funzioni continue su $[0,1]$) a $\R$, è lineare per la linearità dell'integrale.</p>
+    </div>
+
+    <h3 id="composta">$L_A$ e la composizione</h3>
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p class="mb0">Data $A\in\M_{\K}(m,n)$, si pone
+      $$L_A:\K^{n}\to\K^{m},\qquad L_A(\vx):=A\vx.$$
+      È lineare per le proprietà del prodotto righe per colonne: $A(\vx+\vy)=A\vx+A\vy$ e $A(\lambda\vx)=\lambda A\vx$.</p>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 4) <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">Se $L:U\to V$ e $M:V\to W$ sono lineari, allora la composta $M\circ L:U\to W$ è lineare. In particolare, per $A\in\M_{\K}(m,n)$ e $B\in\M_{\K}(p,m)$,
+      $$L_B\circ L_A=L_{BA}.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Omogeneità: da dove si parte?</div>
+            <div class="step-content">Dalla definizione di composta, e poi si usa l'omogeneità <em>prima</em> di $L$ e <em>poi</em> di $M$:
+            $$(M\circ L)(\lambda\vu)=M\big(L(\lambda\vu)\big)=M\big(\lambda L(\vu)\big)=\lambda M\big(L(\vu)\big)=\lambda\,(M\circ L)(\vu).$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Additività: stessa idea</div>
+            <div class="step-content">$$(M\circ L)(\vu+\vv)=M\big(L(\vu)+L(\vv)\big)=M(L(\vu))+M(L(\vv)).$$ $\blacksquare$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché $L_B\circ L_A=L_{BA}$?</div>
+            <div class="step-content">Per l'associatività del prodotto di matrici: $(L_B\circ L_A)(\vx)=B(A\vx)=(BA)\vx=L_{BA}(\vx)$. I tipi tornano: $A\vx\in\K^{m}$ e $B$ ha $m$ colonne. Comporre mappe lineari è <strong>moltiplicare matrici</strong>, ed è il vero motivo per cui il prodotto righe per colonne è definito così.</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ L'ordine</div>
+      <p class="mb0">In $L_B\circ L_A$ si applica <em>prima</em> $A$ e <em>poi</em> $B$, e la matrice è $BA$, non $AB$. Il prodotto non è commutativo, quindi l'ordine conta: si legge da destra a sinistra, come la composizione.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="nucleo">2 · Nucleo e immagine</h2>
+
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 4)</div>
+      <p>Sia $L:V\to W$ lineare. Il <strong>nucleo</strong> di $L$ è la controimmagine del vettore nullo:
+      $$\ker L:=L^{-1}(\{\vzero\})=\{\vv\in V:\ L(\vv)=\vzero\}\subseteq V.$$
+      L'<strong>immagine</strong> è $\Imag L:=L(V)=\{L(\vv):\vv\in V\}\subseteq W$.</p>
+      <p class="mb0">Per una matrice si scrive $\ker A:=\ker L_A$: è esattamente l'insieme delle <strong>soluzioni di $A\vx=\vzero$</strong>.</p>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Proposizioni 1 e 2 (Lezione 4) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">$\ker L$ è un sottospazio di $V$, e $\Imag L$ è un sottospazio di $W$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché $\ker L$ non è vuoto?</div>
+            <div class="step-content">Perché $L(\vzero)=\vzero$, quindi $\vzero\in\ker L$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Chiusura del nucleo: dove entra la linearità?</div>
+            <div class="step-content">Se $\vu,\vv\in\ker L$:
+            $$L(\vu+\vv)=L(\vu)+L(\vv)=\vzero+\vzero=\vzero,\qquad L(\lambda\vu)=\lambda L(\vu)=\lambda\vzero=\vzero.$$
+            Quindi $\vu+\vv$ e $\lambda\vu$ stanno nel nucleo.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Immagine: come si scrive un suo elemento generico?</div>
+            <div class="step-content">Come $L(\vv)$ per qualche $\vv\in V$. Allora, per $\vw_1=L(\vv_1)$ e $\vw_2=L(\vv_2)$:
+            $$\vw_1+\vw_2=L(\vv_1+\vv_2)\in\Imag L,\qquad \lambda\vw_1=L(\lambda\vv_1)\in\Imag L.$$
+            Non è vuota perché contiene $L(\vzero)=\vzero$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <h3 id="controimmagini">Struttura delle controimmagini <span class="badge star">risultato centrale</span></h3>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 4)</div>
+      <p class="mb0">Sia $L:V\to W$ lineare e $\vw_0\in W$. Allora vale una e una sola delle due:
+      <br>(a) $\vw_0\notin\Imag L$, e allora $L^{-1}(\vw_0)=\emptyset$;
+      <br>(b) $\vw_0\in\Imag L$: fissato un qualunque $\vv_0$ con $L(\vv_0)=\vw_0$,
+      $$L^{-1}(\vw_0)=\{\vv_0+\vu\ :\ \vu\in\ker L\}.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Il caso (a) richiede una dimostrazione?</div>
+            <div class="step-content">No: $\vw_0\notin\Imag L$ vuol dire proprio che nessun $\vv$ ha $L(\vv)=\vw_0$. Il lavoro è tutto nel caso (b), che è un'uguaglianza fra insiemi: doppia inclusione.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Inclusione $\supseteq$: un vettore $\vv_0+\vu$ con $\vu\in\ker L$ va davvero in $\vw_0$?</div>
+            <div class="step-content">Sì, per l'additività: $L(\vv_0+\vu)=L(\vv_0)+L(\vu)=\vw_0+\vzero=\vw_0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Inclusione $\subseteq$: dato $\vv$ con $L(\vv)=\vw_0$, qual è il $\vu$ giusto?</div>
+            <div class="step-content">La differenza $\vu:=\vv-\vv_0$. Infatti $L(\vu)=L(\vv)-L(\vv_0)=\vw_0-\vw_0=\vzero$, quindi $\vu\in\ker L$ e $\vv=\vv_0+\vu$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box prop">
+      <div class="box-title">Corollario <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">$L$ è <strong>iniettiva</strong> $\iff\ker L=\{\vzero\}$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">$\Rightarrow$: quante controimmagini può avere $\vzero$?</div>
+            <div class="step-content">Al più una, perché $L$ è iniettiva. Ma $\vzero$ è già una controimmagine di $\vzero$, dato che $L(\vzero)=\vzero$. Quindi $\ker L=\{\vzero\}$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">$\Leftarrow$: chi usa il teorema?</div>
+            <div class="step-content">Sia $\vw_0\in\Imag L$. Per il caso (b), $L^{-1}(\vw_0)=\{\vv_0+\vu:\vu\in\ker L\}=\{\vv_0+\vzero\}=\{\vv_0\}$: una sola controimmagine. Ogni $\vw_0$ ha quindi al più una controimmagine, cioè $L$ è iniettiva. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box tip">
+      <div class="box-title">✓ Perché è comodo</div>
+      <p class="mb0">L'iniettività chiede di confrontare <em>tutte</em> le coppie $\vv_1\ne\vv_2$. Per una mappa lineare basta controllare <strong>chi va in $\vzero$</strong>: un solo sistema omogeneo.</p>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Due esempi (Lezione 4)</div>
+      <p><strong>Es. 4.</strong> Per $L_A$ il teorema è la <a href="2-matrici.html#struttura">struttura delle soluzioni</a> della Sezione 2: le soluzioni di $A\vx=\vb$ sono $\vx_0+$ (soluzioni di $A\vx=\vzero$), cioè $\vx_0+\ker A$. In più ora si sa che $\ker A$ è un sottospazio.</p>
+      <p class="mb0"><strong>Es. 5.</strong> Per la derivata, $\ker D$ è l'insieme delle funzioni con $f'=0$: le <strong>costanti</strong> (su un intervallo). Il teorema dice che le controimmagini di $g$, cioè le sue primitive, sono $F+c$ con $F$ una primitiva e $c$ costante. È il «$+\,c$» di Analisi, visto come struttura delle controimmagini.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rette-piani">3 · Rette e piani</h2>
+
+    <h3 id="cambio-origine">Cambio di origine</h3>
+    <div class="box prop">
+      <div class="box-title">Formula (Lezione 5)</div>
+      <p>Nel piano siano dati due sistemi di riferimento: quello «vecchio» con origine $O$ e quello «nuovo» con origine $O'$. Sia $S$ la matrice le cui <strong>colonne</strong> sono i vettori della base nuova scritti nelle coordinate vecchie. Allora, per ogni punto $P$,
+      $$\begin{bmatrix}x_P\\y_P\end{bmatrix}=\begin{bmatrix}x_{O'}\\y_{O'}\end{bmatrix}+S\begin{bmatrix}x'_P\\y'_P\end{bmatrix},\qquad
+      \begin{bmatrix}x'_P\\y'_P\end{bmatrix}=S^{-1}\left(\begin{bmatrix}x_P\\y_P\end{bmatrix}-\begin{bmatrix}x_{O'}\\y_{O'}\end{bmatrix}\right).$$</p>
+      <p class="mb0">Si legge così: per andare in $P$ si va prima in $O'$, poi ci si sposta di $x'_P$ volte il primo vettore nuovo e di $y'_P$ volte il secondo. $S$ è invertibile perché le sue colonne formano una base.</p>
+    </div>
+
+    <h3 id="retta-param">Rette in forma parametrica</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 5)</div>
+      <p class="mb0">La retta per i punti $A\ne B$ è l'insieme dei punti di vettore posizione
+      $$\mathbf r=\mathbf r_0+t\,\mathbf a,\qquad t\in\R,$$
+      con $\mathbf r_0=\overrightarrow{OA}$ (un punto della retta) e $\mathbf a=\overrightarrow{AB}$ (il <strong>vettore direzione</strong>). Per $t=0$ si è in $A$, per $t=1$ in $B$.</p>
+    </div>
+
+    <h3 id="ellisse">L'ellisse della lezione</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 5)</div>
+      <p>La curva $13x^{2}-10xy+13y^{2}-24x-24y=0$ sembra illeggibile. Si sceglie un riferimento nuovo con origine $O'\left(\tfrac32,\tfrac32\right)$ e vettori di base $\overrightarrow{O'A'}$, $\overrightarrow{O'B'}$, dove $A'(3,3)$ e $B'\left(\tfrac12,\tfrac52\right)$. Le colonne di $S$ sono questi due vettori:
+      $$S=\begin{bmatrix}\tfrac32&-1\\[2pt]\tfrac32&1\end{bmatrix},\qquad
+      \begin{cases}x=\tfrac32x'-y'+\tfrac32\\[2pt] y=\tfrac32x'+y'+\tfrac32\end{cases}$$</p>
+      <p>Sostituendo nell'equazione si ottiene $36\,(x'^{2}+y'^{2}-1)=0$, cioè
+      $$x'^{2}+y'^{2}=1:$$
+      nel riferimento nuovo è la <strong>circonferenza unitaria</strong>. Nel riferimento vecchio è un'ellisse di centro $C\left(\tfrac32,\tfrac32\right)$ con semiassi $CP$ e $CQ$, dove $P(3,3)$ e $Q\left(\tfrac12,\tfrac52\right)$: lunghezze $\tfrac{3\sqrt2}{2}$ e $\sqrt2$.</p>
+      <p>La fattorizzazione $S=R_{\pi/4}\,\diag\!\left(\tfrac{3\sqrt2}{2},\sqrt2\right)$ dice come è fatta la trasformazione $T=T_3\circ T_2\circ T_1$ che porta la circonferenza nell'ellisse: $T_1$ <strong>dilata</strong> gli assi (di $\tfrac{3\sqrt2}{2}$ e di $\sqrt2$), $T_2$ <strong>ruota</strong> di $\tfrac\pi4$, $T_3$ <strong>trasla</strong> in $O'$.</p>
+      <p class="mb0">Con $x'=\cos t$, $y'=\sin t$ si ha la forma parametrica
+      $$x=\tfrac32\cos t-\sin t+\tfrac32,\qquad y=\tfrac32\cos t+\sin t+\tfrac32,\qquad t\in[0,2\pi).$$</p>
+    </div>
+    <details class="reveal"><summary>Il conto della sostituzione, senza perdersi</summary><div class="reveal-body">
+      <p>Conviene passare per $s:=x+y$ e $d:=x-y$, perché $x^{2}+y^{2}=\tfrac{s^{2}+d^{2}}{2}$ e $xy=\tfrac{s^{2}-d^{2}}{4}$. L'equazione diventa
+      $$13\cdot\tfrac{s^{2}+d^{2}}{2}-10\cdot\tfrac{s^{2}-d^{2}}{4}-24s=4s^{2}+9d^{2}-24s=0.$$
+      Con le formule del cambio, $s=3x'+3$ e $d=-2y'$:
+      $$4\cdot9(x'+1)^{2}+36y'^{2}-72(x'+1)=36\big[(x'+1)^{2}-2(x'+1)+y'^{2}\big]=36\,(x'^{2}+y'^{2}-1).$$</p>
+      <p class="mb0"><strong>Controllo:</strong> $P(3,3)$ dà $13\cdot9-10\cdot9+13\cdot9-72-72=0$ ✓.</p>
+    </div></details>
+
+    <div class="widget">
+      <div class="widget-head"><span>L'ellisse come circonferenza in un altro riferimento</span><span class="faint" style="text-transform:none;font-weight:400">muovi $t$</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="eT">parametro $t$</label><input type="range" id="eT" min="0" max="6.28" value="0.8" step="0.02"><output data-out="eT">0.8</output></div>
+        </div>
+        <canvas class="plot" id="ePlot"></canvas>
+        <div class="readout" id="eOut"></div>
+      </div>
+    </div>
+
+    <h3 id="piano-param">Piani in forma parametrica</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 5)</div>
+      <p class="mb0">Un piano nello spazio è l'insieme dei punti
+      $$\mathbf r=\mathbf r_0+t\,\mathbf u+s\,\mathbf v,\qquad t,s\in\R,$$
+      con $\mathbf r_0$ un suo punto e $\mathbf u,\mathbf v$ due vettori direzione <strong>non paralleli</strong> (vedi <a href="#davvero">più sotto</a> perché serve).</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 5)</div>
+      <p class="mb0">Il piano $x+2y-3z=4$: si ricava $x=4-2y+3z$ e si pongono $y=t$, $z=s$:
+      $$(x,y,z)=(4-2t+3s,\ t,\ s)=(4,0,0)+t(-2,1,0)+s(3,0,1).$$
+      Tre punti del piano: $O_\Pi(4,0,0)$ con $t=s=0$, $A(2,1,0)$ con $t=1,s=0$, $B(7,0,1)$ con $t=0,s=1$. Controllo: $2+2-0=4$ ✓, $7+0-3=4$ ✓.
+      <br><span class="small muted">Refuso negli appunti (p. 61): il prof scrive «$4-2t+3t$», ma il secondo parametro è $s$: $4-2t+3s$.</span></p>
+    </div>
+
+    <h3 id="cart-param">Da cartesiana a parametrica: si risolve il sistema</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 5): la retta $x+y+z=3$, $x-y+2z=2$</div>
+      <p>Due piani non paralleli si tagliano in una retta. Con il MEG, $R_2\to R_2-R_1$:
+      $$\left[\begin{array}{ccc|c}1&1&1&3\\1&-1&2&2\end{array}\right]\longrightarrow\left[\begin{array}{ccc|c}1&1&1&3\\0&-2&1&-1\end{array}\right]$$
+      $z=t$ è libera: $y=\tfrac12+\tfrac t2$, $x=3-y-z=\tfrac52-\tfrac32t$. Quindi
+      $$\mathbf r=\underbrace{\left(\tfrac52,\tfrac12,0\right)}_{\mathbf r_0}+t\,\underbrace{\left(-\tfrac32,\tfrac12,1\right)}_{\mathbf a}.$$</p>
+      <p class="mb0"><strong>Controllo:</strong> $\mathbf r_0$ soddisfa $\tfrac52+\tfrac12+0=3$ e $\tfrac52-\tfrac12+0=2$ ✓; il vettore direzione risolve l'<em>omogeneo</em>: $-\tfrac32+\tfrac12+1=0$, $-\tfrac32-\tfrac12+2=0$ ✓. È la struttura delle controimmagini: $\mathbf r_0$ è la soluzione particolare, $t\mathbf a$ percorre $\ker A$.</p>
+    </div>
+
+    <h3 id="param-cart">Da parametrica a cartesiana: un nucleo assegnato</h3>
+    <div class="box prop">
+      <div class="box-title">Il metodo (Lezione 5)</div>
+      <p class="mb0">Data $\mathbf r=\mathbf r_0+\sum_j t_j\vv_j$, si cerca una matrice $A$ con $\ker A=\operatorname{span}\{\vv_j\}$: allora l'equazione cartesiana è $A\vx=A\mathbf r_0$. Le righe $\vu_i$ di $A$ devono essere <strong>ortogonali a tutti i $\vv_j$</strong>, cioè $\vu_i\cdot\vv_j=0$: si trovano risolvendo un sistema omogeneo, e ne servono tante quante le equazioni (due per una retta nello spazio, una per un piano).</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 5): la retta $x=-1+t$, $y=2t$, $z=1+3t$</div>
+      <p>Il vettore direzione è $\vv=(1,2,3)$. Le $\vu=(u_1,u_2,u_3)$ ortogonali risolvono $u_1+2u_2+3u_3=0$:
+      $$\vu=t(-2,1,0)+s(-3,0,1).$$
+      Si prendono come righe $(-2,1,0)$ e $(-3,0,1)$. Le costanti si leggono sul punto $\mathbf r_0=(-1,0,1)$: $-2(-1)+0=2$ e $-3(-1)+1=4$. Dunque
+      $$\begin{cases}-2x+y=2\\-3x+z=4\end{cases}$$</p>
+      <p class="mb0"><strong>Controllo</strong> sul punto generico: $-2(-1+t)+2t=2$ ✓ e $-3(-1+t)+(1+3t)=4$ ✓ per ogni $t$. Negli appunti le due costanti sono corrette a mano in arancione: i valori giusti sono questi.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="dipendenza">4 · Dipendenza lineare</h2>
+
+    <h3 id="davvero">Quando $\mathbf r_0+t\mathbf a$ è davvero una retta</h3>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 6)</div>
+      <ul class="mb0">
+        <li>$\mathbf r_0+t\mathbf a$ è una retta $\iff\mathbf a\ne\vzero$. Con $\mathbf a=\vzero$ si ottiene un punto solo.</li>
+        <li>$\mathbf r_0+t\mathbf u+s\mathbf v$ è un piano $\iff\mathbf u,\mathbf v$ non sono uno multiplo dell'altro. Altrimenti, per esempio con $\mathbf v=k\mathbf u$, si ha $\mathbf r_0+(t+ks)\mathbf u$: una retta (o un punto).</li>
+      </ul>
+    </div>
+    <p>Il concetto che misura quanti vettori «servono davvero» è la dipendenza lineare.</p>
+
+    <h3 id="dip-def">Definizione ed esempi <span class="badge star">risultato centrale</span></h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 6)</div>
+      <p class="mb0">I vettori $\vv_1,\dots,\vv_n\in V$ si dicono <strong>linearmente dipendenti</strong> se esistono $c_1,\dots,c_n\in\K$ <strong>non tutti nulli</strong> con
+      $$c_1\vv_1+\dots+c_n\vv_n=\vzero.$$
+      Altrimenti si dicono <strong>linearmente indipendenti</strong>: l'unica combinazione che dà $\vzero$ è quella con tutti i coefficienti nulli.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 6)</div>
+      <ul class="mb0">
+        <li>$(1,-2,3)$, $(3,1,2)$, $(7,0,7)$ sono dipendenti: $(1,-2,3)+2(3,1,2)-(7,0,7)=\vzero$.</li>
+        <li>$(1,2)$, $(0,0)$ sono dipendenti: $0\cdot(1,2)+1\cdot(0,0)=\vzero$. In generale <strong>un sistema che contiene $\vzero$ è dipendente</strong>, e lo è anche uno con un <strong>vettore ripetuto</strong>: $1\cdot\vv-1\cdot\vv=\vzero$.</li>
+      </ul>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Proposizione 1 (Lezione 6)</div>
+      <p class="mb0">Per $n\ge2$: $\vv_1,\dots,\vv_n$ sono dipendenti $\iff$ almeno uno di essi è combinazione lineare degli altri.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">$\Rightarrow$: c'è un coefficiente non nullo. Che cosa ci si fa?</div>
+            <div class="step-content">Sia $c_k\ne0$ in $\sum_j c_j\vv_j=\vzero$. Si porta $c_k\vv_k$ da solo e si <strong>divide per $c_k$</strong>, che si può fare proprio perché $c_k\ne0$:
+            $$\vv_k=-\sum_{j\ne k}\frac{c_j}{c_k}\,\vv_j.$$
+            Dunque $\vv_k$ è combinazione degli altri.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">$\Leftarrow$: da $\vv_k=\sum_{j\ne k}\alpha_j\vv_j$, quale combinazione nulla si scrive?</div>
+            <div class="step-content">$$\sum_{j\ne k}\alpha_j\vv_j-1\cdot\vv_k=\vzero.$$ Il coefficiente di $\vv_k$ è $-1\ne0$: i coefficienti non sono tutti nulli, quindi i vettori sono dipendenti. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box prop">
+      <div class="box-title">Corollario</div>
+      <p class="mb0">Due vettori sono dipendenti $\iff$ uno è multiplo dell'altro.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Altri esempi (Lezione 6)</div>
+      <ul class="mb0">
+        <li>$(6,2,3)$ e $\left(4,\tfrac43,2\right)$ sono dipendenti: il secondo è $\tfrac23$ del primo.</li>
+        <li>$(6,2,3)$ e $(3,1,2)$ sono indipendenti: $\tfrac36=\tfrac12=\tfrac12$ ma $\tfrac23\ne\tfrac12$, quindi nessuno è multiplo dell'altro.</li>
+        <li>$\sin x$ e $\cos x$ sono indipendenti: se fosse $\sin x=k\cos x$ per ogni $x$, con $x=\tfrac\pi2$ si avrebbe $1=0$; e $\cos x=k\sin x$ fallisce in $x=0$.</li>
+        <li>La base canonica $\mathbf e_1,\dots,\mathbf e_n$ di $\K^{n}$ è indipendente: $\sum c_j\mathbf e_j=(c_1,\dots,c_n)=\vzero$ obbliga $c_j=0$. Più in generale <strong>ogni base è indipendente</strong>.</li>
+      </ul>
+    </div>
+
+    <h3 id="condizioni-base">Condizioni di base <span class="badge star2">da conoscere</span></h3>
+    <div class="box warnb" id="base-richiamo">
+      <div class="box-title">⚠ Richiamo provvisorio: base e dimensione</div>
+      <p class="mb0">Il prof le definisce nella Lezione 4 (pp. 21–84), che sarà integrata nel prossimo aggiornamento. Fino ad allora vale la <strong>definizione standard</strong>: un sistema ordinato $B=(\vv_1,\dots,\vv_n)$ è una <strong>base</strong> di $V$ se ogni $\vv\in V$ si scrive <em>in modo unico</em> come $\vv=\sum_j x_j\vv_j$; gli scalari $x_j$ sono le <strong>coordinate</strong> di $\vv$ rispetto a $B$. Tutte le basi di $V$ hanno lo stesso numero di vettori, che si chiama <strong>dimensione</strong> $\dim V$. Per esempio $\dim\K^{n}=n$ e $\dim P_2=3$, con base $(1,x,x^{2})$.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 6), senza dimostrazione</div>
+      <p>Sia $V$ di dimensione finita e $B=(\vv_1,\dots,\vv_n)$ un sistema di vettori di $V$. Sono equivalenti:</p>
+      <ol class="mb0" type="a">
+        <li>$B$ è una base di $V$;</li>
+        <li>$B$ è indipendente e $n=\dim V$;</li>
+        <li>$B$ è indipendente e <strong>massimale</strong>: non esiste $\vu\in V$ tale che $\vv_1,\dots,\vv_n,\vu$ siano indipendenti.</li>
+      </ol>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 6)</div>
+      <ul class="mb0">
+        <li>$(1,2)$, $(2,1)$ è una base di $\R^{2}$: sono indipendenti (non multipli) e sono $2=\dim\R^{2}$. Per la (b) non serve controllare altro.</li>
+        <li>$(1,2,3)$, $(3,2,1)$ <strong>non</strong> è una base di $\R^{3}$: sono indipendenti, ma sono $2\ne3=\dim\R^{3}$.</li>
+      </ul>
+    </div>
+
+    <h3 id="metodo-rango">Il metodo del rango in $\K^{m}$ <span class="badge star">risultato centrale</span></h3>
+    <div class="box prop">
+      <div class="box-title">Metodo (Lezione 6)</div>
+      <p class="mb0">$\vv_1,\dots,\vv_n\in\K^{m}$ sono indipendenti $\iff r\big([\,\vv_1\,|\,\vv_2\,|\,\cdots\,|\,\vv_n\,]\big)=n$, cioè il rango della matrice che li ha come <strong>colonne</strong> è uguale al numero dei vettori.</p>
+    </div>
+    <details class="reveal"><summary>Perché funziona</summary><div class="reveal-body">
+      <p class="mb0">Con $A=[\vv_1|\cdots|\vv_n]$ si ha $c_1\vv_1+\dots+c_n\vv_n=A\mathbf c$. Quindi le combinazioni nulle sono le soluzioni di $A\mathbf c=\vzero$, e i vettori sono indipendenti esattamente quando l'omogeneo ha solo la soluzione banale, cioè quando non ci sono incognite libere: $n-r=0$.</p>
+    </div></details>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 6)</div>
+      <ul class="mb0">
+        <li>$(1,2,3)$, $(1,1,1)$, $(3,2,1)$: il rango è $2\lt3$, quindi sono <strong>dipendenti</strong>. Infatti $(3,2,1)=-(1,2,3)+4(1,1,1)$.</li>
+        <li>$(1,2,3)$, $(0,0,1)$, $(3,2,1)$: il rango è $3$, quindi sono indipendenti e, essendo $3=\dim\R^{3}$, formano una <strong>base</strong> di $\R^{3}$.</li>
+      </ul>
+    </div>
+
+    <h3 id="dip-lineari">Coordinate e mappe lineari</h3>
+    <div class="box teo">
+      <div class="box-title">Proposizione 2 (Lezione 6)</div>
+      <p class="mb0">Fissata una base di $V$, i vettori $\vv_1,\dots,\vv_k$ sono indipendenti $\iff$ lo sono i loro <strong>vettori delle coordinate</strong> in $\K^{n}$.</p>
+    </div>
+    <p>È ciò che permette di usare il metodo del rango anche fuori da $\K^{m}$: polinomi, matrici, funzioni.</p>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 6)</div>
+      <p class="mb0">$q_1=x^{2}-x+1$, $q_2=x^{2}+x-1$, $q_3=x^{2}+x+1$ in $P_2$. Le coordinate rispetto a $(1,x,x^{2})$ sono $(1,-1,1)$, $(-1,1,1)$, $(1,1,1)$, e
+      $$\det\begin{bmatrix}1&-1&1\\-1&1&1\\1&1&1\end{bmatrix}=-4\ne0,$$
+      quindi il rango è $3$ e $q_1,q_2,q_3$ sono <strong>indipendenti</strong> (anzi, una base di $P_2$).</p>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Proposizione 3 (Lezione 6) <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">Sia $L:V\to W$ lineare. Se $\vv_1,\dots,\vv_k$ sono dipendenti, allora anche $L(\vv_1),\dots,L(\vv_k)$ sono dipendenti. Equivalentemente: se le immagini sono <strong>indipendenti</strong>, lo sono anche i vettori di partenza.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa dà l'ipotesi?</div>
+            <div class="step-content">Coefficienti $c_1,\dots,c_k$ non tutti nulli con $\sum_j c_j\vv_j=\vzero$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Si applica $L$ a entrambi i membri: che cosa succede?</div>
+            <div class="step-content">Per la linearità e $L(\vzero)=\vzero$:
+            $$\sum_{j=1}^{k}c_j\,L(\vv_j)=L\Big(\sum_{j}c_j\vv_j\Big)=L(\vzero)=\vzero.$$
+            I coefficienti sono <strong>gli stessi</strong>, quindi ancora non tutti nulli: le immagini sono dipendenti. $\blacksquare$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E il viceversa?</div>
+            <div class="step-content">È falso in generale: la mappa nulla manda vettori indipendenti in vettori tutti nulli, quindi dipendenti. Si usa la forma <strong>contronominale</strong>: immagini indipendenti $\Rightarrow$ vettori indipendenti.</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 6): $\cos x$, $\cos2x$, $\sin x$ sono indipendenti</div>
+      <p class="mb0">Si usa $L(f)=\big(f(0),\,f'(0),\,f''(0)\big)$, che è lineare. Le immagini sono
+      $$L(\cos x)=(1,0,-1),\qquad L(\cos2x)=(1,0,-4),\qquad L(\sin x)=(0,1,0),$$
+      e la matrice che le ha per colonne ha rango $3$ (determinante $3\ne0$). Le immagini sono indipendenti, quindi per la Proposizione 3 lo sono anche le tre funzioni.</p>
+    </div>
+
+    <h3 id="osservazioni">Tre osservazioni (Lezione 6)</h3>
+    <div class="box prop">
+      <ol class="mb0">
+        <li><strong>Un sottosistema di un sistema indipendente è indipendente.</strong> Detto al contrario: se alcuni vettori sono già dipendenti, aggiungendone altri resta tutto dipendente, basta dare coefficiente $0$ ai nuovi. Per esempio, in $\R^{4}$, da $\vv_1-\vv_3+\vv_4=\vzero$ segue che $\vv_1,\vv_2,\vv_3,\vv_4$ sono dipendenti, con coefficienti $(1,0,-1,1)$. Allo stesso modo $(1,2,1)$, $(2,4,2)$, $(2,1,2)$ sono dipendenti, perché i primi due già lo sono.</li>
+        <li><strong>Troppi vettori.</strong> Se $n\lt m$, allora $m$ vettori di $\K^{n}$ sono <strong>sempre dipendenti</strong>: la matrice $n\times m$ ha rango al più $n\lt m$. Esempio: $(1,0)$, $(1,1)$, $(2,1)$ in $\R^{2}$, con $(1,0)+(1,1)-(2,1)=\vzero$.</li>
+        <li><strong>Un vettore solo.</strong> $\{\vv\}$ è indipendente $\iff\vv\ne\vzero$: se $c\vv=\vzero$ con $c\ne0$, moltiplicando per $c^{-1}$ si ottiene $\vv=\vzero$.</li>
+      </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="basi-span">5 · Basi di span e nucleo</h2>
+
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p class="mb0">$\vv_1,\dots,\vv_n$ si dicono un <strong>insieme di generatori</strong> di $V$ se $\operatorname{span}\{\vv_1,\dots,\vv_n\}=V$, cioè se ogni vettore di $V$ è loro combinazione lineare.</p>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Base di uno span (Lezione 6)</div>
+      <p>Sia $B=\{\vv_1,\dots,\vv_n\}$ e $B'\subseteq B$. Allora $B'$ è una base di $\operatorname{span}B$ se e solo se</p>
+      <ol class="mb0">
+        <li>$B'$ è indipendente, e</li>
+        <li>$B\subseteq\operatorname{span}B'$, cioè ogni $\vv_j$ è combinazione dei vettori di $B'$.</li>
+      </ol>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Come trovarla in $\K^{m}$</div>
+      <p class="mb0">Si riduce a scala $[\vv_1|\cdots|\vv_n]$: i vettori che stanno nelle <strong>colonne dei pivot</strong> formano una base di $\operatorname{span}\{\vv_1,\dots,\vv_n\}$. Attenzione: si prendono le colonne della matrice <strong>di partenza</strong>, non quelle ridotte. Le operazioni sulle righe non cambiano le relazioni lineari fra le colonne (sono le soluzioni di $A\mathbf c=\vzero$), ma cambiano le colonne stesse.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Due esempi (Lezione 6)</div>
+      <p><strong>Base di un nucleo.</strong> $A=\begin{bmatrix}1&2&3&4\\2&4&5&9\end{bmatrix}$. Con $R_2\to R_2-2R_1$ si ha $\begin{bmatrix}1&2&3&4\\0&0&-1&1\end{bmatrix}$: pivot nelle colonne $1$ e $3$, libere $x_2=t$ e $x_4=s$. Allora $x_3=s$ e $x_1=-2t-3s-4s=-2t-7s$:
+      $$\ker A=\operatorname{span}\{(-2,1,0,0),\,(-7,0,1,1)\}.$$
+      I due vettori sono indipendenti (guarda le componenti $2$ e $4$, quelle delle libere: $(1,0)$ e $(0,1)$), quindi sono una base e $\dim\ker A=2=4-r$.</p>
+      <p class="mb0"><strong>Base di uno span.</strong> $\operatorname{span}\{(1,2,1),(2,4,2),(1,1,1)\}$: $\vv_2=2\vv_1$, mentre $\vv_3$ non è multiplo di $\vv_1$. La riduzione di $[\vv_1|\vv_2|\vv_3]$ ha i pivot nelle colonne $1$ e $3$, quindi una base è $\{\vv_1,\vv_3\}$ e lo span è un piano di $\R^{3}$.</p>
+    </div>
+
+    <h3 id="esempio-p2">Un esempio completo: $L:P_2\to\R^{3}$</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 6)</div>
+      <p>$L(p):=\big(p(0),\ p'(1),\ p''(0)+2p(1)\big)$, lineare. Si calcolano le immagini della base $(1,x,x^{2})$:</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>$p$</th><th>$p(0)$</th><th>$p'(1)$</th><th>$p''(0)+2p(1)$</th><th>$L(p)$</th></tr></thead>
+          <tbody>
+            <tr><td>$1$</td><td>$1$</td><td>$0$</td><td>$0+2$</td><td>$(1,0,2)$</td></tr>
+            <tr><td>$x$</td><td>$0$</td><td>$1$</td><td>$0+2$</td><td>$(0,1,2)$</td></tr>
+            <tr><td>$x^{2}$</td><td>$0$</td><td>$2$</td><td>$2+2$</td><td>$(0,2,4)$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="mb0">
+        <li><strong>Immagine.</strong> $L(a+bx+cx^{2})=aL(1)+bL(x)+cL(x^{2})$, quindi $\Imag L=\operatorname{span}\{(1,0,2),(0,1,2),(0,2,4)\}$. Il terzo è il doppio del secondo: una base è $\{(1,0,2),(0,1,2)\}$ e $\dim\Imag L=2$.</li>
+        <li><strong>Appartenenza.</strong> $(-1,1,0)=-1\cdot(1,0,2)+1\cdot(0,1,2)$ sta in $\Imag L$, con coordinate $(-1,1)$ rispetto a quella base. Invece $(1,1,1)\notin\Imag L$: dovrebbe essere $(a,b,2a+2b)$ con $a=b=1$, ma $2+2=4\ne1$.</li>
+        <li><strong>Nucleo.</strong> $L(a+bx+cx^{2})=(a,\ b+2c,\ 2a+2b+4c)=\vzero$ dà $a=0$, $b=-2c$: $\ker L=\operatorname{span}\{x^{2}-2x\}$, di dimensione $1$. Controllo: $q=x^{2}-2x$ ha $q(0)=0$, $q'(1)=0$, $q''(0)+2q(1)=2-2=0$ ✓.</li>
+        <li><strong>Conclusione.</strong> $\ker L\ne\{\vzero\}$, quindi $L$ <strong>non è iniettiva</strong>; $\Imag L\ne\R^{3}$, quindi <strong>non è suriettiva</strong>. E $2+1=3=\dim P_2$: è il teorema di <a href="#nullita">rango + nullità</a>.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rango">6 · Rango</h2>
+
+    <h3 id="righe-colonne">Rango per righe e per colonne</h3>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 6)</div>
+      <p class="mb0">Per $A\in\M_{\K}(m,n)$: $\operatorname{Col}(A)\subseteq\K^{m}$ è lo span delle colonne, $\operatorname{Row}(A)\subseteq\K^{n}$ lo span delle righe. Il <strong>rango per colonne</strong> è $\dim\operatorname{Col}(A)$, il <strong>rango per righe</strong> è $\dim\operatorname{Row}(A)$.
+      <br><span class="small muted">Refuso negli appunti (p. 66): il prof scrive «rango per righe è $\dim\operatorname{Col}$»; va letto «rango per <em>colonne</em>».</span></p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 6)</div>
+      <p class="mb0">$A=\begin{bmatrix}1&3&5\\2&4&6\end{bmatrix}$. Le due righe non sono proporzionali: rango per righe $2$. Le colonne $(1,2)$, $(3,4)$ sono indipendenti e stanno in $\R^{2}$, quindi lo generano: rango per colonne $2$. Coincidono, e coincidono con il numero di pivot.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 6), senza dimostrazione <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">$r(A)$ (numero di pivot) $=$ rango per colonne $=$ rango per righe.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Immagine di $L_A$ e rango di una mappa</div>
+      <p>Poiché $A\vx=x_1\mathbf a_1+\dots+x_n\mathbf a_n$ (con $\mathbf a_j$ le colonne), l'immagine di $L_A$ è proprio lo span delle colonne:
+      $$\Imag L_A=\operatorname{Col}(A),\qquad \dim\Imag L_A=r(A).$$</p>
+      <p class="mb0">Per una mappa lineare qualunque si definisce $r(L):=\dim\Imag L$. Esempio: $L(x,y,z)=(x+y,\ x+y+z,\ x+y-z)$ ha matrice $\begin{bmatrix}1&1&0\\1&1&1\\1&1&-1\end{bmatrix}$, con le prime due colonne uguali e la terza non multipla della prima: $r(L)=2$.</p>
+    </div>
+
+    <h3 id="nullita">Rango + nullità <span class="badge star">risultato centrale</span></h3>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 6)</div>
+      <p class="mb0">Sia $L:V\to W$ lineare, con $V$ di dimensione finita. Allora
+      $$r(L)+\dim\ker L=\dim V.$$
+      $\dim\ker L$ si chiama <strong>nullità</strong> di $L$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti (caso $L=L_A$)</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Con $A\in\M_{\K}(m,n)$ e $r=r(A)$: quanto vale il primo addendo?</div>
+            <div class="step-content">$r(L_A)=\dim\Imag L_A=\dim\operatorname{Col}(A)=r(A)$, per il Teorema 1.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E il nucleo? Che cosa dice la riduzione a scala di $A\vx=\vzero$?</div>
+            <div class="step-content">Ci sono $n-r$ incognite libere, e la sostituzione all'indietro dà $\ker A=\operatorname{span}\{\vv_1,\dots,\vv_{n-r}\}$, dove $\vv_k$ si ottiene ponendo $1$ alla $k$-esima libera e $0$ alle altre.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché quei $n-r$ vettori sono una base, e non solo generatori?</div>
+            <div class="step-content">Perché sono indipendenti: guardando solo le componenti delle incognite libere, $\vv_k$ ha $1$ nella sua e $0$ nelle altre. Una combinazione nulla $\sum c_k\vv_k=\vzero$ ha in quelle componenti proprio $c_1,\dots,c_{n-r}$, che devono quindi essere nulli. Dunque $\dim\ker A=n-r(A)$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Conclusione</div>
+            <div class="step-content">$$r(L_A)+\dim\ker L_A=r(A)+\big(n-r(A)\big)=n=\dim\K^{n}.\qquad\blacksquare$$
+            Per una $L$ qualunque si passa alle coordinate: scelte le basi, $L$ si rappresenta con una matrice $A$, e nucleo e immagine corrispondono a $\ker A$ e $\operatorname{Col}(A)$ (Lezione 4, matrice rappresentativa).</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Due esempi (Lezione 6)</div>
+      <p><strong>1.</strong> $A=\begin{bmatrix}1&1&1&1\\1&2&2&2\\1&2&3&3\end{bmatrix}$. Con $R_2-R_1$, $R_3-R_1$ e poi $R_3-R_2$ si arriva a tre pivot: $r=3$, e quindi $\dim\ker A=4-3=1$. Infatti $\ker A=\operatorname{span}\{(0,0,-1,1)\}$.</p>
+      <p class="mb0"><strong>2.</strong> $L(p)=\displaystyle\int_0^1p(x)\dd x$ su $P_2$: $L(a+bx+cx^{2})=a+\tfrac b2+\tfrac c3$. L'immagine è tutto $\R$, quindi $r(L)=1$ e $\dim\ker L=3-1=2$:
+      $$\ker L=\operatorname{span}\left\{-\tfrac12+x,\ -\tfrac13+x^{2}\right\}.$$
+      Controllo: $\int_0^1\left(x-\tfrac12\right)\dd x=\tfrac12-\tfrac12=0$ e $\int_0^1\left(x^{2}-\tfrac13\right)\dd x=\tfrac13-\tfrac13=0$ ✓.</p>
+    </div>
+
+    <h3 id="punti-piano">Punti e piani col rango</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 6): il piano $\Pi$: $x=-1+t$, $y=2t+s$, $z=1-s$</div>
+      <p><strong>Appartenenza.</strong> $P_1(1,2,3)$: da $x$ si ha $t=2$, da $z$ si ha $s=-2$, e $y=4-2=2$ ✓, quindi $P_1\in\Pi$. $P_2(3,2,1)$: $t=4$, $s=0$, ma allora $y=8\ne2$, quindi $P_2\notin\Pi$.</p>
+      <p><strong>Lo stesso col rango.</strong> $P\in\Pi$ se e solo se il sistema $A\binom ts=\overrightarrow{OP}-\mathbf r_0$ è compatibile, con
+      $$A=\begin{bmatrix}1&0\\2&1\\0&-1\end{bmatrix},\qquad \vb_1=P_1-\mathbf r_0=(2,2,2),\qquad \vb_2=P_2-\mathbf r_0=(4,2,0).$$
+      $r(A)=2$; $r[A|\vb_1]=2$, compatibile; $r[A|\vb_2]=3$, incompatibile. È Rouché-Capelli.</p>
+      <p><strong>Equazione cartesiana:</strong> $-2x+y+z=3$, in due modi.</p>
+      <ul>
+        <li><em>Metodo 1:</em> il vettore dei coefficienti deve essere ortogonale ai due vettori direzione $(1,2,0)$ e $(0,1,-1)$, cioè stare in $\ker(A^{T})=\operatorname{span}\{(-2,1,1)\}$. La costante si legge su $\mathbf r_0=(-1,0,1)$: $2+0+1=3$.</li>
+        <li><em>Metodo 2:</em> si eliminano i parametri. $t=x+1$, $s=1-z$, quindi $y=2(x+1)+(1-z)$, cioè $z+y-2x-3=0$.</li>
+      </ul>
+      <p class="mb0">Controllo: $P_1$ dà $-2+2+3=3$ ✓, $P_2$ dà $-6+2+1=-3\ne3$ ✓.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 6): l'immagine di $\operatorname{span}\{\cos x\}$</div>
+      <p class="mb0">Con $L(f)=\big(f(0),f'(0),f''(0)\big)$ si ha $L(\lambda\cos x)=\lambda(1,0,-1)$: l'immagine è la retta per l'origine con direzione $(1,0,-1)$. Le sue equazioni cartesiane sono $y=0$ e $z+x=0$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 5</h2>
+    <div class="box trap">
+      <ul class="mb0">
+        <li><strong>Chiamare lineare $f(x)=ax+b$ con $b\ne0$.</strong> Non manda $0$ in $0$: è affine. Il test $L(\vzero)=\vzero$ si fa per primo.</li>
+        <li><strong>Scrivere $L_B\circ L_A=L_{AB}$.</strong> Si applica prima $A$: la matrice è $BA$.</li>
+        <li><strong>Dimostrare l'iniettività confrontando coppie</strong> invece di calcolare $\ker L$.</li>
+        <li><strong>Dire «indipendenti» perché nessuno è multiplo di un altro.</strong> Con tre o più vettori non basta: $(1,2,3)$, $(1,1,1)$, $(3,2,1)$ sono a due a due non proporzionali, eppure sono dipendenti.</li>
+        <li><strong>Prendere le colonne della matrice ridotta</strong> come base dello span. Vanno prese le colonne della matrice di partenza, nelle posizioni dei pivot.</li>
+        <li><strong>Usare il viceversa della Proposizione 3.</strong> Vettori indipendenti possono avere immagini dipendenti (la mappa nulla).</li>
+        <li><strong>Confondere rango e dimensione del nucleo</strong> in rango + nullità: la somma è la dimensione del <em>dominio</em>, non del codominio.</li>
+        <li><strong>Sbagliare le costanti dell'equazione cartesiana.</strong> Dopo aver trovato i coefficienti, la costante si calcola su un punto e si controlla su un secondo punto.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="../teoremi.html">Teoremi e dimostrazioni →</a>
+      <a class="btn" href="4-complessi.html">← Sezione 4</a>
+      <a class="btn" href="../esercizi.html?sez=5">Esercizi della Sezione 5</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 5 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261013"></script>
+<script src="../data/topics.js?v=20261013"></script>
+<script src="../data/quiz.js?v=20261013"></script>
+<script src="../../assets/js/plot.js?v=20261013"></script>
+<script src="../../assets/js/app.js?v=20261013"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.renderChecklist('#checklistBox', 5, 'geometria');
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 5; }), { statKey: 'geo5' });
+
+  /* ---------- l'ellisse come circonferenza nel riferimento (O', A', B') ---------- */
+  (function () {
+    var t = 0.8;
+    var O = { x: 1.5, y: 1.5 }, E1 = { x: 1.5, y: 1.5 }, E2 = { x: -1, y: 1 };
+    function punto(s) { return { x: O.x + Math.cos(s) * E1.x + Math.sin(s) * E2.x, y: O.y + Math.cos(s) * E1.y + Math.sin(s) * E2.y }; }
+    var out = document.getElementById('eOut');
+    var p = new Plot('ePlot', { xmin: -0.8, xmax: 4.2, ymin: -0.4, ymax: 3.9, height: 340, equal: true });
+
+    p.draw(function (g) {
+      var c = g.ctx;
+      c.save(); c.strokeStyle = g.col('accent'); c.lineWidth = 2.6; c.beginPath();
+      for (var k = 0; k <= 240; k++) {
+        var q = punto(2 * Math.PI * k / 240);
+        if (k === 0) c.moveTo(g.X(q.x), g.Y(q.y)); else c.lineTo(g.X(q.x), g.Y(q.y));
+      }
+      c.stroke(); c.restore();
+
+      var P = punto(t);
+      var H = { x: O.x + Math.cos(t) * E1.x, y: O.y + Math.cos(t) * E1.y };
+      g.seg(O.x, O.y, H.x, H.y, { color: 'danger', width: 2, dash: [5, 4], alpha: .8 });
+      g.seg(H.x, H.y, P.x, P.y, { color: 'purple', width: 2, dash: [5, 4], alpha: .8 });
+      g.arrow(O.x, O.y, O.x + E1.x, O.y + E1.y, { color: 'danger', width: 2.6 });
+      g.arrow(O.x, O.y, O.x + E2.x, O.y + E2.y, { color: 'purple', width: 2.6 });
+      g.text(O.x + E1.x, O.y + E1.y, " A'", { color: 'danger', size: 13, bold: true, dy: -8, halo: true });
+      g.text(O.x + E2.x, O.y + E2.y, " B'", { color: 'purple', size: 13, bold: true, dy: -8, halo: true });
+      g.dot(O.x, O.y, { color: 'muted', r: 4, ring: true });
+      g.text(O.x, O.y, " O'", { color: 'muted', size: 13, bold: true, dy: 16, halo: true });
+      g.dot(P.x, P.y, { color: 'ok', r: 6, ring: true });
+      g.text(P.x, P.y, ' P', { color: 'ok', size: 14, bold: true, dy: -9, halo: true });
+    });
+
+    function refresh() {
+      var P = punto(t), x = P.x, y = P.y;
+      var val = 13 * x * x - 10 * x * y + 13 * y * y - 24 * x - 24 * y;
+      out.innerHTML =
+        'coordinate nuove: (x′, y′) = (cos t, sin t) = (' + Math.cos(t).toFixed(3) + ', ' + Math.sin(t).toFixed(3) + ')<br>' +
+        'coordinate vecchie: (x, y) = (' + x.toFixed(3) + ', ' + y.toFixed(3) + ')<br>' +
+        '13x² − 10xy + 13y² − 24x − 24y = <b>' + (Math.abs(val) < 5e-10 ? '0' : val.toExponential(1)) + '</b>' +
+        '<br><span style="color:var(--ok)">Nel riferimento nuovo P percorre la circonferenza unitaria: x′ volte O′A′ (rosso) più y′ volte O′B′ (viola).</span>';
+    }
+    plotSlider('eT', function (v) { t = v; p.redraw(); refresh(); });
+  })();
+});
+</script>
+</body>
+</html>

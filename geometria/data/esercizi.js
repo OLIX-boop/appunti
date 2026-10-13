@@ -370,6 +370,77 @@ I due valori <strong>non coincidono</strong> ($\tfrac73\ne5$), quindi non esiste
 $$\boxed{\vec w\ \text{non è parallelo a}\ \vec u}$$
 <em>Controllo rapido:</em> per vettori del piano, $\vec u$ e $\vec w$ sono paralleli se e solo se $$\det\begin{bmatrix}3&7\\-1&-5\end{bmatrix}=3(-5)-7(-1)=-15+7=-8\ne0,$$ e infatti non lo sono. Se il determinante fosse nullo sarebbero paralleli. $\blacksquare$` },
 
+{ id: 'G3.5', sez: 3, tema: 'Applicazioni', d: 1,
+  t: r`(Esercizio della Lezione 3, p. 53.) Fissato un vettore $\vv$, sia $\tau_{\vv}(\vx):=\vx+\vv$ la traslazione. È iniettiva? È suriettiva? Se è invertibile, chi è l'inversa?`,
+  hints: [ r`Iniettiva: parti da $\tau_{\vv}(\vx_1)=\tau_{\vv}(\vx_2)$ e cerca di arrivare a $\vx_1=\vx_2$.`,
+           r`Suriettiva: dato un $\vy$ qualunque, quale $\vx$ va in $\vy$?`,
+           r`Prova a comporre $\tau_{\vv}$ con $\tau_{-\vv}$, nei due ordini.` ],
+  sol: r`<strong>Iniettiva.</strong> Se $\tau_{\vv}(\vx_1)=\tau_{\vv}(\vx_2)$, cioè $\vx_1+\vv=\vx_2+\vv$, sommando $-\vv$ a entrambi i membri si ottiene $\vx_1=\vx_2$. ✓<br><br>
+<strong>Suriettiva.</strong> Dato $\vy$, il vettore $\vx:=\vy-\vv$ verifica $\tau_{\vv}(\vx)=\vy-\vv+\vv=\vy$. ✓<br><br>
+<strong>Inversa.</strong> È biunivoca, e l'inversa è la traslazione opposta:
+$$\tau_{-\vv}\big(\tau_{\vv}(\vx)\big)=\vx+\vv-\vv=\vx,\qquad \tau_{\vv}\big(\tau_{-\vv}(\vx)\big)=\vx-\vv+\vv=\vx.$$
+$$\boxed{\tau_{\vv}\ \text{è biunivoca e}\ (\tau_{\vv})^{-1}=\tau_{-\vv}}$$
+<strong>Attenzione:</strong> per $\vv\ne\vzero$ la traslazione <em>non</em> è un'applicazione lineare, perché $\tau_{\vv}(\vzero)=\vv\ne\vzero$. Biunivoca sì, lineare no. $\blacksquare$` },
+
+{ id: 'G3.6', sez: 3, tema: 'Sottospazi', d: 2,
+  t: r`Stabilire quali dei seguenti sottoinsiemi di $\R^{3}$ sono sottospazi:
+<br>(a) $W_1=\{(x,y,0):x,y\in\R\}$; &nbsp;(b) $W_2=\{x+2y-3z=0\}$; &nbsp;(c) $W_3=\{x+2y-3z=4\}$;
+<br>(d) $W_4=\{x^{2}+y^{2}+z^{2}=1\}$; &nbsp;(e) $W_5=\{(x,y,z):xy=0\}$.`,
+  hints: [ r`Primo filtro: $\vzero$ sta nell'insieme? Se no, hai già finito.`,
+           r`Se $\vzero$ c'è, verifica le due chiusure con vettori <strong>generici</strong>, non con esempi.`,
+           r`Per (e): $W_5$ è l'unione di due piani. Prova a sommare un vettore del primo e uno del secondo.` ],
+  sol: r`<strong>(a)</strong> Sì. $(x_1,y_1,0)+(x_2,y_2,0)=(x_1+x_2,y_1+y_2,0)$ e $\lambda(x,y,0)=(\lambda x,\lambda y,0)$: la terza componente resta $0$.<br><br>
+<strong>(b)</strong> Sì. Se $x_i+2y_i-3z_i=0$ per $i=1,2$, allora
+$$(x_1+x_2)+2(y_1+y_2)-3(z_1+z_2)=0+0=0,\qquad \lambda x_1+2\lambda y_1-3\lambda z_1=\lambda\cdot0=0.$$
+<strong>(c)</strong> No: $(0,0,0)$ dà $0=4$, falso. $\vzero\notin W_3$. È il piano di (b) traslato.<br><br>
+<strong>(d)</strong> No: $\vzero\notin W_4$; e comunque se $\vu\in W_4$ allora $2\vu$ ha norma $2$ e non sta in $W_4$ (Lezione 3).<br><br>
+<strong>(e)</strong> No, anche se $\vzero\in W_5$ ed è chiuso per multipli ($(\lambda x)(\lambda y)=\lambda^{2}xy=0$). Non è chiuso per la somma:
+$$(1,0,0)+(0,1,0)=(1,1,0),\qquad 1\cdot1=1\ne0.$$
+$$\boxed{\text{sottospazi: } W_1,\ W_2}$$
+<strong>Morale:</strong> $\vzero\in W$ è necessario ma non sufficiente, come mostra (e). E i piani sono sottospazi solo se passano per l'origine. $\blacksquare$` },
+
+{ id: 'G3.7', sez: 3, tema: 'Combinazioni lineari e span', d: 2,
+  t: r`Siano $\vv_1=(1,0,1)$ e $\vv_2=(0,1,1)$. (a) Scrivere $(1,2,3)$ come combinazione lineare di $\vv_1,\vv_2$. (b) Stabilire se $(1,1,1)\in\operatorname{span}\{\vv_1,\vv_2\}$. (c) Trovare un'equazione cartesiana di $\operatorname{span}\{\vv_1,\vv_2\}$.`,
+  hints: [ r`$\alpha\vv_1+\beta\vv_2=(\alpha,\ \beta,\ \alpha+\beta)$: scrivi il sistema componente per componente.`,
+           r`Le prime due componenti fissano subito $\alpha$ e $\beta$; la terza fa da controllo.`,
+           r`Per (c): un vettore generico dello span è $(\alpha,\beta,\alpha+\beta)$. Che relazione c'è fra le tre componenti?` ],
+  sol: r`Un elemento generico dello span è $\alpha\vv_1+\beta\vv_2=(\alpha,\ \beta,\ \alpha+\beta)$.<br><br>
+<strong>(a)</strong> $(\alpha,\beta,\alpha+\beta)=(1,2,3)$ dà $\alpha=1$, $\beta=2$ e $\alpha+\beta=3$ ✓:
+$$(1,2,3)=\vv_1+2\vv_2.$$
+<strong>(b)</strong> $(\alpha,\beta,\alpha+\beta)=(1,1,1)$ dà $\alpha=\beta=1$, ma allora la terza componente è $2\ne1$. Il sistema è incompatibile:
+$$(1,1,1)\notin\operatorname{span}\{\vv_1,\vv_2\}.$$
+<strong>(c)</strong> La terza componente è la somma delle prime due:
+$$\boxed{\operatorname{span}\{\vv_1,\vv_2\}=\{(x,y,z):\ x+y-z=0\}}$$
+un piano per l'origine. <strong>Controllo:</strong> $\vv_1$ dà $1+0-1=0$ ✓, $\vv_2$ dà $0+1-1=0$ ✓, $(1,2,3)$ dà $0$ ✓, $(1,1,1)$ dà $1\ne0$ ✓, coerente con (a) e (b). $\blacksquare$` },
+
+{ id: 'G3.8', sez: 3, tema: 'Combinazioni lineari e span', d: 2,
+  t: r`(Lezione 3.) Nello spazio delle funzioni $\R\to\R$, dimostrare che $x^{3}$ <strong>non</strong> è combinazione lineare di $x^{2}$, $x^{4}$, $\cos x$.`,
+  hints: [ r`Che cosa hanno in comune $x^{2}$, $x^{4}$ e $\cos x$ rispetto al cambio $x\mapsto-x$?`,
+           r`Una combinazione lineare di funzioni pari è pari. E $x^{3}$?`,
+           r`In alternativa, supponi $x^{3}=\alpha x^{2}+\beta x^{4}+\gamma\cos x$ per ogni $x$ e valuta in $x=0$, $x=1$, $x=-1$.` ],
+  sol: r`<strong>Metodo 1 (parità, quello della lezione).</strong> $x^{2}$, $x^{4}$, $\cos x$ sono pari, quindi lo è ogni loro combinazione $g(x)=\alpha x^{2}+\beta x^{4}+\gamma\cos x$: $g(-x)=g(x)$. Se fosse $x^{3}=g(x)$ per ogni $x$, allora
+$$-x^{3}=(-x)^{3}=g(-x)=g(x)=x^{3}\qquad\forall x,$$
+cioè $x^{3}=0$ per ogni $x$: falso per $x=1$.<br><br>
+<strong>Metodo 2 (valutando in alcuni punti).</strong> Supponiamo $x^{3}=\alpha x^{2}+\beta x^{4}+\gamma\cos x$ per ogni $x$.
+<br>In $x=0$: $0=\gamma$. Resta $x^{3}=\alpha x^{2}+\beta x^{4}$.
+<br>In $x=1$: $1=\alpha+\beta$. In $x=-1$: $-1=\alpha+\beta$.
+<br>Le ultime due danno $1=-1$: assurdo.
+$$\boxed{x^{3}\notin\operatorname{span}\{x^{2},x^{4},\cos x\}}$$
+<strong>Attenzione:</strong> un'uguaglianza fra funzioni vale per <em>ogni</em> $x$. Per dimostrare che una combinazione non esiste basta trovare pochi punti che portano a un assurdo; per dimostrare che esiste servirebbe invece un'identità. $\blacksquare$` },
+
+{ id: 'G3.9', sez: 3, tema: 'Sottospazi', d: 2,
+  t: r`Siano $A\in\M_{\K}(m,n)$ e $\vb\in\K^{m}$, e sia $S=\{\vx\in\K^{n}: A\vx=\vb\}$. Dimostrare che $S$ è un sottospazio di $\K^{n}$ se e solo se $\vb=\vzero$.`,
+  hints: [ r`Un verso è il test del vettore nullo: $\vzero\in S$?`,
+           r`Per l'altro verso usa le proprietà del prodotto: $A(\vx+\vy)=A\vx+A\vy$, $A(\lambda\vx)=\lambda A\vx$.`,
+           r`Non dimenticare che $S$ deve essere non vuoto.` ],
+  sol: r`<strong>($\Rightarrow$)</strong> Se $S$ è un sottospazio, contiene $\vzero$. Allora $A\vzero=\vb$, ma $A\vzero=\vzero$: quindi $\vb=\vzero$.<br><br>
+<strong>($\Leftarrow$)</strong> Sia $\vb=\vzero$.
+<br>• $S\ne\emptyset$: $A\vzero=\vzero$, quindi $\vzero\in S$.
+<br>• Somma: se $A\vx=A\vy=\vzero$, allora $A(\vx+\vy)=A\vx+A\vy=\vzero$.
+<br>• Multipli: $A(\lambda\vx)=\lambda A\vx=\lambda\vzero=\vzero$.
+$$\boxed{S\ \text{sottospazio}\iff\vb=\vzero}$$
+<strong>Controllo con la Lezione 3:</strong> per Rouché-Capelli le soluzioni dell'omogeneo sono $\{\vzero\}$ oppure $\operatorname{span}\{\vv_1,\dots,\vv_{n-r}\}$, entrambi sottospazi. Con $\vb\ne\vzero$ il sistema può anche essere compatibile con infinite soluzioni, ma l'insieme è $\vx_0+$ (sottospazio): un sottospazio <em>traslato</em>, che non passa per $\vzero$. $\blacksquare$` },
+
 /* ============ SEZIONE 4: numeri complessi ============ */
 { id: 'G4.1', sez: 4, tema: 'Numeri complessi', d: 2,
   t: r`Risolvere in $\C$ il sistema $$\begin{cases}(1+i)z+w=2\\ z+(1-i)w=0\end{cases}$$`,
@@ -401,7 +472,183 @@ $$\boxed{\det A=0\ \Longrightarrow\ A\ \text{non è invertibile}}$$
 <strong>Conseguenza.</strong> Il sistema omogeneo $A\vx=\vzero$ ha soluzioni non banali: da $iz+w=0$ si ricava $w=-iz$, quindi
 $$\vx=t\begin{bmatrix}1\\-i\end{bmatrix},\qquad t\in\C$$
 $n-r=2-1=1$ parametro, come previsto. $\blacksquare$<br><br>
-<em>Trappola:</em> su $\C$ una matrice a entrate tutte non nulle può benissimo avere determinante nullo. Non fidarti dell'aspetto «pieno» della matrice.` }
+<em>Trappola:</em> su $\C$ una matrice a entrate tutte non nulle può benissimo avere determinante nullo. Non fidarti dell'aspetto «pieno» della matrice.` },
+
+/* ======= SEZIONE 5: applicazioni lineari, basi, dimensione, rango ======= */
+{ id: 'G5.1', sez: 5, tema: 'Applicazioni lineari', d: 1,
+  t: r`Stabilire quali applicazioni sono lineari:
+<br>(a) $f:\R\to\R$, $f(x)=3x$; &nbsp;(b) $g:\R\to\R$, $g(x)=3x+1$;
+<br>(c) $L:\R^{2}\to\R^{2}$, $L(x,y)=(x+y,\ 2x)$; &nbsp;(d) $M:\R^{2}\to\R^{2}$, $M(x,y)=(xy,\ x)$;
+<br>(e) $D:P_2\to P_2$, $D(p)=p'$.`,
+  hints: [ r`Primo test: l'applicazione manda $\vzero$ in $\vzero$?`,
+           r`Se una mappa si scrive come $A\vx$ per una matrice $A$, è lineare.`,
+           r`Per (d) confronta $M(2\vu)$ con $2M(\vu)$ su un vettore qualsiasi, per esempio $\vu=(1,1)$.` ],
+  sol: r`<strong>(a)</strong> Lineare: $3(x+y)=3x+3y$ e $3(\lambda x)=\lambda(3x)$.<br><br>
+<strong>(b)</strong> Non lineare: $g(0)=1\ne0$. È affine (Lezione 4, Es. 1 con $b=1\ne0$).<br><br>
+<strong>(c)</strong> Lineare: $L(x,y)=\begin{bmatrix}1&1\\2&0\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}$, quindi $L=L_A$.<br><br>
+<strong>(d)</strong> Non lineare, anche se $M(0,0)=(0,0)$: con $\vu=(1,1)$
+$$M(2\vu)=M(2,2)=(4,\,2),\qquad 2M(\vu)=2(1,1)=(2,\,2).$$
+Il prodotto $xy$ è di secondo grado e rompe l'omogeneità.<br><br>
+<strong>(e)</strong> Lineare: $(p+q)'=p'+q'$ e $(\lambda p)'=\lambda p'$ (Lezione 4, Es. 2), e la derivata di un polinomio di grado $\le2$ ha grado $\le1\le2$.
+$$\boxed{\text{lineari: (a), (c), (e)}}$$
+<strong>Morale:</strong> $L(\vzero)=\vzero$ esclude subito (b), ma non basta a promuovere (d). $\blacksquare$` },
+
+{ id: 'G5.2', sez: 5, tema: 'Nucleo e immagine', d: 2,
+  t: r`(Lezione 6.) Sia $L:\R^{3}\to\R^{3}$, $L(x,y,z)=(x+y,\ x+y+z,\ x+y-z)$. Trovare la matrice $A$ con $L=L_A$, una base di $\ker L$ e una di $\Imag L$, un'equazione cartesiana di $\Imag L$. $L$ è iniettiva? Suriettiva?`,
+  hints: [ r`Le colonne di $A$ sono $L(1,0,0)$, $L(0,1,0)$, $L(0,0,1)$.`,
+           r`$\Imag L=\operatorname{Col}(A)$: togli le colonne che sono combinazione delle altre.`,
+           r`Per il nucleo risolvi $A\vx=\vzero$. Il conto finale deve rispettare rango + nullità.` ],
+  sol: r`<strong>Matrice.</strong> $$A=\begin{bmatrix}1&1&0\\1&1&1\\1&1&-1\end{bmatrix}$$
+<strong>Nucleo.</strong> Da $x+y=0$ e $x+y+z=0$ segue $z=0$ e $y=-x$ (la terza equazione è allora automatica):
+$$\ker L=\operatorname{span}\{(1,-1,0)\},\qquad\dim\ker L=1.$$
+<strong>Immagine.</strong> Le colonne sono $(1,1,1)$, $(1,1,1)$, $(0,1,-1)$: la seconda ripete la prima, la terza non è multipla della prima. Base:
+$$\Imag L=\operatorname{span}\{(1,1,1),\,(0,1,-1)\},\qquad r(L)=2.$$
+<strong>Equazione cartesiana di $\Imag L$.</strong> Un vettore generico è $a(1,1,1)+b(0,1,-1)=(a,\ a+b,\ a-b)$; vale $Y+Z=2a=2X$, cioè
+$$\boxed{\Imag L:\ -2X+Y+Z=0}$$
+Controllo: $(1,1,1)$ dà $-2+1+1=0$ ✓, $(0,1,-1)$ dà $0$ ✓.<br><br>
+<strong>Conclusioni.</strong> $\ker L\ne\{\vzero\}$: <strong>non iniettiva</strong>. $\Imag L$ è un piano, non tutto $\R^{3}$ (per esempio $(1,0,0)$ dà $-2\ne0$): <strong>non suriettiva</strong>.<br><br>
+<strong>Controllo finale:</strong> $r(L)+\dim\ker L=2+1=3=\dim\R^{3}$ ✓. $\blacksquare$` },
+
+{ id: 'G5.3', sez: 5, tema: 'Dipendenza lineare', d: 2,
+  t: r`(Lezione 6.) Mostrare che $\vv_1=(1,2,3)$, $\vv_2=(1,1,1)$, $\vv_3=(3,2,1)$ sono linearmente dipendenti e trovare una relazione esplicita $c_1\vv_1+c_2\vv_2+c_3\vv_3=\vzero$. Verificare poi che sono a due a due indipendenti.`,
+  hints: [ r`Metti i vettori come <strong>colonne</strong> di una matrice e riducila a scala: il rango dice se sono dipendenti.`,
+           r`Le combinazioni nulle sono le soluzioni di $A\mathbf c=\vzero$: la stessa riduzione dà anche i coefficienti.`,
+           r`Due vettori sono dipendenti solo se proporzionali.` ],
+  sol: r`<strong>Riduzione.</strong>
+$$\begin{bmatrix}1&1&3\\2&1&2\\3&1&1\end{bmatrix}\xrightarrow[R_3-3R_1]{R_2-2R_1}\begin{bmatrix}1&1&3\\0&-1&-4\\0&-2&-8\end{bmatrix}\xrightarrow{R_3-2R_2}\begin{bmatrix}1&1&3\\0&-1&-4\\0&0&0\end{bmatrix}$$
+Rango $2\lt3$: i tre vettori sono <strong>dipendenti</strong>.<br><br>
+<strong>Relazione.</strong> $c_3=t$ libera; $-c_2-4c_3=0$ dà $c_2=-4t$; $c_1+c_2+3c_3=0$ dà $c_1=4t-3t=t$. Con $t=1$:
+$$\boxed{\vv_1-4\vv_2+\vv_3=\vzero}$$
+<strong>Controllo:</strong> $(1-4+3,\ 2-4+2,\ 3-4+1)=(0,0,0)$ ✓. Equivalentemente $\vv_3=-\vv_1+4\vv_2$.<br><br>
+<strong>A due a due.</strong> $(1,2,3)$ e $(1,1,1)$: $\tfrac11\ne\tfrac21$. $(1,2,3)$ e $(3,2,1)$: $\tfrac31\ne\tfrac22$. $(1,1,1)$ e $(3,2,1)$: $\tfrac31\ne\tfrac21$. Nessuna coppia è proporzionale.<br><br>
+<strong>Morale:</strong> con tre o più vettori «nessuno è multiplo di un altro» <em>non</em> implica l'indipendenza. Serve il rango. $\blacksquare$` },
+
+{ id: 'G5.4', sez: 5, tema: 'Dipendenza lineare', d: 2,
+  t: r`(Lezione 6.) In $P_2$ siano $q_1=x^{2}-x+1$, $q_2=x^{2}+x-1$, $q_3=x^{2}+x+1$. (a) Mostrare che sono indipendenti. (b) Dedurre che sono una base di $P_2$. (c) Scrivere $1$ e $x^{2}$ come loro combinazioni lineari.`,
+  hints: [ r`Passa alle coordinate rispetto a $(1,x,x^{2})$: $q_1\mapsto(1,-1,1)$, e così via.`,
+           r`Per (b) usa il teorema delle condizioni di base: quanto vale $\dim P_2$?`,
+           r`Per (c) prova a sottrarre e a sommare $q_2$ e $q_3$, e poi $q_1$ e $q_2$.` ],
+  sol: r`<strong>(a)</strong> Coordinate rispetto a $(1,x,x^{2})$: $q_1\mapsto(1,-1,1)$, $q_2\mapsto(-1,1,1)$, $q_3\mapsto(1,1,1)$. Per la Proposizione 2 basta studiare questi vettori:
+$$\det\begin{bmatrix}1&-1&1\\-1&1&1\\1&1&1\end{bmatrix}=1(1-1)+1(-1-1)+1(-1-1)=-4\ne0.$$
+Rango $3$: $q_1,q_2,q_3$ sono <strong>indipendenti</strong>.<br><br>
+<strong>(b)</strong> Sono $3$ vettori indipendenti e $\dim P_2=3$: per la condizione (b) del Teorema 2 sono una <strong>base</strong>.<br><br>
+<strong>(c)</strong> $q_3-q_2=(x^{2}+x+1)-(x^{2}+x-1)=2$, quindi
+$$1=-\tfrac12q_2+\tfrac12q_3.$$
+$q_1+q_2=2x^{2}$, quindi
+$$x^{2}=\tfrac12q_1+\tfrac12q_2.$$
+<strong>Controllo:</strong> $\tfrac12(x^{2}-x+1)+\tfrac12(x^{2}+x-1)=x^{2}$ ✓. Le coordinate di $x^{2}$ rispetto alla base $(q_1,q_2,q_3)$ sono quindi $\left(\tfrac12,\tfrac12,0\right)$. $\blacksquare$` },
+
+{ id: 'G5.5', sez: 5, tema: 'Dipendenza lineare', d: 3,
+  t: r`(Lezione 6.) Dimostrare che $\cos x$, $\cos2x$, $\sin x$ sono linearmente indipendenti, in due modi: (a) con l'applicazione lineare $L(f)=\big(f(0),f'(0),f''(0)\big)$; (b) direttamente dalla definizione, valutando in alcuni punti.`,
+  hints: [ r`(a) Calcola $L$ sulle tre funzioni e usa la Proposizione 3 nella forma contronominale.`,
+           r`$(\cos2x)''=-4\cos2x$.`,
+           r`(b) Se $c_1\cos x+c_2\cos2x+c_3\sin x=0$ per <em>ogni</em> $x$, vale in particolare per $x=0$, $\tfrac\pi2$, $\pi$.` ],
+  sol: r`<strong>(a)</strong> Derivate: $(\cos x)'=-\sin x$, $(\cos x)''=-\cos x$; $(\cos2x)'=-2\sin2x$, $(\cos2x)''=-4\cos2x$; $(\sin x)'=\cos x$, $(\sin x)''=-\sin x$. In $0$:
+$$L(\cos x)=(1,0,-1),\qquad L(\cos2x)=(1,0,-4),\qquad L(\sin x)=(0,1,0).$$
+$$\det\begin{bmatrix}1&1&0\\0&0&1\\-1&-4&0\end{bmatrix}=1\cdot(0+4)-1\cdot(0+1)=3\ne0.$$
+Le immagini sono indipendenti; per la Proposizione 3 (le lineari conservano la dipendenza), se le tre funzioni fossero dipendenti lo sarebbero anche le immagini. Quindi sono <strong>indipendenti</strong>.<br><br>
+<strong>(b)</strong> Sia $c_1\cos x+c_2\cos2x+c_3\sin x=0$ per ogni $x$.
+<br>$x=0$: $c_1+c_2=0$. &nbsp; $x=\tfrac\pi2$: $-c_2+c_3=0$. &nbsp; $x=\pi$: $-c_1+c_2=0$.
+<br>Dalla prima e dalla terza $c_1=c_2=0$, e dalla seconda $c_3=0$. ✓
+$$\boxed{\cos x,\ \cos2x,\ \sin x\ \text{indipendenti}}$$
+<strong>Attenzione:</strong> nel metodo (b) i punti servono a dimostrare l'<em>indipendenza</em> (si trova solo la soluzione banale). Se invece si trovasse una soluzione non banale su pochi punti, questo <em>non</em> proverebbe la dipendenza: l'identità deve valere per ogni $x$. $\blacksquare$` },
+
+{ id: 'G5.6', sez: 5, tema: 'Basi di nucleo e span', d: 2,
+  t: r`(Lezione 6.) Sia $A=\begin{bmatrix}1&2&3&4\\2&4&5&9\end{bmatrix}$. Trovare una base di $\ker A$ e una di $\operatorname{Col}(A)$, e verificare il teorema di rango + nullità.`,
+  hints: [ r`Riduci a scala: dove cadono i pivot? Quali incognite sono libere?`,
+           r`Per il nucleo: un vettore per ogni incognita libera, con $1$ in quella posizione e $0$ nelle altre libere.`,
+           r`Per $\operatorname{Col}(A)$ prendi le colonne della matrice <strong>di partenza</strong> nelle posizioni dei pivot.` ],
+  sol: r`<strong>Riduzione.</strong> $R_2\to R_2-2R_1$:
+$$\begin{bmatrix}1&2&3&4\\0&0&-1&1\end{bmatrix}$$
+Pivot nelle colonne $1$ e $3$; libere $x_2=t$, $x_4=s$.<br><br>
+<strong>Nucleo.</strong> $-x_3+x_4=0\Rightarrow x_3=s$; $x_1=-2t-3s-4s=-2t-7s$:
+$$\vx=t(-2,1,0,0)+s(-7,0,1,1),\qquad \ker A=\operatorname{span}\{(-2,1,0,0),\,(-7,0,1,1)\}.$$
+I due vettori sono indipendenti (nelle posizioni $2$ e $4$ hanno $(1,0)$ e $(0,1)$): base, $\dim\ker A=2$.<br>
+<strong>Controllo:</strong> $A(-2,1,0,0)^{T}=(-2+2,\ -4+4)=\vzero$ ✓; $A(-7,0,1,1)^{T}=(-7+3+4,\ -14+5+9)=\vzero$ ✓.<br><br>
+<strong>Colonne.</strong> Base di $\operatorname{Col}(A)$: le colonne $1$ e $3$ di $A$, cioè $(1,2)$ e $(3,5)$. Sono indipendenti ($\det=5-6=-1\ne0$), quindi $\operatorname{Col}(A)=\R^{2}$ e $r(A)=2$.<br><br>
+<strong>Rango + nullità:</strong> $r(A)+\dim\ker A=2+2=4=n$ ✓. $\blacksquare$` },
+
+{ id: 'G5.7', sez: 5, tema: 'Nucleo e immagine', d: 3,
+  t: r`(Lezione 6.) Sia $L:P_2\to\R^{3}$, $L(p)=\big(p(0),\ p'(1),\ p''(0)+2p(1)\big)$.
+<br>(a) Trovare una base di $\Imag L$. (b) Stabilire se $(-1,1,0)$ e $(1,1,1)$ stanno in $\Imag L$. (c) Trovare una base di $\ker L$. (d) $L$ è iniettiva? Suriettiva?`,
+  hints: [ r`Calcola $L(1)$, $L(x)$, $L(x^{2})$: l'immagine è il loro span.`,
+           r`Un elemento dell'immagine è $aL(1)+bL(x)+cL(x^{2})$. Che forma ha?`,
+           r`Per il nucleo scrivi $p=a+bx+cx^{2}$ e imponi $L(p)=\vzero$.` ],
+  sol: r`<strong>(a)</strong> $L(1)=(1,0,2)$, $L(x)=(0,1,2)$, $L(x^{2})=(0,2,4)$ (infatti $(x^{2})'=2x$ vale $2$ in $1$, e $(x^{2})''=2$). Poiché $L(x^{2})=2L(x)$:
+$$\Imag L=\operatorname{span}\{(1,0,2),\,(0,1,2)\},\qquad\dim\Imag L=2.$$
+<strong>(b)</strong> Gli elementi di $\Imag L$ sono $a(1,0,2)+b(0,1,2)=(a,\ b,\ 2a+2b)$.
+<br>$(-1,1,0)$: $a=-1$, $b=1$, $2a+2b=0$ ✓. Sta in $\Imag L$, con coordinate $(-1,1)$.
+<br>$(1,1,1)$: $a=b=1$, ma $2a+2b=4\ne1$. <strong>Non</strong> sta in $\Imag L$.<br><br>
+<strong>(c)</strong> $L(a+bx+cx^{2})=(a,\ b+2c,\ 2a+2b+4c)=\vzero$ dà $a=0$, $b=-2c$:
+$$\ker L=\operatorname{span}\{x^{2}-2x\},\qquad\dim\ker L=1.$$
+<strong>Controllo:</strong> $q=x^{2}-2x$: $q(0)=0$, $q'(1)=2-2=0$, $q''(0)+2q(1)=2+2(-1)=0$ ✓.<br><br>
+<strong>(d)</strong> $\ker L\ne\{\vzero\}$: non iniettiva. $\dim\Imag L=2\lt3$: non suriettiva.
+<br><strong>Controllo finale:</strong> $2+1=3=\dim P_2$ ✓ (rango + nullità). $\blacksquare$` },
+
+{ id: 'G5.8', sez: 5, tema: 'Rango e nullità', d: 2,
+  t: r`(Lezione 6.) (a) Sia $A=\begin{bmatrix}1&1&1&1\\1&2&2&2\\1&2&3&3\end{bmatrix}$: calcolare $r(A)$, $\dim\ker A$ e una base del nucleo. (b) Sia $L:P_2\to\R$, $L(p)=\int_0^1p(x)\dd x$: calcolare $r(L)$, $\dim\ker L$ e una base di $\ker L$.`,
+  hints: [ r`(a) Riduci a scala e conta i pivot; la nullità viene da $n-r$.`,
+           r`(b) Calcola $L(a+bx+cx^{2})$. Un'applicazione lineare non nulla verso $\R$ che rango può avere?`,
+           r`(b) Per il nucleo: $a=-\tfrac b2-\tfrac c3$, con $b$ e $c$ liberi.` ],
+  sol: r`<strong>(a)</strong>
+$$A\xrightarrow[R_3-R_1]{R_2-R_1}\begin{bmatrix}1&1&1&1\\0&1&1&1\\0&1&2&2\end{bmatrix}\xrightarrow{R_3-R_2}\begin{bmatrix}1&1&1&1\\0&1&1&1\\0&0&1&1\end{bmatrix}$$
+Tre pivot: $r(A)=3$, quindi $\dim\ker A=4-3=1$. Con $x_4=t$: $x_3=-t$, $x_2=-x_3-x_4=0$, $x_1=-x_2-x_3-x_4=0$:
+$$\ker A=\operatorname{span}\{(0,0,-1,1)\}.$$
+Controllo: le tre righe di $A$ applicate a $(0,0,-1,1)$ danno $-1+1=0$, $-2+2=0$, $-3+3=0$ ✓.<br><br>
+<strong>(b)</strong> $L(a+bx+cx^{2})=a+\tfrac b2+\tfrac c3$. $L(1)=1\ne0$, quindi $\Imag L=\R$ e $r(L)=1$; per rango + nullità $\dim\ker L=3-1=2$. Il nucleo è $a=-\tfrac b2-\tfrac c3$:
+$$p=b\left(x-\tfrac12\right)+c\left(x^{2}-\tfrac13\right),\qquad \ker L=\operatorname{span}\left\{-\tfrac12+x,\ -\tfrac13+x^{2}\right\}.$$
+<strong>Controllo:</strong> $\int_0^1\left(x-\tfrac12\right)\dd x=\tfrac12-\tfrac12=0$ ✓, $\int_0^1\left(x^{2}-\tfrac13\right)\dd x=\tfrac13-\tfrac13=0$ ✓; i due polinomi hanno gradi diversi, quindi sono indipendenti. $\blacksquare$` },
+
+{ id: 'G5.9', sez: 5, tema: 'Rette e piani', d: 2,
+  t: r`(Lezione 6.) Sia $\Pi$ il piano $x=-1+t$, $y=2t+s$, $z=1-s$. (a) Stabilire se $P_1(1,2,3)$ e $P_2(3,2,1)$ stanno in $\Pi$, anche con il criterio del rango. (b) Trovare un'equazione cartesiana di $\Pi$.`,
+  hints: [ r`(a) $x$ e $z$ determinano subito $t$ e $s$; la $y$ fa da controllo.`,
+           r`Col rango: $P\in\Pi$ se e solo se $A\binom ts=\overrightarrow{OP}-\mathbf r_0$ è compatibile, con le colonne di $A$ uguali ai vettori direzione.`,
+           r`(b) Elimina i parametri: $t=x+1$, $s=1-z$, e sostituisci nella $y$.` ],
+  sol: r`<strong>(a) Direttamente.</strong> $P_1$: $t=1+1=2$, $s=1-3=-2$, e $y=2\cdot2-2=2$ ✓: $P_1\in\Pi$. $P_2$: $t=4$, $s=0$, ma $y=8\ne2$: $P_2\notin\Pi$.<br><br>
+<strong>Col rango.</strong> $\mathbf r_0=(-1,0,1)$, $A=\begin{bmatrix}1&0\\2&1\\0&-1\end{bmatrix}$, $\vb_1=(2,2,2)$, $\vb_2=(4,2,0)$.
+$$[A|\vb_1]\to\left[\begin{array}{cc|c}1&0&2\\0&1&-2\\0&0&0\end{array}\right],\qquad [A|\vb_2]\to\left[\begin{array}{cc|c}1&0&4\\0&1&-6\\0&0&-6\end{array}\right]$$
+Nel primo caso $r=2=r(A)$: compatibile, con $t=2$, $s=-2$ ✓. Nel secondo compare uno 0-pivot, $r=3\ne2$: incompatibile.<br><br>
+<strong>(b)</strong> Da $t=x+1$ e $s=1-z$: $y=2(x+1)+(1-z)$, cioè
+$$\boxed{-2x+y+z=3}$$
+<strong>Controllo:</strong> $\mathbf r_0$: $2+0+1=3$ ✓; i vettori direzione $(1,2,0)$ e $(0,1,-1)$ danno $0$ ✓; $P_1$: $-2+2+3=3$ ✓; $P_2$: $-6+2+1=-3\ne3$ ✓. $\blacksquare$` },
+
+{ id: 'G5.10', sez: 5, tema: 'Rette e piani', d: 2,
+  t: r`(Lezione 5.) (a) Scrivere in forma parametrica la retta $r:\ x+y+z=3,\ x-y+2z=2$. (b) Scrivere in forma cartesiana la retta $s:\ x=-1+t,\ y=2t,\ z=1+3t$.`,
+  hints: [ r`(a) Riduci il sistema a scala: una incognita resta libera e fa da parametro.`,
+           r`(b) Cerca i vettori $\vu$ ortogonali al vettore direzione $(1,2,3)$: sono le righe della matrice dei coefficienti.`,
+           r`(b) Le costanti si calcolano sul punto $(-1,0,1)$ e si controllano su un secondo punto.` ],
+  sol: r`<strong>(a)</strong> $R_2\to R_2-R_1$: $\ x+y+z=3,\ -2y+z=-1$. Con $z=t$: $y=\tfrac12+\tfrac t2$, $x=3-y-z=\tfrac52-\tfrac32t$.
+$$r:\ (x,y,z)=\left(\tfrac52,\tfrac12,0\right)+t\left(-\tfrac32,\tfrac12,1\right)$$
+<strong>Controllo:</strong> il punto soddisfa $3=3$ e $\tfrac52-\tfrac12=2$ ✓; il vettore direzione annulla entrambi i primi membri ✓.<br><br>
+<strong>(b)</strong> Vettore direzione $(1,2,3)$. Le $\vu$ con $u_1+2u_2+3u_3=0$ sono $t(-2,1,0)+s(-3,0,1)$. Righe $(-2,1,0)$ e $(-3,0,1)$; costanti sul punto $(-1,0,1)$:
+$$s:\ \begin{cases}-2x+y=2\\-3x+z=4\end{cases}$$
+<strong>Controllo</strong> su un secondo punto, $t=1$: $(0,2,4)$ dà $0+2=2$ ✓ e $0+4=4$ ✓. Sono le costanti corrette in arancione dal prof negli appunti. $\blacksquare$` },
+
+{ id: 'G5.11', sez: 5, tema: 'Rette e piani', d: 1,
+  t: r`(Lezione 5.) Scrivere in forma parametrica il piano $x+2y-3z=4$ e trovarne tre punti non allineati.`,
+  hints: [ r`Ricava $x$ in funzione di $y$ e $z$, e chiama $y=t$, $z=s$.`,
+           r`Tre punti comodi: $(t,s)=(0,0)$, $(1,0)$, $(0,1)$.` ],
+  sol: r`$x=4-2y+3z$; con $y=t$, $z=s$:
+$$(x,y,z)=(4-2t+3s,\ t,\ s)=(4,0,0)+t(-2,1,0)+s(3,0,1).$$
+Punti: $O_\Pi(4,0,0)$, $A(2,1,0)$, $B(7,0,1)$. Non sono allineati perché $\overrightarrow{O_\Pi A}=(-2,1,0)$ e $\overrightarrow{O_\Pi B}=(3,0,1)$ non sono proporzionali.<br><br>
+<strong>Controllo:</strong> $4=4$ ✓, $2+2-0=4$ ✓, $7+0-3=4$ ✓.<br>
+<span class="small muted">Negli appunti (p. 61) compare «$4-2t+3t$»: è un refuso per $4-2t+3s$.</span> $\blacksquare$` },
+
+{ id: 'G5.12', sez: 5, tema: 'Cambio di riferimento', d: 3,
+  t: r`(Lezione 5.) Si consideri la curva $\Gamma:\ 13x^{2}-10xy+13y^{2}-24x-24y=0$ e il riferimento nuovo con origine $O'\left(\tfrac32,\tfrac32\right)$ e vettori di base $\overrightarrow{O'A'}$, $\overrightarrow{O'B'}$, con $A'(3,3)$, $B'\left(\tfrac12,\tfrac52\right)$.
+<br>(a) Scrivere $x,y$ in funzione delle coordinate nuove $x',y'$. (b) Trovare l'equazione di $\Gamma$ nel riferimento nuovo. (c) Dedurre una forma parametrica di $\Gamma$ e i suoi semiassi.`,
+  hints: [ r`Le colonne di $S$ sono $\overrightarrow{O'A'}$ e $\overrightarrow{O'B'}$ scritti nelle coordinate vecchie; poi $[x;y]=[x_{O'};y_{O'}]+S[x';y']$.`,
+           r`Per sostituire senza fatica usa $s=x+y$ e $d=x-y$: l'equazione diventa $4s^{2}+9d^{2}-24s=0$.`,
+           r`Nel riferimento nuovo è una circonferenza: parametrizzala con $\cos t$ e $\sin t$.` ],
+  sol: r`<strong>(a)</strong> $\overrightarrow{O'A'}=\left(\tfrac32,\tfrac32\right)$, $\overrightarrow{O'B'}=(-1,1)$, quindi
+$$S=\begin{bmatrix}\tfrac32&-1\\[2pt]\tfrac32&1\end{bmatrix},\qquad x=\tfrac32x'-y'+\tfrac32,\qquad y=\tfrac32x'+y'+\tfrac32.$$
+<strong>(b)</strong> Con $s=x+y$, $d=x-y$: $x^{2}+y^{2}=\tfrac{s^{2}+d^{2}}2$, $xy=\tfrac{s^{2}-d^{2}}4$, e l'equazione diventa $4s^{2}+9d^{2}-24s=0$. Dalle formule del cambio $s=3x'+3$ e $d=-2y'$:
+$$36(x'+1)^{2}+36y'^{2}-72(x'+1)=36\,(x'^{2}+y'^{2}-1)=0\quad\Longrightarrow\quad\boxed{x'^{2}+y'^{2}=1}$$
+<strong>(c)</strong> Con $x'=\cos t$, $y'=\sin t$:
+$$x=\tfrac32\cos t-\sin t+\tfrac32,\qquad y=\tfrac32\cos t+\sin t+\tfrac32,\qquad t\in[0,2\pi).$$
+È un'ellisse di centro $C=O'$; i semiassi sono $CP$ e $CQ$ con $P=A'(3,3)$ e $Q=B'\left(\tfrac12,\tfrac52\right)$, lunghi $\left|\left(\tfrac32,\tfrac32\right)\right|=\tfrac{3\sqrt2}2$ e $|(-1,1)|=\sqrt2$, e ortogonali fra loro ($\tfrac32\cdot(-1)+\tfrac32\cdot1=0$).<br><br>
+<strong>Controllo:</strong> $P(3,3)$: $117-90+117-72-72=0$ ✓. $Q\left(\tfrac12,\tfrac52\right)$: $\tfrac{13}4-\tfrac{50}4+\tfrac{325}4-12-60=\tfrac{288}4-72=0$ ✓.<br><br>
+<strong>Morale:</strong> $S=R_{\pi/4}\diag\!\left(\tfrac{3\sqrt2}2,\sqrt2\right)$: la circonferenza unitaria viene dilatata lungo gli assi, ruotata di $\tfrac\pi4$ e traslata in $O'$. $\blacksquare$` }
 
   ];
 

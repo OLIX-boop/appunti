@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261012">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261013">
 </head>
 <body>
 
@@ -28,6 +28,7 @@
       <a href="2-matrici.html">2 · Matrici</a>
       <a href="3-spazi.html">3 · Spazi vettoriali</a>
       <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
       <a href="../teoremi.html">Teoremi</a>
       <a href="../esercizi.html">Esercizi</a>
     </nav>
@@ -51,6 +52,11 @@
     <a href="#esempi" class="sub">Gli esempi che contano</a>
     <a href="#conseguenze" class="sub">Conseguenze degli assiomi</a>
     <a href="#applicazioni">4 · Applicazioni</a>
+    <a href="#sottospazi">5 · Sottospazi e span</a>
+    <a href="#sottospazio" class="sub">Sottospazi: definizione ed esempi</a>
+    <a href="#combinazioni" class="sub">Combinazioni lineari</a>
+    <a href="#span" class="sub">Lo span è un sottospazio</a>
+    <a href="#omogeneo" class="sub">Le soluzioni di $A\vx=\vzero$</a>
     <a href="#test">Mettiti alla prova</a>
     <a href="#errori">Errori tipici</a>
   </aside>
@@ -59,7 +65,7 @@
     <div class="page-head">
       <div class="eyebrow">Sezione 3 · Geometria e Algebra Lineare · Lezione 3</div>
       <h1>Vettori e spazi vettoriali</h1>
-      <p class="lead">Il salto di astrazione del corso: si parte dalle frecce disegnate sul foglio e si arriva a <strong>otto assiomi</strong> che valgono anche per matrici, polinomi e funzioni. Da qui in poi «vettore» smette di voler dire «freccia».</p>
+      <p class="lead">Il salto di astrazione del corso: si parte dalle frecce disegnate sul foglio e si arriva a <strong>otto assiomi</strong> che valgono anche per matrici, polinomi e funzioni. Da qui in poi «vettore» smette di voler dire «freccia». In fondo, i <strong>sottospazi</strong> e lo <strong>span</strong>: gli spazi vettoriali che vivono dentro altri spazi vettoriali.</p>
     </div>
 
     <div class="box tip">
@@ -67,11 +73,20 @@
       <p class="mb0">I vettori del piano e le matrici $m\times n$ si sommano e si moltiplicano per uno scalare <em>con le stesse regole</em>. Invece di dimostrare due volte gli stessi teoremi, si isola ciò che serve — le otto proprietà — e si dimostra una volta sola per <strong>qualunque</strong> insieme che le soddisfi. È lo stesso movimento che in Analisi porta da «$\R$ o $\C$» a $\K$.</p>
     </div>
 
+    <div class="box warnb">
+      <div class="box-title">★ Novità delle Lezioni 3–6</div>
+      <ul class="mb0">
+        <li><strong>Lezione 3, seconda parte:</strong> <a href="#sottospazio">sottospazi</a> con esempi e non-esempi, <a href="#combinazioni">combinazioni lineari</a>, <a href="#span">lo span è un sottospazio</a> (dimostrazione a passi coperti) e <a href="#omogeneo">perché le soluzioni di $A\vx=\vzero$ sono un sottospazio e quelle di $A\vx=\vb$ no</a>.</li>
+        <li><strong>Lezioni 4–6:</strong> applicazioni lineari, nucleo e immagine, rette e piani, dipendenza lineare, rango e il teorema di rango + nullità sono nella nuova <a href="5-lineari.html">Sezione 5</a>.</li>
+        <li><strong>Esercizi:</strong> <a href="../esercizi.html?sez=3">G3.5–G3.9</a> su sottospazi, span e traslazioni.</li>
+      </ul>
+    </div>
+
     <h2 id="checklist">Checklist del programma</h2>
     <div class="card" style="margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
         <strong>Avanzamento Sezione 3</strong>
-        <span class="muted small"><span data-progress-txt="g3">0/16</span> · <span data-progress-pct="g3">0%</span></span>
+        <span class="muted small"><span data-progress-txt="g3">0/21</span> · <span data-progress-pct="g3">0%</span></span>
       </div>
       <div class="pbar" data-progress-for="g3"><span style="width:0"></span></div>
     </div>
@@ -333,6 +348,135 @@
     </div>
 
     <!-- ============================================================ -->
+    <h2 id="sottospazi">5 · Sottospazi, combinazioni lineari, span</h2>
+
+    <div class="box tip">
+      <div class="box-title">↳ Perché servono</div>
+      <p class="mb0">Quasi tutti gli spazi vettoriali che incontrerai d'ora in poi stanno <strong>dentro</strong> uno spazio più grande: un piano per l'origine dentro $\R^{3}$, le soluzioni di un sistema omogeneo dentro $\K^{n}$, i polinomi dentro le funzioni. Invece di ricontrollare ogni volta gli otto assiomi, basta un test di <strong>due</strong> condizioni.</p>
+    </div>
+
+    <h3 id="sottospazio">Sottospazi: definizione ed esempi <span class="badge star">risultato centrale</span></h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 3)</div>
+      <p>Sia $V$ uno spazio vettoriale su $\K$. Un sottoinsieme $W\subseteq V$, $W\ne\emptyset$, si dice <strong>sottospazio</strong> (vettoriale) di $V$ se</p>
+      <ol class="mb0">
+        <li>$\vu+\vv\in W$ per ogni $\vu,\vv\in W$ &nbsp;<span class="muted">(chiuso rispetto alla somma)</span>;</li>
+        <li>$\lambda\vu\in W$ per ogni $\vu\in W$ e ogni $\lambda\in\K$ &nbsp;<span class="muted">(chiuso rispetto al prodotto per scalare)</span>.</li>
+      </ol>
+    </div>
+
+    <details class="reveal"><summary>Perché bastano due condizioni e non otto assiomi</summary><div class="reveal-body">
+      <p>Le operazioni di $W$ sono quelle di $V$. Gli assiomi che sono <strong>identità</strong> — (i), (ii), (v), (vi), (vii), (viii) — valgono per tutti i vettori di $V$, quindi in particolare per quelli di $W$. Restano i due che chiedono che qualcosa <em>esista</em>:</p>
+      <ul class="mb0">
+        <li>(iii) Preso un qualunque $\vu\in W$ (esiste, perché $W\ne\emptyset$), per la condizione 2 con $\lambda=0$ si ha $0\cdot\vu=\vzero\in W$. Qui serve la <a href="#conseguenze">conseguenza (c)</a> degli assiomi.</li>
+        <li>(iv) Per la condizione 2 con $\lambda=-1$, $(-1)\vu=-\vu\in W$: è la <a href="#conseguenze">conseguenza (d)</a>.</li>
+      </ul>
+    </div></details>
+
+    <div class="box prop">
+      <div class="box-title">Osservazione: ogni sottospazio contiene $\vzero$</div>
+      <p class="mb0">Lo si è appena visto: basta $\lambda=0$ nella condizione 2. Ne viene il <strong>test più rapido</strong> per escludere un candidato: se $\vzero\notin W$, allora $W$ non è un sottospazio. Attenzione, il viceversa è falso: un insieme può contenere $\vzero$ e non essere chiuso.</p>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Esempi e non-esempi (Lezione 3)</div>
+      <div class="tablewrap" style="margin:0">
+        <table>
+          <thead><tr><th>$W$</th><th>dentro</th><th>sottospazio?</th><th>perché</th></tr></thead>
+          <tbody>
+            <tr><td>$\{(x,y,0):x,y\in\R\}$</td><td>$\R^{3}$</td><td class="c">✓</td><td>somme e multipli hanno ancora terza componente $0$</td></tr>
+            <tr><td>sfera unitaria $x^{2}+y^{2}+z^{2}=1$</td><td>$\R^{3}$</td><td class="c">✗</td><td>se $\vu\in W$ allora $2\vu$ ha norma $2$, quindi $2\vu\notin W$</td></tr>
+            <tr><td>$\{\vzero\}$</td><td>$V$</td><td class="c">✓</td><td>il sottospazio <strong>banale</strong>: $\vzero+\vzero=\vzero$, $\lambda\vzero=\vzero$</td></tr>
+            <tr><td>funzioni derivabili</td><td>funzioni $\R\to\R$</td><td class="c">✓</td><td>somma e multipli di derivabili sono derivabili (Analisi)</td></tr>
+            <tr><td>piano $ax+by+cz=d$</td><td>$\R^{3}$</td><td class="c">✓ $\iff d=0$</td><td>se $d\ne0$ il piano non passa per l'origine; se $d=0$ è chiuso</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <details class="reveal"><summary>Il piano: i conti per $d=0$ e per $d\ne0$</summary><div class="reveal-body">
+      <p>Sia $W=\{(x,y,z):ax+by+cz=d\}$ con $(a,b,c)\ne(0,0,0)$.</p>
+      <p><strong>Se $d\ne0$:</strong> $(0,0,0)$ dà $0=d$, falso. Dunque $\vzero\notin W$ e $W$ non è un sottospazio.</p>
+      <p class="mb0"><strong>Se $d=0$:</strong> presi $(x_1,y_1,z_1)$ e $(x_2,y_2,z_2)$ in $W$,
+      $$a(x_1+x_2)+b(y_1+y_2)+c(z_1+z_2)=(ax_1+by_1+cz_1)+(ax_2+by_2+cz_2)=0+0=0,$$
+      $$a(\lambda x_1)+b(\lambda y_1)+c(\lambda z_1)=\lambda\cdot0=0.$$
+      Morale geometrica: i sottospazi di $\R^{3}$ diversi da $\{\vzero\}$ e da $\R^{3}$ sono le rette e i piani <strong>per l'origine</strong>.</p>
+    </div></details>
+
+    <h3 id="combinazioni">Combinazioni lineari</h3>
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p class="mb0">Dati $\vv_1,\dots,\vv_n\in V$, si dice che $\vw\in V$ è <strong>combinazione lineare</strong> di $\vv_1,\dots,\vv_n$ se esistono scalari $\alpha_1,\dots,\alpha_n\in\K$ tali che
+      $$\vw=\sum_{j=1}^{n}\alpha_j\vv_j=\alpha_1\vv_1+\dots+\alpha_n\vv_n.$$</p>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Due esempi (Lezione 3)</div>
+      <p><strong>1.</strong> Con $\vv_1=(1,0,1)$ e $\vv_2=(0,1,1)$:
+      $$(1,2,3)=\vv_1+2\vv_2=(1,0,1)+(0,2,2).$$
+      Per trovare i coefficienti si risolve il sistema $\alpha_1\vv_1+\alpha_2\vv_2=(1,2,3)$, cioè $\alpha_1=1$, $\alpha_2=2$, $\alpha_1+\alpha_2=3$: compatibile.</p>
+      <p class="mb0"><strong>2.</strong> Nello spazio delle funzioni $\R\to\R$, $x^{3}$ <strong>non</strong> è combinazione lineare di $x^{2}$, $x^{4}$, $\cos x$. Le tre funzioni sono <strong>pari</strong>, e una combinazione di funzioni pari è pari. Se fosse $x^{3}=g(x)$ con $g$ pari, allora $-x^{3}=(-x)^{3}=g(-x)=g(x)=x^{3}$ per ogni $x$, cioè $x^{3}=0$ per ogni $x$: falso già per $x=1$.</p>
+    </div>
+
+    <h3 id="span">Lo span è un sottospazio <span class="badge star">risultato centrale</span></h3>
+    <div class="box def">
+      <div class="box-title">Definizione</div>
+      <p class="mb0">Lo <strong>span</strong> (o <em>chiusura lineare</em>) di $\vv_1,\dots,\vv_n$ è l'insieme di tutte le loro combinazioni lineari:
+      $$\operatorname{span}\{\vv_1,\dots,\vv_n\}:=\Big\{\sum_{j=1}^{n}\alpha_j\vv_j\ :\ \alpha_1,\dots,\alpha_n\in\K\Big\}.$$</p>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Proposizione 1 (Lezione 3)</div>
+      <p class="mb0">Per ogni scelta di $\vv_1,\dots,\vv_n\in V$, l'insieme $\operatorname{span}\{\vv_1,\dots,\vv_n\}$ è un <strong>sottospazio</strong> di $V$.</p>
+    </div>
+
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa bisogna verificare?</div>
+            <div class="step-content">Le tre richieste della definizione: $W:=\operatorname{span}\{\vv_1,\dots,\vv_n\}$ non è vuoto, è chiuso rispetto alla somma, è chiuso rispetto al prodotto per scalare.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché non è vuoto?</div>
+            <div class="step-content">Perché contiene, per esempio, $\vv_1=1\vv_1+0\vv_2+\dots+0\vv_n$. Anche $\vzero=0\vv_1+\dots+0\vv_n$ è una combinazione lineare.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Somma: come si scrivono due elementi generici di $W$, e che cosa si ottiene sommandoli?</div>
+            <div class="step-content">Siano $\vu=\sum_j\alpha_j\vv_j$ e $\vw=\sum_j\beta_j\vv_j$. Riordinando (assiomi (i) e (ii)) e raccogliendo con la distributiva (vi):
+            $$\vu+\vw=\sum_{j=1}^{n}(\alpha_j+\beta_j)\vv_j.$$
+            È ancora una combinazione lineare dei $\vv_j$, con coefficienti $\alpha_j+\beta_j$: quindi $\vu+\vw\in W$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Multipli: che cosa diventa $\lambda\vu$?</div>
+            <div class="step-content">Con la distributiva (v) e l'associatività (vii):
+            $$\lambda\vu=\lambda\sum_{j}\alpha_j\vv_j=\sum_{j=1}^{n}(\lambda\alpha_j)\vv_j\in W.$$
+            Le due condizioni valgono, quindi $W$ è un sottospazio. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <h3 id="omogeneo">Le soluzioni di $A\vx=\vzero$ sono un sottospazio <span class="badge star2">da conoscere</span></h3>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 3)</div>
+      <p>Sia $A\in\M_{\K}(m,n)$ con $r=\rg A$. Per la <a href="2-matrici.html#struttura">struttura delle soluzioni</a> e Rouché-Capelli, l'insieme delle soluzioni del sistema omogeneo $A\vx=\vzero$ è</p>
+      <ul>
+        <li>$\{\vzero\}$ se $r=n$;</li>
+        <li>$\operatorname{span}\{\vv_1,\dots,\vv_{n-r}\}$ se $r\lt n$.</li>
+      </ul>
+      <p class="mb0">In entrambi i casi è un <strong>sottospazio</strong> di $\K^{n}$: il primo è quello banale, il secondo lo è per la Proposizione 1. Nella <a href="2-matrici.html#trecasi">tabella dei tre casi</a> l'omogeneo cade sempre nella seconda o nella terza riga, mai nella prima.</p>
+    </div>
+
+    <div class="box trap">
+      <div class="box-title">✗ Con $\vb\ne\vzero$ le soluzioni non formano un sottospazio</div>
+      <p class="mb0">Se $\vb\ne\vzero$, il vettore nullo non risolve $A\vx=\vb$, perché $A\vzero=\vzero\ne\vb$. Manca $\vzero$, quindi l'insieme delle soluzioni non è un sottospazio, anche quando è infinito. Geometricamente è un sottospazio <strong>traslato</strong> di una soluzione particolare $\vx_0$: una retta o un piano che <em>non</em> passa per l'origine.</p>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Esercizio della Lezione 3 (p. 53)</div>
+      <p class="mb0">Fissato un vettore $\vv$, la traslazione $\tau_{\vv}(\vx)=\vx+\vv$ è iniettiva? È suriettiva? Risposta: è <strong>biunivoca</strong>, con inversa $\tau_{-\vv}$, perché $\tau_{-\vv}(\tau_{\vv}(\vx))=\vx$ e $\tau_{\vv}(\tau_{-\vv}(\vx))=\vx$. Lo svolgimento completo è l'<a href="../esercizi.html?sez=3">esercizio G3.5</a>. Nota che $\tau_{\vv}$ con $\vv\ne\vzero$ non manda $\vzero$ in $\vzero$: non sarà un'applicazione <a href="5-lineari.html#lineari">lineare</a>.</p>
+    </div>
+
+    <!-- ============================================================ -->
     <h2 id="test">Mettiti alla prova</h2>
     <div id="quizBox"></div>
 
@@ -346,6 +490,10 @@
         <li><strong>Trattare $f^{-1}(B)$ come se richiedesse $f$ invertibile.</strong></li>
         <li><strong>Confondere «al massimo una» con «almeno una» controimmagine</strong>, cioè iniettiva con suriettiva.</li>
         <li><strong>Applicare «$AB$ invertibile ⟹ $A$, $B$ invertibili» a matrici non quadrate.</strong></li>
+        <li><strong>Dimenticare $W\ne\emptyset$, o non controllare $\vzero\in W$.</strong> È il test più rapido: un piano che non passa per l'origine non è un sottospazio.</li>
+        <li><strong>Credere che $\vzero\in W$ basti.</strong> È necessario, non sufficiente: servono le due chiusure.</li>
+        <li><strong>Dire che le soluzioni di $A\vx=\vb$ formano un sottospazio quando $\vb\ne\vzero$.</strong> Non contengono $\vzero$: sono un sottospazio traslato.</li>
+        <li><strong>Verificare la chiusura su un esempio numerico e non in generale.</strong> Due vettori particolari non dimostrano nulla: servono $\vu,\vv$ generici di $W$.</li>
       </ul>
     </div>
 
@@ -361,16 +509,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261012"></script>
-<script src="../data/topics.js?v=20261012"></script>
-<script src="../data/quiz.js?v=20261012"></script>
-<script src="../../assets/js/plot.js?v=20261012"></script>
-<script src="../../assets/js/app.js?v=20261012"></script>
+<script src="../../assets/js/materie.js?v=20261013"></script>
+<script src="../data/topics.js?v=20261013"></script>
+<script src="../data/quiz.js?v=20261013"></script>
+<script src="../../assets/js/plot.js?v=20261013"></script>
+<script src="../../assets/js/app.js?v=20261013"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 3, 'geometria');
   AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 3; }), { statKey: 'geo3' });
-
   /* ---------- somma di vettori: regola del triangolo ---------- */
   (function () {
     var A = { x: -2.6, y: -1.1 };

@@ -233,6 +233,21 @@ e in tal caso $(AB)^{-1}=B^{-1}A^{-1}$.`,
     ],
     note: r`Nota quali assiomi servono dove: (c) usa la distributiva sugli <em>scalari</em> (vi), mentre (e) usa quella sui <em>vettori</em> (v). Sono simmetriche ma distinte, e all'esame conviene citare il numero dell'assioma usato.`
   },
+  {
+    id: 'G-span', sez: 3, mark: '*', q: 'Lez. 3, Prop. 1',
+    titolo: 'Lo span è un sottospazio',
+    enunciato: r`Siano $\vv_1,\dots,\vv_n$ vettori di uno spazio vettoriale $V$ su $\K$. Allora
+$$\operatorname{span}\{\vv_1,\dots,\vv_n\}=\Big\{\sum_{j=1}^{n}\alpha_j\vv_j\ :\ \alpha_j\in\K\Big\}$$
+è un <strong>sottospazio</strong> di $V$: non è vuoto ed è chiuso rispetto alla somma e al prodotto per scalare.`,
+    idea: r`Sommando due combinazioni dei $\vv_j$, o moltiplicandone una per uno scalare, si ottiene ancora una combinazione dei $\vv_j$: basta raccogliere i coefficienti.`,
+    steps: [
+      { cue: r`Che cosa bisogna verificare?`, body: r`La definizione di sottospazio: $W:=\operatorname{span}\{\vv_1,\dots,\vv_n\}\ne\emptyset$, $\vu+\vw\in W$ e $\lambda\vu\in W$ per ogni $\vu,\vw\in W$ e $\lambda\in\K$.` },
+      { cue: r`Perché non è vuoto?`, body: r`Contiene $\vv_1=1\vv_1+0\vv_2+\dots+0\vv_n$, e anche $\vzero=0\vv_1+\dots+0\vv_n$.` },
+      { cue: r`Somma: che cosa si ottiene da $\vu=\sum\alpha_j\vv_j$ e $\vw=\sum\beta_j\vv_j$?`, body: r`Riordinando con (i) e (ii) e raccogliendo con la distributiva (vi): $$\vu+\vw=\sum_{j=1}^{n}(\alpha_j+\beta_j)\vv_j\in W.$$` },
+      { cue: r`Multipli`, body: r`Con (v) e (vii): $$\lambda\vu=\sum_{j=1}^{n}(\lambda\alpha_j)\vv_j\in W.$$ Le due chiusure valgono, quindi $W$ è un sottospazio. $\blacksquare$` }
+    ],
+    note: r`Conseguenza usata subito: le soluzioni di $A\vx=\vzero$ sono $\{\vzero\}$ oppure uno span, quindi un sottospazio di $\K^n$. Quelle di $A\vx=\vb$ con $\vb\ne\vzero$ <strong>non</strong> lo sono, perché non contengono $\vzero$.`
+  },
 
   /* ============ SEZIONE 4: numeri complessi ============ */
   {
@@ -246,6 +261,93 @@ e in tal caso $(AB)^{-1}=B^{-1}A^{-1}$.`,
       { cue: r`Perché conta in algebra lineare`, body: r`Perché il polinomio caratteristico di una matrice ha sempre $n$ radici in $\C$: su $\C$ ogni matrice quadrata ha autovalori, mentre su $\R$ può non averne (una rotazione del piano, per esempio). È il motivo per cui $\C$ compare in un corso di geometria.` }
     ],
     note: r`Collegamento diretto con Analisi 1: la stessa Appendice tratta forma trigonometrica, de Moivre e radici $n$-esime. Se li hai già studiati lì, qui non c'è nulla di nuovo — cambia solo l'uso che se ne fa.`
+  },
+
+  /* ======= SEZIONE 5: applicazioni lineari, basi, dimensione, rango ======= */
+  {
+    id: 'G-comp', sez: 5, mark: '**', q: 'Lez. 4, Teor. 1',
+    titolo: 'La composta di applicazioni lineari è lineare',
+    enunciato: r`Se $L:U\to V$ e $M:V\to W$ sono lineari, allora $M\circ L:U\to W$ è lineare. In particolare, per $A\in\M_{\K}(m,n)$ e $B\in\M_{\K}(p,m)$, $$L_B\circ L_A=L_{BA}.$$`,
+    idea: r`Si applica la linearità due volte: prima quella di $L$, poi quella di $M$.`,
+    steps: [
+      { cue: r`Omogeneità`, body: r`$$(M\circ L)(\lambda\vu)=M\big(L(\lambda\vu)\big)=M\big(\lambda L(\vu)\big)=\lambda M\big(L(\vu)\big)=\lambda(M\circ L)(\vu).$$` },
+      { cue: r`Additività`, body: r`$$(M\circ L)(\vu+\vv)=M\big(L(\vu)+L(\vv)\big)=M(L(\vu))+M(L(\vv)).$$ $\blacksquare$` },
+      { cue: r`Perché $L_B\circ L_A=L_{BA}$?`, body: r`Per l'associatività del prodotto: $B(A\vx)=(BA)\vx$ per ogni $\vx\in\K^n$. Comporre mappe lineari è moltiplicare le loro matrici, nell'ordine «da destra a sinistra».` }
+    ],
+    note: r`La matrice della composta è $BA$, non $AB$: si applica prima $A$. Con il prodotto non commutativo l'ordine sbagliato dà un'altra mappa, o un prodotto che non ha nemmeno senso per i tipi.`
+  },
+  {
+    id: 'G-kerim', sez: 5, mark: '*', q: 'Lez. 4, Prop. 1-2',
+    titolo: 'Nucleo e immagine sono sottospazi',
+    enunciato: r`Sia $L:V\to W$ lineare. Allora $\ker L=\{\vv\in V: L(\vv)=\vzero\}$ è un sottospazio di $V$ e $\Imag L=L(V)$ è un sottospazio di $W$.`,
+    idea: r`$L(\vzero)=\vzero$ dà la non vuotezza; la linearità porta somme e multipli dentro e fuori da $L$.`,
+    steps: [
+      { cue: r`Primo passo comune: perché $L(\vzero)=\vzero$?`, body: r`$L(\vzero)=L(0\cdot\vzero)=0\cdot L(\vzero)=\vzero$. Quindi $\vzero\in\ker L$ e $\vzero\in\Imag L$: nessuno dei due è vuoto.` },
+      { cue: r`Chiusura del nucleo`, body: r`Se $L(\vu)=L(\vv)=\vzero$: $L(\vu+\vv)=\vzero+\vzero=\vzero$ e $L(\lambda\vu)=\lambda\vzero=\vzero$.` },
+      { cue: r`Chiusura dell'immagine: come si scrive un elemento di $\Imag L$?`, body: r`Come $\vw=L(\vv)$. Allora $L(\vv_1)+L(\vv_2)=L(\vv_1+\vv_2)\in\Imag L$ e $\lambda L(\vv_1)=L(\lambda\vv_1)\in\Imag L$. $\blacksquare$` }
+    ],
+    note: r`Per $L_A$: $\ker A$ è l'insieme delle soluzioni di $A\vx=\vzero$, e $\Imag L_A$ è lo span delle colonne di $A$. Nell'immagine la linearità si usa «al contrario»: si riconosce una somma di immagini come immagine di una somma.`
+  },
+  {
+    id: 'G-controimm', sez: 5, mark: '*', q: 'Lez. 4, Teor. 2',
+    titolo: 'Struttura delle controimmagini',
+    enunciato: r`Sia $L:V\to W$ lineare e $\vw_0\in W$. Allora o $\vw_0\notin\Imag L$ (e $L^{-1}(\vw_0)=\emptyset$), oppure, fissato un qualunque $\vv_0$ con $L(\vv_0)=\vw_0$, $$L^{-1}(\vw_0)=\{\vv_0+\vu\ :\ \vu\in\ker L\}.$$`,
+    idea: r`Due controimmagini dello stesso vettore differiscono per un elemento del nucleo. È la struttura delle soluzioni di $A\vx=\vb$ in versione astratta.`,
+    steps: [
+      { cue: r`Che cosa c'è da dimostrare?`, body: r`Solo il secondo caso, che è un'uguaglianza fra insiemi: doppia inclusione.` },
+      { cue: r`$\supseteq$: $\vv_0+\vu$ va in $\vw_0$?`, body: r`$L(\vv_0+\vu)=L(\vv_0)+L(\vu)=\vw_0+\vzero=\vw_0$.` },
+      { cue: r`$\subseteq$: dato $\vv$ con $L(\vv)=\vw_0$, quale $\vu$ scegliere?`, body: r`$\vu:=\vv-\vv_0$. Allora $L(\vu)=L(\vv)-L(\vv_0)=\vw_0-\vw_0=\vzero$, quindi $\vu\in\ker L$ e $\vv=\vv_0+\vu$. $\blacksquare$` }
+    ],
+    note: r`Esempi del prof: per $L_A$ è la struttura delle soluzioni di $A\vx=\vb$ (Sezione 2); per la derivata il nucleo sono le costanti, e il teorema dice che le primitive di una funzione differiscono per una costante.`
+  },
+  {
+    id: 'G-iniettiva', sez: 5, mark: '*', q: 'Lez. 4, Corollario',
+    titolo: 'Iniettiva se e solo se il nucleo è banale',
+    enunciato: r`Un'applicazione lineare $L:V\to W$ è iniettiva se e solo se $\ker L=\{\vzero\}$.`,
+    idea: r`Per la struttura delle controimmagini, ogni $\vw_0\in\Imag L$ ha esattamente «tante controimmagini quanti elementi del nucleo».`,
+    steps: [
+      { cue: r`$\Rightarrow$: chi è già nel nucleo?`, body: r`$\vzero$, perché $L(\vzero)=\vzero$. Se $L$ è iniettiva, $\vzero$ ha al più una controimmagine, quindi $\ker L=\{\vzero\}$.` },
+      { cue: r`$\Leftarrow$: quale teorema si usa?`, body: r`La struttura delle controimmagini. Per ogni $\vw_0\in\Imag L$: $L^{-1}(\vw_0)=\{\vv_0+\vu:\vu\in\ker L\}=\{\vv_0\}$. Ogni vettore ha al più una controimmagine: $L$ è iniettiva. $\blacksquare$` },
+      { cue: r`Variante diretta, senza il teorema`, body: r`Se $L(\vv_1)=L(\vv_2)$, allora $L(\vv_1-\vv_2)=\vzero$, cioè $\vv_1-\vv_2\in\ker L=\{\vzero\}$, quindi $\vv_1=\vv_2$.` }
+    ],
+    note: r`Il guadagno pratico: per decidere l'iniettività non si confrontano coppie di vettori, si risolve <strong>un</strong> sistema omogeneo. Per $L_A$: iniettiva $\iff$ $A\vx=\vzero$ ha solo la soluzione banale $\iff r(A)=n$.`
+  },
+  {
+    id: 'G-dip', sez: 5, mark: '*', q: 'Lez. 6, Prop. 1',
+    titolo: 'Dipendenti se e solo se uno è combinazione degli altri',
+    enunciato: r`Siano $n\ge2$ e $\vv_1,\dots,\vv_n\in V$. Sono linearmente dipendenti se e solo se almeno uno di essi è combinazione lineare degli altri. In particolare, due vettori sono dipendenti se e solo se uno è multiplo dell'altro.`,
+    idea: r`Nella combinazione nulla si isola un vettore con coefficiente non nullo e si divide per quel coefficiente.`,
+    steps: [
+      { cue: r`$\Rightarrow$: da dove si parte?`, body: r`Da $c_1\vv_1+\dots+c_n\vv_n=\vzero$ con qualche $c_k\ne0$.` },
+      { cue: r`Che cosa permette $c_k\ne0$?`, body: r`Di dividere: $$\vv_k=-\sum_{j\ne k}\frac{c_j}{c_k}\vv_j,$$ quindi $\vv_k$ è combinazione degli altri.` },
+      { cue: r`$\Leftarrow$: quale combinazione nulla si scrive?`, body: r`Da $\vv_k=\sum_{j\ne k}\alpha_j\vv_j$ segue $\sum_{j\ne k}\alpha_j\vv_j-1\cdot\vv_k=\vzero$, con il coefficiente $-1\ne0$. Quindi sono dipendenti. $\blacksquare$` }
+    ],
+    note: r`L'enunciato dice «<strong>almeno uno</strong>», non «ognuno»: in $(1,0),(2,0),(0,1)$ il terzo vettore non è combinazione degli altri due, eppure i tre sono dipendenti. E con tre o più vettori non basta controllare che nessuno sia multiplo di un altro.`
+  },
+  {
+    id: 'G-dipL', sez: 5, mark: '**', q: 'Lez. 6, Prop. 3',
+    titolo: 'Le applicazioni lineari conservano la dipendenza',
+    enunciato: r`Sia $L:V\to W$ lineare. Se $\vv_1,\dots,\vv_k$ sono linearmente dipendenti, allora anche $L(\vv_1),\dots,L(\vv_k)$ lo sono. Equivalentemente: se $L(\vv_1),\dots,L(\vv_k)$ sono indipendenti, allora $\vv_1,\dots,\vv_k$ sono indipendenti.`,
+    idea: r`Si applica $L$ alla combinazione nulla: i coefficienti restano gli stessi.`,
+    steps: [
+      { cue: r`L'ipotesi`, body: r`Esistono $c_1,\dots,c_k$ non tutti nulli con $\sum_j c_j\vv_j=\vzero$.` },
+      { cue: r`Si applica $L$: che cosa si ottiene?`, body: r`$$\sum_j c_j L(\vv_j)=L\Big(\sum_j c_j\vv_j\Big)=L(\vzero)=\vzero,$$ con gli <strong>stessi</strong> coefficienti, non tutti nulli. $\blacksquare$` },
+      { cue: r`Come si usa in pratica?`, body: r`Nella forma contronominale. Per $\cos x,\cos2x,\sin x$ con $L(f)=(f(0),f'(0),f''(0))$ le immagini $(1,0,-1),(1,0,-4),(0,1,0)$ hanno rango $3$: sono indipendenti, quindi lo sono anche le tre funzioni.` }
+    ],
+    note: r`Il viceversa è falso: la mappa nulla manda vettori indipendenti in vettori nulli, quindi dipendenti. Si conclude l'indipendenza dei vettori di partenza, mai quella delle immagini.`
+  },
+  {
+    id: 'G-nullita', sez: 5, mark: '*', q: 'Lez. 6, Teor. 2',
+    titolo: 'Teorema di rango + nullità',
+    enunciato: r`Sia $L:V\to W$ lineare, con $V$ di dimensione finita. Allora $$r(L)+\dim\ker L=\dim V,$$ dove $r(L):=\dim\Imag L$. Per una matrice $A\in\M_{\K}(m,n)$: $\dim\ker A=n-r(A)$.`,
+    idea: r`Le $n$ incognite si dividono in $r$ pivotali, che misurano l'immagine, e $n-r$ libere, che misurano il nucleo.`,
+    steps: [
+      { cue: r`Il primo addendo, per $L=L_A$`, body: r`$\Imag L_A=\operatorname{Col}(A)$, perché $A\vx=x_1\mathbf a_1+\dots+x_n\mathbf a_n$. Per il teorema sul rango per colonne, $r(L_A)=\dim\operatorname{Col}(A)=r(A)$.` },
+      { cue: r`Il nucleo: che cosa dà la riduzione a scala?`, body: r`$n-r$ incognite libere e $\ker A=\operatorname{span}\{\vv_1,\dots,\vv_{n-r}\}$, con $\vv_k$ ottenuto ponendo $1$ alla $k$-esima libera e $0$ alle altre.` },
+      { cue: r`Perché sono una base?`, body: r`Nelle componenti delle incognite libere, $\sum_k c_k\vv_k$ vale proprio $(c_1,\dots,c_{n-r})$: se la combinazione è nulla, tutti i $c_k$ sono nulli. Quindi i $\vv_k$ sono indipendenti e $\dim\ker A=n-r(A)$.` },
+      { cue: r`Conclusione`, body: r`$r(L_A)+\dim\ker L_A=r(A)+n-r(A)=n=\dim\K^n$. $\blacksquare$ Per una $L$ qualunque si passa alla matrice rappresentativa rispetto a due basi (Lezione 4).` }
+    ],
+    note: r`La somma è la dimensione del <strong>dominio</strong>, non del codominio. Esempi del prof: $A$ di tipo $3\times4$ con $r=3$ ha $\dim\ker A=1$; $L(p)=\int_0^1p$ su $P_2$ ha $r=1$ e $\dim\ker L=2$, con $\ker L=\operatorname{span}\{-\frac12+x,\,-\frac13+x^2\}$.`
   }
   ];
 

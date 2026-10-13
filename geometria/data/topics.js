@@ -95,7 +95,12 @@
         { id: 'g3-13', t: r`Conseguenze degli assiomi: unicità dello zero, $0\cdot\vv=\vzero$, $(-1)\vv=-\vv$`, mark: '**', q: 'ALG §4.1' },
         { id: 'g3-14', t: r`Applicazioni $f:X\to Y$: dominio, codominio, immagine`, q: 'ALG p. 122' },
         { id: 'g3-15', t: r`Controimmagine $f^{-1}(B):=\{x\in X: f(x)\in B\}$`, q: 'ALG p. 122' },
-        { id: 'g3-16', t: r`Iniettiva, suriettiva, biunivoca (secondo il numero di controimmagini)`, mark: '*', q: 'ALG p. 122' }
+        { id: 'g3-16', t: r`Iniettiva, suriettiva, biunivoca (secondo il numero di controimmagini)`, mark: '*', q: 'ALG p. 122' },
+        { id: 'g3-17', t: r`Sottospazio: $W\ne\emptyset$ chiuso rispetto a somma e prodotto per scalare; contiene sempre $\vzero$`, mark: '*', q: 'Lez. 3' },
+        { id: 'g3-18', t: r`Esempi e non-esempi: piani per l'origine, sfera unitaria, $\{\vzero\}$, funzioni derivabili`, q: 'Lez. 3' },
+        { id: 'g3-19', t: r`Combinazione lineare $\sum_j\alpha_j\vv_j$`, q: 'Lez. 3' },
+        { id: 'g3-20', t: r`$\operatorname{span}\{\vv_1,\dots,\vv_n\}$ è un sottospazio`, mark: '*', q: 'Lez. 3' },
+        { id: 'g3-21', t: r`Le soluzioni di $A\vx=\vzero$ sono un sottospazio, quelle di $A\vx=\vb$ con $\vb\ne\vzero$ no`, mark: '**', q: 'Lez. 3' }
       ]
     },
     {
@@ -111,6 +116,33 @@
         { id: 'g4-05', t: r`Teorema fondamentale dell'algebra; $\C$ algebricamente chiuso`, q: 'App. I' },
         { id: 'g4-06', t: r`Sistemi a coefficienti complessi: il MEG funziona identico su $\C$`, q: 'Lez. 1' }
       ]
+    },
+    {
+      n: 5,
+      slug: 'sezioni/5-lineari.html',
+      titolo: 'Applicazioni lineari, basi, dimensione, rango',
+      sommario: r`Le mappe che rispettano somma e prodotto per scalare: nucleo, immagine, dipendenza lineare e il teorema di rango + nullità.`,
+      // Gli id restano stabili: le voci della Lezione 4 (pp. 21-84) e della
+      // Lezione 5 (pp. 1-28) si aggiungeranno con numeri nuovi, nella posizione giusta.
+      topics: [
+        { id: 'g5-01', t: r`Applicazione lineare: additività e omogeneità; $L(\vzero)=\vzero$`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-02', t: r`Esempi: $ax+b$ è lineare $\iff b=0$; la derivata; l'integrale su $C[0,1]$`, q: 'Lez. 4' },
+        { id: 'g5-03', t: r`$L_A(\vx)=A\vx$; la composta di lineari è lineare e $L_B\circ L_A=L_{BA}$`, mark: '**', q: 'Lez. 4' },
+        { id: 'g5-04', t: r`Nucleo e immagine; sono sottospazi`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-05', t: r`Struttura delle controimmagini; $L$ iniettiva $\iff\ker L=\{\vzero\}$`, mark: '*', q: 'Lez. 4' },
+        { id: 'g5-06', t: r`Cambio di origine: $[x;y]=[x_{O'};y_{O'}]+S\,[x';y']$`, q: 'Lez. 5' },
+        { id: 'g5-07', t: r`Rette in forma parametrica $\mathbf r=\mathbf r_0+t\mathbf a$; l'esempio dell'ellisse`, q: 'Lez. 5' },
+        { id: 'g5-08', t: r`Piani in forma parametrica $\mathbf r=\mathbf r_0+t\mathbf u+s\mathbf v$`, q: 'Lez. 5' },
+        { id: 'g5-09', t: r`Da cartesiana a parametrica e viceversa ($\ker A=\operatorname{span}\{\vv_j\}$)`, q: 'Lez. 5' },
+        { id: 'g5-10', t: r`Dipendenza lineare; dipendenti $\iff$ uno è combinazione degli altri`, mark: '*', q: 'Lez. 6' },
+        { id: 'g5-11', t: r`Teorema delle condizioni di base`, mark: '**', q: 'Lez. 6' },
+        { id: 'g5-12', t: r`Indipendenza in $\K^m$ col rango: $r([\vv_1|\dots|\vv_n])=n$`, mark: '*', q: 'Lez. 6' },
+        { id: 'g5-13', t: r`Indipendenza tramite le coordinate; le mappe lineari conservano la dipendenza`, mark: '**', q: 'Lez. 6' },
+        { id: 'g5-14', t: r`Insiemi di generatori; basi di span (colonne pivot) e di nucleo`, q: 'Lez. 6' },
+        { id: 'g5-15', t: r`Rango per righe e per colonne; $\operatorname{Im}L_A=\operatorname{Col}(A)$; rango di una mappa`, mark: '**', q: 'Lez. 6' },
+        { id: 'g5-16', t: r`Teorema di rango + nullità`, mark: '*', q: 'Lez. 6' },
+        { id: 'g5-17', t: r`Un punto sta in un piano? Equazione cartesiana di un piano col rango`, q: 'Lez. 6' }
+      ]
     }
   ];
 
@@ -118,7 +150,7 @@
   window.AM.registraMateria({
     key: 'geometria',
     nome: 'Geometria e Algebra Lineare',
-    sottotitolo: 'Sistemi lineari, matrici, invertibilità',
+    sottotitolo: 'Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari',
     base: 'geometria/',
     prefisso: 'g',
     qLabel: '',
