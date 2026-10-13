@@ -35,8 +35,11 @@ aggiungere una materia sono nel `README.md`.
   dal programma ufficiale (badge «dim. scritto · n° N» / «dim. orale»). Per Geometria non c'è un
   documento equivalente: le stelline sono **redazionali** («risultato centrale» / «da conoscere»)
   e non vanno mai presentate come richieste del docente.
-- Quando un argomento non è ancora negli appunti pubblicati (es. i sottospazi di Geometria), si
-  usa la definizione standard e lo si **dichiara** esplicitamente.
+- Quando un argomento non è ancora negli appunti pubblicati (es. il metodo dei minori di
+  Kronecker, che il tutor di Geometria usa nell'esercitazione del 7 ottobre), si usa la
+  definizione standard e lo si **dichiara** esplicitamente.
+- Anche le soluzioni dei **tutor** si verificano: se un passaggio è sbagliato si corregge e lo si
+  segnala in piccolo (`small muted`), come per i refusi del prof.
 
 ### Ordine degli argomenti
 
