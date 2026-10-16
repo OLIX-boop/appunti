@@ -3,6 +3,9 @@ Thumbs.db
 .DS_Store
 desktop.ini
 
+# trascrizioni dei PDF fatte con strumenti/trascrivi.py: cache locale, non si pubblica
+trascrizioni/
+
 # editor
 .vscode/
 .idea/

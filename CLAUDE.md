@@ -12,8 +12,17 @@ aggiungere una materia sono nel `README.md`.
 
 - La fonte sono i PDF in `<materia>/materiale/`: gli appunti dei docenti, identici a quelli presi
   a lezione, quindi gli appunti personali dello studente non servono. Molti sono **scritti a
-  mano** e `pdftotext` non li legge: si renderizzano le pagine con PyMuPDF (`pymupdf`) e si
-  leggono **tutte**, pagina per pagina.
+  mano** e `pdftotext` non li legge, e leggerli come immagini consuma troppi token. Si leggono
+  **tutti**, pagina per pagina, così:
+  1. prima si trascrivono con `python strumenti/trascrivi.py "<pdf>"` (API di Gemini, chiave in
+     `GEMINI_API_KEY`): il testo va in `trascrizioni/<materia>/` (esclusa da git), e se esiste
+     già non si rifà;
+  2. si lavora sul `.md`. Si guarda l'immagine (PyMuPDF, solo la pagina o il ritaglio che serve)
+     **soltanto** per i punti segnati `[?]` o `[!?`, per le figure, e per ogni matrice o conto che
+     non torna alla verifica con Node;
+  3. la trascrizione non è una fonte: i refusi si segnalano solo dopo averli visti sull'originale.
+  Se lo script non è utilizzabile (manca la chiave, quota finita) si torna alle immagini in
+  griglie 2×2 a risoluzione moderata.
 - Il sito usa **le convenzioni e la notazione del prof**, non quelle dei libri. Casi già
   stabiliti:
   - Analisi: Bernoulli con $h>-1$; argomento principale in $\left[-\frac\pi2,\frac32\pi\right)$
