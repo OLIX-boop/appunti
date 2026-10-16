@@ -24,7 +24,9 @@ from pathlib import Path
 
 import pymupdf
 
-MODELLO = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# gemini-2.5-flash è stato ritirato per i nuovi utenti (ottobre 2026). Se anche questo sparisce:
+# `python strumenti/trascrivi.py --modelli` elenca quelli disponibili, poi --modello o GEMINI_MODEL.
+MODELLO = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
 
 # Stringa raw: dentro ci sono comandi LaTeX come \begin, che altrimenti diventerebbero escape.
 PROMPT = r"""Sei un trascrittore. L'immagine è una pagina di appunti universitari di matematica
@@ -103,6 +105,9 @@ def trascrivi_pagina(client, types, immagine, modello):
             return (r.text or "").strip()
         except Exception as e:  # limite del piano gratuito o errore temporaneo del server
             msg = str(e)
+            if "404" in msg and "NOT_FOUND" in msg:
+                sys.exit(f"Il modello {modello} non è disponibile. Elenca quelli attivi con --modelli "
+                         "e scegline uno con --modello oppure con la variabile GEMINI_MODEL.")
             if tentativo < 5 and any(s in msg for s in ("429", "RESOURCE_EXHAUSTED", "503", "500", "UNAVAILABLE")):
                 print(f"   limite o errore temporaneo, riprovo fra {attesa} s", flush=True)
                 time.sleep(attesa)
@@ -113,7 +118,8 @@ def trascrivi_pagina(client, types, immagine, modello):
 
 def main():
     ap = argparse.ArgumentParser(description="Trascrive un PDF scritto a mano con Gemini.")
-    ap.add_argument("pdf")
+    ap.add_argument("pdf", nargs="?")
+    ap.add_argument("--modelli", action="store_true", help="elenca i modelli Flash disponibili ed esce")
     ap.add_argument("--pagine", help="es. 1-20 oppure 3,5,8-10 (numerazione del PDF)")
     ap.add_argument("--modello", default=MODELLO)
     ap.add_argument("--dpi", type=int, default=150)
@@ -121,6 +127,16 @@ def main():
     ap.add_argument("--rifai", action="store_true", help="ritrascrive anche le pagine già fatte")
     ap.add_argument("--prova", action="store_true", help="renderizza soltanto, senza chiamare l'API")
     a = ap.parse_args()
+
+    if a.modelli:
+        from google import genai
+        client = genai.Client(api_key=chiave_api())  # tenuto in una variabile: l'elenco arriva a pagine
+        for m in client.models.list():
+            if "flash" in m.name and "generateContent" in (getattr(m, "supported_actions", None) or []):
+                print(m.name.removeprefix("models/"))
+        return
+    if not a.pdf:
+        ap.error("indica il PDF da trascrivere")
 
     pdf = Path(a.pdf).resolve()
     radice = Path(__file__).resolve().parent.parent
