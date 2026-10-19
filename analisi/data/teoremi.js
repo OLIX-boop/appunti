@@ -123,6 +123,18 @@ $$z_k=\sqrt[n]{\rho}\left[\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}
 
   /* ===================== SEZIONE 2 ===================== */
   {
+    id: 'T-mon', sez: 2, mark: '**', q: '1.27',
+    titolo: 'Monotonia e rapporto incrementale',
+    enunciato: r`Sia $f:A\to\R$, $A\subseteq\R$, e per $x_1\ne x_2$ in $A$ sia $R(x_1,x_2)=\dfrac{f(x_2)-f(x_1)}{x_2-x_1}$. Allora $$f\ \text{crescente su }A\iff R(x_1,x_2)\ge0\quad\forall x_1\ne x_2\in A,$$ e $f$ strettamente crescente $\iff R>0$ (analogamente decrescente $\iff R\le0$).`,
+    idea: r`È solo una questione di segni: il denominatore si rende positivo ordinando i due punti, e allora numeratore e rapporto hanno lo stesso segno.`,
+    steps: [
+      { cue: r`Prima osservazione: $R$ dipende dall'ordine dei punti?`, body: r`No: $R(x_2,x_1)=\dfrac{f(x_1)-f(x_2)}{x_1-x_2}=R(x_1,x_2)$, perché cambiano segno numeratore e denominatore. Quindi si può sempre supporre $x_1\lt x_2$, cioè $x_2-x_1>0$.` },
+      { cue: r`Verso $\Rightarrow$`, body: r`Siano $x_1\lt x_2$. Se $f$ è crescente, $f(x_2)-f(x_1)\ge0$; il quoziente di un numero $\ge0$ per uno $>0$ è $\ge0$: $R(x_1,x_2)\ge0$.` },
+      { cue: r`Verso $\Leftarrow$`, body: r`Se $R(x_1,x_2)\ge0$ e $x_1\lt x_2$, allora $f(x_2)-f(x_1)=R(x_1,x_2)\cdot(x_2-x_1)$ è prodotto di due fattori $\ge0$, quindi $f(x_1)\le f(x_2)$: $f$ è crescente. Con $R>0$ si ottiene $f(x_1)\lt f(x_2)$, cioè la stretta crescenza. $\blacksquare$` }
+    ],
+    note: r`Nel PDF dei quesiti il 1.27 è <strong>blu</strong> (dimostrazione solo all'orale), anche se nel programma di massima non ha il simbolo $(**)$: qui si segue il PDF dei quesiti, che è più specifico. Esempio da citare: $\frac1x$ è decrescente su $(0,+\infty)$ e su $(-\infty,0)$ ma non su $\R\setminus\{0\}$. Il segno di $R$ diventerà, nel calcolo differenziale, il segno di $f'$.`
+  },
+  {
     id: 'T05', n: 5, sez: 2, mark: '*', q: '1.38',
     titolo: 'Unicità del limite',
     enunciato: r`Se una successione $\{a_n\}$ ammette limite, allora questo è <strong>unico</strong>: se $a_n\to\ell_1$ e $a_n\to\ell_2$, allora $\ell_1=\ell_2$.`,
@@ -304,64 +316,68 @@ dove $x_n\ll y_n$ significa $\dfrac{x_n}{y_n}\to0$.`,
   {
     id: 'T11', n: 11, sez: 3, mark: '*', q: '1.61',
     titolo: 'Criterio del confronto (per serie)',
-    enunciato: r`Siano $(a_n),(b_n)$ con $0\le a_n\le b_n$ definitivamente. Allora:
-<ul><li>se $\sum b_n$ converge, converge anche $\sum a_n$;</li>
-<li>se $\sum a_n$ diverge, diverge anche $\sum b_n$.</li></ul>`,
-    idea: r`Le somme parziali della serie minore sono maggiorate da quelle della maggiore; crescente + limitata ⟹ convergente.`,
+    enunciato: r`Siano $0\le a_m\le b_m$ per ogni $m\in\N$ (basta definitivamente). Allora:
+<ul><li>(i) se $\sum_{m=1}^{\infty}b_m$ converge, allora $\sum_{m=1}^{\infty}a_m$ converge;</li>
+<li>(ii) se $\sum_{m=1}^{\infty}a_m$ diverge, allora $\sum_{m=1}^{\infty}b_m$ diverge.</li></ul>`,
+    idea: r`Come a lezione (Lezione 10): le due serie sono a termini non negativi, quindi regolari; le loro somme parziali sono ordinate, e la proprietà del confronto fra successioni passa l'ordine ai limiti.`,
     steps: [
-      { cue: 'Riduzione', body: r`A meno di modificare un numero finito di termini (che non altera il carattere) possiamo supporre $0\le a_n\le b_n$ per ogni $n$.` },
-      { cue: 'Confronto fra le somme parziali', body: r`Poste $A_n=\sum_{k=0}^n a_k$ e $B_n=\sum_{k=0}^n b_k$, sommando le disuguaglianze termine a termine si ottiene $$0\le A_n\le B_n\qquad\forall n.$$ Entrambe le successioni sono crescenti, perché i termini sono non negativi.` },
-      { cue: 'Prima implicazione', body: r`Se $\sum b_n$ converge a $B$, allora $(B_n)$ è crescente e convergente, dunque $B_n\le B$ per ogni $n$. Quindi $$A_n\le B_n\le B,$$ cioè $(A_n)$ è crescente e <strong>limitata superiormente</strong>. Per il teorema sulle successioni monotòne, $(A_n)$ converge: $\sum a_n$ converge. $\blacksquare$` },
-      { cue: 'Seconda implicazione', body: r`È la <strong>contronominale</strong> della prima. Infatti se $\sum a_n$ diverge e, per assurdo, $\sum b_n$ convergesse, per il punto precedente $\sum a_n$ convergerebbe: assurdo. $\blacksquare$` }
+      { cue: 'Le somme parziali', body: r`Siano $S_m=\sum_{k=1}^m a_k$ e $t_m=\sum_{k=1}^m b_k$. Da $0\le a_k\le b_k$, sommando per $k=1,\dots,m$: $$S_m\le t_m\qquad\forall m\in\N.$$` },
+      { cue: 'Perché i limiti esistono?', body: r`Le due serie sono a <strong>termini non negativi</strong>, quindi per il teorema precedente sono <strong>regolari</strong>: esistono $$s=\lim_{m\to\infty}S_m=\sum_{m=1}^\infty a_m\in[0,+\infty],\qquad t=\lim_{m\to\infty}t_m=\sum_{m=1}^\infty b_m\in[0,+\infty].$$` },
+      { cue: r`(i) Se $\sum b_m$ converge`, body: r`Allora $t\in\R$. Per la proprietà del confronto fra successioni, da $S_m\le t_m$ segue $s\le t$; quindi $s$ non può essere $+\infty$, cioè $s\in\R$: $\sum a_m$ converge.` },
+      { cue: r`(ii) Se $\sum a_m$ diverge`, body: r`Allora $s=+\infty$ e, sempre per il confronto fra successioni, $t\ge s=+\infty$, cioè $t=+\infty$: $\sum b_m$ diverge. $\blacksquare$` },
+      { cue: 'E se la disuguaglianza vale solo definitivamente?', body: r`Cambiare un numero finito di termini non cambia il carattere di una serie (cambia solo la somma): si applica il ragionamento alla coda in cui $0\le a_m\le b_m$.` }
     ],
-    note: r`L'ipotesi $a_n\ge0$ è essenziale: serve la monotonia delle somme parziali. Il criterio non si applica a serie con termini di segno variabile. Confronti standard: $\frac{1}{n^2}$ (converge) e $\frac1n$ (diverge).`
+    note: r`L'ipotesi $a_m\ge0$ è essenziale: serve perché le serie siano regolari. Esempi della lezione: $\sum\frac{\arctan\sqrt{k+2}}{k^4}$ converge, maggiorando con $\frac{20}{k^4}$ (il prof sceglie $20$; bastava $\frac{\pi/2}{k^4}$); $\sum\frac{\sin k+3}{\sqrt k}$ diverge, minorando con $\frac2{\sqrt k}$. Il confronto va fatto nel verso giusto: maggiorare con una serie <em>divergente</em> non dice nulla.`
   },
   {
     id: 'T12', n: 12, sez: 3, mark: '*', q: '1.62',
     titolo: 'Criterio del confronto asintotico',
-    enunciato: r`Siano $a_n\ge0$ e $b_n>0$ definitivamente, e supponiamo che esista $$\ell=\lim_{n\to\infty}\frac{a_n}{b_n}\in[0,+\infty].$$
-<ul><li>Se $\ell\in(0,+\infty)$, le due serie hanno lo <strong>stesso carattere</strong>.</li>
-<li>Se $\ell=0$ e $\sum b_n$ converge, allora $\sum a_n$ converge.</li>
-<li>Se $\ell=+\infty$ e $\sum b_n$ diverge, allora $\sum a_n$ diverge.</li></ul>`,
-    idea: r`Trasformare l'informazione sul limite del quoziente in una doppia disuguaglianza fra $a_n$ e $b_n$, poi applicare il criterio del confronto.`,
+    enunciato: r`Siano $a_m\ge0$ e $b_m>0$ per ogni $m\in\N$, e supponiamo che esista $$\lim_{m\to\infty}\frac{a_m}{b_m}=\ell\in[0,+\infty].$$
+<ul><li>(i) Se $\sum b_m$ converge e $\ell\in[0,+\infty)$, allora $\sum a_m$ converge.</li>
+<li>(ii) Se $\sum b_m$ diverge e $\ell\in(0,+\infty]$, allora $\sum a_m$ diverge.</li></ul>
+<strong>Corollario.</strong> Se $a_m,b_m>0$ e $a_m\sim b_m$ (cioè $\ell=1$), le due serie hanno lo stesso carattere.`,
+    idea: r`Dalla definizione di limite si ricava una disuguaglianza fra $a_m$ e un multiplo di $b_m$, poi si applica il criterio del confronto. Per (i) serve la stima dall'alto, per (ii) quella dal basso.`,
     steps: [
-      { cue: r`Caso $\ell\in(0,+\infty)$: la scelta di $\eps$`, body: r`Scegliamo $\eps=\dfrac{\ell}{2}>0$. Per definizione di limite $\exists N$ tale che $\forall n>N$: $$\left|\frac{a_n}{b_n}-\ell\right|<\frac\ell2\quad\Longleftrightarrow\quad \frac\ell2<\frac{a_n}{b_n}<\frac{3\ell}{2}.$$` },
-      { cue: 'Sciogliere in una doppia disuguaglianza', body: r`Poiché $b_n>0$, moltiplicando per $b_n$ si conserva il verso: $$\frac{\ell}{2}\,b_n\;<\;a_n\;<\;\frac{3\ell}{2}\,b_n\qquad\forall n>N.$$` },
-      { cue: 'Prima direzione', body: r`Se $\sum b_n$ converge, converge anche $\sum\frac{3\ell}{2}b_n$ (linearità); dalla disuguaglianza di destra e dal <strong>criterio del confronto</strong> segue che $\sum a_n$ converge.` },
-      { cue: 'Seconda direzione', body: r`Se $\sum b_n$ diverge, diverge anche $\sum\frac{\ell}{2}b_n$; dalla disuguaglianza di sinistra e dal criterio del confronto segue che $\sum a_n$ diverge. Quindi le due serie hanno lo stesso carattere. $\blacksquare$` },
-      { cue: r`Casi $\ell=0$ e $\ell=+\infty$`, body: r`Se $\ell=0$: con $\eps=1$ si ottiene $a_n\lt b_n$ definitivamente, e si conclude col confronto.<br>Se $\ell=+\infty$: definitivamente $\frac{a_n}{b_n}>1$, cioè $a_n>b_n$, e di nuovo si conclude col confronto.` },
-      { cue: 'Forma operativa con la serie armonica generalizzata', body: r`Se $a_n\sim\dfrac{c}{n^\alpha}$ con $c>0$ (cioè $\ell=c$ scegliendo $b_n=n^{-\alpha}$), allora $$\sum a_n\ \text{converge}\iff\alpha>1.$$ È il modo in cui il criterio si usa il 90% delle volte.` }
+      { cue: r`(i) Che cosa dà la definizione di limite?`, body: r`Per $\ell$ finito: $\forall\eps>0\ \exists\nu_\eps\in\N$ tale che $$\ell-\eps\lt\frac{a_m}{b_m}\lt\ell+\eps\qquad\forall m>\nu_\eps.$$` },
+      { cue: r`Come si toglie il denominatore?`, body: r`Poiché $b_m>0$, moltiplicando non cambia il verso: $$(\ell-\eps)\,b_m\lt a_m\lt(\ell+\eps)\,b_m\qquad\forall m>\nu_\eps.$$` },
+      { cue: r`(i) Conclusione: quale metà serve?`, body: r`Quella di destra, $a_m\lt(\ell+\eps)b_m$. Se $\sum b_m$ converge, converge anche $\sum(\ell+\eps)b_m$; per il <strong>criterio del confronto</strong> $\sum a_m$ converge. (Funziona anche con $\ell=0$.)` },
+      { cue: r`(ii) con $\ell$ finito e positivo: quale $\eps$?`, body: r`Serve che $\ell-\eps$ resti positivo: il prof sceglie $\eps=\frac\ell3$. Allora $$\left(\ell-\frac\ell3\right)b_m=\frac{2\ell}3\,b_m\lt a_m\qquad\forall m>\nu_{\ell/3}.$$ Se $\sum b_m$ diverge, diverge anche $\sum\frac{2\ell}3b_m$, e per il confronto diverge $\sum a_m$.` },
+      { cue: r`(ii) con $\ell=+\infty$`, body: r`$\forall M>0\ \exists\nu_M$ tale che $\frac{a_m}{b_m}>M$, cioè $a_m>M\,b_m$, per ogni $m>\nu_M$. Dalla divergenza di $\sum b_m$ e dal confronto segue che $\sum a_m$ diverge. $\blacksquare$` },
+      { cue: 'La forma con la serie armonica generalizzata', body: r`Con $b_m=\frac1{m^\alpha}$ il limite diventa $\lim m^\alpha a_m=\ell$, e: <ul><li>se $\ell\in[0,+\infty)$ e $\alpha>1$, $\sum a_m$ converge;</li><li>se $\ell\in(0,+\infty]$ e $0\lt\alpha\le1$, $\sum a_m$ diverge.</li></ul> Il corollario è il caso $\ell=1$: se $a_m\sim b_m$ le due serie hanno lo stesso carattere.` }
     ],
-    note: r`Attenzione: se $\ell=0$ e $\sum b_n$ <em>diverge</em>, non si può concludere nulla. Stesso discorso se $\ell=+\infty$ e $\sum b_n$ converge. Le implicazioni «mancanti» sono false: cercale nel test a risposta multipla.`
+    note: r`I casi che <em>non</em> decidono: $\ell=0$ con $\sum b_m$ divergente, e $\ell=+\infty$ con $\sum b_m$ convergente. Esempi della Lezione 10: $\sum\log\left(1+\frac1{m^2}\right)$ converge ($\sim\frac1{m^2}$); $\sum\frac{\sqrt{m+1}-\sqrt m}{\sqrt{m^2+m+1}}$ converge, con $\ell=\frac12$ rispetto a $\frac1{m^{3/2}}$ (attenzione: $a_m\sim\frac12\cdot\frac1{m^{3/2}}$, non $\sim\frac1{m^{3/2}}$); $\sum\sin\frac1m\arctan\left(m^2+\sqrt{e^m-1}\right)$ diverge, con $\ell=\frac\pi2$ rispetto a $\frac1m$.`
   },
   {
     id: 'T13', n: 13, sez: 3, mark: '*', q: '1.63',
     titolo: 'Criterio del rapporto (per serie)',
-    enunciato: r`Sia $a_n>0$ definitivamente ed esista $$L=\lim_{n\to\infty}\frac{a_{n+1}}{a_n}.$$
-Se $L<1$ la serie $\sum a_n$ converge; se $L>1$ (anche $L=+\infty$) la serie diverge; se $L=1$ il criterio non decide.`,
-    idea: r`Se $L<1$, la successione è definitivamente dominata da una geometrica di ragione $q\in(L,1)$; si conclude col confronto.`,
+    enunciato: r`Sia $a_n>0$ per ogni $n\in\N$ e supponiamo che esista $$\lim_{n\to+\infty}\frac{a_{n+1}}{a_n}=:\ell.$$
+<ul><li>(i) Se $\ell\lt1$, la serie $\sum_{n=1}^\infty a_n$ converge.</li>
+<li>(ii) Se $\ell>1$ (anche $\ell=+\infty$), la serie diverge.</li></ul>
+Se $\ell=1$ il criterio non decide.`,
+    idea: r`Se $\ell\lt1$, da un certo punto ogni termine è più piccolo del precedente per un fattore fisso $x\lt1$: la serie è dominata da una geometrica di ragione $x$. Se $\ell>1$ i termini crescono e non vanno a zero.`,
     steps: [
-      { cue: 'Caso $L<1$: come si sceglie la ragione di confronto?', body: r`Poiché $L<1$, esiste $q$ con $L\lt q<1$. Posto $\eps=q-L>0$, per definizione di limite $\exists N$ tale che $$\forall n\ge N:\quad \frac{a_{n+1}}{a_n}\lt L+\eps=q.$$` },
-      { cue: 'Iterare la disuguaglianza', body: r`Da $a_{n+1}\lt q\,a_n$ per $n\ge N$, per induzione si ottiene $$a_{N+k}\;<\;q^{\,k}a_N\qquad\forall k\ge0.$$` },
-      { cue: 'Confrontare con la geometrica', body: r`La serie $\displaystyle\sum_{k\ge0}q^{\,k}a_N=a_N\sum_{k\ge0}q^k=\frac{a_N}{1-q}$ converge, perché $0\lt q<1$. Per il criterio del confronto, $\displaystyle\sum_{k\ge0}a_{N+k}$ converge; aggiungendo i primi $N$ termini (in numero finito) si conclude che $\sum a_n$ converge. $\blacksquare$` },
-      { cue: 'Caso $L>1$', body: r`Definitivamente $\dfrac{a_{n+1}}{a_n}>1$, cioè $a_{n+1}>a_n>0$: la successione $(a_n)$ è definitivamente crescente e positiva, dunque <strong>non tende a $0$</strong>. Per la condizione necessaria la serie non converge; essendo a termini positivi, diverge a $+\infty$. $\blacksquare$` },
-      { cue: 'Caso $L=1$: perché non decide?', body: r`Perché esistono entrambi i comportamenti con $L=1$: $$\sum\frac1n\ \text{diverge},\qquad \sum\frac1{n^2}\ \text{converge},$$ e in entrambi i casi $\frac{a_{n+1}}{a_n}\to1$. I due controesempi vanno citati.` }
+      { cue: r`(i) Quale ragione si sceglie per il confronto?`, body: r`Un $x\in(\ell,1)$, che esiste perché $\ell\lt1$ (ed è $x>0$). Con $\eps:=x-\ell>0$, per la definizione di limite $\exists\nu\in\N$ tale che $$0\lt\frac{a_{m+1}}{a_m}\lt\ell+\eps=x\qquad\forall m\ge\nu.$$ A sinistra si può scrivere $0$ invece di $\ell-\eps$, perché i termini sono positivi.` },
+      { cue: 'Che disuguaglianza si ottiene sui termini?', body: r`Moltiplicando per $a_m>0$: $a_{m+1}\lt x\,a_m$. Per comodità (come a lezione) supponiamo $\nu=1$: cambiare un numero finito di termini non cambia il carattere.` },
+      { cue: 'Iterare', body: r`$a_2\lt a_1x$, $\ a_3\lt a_2x\lt a_1x^2$, e così via: $$a_m\lt a_1x^{m-1}=:b_m\qquad\forall m\in\N.$$` },
+      { cue: 'Con quale serie si confronta?', body: r`$$\sum_{m=1}^\infty b_m=a_1\sum_{m=1}^\infty x^{m-1}=a_1\sum_{k=0}^\infty x^k,$$ una <strong>serie geometrica</strong> di ragione $0\lt x\lt1$, quindi convergente. Per il criterio del confronto $\sum a_m$ converge.<br><span class="small muted">Negli appunti il fattore $a_1$ cade nell'ultimo passaggio: non cambia il carattere.</span>` },
+      { cue: r`(ii) $\ell>1$: quale $\eps$?`, body: r`$\eps=\ell-1>0$, così $\ell-\eps=1$ e definitivamente $$\frac{a_{m+1}}{a_m}>1\iff a_{m+1}>a_m.$$ La successione è definitivamente crescente e positiva, quindi <strong>non è infinitesima</strong>: la condizione necessaria non vale. Essendo a termini positivi la serie è regolare, quindi diverge. $\blacksquare$` },
+      { cue: r`Perché con $\ell=1$ non si può dire niente?`, body: r`Perché $\sum\frac1n$ diverge e $\sum\frac1{n^2}$ converge, e in entrambi i casi $\frac{a_{n+1}}{a_n}\to1$. I due esempi vanno citati.` }
     ],
-    note: r`Quando usarlo: quando compaiono <strong>fattoriali</strong>, <strong>esponenziali</strong> o prodotti — cioè quando il rapporto si semplifica bene. Su termini razionali in $n$ dà sempre $L=1$ e non serve a nulla: lì si usa il confronto asintotico.`
+    note: r`Osservazione del prof: se $\ell\lt1$, il criterio del rapporto <em>per successioni</em> dice già che $a_n\to0$; ma non basta, serve il confronto con la geometrica. Esempi della Lezione 11: $\sum\frac1{m!}$ converge ($\ell=0$). Quando usarlo: con <strong>fattoriali</strong> ed <strong>esponenziali</strong>; sui termini razionali in $n$ dà sempre $\ell=1$ e non serve.`
   },
   {
     id: 'T14', n: 14, sez: 3, mark: '*', q: '1.66',
     titolo: 'La convergenza assoluta implica la convergenza semplice',
-    enunciato: r`Se $\displaystyle\sum_{n}|a_n|$ converge, allora $\displaystyle\sum_n a_n$ converge (e vale $\left|\sum a_n\right|\le\sum|a_n|$).`,
-    idea: r`Costruire una serie ausiliaria a termini non negativi, $a_n+|a_n|$, dominata da $2|a_n|$, e poi sottrarre.`,
+    enunciato: r`Una serie $\sum_{n=1}^\infty a_n$ si dice <strong>assolutamente convergente</strong> se $\sum_{n=1}^\infty|a_n|$ converge.<br><strong>Teorema.</strong> Una serie assolutamente convergente è anche convergente (semplicemente).`,
+    idea: r`Si aggiunge $|a_n|$ a tutti i termini: si ottiene una serie a termini non negativi, dominata da $2|a_n|$, e poi si toglie di nuovo.`,
     steps: [
-      { cue: 'La successione ausiliaria', body: r`Poniamo $$b_n:=a_n+|a_n|.$$ Osserviamo che $b_n\ge0$ per ogni $n$: infatti se $a_n\ge0$ allora $b_n=2a_n\ge0$, se $a_n<0$ allora $b_n=0$.` },
-      { cue: 'La maggiorazione', body: r`Inoltre $$0\le b_n=a_n+|a_n|\le |a_n|+|a_n|=2|a_n|.$$` },
-      { cue: 'Applicare il criterio del confronto', body: r`Per ipotesi $\sum|a_n|$ converge, dunque converge $\sum 2|a_n|$. Essendo $0\le b_n\le 2|a_n|$, per il <strong>criterio del confronto</strong> la serie $\sum b_n$ converge.` },
-      { cue: 'Ricostruire la serie di partenza', body: r`Si ha $a_n=b_n-|a_n|$. Poiché $\sum b_n$ e $\sum|a_n|$ convergono entrambe, per linearità (algebra dei limiti applicata alle somme parziali) anche $$\sum_n a_n=\sum_n b_n-\sum_n |a_n|$$ converge. $\blacksquare$` },
-      { cue: 'Il viceversa vale?', body: r`<strong>No.</strong> Controesempio: $\displaystyle\sum_{n\ge1}\frac{(-1)^n}{n}$ converge per il criterio di Leibniz, ma $\sum\frac1n$ diverge. Una serie convergente ma non assolutamente convergente si dice <em>semplicemente convergente</em>.` }
+      { cue: 'Da quale disuguaglianza si parte?', body: r`$-|a_n|\le a_n\le|a_n|$. Sommando $|a_n|$ a tutti i membri: $$0\le a_n+|a_n|\le2|a_n|\qquad\forall n\in\N.$$` },
+      { cue: r`Che cosa si ricava su $\sum(a_n+|a_n|)$?`, body: r`È una serie a <strong>termini non negativi</strong>, maggiorata termine a termine da $\sum2|a_n|$.` },
+      { cue: 'Applicare il criterio del confronto', body: r`Per ipotesi $\sum|a_n|\lt+\infty$, quindi anche $2\sum|a_n|\lt+\infty$. Per il confronto $\sum(a_n+|a_n|)$ converge.` },
+      { cue: 'Come si torna alla serie di partenza?', body: r`$$\sum_{n=1}^\infty a_n=\sum_{n=1}^\infty\bigl(a_n+|a_n|-|a_n|\bigr)=\underbrace{\sum_{n=1}^\infty(a_n+|a_n|)}_{\text{converge (appena visto)}}-\underbrace{\sum_{n=1}^\infty|a_n|}_{\text{converge (ipotesi)}},$$ e la differenza di due serie convergenti converge, per l'algebra dei limiti. $\blacksquare$` },
+      { cue: 'Il viceversa vale?', body: r`<strong>No.</strong> $\sum\frac{(-1)^n}{n}$ converge per il criterio di Leibniz, ma $\sum\left|\frac{(-1)^n}{n}\right|=\sum\frac1n$ è la serie armonica, che diverge: converge <em>semplicemente</em> ma non assolutamente.` }
     ],
-    note: r`Questo teorema è ciò che permette di studiare serie a segno variabile con gli strumenti (molto più potenti) delle serie a termini positivi: si passa ai moduli, e se quella converge si è concluso. Se invece $\sum|a_n|$ diverge, non si può dire nulla e bisogna provare Leibniz.`
+    note: r`È il modo di trattare le serie a segno variabile con gli strumenti delle serie a termini positivi: si passa ai moduli e, se quella serie converge, si è finito. Se invece $\sum|a_n|$ diverge non si conclude nulla e si prova Leibniz. Esempio di riepilogo della Lezione 11: $\sum\frac{(\tan\alpha)^m\log m}{m^2}$ converge assolutamente per $|\tan\alpha|\le1$.`
   }
   ];
 

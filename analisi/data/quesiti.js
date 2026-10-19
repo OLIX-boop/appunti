@@ -169,7 +169,7 @@ Quando $f$ è assegnata tramite un'espressione analitica senza specificare $A$, 
 <strong>Esempio.</strong> $f(x)=\dfrac{\ln(x-1)}{\sqrt{4-x^2}}$: serve $x-1>0$ e $4-x^2>0$, dunque $A=(1,2)$.<br><br>
 <strong>Grafico:</strong> l'insieme $G_f=\{(x,f(x)):x\in A\}$ del piano cartesiano. Un sottoinsieme del piano è grafico di una funzione se e solo se ogni retta verticale lo incontra al più in un punto.` },
 
-{ id: '1.27', sez: 2, t: r`Dare la definizione di funzione crescente, decrescente, monotòna. Fornire esempi. Enunciare e dimostrare il collegamento tra monotonia e rapporto incrementale.`,
+{ id: '1.27', sez: 2, mark: '**', teo: 'T-mon', t: r`Dare la definizione di funzione crescente, decrescente, monotòna. Fornire esempi. Enunciare e dimostrare il collegamento tra monotonia e rapporto incrementale.`,
   a: r`Sia $f:A\to\R$, $A\subseteq\R$. Per ogni $x_1,x_2\in A$ con $x_1\lt x_2$:
 <ul><li><strong>crescente</strong> se $f(x_1)\le f(x_2)$; <strong>strettamente crescente</strong> se $f(x_1)\lt f(x_2)$;</li>
 <li><strong>decrescente</strong> se $f(x_1)\ge f(x_2)$; <strong>strettamente decrescente</strong> se $f(x_1)>f(x_2)$;</li>

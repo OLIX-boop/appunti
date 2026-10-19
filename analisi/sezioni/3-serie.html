@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261013b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261019">
 </head>
 <body>
 
@@ -29,6 +29,7 @@
       <a href="3-serie.html">3 · Serie</a>
       <a href="../teoremi.html">Teoremi</a>
       <a href="../quesiti.html">Quesiti</a>
+      <a href="../domande.html">Domande</a>
       <a href="../esercizi.html">Esercizi</a>
       <a href="../simulazione.html">Simulazione</a>
     </nav>
@@ -42,6 +43,7 @@
     <h4>Sezione 3</h4>
     <a href="#checklist">Checklist del programma</a>
     <a href="#definizione">1 · Serie e carattere</a>
+    <a href="#prof-notazione" class="sub">La definizione del prof</a>
     <a href="#necessaria" class="sub">Condizione necessaria</a>
     <a href="#positive" class="sub">Serie a termini non negativi</a>
     <a href="#notevoli">2 · Le serie da conoscere</a>
@@ -56,6 +58,7 @@
     <a href="#alternate">4 · Serie a segno variabile</a>
     <a href="#leibniz" class="sub">Criterio di Leibniz</a>
     <a href="#assoluta" class="sub">Convergenza assoluta</a>
+    <a href="#riepilogo" class="sub">Esercizio di riepilogo</a>
     <a href="#strategia">5 · La strategia operativa</a>
     <a href="#test">Mettiti alla prova</a>
     <a href="#errori">Errori tipici</a>
@@ -71,6 +74,15 @@
     <div class="box tip">
       <div class="box-title">↳ Non c'è niente di nuovo</div>
       <p class="mb0">Una serie <strong>è</strong> una successione: quella delle somme parziali. Tutti i teoremi di questa sezione sono applicazioni di due risultati che conosci già dalla Sezione 2 — <em>«crescente e limitata superiormente ⇒ convergente»</em> e <em>il criterio del confronto</em>. Se ti sembra materia nuova, torna al teorema sulla regolarità delle successioni monotòne.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">★ Novità delle Lezioni 10–11 (14 e 19 ottobre)</div>
+      <ul class="mb0">
+        <li><strong>Lezione 10:</strong> <a href="#prof-notazione">la definizione di serie come la scrive il prof</a> e la linearità, <a href="#telescopiche">le telescopiche nella forma $A_{k+1}-A_k$</a>, <a href="#necessaria">condizione necessaria</a> con l'esempio dell'arcotangente, <a href="#confronto">criterio del confronto con la dimostrazione della lezione</a>, <a href="#confrontoas">confronto asintotico</a> con il corollario $a_m\sim b_m$ e cinque esercizi svolti</li>
+        <li><strong>Lezione 11:</strong> <a href="#rapporto">criterio del rapporto dimostrato come a lezione</a>, <a href="#radice">criterio della radice</a>, <a href="#leibniz">Leibniz con i due esempi</a>, <a href="#assoluta">convergenza assoluta</a>, <a href="#riepilogo">l'esercizio di riepilogo con $\tan\alpha$</a></li>
+        <li>Le dimostrazioni n° 11–14 nella pagina <a href="../teoremi.html">Teoremi</a> e nelle <a href="../domande.html">Domande teoriche</a> ora seguono la versione del prof</li>
+      </ul>
     </div>
 
     <h2 id="checklist">Checklist del programma</h2>
@@ -92,6 +104,24 @@
       La <strong>serie</strong> $\displaystyle\sum_{n=0}^{\infty}a_n$ è, per definizione, la <em>successione</em> $(s_n)$.</p>
       <p class="mb0">Il <strong>carattere</strong> della serie è il comportamento di $(s_n)$:
       <strong>convergente</strong> se $s_n\to S\in\R$ ($S$ è la <em>somma</em>); <strong>divergente</strong> se $s_n\to\pm\infty$; <strong>indeterminata</strong> se $(s_n)$ non ha limite.</p>
+    </div>
+
+    <h3 id="prof-notazione">Come la scrive il prof (Lezione 10)</h3>
+    <div class="box def">
+      <div class="box-title">Definizione · Lezione 10</div>
+      <p>Data $\{a_k\}$, le <strong>somme parziali</strong> partono da $k=1$:
+      $$S_1:=a_1,\quad S_2:=a_1+a_2=S_1+a_2,\quad\dots,\quad S_m:=\sum_{k=1}^m a_k=S_{m-1}+a_m.$$
+      La successione $\{S_m\}$ si chiama <strong>serie</strong> di termine generico $a_k$, e la <strong>somma della serie</strong> (per abuso di linguaggio, «la serie») è
+      $$\sum_{k=1}^\infty a_k:=\lim_{m\to\infty}S_m.$$</p>
+      <p class="mb0">La serie è <strong>convergente</strong> se il limite esiste finito, <strong>divergente</strong> se vale $\pm\infty$: in questi due casi è <strong>regolare</strong>. Se il limite non esiste è <strong>indeterminata</strong>. Il <strong>carattere</strong> è la proprietà di essere convergente, divergente o indeterminata.</p>
+    </div>
+    <p class="small muted">Il sito in altri punti fa partire gli indici da $0$: il carattere non cambia, perché aggiungere o togliere un numero finito di termini cambia solo la somma.</p>
+    <div class="box prop">
+      <div class="box-title">Proposizione (linearità) · Lezione 10</div>
+      <ul class="mb0">
+        <li>(i) Se $\sum a_k$ e $\sum b_k$ sono regolari e la somma $\sum a_k+\sum b_k$ ha significato (cioè non è la forma indeterminata $+\infty-\infty$), allora $\displaystyle\sum_{k=1}^\infty(a_k+b_k)=\sum_{k=1}^\infty a_k+\sum_{k=1}^\infty b_k$.</li>
+        <li>(ii) Se $\sum a_k$ è regolare, allora $\displaystyle\sum_{k=1}^\infty c\,a_k=c\sum_{k=1}^\infty a_k$ per ogni $c\in\R$.</li>
+      </ul>
     </div>
 
     <div class="widget">
@@ -126,15 +156,16 @@
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Notazione e ipotesi</div>
-          <div class="step-content">$s_n=\sum_{k=0}^n a_k$; per ipotesi $s_n\to S\in\R$.</div></div></div>
+          <div class="step-cue">Che cosa dice l'ipotesi?</div>
+          <div class="step-content">Con $S_m:=\sum_{k=1}^m a_k$, la serie converge: $S:=\lim_{m\to\infty}S_m\in\R$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">L'osservazione chiave (una riga)</div>
-          <div class="step-content">$a_n=s_n-s_{n-1}$ per ogni $n\ge1$.</div></div></div>
+          <div class="step-cue">Come si scrive $a_m$ con le somme parziali?</div>
+          <div class="step-content">Per definizione $S_m=S_{m-1}+a_m$, quindi $a_m=S_m-S_{m-1}$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Conclusione</div>
-          <div class="step-content">$(s_{n-1})$ è una traslazione di $(s_n)$, quindi tende anch'essa a $S$. Per l'algebra dei limiti $a_n=s_n-s_{n-1}\to S-S=0$. $\blacksquare$</div></div></div>
+          <div class="step-content">Anche $S_{m-1}\to S$ (è la stessa successione spostata di un posto). Per l'algebra dei limiti $$\lim_{m\to\infty}a_m=\lim_{m\to\infty}(S_m-S_{m-1})=S-S=0.\qquad\blacksquare$$</div></div></div>
       </div>
+      <p class="small"><strong>Osservazione (Lezione 10).</strong> Per contrapposizione: se $a_m\not\to0$, la serie non converge. Esempio: $\sum\arctan\sqrt{m^3+2}$ non converge, perché $\arctan\sqrt{m^3+2}\to\frac\pi2\ne0$.</p>
       <div class="box trap" style="margin-bottom:0">
         <div class="box-title">✗ Non è sufficiente</div>
         <p class="mb0">La <strong>serie armonica</strong> $\sum_{n\ge1}\frac1n$ ha $\frac1n\to0$ e tuttavia diverge. Altri controesempi: $\sum\frac{1}{\sqrt n}$, $\sum\ln\left(1+\frac1n\right)$, $\sum(\sqrt{n+1}-\sqrt n)$ — tutte con termine infinitesimo e tutte divergenti.</p>
@@ -222,6 +253,15 @@
       $$\sum_{n\ge1}\frac{1}{n(n+1)}=\sum_{n\ge1}\left(\frac1n-\frac1{n+1}\right)=1,\qquad \sum_{n\ge1}\ln\!\left(1+\frac1n\right)=\lim_n\ln(n+1)=+\infty.$$
       Nota il secondo: telescopica <em>divergente</em>. Telescopica non significa convergente.</p>
     </div>
+    <div class="box ex">
+      <div class="box-title">Gli esempi della Lezione 10</div>
+      <p><strong>1.</strong> $a_k=\dfrac1{k(k+1)}=\dfrac1k-\dfrac1{k+1}$. Nelle somme parziali i termini in mezzo si cancellano a due a due:
+      $$S_m=1-\tfrac12+\tfrac12-\tfrac13+\dots+\tfrac1m-\tfrac1{m+1}=1-\frac1{m+1}\longrightarrow1.$$ La serie converge e la sua somma è $1$.</p>
+      <p><strong>2. La forma generale.</strong> Se $a_k=A_{k+1}-A_k$ con $A_k\to0$:
+      $$S_m=(A_2-A_1)+(A_3-A_2)+\dots+(A_{m+1}-A_m)=A_{m+1}-A_1\longrightarrow-A_1.$$
+      Sono le <strong>serie telescopiche</strong>.</p>
+      <p class="mb0"><strong>3.</strong> Il prof presenta anche la <strong>serie geometrica</strong> come esempio di telescopica: la formula $S_m=\frac{1-x^{m+1}}{1-x}$ si ottiene proprio dalla cancellazione in $(1-x)S_m=(1-x)+(x-x^2)+\dots+(x^m-x^{m+1})$.</p>
+    </div>
 
     <!-- ============================================================ -->
     <h2 id="criteri">3 · I criteri per serie a termini non negativi</h2>
@@ -229,59 +269,78 @@
     <h3 id="confronto">Criterio del confronto <span class="badge star">dim. scritto · n° 11</span></h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
-      <p class="mb0">Sia $0\le a_n\le b_n$ definitivamente. Allora:
-      <br>• se $\sum b_n$ converge, converge anche $\sum a_n$;
-      <br>• se $\sum a_n$ diverge, diverge anche $\sum b_n$.</p>
+      <p class="mb0">Siano $0\le a_m\le b_m$ per ogni $m\in\N$ (basta definitivamente). Allora:
+      <br>(i) se $\sum b_m$ converge, converge anche $\sum a_m$;
+      <br>(ii) se $\sum a_m$ diverge, diverge anche $\sum b_m$.</p>
     </div>
-    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 10)</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Riduzione preliminare</div>
-          <div class="step-content">A meno di modificare finiti termini (che non altera il carattere) supponiamo $0\le a_n\le b_n$ per ogni $n$.</div></div></div>
+          <div class="step-cue">Le somme parziali</div>
+          <div class="step-content">$S_m=\sum_{k=1}^m a_k$, $\ t_m=\sum_{k=1}^m b_k$. Da $0\le a_k\le b_k$ segue $S_m\le t_m$ per ogni $m$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Confronto fra le somme parziali</div>
-          <div class="step-content">Sommando termine a termine: $0\le A_n\le B_n$ per ogni $n$. Entrambe le successioni sono <strong>crescenti</strong>, perché i termini sono $\ge0$.</div></div></div>
+          <div class="step-cue">Perché i limiti esistono?</div>
+          <div class="step-content">Sono serie a termini non negativi, quindi <strong>regolari</strong> per il teorema precedente: esistono $s=\lim S_m$ e $t=\lim t_m$ in $[0,+\infty]$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Prima implicazione</div>
-          <div class="step-content">Se $\sum b_n$ converge a $B$, essendo $(B_n)$ crescente si ha $B_n\le B$. Allora $A_n\le B_n\le B$: $(A_n)$ è crescente e <strong>limitata superiormente</strong>, dunque converge per il teorema sulle monotòne. $\blacksquare$</div></div></div>
+          <div class="step-cue">(i) $\sum b_m$ converge</div>
+          <div class="step-content">$t\in\R$; per la proprietà del confronto fra successioni $s\le t$, quindi $s\in\R$: $\sum a_m$ converge.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Seconda implicazione</div>
-          <div class="step-content">È la <strong>contronominale</strong> della prima: se $\sum b_n$ convergesse, convergerebbe $\sum a_n$, contro l'ipotesi. $\blacksquare$</div></div></div>
+          <div class="step-cue">(ii) $\sum a_m$ diverge</div>
+          <div class="step-content">$s=+\infty$ e $t\ge s$, quindi $t=+\infty$: $\sum b_m$ diverge. $\blacksquare$</div></div></div>
       </div>
-      <p class="small muted mb0"><strong>L'ipotesi $a_n\ge0$ è essenziale:</strong> senza di essa le somme parziali non sono monotòne e l'argomento crolla.</p>
+      <p class="small muted mb0"><strong>L'ipotesi $a_m\ge0$ è essenziale:</strong> serve perché le due serie siano regolari, cioè perché i limiti $s$ e $t$ esistano.</p>
     </div></details>
+    <div class="box ex">
+      <div class="box-title">Esempi della Lezione 10</div>
+      <p><strong>1.</strong> $\displaystyle\sum_{k=1}^\infty\frac{\arctan\sqrt{k+2}}{k^4}$. Il termine tende a $0$ (condizione necessaria soddisfatta) ed è $\ge0$. Poiché $\arctan$ è minore di $\frac\pi2$, si ha $a_k\le\frac{20}{k^4}$ (il prof sceglie $20$, ma bastava $\frac{\pi/2}{k^4}$); $\sum\frac{20}{k^4}$ ha lo stesso carattere della serie armonica generalizzata con $\alpha=4>1$, quindi converge, e per confronto converge $\sum a_k$.</p>
+      <p class="mb0"><strong>2.</strong> $\displaystyle\sum_{k=1}^\infty\frac{\sin k+3}{\sqrt k}$. Termini positivi; poiché $\sin k+3\ge2$, si ha $a_k\ge\frac2{\sqrt k}$, e $\sum\frac2{\sqrt k}$ diverge ($\alpha=\frac12\le1$): per confronto $\sum a_k$ diverge.</p>
+    </div>
 
     <h3 id="confrontoas">Criterio del confronto asintotico <span class="badge star">dim. scritto · n° 12</span></h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
-      <p>Siano $a_n\ge0$, $b_n>0$ definitivamente ed esista $\ \ell=\displaystyle\lim_{n\to\infty}\frac{a_n}{b_n}\in[0,+\infty]$.</p>
+      <p>Siano $a_m\ge0$ e $b_m>0$ per ogni $m\in\N$, e supponiamo che esista $\ \displaystyle\lim_{m\to\infty}\frac{a_m}{b_m}=\ell\in[0,+\infty]$.</p>
       <ul class="mb0">
-        <li>$\ell\in(0,+\infty)$ ⟹ le due serie hanno lo <strong>stesso carattere</strong>;</li>
-        <li>$\ell=0$ e $\sum b_n$ converge ⟹ $\sum a_n$ converge;</li>
-        <li>$\ell=+\infty$ e $\sum b_n$ diverge ⟹ $\sum a_n$ diverge.</li>
+        <li>(i) se $\sum b_m$ converge e $\ell\in[0,+\infty)$ ⟹ $\sum a_m$ converge;</li>
+        <li>(ii) se $\sum b_m$ diverge e $\ell\in(0,+\infty]$ ⟹ $\sum a_m$ diverge.</li>
       </ul>
     </div>
-    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 10)</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Caso $\ell$ finito e positivo: quale $\eps$?</div>
-          <div class="step-content">$\eps=\dfrac\ell2>0$. Per definizione di limite, definitivamente $\left|\dfrac{a_n}{b_n}-\ell\right|<\dfrac\ell2$, cioè $\dfrac\ell2<\dfrac{a_n}{b_n}<\dfrac{3\ell}{2}$.</div></div></div>
+          <div class="step-cue">(i) Che cosa dà la definizione di limite?</div>
+          <div class="step-content">$\forall\eps>0\ \exists\nu_\eps$: $\ \ell-\eps\lt\dfrac{a_m}{b_m}\lt\ell+\eps$ per ogni $m>\nu_\eps$; moltiplicando per $b_m>0$, $$(\ell-\eps)\,b_m\lt a_m\lt(\ell+\eps)\,b_m.$$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Come si trasforma in una disuguaglianza fra $a_n$ e $b_n$?</div>
-          <div class="step-content">Moltiplicando per $b_n>0$ (che conserva il verso): $\dfrac\ell2 b_n\lt a_n<\dfrac{3\ell}2 b_n$ definitivamente.</div></div></div>
+          <div class="step-cue">(i) Quale metà serve?</div>
+          <div class="step-content">Quella di destra: $a_m\lt(\ell+\eps)b_m$. Se $\sum b_m$ converge, converge $\sum(\ell+\eps)b_m$, e per il <strong>criterio del confronto</strong> converge $\sum a_m$. Vale anche con $\ell=0$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Prima direzione</div>
-          <div class="step-content">Se $\sum b_n$ converge, converge $\sum\frac{3\ell}{2}b_n$; dalla disuguaglianza di destra e dal <strong>criterio del confronto</strong>, $\sum a_n$ converge.</div></div></div>
+          <div class="step-cue">(ii) $\ell$ finito e positivo: quale $\eps$?</div>
+          <div class="step-content">Uno che lasci positivo $\ell-\eps$: il prof sceglie $\eps=\frac\ell3$, da cui $\frac{2\ell}3\,b_m\lt a_m$ definitivamente. $\sum b_m$ diverge, quindi diverge $\sum\frac{2\ell}3b_m$, e per confronto diverge $\sum a_m$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Seconda direzione</div>
-          <div class="step-content">Se $\sum b_n$ diverge, diverge $\sum\frac\ell2 b_n$; dalla disuguaglianza di sinistra e dal confronto, $\sum a_n$ diverge. Stesso carattere. $\blacksquare$</div></div></div>
-        <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Casi $\ell=0$ e $\ell=+\infty$</div>
-          <div class="step-content">$\ell=0$: con $\eps=1$ si ottiene $a_n\lt b_n$ definitivamente. $\ell=+\infty$: definitivamente $\frac{a_n}{b_n}>1$, cioè $a_n>b_n$. In entrambi i casi si conclude col confronto.</div></div></div>
+          <div class="step-cue">(ii) $\ell=+\infty$</div>
+          <div class="step-content">$\forall M>0\ \exists\nu_M$: $\frac{a_m}{b_m}>M$, cioè $a_m>M\,b_m$, per $m>\nu_M$. Dalla divergenza di $\sum b_m$ e dal confronto, $\sum a_m$ diverge. $\blacksquare$</div></div></div>
       </div>
     </div></details>
+    <div class="box prop">
+      <div class="box-title">Con la serie armonica generalizzata, e il corollario (Lezione 10)</div>
+      <p>Spesso si sceglie $b_m=\frac1{m^\alpha}$: il limite diventa $\lim m^\alpha a_m=\ell$, e</p>
+      <ul>
+        <li>se $\ell\in[0,+\infty)$ e $\alpha>1$, $\sum a_m$ converge;</li>
+        <li>se $\ell\in(0,+\infty]$ e $0\lt\alpha\le1$, $\sum a_m$ diverge.</li>
+      </ul>
+      <p class="mb0"><strong>Corollario.</strong> Se $a_m,b_m>0$ e $a_m\sim b_m$ (cioè $\ell=1$), allora $\sum a_m$ e $\sum b_m$ hanno lo stesso carattere: se una converge converge anche l'altra, se una diverge diverge anche l'altra.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Gli esercizi della Lezione 10</div>
+      <p><strong>(1)</strong> $\sum\log\left(1+\frac1{m^2}\right)$: termini $\ge0$ e infinitesimi; $a_m\sim\frac1{m^2}$ e $\sum\frac1{m^2}$ converge, quindi per il corollario converge.</p>
+      <p><strong>(2)</strong> $\sum\dfrac{\sqrt{m+1}-\sqrt m}{\sqrt{m^2+m+1}}$: il limite di $a_m$ sembra $\infty-\infty$, quindi si razionalizza:
+      $$a_m=\frac{1}{\sqrt{m^2+m+1}\,\bigl(\sqrt{m+1}+\sqrt m\bigr)}\sim\frac1{m\cdot2\sqrt m}=\frac12\cdot\frac1{m^{3/2}}.$$ Con $b_m=\frac1{m^{3/2}}$ si ha $\ell=\frac12$ e $\sum b_m$ converge ($\alpha=\frac32>1$): converge. Attenzione: $a_m\sim\frac12\cdot\frac1{m^{3/2}}$, <strong>non</strong> $a_m\sim\frac1{m^{3/2}}$.</p>
+      <p><strong>(3)</strong> $\sum\sin\frac1m\,\arctan\left(m^2+\sqrt{e^m-1}\right)$: con $b_m=\frac1m$, $\ \frac{a_m}{b_m}=\frac{\sin(1/m)}{1/m}\arctan(\dots)\to\frac\pi2$, e $\sum\frac1m$ diverge: diverge. Equivalente: $a_m\sim\frac\pi2\cdot\frac1m$ e si usa il corollario.</p>
+      <p><strong>(4)</strong> $\sum\frac1{n!}$: con $b_n=\frac1{n^\alpha}$, $\alpha>1$ qualsiasi, $\frac{a_n}{b_n}=\frac{n^\alpha}{n!}\to0$ e $\sum b_n$ converge: converge (caso $\ell=0$).</p>
+      <p class="mb0"><strong>(5)</strong> $\sum\frac{\log(n+3)}{n^3}$: con $b_n=\frac1{n^\alpha}$ e $1\lt\alpha\lt3$ (per esempio $\alpha=2$), $\frac{a_n}{b_n}=\frac{\log(n+3)}{n^{3-\alpha}}\to0$ e $\sum b_n$ converge: converge.</p>
+    </div>
 
     <div class="box tip">
       <div class="box-title">✓ La forma operativa — quella che userai il 90% delle volte</div>
@@ -311,24 +370,25 @@
     <h3 id="rapporto">Criterio del rapporto <span class="badge star">dim. scritto · n° 13</span></h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
-      <p class="mb0">Sia $a_n>0$ definitivamente ed esista $L=\displaystyle\lim_{n\to\infty}\frac{a_{n+1}}{a_n}$. Allora:
-      $L<1$ ⟹ converge; &nbsp; $L>1$ (anche $+\infty$) ⟹ diverge; &nbsp; $L=1$ ⟹ il criterio <strong>non decide</strong>.</p>
+      <p class="mb0">Sia $a_n>0$ per ogni $n\in\N$ ed esista $\ell=\displaystyle\lim_{n\to\infty}\frac{a_{n+1}}{a_n}$. Allora:
+      (i) $\ell\lt1$ ⟹ $\sum a_n$ converge; &nbsp; (ii) $\ell>1$ ⟹ diverge; &nbsp; $\ell=1$ ⟹ il criterio <strong>non decide</strong>.</p>
     </div>
-    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 11)</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Caso $L<1$: come si sceglie la ragione di confronto?</div>
-          <div class="step-content">Si prende $q$ con $L\lt q<1$ e si pone $\eps=q-L>0$. Definitivamente $\dfrac{a_{n+1}}{a_n}\lt L+\eps=q$, cioè $a_{n+1}\lt q\,a_n$ per $n\ge N$.</div></div></div>
+          <div class="step-cue">(i) Quale ragione si sceglie per il confronto?</div>
+          <div class="step-content">Un $x\in(\ell,1)$ (quindi $x>0$) e $\eps:=x-\ell>0$. Definitivamente $0\lt\dfrac{a_{m+1}}{a_m}\lt\ell+\eps=x$: a sinistra c'è $0$ perché i termini sono positivi.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Si itera</div>
-          <div class="step-content">Per induzione: $a_{N+k}\lt q^{\,k}a_N$ per ogni $k\ge0$.</div></div></div>
+          <div class="step-cue">Si itera (supponendo, per comodità, che valga da $m=1$)</div>
+          <div class="step-content">$a_{m+1}\lt x\,a_m$, quindi $a_2\lt a_1x$, $\ a_3\lt a_2x\lt a_1x^2$, …, $\ a_m\lt a_1x^{m-1}=:b_m$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Si confronta con una serie nota</div>
-          <div class="step-content">$\sum_{k\ge0}q^{k}a_N=\dfrac{a_N}{1-q}$ converge, perché $0\lt q<1$: è geometrica. Per il criterio del confronto converge $\sum_{k}a_{N+k}$, e aggiungendo i primi $N$ termini (finiti) converge $\sum a_n$. $\blacksquare$</div></div></div>
+          <div class="step-content">$\sum_{m\ge1}b_m=a_1\sum_{k\ge0}x^k$ è una geometrica di ragione $0\lt x\lt1$: converge. Per il criterio del confronto converge $\sum a_m$. $\blacksquare$
+          <span class="small muted"><br>Negli appunti il fattore $a_1$ cade nell'ultimo passaggio: non cambia il carattere.</span></div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Caso $L>1$</div>
-          <div class="step-content">Definitivamente $a_{n+1}>a_n>0$: la successione è definitivamente crescente e positiva, quindi <strong>non tende a $0$</strong>. Per la condizione necessaria la serie non converge; essendo a termini positivi, diverge. $\blacksquare$</div></div></div>
+          <div class="step-cue">(ii) $\ell>1$: quale $\eps$?</div>
+          <div class="step-content">$\eps=\ell-1$, così $\ell-\eps=1$ e definitivamente $\frac{a_{m+1}}{a_m}>1$, cioè $a_{m+1}>a_m$: la successione è definitivamente crescente, quindi <strong>non è infinitesima</strong>. La condizione necessaria non vale e la serie (a termini positivi, quindi regolare) diverge. $\blacksquare$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Perché $L=1$ non decide?</div>
           <div class="step-content">Perché entrambi i comportamenti si verificano: $\sum\frac1n$ diverge, $\sum\frac1{n^2}$ converge, e in <em>entrambi</em> i casi $\frac{a_{n+1}}{a_n}\to1$. I due controesempi vanno citati.</div></div></div>
@@ -338,7 +398,12 @@
     <h3 id="radice">Criterio della radice</h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
-      <p class="mb0">Sia $a_n\ge0$ definitivamente ed esista $L=\displaystyle\lim_{n\to\infty}\sqrt[n]{a_n}$. Allora: $L<1$ ⟹ converge; $L>1$ ⟹ diverge; $L=1$ ⟹ non decide.</p>
+      <p class="mb0">Sia $a_m\ge0$ per ogni $m\in\N$ ed esista $\ell=\displaystyle\lim_{m\to\infty}\sqrt[m]{a_m}$. Allora: (i) $\ell\lt1$ ⟹ $\sum a_m$ converge; (ii) $\ell>1$ ⟹ diverge; $\ell=1$ ⟹ non decide. <span class="small muted">(Lezione 11, senza dimostrazione: non è fra le dimostrazioni richieste.)</span></p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi della Lezione 11</div>
+      <p><strong>Rapporto.</strong> $\sum\frac1{m!}$: $\ \dfrac{a_{m+1}}{a_m}=\dfrac{m!}{(m+1)!}=\dfrac1{m+1}\to0\lt1$: converge.</p>
+      <p class="mb0"><strong>Radice.</strong> $\sum\frac m{3^m}$: $\ \sqrt[m]{a_m}=\dfrac{\sqrt[m]m}{3}\to\dfrac13\lt1$: converge.</p>
     </div>
     <p><strong>Idea.</strong> Se $L<1$, scelto $q\in(L,1)$, definitivamente $\sqrt[n]{a_n}\lt q$ cioè $a_n\lt q^n$: confronto con la geometrica. Se $L>1$, definitivamente $a_n>1$, quindi $a_n\not\to0$.</p>
     <p class="small muted">Se esiste il limite del rapporto, esiste anche quello della radice e coincide: la radice è (leggermente) più potente. Ma i casi $L=1$ restano indecisi per entrambi.</p>
@@ -367,10 +432,15 @@
     <h3 id="leibniz">Criterio di Leibniz</h3>
     <div class="box teo">
       <div class="box-title">Teorema</div>
-      <p>Sia $\displaystyle\sum_n(-1)^{n}b_n$ con $(b_n)$ tale che
-      <strong>(i)</strong> $b_n\ge0$; &nbsp;<strong>(ii)</strong> $(b_n)$ decrescente (almeno definitivamente); &nbsp;<strong>(iii)</strong> $b_n\to0$.
-      Allora la serie <strong>converge</strong>.</p>
-      <p class="mb0">Inoltre vale la <strong>stima dell'errore</strong>: $\ |S-s_n|\le b_{n+1}$, e la somma $S$ è sempre compresa fra due somme parziali consecutive.</p>
+      <p>Una serie $\sum(-1)^na_n$ con $a_n>0$ si dice <strong>a segno alterno</strong> (Lezione 11). Sia $\{a_n\}$:
+      <strong>positiva</strong> ($a_n>0$), <strong>infinitesima</strong> ($a_n\to0$) e <strong>decrescente</strong>.
+      Allora $\sum_{n=1}^\infty(-1)^na_n$ <strong>converge</strong>.</p>
+      <p class="mb0">Inoltre, se $s_m$ sono le somme parziali e $s$ la somma, vale la <strong>stima dell'errore</strong> $\ |s_m-s|\le a_{m+1}$. <span class="small muted">(Senza dimostrazione.)</span></p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi della Lezione 11: si verificano le tre ipotesi, una per una</div>
+      <p><strong>1.</strong> $\sum\frac{(-1)^m}m$, con $a_m=\frac1m$: positiva; infinitesima; decrescente, perché $\frac1{m+1}\lt\frac1m\iff m\lt m+1$. Converge.</p>
+      <p class="mb0"><strong>2.</strong> $\sum(-1)^m\arctan\frac1{\sqrt m}$: positiva; infinitesima; decrescente, perché $\arctan$ è crescente e conserva l'ordine degli argomenti: $\arctan\frac1{\sqrt{m+1}}\lt\arctan\frac1{\sqrt m}\iff\frac1{\sqrt{m+1}}\lt\frac1{\sqrt m}\iff\sqrt{m+1}>\sqrt m$, vero. Converge.</p>
     </div>
 
     <div class="widget">
@@ -402,17 +472,17 @@
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">Qual è la successione ausiliaria da costruire?</div>
-          <div class="step-content">$b_n:=a_n+|a_n|$. È sempre $\ge0$: se $a_n\ge0$ vale $2a_n$, se $a_n<0$ vale $0$.</div></div></div>
+          <div class="step-cue">Da quale disuguaglianza si parte? (Lezione 11)</div>
+          <div class="step-content">$-|a_n|\le a_n\le|a_n|$; sommando $|a_n|$ a tutti i membri: $\ 0\le a_n+|a_n|\le2|a_n|$ per ogni $n$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
-          <div class="step-cue">La maggiorazione</div>
-          <div class="step-content">$0\le b_n=a_n+|a_n|\le|a_n|+|a_n|=2|a_n|$.</div></div></div>
+          <div class="step-cue">Che cosa si ricava su $\sum(a_n+|a_n|)$?</div>
+          <div class="step-content">È una serie a <strong>termini non negativi</strong>, maggiorata da $\sum2|a_n|$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Quale criterio si applica?</div>
-          <div class="step-content">Il <strong>criterio del confronto</strong>: $\sum2|a_n|$ converge per ipotesi, quindi converge $\sum b_n$ (serie a termini non negativi).</div></div></div>
+          <div class="step-content">Il <strong>criterio del confronto</strong>: $\sum|a_n|\lt+\infty$ per ipotesi, quindi $2\sum|a_n|\lt+\infty$, e converge $\sum(a_n+|a_n|)$.</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Come si ricostruisce la serie di partenza?</div>
-          <div class="step-content">$a_n=b_n-|a_n|$, differenza di due serie convergenti; per linearità (algebra dei limiti sulle somme parziali) $\sum a_n$ converge. $\blacksquare$</div></div></div>
+          <div class="step-content">$\displaystyle\sum a_n=\sum(a_n+|a_n|-|a_n|)=\sum(a_n+|a_n|)-\sum|a_n|$: differenza di due serie convergenti, quindi converge per l'algebra dei limiti. $\blacksquare$</div></div></div>
         <div class="step"><div class="step-n"></div><div class="step-body">
           <div class="step-cue">Vale il viceversa?</div>
           <div class="step-content"><strong>No.</strong> $\sum_{n\ge1}\frac{(-1)^n}{n}$ converge per Leibniz, ma $\sum\frac1n$ diverge: si dice <em>semplicemente convergente</em>.</div></div></div>
@@ -423,6 +493,26 @@
       <div class="box-title">Perché la distinzione conta</div>
       <p class="mb0">In una serie <strong>assolutamente</strong> convergente si possono riordinare i termini senza cambiare la somma. In una serie <strong>semplicemente</strong> convergente no: per il teorema di Riemann sul riordinamento, riordinandola si può ottenere qualunque somma si voglia — anche $+\infty$. La convergenza assoluta è quindi molto più robusta.</p>
     </div>
+
+    <h3 id="riepilogo">Esercizio di riepilogo (Lezione 11)</h3>
+    <p>Studiare il carattere di $\displaystyle\sum_{m=1}^\infty\frac{(\tan\alpha)^m}{m^2}\log m$ al variare di $\alpha\in\left(-\frac\pi2,\frac\pi2\right)$. È l'esercizio che mette insieme tutto: condizione necessaria, convergenza assoluta, rapporto, confronto asintotico, Leibniz.</p>
+    <details class="reveal"><summary>Svolgimento passo per passo</summary><div class="reveal-body">
+      <p><strong>1. Condizione necessaria.</strong> Tutto dipende da $|\tan\alpha|$ rispetto a $1$, cioè da $\alpha$ rispetto a $\pm\frac\pi4$.</p>
+      <ul>
+        <li>$\tan\alpha>1$ ($\alpha\in(\frac\pi4,\frac\pi2)$): l'esponenziale batte $\frac{\log m}{m^2}$, $a_m\to+\infty$: la serie (a termini positivi) <strong>diverge positivamente</strong>.</li>
+        <li>$\tan\alpha\lt-1$ ($\alpha\in(-\frac\pi2,-\frac\pi4)$): $a_m=(-1)^m|\tan\alpha|^m\frac{\log m}{m^2}$ non ha limite: la serie <strong>non converge</strong>.</li>
+        <li>$-1\le\tan\alpha\le1$ ($|\alpha|\le\frac\pi4$): $a_m\to0$, la condizione necessaria è soddisfatta e bisogna andare avanti.</li>
+      </ul>
+      <p><strong>2. Convergenza assoluta.</strong> Per $\alpha\in[-\frac\pi4,0)$ la serie non è a termini non negativi, quindi si studia $\sum|a_m|=\sum|\tan\alpha|^m\frac{\log m}{m^2}$, che è a termini positivi. Con il rapporto:
+      $$\frac{|a_{m+1}|}{|a_m|}=|\tan\alpha|\cdot\frac{\log(m+1)}{\log m}\cdot\frac{m^2}{(m+1)^2}\longrightarrow|\tan\alpha|.$$ Se $|\tan\alpha|\lt1$, cioè $\alpha\in(-\frac\pi4,\frac\pi4)$, la serie converge <strong>assolutamente</strong>, quindi semplicemente.</p>
+      <p><strong>3. I casi $|\tan\alpha|=1$, dove il rapporto non decide.</strong></p>
+      <ul>
+        <li>$\alpha=\frac\pi4$: $\sum\frac{\log m}{m^2}$. Con $b_m=\frac1{m^\beta}$, $1\lt\beta\lt2$: $\frac{a_m}{b_m}=\frac{\log m}{m^{2-\beta}}\to0$ e $\sum b_m$ converge, quindi converge (confronto asintotico).</li>
+        <li>$\alpha=-\frac\pi4$: $\sum(-1)^m\frac{\log m}{m^2}$. Converge per Leibniz con $c_m=\frac{\log m}{m^2}$, oppure, più semplicemente, converge assolutamente per il punto precedente.</li>
+      </ul>
+      <p class="small muted">Precisazione: per Leibniz serve $c_m>0$ e decrescente, che qui vale da $m=2$ in poi ($c_1=0$); basta «definitivamente».</p>
+      <p class="mb0"><strong>Conclusione.</strong> Converge (assolutamente) per $\alpha\in[-\frac\pi4,\frac\pi4]$; diverge positivamente per $\alpha\in(\frac\pi4,\frac\pi2)$; non converge per $\alpha\in(-\frac\pi2,-\frac\pi4)$.</p>
+    </div></details>
 
     <!-- ============================================================ -->
     <h2 id="strategia">5 · La strategia operativa</h2>
@@ -470,11 +560,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261013b"></script>
-<script src="../data/topics.js?v=20261013b"></script>
-<script src="../data/quiz.js?v=20261013b"></script>
-<script src="../../assets/js/plot.js?v=20261013b"></script>
-<script src="../../assets/js/app.js?v=20261013b"></script>
+<script src="../../assets/js/materie.js?v=20261019"></script>
+<script src="../data/topics.js?v=20261019"></script>
+<script src="../data/quiz.js?v=20261019"></script>
+<script src="../../assets/js/plot.js?v=20261019"></script>
+<script src="../../assets/js/app.js?v=20261019"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 3);

@@ -721,6 +721,148 @@ $a_n\to0$: dato $\eps>0$, $\log\left(1+\frac2{n+1}\right)\lt\eps\iff n>\frac{2}{
 <li>Nemmeno $+\infty$: dovrebbe essere $b_n>M$ definitivamente, ma $b_n=0$ per ogni $n$ pari.</li></ul>
 Il limite non esiste. <span class="small muted">Più rapido: due sottosuccessioni con limiti diversi, $0$ e $+\infty$.</span> $\blacksquare$` },
 
+/* ---------- Esercitazione 4 (9 ottobre): limiti di successioni, parte I ---------- */
+{ id: 'E2.23', sez: 2, tema: 'Limiti notevoli', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{\log\left(1+\frac3{n^2}\right)}{\sin\frac2{n^2}}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Forma $\frac00$: sia $\frac3{n^2}$ sia $\frac2{n^2}$ sono infinitesime.`,
+           r`Moltiplica e dividi per $\frac3{n^2}$ e per $\frac2{n^2}$, così compaiono i due limiti notevoli.` ],
+  sol: r`$$\frac{\log\left(1+\frac3{n^2}\right)}{\sin\frac2{n^2}}=\underbrace{\frac{\log\left(1+\frac3{n^2}\right)}{\frac3{n^2}}}_{\to1}\cdot\underbrace{\frac{\frac2{n^2}}{\sin\frac2{n^2}}}_{\to1}\cdot\frac{3/n^2}{2/n^2}\longrightarrow\boxed{\tfrac32}.$$ <strong>Controllo</strong> con gli asintotici: $\frac{3/n^2}{2/n^2}=\frac32$. $\blacksquare$` },
+
+{ id: 'E2.24', sez: 2, tema: 'Limiti di successioni', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{\log\frac1{n^5}+\log\sqrt n}{2\log(n^6+n^2)}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Usa le proprietà dei logaritmi: $\log n^a=a\log n$.`,
+           r`Al denominatore raccogli $n^6$: $\log(n^6+n^2)=6\log n+\log\left(1+\frac1{n^4}\right)$.` ],
+  sol: r`Numeratore: $-5\log n+\frac12\log n=-\frac92\log n$. Denominatore: $2\left[6\log n+\log\left(1+\frac1{n^4}\right)\right]=12\log n\left[1+\frac{2\log(1+1/n^4)}{12\log n}\right]$, e la frazione dentro la parentesi tende a $\frac0{+\infty}=0$. Quindi $$\frac{-\frac92\log n}{12\log n\,[1+o(1)]}\longrightarrow\boxed{-\tfrac38}.$$ $\blacksquare$` },
+
+{ id: 'E2.25', sez: 2, tema: 'Limiti di successioni', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac1{\sqrt[n^2]{2^{2^n}}}\cdot\left[n\log\left(\left(\frac{n+3}n\right)^2\right)\right]$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Studia i due fattori separatamente.`,
+           r`$n\log\left(\frac{n+3}n\right)^2=2n\log\left(1+\frac3n\right)$: limite notevole.`,
+           r`$\sqrt[n^2]{2^{2^n}}=2^{2^n/n^2}$, e $\frac{2^n}{n^2}\to+\infty$ per la gerarchia degli infiniti.` ],
+  sol: r`Secondo fattore: $2n\log\left(1+\frac3n\right)=2n\cdot\frac{\log(1+3/n)}{3/n}\cdot\frac3n\to6$, quindi è limitato. Primo fattore: $\sqrt[n^2]{2^{2^n}}=2^{2^n/n^2}\to2^{+\infty}=+\infty$, quindi il suo reciproco tende a $0$. Infinitesima per limitata: il limite vale $\boxed{0}$. $\blacksquare$` },
+
+{ id: 'E2.26', sez: 2, tema: 'Limiti notevoli', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{\sqrt{1+\sin^2\left(\frac1{n^4+1}\right)}-1}{\frac1{4n^8+5n^2}}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Con $a_n=\sin^2\frac1{n^4+1}\to0$ usa $(1+a_n)^{1/2}-1\sim\frac12a_n$.`,
+           r`Poi $\sin\frac1{n^4+1}\sim\frac1{n^4+1}$, e resta un rapporto di polinomi.` ],
+  sol: r`Si spezza: $$\frac{(1+a_n)^{1/2}-1}{a_n}\cdot\frac{a_n}{\frac1{4n^8+5n^2}},\qquad a_n=\sin^2\tfrac1{n^4+1}.$$ Il primo fattore tende a $\frac12$. Il secondo: $$\left(\frac{\sin\frac1{n^4+1}}{\frac1{n^4+1}}\right)^2\cdot\frac{4n^8+5n^2}{(n^4+1)^2}\to1\cdot4=4.$$ Il limite vale $\frac12\cdot4=\boxed{2}$. $\blacksquare$` },
+
+{ id: 'E2.27', sez: 2, tema: 'Gerarchia degli infiniti', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{n^2+\sin n-e^n}{\log^2n+n^n}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Raccogli il termine dominante sopra ($e^n$) e sotto ($n^n$).`,
+           r`$\frac{\sin n}{e^n}\to0$ per i carabinieri; $\frac{\log^2n}{n^n}\to0$ perché definitivamente $\log^2n\le n^2$.` ],
+  sol: r`$$\frac{e^n\left[\frac{n^2}{e^n}+\frac{\sin n}{e^n}-1\right]}{n^n\left[\frac{\log^2n}{n^n}+1\right]},$$ con le due parentesi che tendono a $-1$ e $1$. Resta $\frac{e^n}{n^n}\to0$ (gerarchia), quindi il limite vale $\boxed{0}$. $\blacksquare$` },
+
+{ id: 'E2.28', sez: 2, tema: 'Numero e', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\left[1+\sin\frac1{n^3}\right]^{n^3}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`È una forma $1^\infty$: fai comparire $(1+a_n)^{1/a_n}\to e$ con $a_n=\sin\frac1{n^3}$.`,
+           r`Che cosa resta all'esponente? $\sin\frac1{n^3}\cdot n^3$.` ],
+  sol: r`$$\left[1+\sin\tfrac1{n^3}\right]^{n^3}=\left[\left(1+\sin\tfrac1{n^3}\right)^{1/\sin(1/n^3)}\right]^{n^3\sin(1/n^3)},$$ con la base che tende a $e$ e l'esponente $\frac{\sin(1/n^3)}{1/n^3}\to1$. Il limite vale $\boxed{e}$. $\blacksquare$` },
+
+{ id: 'E2.29', sez: 2, tema: 'Limiti di successioni', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{\sqrt{n^3-n^2-1}-\sqrt{n^3-n^2+n}}{n-\sqrt{n^2-n}}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Razionalizza il denominatore: $n^2-(n^2-n)=n$.`,
+           r`Poi razionalizza anche la differenza di radici al numeratore.` ],
+  sol: r`Moltiplicando e dividendo per $n+\sqrt{n^2-n}$: $$\left(\sqrt{n^3-n^2-1}-\sqrt{n^3-n^2+n}\right)\cdot\frac{n+\sqrt{n^2-n}}{n},$$ e $\frac{n+\sqrt{n^2-n}}n=1+\sqrt{1-\frac1n}\to2$. La differenza di radici: $$\frac{-1-n}{\sqrt{n^3-n^2-1}+\sqrt{n^3-n^2+n}}=-\frac{1+\frac1n}{n^{1/2}\left[\sqrt{1-\frac1n-\frac1{n^3}}+\sqrt{1-\frac1n+\frac1{n^2}}\right]}\to0.$$ Il limite vale $0\cdot2=\boxed{0}$. $\blacksquare$` },
+
+{ id: 'E2.30', sez: 2, tema: 'Gerarchia degli infiniti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\left(e^n-n^{\sqrt n}\right)$ e confrontarlo con $\lim\left(e^n-n^n\right)$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Scrivi $n^{\sqrt n}=e^{\sqrt n\log n}$ e raccogli $e^n$.`,
+           r`$\sqrt n\log n-n=\sqrt n\left(\log n-\sqrt n\right)$, e $\log n-\sqrt n=\sqrt n\left(\frac{\log n}{\sqrt n}-1\right)\to-\infty$.` ],
+  sol: r`$$e^n-n^{\sqrt n}=e^n\left[1-e^{\sqrt n\log n-n}\right].$$ L'esponente $\sqrt n\log n-n=\sqrt n(\log n-\sqrt n)\to(+\infty)(-\infty)=-\infty$, perché $\frac{\log n}{\sqrt n}\to0$. Quindi $e^{\sqrt n\log n-n}\to0$ e il limite è $e^{+\infty}\cdot1=\boxed{+\infty}$.<br>Invece $e^n-n^n=n^n\left(\frac{e^n}{n^n}-1\right)\to-\infty$. <strong>Morale:</strong> $e^n$ è un infinito di ordine superiore a $n^{\sqrt n}$ ma inferiore a $n^n$. $\blacksquare$` },
+
+{ id: 'E2.31', sez: 2, tema: 'Limiti notevoli', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{n!\,\sqrt n\,\sin\frac1n}{(n+1)!-n!}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`$(n+1)!-n!=n!\,(n+1-1)=n\cdot n!$.`,
+           r`Dopo aver semplificato $n!$, usa $\frac{\sin(1/n)}{1/n}\to1$.` ],
+  sol: r`$$\frac{n!\sqrt n\sin\frac1n}{n\cdot n!}=\frac{\sqrt n}{n}\cdot\frac1n\cdot\frac{\sin\frac1n}{\frac1n}=\frac1{n^{3/2}}\cdot\frac{\sin\frac1n}{\frac1n}\to0\cdot1=\boxed{0}.$$ $\blacksquare$` },
+
+{ id: 'E2.32', sez: 2, tema: 'Numero e', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\left(\frac{n^2+3n}{n^2+n+1}\right)^{3n}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Forma $1^\infty$: scrivi la base come $1+a_n$ con $a_n=\frac{2n-1}{n^2+n+1}\to0$.`,
+           r`$(1+a_n)^{3n}=\left[(1+a_n)^{1/a_n}\right]^{3n\,a_n}$: quanto vale $\lim 3n\,a_n$?` ],
+  sol: r`$\frac{n^2+3n}{n^2+n+1}=1+\frac{2n-1}{n^2+n+1}=1+a_n$, con $a_n\to0$. Allora $$\left[(1+a_n)^{1/a_n}\right]^{3na_n},\qquad 3na_n=\frac{6n^2-3n}{n^2+n+1}\to6,$$ e la base tende a $e$: il limite vale $\boxed{e^6}$. <strong>Controllo numerico:</strong> per $n=10^5$ si ottiene circa $403{,}37$, contro $e^6\approx403{,}43$. $\blacksquare$` },
+
+{ id: 'E2.33', sez: 2, tema: 'Due carabinieri', d: 3,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\sqrt[n]{3^n+\left(1+\frac{2\log2}{n}\right)^{n^2}}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Quale dei due addendi sotto radice domina? Ricorda che $\left(1+\frac{2\log2}n\right)^n\to e^{2\log2}=4$.`,
+           r`Raccogli $\left(1+\frac{2\log2}n\right)^{n^2}$ dentro la radice.`,
+           r`Il termine $\left(\frac3{(1+2\log2/n)^n}\right)^n$ sta definitivamente sotto $c^n$ con $0\lt c\lt1$.` ],
+  sol: r`$$\left[3^n+\left(1+\tfrac{2\log2}n\right)^{n^2}\right]^{1/n}=\left(1+\tfrac{2\log2}n\right)^n\cdot\left[\left(\frac3{\left(1+\frac{2\log2}n\right)^n}\right)^n+1\right]^{1/n}.$$ Il primo fattore tende a $e^{\log4}=4$; quindi definitivamente $\left(1+\frac{2\log2}n\right)^n>3$, ed esiste $c\in(0,1)$ con $\frac3{(1+2\log2/n)^n}\lt c$. Allora $0\lt(\dots)^n\lt c^n\to0$: per i carabinieri tende a $0$. Il limite vale $4\cdot1=\boxed{4}$. $\blacksquare$` },
+
+{ id: 'E2.34', sez: 2, tema: 'Permanenza del segno e confronto', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{\left(1+\frac2n\right)^{n\log_3(n^3)}}{n^2}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Usa la disuguaglianza di Bernoulli: $\left(1+\frac2n\right)^n\ge1+n\cdot\frac2n=3$.`,
+           r`$3^{\log_3(n^3)}=n^3$.` ],
+  sol: r`Per Bernoulli $\left(1+\frac2n\right)^n\ge3$ per ogni $n\ge1$, quindi $$\frac{\left[\left(1+\frac2n\right)^n\right]^{\log_3(n^3)}}{n^2}\ge\frac{3^{\log_3(n^3)}}{n^2}=\frac{n^3}{n^2}=n\to+\infty.$$ Per il confronto il limite vale $\boxed{+\infty}$. $\blacksquare$` },
+
+{ id: 'E2.35', sez: 2, tema: 'Limiti notevoli', d: 2,
+  t: r`Studiare al variare di $\alpha\in\R$: $\displaystyle\lim_{n\to+\infty}\frac{\sin\frac2{\sqrt n}\cdot\log\left(1+\frac1n\right)}{\sqrt n\left[1-\cos\frac4n\right]^\alpha}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Sostituisci con gli asintotici: $\sin\frac2{\sqrt n}\sim\frac2{\sqrt n}$, $\log(1+\frac1n)\sim\frac1n$, $1-\cos\frac4n\sim\frac12\cdot\frac{16}{n^2}=\frac8{n^2}$.`,
+           r`Resta una potenza di $n$: quale esponente?` ],
+  sol: r`Il termine è asintotico a $$\frac{\frac2{\sqrt n}\cdot\frac1n}{\sqrt n\left(\frac8{n^2}\right)^\alpha}=\frac2{8^\alpha}\,n^{2\alpha-2}.$$ Quindi il limite vale $\boxed{\tfrac14}$ se $\alpha=1$, $\boxed{+\infty}$ se $\alpha>1$, $\boxed{0}$ se $\alpha\lt1$. <span class="small muted">Il tutor scrive il fattore come $\frac2{16^\alpha}n^{2(\alpha-1)}$ moltiplicato per $\left(\frac{(4/n)^2}{1-\cos(4/n)}\right)^\alpha\to2^\alpha$: è la stessa cosa.</span> $\blacksquare$` },
+
+{ id: 'E2.36', sez: 2, tema: 'Non esistenza del limite', d: 3,
+  t: r`Studiare al variare di $\alpha\in\R$: $\displaystyle\lim_{n\to+\infty}\frac{\left(e^{2n}-1\right)\cos^3n}{n\,e^{\alpha n}}$. <span class="small muted">(Esercitazione 4)</span>`,
+  hints: [ r`Raccogli $e^{2n}$: il termine diventa $e^{n(2-\alpha)}\cdot(1-e^{-2n})\cdot\frac{\cos^3n}{n}$.`,
+           r`$\frac{\cos^3n}n\to0$ per i carabinieri. Che cosa succede se $\alpha\lt2$, quando $e^{n(2-\alpha)}\to+\infty$?` ],
+  sol: r`$$\frac{(e^{2n}-1)\cos^3n}{n\,e^{\alpha n}}=e^{n(2-\alpha)}\cdot\left(1-e^{-2n}\right)\cdot\frac{\cos^3n}n.$$ <ul><li>$\alpha\ge2$: $e^{n(2-\alpha)}$ vale $1$ o tende a $0$, e $\frac{\cos^3n}{n}\to0$: il limite è $\boxed{0}$.</li><li>$\alpha\lt2$: forma $+\infty\cdot0$. Scrivendo $\frac{(e^{2-\alpha})^n}{n}\cdot\cos^3n$, il primo fattore tende a $+\infty$ (gerarchia, $e^{2-\alpha}>1$) e $\cos^3n$ oscilla in segno: il limite <strong>non esiste</strong>.</li></ul> $\blacksquare$` },
+
+/* ---------- Esercitazione 5 (16 ottobre): asintotici e o-piccoli ---------- */
+{ id: 'E2.37', sez: 2, tema: 'o-piccoli', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}n^2\left[\log^2\left(1+\frac2n\right)-\frac1{n^2}\right]$. <span class="small muted">(Esercitazioni 4 e 5)</span>`,
+  hints: [ r`$\log\left(1+\frac2n\right)=\frac2n+o\left(\frac1n\right)$.`,
+           r`Eleva al quadrato con le regole degli o-piccoli: $\left(\frac2n+o\left(\frac1n\right)\right)^2=\frac4{n^2}+o\left(\frac1{n^2}\right)$.` ],
+  sol: r`$$n^2\left[\frac4{n^2}+o\left(\frac1{n^2}\right)-\frac1{n^2}\right]=n^2\left[\frac3{n^2}+o\left(\frac1{n^2}\right)\right]=3+o(1)\to\boxed{3}.$$ <strong>Attenzione:</strong> qui c'è una differenza, quindi non si può sostituire $\log^2(1+\frac2n)$ con $\frac4{n^2}$ «e basta»: si scrive l'o-piccolo e si verifica che non dia fastidio. $\blacksquare$` },
+
+{ id: 'E2.38', sez: 2, tema: 'Equivalenza asintotica', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{\log\left(n^5+n^4+\arctan n\right)}{\log\left(n^4+2\right)}$. <span class="small muted">(Esercitazioni 4 e 5)</span>`,
+  hints: [ r`$n^5+n^4+\arctan n\sim n^5$ e $n^4+2\sim n^4$.`,
+           r`Si può passare agli asintotici dentro il logaritmo? Sì, se il limite dell'argomento è diverso da $1$ (Proposizione 2 dell'Esercitazione 5).` ],
+  sol: r`$\frac{n^5+n^4+\arctan n}{n^5}=1+\frac1n+\frac{\arctan n}{n^5}\to1$, quindi l'argomento è $\sim n^5\to+\infty\ne1$ e $\log(n^5+n^4+\arctan n)\sim\log n^5=5\log n$. Allo stesso modo $\log(n^4+2)\sim4\log n$. Il limite vale $\boxed{\tfrac54}$. $\blacksquare$` },
+
+{ id: 'E2.39', sez: 2, tema: 'Equivalenza asintotica', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\left[1-\cos\frac1n\right]^{\tan\frac1n}$. <span class="small muted">(Esercitazioni 4 e 5)</span>`,
+  hints: [ r`Scrivi la potenza come $e^{\tan(1/n)\cdot\log(1-\cos(1/n))}$.`,
+           r`$\tan\frac1n\sim\frac1n$; $1-\cos\frac1n\sim\frac1{2n^2}\to0\ne1$, quindi $\log\left(1-\cos\frac1n\right)\sim\log\frac1{2n^2}$.` ],
+  sol: r`L'esponente è $$\tan\tfrac1n\cdot\log\left(1-\cos\tfrac1n\right)\sim\frac1n\cdot\left(-2\log(\sqrt2\,n)\right)\to0$$ per la gerarchia degli infiniti. Il limite vale $e^0=\boxed{1}$. Osservazione: $\cos\frac1n\to1^-$, quindi $\log\left(1-\cos\frac1n\right)$ è definito. $\blacksquare$` },
+
+{ id: 'E2.40', sez: 2, tema: 'Equivalenza asintotica', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\arctan\left(\frac1n+\frac1{n^2}\right)\cdot\left(\sqrt{n^4-\frac{n^3}3}-n^2\right)$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`$\arctan a_n\sim a_n$ se $a_n\to0$, e $\frac1n+\frac1{n^2}\sim\frac1n$.`,
+           r`Nella differenza di radici raccogli $n^2$: $n^2\left[\left(1-\frac1{3n}\right)^{1/2}-1\right]$.` ],
+  sol: r`$\arctan\left(\frac1n+\frac1{n^2}\right)\sim\frac1n$; $\ n^2\left[\left(1-\frac1{3n}\right)^{1/2}-1\right]\sim n^2\cdot\frac12\cdot\left(-\frac1{3n}\right)=-\frac n6$. Prodotto: $\frac1n\cdot\left(-\frac n6\right)\to\boxed{-\tfrac16}$. $\blacksquare$` },
+
+{ id: 'E2.41', sez: 2, tema: 'Equivalenza asintotica', d: 2,
+  t: r`Studiare al variare di $\alpha\in\R$: $\displaystyle\lim_{n\to+\infty}\frac{\arctan(n^\alpha)}{\sqrt{n+2}-\sqrt{n-2}}$. <span class="small muted">(Esercitazioni 4 e 5)</span>`,
+  hints: [ r`Distingui $\alpha>0$ ($n^\alpha\to+\infty$), $\alpha=0$, $\alpha\lt0$ ($n^\alpha\to0$).`,
+           r`$\frac1{\sqrt{n+2}-\sqrt{n-2}}=\frac{\sqrt{n+2}+\sqrt{n-2}}4\sim\frac{\sqrt n}2$.` ],
+  sol: r`$\arctan(n^\alpha)$ vale $\frac\pi4$ se $\alpha=0$, è $\sim\frac\pi2$ se $\alpha>0$, è $\sim n^\alpha$ se $\alpha\lt0$. Quindi il termine è asintotico a $\frac\pi8\sqrt n$, $\frac\pi4\sqrt n$, oppure $\frac{n^{\alpha+1/2}}2$. Il limite vale $$\boxed{+\infty}\ \text{se }\alpha>-\tfrac12,\qquad\boxed{\tfrac12}\ \text{se }\alpha=-\tfrac12,\qquad\boxed{0}\ \text{se }\alpha\lt-\tfrac12.$$ $\blacksquare$` },
+
+{ id: 'E2.42', sez: 2, tema: 'Equivalenza asintotica', d: 2,
+  t: r`Studiare al variare di $\alpha\in\R$: $\displaystyle\lim_{n\to+\infty}\frac{\sin\frac1{n^3}}{\sqrt[3]{1+\frac1{n^\alpha}}-1}$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`Il denominatore: vale $\sqrt[3]2-1$ se $\alpha=0$, tende a $+\infty$ se $\alpha\lt0$, è $\sim\frac1{3n^\alpha}$ se $\alpha>0$.`,
+           r`Per $\alpha>0$: $\frac{1/n^3}{1/(3n^\alpha)}=3n^{\alpha-3}$.` ],
+  sol: r`Per $\alpha\le0$ il denominatore non tende a $0$ mentre il numeratore sì: il limite è $0$. Per $\alpha>0$ il termine è $\sim3n^{\alpha-3}$. Complessivamente: $$\boxed{+\infty}\ \text{se }\alpha>3,\qquad\boxed{3}\ \text{se }\alpha=3,\qquad\boxed{0}\ \text{se }\alpha\lt3.$$ $\blacksquare$` },
+
+{ id: 'E2.43', sez: 2, tema: 'o-piccoli', d: 3,
+  t: r`Studiare al variare di $\alpha\in\R$: $\displaystyle\lim_{n\to+\infty}\frac{\sin\frac1{n^{\alpha^2+1}}-\log\left(1+\frac2n\right)}{n^{2-\alpha}}$. <span class="small muted">(Esercitazioni 4 e 5)</span>`,
+  hints: [ r`$\alpha^2+1>0$ sempre, quindi $\sin\frac1{n^{\alpha^2+1}}=\frac1{n^{\alpha^2+1}}+o\left(\frac1{n^{\alpha^2+1}}\right)$.`,
+           r`Raccogli $\frac1n$ al numeratore: resta $\frac1{n^{\alpha^2}}-2+o(1)$. Il caso $\alpha=0$ è diverso dagli altri!` ],
+  sol: r`Numeratore $=\frac1n\left[\frac1{n^{\alpha^2}}+o\left(\frac1{n^{\alpha^2}}\right)-2+o(1)\right]$, quindi il termine è $\dfrac{\frac1{n^{\alpha^2}}-2+o(1)}{n^{3-\alpha}}$.<ul><li>$\alpha=0$: $\frac{-1+o(1)}{n^3}\to0$.</li><li>$\alpha\ne0$: $\frac1{n^{\alpha^2}}\to0$ e resta $\frac{-2+o(1)}{n^{3-\alpha}}$: tende a $-2$ se $\alpha=3$, a $0$ se $\alpha\lt3$, a $-\infty$ se $\alpha>3$.</li></ul> Il limite vale $\boxed{-\infty}$ se $\alpha>3$, $\boxed{-2}$ se $\alpha=3$, $\boxed{0}$ se $\alpha\lt3$. $\blacksquare$` },
+
+{ id: 'E2.44', sez: 2, tema: 'Numero e', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\left(\frac{n!+5}{n!}\right)^{n!}$. <span class="small muted">(Esercitazioni 4 e 5)</span>`,
+  hints: [ r`$\frac{n!+5}{n!}=1+\frac5{n!}$.`,
+           r`Se $a_n\to\pm\infty$, allora $\left(1+\frac\alpha{a_n}\right)^{a_n}\to e^\alpha$.` ],
+  sol: r`$\left(1+\frac5{n!}\right)^{n!}\to\boxed{e^5}$, applicando il limite notevole con $a_n=n!\to+\infty$ e $\alpha=5$. $\blacksquare$` },
+
+{ id: 'E2.45', sez: 2, tema: 'Gerarchia degli infiniti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{n\to+\infty}\frac{e^n-2^{n\log n}}{n^n}$. <span class="small muted">(Esercitazioni 4 e 5)</span>`,
+  hints: [ r`Spezza: $\frac{e^n}{n^n}-\frac{2^{n\log n}}{n^n}$.`,
+           r`Scrivi tutto in base $e$: $2^{n\log n}=e^{n\log n\log2}$ e $n^n=e^{n\log n}$.` ],
+  sol: r`$\frac{e^n}{n^n}\to0$ per la gerarchia. Poi $$\frac{2^{n\log n}}{n^n}=e^{n\log n\,(\log2-1)}\to e^{-\infty}=0,$$ perché $\log2-1\lt0$ (infatti $2\lt e$). Il limite vale $\boxed{0}$. $\blacksquare$` },
+
 /* ======================= SEZIONE 3 ======================= */
 { id: 'E3.1', sez: 3, tema: 'Serie telescopiche', d: 1,
   t: r`Studiare il carattere e, se possibile, calcolare la somma di $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n(n+1)}$.`,
@@ -847,8 +989,53 @@ $$\frac{a_{n+1}}{a_n}=\frac{x^{\,n+1}}{n+1}\cdot\frac{n}{x^{n}}=x\cdot\frac{n}{n
 <li>Se $x>1$: il limite è $>1$, la serie <strong>diverge</strong>.</li>
 <li>Se $x=1$: il criterio non decide. Ma la serie diventa $\sum\frac1n$, la serie <strong>armonica</strong>, che <strong>diverge</strong>.</li></ul>
 $$\boxed{\,\text{converge}\iff 0\lt x<1\,}$$
-<em>Completamento (fuori dal parametro richiesto).</em> Per $x=-1$ si ottiene $\sum\frac{(-1)^{n}}{n}$, che converge per Leibniz ma non assolutamente; per $x<-1$ il termine generale non tende a $0$ e la serie è indeterminata. L'insieme di convergenza è dunque $[-1,1)$. $\blacksquare$` }
+<em>Completamento (fuori dal parametro richiesto).</em> Per $x=-1$ si ottiene $\sum\frac{(-1)^{n}}{n}$, che converge per Leibniz ma non assolutamente; per $x<-1$ il termine generale non tende a $0$ e la serie è indeterminata. L'insieme di convergenza è dunque $[-1,1)$. $\blacksquare$` },
 
+
+/* ---------- Esercitazione 5 (16 ottobre): serie a termini non negativi ---------- */
+{ id: 'E3.11', sez: 3, tema: 'Criterio del confronto', d: 1,
+  t: r`Studiare il carattere di $\displaystyle\sum_{n=1}^{\infty}\frac2{n^2+2n}$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`I termini sono positivi: si può confrontare.`,
+           r`$n^2+2n\ge n^2$, quindi $\frac2{n^2+2n}\le\frac2{n^2}$.` ],
+  sol: r`Serie a termini positivi con $\frac2{n^2+2n}\le\frac2{n^2}$. Poiché $\sum\frac1{n^p}$ converge per $p>1$, converge $2\sum\frac1{n^2}$, e per il <strong>criterio del confronto</strong> la serie <strong>converge</strong>. <span class="small muted">È anche telescopica: $\frac2{n(n+2)}=\frac1n-\frac1{n+2}$, con somma $\frac32$.</span> $\blacksquare$` },
+
+{ id: 'E3.12', sez: 3, tema: 'Criterio del confronto', d: 1,
+  t: r`Studiare il carattere di $\displaystyle\sum_{n=0}^{\infty}\frac{n^2}{3^n}$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`Per la gerarchia degli infiniti, definitivamente $n^2\le2^n$.`,
+           r`Allora $\frac{n^2}{3^n}\le\left(\frac23\right)^n$: una geometrica.` ],
+  sol: r`Termini $\ge0$ e infinitesimi. Definitivamente $n^2\le2^n$, quindi $\frac{n^2}{3^n}\le\left(\frac23\right)^n$, e la geometrica di ragione $\frac23\lt1$ converge: per confronto la serie <strong>converge</strong>. <span class="small muted">In alternativa, con il criterio del rapporto: $\frac{(n+1)^2}{3n^2}\to\frac13\lt1$.</span> $\blacksquare$` },
+
+{ id: 'E3.13', sez: 3, tema: 'Criterio del confronto', d: 1,
+  t: r`Studiare il carattere di $\displaystyle\sum_{n=1}^{\infty}\frac{\log n}{n}$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`Il termine tende a $0$: la condizione necessaria non basta a concludere.`,
+           r`Definitivamente $\log n\ge1$ (per $n\ge3$): confronta con $\frac1n$.` ],
+  sol: r`Per $n\ge3$ si ha $\log n\ge1$, quindi $\frac{\log n}n\ge\frac1n$, e la serie armonica diverge: per confronto la serie <strong>diverge</strong> a $+\infty$. <strong>Morale:</strong> termine generale infinitesimo e serie divergente, come per l'armonica. $\blacksquare$` },
+
+{ id: 'E3.14', sez: 3, tema: 'Serie geometrica', d: 1,
+  t: r`Dimostrare che $\displaystyle\sum_{n=1}^{\infty}\frac{3^{n+1}}{4^{n+2}}$ converge e calcolarne la somma. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`$\frac{3^{n+1}}{4^{n+2}}=\frac3{16}\left(\frac34\right)^n$.`,
+           r`La serie parte da $n=1$: $\sum_{n=1}^\infty q^n=\frac1{1-q}-1$.` ],
+  sol: r`$$\sum_{n=1}^{\infty}\frac{3^{n+1}}{4^{n+2}}=\frac3{16}\sum_{n=1}^{\infty}\left(\frac34\right)^n=\frac3{16}\left[\frac1{1-\frac34}-1\right]=\frac3{16}\cdot3=\boxed{\tfrac9{16}}.$$ Converge perché è una geometrica di ragione $\frac34\lt1$. <strong>Controllo</strong> con «primo termine diviso $1-q$»: il primo termine è $\frac9{64}$, e $\frac{9/64}{1/4}=\frac9{16}$. $\blacksquare$` },
+
+{ id: 'E3.15', sez: 3, tema: 'Confronto asintotico', d: 2,
+  t: r`Studiare il carattere di $\displaystyle\sum_{n=1}^{\infty}\frac{n^4-3\sin n}{3^n+4n}$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`Il termine è definitivamente positivo: $n^4-3\sin n\ge n^4-3$.`,
+           r`$3\sin n=o(n^4)$ e $4n=o(3^n)$: a che cosa è asintotico il termine?`,
+           r`$\frac{n^4}{3^n}\le\left(\frac23\right)^n$ definitivamente.` ],
+  sol: r`$\frac{n^4-3\sin n}{3^n+4n}=\frac{n^4+o(n^4)}{3^n+o(3^n)}\sim\frac{n^4}{3^n}$. Definitivamente $n^4\le2^n$, quindi $\frac{n^4}{3^n}\le\left(\frac23\right)^n$ e $\sum\frac{n^4}{3^n}$ converge per confronto con la geometrica. Per il <strong>confronto asintotico</strong> (corollario: termini asintotici, stesso carattere) la serie <strong>converge</strong>. $\blacksquare$` },
+
+{ id: 'E3.16', sez: 3, tema: 'Criterio del confronto', d: 2,
+  t: r`Studiare il carattere di $\displaystyle\sum_{n=1}^{\infty}\frac{(n+1)\,(2+\sin n)}{\sqrt[3]{n^5}}$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`$1\le2+\sin n\le3$: i termini sono positivi.`,
+           r`Il termine tende a $0$ (è $\le\frac{3(n+1)}{n^{5/3}}$), ma conviene minorarlo.` ],
+  sol: r`Il termine è infinitesimo, perché $\le\frac{3(n+1)}{n^{5/3}}\sim\frac3{n^{2/3}}\to0$; ma $$\frac{(n+1)(2+\sin n)}{n^{5/3}}\ge\frac{n+1}{n^{5/3}}>\frac n{n^{5/3}}=\frac1{n^{2/3}},$$ e $\sum\frac1{n^{2/3}}$ diverge ($\frac23\le1$). Per confronto la serie <strong>diverge</strong> a $+\infty$. $\blacksquare$` },
+
+{ id: 'E3.17', sez: 3, tema: 'Confronto asintotico', d: 3,
+  t: r`Stabilire al variare di $\alpha\in\R$ il carattere di $\displaystyle\sum_{n=1}^{\infty}\left(e^{1/n}-1\right)\log n\left[1-\cos\frac1n\right]^\alpha$. <span class="small muted">(Esercitazione 5)</span>`,
+  hints: [ r`Termini definitivamente $\ge0$; usa $e^{1/n}-1\sim\frac1n$ e $1-\cos\frac1n\sim\frac1{2n^2}$.`,
+           r`Il termine è $\sim\frac{\log n}{2^\alpha n^{2\alpha+1}}$. Per $\alpha\le0$ minoralo togliendo il logaritmo.`,
+           r`Per $\alpha>0$ confronta asintoticamente con $\frac1{n^{\alpha+1}}$.` ],
+  sol: r`Il termine è $\sim a_n:=\dfrac{\log n}{2^\alpha n^{2\alpha+1}}$.<ul><li>$\alpha\le0$: $a_n\ge\frac1{2^\alpha n^{2\alpha+1}}$ definitivamente (per $n\ge3$), e $\sum\frac1{n^{2\alpha+1}}$ diverge perché $2\alpha+1\le1$: per confronto e confronto asintotico la serie <strong>diverge</strong>.</li><li>$\alpha>0$: con $b_n=\frac1{n^{\alpha+1}}$, $\frac{a_n}{b_n}=\frac{\log n}{2^\alpha n^\alpha}\to0$ e $\sum b_n$ converge ($\alpha+1>1$): la serie <strong>converge</strong>.</li></ul> $\blacksquare$` }
   ];
 
   const AM = (window.AM = window.AM || {});

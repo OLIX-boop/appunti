@@ -21,8 +21,12 @@ aggiungere una materia sono nel `README.md`.
      **soltanto** per i punti segnati `[?]` o `[!?`, per le figure, e per ogni matrice o conto che
      non torna alla verifica con Node;
   3. la trascrizione non è una fonte: i refusi si segnalano solo dopo averli visti sull'originale.
-  Se lo script non è utilizzabile (manca la chiave, quota finita) si torna alle immagini in
-  griglie 2×2 a risoluzione moderata.
+  Se il modello predefinito risponde 503 (sovraccarico) o 429 (quota del piano gratuito), prima
+  di arrendersi si prova un altro modello con `--modello` (`--modelli` li elenca): il 19/10/2026
+  `gemini-3.5-flash` ha retto 11 pagine, poi `gemini-3.5-flash-lite` le altre, con qualità
+  sufficiente ma qualche indice sbagliato in più. Se lo script non è utilizzabile (manca la
+  chiave, quota finita su tutti i modelli) si torna alle immagini in griglie 2×2 a risoluzione
+  moderata.
 - Il sito usa **le convenzioni e la notazione del prof**, non quelle dei libri. Casi già
   stabiliti:
   - Analisi: Bernoulli con $h>-1$; argomento principale in $\left[-\frac\pi2,\frac32\pi\right)$

@@ -297,6 +297,24 @@
   a: 0,
   why: r`$\frac{a_{n+1}}{a_n}=\left(\frac{n}{n+1}\right)^n=\frac{1}{\left(1+\frac1n\right)^n}\to\frac1e\lt 1$, e per il criterio del rapporto $a_n\to0$: $n^n$ batte $n!$. L'errore tipico è semplificare $(n+1)^{n+1}$ con $n^n$ come se fossero la stessa potenza.` },
 
+{ id: 'Q62', sez: 2, tag: 'equivalenza asintotica',
+  q: r`Sapendo che $a_n\sim a_n'$ e $b_n\sim b_n'$, quale conclusione è <strong>sempre</strong> lecita?`,
+  opts: [ r`$a_nb_n\sim a_n'b_n'$`, r`$a_n+b_n\sim a_n'+b_n'$`, r`$e^{a_n}\sim e^{a_n'}$`, r`$a_n-a_n'\sim0$` ],
+  a: 0,
+  why: r`Il rapporto dei prodotti è il prodotto dei rapporti, che tende a $1\cdot1$. Le altre sono i «non si può» della Lezione 9: per le somme basta $n+1\sim n$ e $-n\sim-n$, che danno $1$ contro $0$; per l'esponenziale $\frac{e^{n+1}}{e^n}=e$; e nessuna successione è asintotica a $0$, perché il rapporto con $0$ non si scrive.` },
+
+{ id: 'Q63', sez: 2, tag: 'ordini di infinitesimo',
+  q: r`Rispetto a $\frac1n$, la successione $\frac1{n^2}$ è un infinitesimo:`,
+  opts: [ r`di ordine superiore`, r`di ordine inferiore`, r`dello stesso ordine`, r`non paragonabile` ],
+  a: 0,
+  why: r`$\frac{1/n^2}{1/n}=\frac1n\to0$: per gli <em>infinitesimi</em> un rapporto che tende a $0$ significa ordine <strong>superiore</strong> (va a zero più in fretta). Il distrattore «inferiore» viene dalla regola degli infiniti, dove i nomi sono invertiti.` },
+
+{ id: 'Q64', sez: 2, tag: 'o-piccoli',
+  q: r`Per $n\to+\infty$, $\ o\!\left(\frac1n\right)+o\!\left(\frac1{n^2}\right)$ è uguale a:`,
+  opts: [ r`$o\!\left(\frac1n\right)$`, r`$o\!\left(\frac1{n^2}\right)$`, r`$o\!\left(\frac1{n^3}\right)$`, r`$0$` ],
+  a: 0,
+  why: r`Una cosa trascurabile rispetto a $\frac1{n^2}$ lo è anche rispetto a $\frac1n$, che è più grande; quindi la somma è $o\left(\frac1n\right)$. Non è $o\left(\frac1{n^2}\right)$, perché il primo addendo può essere per esempio $\frac1{n^{3/2}}$, che non è trascurabile rispetto a $\frac1{n^2}$. E un o-piccolo non è $0$: è solo «piccolo rispetto a».` },
+
 /* ---------------- Sezione 3 ---------------- */
 { id: 'Q25', sez: 3, tag: 'condizione necessaria',
   q: r`Se $a_n\to0$, allora la serie $\sum a_n$:`,
@@ -445,7 +463,32 @@
           r`$f$ è costante`,
           r`$A$ è finito` ],
   a: 0,
-  why: r`È il trucco standard: $f:A\to f(A)$ è sempre suriettiva per costruzione, e resta iniettiva. Esempio: $e^x:\R\to\R$ non è suriettiva, ma $e^x:\R\to(0,+\infty)$ è biunivoca.` }
+  why: r`È il trucco standard: $f:A\to f(A)$ è sempre suriettiva per costruzione, e resta iniettiva. Esempio: $e^x:\R\to\R$ non è suriettiva, ma $e^x:\R\to(0,+\infty)$ è biunivoca.` },
+
+{ id: 'Q65', sez: 3, tag: 'confronto asintotico',
+  q: r`Siano $a_m\ge0$, $b_m>0$, $\frac{a_m}{b_m}\to\ell$ e $\sum b_m$ <strong>divergente</strong>. In quale caso si può concludere che $\sum a_m$ diverge?`,
+  opts: [ r`$\ell\in(0,+\infty]$`, r`$\ell\in[0,+\infty)$`, r`solo $\ell=1$`, r`per ogni $\ell\in[0,+\infty]$` ],
+  a: 0,
+  why: r`Per trasmettere la divergenza serve una stima dal basso $a_m\ge c\,b_m$ con $c>0$, che si ottiene solo se $\ell>0$ (anche $+\infty$). Con $\ell=0$ non si conclude: $\frac1{m^2}$ rispetto a $\frac1m$ dà $\ell=0$, ma $\sum\frac1{m^2}$ converge. «Solo $\ell=1$» è il corollario, che è un caso particolare.` },
+
+{ id: 'Q66', sez: 3, tag: 'criterio del rapporto',
+  q: r`Nella dimostrazione del criterio del rapporto con $\ell\lt1$ (Lezione 11), con quale serie si confronta $\sum a_m$?`,
+  opts: [ r`con una geometrica di ragione $x\in(\ell,1)$`, r`con la serie armonica`, r`con una geometrica di ragione $\ell$`, r`con $\sum\frac1{m^2}$` ],
+  a: 0,
+  why: r`Si sceglie $x$ fra $\ell$ e $1$ e si ottiene $a_m\lt a_1x^{m-1}$. Non si può usare la ragione $\ell$ stessa: la definizione di limite dà solo $\frac{a_{m+1}}{a_m}\lt\ell+\eps$, e con $\ell=0$ la geometrica di ragione $0$ non servirebbe. L'armonica diverge, quindi maggiorare con lei non dice nulla.` },
+
+{ id: 'Q67', sez: 3, tag: 'Leibniz',
+  q: r`Per applicare il criterio di Leibniz a $\sum(-1)^na_n$, quali ipotesi su $a_n$ vanno verificate?`,
+  opts: [ r`positiva, infinitesima e decrescente`, r`solo infinitesima`, r`positiva e decrescente`, r`$\sum a_n$ convergente` ],
+  a: 0,
+  why: r`Servono tutte e tre (Lezione 11). Senza «infinitesima» la condizione necessaria fallisce; senza la monotonia il criterio può fallire anche con $a_n\to0$. Se $\sum a_n$ convergesse, la serie convergerebbe assolutamente e Leibniz non servirebbe: non è un'ipotesi del criterio.` },
+
+{ id: 'Q68', sez: 3, tag: 'convergenza assoluta',
+  q: r`Quale passo è il cuore della dimostrazione «assoluta ⇒ semplice»?`,
+  opts: [ r`$0\le a_n+|a_n|\le2|a_n|$ e il criterio del confronto`, r`il criterio di Leibniz applicato a $\sum a_n$`, r`il criterio del rapporto applicato a $\sum|a_n|$`, r`$|a_n|\le a_n$ per ogni $n$` ],
+  a: 0,
+  why: r`Sommando $|a_n|$ a $-|a_n|\le a_n\le|a_n|$ si ottiene una serie a termini non negativi maggiorata da $2|a_n|$, che converge per confronto; poi $\sum a_n=\sum(a_n+|a_n|)-\sum|a_n|$. Leibniz riguarda solo le serie alternate, e il rapporto non c'entra. $|a_n|\le a_n$ è falso quando $a_n\lt0$.` }
+
 
   ];
 

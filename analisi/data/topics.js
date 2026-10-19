@@ -51,7 +51,7 @@
         { id: 's2-02', t: 'Funzione composta; la composizione non è commutativa', q: '1.24' },
         { id: 's2-03', t: 'Funzioni iniettive, suriettive, biunivoche; funzione inversa', q: '1.25' },
         { id: 's2-04', t: 'Funzioni reali di variabile reale; insieme di definizione', q: '1.26' },
-        { id: 's2-05', t: 'Funzioni monotòne e collegamento con il rapporto incrementale', q: '1.27' },
+        { id: 's2-05', t: 'Funzioni monotòne e collegamento con il rapporto incrementale', mark: '**', q: '1.27' },
         { id: 's2-06', t: 'Funzioni pari e dispari', q: '1.28' },
         { id: 's2-07', t: 'Funzioni periodiche', q: '1.29' },
         { id: 's2-08', t: 'Funzioni limitate; massimo, minimo, estremo superiore e inferiore di funzioni', q: '1.30' },

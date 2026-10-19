@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261013b">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261019">
 </head>
 <body>
 
@@ -29,6 +29,7 @@
       <a href="3-serie.html">3 · Serie</a>
       <a href="../teoremi.html">Teoremi</a>
       <a href="../quesiti.html">Quesiti</a>
+      <a href="../domande.html">Domande</a>
       <a href="../esercizi.html">Esercizi</a>
       <a href="../simulazione.html">Simulazione</a>
     </nav>
@@ -72,7 +73,10 @@
     <a href="#polinomi" class="sub">Rapporto tra polinomi</a>
     <a href="#criterio-rapporto" class="sub">Criterio del rapporto</a>
     <a href="#gerarchia" class="sub">Gerarchia degli infiniti</a>
-    <a href="#asintotico" class="sub">Equivalenze e o-piccoli</a>
+    <a href="#confronti-asintotici" class="sub">Ordini di infinito e infinitesimo</a>
+    <a href="#asintotico" class="sub">Equivalenza asintotica</a>
+    <a href="#o-piccolo" class="sub">Algebra degli o-piccoli</a>
+    <a href="#esempi-asintotici" class="sub">Esercizi con ∼ e o</a>
     <a href="#test">Mettiti alla prova</a>
     <a href="#errori">Errori tipici</a>
   </aside>
@@ -85,8 +89,9 @@
     </div>
 
     <div class="box warnb">
-      <div class="box-title">★ Novità delle Lezioni 5–8 e delle Esercitazioni 1–3</div>
+      <div class="box-title">★ Novità delle Lezioni 5–9 e delle Esercitazioni 1–5</div>
       <ul class="mb0">
+        <li><strong>Lezione 9 (12 ottobre):</strong> <a href="#confronti-asintotici">ordini di infinito e di infinitesimo</a>, <a href="#asintotico">equivalenza asintotica con le sue proprietà e cosa non si può fare</a>, <a href="#o-piccolo">algebra degli o-piccoli</a>, <a href="#esempi-asintotici">sei esercizi svolti a lezione</a></li>
         <li><strong>Lezione 7:</strong> <a href="#algebra-limiti">l'algebra dei limiti nelle tabelle del prof</a>, le forme indeterminate con gli esempi e la dimostrazione della somma</li>
         <li><strong>Lezione 8:</strong> <a href="#infinitesime">infinitesima per limitata</a> (dim. orale), il confronto per limiti infiniti, <a href="#notevoli-lezione">i limiti notevoli (a)–(h) con le dimostrazioni</a>, <a href="#polinomi">rapporto tra polinomi</a> e <a href="#criterio-rapporto">criterio del rapporto</a></li>
         <li><strong>Esercitazioni 1–3:</strong> gli esercizi svolti dal tutor sono nella palestra, <a href="../esercizi.html?sez=1">Sezione 1</a> e <a href="../esercizi.html?sez=2">Sezione 2</a></li>
@@ -982,27 +987,123 @@
       </ul>
     </div></details>
 
-    <h3 id="asintotico">Equivalenze asintotiche e o-piccoli</h3>
-    <div class="box def">
-      <div class="box-title">Definizioni</div>
-      <p class="mb0">Con $b_n\ne0$ definitivamente:
-      $$a_n=o(b_n)\ \overset{\text{def}}{\iff}\ \frac{a_n}{b_n}\to0\quad\text{(«$a_n$ è trascurabile rispetto a $b_n$»)},$$
-      $$a_n\sim b_n\ \overset{\text{def}}{\iff}\ \frac{a_n}{b_n}\to1\quad\text{(«asintoticamente equivalenti»)}.$$
-      Legame: $a_n\sim b_n\iff a_n=b_n+o(b_n)$. Inoltre $a_n\to0\iff a_n=o(1)$.</p>
+    <h3 id="confronti-asintotici">Confronti asintotici: ordini di infinito e di infinitesimo (Lezione 9)</h3>
+    <p>Due successioni che tendono entrambe a $\pm\infty$ (o entrambe a $0$) si confrontano guardando il <strong>limite del rapporto</strong>. Sia $b_n\ne0$ definitivamente.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>$\displaystyle\lim_{n\to+\infty}\frac{a_n}{b_n}$</th><th>$a_n,b_n$ divergenti (infiniti)</th><th>$a_n,b_n$ infinitesime</th></tr></thead>
+        <tbody>
+          <tr><td>$0$</td><td>$a_n$ è un infinito di ordine <strong>inferiore</strong> a $b_n$</td><td>$a_n$ è un infinitesimo di ordine <strong>superiore</strong> a $b_n$</td></tr>
+          <tr><td>$\ell\in\R\setminus\{0\}$</td><td>infiniti dello <strong>stesso ordine</strong></td><td>infinitesimi dello <strong>stesso ordine</strong></td></tr>
+          <tr><td>$+\infty$</td><td>infinito di ordine <strong>superiore</strong></td><td>infinitesimo di ordine <strong>inferiore</strong></td></tr>
+          <tr><td>non esiste</td><td>non confrontabili</td><td>non paragonabili</td></tr>
+        </tbody>
+      </table>
     </div>
+    <div class="box tip">
+      <div class="box-title">💡 Perché per gli infinitesimi i nomi si invertono</div>
+      <p class="mb0">Se $\frac{a_n}{b_n}\to0$, $a_n$ è molto più piccola di $b_n$. Fra due infiniti vuol dire che $a_n$ cresce più lentamente: ordine <em>inferiore</em>. Fra due infinitesimi vuol dire che $a_n$ va a zero più in fretta: ordine <em>superiore</em>. Esempio della lezione: $\frac{1/n^2}{1/n}=\frac1n\to0$, quindi $\frac1{n^2}$ è un infinitesimo di ordine superiore rispetto a $\frac1n$.</p>
+    </div>
+    <p>Con il simbolo $\succ$ («infinito di ordine superiore») la gerarchia della sezione precedente si scrive, con $\alpha>1$, $b>0$, $a>1$, $\gamma>0$:
+    $$n^n\succ n!\succ\alpha^n\succ n^b\succ(\log_a n)^\gamma.$$</p>
 
-    <div class="box">
-      <div class="box-title">Algebra degli o-piccoli</div>
+    <h3 id="asintotico">Equivalenza asintotica e o-piccolo</h3>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 9)</div>
+      <p>Con $b_n\ne0$ definitivamente:</p>
       <ul class="mb0">
-        <li>$o(b_n)\pm o(b_n)=o(b_n)$ &nbsp;e&nbsp; $c\cdot o(b_n)=o(b_n)$ per $c\ne0$;</li>
-        <li>$a_n\cdot o(b_n)=o(a_nb_n)$; &nbsp; $o(a_n)\cdot o(b_n)=o(a_nb_n)$; &nbsp; $o(o(b_n))=o(b_n)$;</li>
-        <li><strong>assorbimento:</strong> se $a_n=o(b_n)$ allora $a_n+b_n\sim b_n$;</li>
-        <li>per $x\to0$: $o(x^{\alpha})+o(x^{\beta})=o(x^{\beta})$ se $\alpha>\beta$ — <em>vince l'esponente più piccolo</em>.</li>
+        <li>$a_n$ è <strong>asintotica</strong> (o <strong>asintoticamente equivalente</strong>) a $b_n$, e si scrive $a_n\sim b_n$, se $\displaystyle\lim_{n\to+\infty}\frac{a_n}{b_n}=1$;</li>
+        <li>$a_n$ è un <strong>o-piccolo</strong> di $b_n$ (notazione di Landau), e si scrive $a_n=o(b_n)$, se $\displaystyle\lim_{n\to+\infty}\frac{a_n}{b_n}=0$.</li>
+      </ul>
+    </div>
+    <p>La gerarchia degli infiniti, riscritta con gli o-piccoli: $(\log_a n)^\gamma=o(n^b)$, $\ n^b=o(\alpha^n)$, $\ \alpha^n=o(n!)$, $\ n!=o(n^n)$.</p>
+
+    <div class="box prop">
+      <div class="box-title">Proprietà dell'equivalenza asintotica (Lezione 9)</div>
+      <ul class="mb0">
+        <li>$a_n\sim a_n$ (riflessiva); $\ a_n\sim b_n\Rightarrow b_n\sim a_n$ (simmetrica); $\ a_n\sim b_n,\ b_n\sim c_n\Rightarrow a_n\sim c_n$ (transitiva): è una <strong>relazione di equivalenza</strong>.</li>
+        <li>$\boxed{a_n\sim b_n\iff a_n=b_n+o(b_n)}$: l'errore che si commette sostituendo $b_n$ ad $a_n$ è trascurabile rispetto a $b_n$.</li>
+        <li><strong>Prodotti:</strong> se $a_n\sim a_n'$ e $b_n\sim b_n'$, allora $a_nb_n\sim a_n'b_n'$.</li>
+        <li><strong>Quozienti:</strong> se in più $b_n,b_n'\ne0$ definitivamente, $\dfrac{a_n}{b_n}\sim\dfrac{a_n'}{b_n'}$.</li>
+        <li><strong>Potenze con esponente fisso:</strong> se $a_n\sim a_n'$ e $\alpha\in\R$, allora $(a_n)^\alpha\sim(a_n')^\alpha$.</li>
+        <li>Se $a_n\sim a_n'$, le due successioni hanno lo stesso comportamento: convergono allo stesso $\ell$, oppure divergono entrambe (con lo stesso segno), oppure sono entrambe irregolari.</li>
+      </ul>
+    </div>
+    <details class="reveal proof"><summary>Perché valgono (dimostrazioni brevi)</summary><div class="reveal-body">
+      <p><strong>$\sim\iff b_n+o(b_n)$.</strong> $\dfrac{a_n}{b_n}\to1\iff\dfrac{a_n-b_n}{b_n}=\dfrac{a_n}{b_n}-1\to0\iff a_n-b_n=o(b_n)$.</p>
+      <p><strong>Prodotti e quozienti.</strong> $\dfrac{a_nb_n}{a_n'b_n'}=\dfrac{a_n}{a_n'}\cdot\dfrac{b_n}{b_n'}\to1\cdot1=1$ per l'algebra dei limiti; per i quozienti si fa lo stesso con $\dfrac{a_n}{a_n'}\cdot\dfrac{b_n'}{b_n}$.</p>
+      <p class="mb0"><strong>Simmetria e transitività.</strong> $\dfrac{b_n}{a_n}=\left(\dfrac{a_n}{b_n}\right)^{-1}\to1$; $\ \dfrac{a_n}{c_n}=\dfrac{a_n}{b_n}\cdot\dfrac{b_n}{c_n}\to1$.</p>
+    </div></details>
+
+    <div class="box trap">
+      <div class="box-title">✗ Cosa NON si può fare con $\sim$ (Lezione 9)</div>
+      <ul class="mb0">
+        <li><strong>Somme:</strong> $a_n\sim a_n'$ e $b_n\sim b_n'$ <em>non</em> implicano $a_n+b_n\sim a_n'+b_n'$. Esempio: $n+1\sim n$ e $-n\sim-n$, ma $(n+1)-n=1$ mentre $n-n=0$.</li>
+        <li><strong>Differenze:</strong> $a_n\sim b_n$ <em>non</em> implica $a_n-b_n\sim0$ (nessuna successione è asintotica a $0$: il rapporto non si può nemmeno scrivere).</li>
+        <li><strong>Esponenziali:</strong> $a_n\sim a_n'$ <em>non</em> implica $e^{a_n}\sim e^{a_n'}$. Esempio: $n+1\sim n$, ma $\frac{e^{n+1}}{e^n}=e\ne1$.</li>
+        <li><strong>Esponente variabile:</strong> $a_n\sim a_n'$ e $b_n\sim b_n'$ <em>non</em> implicano $a_n^{\,b_n}\sim(a_n')^{b_n'}$. Esempio: $1+\frac1n\sim1$, ma $\left(1+\frac1n\right)^n\to e$ mentre $1^n=1$.</li>
       </ul>
     </div>
 
+    <div class="box ex">
+      <div class="box-title">Esponenziali e logaritmi di successioni equivalenti (inizio della Lezione 10)</div>
+      <ul>
+        <li>$a_n=n^2+n\sim b_n=n^2$, ma $\dfrac{e^{a_n}}{e^{b_n}}=e^n\to+\infty$: $e^{a_n}$ è un infinito di ordine <strong>superiore</strong> a $e^{b_n}$. L'esponenziale non conserva $\sim$.</li>
+        <li>$a_n=n^\beta$, $b_n=n^\alpha$ con $\beta>\alpha>0$: $a_n\succ b_n$, ma $\dfrac{\log a_n}{\log b_n}=\dfrac{\beta\log n}{\alpha\log n}=\dfrac\beta\alpha$: i logaritmi sono infiniti dello <strong>stesso ordine</strong>.</li>
+        <li>$a_n=1+\frac1n\sim b_n=1+\frac1{n^2}$ (entrambe tendono a $1$), ma $\dfrac{\log a_n}{\log b_n}\sim\dfrac{1/n}{1/n^2}=n\to+\infty$: $\log a_n$ è un infinitesimo di ordine <strong>inferiore</strong> a $\log b_n$.</li>
+      </ul>
+      <p class="mb0"><strong>Regola (Lezione 10).</strong> Se $a_n\sim b_n$ e le due successioni non tendono a $1$, allora $\log a_n\sim\log b_n$. L'ultimo esempio mostra perché il caso del limite $1$ va escluso.</p>
+      <p class="small muted mb0" style="margin-top:8px">Precisazione: negli appunti l'ipotesi è scritta «$a_n\not\to1$, $b_n\not\to1$»; per il ragionamento serve che $a_n$ abbia un limite (positivo, finito o $+\infty$, oppure $0^+$) diverso da $1$. Basta scrivere $\log a_n=\log b_n+\log\frac{a_n}{b_n}$ e dividere per $\log b_n$: il secondo addendo tende a $0$ e $\log b_n$ non tende a $0$.</p>
+    </div>
+
+    <h3 id="o-piccolo">L'algebra degli o-piccoli</h3>
     <div class="box">
-      <div class="box-title">Sviluppi di Mac-Laurin da sapere a memoria ($x\to0$)</div>
+      <div class="box-title">Regole di calcolo (Lezione 9)</div>
+      <ul class="mb0">
+        <li>$o(a_n)=o(-a_n)=-o(a_n)$: il segno davanti a un o-piccolo non conta;</li>
+        <li>$c\cdot o(a_n)=o(c\,a_n)=o(a_n)$ per ogni $c\in\R\setminus\{0\}$: le costanti si assorbono (perché $\frac{o(a_n)}{a_n}\to0\iff\frac{c\,o(a_n)}{a_n}\to0$);</li>
+        <li>$a_n\cdot o(b_n)=o(a_nb_n)$;</li>
+        <li>$o\left(\frac1n\right)+o\left(\frac1{n^2}\right)=o\left(\frac1n\right)$: fra infinitesimi resta il più <em>grande</em>, cioè quello di ordine inferiore;</li>
+        <li>$o(n)+o(n^2)=o(n^2)$: fra infiniti resta il più <em>grande</em>, cioè quello di ordine superiore;</li>
+        <li>in generale $o(b_n)\pm o(b_n)=o(b_n)$, e se $a_n=o(b_n)$ allora $a_n+b_n\sim b_n$.</li>
+      </ul>
+    </div>
+    <div class="box prop">
+      <div class="box-title">I limiti notevoli diventano equivalenze (Lezione 9)</div>
+      <p class="mb0">Se $b_n\to0$ (con $b_n\ne0$): $$\sin b_n\sim b_n,\quad e^{b_n}-1\sim b_n,\quad \log(1+b_n)\sim b_n,\quad (1+b_n)^\alpha-1\sim\alpha\,b_n\ \ (\alpha\in\R).$$ Per esempio $\sin\frac1n\sim\frac1n$, cioè $\sin\frac1n=\frac1n+o\left(\frac1n\right)$; e $e^{1/n}-1\sim\frac1n$, $\ \log\left(1+\frac1n\right)\sim\frac1n$.</p>
+    </div>
+
+    <h3 id="esempi-asintotici">Esercizi svolti a lezione con $\sim$ e $o$</h3>
+    <details class="reveal"><summary>(1) $\ a_n=\dfrac{3n^5+2n^2-\sin(n^3)}{5n^5+n+\arctan n}$</summary><div class="reveal-body">
+      <p>Numeratore: $3n^5+o(n^5)$, perché $\frac{2n^2-\sin(n^3)}{n^5}\to0$. Denominatore: $5n^5+o(n^5)$, perché $\frac{n+\arctan n}{n^5}\to0$. Raccogliendo $n^5$:
+      $$a_n=\frac{n^5\left(3+\frac{o(n^5)}{n^5}\right)}{n^5\left(5+\frac{o(n^5)}{n^5}\right)}\longrightarrow\frac35.$$</p>
+    </div></details>
+    <details class="reveal"><summary>(2) $\ a_n=\dfrac{\sin\frac1n}{e^{2/n}-1}$</summary><div class="reveal-body">
+      <p class="mb0">$\sin\frac1n\sim\frac1n$ e $e^{2/n}-1\sim\frac2n$, quindi per il quoziente $a_n\sim\dfrac{1/n}{2/n}=\dfrac12$. Ma $a_n\sim\frac12$ vuol dire $\frac{a_n}{1/2}\to1$, cioè $a_n\to\frac12$.</p>
+    </div></details>
+    <details class="reveal"><summary>(3) $\ a_n=\dfrac{\sqrt[3]{1+n}-\sqrt[3]{n}}{1-e^{2/n}}\,\sin\dfrac1{n^2}$</summary><div class="reveal-body">
+      <p>La differenza di radici si riporta al limite notevole $(1+b_n)^\alpha-1\sim\alpha b_n$ raccogliendo $n^{1/3}$:
+      $$\sqrt[3]{1+n}-\sqrt[3]{n}=n^{1/3}\left[\left(1+\frac1n\right)^{1/3}-1\right]\sim n^{1/3}\cdot\frac1{3n}.$$
+      Poi $1-e^{2/n}\sim-\frac2n$ e $\sin\frac1{n^2}\sim\frac1{n^2}$. Mettendo insieme prodotti e quozienti:
+      $$a_n\sim\frac{n^{1/3}\cdot\frac1{3n}}{-\frac2n}\cdot\frac1{n^2}=-\frac1{6\,n^{5/3}}\longrightarrow0.$$</p>
+    </div></details>
+    <details class="reveal"><summary>(4) $\ \displaystyle\lim\frac{e^{\sin[\log(1+1/n)]}-1}{1/n}$: equivalenze in cascata</summary><div class="reveal-body">
+      <p class="mb0">Ogni argomento tende a $0$, quindi si scende un livello alla volta: $e^{\sin[\log(1+1/n)]}-1\sim\sin\left[\log\left(1+\frac1n\right)\right]\sim\log\left(1+\frac1n\right)\sim\frac1n$. Il limite vale $1$.</p>
+    </div></details>
+    <details class="reveal"><summary>(5) $\ \lim\left[(n^3+n^2)^{1/3}-(n^3-n)^{1/3}\right]$: quando $\sim$ non basta</summary><div class="reveal-body">
+      <p>Entrambi i termini sono $\sim n$, ma <strong>si sottraggono</strong>: con le equivalenze si otterrebbe $n-n=0$, che è sbagliato. Si raccoglie e si usano gli o-piccoli:
+      $$(n^3+n^2)^{1/3}=n\left(1+\tfrac1n\right)^{1/3}=n\left[1+\tfrac1{3n}+o\left(\tfrac1n\right)\right],\qquad (n^3-n)^{1/3}=n\left(1-\tfrac1{n^2}\right)^{1/3}=n\left[1-\tfrac1{3n^2}+o\left(\tfrac1{n^2}\right)\right].$$
+      Sottraendo, gli $1$ si cancellano:
+      $$a_n=\frac13+o(1)+\frac1{3n}+o\left(\frac1n\right)\longrightarrow\frac13.$$</p>
+    </div></details>
+    <details class="reveal"><summary>(6) $\ \displaystyle\lim\frac{n^3\left[\log(n^2+7)-2\log n\right]\log\left[1+\sin\frac1{n^2}\right]}{e^{1/(3n)}-1}$</summary><div class="reveal-body">
+      <p>$\log(n^2+7)-2\log n=\log\dfrac{n^2+7}{n^2}=\log\left(1+\dfrac7{n^2}\right)\sim\dfrac7{n^2}$; $\ \log\left[1+\sin\frac1{n^2}\right]\sim\sin\frac1{n^2}\sim\frac1{n^2}$; $\ e^{1/(3n)}-1\sim\frac1{3n}$. Quindi
+      $$\frac{a_n}{b_n}\sim\frac{n^3\cdot\frac7{n^2}\cdot\frac1{n^2}}{\frac1{3n}}=21\qquad\Longrightarrow\qquad\lim\frac{a_n}{b_n}=21.$$</p>
+      <p class="mb0 small muted">Negli appunti il prof scrive «NO $=$» sopra il simbolo: fra $\frac{a_n}{b_n}$ e l'espressione semplificata ci va $\sim$, non $=$. L'uguale si scrive solo fra i limiti.</p>
+    </div></details>
+
+    <div class="box">
+      <div class="box-title">Sviluppi di Mac-Laurin da sapere a memoria ($x\to0$) · anticipo della seconda parte</div>
       <p class="mb0">$$\sin x=x-\frac{x^3}{6}+o(x^3),\qquad \cos x=1-\frac{x^2}{2}+\frac{x^4}{24}+o(x^4),\qquad \tan x=x+\frac{x^3}{3}+o(x^3),$$
       $$e^{x}=1+x+\frac{x^2}{2}+o(x^2),\qquad \ln(1+x)=x-\frac{x^2}{2}+o(x^2),\qquad (1+x)^{\alpha}=1+\alpha x+o(x),$$
       $$\arctan x=x-\frac{x^3}{3}+o(x^3).$$</p>
@@ -1062,11 +1163,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261013b"></script>
-<script src="../data/topics.js?v=20261013b"></script>
-<script src="../data/quiz.js?v=20261013b"></script>
-<script src="../../assets/js/plot.js?v=20261013b"></script>
-<script src="../../assets/js/app.js?v=20261013b"></script>
+<script src="../../assets/js/materie.js?v=20261019"></script>
+<script src="../data/topics.js?v=20261019"></script>
+<script src="../data/quiz.js?v=20261019"></script>
+<script src="../../assets/js/plot.js?v=20261019"></script>
+<script src="../../assets/js/app.js?v=20261019"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 2);

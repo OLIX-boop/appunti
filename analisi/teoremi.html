@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=20261013b">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261019">
 </head>
 <body>
 
@@ -29,6 +29,7 @@
       <a href="sezioni/3-serie.html">3 · Serie</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="quesiti.html">Quesiti</a>
+      <a href="domande.html">Domande</a>
       <a href="esercizi.html">Esercizi</a>
       <a href="simulazione.html">Simulazione</a>
     </nav>
@@ -123,11 +124,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../assets/js/materie.js?v=20261013b"></script>
-<script src="data/topics.js?v=20261013b"></script>
-<script src="data/teoremi.js?v=20261013b"></script>
-<script src="../assets/js/plot.js?v=20261013b"></script>
-<script src="../assets/js/app.js?v=20261013b"></script>
+<script src="../assets/js/materie.js?v=20261019"></script>
+<script src="data/topics.js?v=20261019"></script>
+<script src="data/teoremi.js?v=20261019"></script>
+<script src="data/voce.js?v=20261019"></script>
+<script src="../assets/js/plot.js?v=20261019"></script>
+<script src="../assets/js/app.js?v=20261019"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var T = AM.TEOREMI, filtro = 'all';
@@ -148,11 +150,15 @@ document.addEventListener('am:ready', function () {
   }
 
   function card(t) {
-    var steps = t.steps.map(function (s) {
+    var v = (AM.VOCE || {})[t.id];
+    var steps = t.steps.map(function (s, i) {
+      var tip = v && v.passi[i] ? '<p class="voce">🎙 ' + v.passi[i] + '</p>' : '';
       return '<div class="step"><div class="step-n"></div><div class="step-body">' +
         '<div class="step-cue">' + s.cue + '</div>' +
-        '<div class="step-content">' + s.body + '</div></div></div>';
+        '<div class="step-content">' + s.body + tip + '</div></div></div>';
     }).join('');
+    var apri = v ? '<p class="voce">🎙 <strong>Come cominciare a voce.</strong> ' + v.apri + '</p>' : '';
+    var chiudi = v ? '<p class="voce">🎙 <strong>Come chiudere.</strong> ' + v.chiudi + '</p>' : '';
     return '<section id="' + t.id + '">' +
       '<h2 style="margin-top:44px">' + t.titolo + ' ' + badge(t) + '</h2>' +
       '<div class="box teo"><div class="box-title">Enunciato · Sezione ' + t.sez +
@@ -160,7 +166,7 @@ document.addEventListener('am:ready', function () {
       '<div class="box tip"><div class="box-title">💡 L\'idea in una riga</div><p class="mb0">' + t.idea + '</p></div>' +
       '<details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">' +
         '<div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>' +
-        '<div class="steps">' + steps + '</div></div></details>' +
+        apri + '<div class="steps">' + steps + '</div>' + chiudi + '</div></details>' +
       (t.note ? '<div class="box warnb"><div class="box-title">⚠ Da non sbagliare</div><p class="mb0">' + t.note + '</p></div>' : '') +
       '</section>';
   }

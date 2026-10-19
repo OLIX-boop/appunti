@@ -369,6 +369,16 @@ code:not([class*="language"]) {
 .step-content::after {
   content: ""; display: block;
 }
+/* consiglio per l'esposizione a voce (teoremi, domande teoriche) */
+.voce {
+  margin: 10px 0 0; padding: 8px 12px; font-size: 14px;
+  background: var(--purple-soft); border-left: 3px solid var(--purple-border);
+  border-radius: var(--radius-sm); color: var(--text);
+}
+.oral-q { font-size: 17px; font-weight: 600; margin: 4px 0 14px; }
+.oral-phase { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 6px; }
+.oral-cue { font-weight: 600; margin-bottom: 8px; }
+.oral-done { opacity: .75; }
 
 /* ---------- Tables ---------- */
 .tablewrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: var(--radius); }

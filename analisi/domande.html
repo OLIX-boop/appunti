@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domande teoriche — Analisi 1</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/analisi-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/analisi-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f5fa8">
+<meta name="apple-mobile-web-app-title" content="Analisi 1">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261019">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../index.html"><span class="brand-mark">∫</span> Analisi 1</a>
+    <nav class="topnav">
+      <a href="index.html">Piano</a>
+      <a href="../due-parziali.html">Parziali</a>
+      <a href="primo-parziale.html">Allenamento</a>
+      <a href="sezioni/1-numeri.html">1 · Numeri</a>
+      <a href="sezioni/2-successioni.html">2 · Successioni</a>
+      <a href="sezioni/3-serie.html">3 · Serie</a>
+      <a href="teoremi.html">Teoremi</a>
+      <a href="quesiti.html">Quesiti</a>
+      <a href="domande.html">Domande</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="simulazione.html">Simulazione</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout no-sidebar">
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Prima parte · i quesiti colorati</div>
+      <h1>Domande teoriche</h1>
+      <p class="lead">Una domanda a caso fra i quesiti con dimostrazione: i <strong style="color:var(--danger)">14 rossi</strong>, che allo scritto si chiedono con la dimostrazione, e i <strong style="color:var(--accent)">blu</strong>, la cui dimostrazione si chiede solo all'orale. Rispondi a voce, un passo alla volta, e controlla ogni passo prima di andare avanti.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">✓ Come funziona</div>
+      <p class="mb0">Prima dici l'<strong>enunciato</strong>, con tutte le ipotesi. Poi la dimostrazione: per ogni passo vedi la domanda che ti guida, dici ad alta voce cosa faresti e premi <strong>Controlla</strong>. Sotto la risposta trovi un consiglio 🎙 su come dirlo. Alla fine ti dai un voto: le domande che non sapevi tornano prima delle altre.</p>
+    </div>
+
+    <div class="chips" id="filters">
+      <button class="chip on" data-f="all">Tutte le colorate</button>
+      <button class="chip" data-f="rosse">Solo rosse · scritto</button>
+      <button class="chip" data-f="blu">Solo blu · orale</button>
+    </div>
+    <p class="small muted" id="poolInfo"></p>
+
+    <div id="oralBox"></div>
+
+    <p class="small muted center" style="margin-top:18px">Scorciatoia: <code>Invio</code> controlla il passo o va avanti.</p>
+
+    <div class="box" style="margin-top:32px">
+      <div class="box-title">Da dove vengono i colori</div>
+      <p class="mb0 small">Dal PDF <a href="materiale/Domande%20di%20Teoria%20AM1.pdf">Quesiti Teorici</a> della prof. Meglioli: in <span style="color:var(--danger)">rosso</span> i quesiti con le dimostrazioni $(*)$ del programma, che allo scritto possono essere chieste per intero; in <span style="color:var(--accent)">blu</span> quelli con le dimostrazioni $(**)$, che allo scritto si chiedono senza dimostrazione e all'orale anche con. Nel gruppo blu ci sono anche il 1.7 (somma dei primi $n$ naturali) e il 1.46 (infinitesima per limitata): nel PDF sono neri, ma il programma e la guida della settimana 4 danno loro il $(**)$. I consigli 🎙 sono del sito, non della docente.</p>
+    </div>
+  </main>
+</div>
+
+<footer>Analisi Matematica 1 · Domande teoriche · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../assets/js/materie.js?v=20261019"></script>
+<script src="data/topics.js?v=20261019"></script>
+<script src="data/quesiti.js?v=20261019"></script>
+<script src="data/teoremi.js?v=20261019"></script>
+<script src="data/voce.js?v=20261019"></script>
+<script src="../assets/js/plot.js?v=20261019"></script>
+<script src="../assets/js/app.js?v=20261019"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  var box = document.getElementById('oralBox');
+  var TEO = {};
+  AM.TEOREMI.forEach(function (t) { TEO[t.id] = t; });
+  var VOCE = AM.VOCE || {};
+  var TUTTE = AM.QUESITI.filter(function (q) { return q.mark; });
+  var filtro = 'all', bag = [], cur = null, fase = 0, rivelato = false;
+
+  function pool() {
+    return TUTTE.filter(function (q) {
+      if (filtro === 'rosse') return q.mark === '*';
+      if (filtro === 'blu') return q.mark === '**';
+      return true;
+    });
+  }
+  // prima le domande da ripassare (in ordine casuale), poi le altre
+  function riempi() {
+    var p = pool();
+    var da = AM.shuffle(p.filter(function (q) { return AM.srs.due('Q' + q.id); }));
+    var altre = AM.shuffle(p.filter(function (q) { return !AM.srs.due('Q' + q.id); }));
+    bag = da.concat(altre);
+    var s = AM.srs.summary(p.map(function (q) { return 'Q' + q.id; }));
+    document.getElementById('poolInfo').textContent =
+      p.length + ' domande in questo gruppo · ' + s.due + ' da ripassare ora · ' + s.learned + ' consolidate';
+  }
+  function prossima(scorri) {
+    if (!bag.length) riempi();
+    cur = bag.shift(); fase = 0; rivelato = false;
+    render();
+    if (scorri) window.scrollTo({ top: box.getBoundingClientRect().top + scrollY - 90, behavior: 'smooth' });
+  }
+
+  function badge(q) {
+    return q.mark === '*'
+      ? '<span class="badge star">rosso · dim. allo scritto</span>'
+      : '<span class="badge star2">blu · dim. solo all\'orale</span>';
+  }
+  function tip(html) { return html ? '<p class="voce">🎙 ' + html + '</p>' : ''; }
+
+  // fasi: 0 = enunciato, 1..k = passi della dimostrazione, k+1 = fine
+  function render() {
+    var q = cur, t = TEO[q.teo], v = VOCE[q.teo] || {}, k = t ? t.steps.length : 0;
+    var h = '<div class="card" style="padding:18px 20px">' +
+      '<div class="small muted">Quesito ' + q.id + ' · Sezione ' + q.sez + ' ' + badge(q) + '</div>' +
+      '<p class="oral-q">' + q.t + '</p>';
+
+    if (!t) { // nessuna dimostrazione collegata: si confronta con la risposta modello
+      h += '<details class="reveal"><summary>Rispondi a voce, poi apri la risposta modello</summary><div class="reveal-body">' + q.a + '</div></details>' + voti();
+      box.innerHTML = h + '</div>'; AM.typeset(box); return;
+    }
+
+    // enunciato
+    h += '<div class="' + (fase > 0 ? 'oral-done' : '') + '">' +
+      '<p class="oral-phase">Enunciato</p>';
+    if (fase > 0 || rivelato) {
+      h += '<div class="box teo" style="margin:6px 0">' + t.enunciato + '</div>' + tip(v.apri);
+    } else {
+      h += '<p class="oral-cue">Di\' a voce l\'enunciato, con tutte le ipotesi. ' +
+        (q.mark === '**' ? 'Allo scritto ti fermi qui (più eventuali esempi): la dimostrazione serve per l\'orale.' : '') + '</p>';
+    }
+    h += '</div>';
+
+    // passi
+    for (var i = 1; i <= Math.min(fase, k); i++) {
+      var s = t.steps[i - 1], aperto = i < fase || rivelato;
+      h += '<div class="step ' + (i < fase ? 'oral-done' : '') + '"><div class="step-body">' +
+        '<p class="oral-phase">Passo ' + i + ' di ' + k + '</p>' +
+        '<div class="oral-cue">' + s.cue + '</div>' +
+        (aperto ? '<div>' + s.body + tip(v.passi && v.passi[i - 1]) + '</div>'
+                : '<p class="small muted mb0">Di\' cosa faresti in questo passo, poi controlla.</p>') +
+        '</div></div>';
+    }
+
+    if (fase === 0 && !rivelato) h += bottoni('Controlla l\'enunciato');
+    else if (fase === 0) h += bottoni('Inizia la dimostrazione →');
+    else if (fase <= k && !rivelato) h += bottoni('Controlla');
+    else if (fase < k) h += bottoni('Passo successivo →');
+    else if (fase === k) h += bottoni('Ho finito →');
+    else {
+      h += tip(v.chiudi ? '<strong>Come chiudere.</strong> ' + v.chiudi : '') +
+        (t.note ? '<div class="box warnb" style="margin-top:12px"><div class="box-title">⚠ Da non sbagliare</div><p class="mb0">' + t.note + '</p></div>' : '') +
+        '<details class="reveal"><summary>Risposta modello completa del quesito</summary><div class="reveal-body">' + q.a + '</div></details>' +
+        voti();
+    }
+    box.innerHTML = h + '</div>';
+    AM.typeset(box);
+  }
+  function bottoni(label) {
+    return '<div class="btnrow"><button class="btn primary" data-go>' + label + '</button>' +
+      '<button class="btn ghost" data-skip>🎲 Un\'altra domanda</button></div>';
+  }
+  function voti() {
+    return '<p class="oral-phase" style="margin-top:16px">Com\'è andata?</p><div class="btnrow" style="margin-top:4px">' +
+      '<button class="btn" data-voto="0">✗ Non la sapevo</button>' +
+      '<button class="btn" data-voto="1">≈ Incerta</button>' +
+      '<button class="btn primary" data-voto="2">✓ La sapevo</button></div>';
+  }
+  function avanti() {
+    var t = TEO[cur.teo];
+    if (!t) return;
+    if (fase <= t.steps.length && !rivelato) { rivelato = true; }
+    else { fase++; rivelato = false; }
+    render();
+  }
+  box.addEventListener('click', function (e) {
+    if (e.target.closest('[data-go]')) avanti();
+    else if (e.target.closest('[data-skip]')) prossima(true);
+    else {
+      var b = e.target.closest('[data-voto]');
+      if (!b) return;
+      var g = +b.dataset.voto, id = 'Q' + cur.id;
+      if (g === 1) { var st = AM.srs.state(id); st.due = Date.now() + 86400000; st.seen = (st.seen || 0) + 1; AM.srs.save(id, st); }
+      else AM.srs.grade(id, g === 2);
+      AM.toast(g === 2 ? 'Bene: torna fra qualche giorno' : g === 1 ? 'Torna domani' : 'Torna presto');
+      prossima(true);
+    }
+  });
+  addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' || /input|textarea|select|button|summary/i.test(e.target.tagName || '')) return;
+    var b = box.querySelector('[data-go]');
+    if (b) { e.preventDefault(); b.click(); }
+  });
+  document.querySelectorAll('#filters .chip').forEach(function (b) {
+    b.onclick = function () {
+      document.querySelectorAll('#filters .chip').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on'); filtro = b.dataset.f; bag = []; prossima(true);
+    };
+  });
+  riempi(); prossima();
+});
+</script>
+</body>
+</html>
