@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario della pratica — Analisi 1</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/analisi-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/analisi-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f5fa8">
+<meta name="apple-mobile-web-app-title" content="Analisi 1">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261021">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../index.html"><span class="brand-mark">∫</span> Analisi 1</a>
+    <nav class="topnav">
+      <a href="index.html">Piano</a>
+      <a href="../due-parziali.html">Parziali</a>
+      <a href="primo-parziale.html">Allenamento</a>
+      <a href="sezioni/1-numeri.html">1 · Numeri</a>
+      <a href="sezioni/2-successioni.html">2 · Successioni</a>
+      <a href="sezioni/3-serie.html">3 · Serie</a>
+      <a href="formulario.html">Formulario</a>
+      <a href="teoremi.html">Teoremi</a>
+      <a href="quesiti.html">Quesiti</a>
+      <a href="domande.html">Domande</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="simulazione.html">Simulazione</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Formulario</h4>
+    <a href="#uso">Come si usa</a>
+    <div id="tocBox"></div>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Prima parte · tutto il programma del parziale</div>
+      <h1>Formulario della pratica</h1>
+      <p class="lead">La teoria che serve per <strong>fare gli esercizi</strong>: disequazioni, numeri complessi, sup e inf, limiti notevoli, equivalenze asintotiche, tecniche per i limiti, criteri per successioni e serie. Ogni riquadro ha a sinistra la domanda che ti fai e a destra quello che devi sapere a memoria; sotto, gli esercizi della palestra su quell'argomento.</p>
+    </div>
+
+    <div class="box tip" id="uso">
+      <div class="box-title">✓ Come si usa</div>
+      <ul class="mb0">
+        <li><strong>📖 Studio</strong>: leggi tutto, riquadro per riquadro.</li>
+        <li><strong>🙈 Ripasso</strong>: la colonna di destra si copre. Leggi la domanda, rispondi a voce o su un foglio, poi tocca la formula per scoprirla.</li>
+        <li><strong>🎲 Interrogami</strong>: una riga a caso dagli argomenti scelti, come una flashcard.</li>
+        <li><strong>Esercitati</strong>: sotto ogni riquadro, «🎲 Esercizio qui» apre un esercizio della palestra su quell'argomento, con suggerimenti e soluzione, senza cambiare pagina.</li>
+      </ul>
+    </div>
+
+    <div class="chips" id="sezBox">
+      <button class="chip on" data-s="0">Tutto</button>
+      <button class="chip" data-s="1">1 · Numeri e disequazioni</button>
+      <button class="chip" data-s="2">2 · Limiti di successioni</button>
+      <button class="chip" data-s="3">3 · Serie</button>
+    </div>
+    <div class="btnrow">
+      <button class="btn primary" id="modoStudio">📖 Studio</button>
+      <button class="btn" id="modoRipasso">🙈 Ripasso</button>
+      <button class="btn" id="interrogaBtn">🎲 Interrogami</button>
+      <button class="btn ghost" id="stampaBtn">🖨 Stampa</button>
+    </div>
+
+    <div id="interrogaBox" class="card hidden" style="padding:16px 18px;margin:14px 0"></div>
+
+    <div id="formBox"></div>
+  </main>
+</div>
+
+<footer>Analisi Matematica 1 · Formulario della pratica · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../assets/js/materie.js?v=20261021"></script>
+<script src="data/topics.js?v=20261021"></script>
+<script src="data/formulario.js?v=20261021"></script>
+<script src="data/esercizi.js?v=20261021"></script>
+<script src="../assets/js/plot.js?v=20261021"></script>
+<script src="../assets/js/app.js?v=20261021"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  var F = AM.FORMULARIO, E = AM.ESERCIZI;
+  var box = document.getElementById('formBox');
+  var sez = 0, ripasso = false;
+  var NOMI = { 1: 'Sezione 1 · Numeri, disequazioni, complessi', 2: 'Sezione 2 · Limiti di successioni', 3: 'Sezione 3 · Serie' };
+
+  function eserciziDi(b) { return E.filter(function (e) { return b.temi.indexOf(e.tema) >= 0; }); }
+
+  function blocco(b) {
+    var righe = b.righe.map(function (r) {
+      return '<tr><td style="width:38%">' + r.q + '</td><td><span class="' + (ripasso ? 'blur' : '') + '" style="display:inline-block">' + r.a + '</span></td></tr>';
+    }).join('');
+    var es = eserciziDi(b);
+    var temi = b.temi.map(function (t) {
+      var n = E.filter(function (e) { return e.tema === t; }).length;
+      return n ? '<a class="chip" href="esercizi.html?tema=' + encodeURIComponent(t) + '">' + t + ' · ' + n + '</a>' : '';
+    }).join('');
+    return '<section id="' + b.id + '" style="margin-top:34px">' +
+      '<h3>' + b.titolo + '</h3>' +
+      (b.intro ? '<p class="small muted">' + b.intro + '</p>' : '') +
+      '<div class="tablewrap"><table><thead><tr><th>Che cosa</th><th>Da sapere a memoria</th></tr></thead><tbody>' + righe + '</tbody></table></div>' +
+      (b.trappole && b.trappole.length ? '<div class="box trap"><div class="box-title">✗ Trappole</div><ul class="mb0">' +
+        b.trappole.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>' : '') +
+      (es.length ? '<div class="chips" style="margin-top:8px"><span class="small muted" style="align-self:center">Esercizi:</span>' + temi +
+        '<button class="chip on" data-caso="' + b.id + '">🎲 Esercizio qui</button></div><div data-es="' + b.id + '"></div>' : '') +
+      '</section>';
+  }
+
+  function render() {
+    var sel = F.filter(function (b) { return !sez || b.sez === sez; });
+    var h = '', toc = '', ultima = 0;
+    sel.forEach(function (b) {
+      if (b.sez !== ultima) {
+        ultima = b.sez;
+        h += '<h2 id="sez' + b.sez + '">' + NOMI[b.sez] + '</h2>';
+        toc += '<a href="#sez' + b.sez + '">' + NOMI[b.sez] + '</a>';
+      }
+      h += blocco(b);
+      toc += '<a href="#' + b.id + '" class="sub">' + b.titolo + '</a>';
+    });
+    box.innerHTML = h;
+    document.getElementById('tocBox').innerHTML = toc;
+    AM.typeset(box); AM.typeset(document.getElementById('tocBox'));
+  }
+
+  /* ---------- esercizio a caso dentro la pagina ---------- */
+  function esercizio(e) {
+    var hints = e.hints.map(function (x, i) {
+      return '<details class="reveal hint"><summary>💡 Suggerimento ' + (i + 1) + '</summary><div class="reveal-body"><p class="mb0">' + x + '</p></div></details>';
+    }).join('');
+    return '<div class="card" style="padding:16px 18px;margin-top:10px">' +
+      '<div class="small muted"><span class="badge">' + e.id + '</span> <span class="badge purple">' + e.tema + '</span> ' + '●'.repeat(e.d) + '</div>' +
+      '<p style="margin:10px 0">' + e.t + '</p>' + hints +
+      '<details class="reveal"><summary>✓ Soluzione</summary><div class="reveal-body">' + e.sol + '</div></details>' +
+      '<p class="small mb0" style="margin-top:10px"><a href="esercizi.html?tema=' + encodeURIComponent(e.tema) + '">Tutti gli esercizi su «' + e.tema + '» →</a></p></div>';
+  }
+  var ultimi = {};
+  box.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-caso]');
+    if (!b) return;
+    var id = b.dataset.caso, blk = F.find(function (x) { return x.id === id; });
+    var pool = eserciziDi(blk);
+    if (pool.length > 1) pool = pool.filter(function (e) { return e.id !== ultimi[id]; });
+    var e = pool[Math.floor(Math.random() * pool.length)];
+    ultimi[id] = e.id;
+    var dove = box.querySelector('[data-es="' + id + '"]');
+    dove.innerHTML = esercizio(e);
+    AM.typeset(dove);
+    b.textContent = '🎲 Un altro esercizio';
+  });
+
+  /* ---------- interrogazione ---------- */
+  var ib = document.getElementById('interrogaBox'), mazzo = [];
+  function pesca() {
+    if (!mazzo.length) {
+      F.filter(function (b) { return !sez || b.sez === sez; }).forEach(function (b) {
+        b.righe.forEach(function (r) { mazzo.push({ b: b, r: r }); });
+      });
+      mazzo = AM.shuffle(mazzo);
+    }
+    var c = mazzo.shift();
+    ib.innerHTML = '<div class="small muted">' + c.b.titolo + ' · <a href="#' + c.b.id + '">vai al riquadro</a></div>' +
+      '<p class="oral-q" style="margin-top:8px">' + c.r.q + '</p>' +
+      '<div><span class="blur" style="display:inline-block;padding:4px 8px">' + c.r.a + '</span></div>' +
+      '<div class="btnrow"><button class="btn primary" data-altra>Un\'altra →</button><button class="btn ghost" data-chiudi>Chiudi</button></div>' +
+      '<p class="small muted mb0">Rispondi, poi tocca la parte sfocata per controllare.</p>';
+    ib.classList.remove('hidden');
+    AM.typeset(ib);
+  }
+  ib.addEventListener('click', function (ev) {
+    if (ev.target.closest('[data-altra]')) pesca();
+    if (ev.target.closest('[data-chiudi]')) ib.classList.add('hidden');
+  });
+  document.getElementById('interrogaBtn').onclick = function () { pesca(); ib.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+
+  /* ---------- modalità e filtri ---------- */
+  var bS = document.getElementById('modoStudio'), bR = document.getElementById('modoRipasso');
+  bS.onclick = function () { ripasso = false; bS.classList.add('primary'); bR.classList.remove('primary'); render(); };
+  bR.onclick = function () { ripasso = true; bR.classList.add('primary'); bS.classList.remove('primary'); render(); AM.toast('Tocca una formula per scoprirla'); };
+  document.getElementById('stampaBtn').onclick = function () { window.print(); };
+  document.querySelectorAll('#sezBox .chip').forEach(function (c) {
+    c.onclick = function () {
+      document.querySelectorAll('#sezBox .chip').forEach(function (x) { x.classList.remove('on'); });
+      c.classList.add('on'); sez = +c.dataset.s; mazzo = []; render();
+    };
+  });
+  render();
+});
+</script>
+</body>
+</html>
