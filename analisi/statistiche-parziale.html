@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statistiche del primo parziale — Analisi 1</title>
+<meta name="description" content="I primi parziali passati, la prima parte degli appelli 2024–26 e il facsimile 2026 analizzati domanda per domanda: frequenze, soluzioni verificate e piano di 7 giorni.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/analisi-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/analisi-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f5fa8">
+<meta name="apple-mobile-web-app-title" content="Analisi 1">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261021">
+<style>
+/* Pagina temporanea fino al primo parziale: stili propri, tutti sotto .pp per non toccare quelli del sito. */
+.pp {
+  --muted: var(--text-muted); --faint: var(--text-faint);
+  --heat-0: #eef0f4; --heat-1: #cfe0f3; --heat-2: #8fb6e2; --heat-3: #1f5fa8; --heat-ink: #ffffff;
+  display: flex; flex-direction: column; gap: 44px; max-width: 820px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pp { --heat-0: #1b1f26; --heat-1: #1d3350; --heat-2: #2d5c94; --heat-3: #7fb1ec; --heat-ink: #0b0d10; }
+}
+:root[data-theme="dark"] .pp { --heat-0: #1b1f26; --heat-1: #1d3350; --heat-2: #2d5c94; --heat-3: #7fb1ec; --heat-ink: #0b0d10; }
+
+/* il sito dà margini a titoli, paragrafi e riquadri: qui la spaziatura la fanno i gap */
+.pp h1, .pp h2, .pp h3, .pp p, .pp ul, .pp ol, .pp .box { margin: 0; }
+.pp h2 { border-bottom: 0; padding-bottom: 0; }
+.pp li { margin-bottom: 0; }
+.pp section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pp h1, .pp h2, .pp h3 { font-family: var(--font-serif); text-wrap: balance; }
+.pp h2 { font-size: 26px; font-weight: 600; }
+.pp h3 { font-size: 19px; font-weight: 600; }
+.pp .lead { font-size: 17px; max-width: 64ch; }
+.pp .small { font-size: 13px; }
+.pp .num { font-variant-numeric: tabular-nums; }
+.pp a:focus-visible, .pp button:focus-visible, .pp summary:focus-visible, .pp input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+.pp .head { display: flex; flex-direction: column; gap: 12px; }
+.pp .facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.pp .fact { font-size: 13px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg-elev); color: var(--muted); }
+.pp .fact b { color: var(--text); font-weight: 600; }
+.pp .toc { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; padding-top: 4px; }
+.pp .toc a { border-bottom: 1px solid var(--accent-border); }
+.pp .toc a:hover { text-decoration: none; border-bottom-color: var(--accent); }
+.pp [id] { scroll-margin-top: 72px; }
+
+.pp .box { display: flex; flex-direction: column; gap: 8px; }
+.pp .box ul, .pp .box ol { padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+
+.pp .bar { display: grid; grid-template-columns: 14fr 10fr 8fr; gap: 4px; }
+.pp .bar > div { border-radius: var(--radius-sm); padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pp .bar .p1 { background: var(--accent-soft); border: 1px solid var(--accent-border); }
+.pp .bar .p2 { background: var(--purple-soft); border: 1px solid var(--purple-border); }
+.pp .bar .p3 { background: var(--ok-soft); border: 1px solid var(--ok-border); }
+.pp .bar .pts { font-family: var(--font-serif); font-size: 24px; font-weight: 700; line-height: 1; }
+.pp .bar .lbl { font-size: 12.5px; font-weight: 600; }
+.pp .bar .sub { font-size: 12px; color: var(--muted); }
+@media (max-width: 520px) { .pp .bar { grid-template-columns: 1fr; } }
+
+.pp .tablewrap { margin: 0; background: var(--bg-elev); }
+.pp table { font-size: 13.5px; }
+.pp th, .pp td { padding: 8px 10px; vertical-align: middle; }
+.pp thead th { font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.pp td.topic { min-width: 210px; }
+.pp td.cell { text-align: center; width: 54px; padding: 6px 4px; }
+.pp .heat { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 26px; border-radius: 5px; font-size: 11.5px; font-weight: 600; background: var(--heat-0); color: var(--faint); white-space: nowrap; padding: 0 4px; }
+.pp .heat.h1 { background: var(--heat-1); color: var(--text); }
+.pp .heat.h2 { background: var(--heat-2); color: var(--text); }
+.pp .heat.h3 { background: var(--heat-3); color: var(--heat-ink); }
+.pp .freq { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); }
+.pp .stima { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; border: 1px solid transparent; }
+.pp .stima.certo { background: var(--ok-soft); color: var(--ok); border-color: var(--ok-border); }
+.pp .stima.prob { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-border); }
+.pp .stima.meta { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-border); }
+.pp .stima.raro { background: var(--bg-sunken); color: var(--muted); border-color: var(--border); }
+.pp .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--muted); align-items: center; }
+.pp .legend .heat { min-width: 30px; height: 20px; }
+
+.pp .filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.pp .filters button { font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--bg-elev); color: var(--text); cursor: pointer; }
+.pp .filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg-elev); }
+.pp .group { display: flex; flex-direction: column; gap: 10px; }
+.pp .group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 6px; border-top: 1px solid var(--border); }
+.pp .group-head .small { color: var(--muted); }
+.pp .ex { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.pp .ex-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); }
+.pp .src { font-weight: 600; color: var(--text); font-size: 12px; padding: 1px 8px; border-radius: 4px; background: var(--bg-sunken); }
+.pp .src.fac { background: var(--warn-soft); color: var(--warn); }
+.pp .kind { font-size: 11.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); }
+.pp .ex-text { overflow-x: auto; }
+.pp details.sol > summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--accent); list-style: none; display: inline-flex; gap: 6px; align-items: center; }
+.pp details.sol > summary::-webkit-details-marker { display: none; }
+.pp details.sol > summary::before { content: "▸"; transition: transform .15s; }
+.pp details.sol[open] > summary::before { transform: rotate(90deg); }
+.pp .sol-body { margin-top: 8px; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--bg-sunken); display: flex; flex-direction: column; gap: 6px; overflow-x: auto; }
+.pp .sol-body .ans { font-weight: 600; }
+.pp .note { font-size: 12.5px; color: var(--muted); }
+.pp .typo { font-size: 12.5px; color: var(--danger); }
+.pp .qlist { padding-left: 22px; display: flex; flex-direction: column; gap: 5px; }
+.pp .qlist li { padding-left: 2px; }
+
+.pp .proofs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.pp .tier { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.pp .tier ol { padding-left: 20px; font-size: 14px; display: flex; flex-direction: column; gap: 3px; }
+.pp .tier .seen { font-size: 11px; font-weight: 600; color: var(--ok); margin-left: 4px; white-space: nowrap; }
+
+.pp .progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
+.pp .progress .track { flex: 1; height: 8px; background: var(--bg-sunken); border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
+.pp .progress .fill { height: 100%; width: 0; background: var(--ok); transition: width .2s; }
+.pp .days { display: flex; flex-direction: column; gap: 12px; }
+.pp .day { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.pp .day-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.pp .day-n { font-family: var(--font-serif); font-size: 15px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+.pp .day-title { font-family: var(--font-serif); font-size: 19px; font-weight: 600; }
+.pp .day-hours { font-size: 12px; color: var(--muted); margin-left: auto; white-space: nowrap; }
+.pp .tasks { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.pp .tasks li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; align-items: start; }
+.pp .tasks input { width: 17px; height: 17px; margin: 3px 0 0; accent-color: var(--ok); }
+.pp .tasks label { cursor: pointer; }
+.pp .tasks li.done label { color: var(--faint); text-decoration: line-through; text-decoration-color: var(--border-strong); }
+.pp .tag { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.pp .reset { font: inherit; font-size: 12.5px; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0; }
+
+.pp .clock { display: grid; grid-template-columns: 70px 1fr; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-elev); }
+.pp .clock > div { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.pp .clock > div:nth-last-child(-n+2) { border-bottom: 0; }
+.pp .clock .t { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 13px; color: var(--accent); background: var(--bg-sunken); }
+.pp .fonti { font-size: 12.5px; color: var(--faint); border-top: 1px solid var(--border); padding-top: 14px; }
+@media (prefers-reduced-motion: reduce) { .pp * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark">∫</span> Analisi 1</a>
+    <nav class="topnav">
+      <a href="index.html">Piano</a>
+      <a href="../due-parziali.html">Parziali</a>
+      <a href="statistiche-parziale.html">Statistiche</a>
+      <a href="primo-parziale.html">Allenamento</a>
+      <a href="sezioni/1-numeri.html">1 · Numeri</a>
+      <a href="sezioni/2-successioni.html">2 · Successioni</a>
+      <a href="sezioni/3-serie.html">3 · Serie</a>
+      <a href="formulario.html">Formulario</a>
+      <a href="teoremi.html">Teoremi</a>
+      <a href="quesiti.html">Quesiti</a>
+      <a href="domande.html">Domande</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="simulazione.html">Simulazione</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout no-sidebar">
+  <main>
+<div class="pp">
+<header class="head">
+  <span class="eyebrow">Analisi Matematica 1 · prof. Meglioli · a.a. 2026/27</span>
+  <h1>Primo parziale di Analisi 1</h1>
+  <p class="lead">Cinque primi parziali degli anni passati (2018–2025), le domande di prima parte dei dieci appelli completi 2024–26 e il facsimile di quest'anno, smontati domanda per domanda: che cosa esce, quanto vale e come prepararlo in una settimana.</p>
+  <div class="facts">
+    <span class="fact"><b>Lun 2 novembre</b></span>
+    <span class="fact"><b>60 minuti</b></span>
+    <span class="fact"><b>32 punti</b>, soglia 15</span>
+    <span class="fact">Sezioni 1–3 del programma</span>
+    <span class="fact">Niente formulari né calcolatrice</span>
+  </div>
+  <nav class="toc" aria-label="Indice della pagina">
+    <a href="#verdetto">In breve</a>
+    <a href="#formato">Com'è fatta</a>
+    <a href="#frequenze">Cosa esce</a>
+    <a href="#origine">Origine del facsimile</a>
+    <a href="#esercizi">Esercizi</a>
+    <a href="#appelli">Appelli 2024–26</a>
+    <a href="#teoria">Teoria</a>
+    <a href="#piano">Piano</a>
+    <a href="#prova">I 60 minuti</a>
+  </nav>
+</header>
+
+<section id="verdetto">
+  <div class="box tip">
+    <span class="box-title">In breve</span>
+    <ul>
+      <li>Il facsimile 2026 è fatto <b>solo di domande già uscite</b> nelle prove del prof. Punzo. Tutte e sei sono copiate parola per parola dal parziale di novembre 2025 e dagli appelli di gennaio 2025, luglio 2025 e gennaio 2026 (<a href="#origine">vedi la tabella</a>). Le domande di prima parte di quelle 12 prove sono l'allenamento più redditizio che hai.</li>
+      <li>Tre cose sono uscite in <b>tutte e 16</b> le prove, parziali e appelli: sup/inf di un insieme definito da una disequazione, i complessi (radici, potenze o equazioni) e il carattere di una serie. Il limite con le equivalenze è uscito in 5 parziali su 6. Insieme valgono quasi tutta la prima parte.</li>
+      <li>L'esercizio da 8 punti è stato <b>una serie con parametro</b> in tutti e cinque i parziali passati, ma nel facsimile è <b>un'equazione complessa</b>, presa dall'appello di luglio 2025. Preparali tutti e due. Negli appelli c'è anche una serie con parametro a risposta multipla («converge se e solo se…»), in 6 su 10.</li>
+      <li>La teoria vale 10 punti con soglia 5: due domande prese dai quesiti 1.1–1.66, e almeno una è una delle 14 dimostrazioni con l'asterisco. Nelle prove di Punzo sono uscite il criterio del rapporto e la condizione necessaria (2 volte ciascuna), la permanenza del segno, i carabinieri e «convergente ⇒ limitata». Le 14 sono corte: si imparano tutte in un giorno e mezzo.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <span class="box-title">Di chi sono queste prove</span>
+    <ul>
+      <li>Della prof. Meglioli ci sono il <b>facsimile</b>, il programma, le modalità d'esame e le «Domande di Teoria». Da questi documenti vengono il formato (14 + 10 + 8 punti), le soglie, i quesiti 1.1–1.66 e la lista delle 14 dimostrazioni. Su questi punti la pagina segue solo lei.</li>
+      <li>I temi degli anni passati li ha caricati lei su WeBeep, ma li hanno scritti i docenti degli anni scorsi: il prof. Monticelli per 2018, 2022 e 2023, il prof. Punzo per il 2024–26. Il nome è stampato su 8 prove; per le altre 7 l'ho ricavato dall'anno accademico.</li>
+      <li>Le prove di Punzo contano molto perché il facsimile, l'unico compito scritto dalla prof. Meglioli, è composto interamente da sue domande. Quelle di Monticelli contano meno: hanno un formato diverso e nessuna è stata ripresa nel facsimile.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="formato">
+  <h2>Com'è fatta la prova</h2>
+  <p class="muted">Dal documento «Modalità d'esame» e dal facsimile consegnato questa settimana. La prova in itinere ha la stessa struttura dell'appello completo, ridotta alla prima parte del programma.</p>
+  <div class="bar" role="img" aria-label="Prima parte 14 punti, seconda parte 10 punti, terza parte 8 punti">
+    <div class="p1"><span class="pts num">14</span><span class="lbl">Quiz misto</span><span class="sub">soglia 7 · risposte senza svolgimento</span></div>
+    <div class="p2"><span class="pts num">10</span><span class="lbl">Teoria</span><span class="sub">soglia 5 · 4 + 6 punti</span></div>
+    <div class="p3"><span class="pts num">8</span><span class="lbl">Esercizio</span><span class="sub">svolgimento completo</span></div>
+  </div>
+  <div class="box">
+    <span class="box-title">Le soglie, in pratica</span>
+    <ul>
+      <li>Per superare questa prova servono <b>almeno 15/32</b>, <b>almeno 7/14</b> nel quiz e <b>almeno 5/10</b> nella teoria. Alla fine conta la media con la seconda prova, che deve fare almeno 18.</li>
+      <li>Nel facsimile il quiz era: sup/inf/min/max (4 punti), vero/falso sui criteri per le serie (2), un limite a risposta aperta (3), una divisione fra complessi (2) e il carattere di una serie (3). Sup/inf, limite e divisione da soli fanno <b>9 punti</b>, già sopra la soglia.</li>
+      <li>Le risposte aperte del quiz si correggono solo sul risultato. Un segno sbagliato fa 0: ricontrolla dominio e segni prima di scrivere.</li>
+      <li>Un percorso realistico per passare tranquillo: 10 nel quiz, 6 nella teoria e 5 nell'esercizio fanno <b>21</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="frequenze">
+  <h2>Cosa esce davvero</h2>
+  <p class="muted">Ogni cella dice dove è comparso l'argomento in quella prova: <b>Q</b> quiz, <b>E</b> esercizio svolto, <b>T</b> teoria. La colonna «Appelli» conta in quanti dei 10 appelli completi 2024–26 l'argomento compare fra le domande di prima parte. La stima per il 2026 è mia: parte dalle frequenze e pesa di più il facsimile e le prove del prof. Punzo, da cui il facsimile è stato copiato. Prendila come un ordine di priorità, non come un dato esatto.</p>
+  <div class="legend">
+    <span><span class="heat h3">Q</span> presente con peso alto</span>
+    <span><span class="heat h2">Q</span> presente</span>
+    <span><span class="heat">–</span> assente</span>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Argomento</th><th>2018</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>Fac. 26</th><th>Parziali</th><th>Appelli 24–26</th><th>Stima 2026</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="topic">Sup, inf, max, min di un insieme definito da una disequazione</td>
+          <td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h3">Q·4</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h3">Q·4</span></td>
+          <td class="freq">6/6</td><td class="cell"><span class="heat h3">10/10</span></td><td><span class="stima certo">~95%</span></td></tr>
+        <tr><td class="topic">Radici $n$-esime, potenze ed equazioni in $\C$</td>
+          <td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat h3">E+Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h3">E·8</span></td>
+          <td class="freq">6/6</td><td class="cell"><span class="heat h3">10/10</span></td><td><span class="stima certo">~95%</span></td></tr>
+        <tr><td class="topic">Carattere di una serie numerica (nel quiz)</td>
+          <td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h3">Q+Q</span></td>
+          <td class="freq">6/6</td><td class="cell"><span class="heat h3">10/10</span></td><td><span class="stima certo">~95%</span></td></tr>
+        <tr><td class="topic">Limiti di successioni: equivalenze, limiti notevoli, confronto fra infiniti</td>
+          <td class="cell"><span class="heat h3">Q+E</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h3">Q·3</span></td>
+          <td class="freq">5/6</td><td class="cell"><span class="heat h2">4/10</span></td><td><span class="stima certo">~85%</span></td></tr>
+        <tr><td class="topic">Divisione e operazioni in forma algebrica</td>
+          <td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td>
+          <td class="freq">3/6</td><td class="cell"><span class="heat h2">4/10</span></td><td><span class="stima prob">~75%</span></td></tr>
+        <tr><td class="topic">Serie con parametro nel quiz («converge se e solo se…»)</td>
+          <td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td>
+          <td class="freq">0/6</td><td class="cell"><span class="heat h2">6/10</span></td><td><span class="stima meta">~50%</span></td></tr>
+        <tr><td class="topic">Esercizio: serie con parametro</td>
+          <td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat h3">E·12</span></td><td class="cell"><span class="heat h3">E·12</span></td><td class="cell"><span class="heat">–</span></td>
+          <td class="freq">5/6</td><td class="cell"><span class="heat h1">2/10</span></td><td><span class="stima meta">~50%</span></td></tr>
+        <tr><td class="topic">Esercizio: equazione in $\C$ con disegno nel piano di Gauss</td>
+          <td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat h3">E</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">E·8</span></td>
+          <td class="freq">4/6</td><td class="cell"><span class="heat h1">3/10</span></td><td><span class="stima meta">~50%</span></td></tr>
+        <tr><td class="topic">Luoghi in $\C$: $\arg(iz)=\theta$, $|z|=|z+1|$, $z^2+\bar z^2=0$, insieme $B=cA$</td>
+          <td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">E</span></td><td class="cell"><span class="heat h2">E</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td>
+          <td class="freq">4/6</td><td class="cell"><span class="heat h2">6/10</span></td><td><span class="stima meta">~55%</span></td></tr>
+        <tr><td class="topic">Domanda concettuale su successioni o criteri (vero/falso)</td>
+          <td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">Q</span></td>
+          <td class="freq">4/6</td><td class="cell"><span class="heat h2">4/10</span></td><td><span class="stima meta">~55%</span></td></tr>
+        <tr><td class="topic">Somma di una serie geometrica o telescopica</td>
+          <td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">Q</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td>
+          <td class="freq">2/6</td><td class="cell"><span class="heat h1">2/10</span></td><td><span class="stima raro">~20%</span></td></tr>
+        <tr><td class="topic">Funzioni: dominio, iniettività, inversa, grafici trasformati</td>
+          <td class="cell"><span class="heat h2">Q+E</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td>
+          <td class="freq">1/6</td><td class="cell"><span class="heat h1">1/10</span></td><td><span class="stima raro">~15%</span></td></tr>
+        <tr><td class="topic">Induzione e Bernoulli come esercizio</td>
+          <td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td>
+          <td class="freq">0/6</td><td class="cell"><span class="heat">0/10</span></td><td><span class="stima raro">~5%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">Il numero dopo il punto è il punteggio quando era alto (es. «E·12» = esercizio da 12 punti). Nel 2024 e nel 2025 l'esercizio valeva 12 punti e il quiz 10; nel formato di quest'anno il quiz sale a 14 e l'esercizio scende a 8. Le due righe «Esercizio» al ~50% sono alternative: è quasi certo che l'esercizio sia una delle due cose. Negli appelli completi l'esercizio di prima parte è stato un'equazione complessa 3 volte e una serie 2 volte; gli altri esercizi riguardavano la seconda parte.</p>
+  <p class="small faint">Docenti: 2018, 2022 e 2023 prof. Monticelli (domande in parte diverse); parziali 2024 e 2025 e tutti gli appelli 2024–26 prof. Punzo, coautore con la prof. Meglioli e autore del libro di esercizi del corso. Nel PDF del 2018 non ci sono le domande di teoria.</p>
+  <h3 id="origine">Da dove viene il facsimile</h3>
+  <p class="muted">Tutte e sei le domande del facsimile erano già uscite, uguali parola per parola, in una prova del prof. Punzo. È il segnale più forte di tutta l'analisi: le domande di prima parte di quelle 12 prove vanno sapute fare tutte.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Facsimile</th><th>Punti</th><th>Uscita identica in</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 · sup, inf, max, min di $\{\log(x^2-7)\lt1\}$</td><td class="num">4</td><td>Appello 13-01-2026, Q1</td></tr>
+        <tr><td>Q2 · vero/falso sulle serie a termini $\ge0$</td><td class="num">2</td><td>Appello 10-01-2025, Q5</td></tr>
+        <tr><td>Q3 · il limite che fa $-\frac\pi{10}$</td><td class="num">3</td><td>Parziale 10-11-2025, Q5</td></tr>
+        <tr><td>Q4 · $\frac{2+i}{3-i}$</td><td class="num">2</td><td>Parziale 10-11-2025, Q1</td></tr>
+        <tr><td>Q5 · $\sum\log\frac{n^2+2}{n^2+3}$</td><td class="num">3</td><td>Appello 10-01-2025, Q6</td></tr>
+        <tr><td>Esercizio · $(2i+\bar z)^3=27i$</td><td class="num">8</td><td>Appello 17-07-2025, Es. 1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="esercizi">
+  <h2>Tutti gli esercizi, per tipo</h2>
+  <p class="muted">Una scheda per ogni domanda delle sei prove. Le varianti A/B/C della stessa prova sono raggruppate. Prova a risolvere prima di aprire la soluzione: le risposte dei docenti le ho ricontrollate tutte con un calcolo indipendente.</p>
+  <div class="filters" role="group" aria-label="Filtra per tipo">
+    <button type="button" data-f="tutti" aria-pressed="true">Tutti</button>
+    <button type="button" data-f="supinf" aria-pressed="false">Sup e inf</button>
+    <button type="button" data-f="complessi" aria-pressed="false">Complessi</button>
+    <button type="button" data-f="limiti" aria-pressed="false">Limiti</button>
+    <button type="button" data-f="serie" aria-pressed="false">Serie nel quiz</button>
+    <button type="button" data-f="parametro" aria-pressed="false">Serie con parametro</button>
+    <button type="button" data-f="concetti" aria-pressed="false">Concetti e funzioni</button>
+    <button type="button" data-f="appelli" aria-pressed="false">Appelli 2024–26</button>
+  </div>
+
+  <!-- SUP / INF -->
+  <div class="group" data-g="supinf">
+    <div class="group-head"><h3>Sup, inf, max, min</h3><span class="small">6 prove su 6 · metodo: risolvi la disequazione (con il dominio!), scrivi l'insieme come unione di intervalli, poi guarda gli estremi.</span></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src fac">Facsimile 2026</span><span class="kind">aperta · 4 punti</span></div>
+      <div class="ex-text">$E=\{x\in\R : \log(x^2-7)\lt 1\}$. Trovare $\inf E$, $\sup E$, $\min E$, $\max E$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Dominio $x^2\gt 7$; il logaritmo è crescente, quindi $x^2-7\lt e$. Allora $E=\left(-\sqrt{7+e},-\sqrt7\right)\cup\left(\sqrt7,\sqrt{7+e}\right)$.</span>
+        <span class="ans">$\inf E=-\sqrt{7+e}$, $\sup E=\sqrt{7+e}$; minimo e massimo non esistono (intervalli aperti).</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2025</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">$A=\{x\in\R : \sqrt{x^2-1}+x\ge 0\}$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Dominio $|x|\ge1$. Per $x\le-1$ si ha $\sqrt{x^2-1}\lt\sqrt{x^2}=-x$, quindi la somma è negativa; per $x\ge1$ è positiva. $A=[1,+\infty)$.</span>
+        <span class="ans">$\min A=1$ (e $A$ non è limitato superiormente).</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2024</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">$E=\{x\in\R : \sqrt[4]{|x+3|}\gt\sqrt[4]{1-x}\}$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Serve $x\le1$; la radice quarta è crescente, quindi $|x+3|\gt1-x$. Per $x\ge-3$: $x\gt-1$. Per $x\lt-3$: $-3\gt1$, impossibile. $E=(-1,1]$.</span>
+        <span class="ans">1 è un maggiorante (anzi $\max E=1$); $\inf E=-1$ non è minimo.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2023</span><span class="kind">multipla · 4 punti</span></div>
+      <div class="ex-text">$E=\{x\in\R : \sqrt{3-x}\lt\sqrt2\,|x|\}$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Serve $x\le3$; elevo al quadrato (entrambi i membri sono $\ge0$): $3-x\lt2x^2$, cioè $(2x+3)(x-1)\gt0$. $E=\left(-\infty,-\frac32\right)\cup(1,3]$.</span>
+        <span class="ans">$\inf E=-\infty$, $\max E=3$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2022</span><span class="kind">multipla · 1 punto · A e B</span></div>
+      <div class="ex-text">A: $A=\{x\in\R : x\gt\sqrt{2-x}\}$. &nbsp; B: $A=\{x\in\R : x\gt\sqrt{6-x}\}$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>La radice è $\ge0$, quindi serve $x\gt0$, poi $x^2\gt2-x$. A: $A=(1,2]$. B: $A=(2,6]$.</span>
+        <span class="ans">A: $\inf A=1$, $\max A=2$. &nbsp; B: $\inf A=2$, $\max A=6$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">multipla · 1 punto · A, B, C</span></div>
+      <div class="ex-text">$A=\{x\in\mathbb{Q} : \sqrt{x^2-16}\lt1\}\subset\R$ (varianti con $\sqrt{x^2-1}\lt3$ e $\sqrt{x^2-4}\lt9$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$16\le x^2\lt17$ con $x$ <b>razionale</b>. Gli estremi $\pm\sqrt{17}$ sono irrazionali, quindi non stanno in $A$.</span>
+        <span class="ans">$\inf A=-\sqrt{17}$ esiste ed è finito, ma non è un minimo. Nelle varianti: $\sup A=\sqrt{10}$, $\sup A=\sqrt{85}$, finiti.</span>
+        <span class="note">Trappola: l'insieme è dentro $\mathbb Q$. Proprio per questo il sup esiste in $\R$ ma non è un massimo.</span>
+      </div></details></div>
+  </div>
+
+  <!-- COMPLESSI -->
+  <div class="group" data-g="complessi">
+    <div class="group-head"><h3>Numeri complessi</h3><span class="small">6 prove su 6 · argomento principale in $\left[-\frac\pi2,\frac32\pi\right)$, come a lezione.</span></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src fac">Facsimile 2026</span><span class="src">Nov 2025</span><span class="kind">multipla · 2 punti · identica</span></div>
+      <div class="ex-text">$z=2+i$, $w=3-i$. Calcolare $\dfrac zw$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Moltiplico sopra e sotto per $\bar w=3+i$: $\dfrac{(2+i)(3+i)}{10}=\dfrac{5+5i}{10}$.</span>
+        <span class="ans">$\dfrac12+\dfrac12 i$</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2024</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">$z=1-3i$, $w=7+4i$. Calcolare $\dfrac zw$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$\dfrac{(1-3i)(7-4i)}{65}=\dfrac{-5-25i}{65}$.</span>
+        <span class="ans">$-\dfrac1{13}-\dfrac5{13}i$</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2024</span><span class="kind">multipla · 1 punto</span></div>
+      <div class="ex-text">Quante soluzioni ha in $\C$ l'equazione $\dfrac z{\bar z}=9$?</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$|z|=|\bar z|$, quindi $\left|\frac z{\bar z}\right|=1\ne9$.</span>
+        <span class="ans">Nessuna soluzione.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2024</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">Soluzioni di $(z-3)^3=8$: hanno tutte parte reale $\gt4$? modulo 2? argomento 0? parte immaginaria $\gt0$?</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$z-3=2e^{i\frac{2k\pi}3}$, quindi $z=5$, $z=2+i\sqrt3$, $z=2-i\sqrt3$. Nessuna delle quattro affermazioni vale per tutte.</span>
+        <span class="ans">«Nessuna delle altre risposte è corretta».</span>
+        <span class="note">Trappola: il modulo 2 è quello di $z-3$, non quello di $z$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2025</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">Soluzioni di $z^4=1+i$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$1+i=\sqrt2\,e^{i\pi/4}$. Modulo $\left(\sqrt2\right)^{1/4}=\sqrt[8]2$, argomenti $\frac{\pi/4+2k\pi}4=\frac\pi{16}+\frac{k\pi}2$.</span>
+        <span class="ans">$z_k=\sqrt[8]2\,e^{i\left(\frac\pi{16}+\frac k2\pi\right)}$, $k=0,1,2,3$, una per quadrante.</span>
+        <span class="note">I distrattori: modulo $\sqrt[4]2$ (radice sbagliata) e «$\frac\pi8+\frac k4\pi$» (diviso per 2 invece che per 4).</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2023</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">Il polinomio $z^6+1$ in $\C$: quante radici distinte?</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Le radici seste di $-1$ sono $e^{i\frac{\pi+2k\pi}6}$: sei punti distinti sulla circonferenza unitaria.</span>
+        <span class="ans">6 radici distinte.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">multipla · 1 punto · A, B, C</span></div>
+      <div class="ex-text">Insieme delle soluzioni di $\arg(iz)=\frac{7\pi}6$ (varianti $\frac{4\pi}3$ e $\frac\pi3$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Moltiplicare per $i$ ruota di $\frac\pi2$, quindi $\arg z=\frac{7\pi}6-\frac\pi2=\frac{2\pi}3$.</span>
+        <span class="ans">Una semiretta (senza l'origine) nel II quadrante. Varianti: II quadrante ($\frac{5\pi}6$) e IV quadrante ($-\frac\pi6$).</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src fac">Facsimile 2026</span><span class="kind">esercizio · 8 punti</span></div>
+      <div class="ex-text">Risolvere $(2i+\bar z)^3=27i$ e rappresentare le soluzioni nel piano di Gauss.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Pongo $w=2i+\bar z$. Allora $w^3=27i=27e^{i\pi/2}$, quindi $w_k=3e^{i\left(\frac\pi6+\frac{2k\pi}3\right)}$: $w_0=\frac{3\sqrt3}2+\frac32i$, $w_1=-\frac{3\sqrt3}2+\frac32i$, $w_2=-3i$.</span>
+        <span>Torno a $z$: $\bar z=w-2i$, quindi $z=\bar w+2i$.</span>
+        <span class="ans">$z_0=\frac{3\sqrt3}2+\frac12i$, $\;z_1=-\frac{3\sqrt3}2+\frac12i$, $\;z_2=5i$.</span>
+        <span>Disegno: sono i vertici di un triangolo equilatero sulla circonferenza di centro $2i$ e raggio 3, perché $|z-2i|=|\bar w|=3$. Controllo: $z_2=5i$ dà $2i-5i=-3i$ e $(-3i)^3=27i$.</span>
+        <span class="note">L'errore da non fare: dimenticare di coniugare alla fine. Si risolve per $w$, si ricava $\bar z$ e poi si coniuga.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2023</span><span class="kind">esercizio · 8 punti · A e B</span></div>
+      <div class="ex-text">A: insieme $A$ delle soluzioni di $\left[z^4-(2+2i)^6\right](z\bar z-9)=0$; disegnare $A$ e $B=\{\zeta=-2iz : z\in A\}$. B: lo stesso con $(1+i)^6$ e $z\bar z-4$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Legge di annullamento del prodotto. $(2+2i)^6=\left(2\sqrt2\right)^6e^{i\frac{6\pi}4}=2^9e^{i\frac32\pi}$. Le radici quarte sono $z_k=2^{9/4}e^{i\theta_k}=4\sqrt[4]2\,e^{i\theta_k}$ con $\theta_k=\frac{3\pi}8+\frac{k\pi}2$. Poi $z\bar z=|z|^2=9$ è la circonferenza di raggio 3.</span>
+        <span>$-2i=2e^{-i\pi/2}$: $B$ si ottiene da $A$ dilatando di 2 e ruotando di $\frac\pi2$ in senso orario. Restano 4 punti di modulo $8\sqrt[4]2$ e la circonferenza di raggio 6.</span>
+        <span class="ans">A: 4 punti $4\sqrt[4]2\,e^{i(3\pi/8+k\pi/2)}$ più la circonferenza $|z|=3$. B: 4 punti $8\sqrt[4]2\,e^{i(-\pi/8+k\pi/2)}$ più la circonferenza $|\zeta|=6$. Nella versione B: modulo $\sqrt[4]8$, raggio 2, poi $2\sqrt[4]8$ e raggio 4.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2022</span><span class="kind">esercizio · 3 punti · A e B</span></div>
+      <div class="ex-text">A: soluzioni di $\left(z^3-(1+\sqrt3 i)^9\right)(z+\bar z+1)=0$ e disegno di $B=\{w=iz : z\in A\}$. B: lo stesso con $(1+\sqrt3i)^{12}$ e $z+\bar z-1$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>A: $(1+\sqrt3i)^9=2^9e^{3\pi i}=-2^9$, quindi $z^3=2^9e^{i\pi}$ e $z\in\{4+4\sqrt3i,\,-8,\,4-4\sqrt3i\}$. Poi $z+\bar z=2\,\mathrm{Re}\,z=-1$ è la retta verticale $\mathrm{Re}\,z=-\frac12$.</span>
+        <span>Moltiplicare per $i$ ruota di $\frac\pi2$ in senso antiorario: i punti diventano $-4\sqrt3+4i$, $-8i$, $4\sqrt3+4i$ e la retta diventa $\mathrm{Im}\,w=-\frac12$.</span>
+        <span class="ans">A: triangolo equilatero sulla circonferenza di raggio 8 più la retta $\mathrm{Re}\,z=-\frac12$. B: $z^3=2^{12}$, quindi $z\in\{16,\,-8\pm8\sqrt3i\}$ (raggio 16), più la retta $\mathrm{Re}\,z=\frac12$.</span>
+        <span class="typo">Refuso nella soluzione della versione B: è scritto «raggio 8» e $W_0=8i$, ma da $z_0=16$ segue $W_0=16i$ e il raggio è 16. Gli altri due punti ($\mp8\sqrt3-8i$) sono giusti. Controllato sull'originale.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">esercizio · 4 punti · A, B, C</span></div>
+      <div class="ex-text">Soluzioni in forma algebrica di $(z+\bar z)(z^6+11i)=0$ e disegno (varianti con $3i$ e $7i$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$z+\bar z=0$ è l'asse immaginario. Poi $z^6=-11i=11e^{i\frac32\pi}$ dà $z_k=\sqrt[6]{11}\,e^{i\left(\frac\pi4+\frac{k\pi}3\right)}$, cioè gli angoli $\frac\pi4,\frac7{12}\pi,\frac{11}{12}\pi,\frac54\pi,\frac{19}{12}\pi,\frac{23}{12}\pi$.</span>
+        <span class="ans">L'asse immaginario più i 6 vertici di un esagono regolare di raggio $\sqrt[6]{11}$.</span>
+      </div></details></div>
+  </div>
+
+  <!-- LIMITI -->
+  <div class="group" data-g="limiti">
+    <div class="group-head"><h3>Limiti di successioni</h3><span class="small">5 prove su 6 · metodo: equivalenze asintotiche nei prodotti e quozienti; nelle differenze di radici prima si razionalizza.</span></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src fac">Facsimile 2026</span><span class="src">Nov 2025</span><span class="kind">aperta 3 punti / multipla 2 punti · identica</span></div>
+      <div class="ex-text">$$\lim_{n\to+\infty}\frac{\left(\sqrt[5]{1-\frac1{n^3}}-1\right)\arctan n}{\sin\frac1n\,\log\left(1+\frac1{n^2}\right)}$$</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$\sqrt[5]{1-\frac1{n^3}}-1\sim-\frac1{5n^3}$, $\;\arctan n\to\frac\pi2$, $\;\sin\frac1n\sim\frac1n$, $\;\log\left(1+\frac1{n^2}\right)\sim\frac1{n^2}$.</span>
+        <span>Quindi il limite è $\dfrac{-\frac1{5n^3}\cdot\frac\pi2}{\frac1{n^3}}$.</span>
+        <span class="ans">$-\dfrac\pi{10}$</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2024</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">$$\lim_{n\to+\infty}\frac{\left(1-\cos\frac2n\right)\log\left(1+\sin\frac3{n^2}\right)}{e^{9/n^4}-1}\arctan n$$</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$1-\cos\frac2n\sim\frac2{n^2}$, $\;\log\left(1+\sin\frac3{n^2}\right)\sim\frac3{n^2}$, $\;e^{9/n^4}-1\sim\frac9{n^4}$. Il quoziente tende a $\frac69=\frac23$, poi si moltiplica per $\frac\pi2$.</span>
+        <span class="ans">$\dfrac\pi3$</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2022</span><span class="kind">multipla · 1 punto</span></div>
+      <div class="ex-text">Per quali $\alpha$ la successione $\sqrt n\left(1-\cos\frac1{n^\alpha}\right)$ è infinitesima?</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Per $\alpha\gt0$: $1-\cos\frac1{n^\alpha}\sim\frac1{2n^{2\alpha}}$, quindi il termine è circa $\frac{1}{2}n^{\frac12-2\alpha}$, che tende a 0 se e solo se $2\alpha\gt\frac12$. Per $\alpha\le0$ non tende a 0.</span>
+        <span class="ans">Se e solo se $\alpha\gt\frac14$ (con $\alpha=\frac14$ il limite è $\frac12$).</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">multipla · 1 punto · A, B, C</span></div>
+      <div class="ex-text">$\displaystyle\lim_{n\to+\infty}n\log\frac{n-9}n$ (varianti $n-7$ e $n+8$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$\log\left(1-\frac9n\right)\sim-\frac9n$.</span>
+        <span class="ans">$-9$ (varianti: $-7$ e $8$).</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">esercizio · 4 punti · A, B, C</span></div>
+      <div class="ex-text">$$\lim_{n\to\infty}\left(\sqrt{n^2-n}-\sqrt{n^2+2}\right)\frac{n\log\left(1+\sin\frac2{n^2}\right)}{e^{4/n}-1}$$</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Razionalizzo: $\sqrt{n^2-n}-\sqrt{n^2+2}=\dfrac{-n-2}{\sqrt{n^2-n}+\sqrt{n^2+2}}\to-\frac12$. Poi $n\log\left(1+\sin\frac2{n^2}\right)\sim\frac2n$ ed $e^{4/n}-1\sim\frac4n$, il cui rapporto tende a $\frac12$.</span>
+        <span class="ans">$-\dfrac14$ &nbsp;(variante B: $\frac32$; variante C: $1$).</span>
+        <span class="typo">Nella soluzione a mano della variante C c'è scritto $e^{4/n}-1\sim\frac1{4n}$ invece di $\frac4n$; il conto finale usa il valore giusto e il risultato 1 è corretto. Controllato sull'originale.</span>
+      </div></details></div>
+  </div>
+
+  <!-- SERIE NEL QUIZ -->
+  <div class="group" data-g="serie">
+    <div class="group-head"><h3>Serie nel quiz</h3><span class="small">6 prove su 6 · metodo: condizione necessaria, poi segno, poi confronto asintotico con $\sum\frac1{n^p}$; rapporto o radice se ci sono potenze $n$-esime o fattoriali; Leibniz se il segno è alterno.</span></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src fac">Facsimile 2026</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">$\sum a_n$ con $a_n\ge0$. Quale è vera? (a) se converge, $a_n\to0$; (b) se $a_n\to0$, converge; (c) se $\sqrt[n]{a_n}\to2$, converge; (d) se $\frac{a_{n+1}}{a_n}\to1$, converge.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span class="ans">(a): è la condizione necessaria.</span>
+        <span>(b) è falsa: basta la serie armonica. (c) è falsa: con la radice che tende a $2\gt1$ la serie diverge. (d) è falsa: con il rapporto che tende a 1 il criterio non decide ($\sum\frac1n$ diverge, $\sum\frac1{n^2}$ converge).</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src fac">Facsimile 2026</span><span class="kind">multipla · 3 punti</span></div>
+      <div class="ex-text">$\displaystyle\sum_{n=0}^{\infty}\log\frac{n^2+2}{n^2+3}$: è a termini positivi? converge? non converge? è indeterminata?</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>L'argomento è minore di 1, quindi i termini sono <b>negativi</b>. $\log\left(1-\frac1{n^2+3}\right)\sim-\frac1{n^2}$: applico il confronto asintotico a $-a_n\ge0$.</span>
+        <span class="ans">Converge.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2025</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">$\displaystyle\sum_{n=1}^{\infty}\frac{\left(e^{1/n}-1\right)\log n}{n}$</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$e^{1/n}-1\sim\frac1n$, quindi $a_n\sim\frac{\log n}{n^2}$. Poiché $\frac{\log n}{n^2}\cdot n^{3/2}=\frac{\log n}{\sqrt n}\to0$, confronto con $\sum\frac1{n^{3/2}}$.</span>
+        <span class="ans">Converge.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2024</span><span class="kind">multipla · 1 punto</span></div>
+      <div class="ex-text">$\displaystyle\sum_{n=1}^{\infty}\frac{(-1)^n\log n}{n^3}$</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$|a_n|=\frac{\log n}{n^3}\le\frac{1}{n^2}$ definitivamente (perché $\log n\le n$).</span>
+        <span class="ans">Converge assolutamente.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2022</span><span class="kind">multipla · 1 punto · A e B</span></div>
+      <div class="ex-text">$\displaystyle\sum_{n=1}^{\infty}(-1)^n\log\left(1+\frac1{3\sqrt n}\right)$ (in B: $\frac2{\sqrt n}$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$|a_n|\sim\frac1{3\sqrt n}$: non c'è convergenza assoluta. Il termine $b_n=\log\left(1+\frac1{3\sqrt n}\right)$ è positivo, decrescente e infinitesimo, quindi vale Leibniz.</span>
+        <span class="ans">Converge semplicemente ma non assolutamente.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2023</span><span class="src">Nov 2018</span><span class="kind">multipla · somma della geometrica</span></div>
+      <div class="ex-text">$\displaystyle\sum_{n=0}^{\infty}\frac{(-1)^n}{3^n}$ (2018: $\frac{(-1)^n}{6^n}$, $\frac{(-1)^n}{4^n}$, $\frac{(-1)^n}{5^n}$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>Geometrica di ragione $q=-\frac13$, con $|q|\lt1$: la somma da $n=0$ è $\frac1{1-q}$.</span>
+        <span class="ans">$\dfrac34$ &nbsp;(2018: $\frac67$, $\frac45$, $\frac56$).</span>
+        <span class="note">Occhio all'indice di partenza: se la serie parte da $n=1$, la somma è $\frac q{1-q}$.</span>
+      </div></details></div>
+  </div>
+
+  <!-- SERIE CON PARAMETRO -->
+  <div class="group" data-g="parametro">
+    <div class="group-head"><h3>Serie con parametro (esercizio)</h3><span class="small">5 prove su 6 · sempre lo stesso schema: una «quasi geometrica» con ragione dipendente dal parametro.</span></div>
+
+    <div class="box tip">
+      <span class="box-title">Lo schema che il prof usa ogni anno</span>
+      <ol>
+        <li><b>Condizione necessaria</b>: se $|q|\gt1$, $a_n$ non tende a 0 e la serie non converge (diverge a $+\infty$ se i termini sono positivi; se il segno è alterno, non converge).</li>
+        <li><b>Rapporto (o radice) su $|a_n|$</b>: il limite è $|q|$. Se $|q|\lt1$ converge assolutamente, quindi anche semplicemente.</li>
+        <li><b>Casi $|q|=1$ a parte</b>, perché lì il criterio non decide: con $q=1$ si fa il confronto asintotico con $\sum\frac1{n^p}$; con $q=-1$ si usa Leibniz e si <b>giustifica la decrescenza</b>.</li>
+        <li>Casi banali (per esempio $q=0$) e una <b>frase finale</b> con tutti gli intervalli.</li>
+      </ol>
+    </div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2025</span><span class="kind">esercizio · 12 punti</span></div>
+      <div class="ex-text">Al variare di $\alpha\ge0$: $\displaystyle\sum_{n=2}^{\infty}\frac{(e^\alpha-2)^n}{\log^2 n\,\sqrt[3]{n^4-1}}$</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$q=e^\alpha-2\in[-1,+\infty)$. Se $q\gt1$, cioè $\alpha\gt\log3$: $a_n\to+\infty$, diverge a $+\infty$. Se $|q|\lt1$, cioè $0\lt\alpha\lt\log3$: il rapporto dà $|q|\lt1$ e la serie converge assolutamente.</span>
+        <span>Se $|q|=1$ ($\alpha=0$ o $\alpha=\log3$): $|a_n|=\frac1{\log^2n\,\sqrt[3]{n^4-1}}$ e $n^{4/3}|a_n|\to0$, quindi converge per confronto asintotico con $\sum\frac1{n^{4/3}}$.</span>
+        <span class="ans">Converge (assolutamente) per $0\le\alpha\le\log3$; diverge a $+\infty$ per $\alpha\gt\log3$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2024</span><span class="kind">esercizio · 12 punti · A e B</span></div>
+      <div class="ex-text">Al variare di $\alpha\gt0$: $\displaystyle\sum_{n=1}^{\infty}\frac{(\log\alpha)^n}{\sqrt[5]{n+3}}$ (B: $\sqrt[6]{n+2}$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$q=\log\alpha$. Se $\alpha\gt e$: diverge a $+\infty$. Se $\alpha\lt\frac1e$: i termini oscillano illimitati e la serie non converge. Se $\frac1e\lt\alpha\lt e$: il rapporto dà $|\log\alpha|\lt1$, quindi converge assolutamente (con $\alpha=1$ i termini sono tutti nulli).</span>
+        <span>Con $\alpha=e$ si ottiene $\sum\frac1{\sqrt[5]{n+3}}\sim\sum\frac1{n^{1/5}}$, che diverge. Con $\alpha=\frac1e$ si ottiene $\sum\frac{(-1)^n}{\sqrt[5]{n+3}}$, che converge per Leibniz.</span>
+        <span class="ans">Converge per $\frac1e\le\alpha\lt e$ (assolutamente se $\frac1e\lt\alpha\lt e$); diverge a $+\infty$ per $\alpha\ge e$; non converge per $\alpha\lt\frac1e$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2023</span><span class="kind">esercizio · 6 punti</span></div>
+      <div class="ex-text">Al variare di $\alpha\in[-1,1]$: $\displaystyle\sum_{n=2}^{\infty}\alpha^n(\log n)^\alpha$</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$\alpha=1$: $a_n=\log n\to+\infty$, diverge. $\alpha=-1$: $\sum\frac{(-1)^n}{\log n}$ converge per Leibniz. $|\alpha|\lt1$: il rapporto dà $|\alpha|\left(\frac{\log(n+1)}{\log n}\right)^\alpha\to|\alpha|\lt1$, quindi converge assolutamente.</span>
+        <span class="ans">Converge per $-1\le\alpha\lt1$; diverge a $+\infty$ per $\alpha=1$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2022</span><span class="kind">esercizio · 3 punti · A e B</span></div>
+      <div class="ex-text">A: $\displaystyle\sum\frac{n^n}{(n!)^x}$ &nbsp; B: $\displaystyle\sum\frac{(n!)^x}{n^n}$, al variare di $x\in\R$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>A, rapporto: $\frac{a_{n+1}}{a_n}=(n+1)^{1-x}\left(1+\frac1n\right)^n$, che tende a $0$ se $x\gt1$, a $e$ se $x=1$, a $+\infty$ se $x\lt1$.</span>
+        <span>B, rapporto: $(n+1)^{x-1}\left(\frac n{n+1}\right)^n$, che tende a $0$ se $x\lt1$, a $\frac1e$ se $x=1$, a $+\infty$ se $x\gt1$.</span>
+        <span class="ans">A converge se e solo se $x\gt1$. B converge se e solo se $x\le1$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">esercizio · 5 punti · A, B, C</span></div>
+      <div class="ex-text">Convergenza semplice e assoluta, al variare di $x\in\R$: $\displaystyle\sum_{n=1}^{\infty}\frac{(7x)^n}{n\,8^n}$ (varianti $\frac{(2x)^n}{n3^n}$, $\frac{(5x)^n}{n7^n}$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$a_n=\left(\frac{7x}8\right)^n\frac1n$. Radice: $\sqrt[n]{|a_n|}\to\left|\frac{7x}8\right|$. Per $|x|\gt\frac87$ manca la condizione necessaria. Per $x=\frac87$ si ha la serie armonica (diverge); per $x=-\frac87$ la serie $\sum\frac{(-1)^n}n$ converge per Leibniz.</span>
+        <span class="ans">Converge assolutamente per $|x|\lt\frac87$; solo semplicemente per $x=-\frac87$; negli altri casi non converge.</span>
+      </div></details></div>
+  </div>
+
+  <!-- CONCETTI -->
+  <div class="group" data-g="concetti">
+    <div class="group-head"><h3>Concetti e funzioni</h3><span class="small">Domande da «vero o falso» con controesempio: valgono pochi punti ma si sbagliano facilmente.</span></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2022</span><span class="src">Nov 2018</span><span class="kind">multipla · 1–2 punti</span></div>
+      <div class="ex-text">Se $|a_n|\to\lambda\in\R$, allora…</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span class="ans">$\lim a_n$ può non esistere, ma $\{a_n\}$ è limitata.</span>
+        <span>Controesempio per tutto il resto: $a_n=(-1)^n$ ha $|a_n|\to1$ e non ha limite. La successione è limitata perché $|a_n|$ converge.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2023</span><span class="kind">multipla · 2 punti</span></div>
+      <div class="ex-text">Se $a_n\to0$, allora per $n\to\infty$…</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span class="ans">$\frac1{a_n}$ può non ammettere limite.</span>
+        <span>Esempio: $a_n=\frac{(-1)^n}n$ dà $\frac1{a_n}=(-1)^nn$, che non ha limite. Invece $|a_n|\to0$ e $a_n^2\to0$ sempre.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">multipla · 1 punto</span></div>
+      <div class="ex-text">$f:\N\to\N$, $f(n)=3n+5$ (varianti $2n+1$, $5n+3$).</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>È iniettiva ma non suriettiva: per esempio 0 e 1 non sono immagini.</span>
+        <span class="ans">Ha inversa, ma definita solo sull'immagine $f(\N)$, non su tutto $\N$.</span>
+      </div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Nov 2018</span><span class="kind">esercizio · 4 punti</span></div>
+      <div class="ex-text">Dato il grafico di $f$, disegnare $f(-x-5)$, $f(x+5)+7$, $5-f(|x|)$.</div>
+      <details class="sol"><summary>Soluzione</summary><div class="sol-body">
+        <span>$f(-x-5)=f(-(x+5))$: prima simmetria rispetto all'asse $y$, poi traslazione di 5 verso sinistra. $f(x+5)+7$: 5 a sinistra e 7 in su. $5-f(|x|)$: tieni la parte con $x\ge0$, specchiala rispetto all'asse $y$, poi ribalta rispetto all'asse $x$ e alza di 5.</span>
+        <span class="note">È uscito solo nel 2018, ma rientra nel programma («funzioni elementari e loro grafici»): un'ora di ripasso basta.</span>
+      </div></details></div>
+  </div>
+
+  <!-- APPELLI COMPLETI -->
+  <div class="group" id="appelli" data-g="appelli">
+    <div class="group-head"><h3>Dagli appelli completi 2024–26</h3><span class="small">Solo le domande di prima parte dei 10 appelli del prof. Punzo. Quattro sono finite tali e quali nel facsimile.</span></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 10-01-2025</span><span class="kind">5 quiz · 1 esercizio</span></div>
+      <ol class="qlist ex-text">
+        <li>$E=\{x\in\R : 2^x\ge4^{x-3}\}$: limitato? max? sup?</li>
+        <li>In quali quadranti stanno le radici terze di $3+3i$?</li>
+        <li>Quante soluzioni distinte ha $z^4+9z^2=0$?</li>
+        <li>Vero/falso sulle serie a termini $\ge0$ <span class="note">(è la Q2 del facsimile)</span></li>
+        <li>Carattere di $\sum\log\frac{n^2+2}{n^2+3}$ <span class="note">(è la Q5 del facsimile)</span></li>
+        <li>Esercizio, 6 punti: carattere di $\displaystyle\sum_{n\ge2}\left(\frac1{\sqrt n}-\frac1{\sqrt{\alpha n+1}}+\frac{(-1)^n}{\log n}\right)$ al variare di $\alpha\gt0$.</li>
+      </ol>
+      <p class="note">Teoria di prima parte: definizione di $\lim a_n=\ell$ (1 punto); successione crescente e teorema sulle monotone (2); convergenza assoluta e legame con quella semplice (2).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>$x\ge2x-6$, cioè $E=(-\infty,6]$: non è inferiormente limitato, $\max E=6$.</li>
+        <li>Argomenti $\frac\pi{12}$, $\frac34\pi$, $\frac{17}{12}\pi$: I, II e III quadrante.</li>
+        <li>$z^2(z^2+9)=0$: $0$ (doppia) e $\pm3i$, tre soluzioni distinte.</li>
+        <li>(a): se converge, $a_n\to0$.</li>
+        <li>Converge.</li>
+        <li>$\sum\frac{(-1)^n}{\log n}$ converge per Leibniz. Per $\alpha\ne1$ la differenza è $\sim\left(1-\frac1{\sqrt\alpha}\right)\frac1{\sqrt n}$ e la serie diverge; per $\alpha=1$ è $\sim\frac1{2n^{3/2}}$. Converge solo per $\alpha=1$.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 06-02-2025</span><span class="kind">6 quiz</span></div>
+      <ol class="qlist ex-text">
+        <li>$E=\left\{x\in\R : \frac{\sqrt{x^2-3x+2}}x\ge1\right\}$</li>
+        <li>In che quadrante sta $(3+3i)^{19}$?</li>
+        <li>Quante soluzioni distinte ha $z^4+z\bar z=|z|^2$?</li>
+        <li>$\dfrac{4-2i}{2+9i}$</li>
+        <li>Per quali $\alpha$ converge $\sum\arctan n\left(\sin\frac1n\right)^\alpha$?</li>
+        <li>Carattere di $\sum\left(e^{1/n}-e^{1/(n+1)}\right)$</li>
+      </ol>
+      <p class="note">Teoria: definizione di $\sup_n a_n$ (1); enunciato del criterio della radice (1,5).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>Serve $x\gt0$, poi $x^2-3x+2\ge x^2$: $E=\left(0,\frac23\right]$, $\max E=\frac23$.</li>
+        <li>Argomento $\frac{19}4\pi\equiv\frac34\pi$: II quadrante. Il modulo è $(3\sqrt2)^{19}$, non $3^{19}$.</li>
+        <li>Si riduce a $z^4=0$: una sola soluzione.</li>
+        <li>$-\frac2{17}-\frac8{17}i$</li>
+        <li>Termine $\sim\frac\pi2\,n^{-\alpha}$: se e solo se $\alpha\gt1$.</li>
+        <li>Telescopica: converge, con somma $e-1$.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 18-06-2025</span><span class="kind">8 quiz</span></div>
+      <ol class="qlist ex-text">
+        <li>$E=\{x : \log(2x-2)+\log(x-1)\lt\log(x+2)\}$</li>
+        <li>Quadrante di $(1+\sqrt3i)^{32}$</li>
+        <li>$z=\frac1i$: quanto vale $\bar z$?</li>
+        <li>$\lim\dfrac{e^{n!}}{n^n}$</li>
+        <li>Carattere di $\sum\frac1{1+e^{n^3}}$</li>
+        <li>L'insieme $\{z : \mathrm{Im}\,z\lt0,\ |z|\lt1\}$</li>
+        <li>Comportamento asintotico di $\arctan\left(1-\cos\frac1n\right)$</li>
+        <li>Carattere di $\sum(-1)^n\left(1+\frac1n\right)^n$</li>
+      </ol>
+      <p class="note">Teoria: definizione di $\lim a_n=\ell$ (1); <b>dimostrazione del criterio del rapporto</b> (4).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>Dominio $x\gt1$, poi $2(x-1)^2\lt x+2$: $E=\left(1,\frac52\right)$, $\inf E=1$.</li>
+        <li>Argomento $\frac{32}3\pi\equiv\frac23\pi$: II quadrante.</li>
+        <li>$z=-i$, quindi $\bar z=i$.</li>
+        <li>$+\infty$</li>
+        <li>Converge: il termine è minore di $e^{-n^3}\le e^{-n}$.</li>
+        <li>Un semicerchio: la metà inferiore del disco unitario.</li>
+        <li>$\sim\frac1{2n^2}$</li>
+        <li>Non converge: il termine non tende a 0.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 17-07-2025</span><span class="kind">7 quiz · 1 esercizio</span></div>
+      <ol class="qlist ex-text">
+        <li>Dominio di $\arcsin(x-1)$</li>
+        <li>Quale è invertibile: $2\cos x$ su $\left[-\frac\pi2,\frac\pi2\right]$, $\cos\frac x2$ su $[0,2\pi]$, $\cos2x$ su $[0,\pi]$, $\frac12\cos x$ su $[0,2\pi]$?</li>
+        <li>$E=\left\{x : x-1\ge\sqrt{2x^2+x-3}\right\}$</li>
+        <li>Radici di $z^2+5iz+3=0$</li>
+        <li>L'insieme $\{z : |z|=|z+1|\}$</li>
+        <li>Quale condizione assicura la convergenza di una serie a termini positivi?</li>
+        <li>Per quali $\alpha$ converge $\sum n^{3\alpha}\left(1-\cos\frac1n\right)$?</li>
+        <li>Esercizio, 6 punti: $(2i+\bar z)^3=27i$ <span class="note">(è l'esercizio del facsimile)</span></li>
+      </ol>
+      <p class="note">Teoria: infinitesimo di ordine inferiore e $a_n=o(b_n)$ (1).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>$-1\le x-1\le1$: $[0,2]$.</li>
+        <li>$\cos\frac x2$ su $[0,2\pi]$: lì $\frac x2\in[0,\pi]$ e il coseno è strettamente decrescente.</li>
+        <li>Serve $x\ge1$; poi $(x+4)(x-1)\le0$. Resta $E=\{1\}$: $\sup E=1$, ed è anche massimo.</li>
+        <li>$z=\frac{-5\pm\sqrt{37}}2\,i$: due radici non coniugate, entrambe immaginarie pure.</li>
+        <li>La retta $\mathrm{Re}\,z=-\frac12$, parallela all'asse immaginario.</li>
+        <li>$\frac{a_{n+1}}{a_n}\to\frac12$. Non bastano $a_n\to0$, né $\frac{a_{n+1}}{a_n}\le1$, né $a_n\sim\frac1{\sqrt n}$.</li>
+        <li>Termine $\sim\frac12n^{3\alpha-2}$: se e solo se $\alpha\lt\frac13$.</li>
+        <li>Vedi la scheda del facsimile fra i complessi.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 02-09-2025</span><span class="kind">5 quiz · 1 esercizio</span></div>
+      <ol class="qlist ex-text">
+        <li>$A=\left\{\frac{2n-1}n : n\in\N\right\}$: sup e inf</li>
+        <li>$A=\{x : \sqrt x\le3-x\}$</li>
+        <li>$\dfrac{3+4i}{1-2i}$</li>
+        <li>Per quali $\alpha$ converge $\sum\left(e^{1/n^3}-\cos\frac1n\right)^\alpha$?</li>
+        <li>Carattere di $\sum\frac{(-5)^n}{n!}$</li>
+        <li>Esercizio, 6 punti: risolvere $(z^3-\bar z)(z+\bar z-2)=0$; disegnare l'insieme $A$ delle soluzioni e $B=\{-iz : z\in A\}$.</li>
+      </ol>
+      <p class="note">Teoria: definizione di $\lim a_n=-\infty$ (1); <b>dimostrazione della condizione necessaria</b> (4).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>$\frac{2n-1}n=2-\frac1n$: $\sup A=2$, $\inf A=\min A=1$.</li>
+        <li>$A=\left[0,\frac{7-\sqrt{13}}2\right]$: $\sup A=\frac{7-\sqrt{13}}2$.</li>
+        <li>$-1+2i$</li>
+        <li>La base è $\sim\frac1{2n^2}$: se e solo se $\alpha\gt\frac12$.</li>
+        <li>Converge assolutamente: il rapporto è $\frac5{n+1}\to0$.</li>
+        <li>$z^3=\bar z$ dà $|z|^3=|z|$: $z=0$, oppure $|z|=1$ e $z^4=1$, cioè $\pm1,\pm i$. Poi $z+\bar z=2$ è la retta $\mathrm{Re}\,z=1$. In $B$ i 5 punti, ruotati di $-\frac\pi2$, si scambiano fra loro; la retta diventa $\mathrm{Im}\,w=-1$.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 13-01-2026</span><span class="kind">5 quiz · 1 esercizio</span></div>
+      <ol class="qlist ex-text">
+        <li>$E=\{x : \log(x^2-7)\lt1\}$ <span class="note">(è la Q1 del facsimile)</span></li>
+        <li>Quadrante di $(-1-\sqrt3i)^8$</li>
+        <li>Le soluzioni di $z^2+\bar z^2=0$</li>
+        <li>Carattere di $\sum\frac{(-1)^ne^n}{n!}$</li>
+        <li>Quale è $o\left(\log^3(n-3)\right)$: $e^{\sqrt n}$, $\sqrt n$, $\log\left(e^{\log^2n}+1\right)$, $(2n+1)!$?</li>
+        <li>Esercizio, 6 punti: carattere di (i) $\sum\left(\frac{n^2+1}{n^2+n+1}\right)^{n^2}$; (ii) $\sum(-1)^n\frac n{n^2+\beta^2}$ al variare di $\beta\in\R$; (iii) $\sum\left(e^{1/n}-e^{1/(n+1)}\right)$.</li>
+      </ol>
+      <p class="note">Teoria: definizione di $\sup E$ (1); teorema sulle monotone crescenti (2); enunciato del criterio del confronto (2).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>$\sup E=\sqrt{7+e}$</li>
+        <li>$-1-\sqrt3i=2e^{i\frac43\pi}$; alla ottava l'argomento è $\frac{32}3\pi\equiv\frac23\pi$: II quadrante.</li>
+        <li>$z^2+\bar z^2=2(x^2-y^2)$: le due rette $y=\pm x$.</li>
+        <li>Converge assolutamente.</li>
+        <li>$\log\left(e^{\log^2n}+1\right)\sim\log^2n$.</li>
+        <li>(i) Radice: $\left(\frac{n^2+1}{n^2+n+1}\right)^n\to e^{-1}\lt1$, converge. (ii) $\frac n{n^2+\beta^2}\sim\frac1n$: niente convergenza assoluta, ma per Leibniz converge semplicemente per ogni $\beta$. (iii) Telescopica: converge.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 04-02-2026</span><span class="kind">5 quiz</span></div>
+      <ol class="qlist ex-text">
+        <li>$\left(\frac{\sqrt2}2+\frac{\sqrt2}2i\right)^2$</li>
+        <li>Se $a_n\sim b_n$, che cosa è necessariamente vero?</li>
+        <li>Carattere di $\sum_{n\ge2}\left(1-\frac1n\right)^{n^2}$</li>
+        <li>$A=\{x : e^{2x}-3e^x+2\gt0\}$</li>
+        <li>Per quali $a\gt0$ converge $\sum\dfrac{\log\left(1+n^{-a}\right)}{\sqrt[5]{n^2+2}}$?</li>
+      </ol>
+      <p class="note">Teoria: definizione di $\lim a_n=-\infty$ (1); successione limitata ed esempio di limitata non convergente (2); enunciato del criterio di Leibniz (2).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>$i$</li>
+        <li>$\sqrt[3]{a_n}\sim\sqrt[3]{b_n}$. Non vale $e^{a_n}\sim e^{b_n}$: con $a_n=n+1$ e $b_n=n$ il rapporto fa $e$.</li>
+        <li>Radice: $\left(1-\frac1n\right)^n\to\frac1e\lt1$, converge.</li>
+        <li>$(e^x-1)(e^x-2)\gt0$: $A=(-\infty,0)\cup(\log2,+\infty)$, non superiormente limitato.</li>
+        <li>Termine $\sim n^{-a-\frac25}$: se e solo se $a\gt\frac35$.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 09-06-2026</span><span class="kind">5 quiz · 1 esercizio</span></div>
+      <ol class="qlist ex-text">
+        <li>$E=\{x : \sqrt{4x^2-x+1}\le2\}$</li>
+        <li>Quadrante di $\left(\frac{\sqrt3+i}2\right)^{46}$</li>
+        <li>Le soluzioni di $\mathrm{Re}\,z=|\mathrm{Im}(z-i)|$</li>
+        <li>Carattere di $\sum(-1)^n\frac{\cos n}n\sqrt{\sin\frac1n}$</li>
+        <li>$a_n=\log^2(n+e^n)$, $b_n=\sqrt{n^3+\log n}$, $c_n=\frac n{\sin(1/n)}$: chi è asintotico a chi?</li>
+        <li>Esercizio, 4 punti: radici di $z^4-z^3-8z+8$ in forma algebrica e trigonometrica, con disegno.</li>
+      </ol>
+      <p class="note">Teoria: definizione di $\lim a_n=-\infty$ (1); <b>dimostrazione del criterio del rapporto</b> (4).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>$(4x+3)(x-1)\le0$: $E=\left[-\frac34,1\right]$, $\inf E=\min E=-\frac34$.</li>
+        <li>Argomento $\frac{46}6\pi\equiv\frac53\pi$: IV quadrante.</li>
+        <li>$x=|y-1|$: due semirette che partono da $i$.</li>
+        <li>Converge assolutamente: $|a_n|\le\frac1n\sqrt{\frac1n}=n^{-3/2}$.</li>
+        <li>$a_n\sim n^2\sim c_n$ e $b_n\sim n^{3/2}$: $a_n\sim c_n$.</li>
+        <li>$(z-1)(z^3-8)=0$: $1$, $2$, $-1+\sqrt3i=2e^{i\frac23\pi}$, $-1-\sqrt3i=2e^{i\frac43\pi}$.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 03-07-2026</span><span class="kind">5 quiz</span></div>
+      <ol class="qlist ex-text">
+        <li>$E=\{x : \log^2(x+5)-\log(x+5)\ge6\}$</li>
+        <li>Segni di parte reale e immaginaria di $(1+i)^{47}$</li>
+        <li>Quante soluzioni immaginarie pure ha $z^3-i=0$?</li>
+        <li>Per quali $x$ converge $\sum\frac{x^n}n$?</li>
+        <li>Se $a_n\sim b_n$, che cosa è necessariamente vero?</li>
+      </ol>
+      <p class="note">Teoria: <b>«una successione convergente è limitata?»: se sì, dimostrarlo</b> (4); enunciato del criterio di Leibniz (2).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>Con $t=\log(x+5)$: $t\le-2$ o $t\ge3$, cioè $E=\left(-5,e^{-2}-5\right]\cup\left[e^3-5,+\infty\right)$: illimitato superiormente.</li>
+        <li>Argomento $\frac{47}4\pi\equiv-\frac\pi4$: $\mathrm{Re}\gt0$ e $\mathrm{Im}\lt0$.</li>
+        <li>Le radici sono $e^{i\frac\pi6}$, $e^{i\frac56\pi}$, $-i$: una sola immaginaria pura.</li>
+        <li>Converge assolutamente per $|x|\lt1$ e semplicemente per $x=-1$ (Leibniz); non converge per $x=1$ (armonica) né per $|x|\gt1$.</li>
+        <li>Se i limiti di $a_n$ e $b_n$ esistono, sono uguali.</li>
+      </ol></div></details></div>
+
+    <div class="ex"><div class="ex-meta"><span class="src">Appello 26-08-2026</span><span class="kind">6 quiz</span></div>
+      <ol class="qlist ex-text">
+        <li>$\lim\dfrac{(n+1)!}{(2n)!+n!}$</li>
+        <li>$E=\{x : \log(\log(\log(1-x)))\gt0\}$</li>
+        <li>$\dfrac{3+\sqrt2i}{\sqrt2+3i}$</li>
+        <li>Per quali $\alpha$ converge $\sum\dfrac{n^2+\log n}{n^\alpha\sin\frac n{n^2+1}}$?</li>
+        <li>Quale è $o\left(e^{\sqrt{2n}}\right)$: $n!$, $5^n$, $e^{n^2}$, $n^n$?</li>
+        <li>Le soluzioni di $z\bar z+\bar z^2=0$</li>
+      </ol>
+      <p class="note">Teoria: <b>dimostrazione della condizione necessaria</b>, e se è anche sufficiente (4).</p>
+      <details class="sol"><summary>Risposte</summary><div class="sol-body"><ol class="qlist">
+        <li>$0$</li>
+        <li>$\log(1-x)\gt e$, cioè $x\lt1-e^e$: $\sup E=1-e^e$.</li>
+        <li>$\frac{6\sqrt2-7i}{11}$: è la risposta «nessuna delle altre».</li>
+        <li>Termine $\sim n^{3-\alpha}$: se e solo se $\alpha\gt4$.</li>
+        <li>Nessuna: crescono tutte più in fretta di $e^{\sqrt{2n}}$.</li>
+        <li>$\bar z(z+\bar z)=0$: l'asse immaginario, cioè una retta.</li>
+      </ol>
+      <span class="typo">Refuso nella soluzione: accanto alla (e) c'è scritto $\frac{6\sqrt2+7i}{11}$, ma la parte immaginaria è negativa (l'argomento di $z$ è circa 25°, quello di $w$ circa 65°). La risposta segnata resta giusta. Controllato sull'originale.</span>
+      </div></details></div>
+  </div>
+</section>
+
+<section id="teoria">
+  <h2>La teoria: 10 punti, soglia 5</h2>
+  <p class="muted">Nel facsimile: «Domanda 1 [4 punti]» e «Domanda 2 [6 punti]», scelte fra i quesiti della prima parte del documento «Domande di Teoria» (1.1–1.66), con «almeno una dimostrazione tra quelle contrassegnate con un asterisco». Ecco che cosa è stato chiesto negli anni passati.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Domanda</th><th>Quesito</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>Appelli 24–26</th></tr></thead>
+      <tbody>
+        <tr><td>Maggiorante, minorante, sup, inf; insieme o successione limitata</td><td class="num">1.10–1.12, 1.34</td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat h1">3/10</span></td></tr>
+        <tr><td>Definizione di limite: $\ell$, $+\infty$, $-\infty$</td><td class="num">1.36</td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">5/10</span></td></tr>
+        <tr><td>$a_n\sim b_n$, ordine di infinito o infinitesimo, o-piccolo</td><td class="num">1.52–1.54</td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat h1">1/10</span></td></tr>
+        <tr><td>Enunciato di un teorema o criterio: monotone, confronto, radice, Leibniz, convergenza assoluta</td><td class="num">1.47, 1.61, 1.64–1.66</td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h2">5/10</span></td></tr>
+        <tr><td><b>Dim.</b> Condizione necessaria (è sufficiente?)</td><td class="num">1.57 *</td><td class="cell"><span class="heat h2">T</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">2/10</span></td></tr>
+        <tr><td><b>Dim.</b> Criterio del rapporto</td><td class="num">1.63 *</td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">2/10</span></td></tr>
+        <tr><td><b>Dim.</b> Permanenza del segno</td><td class="num">1.42 *</td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">T</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">T</span></td><td class="cell"><span class="heat">0/10</span></td></tr>
+        <tr><td><b>Dim.</b> Teorema dei due carabinieri</td><td class="num">1.44 *</td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">T</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">0/10</span></td></tr>
+        <tr><td><b>Dim.</b> Convergente ⇒ limitata</td><td class="num">1.39 *</td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">1/10</span></td></tr>
+        <tr><td><b>Dim.</b> Infinitesima per limitata</td><td class="num">1.46 **</td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat h3">T</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">–</span></td><td class="cell"><span class="heat">0/10</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box">
+    <span class="box-title">Che cosa aspettarsi</span>
+    <ul>
+      <li><b>Domanda da 4 punti</b>: quasi sempre definizioni con un esempio, oppure l'enunciato di un criterio. In testa c'è la definizione di limite (3 parziali su 4 e 5 appelli su 10), poi sup/inf/limitatezza (3 parziali su 4 e 3 appelli su 10). Negli appelli è frequente anche l'enunciato di un criterio: Leibniz, confronto, radice, monotone. Scrivi la definizione con i quantificatori e aggiungi sempre un esempio e un controesempio.</li>
+      <li><b>Domanda da 6 punti</b>: una delle 14 dimostrazioni con l'asterisco. Nelle 12 prove di Punzo sono uscite il criterio del rapporto (2 volte), la condizione necessaria (2), la permanenza del segno (1, più 1 con Monticelli nel 2023), i carabinieri (1) e «convergente ⇒ limitata» (1). Sono tutte di successioni e serie: nessuna della Sezione 1 finora. Il facsimile ripete domande già uscite, quindi una ripetizione è probabile. Nessuna delle 14 si può però scartare.</li>
+      <li>«Infinitesima per limitata» quest'anno ha due asterischi: allo scritto se ne chiede solo l'enunciato.</li>
+    </ul>
+  </div>
+  <div class="proofs">
+    <div class="tier">
+      <span class="box-title">Priorità 1 · già chieste</span>
+      <ol>
+        <li>Criterio del rapporto <span class="seen">2×</span></li>
+        <li>Condizione necessaria <span class="seen">2× (+1 enunciato)</span></li>
+        <li>Permanenza del segno <span class="seen">2×</span></li>
+        <li>Due carabinieri <span class="seen">1×</span></li>
+        <li>Convergente ⇒ limitata <span class="seen">1×</span></li>
+      </ol>
+    </div>
+    <div class="tier">
+      <span class="box-title">Priorità 2 · stesse sezioni, mai chieste</span>
+      <ol start="6">
+        <li>Unicità del limite</li>
+        <li>Regolarità delle monotone <span class="seen">enunciato 2×</span></li>
+        <li>Criterio del confronto <span class="seen">enunciato 1×</span></li>
+        <li>Confronto asintotico</li>
+        <li>Assoluta ⇒ semplice <span class="seen">enunciato 1×</span></li>
+      </ol>
+    </div>
+    <div class="tier">
+      <span class="box-title">Priorità 3 · numeri</span>
+      <ol start="11">
+        <li>$\sqrt2$ irrazionale</li>
+        <li>Disuguaglianza di Bernoulli</li>
+        <li>De Moivre (prodotto e potenze)</li>
+        <li>Radici $n$-esime</li>
+      </ol>
+    </div>
+  </div>
+  <p class="small muted">Le trovi tutte a passi coperti nella pagina <a href="teoremi.html">Dimostrazioni</a> del sito. I 66 quesiti sono nella pagina <a href="quesiti.html">Quesiti teorici</a>.</p>
+</section>
+
+<section id="piano">
+  <h2>Il piano di 7 giorni</h2>
+  <p class="muted">Circa 6 ore al giorno. Ogni giorno ha un pezzo di teoria, così le 14 dimostrazioni ripassano almeno due volte. Le spunte restano salvate in questo browser.</p>
+  <div class="progress"><span id="progTxt" class="num">0 / 0</span><div class="track"><div class="fill" id="progFill"></div></div><button type="button" class="reset" id="resetBtn">Azzera</button></div>
+  <div class="days" id="days">
+
+    <div class="day"><div class="day-head"><span class="day-n">Giorno 1</span><span class="day-title">Diagnosi, poi sup e inf</span><span class="day-hours">~6 h</span></div>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t1a"><label for="t1a"><span class="tag">Prova</span>Facsimile a tempo, 60 minuti, senza appunti. Correggilo con le schede qui sopra e segna dove hai perso punti: è la tua lista delle priorità.</label></li>
+        <li><input type="checkbox" id="t1b"><label for="t1b"><span class="tag">Esercizi</span>Le 6 schede «Sup e inf» e le 11 domande dello stesso tipo nelle schede «Appelli 2024–26». Per ognuna scrivi l'insieme come unione di intervalli.</label></li>
+        <li><input type="checkbox" id="t1c"><label for="t1c"><span class="tag">Teoria</span>Quesiti 1.10–1.13 a voce: maggiorante, sup, caratterizzazione con $\eps$, completezza. È la domanda da 4 punti più probabile.</label></li>
+        <li><input type="checkbox" id="t1d"><label for="t1d"><span class="tag">Dim.</span>$\sqrt2$ irrazionale e Bernoulli, scritte a memoria.</label></li>
+      </ul></div>
+
+    <div class="day"><div class="day-head"><span class="day-n">Giorno 2</span><span class="day-title">Numeri complessi</span><span class="day-hours">~6 h</span></div>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t2a"><label for="t2a"><span class="tag">Ripasso</span>Forma algebrica, trigonometrica ed esponenziale; argomento in $\left[-\frac\pi2,\frac32\pi\right)$; $z\bar z=|z|^2$; $z+\bar z=2\,\mathrm{Re}\,z$; che cosa fa moltiplicare per $i$, per $-2i$, per $re^{i\varphi}$.</label></li>
+        <li><input type="checkbox" id="t2b"><label for="t2b"><span class="tag">Esercizi</span>Tutte le schede «Complessi», in particolare i 4 esercizi svolti (2018, 2022, 2023, facsimile), scritti per intero con il disegno.</label></li>
+        <li><input type="checkbox" id="t2c"><label for="t2c"><span class="tag">Esercizi</span>Altri 5 esercizi del tipo «$(\ldots)^n=w$ con $\bar z$ dentro» e «prodotto = 0 con una retta o una circonferenza».</label></li>
+        <li><input type="checkbox" id="t2d"><label for="t2d"><span class="tag">Dim.</span>De Moivre e radici $n$-esime: servono anche per l'esercizio.</label></li>
+      </ul></div>
+
+    <div class="day"><div class="day-head"><span class="day-n">Giorno 3</span><span class="day-title">Limiti di successioni</span><span class="day-hours">~6 h</span></div>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t3a"><label for="t3a"><span class="tag">Ripasso</span>La tabella delle equivalenze ($\sin$, $1-\cos$, $e^x-1$, $\log(1+x)$, $(1+x)^a-1$, $\arctan$), il confronto fra infiniti, gli o-piccoli. Quando razionalizzare.</label></li>
+        <li><input type="checkbox" id="t3b"><label for="t3b"><span class="tag">Esercizi</span>Le 5 schede «Limiti», poi 15 limiti dal libro: devi farne uno in 3 minuti.</label></li>
+        <li><input type="checkbox" id="t3c"><label for="t3c"><span class="tag">Teoria</span>Definizioni di limite ($\ell$, $\pm\infty$) con $\nu_\eps$ e $\forall M\gt0$, di $a_n\sim b_n$, di infinito di ordine superiore, ognuna con un esempio.</label></li>
+        <li><input type="checkbox" id="t3d"><label for="t3d"><span class="tag">Dim.</span>Unicità del limite, limitatezza delle convergenti, permanenza del segno.</label></li>
+      </ul></div>
+
+    <div class="day"><div class="day-head"><span class="day-n">Giorno 4</span><span class="day-title">Serie: carattere e criteri</span><span class="day-hours">~6 h</span></div>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t4a"><label for="t4a"><span class="tag">Ripasso</span>La strategia in ordine: condizione necessaria, segno, confronto asintotico con $\sum\frac1{n^p}$, rapporto e radice, Leibniz, convergenza assoluta. Geometrica e telescopiche con la somma.</label></li>
+        <li><input type="checkbox" id="t4b"><label for="t4b"><span class="tag">Esercizi</span>Le 6 schede «Serie nel quiz» e le serie degli appelli, comprese le 6 del tipo «converge se e solo se $\alpha\gt\ldots$»: equivalenza asintotica, poi confronto con $\sum\frac1{n^p}$. Poi gli esercizi assegnati del cap. 3 (37–42, 46–52, 54–55, 58–62).</label></li>
+        <li><input type="checkbox" id="t4c"><label for="t4c"><span class="tag">Dim.</span>Due carabinieri, regolarità delle monotone, condizione necessaria.</label></li>
+      </ul></div>
+
+    <div class="day"><div class="day-head"><span class="day-n">Giorno 5</span><span class="day-title">L'esercizio da 8 punti</span><span class="day-hours">~6 h</span></div>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t5a"><label for="t5a"><span class="tag">Esercizi</span>Le 5 serie con parametro scritte per intero come all'esame, con lo schema in 4 passi. Confronta parola per parola con la soluzione del prof: conta la giustificazione (decrescenza per Leibniz, casi agli estremi).</label></li>
+        <li><input type="checkbox" id="t5b"><label for="t5b"><span class="tag">Esercizi</span>Inventa 3 varianti cambiando la «ragione» (per esempio $(\log\alpha)^n$, $(2\alpha-1)^n$, $\left(\frac{x}{3}\right)^n$) e risolvile in 15 minuti l'una.</label></li>
+        <li><input type="checkbox" id="t5c"><label for="t5c"><span class="tag">Dim.</span>Confronto, confronto asintotico, rapporto, assoluta ⇒ semplice.</label></li>
+      </ul></div>
+
+    <div class="day"><div class="day-head"><span class="day-n">Giorno 6</span><span class="day-title">Simulazioni vere</span><span class="day-hours">~6 h</span></div>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t6a"><label for="t6a"><span class="tag">Prova</span>Parziale di novembre 2025 in 60 minuti (versione A), poi correzione.</label></li>
+        <li><input type="checkbox" id="t6b"><label for="t6b"><span class="tag">Prova</span>Parziale di novembre 2024 in 60 minuti, poi correzione. Rifai da capo ogni domanda sbagliata.</label></li>
+        <li><input type="checkbox" id="t6c"><label for="t6c"><span class="tag">Dim.</span>Le 14 dimostrazioni, una dopo l'altra, 6 minuti l'una. Quelle che non escono pulite vanno nella lista del giorno 7.</label></li>
+      </ul></div>
+
+    <div class="day"><div class="day-head"><span class="day-n">Giorno 7</span><span class="day-title">Ultima simulazione e buchi</span><span class="day-hours">~5 h</span></div>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t7a"><label for="t7a"><span class="tag">Prova</span>Parziale 2023 nel nuovo formato (quiz, teoria e un solo esercizio, 60 minuti), oppure la <a href="simulazione.html">simulazione del sito</a>.</label></li>
+        <li><input type="checkbox" id="t7b"><label for="t7b"><span class="tag">Buchi</span>Rifai gli argomenti segnati al giorno 1 e al giorno 6. Ripassa un'ora le funzioni (iniettività, inversa, grafici trasformati): è l'argomento raro più probabile.</label></li>
+        <li><input type="checkbox" id="t7d"><label for="t7d"><span class="tag">Appelli</span>Rifai di fila tutte le domande delle schede «Appelli 2024–26», senza guardare le risposte: il facsimile è stato montato con domande di questo tipo, e una ripetizione all'esame è probabile.</label></li>
+        <li><input type="checkbox" id="t7c"><label for="t7c"><span class="tag">Teoria</span>Scorri tutti i quesiti 1.1–1.66 e rispondi a voce in 30 secondi l'uno; ripassa le dimostrazioni rimaste incerte.</label></li>
+      </ul></div>
+  </div>
+  <div class="box warnb">
+    <span class="box-title">Il giorno prima della prova</span>
+    <p>Niente argomenti nuovi. Rileggi la tabella delle equivalenze e lo schema delle serie, scrivi una volta le 3 dimostrazioni che ti piacciono di meno e vai a dormire presto. Porta un documento valido: senza non si entra.</p>
+  </div>
+</section>
+
+<section id="prova">
+  <h2>Come giocarsi i 60 minuti</h2>
+  <div class="clock">
+    <div class="t">0–3′</div><div>Leggi tutto il compito. Segna con una crocetta le domande che sai fare subito.</div>
+    <div class="t">3–22′</div><div><b>Quiz (14 punti).</b> Parti da sup/inf, dalla divisione fra complessi e dal limite: sono conti che hai già fatto dieci volte. Per le risposte aperte basta il risultato, ma scrivilo esatto, compresi «$-\infty$» e «non esiste».</div>
+    <div class="t">22–40′</div><div><b>Teoria (10 punti).</b> Prima la dimostrazione da 6 punti: enunciato completo con le ipotesi, poi i passi, dicendo dove entra ciascuna ipotesi. Poi la domanda da 4: definizione con i quantificatori, un esempio e un controesempio.</div>
+    <div class="t">40–57′</div><div><b>Esercizio (8 punti).</b> Segui lo schema e scrivi le frasi di collegamento («per la condizione necessaria…», «per il criterio del rapporto…»). Il facsimile avverte che uno svolgimento disordinato o senza spiegazioni viene penalizzato.</div>
+    <div class="t">57–60′</div><div>Controlla le soglie: almeno 7 punti sicuri nel quiz e almeno 5 nella teoria. Se una delle due è in bilico, usa questi minuti lì, non sull'esercizio.</div>
+  </div>
+  <div class="box trap">
+    <span class="box-title">✗ Gli errori che costano più punti in queste prove</span>
+    <ul>
+      <li>Dimenticare il dominio nelle disequazioni per sup/inf, per esempio $x^2-7\gt0$ prima di togliere il logaritmo.</li>
+      <li>Confondere sup e max: se l'estremo è escluso, oppure è irrazionale in un insieme di razionali, il massimo non esiste.</li>
+      <li>Con $\bar z$ nell'equazione: risolvere per $w$ e poi non coniugare.</li>
+      <li>Usare le equivalenze dentro una somma o differenza, come in $\sqrt{n^2-n}-\sqrt{n^2+2}$: lì prima si razionalizza.</li>
+      <li>Concludere qualcosa da un rapporto che tende a 1, o dalla sola condizione necessaria.</li>
+      <li>Usare Leibniz senza dimostrare che $b_n$ è decrescente.</li>
+      <li>Applicare il confronto a una serie a termini negativi senza passare a $-a_n$.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="fonti">
+  <p>Fonti: primi parziali del 7/11/2018, 7/11/2022, 6/11/2023, 9/11/2024 e 10/11/2025, appelli completi 2024-25 e 2025-26 (cartella «Esami degli anni precedenti»; dagli appelli solo le domande di prima parte), facsimile della prima prova 2026/27, «Modalità d'esame», «Programma di massima» e «Domande di Teoria». Trascrizione con Gemini; i risultati sono ricontrollati con calcoli indipendenti e i dubbi sono stati verificati sugli originali. Appunti non ufficiali.</p>
+</div>
+</div>
+  </main>
+</div>
+
+<footer>Analisi Matematica 1 · Statistiche del primo parziale · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../assets/js/materie.js?v=20261021"></script>
+<script src="data/topics.js?v=20261021"></script>
+<script src="../assets/js/app.js?v=20261021"></script>
+<script>
+(function () {
+  // filtri del catalogo
+  var buttons = document.querySelectorAll('.filters button');
+  var groups = document.querySelectorAll('.group[data-g]');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f');
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      groups.forEach(function (g) { g.hidden = !(f === 'tutti' || g.getAttribute('data-g') === f); });
+    });
+  });
+
+  // un link dell'indice verso un gruppo nascosto dal filtro rimette «Tutti»
+  document.querySelectorAll('.toc a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el && el.closest('[hidden]')) document.querySelector('.filters button[data-f="tutti"]').click();
+    });
+  });
+
+  // piano con spunte salvate nel browser
+  var KEY = 'pp1-piano-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#days input[type=checkbox]'));
+  var stato = {};
+  try { stato = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { stato = {}; }
+  function salva() { try { localStorage.setItem(KEY, JSON.stringify(stato)); } catch (e) {} }
+  function aggiorna() {
+    var fatti = 0;
+    boxes.forEach(function (c) {
+      c.closest('li').classList.toggle('done', c.checked);
+      if (c.checked) fatti++;
+    });
+    document.getElementById('progTxt').textContent = fatti + ' / ' + boxes.length;
+    document.getElementById('progFill').style.width = (100 * fatti / boxes.length) + '%';
+  }
+  boxes.forEach(function (c) {
+    c.checked = !!stato[c.id];
+    c.addEventListener('change', function () { stato[c.id] = c.checked; salva(); aggiorna(); });
+  });
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    stato = {}; salva(); boxes.forEach(function (c) { c.checked = false; }); aggiorna();
+  });
+  aggiorna();
+})();
+</script>
+</body>
+</html>

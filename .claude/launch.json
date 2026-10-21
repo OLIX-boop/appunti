@@ -6,6 +6,13 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8766"],
       "port": 8766
+    },
+    {
+      "name": "sito-bis",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8768"],
+      "port": 8768,
+      "autoPort": false
     }
   ]
 }
