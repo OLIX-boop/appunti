@@ -41,7 +41,7 @@
   .capitoli li::before { content: "›"; position: absolute; left: 2px; color: var(--accent); font-weight: 700; }
   /* Blocco col solo titolo: non è un link, quindi al passaggio non si solleva */
   .materia-vuota:hover { transform: none; box-shadow: var(--shadow); border-color: var(--border); }
-  /* Blocchi conclusi: tutto in grigio, compresi icona, barra e badge */
+  /* Blocco concluso: tutto in grigio, compresi icona, barra e badge */
   .materia-archivio { background: var(--bg-sunken); box-shadow: none; filter: grayscale(1); }
   .materia-archivio:hover { background: var(--bg-elev); }
   .materia-archivio .sub { color: var(--text-muted); }
@@ -92,16 +92,12 @@
             <div class="sub">Prof. P. Gumenyuk</div>
           </div>
         </div>
-        <p>Sistemi lineari e metodo di Gauss, matrici e invertibilità, spazi vettoriali, applicazioni lineari, geometria di rette e piani, determinanti.</p>
+        <p>Dai sistemi lineari ai determinanti, passando per spazi vettoriali e applicazioni lineari.</p>
         <ul class="capitoli">
-          <li>Preliminari: insiemi, ℝⁿ, quantificatori</li>
-          <li>Sistemi lineari e metodo di Gauss</li>
-          <li>Algebra delle matrici e invertibilità</li>
-          <li>Vettori, spazi vettoriali e sottospazi</li>
-          <li>Numeri complessi</li>
-          <li>Applicazioni lineari, basi, dimensione, rango</li>
-          <li>Posizione reciproca, ortogonalità, fasci</li>
-          <li>Somma di sottospazi e formula di Grassmann</li>
+          <li>Sistemi lineari e matrici</li>
+          <li>Spazi vettoriali e numeri complessi</li>
+          <li>Applicazioni lineari e rango</li>
+          <li>Rette, piani e Grassmann</li>
           <li>Determinanti</li>
         </ul>
         <div class="pbar" data-progress-for="geometria"><span style="width:0"></span></div>
@@ -133,42 +129,7 @@
         </div>
       </a>
 
-      <!-- Tre blocchi del primo parziale di Analisi, concluso il 2 novembre 2026: restano consultabili, in grigio e in fondo -->
-      <a class="materia materia-archivio" href="analisi/primo-parziale.html">
-        <div class="materia-top">
-          <div class="materia-icona" style="background:linear-gradient(135deg,#a8690a,#b3261e)">🔥</div>
-          <div>
-            <h2>Allenamento di oggi</h2>
-            <div class="sub">Analisi · primo parziale</div>
-          </div>
-        </div>
-        <p>La sessione quotidiana: definizioni, quesiti teorici, idee delle dimostrazioni e quiz. Il motore sceglie <em>cosa</em> chiederti in base a quanto lo sbagli.</p>
-        <div class="materia-foot" style="margin-top:auto">
-          <span class="faint">12-15 min a sessione</span>
-          <span class="badge warn">concluso</span>
-        </div>
-      </a>
-
-      <a class="materia materia-archivio" href="analisi/statistiche-parziale.html">
-        <div class="materia-top">
-          <div class="materia-icona" style="background:linear-gradient(135deg,#1c7a4e,#1f5fa8)">📊</div>
-          <div>
-            <h2>Statistiche del primo parziale</h2>
-            <div class="sub">Analisi 1 · prova del 2 novembre</div>
-          </div>
-        </div>
-        <p>Che cosa è uscito nei parziali e negli appelli degli ultimi anni, da dove viene il facsimile, tutte le domande con le risposte verificate.</p>
-        <ul class="capitoli">
-          <li>Frequenze e stime per argomento</li>
-          <li>Le 14 dimostrazioni in ordine di priorità</li>
-          <li>Piano di 7 giorni con le spunte</li>
-        </ul>
-        <div class="materia-foot" style="margin-top:auto">
-          <span class="faint">fino al 2 novembre</span>
-          <span class="badge warn">concluso</span>
-        </div>
-      </a>
-
+      <!-- Prima metà del corso, conclusa col parziale del 2 novembre 2026: resta consultabile, in grigio e in fondo -->
       <a class="materia materia-archivio" href="analisi/index.html">
         <div class="materia-top">
           <div class="materia-icona" style="background:linear-gradient(135deg,#1f5fa8,#6b3fa0)">∫</div>
