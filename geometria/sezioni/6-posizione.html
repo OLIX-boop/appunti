@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 6 · Posizione reciproca, ortogonalità, fasci — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="../../due-parziali.html">Parziali</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 6</h4>
+    <a href="#checklist">Checklist del programma</a>
+    <a href="#metodo">1 · Un solo metodo</a>
+    <a href="#rette-piano">2 · Due rette nel piano</a>
+    <a href="#rp-param" class="sub">Equazioni parametriche</a>
+    <a href="#rp-cart" class="sub">Equazioni cartesiane</a>
+    <a href="#rette-spazio">3 · Due rette nello spazio</a>
+    <a href="#rs-casi" class="sub">I quattro casi</a>
+    <a href="#rs-teorema" class="sub">Il criterio con $\vec u,\vec v,\vec b$</a>
+    <a href="#rs-lab" class="sub">Laboratorio</a>
+    <a href="#piani">4 · Due piani</a>
+    <a href="#piano-eq" class="sub">Perché $ax+by+cz=d$ è un piano</a>
+    <a href="#piani-cart" class="sub">Equazioni cartesiane</a>
+    <a href="#piani-param" class="sub">Equazioni parametriche</a>
+    <a href="#piani-misti" class="sub">Un piano per tipo</a>
+    <a href="#retta-piano">5 · Una retta e un piano</a>
+    <a href="#inclusione" class="sub">Quando $U\subset V$?</a>
+    <a href="#rette-cart">6 · Rette con equazioni cartesiane</a>
+    <a href="#omogeneo" class="sub">Il sistema omogeneo associato</a>
+    <a href="#ortogonalita">7 · Ortogonalità</a>
+    <a href="#scalare" class="sub">Il prodotto scalare</a>
+    <a href="#normale" class="sub">Vettore normale a un piano</a>
+    <a href="#perp-esempi" class="sub">Problemi di perpendicolarità</a>
+    <a href="#fasci">8 · Fasci di rette e piani</a>
+    <a href="#fascio-par" class="sub">Piani paralleli</a>
+    <a href="#fascio-retta" class="sub">Piani per una retta</a>
+    <a href="#fascio-extra" class="sub">Un esempio in più</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 6 · Geometria e Algebra Lineare · Lezione 7 e addendum</div>
+      <h1>Posizione reciproca, ortogonalità, fasci</h1>
+      <p class="lead">Rette e piani si incontrano, si sfiorano o si ignorano: per saperlo basta scrivere il <strong>sistema che descrive l'intersezione</strong> e confrontare i ranghi. Qui Rouché-Capelli diventa geometria.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Tutta la sezione è un'unica idea applicata a coppie diverse: retta-retta, piano-piano, retta-piano. Il prof lo dice chiaro: <strong>non ha senso imparare a memoria le tabelle dei casi</strong>. Serve saper scrivere il sistema e leggerlo con <a href="2-matrici.html#rc">Rouché-Capelli</a>. Poi aggiungiamo il prodotto scalare, che dà un significato ai coefficienti di un piano, e i fasci, che trasformano «trova il piano che…» in un'equazione con un parametro.</p>
+    </div>
+    <p class="small muted">Dagli appunti: <em>Lezione 7</em> (parti 1, 2 e 3), <em>Lezione 7, Parte 1 e Parte 2</em>, <em>Addendum alla Lezione 7</em>. In questa sezione punti e vettori hanno coordinate rispetto a un riferimento fissato, e per l'ortogonalità il riferimento è <strong>cartesiano</strong>.</p>
+
+    <h2 id="checklist">Checklist del programma</h2>
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Avanzamento Sezione 6</strong>
+        <span class="muted small"><span data-progress-txt="g6">0/17</span> · <span data-progress-pct="g6">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="g6"><span style="width:0"></span></div>
+    </div>
+    <div id="checklistBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="metodo">1 · Un solo metodo</h2>
+
+    <div class="box tip">
+      <div class="box-title">✓ La ricetta valida per tutta la sezione</div>
+      <ol class="mb0">
+        <li>Scrivi il <strong>sistema che descrive l'intersezione</strong> dei due oggetti.</li>
+        <li>Calcola $r(A)$ e $r([A|\vb])$ con il MEG.</li>
+        <li>Applica Rouché-Capelli: nessuna soluzione, una sola, oppure infinite con $\#\text{incognite}-r(A)$ parametri.</li>
+        <li>Traduci in geometria. Solo per distinguere <em>parallele</em> da <em>sghembe</em> serve in più guardare le direzioni.</li>
+      </ol>
+    </div>
+
+    <div class="box def">
+      <div class="box-title">Vocabolario (Lezione 7)</div>
+      <ul class="mb0">
+        <li><strong>Vettore direzione</strong> di $l:\ \vec r=\vec r_0+t\vec v$ è $\vec v\ne\vec 0$.</li>
+        <li><strong>Incidenti:</strong> si incontrano in un punto solo. Per due piani: distinti con punti in comune, cioè si incontrano lungo una retta.</li>
+        <li><strong>Parallele:</strong> due rette distinte dello spazio sono parallele se stanno in uno stesso piano e non hanno punti comuni. Una retta si considera parallela a se stessa.</li>
+        <li><strong>In senso largo</strong> il parallelismo include la coincidenza; <strong>in senso stretto</strong> no.</li>
+        <li><strong>Sghembe:</strong> due rette dello spazio senza punti comuni e <em>non complanari</em>. Nel piano non esistono.</li>
+      </ul>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">Fatto importante</div>
+      <p class="mb0">Due rette, nel piano o nello spazio, sono parallele in senso largo se e solo se i loro vettori direzione sono <strong>linearmente dipendenti</strong>, cioè $\vec v_2=\lambda\vec v_1$ per un opportuno $\lambda\in\R$. Vale anche nello spazio proprio perché, per definizione, due rette parallele sono complanari.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rette-piano">2 · Due rette nel piano</h2>
+
+    <h3 id="rp-param">Equazioni parametriche</h3>
+    <p>Siano $l_1:\ \vec r=\vec r_1+t\vec v_1$ e $l_2:\ \vec r=\vec r_2+s\vec v_2$, con $\vec v_1,\vec v_2\ne\vec 0$. Un punto sta su entrambe se il suo vettore posizione si scrive in tutti e due i modi:
+    $$\vec r_1+t\vec v_1=\vec r_2+s\vec v_2\iff t\vec v_1+s(-\vec v_2)=\vec r_2-\vec r_1.$$
+    È un sistema lineare nelle incognite $t,s$:
+    $$A\begin{bmatrix}t\\s\end{bmatrix}=\vb,\qquad A:=[\vec v_1\,|\,-\vec v_2],\qquad \vb:=\vec r_2-\vec r_1.$$</p>
+
+    <div class="tablewrap"><table>
+      <thead><tr><th>Direzioni</th><th>Ranghi</th><th>Soluzioni</th><th>Rette</th></tr></thead>
+      <tbody>
+        <tr><td>indipendenti</td><td>$r(A)=2$</td><td>una sola (Cramer)</td><td><strong>incidenti</strong></td></tr>
+        <tr><td>dipendenti</td><td>$r(A)=1$, $r([A|\vb])=2$</td><td>nessuna</td><td><strong>parallele distinte</strong></td></tr>
+        <tr><td>dipendenti</td><td>$r(A)=r([A|\vb])=1$</td><td>infinite</td><td><strong>coincidenti</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted">La tabella è un riassunto, non una cosa da imparare a memoria: ogni riga è Rouché-Capelli letto sul disegno. Nell'ultima riga $\vec v_2$ e $\vec r_2-\vec r_1$ sono entrambi multipli di $\vec v_1$.</p>
+
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 7)</div>
+      <p>$l_1:\ \vec r=\begin{bmatrix}7\\6\end{bmatrix}+t\begin{bmatrix}1\\2\end{bmatrix}$, $\quad l_2:\ \vec r=\begin{bmatrix}0\\-6\end{bmatrix}+s\begin{bmatrix}3\\4\end{bmatrix}$. Le direzioni sono indipendenti, quindi $r(A)=2$ e c'è un solo punto:
+      $$\left[\begin{array}{cc|c}1&-3&-7\\2&-4&-12\end{array}\right]\xrightarrow{R_2\to R_2-2R_1}\left[\begin{array}{cc|c}1&-3&-7\\0&2&2\end{array}\right]\ \Rightarrow\ s=1,\quad t=-4.$$
+      Sostituendo $t=-4$ in $l_1$ si ottiene $P(3,-2)$. <strong>Controllo</strong> con $s=1$ in $l_2$: $(0,-6)+(3,4)=(3,-2)$ ✓.</p>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 7): tre rette con la stessa direzione</div>
+      <p>$l_1:\ \vec r=\begin{bmatrix}2\\3\end{bmatrix}+t\begin{bmatrix}-1\\2\end{bmatrix}$, $\quad l_2:\ \vec r=\begin{bmatrix}3\\1\end{bmatrix}+s\begin{bmatrix}2\\-4\end{bmatrix}$, $\quad l_3:\ \vec r=\begin{bmatrix}1\\3\end{bmatrix}+s\begin{bmatrix}2\\-4\end{bmatrix}$.</p>
+      <p>Le direzioni sono proporzionali ($\vec v_2=-2\vec v_1$), quindi le rette sono parallele in senso largo e $r(A)=1$. Resta da guardare $\vec b$:</p>
+      <ul class="mb0">
+        <li>per $l_1,l_2$: $\vb=(1,-2)=-\vec v_1$ è multiplo di $\vec v_1$, quindi $r([A|\vb])=1$ e $l_1=l_2$;</li>
+        <li>per $l_1,l_3$: $\vb=(-1,0)$ non lo è, quindi $r([A|\vb])=2$ e le rette sono parallele distinte.</li>
+      </ul>
+    </div>
+
+    <h3 id="rp-cart">Equazioni cartesiane</h3>
+    <p>Qui è ancora più semplice: i punti comuni di $l_1:\ a_1x+b_1y=d_1$ e $l_2:\ a_2x+b_2y=d_2$ sono le soluzioni del sistema formato dalle due equazioni. Il sistema è quadrato, quindi ha una sola soluzione se e solo se la matrice dei coefficienti è invertibile:</p>
+    <div class="box prop">
+      <div class="box-title">Criterio (Lezione 7, Parte 1)</div>
+      <p class="mb0">$l_1$ e $l_2$ sono <strong>incidenti</strong> $\iff a_1b_2-a_2b_1\ne0$. Se invece $a_1b_2=a_2b_1$ sono parallele, e la coincidenza non è esclusa.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Due esempi (Lezione 7)</div>
+      <p><strong>(a)</strong> $l_1:\ 2x-y=3$, $\ l_2:\ x+2y=-1$. La matrice è invertibile e
+      $$\begin{bmatrix}x\\y\end{bmatrix}=\frac15\begin{bmatrix}2&1\\-1&2\end{bmatrix}\begin{bmatrix}3\\-1\end{bmatrix}=\begin{bmatrix}1\\-1\end{bmatrix}.$$
+      Le rette si incontrano in $(1,-1)$.</p>
+      <p class="mb0"><strong>(b)</strong> $l_1:\ 2x+4y=1$, $\ l_2:\ 3x+6y=2$. La seconda riga di $A$ è $\tfrac32$ della prima, quindi $r(A)=1$; ma le due righe della completa sono indipendenti, quindi $r([A|\vb])=2$. Nessuna soluzione: <strong>parallele distinte</strong>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rette-spazio">3 · Due rette nello spazio</h2>
+
+    <h3 id="rs-casi">I quattro casi</h3>
+    <p>Il sistema è lo stesso, $A\begin{bmatrix}t\\s\end{bmatrix}=\vb$ con $A:=[\vec v_1|-\vec v_2]$ e $\vb:=\vec r_2-\vec r_1$, ma ora $\vb\in\R^{3}$: il rango della completa può arrivare a $3$, e compare un caso nuovo.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th></th><th>$r(A)$</th><th>$r([A|\vb])$</th><th>Rette</th></tr></thead>
+      <tbody>
+        <tr><td>1a</td><td>1</td><td>1</td><td>coincidenti: infinite soluzioni</td></tr>
+        <tr><td>1b</td><td>1</td><td>2</td><td>parallele distinte</td></tr>
+        <tr><td>2a</td><td>2</td><td>2</td><td>incidenti: soluzione unica</td></tr>
+        <tr><td>2b</td><td>2</td><td>3</td><td><strong>sghembe</strong>: non si incontrano e non sono parallele</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box warnb">
+      <div class="box-title">⚠ La differenza col piano</div>
+      <p class="mb0">Nel piano «direzioni indipendenti» implica «si incontrano», perché $[A|\vb]$ ha due righe e il suo rango non può superare $2$. Nello spazio le righe sono tre, e il caso $r([A|\vb])=3$ è possibile: due rette non parallele possono mancarsi.</p>
+    </div>
+
+    <h3 id="rs-teorema">Il criterio con $\vec u,\vec v,\vec b$ <span class="badge star">risultato centrale</span></h3>
+    <p>Rango e dipendenza lineare parlano della stessa cosa, quindi la tabella si riscrive senza matrici.</p>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 7, Parte 1)</div>
+      <p>Siano $l_1:\ \vec r=\vec r_1+t\vec u$ e $l_2:\ \vec r=\vec r_2+s\vec v$ due rette nello spazio, e sia $\vec b:=\vec r_2-\vec r_1$.</p>
+      <ol class="mb0" type="i">
+        <li>Se $\vec u,\vec v$ sono <strong>linearmente dipendenti</strong>, allora $l_1\parallel l_2$; in tal caso $l_1\ne l_2$ se e solo se $\vec u,\vec b$ sono linearmente indipendenti.</li>
+        <li>Se $\vec u,\vec v,\vec b$ sono <strong>linearmente indipendenti</strong>, allora $l_1,l_2$ sono <strong>sghembe</strong>.</li>
+        <li>Se $\vec u,\vec v$ sono indipendenti ma $\vec u,\vec v,\vec b$ sono dipendenti, allora $l_1,l_2$ sono <strong>incidenti</strong>.</li>
+      </ol>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Da dove si parte?</div>
+            <div class="step-content">Dal sistema dell'intersezione $t\vec u-s\vec v=\vec b$. Cambiare segno a una colonna non cambia il rango, quindi $r(A)=r([\vec u|\vec v])$ e $r([A|\vec b])=r([\vec u|\vec v|\vec b])$. Il rango per colonne conta i vettori indipendenti.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Caso (i): quanto vale $r(A)$, e che cosa cambia con $\vec b$?</div>
+            <div class="step-content">$\vec u,\vec v$ dipendenti e non nulli danno $r(A)=1$: rette parallele in senso largo. Se $\vec b$ è multiplo di $\vec u$, $r([A|\vec b])=1$ e il sistema ha infinite soluzioni, quindi $l_1=l_2$. Se $\vec u,\vec b$ sono indipendenti, $r([A|\vec b])=2>r(A)$ e non ci sono soluzioni: parallele distinte.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Caso (ii): perché sghembe e non semplicemente «disgiunte»?</div>
+            <div class="step-content">Tre vettori indipendenti danno $r([A|\vec b])=3>2=r(A)$: per Rouché-Capelli $l_1\cap l_2=\emptyset$. E non sono parallele, perché $\vec u,\vec v$ sono indipendenti. Rette senza punti comuni e non parallele sono sghembe.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Caso (iii): chi garantisce esistenza e unicità del punto?</div>
+            <div class="step-content">$r(A)=2$ e, essendo $\vec b\in\operatorname{span}\{\vec u,\vec v\}$, anche $r([A|\vec b])=2$. I due ranghi coincidono e valgono $2=\#\text{incognite}$: una e una sola soluzione. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box warnb">
+      <div class="box-title">⚠ Non usare lo stesso parametro</div>
+      <p class="mb0">Se le rette sono date entrambe col parametro $t$, va rinominato uno dei due. Lo stesso punto si trova su $l_1$ e su $l_2$ in generale per valori <em>diversi</em> del parametro: usare $t$ per tutte e due vuol dire cercare il punto in cui le rette si trovano «allo stesso istante», che è un'altra domanda.</p>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Esempi (c) e (d) (Lezione 7)</div>
+      <p>$l_1:\ \vec r=\begin{bmatrix}1\\2\\3\end{bmatrix}+t\begin{bmatrix}1\\-1\\0\end{bmatrix}$ è la stessa in entrambi i casi. Le direzioni sono sempre indipendenti: la domanda è solo «incidenti o sghembe?».</p>
+      <p><strong>(c)</strong> $l_2:\ \vec r=\begin{bmatrix}3\\2\\1\end{bmatrix}+s\begin{bmatrix}2\\1\\1\end{bmatrix}$, quindi $\vec b=(2,0,-2)$ e
+      $$[A|\vb]=\begin{bmatrix}1&-2&2\\-1&-1&0\\0&-1&-2\end{bmatrix}\to\begin{bmatrix}1&-2&2\\0&-1&-2\\0&0&8\end{bmatrix}.$$
+      $r([A|\vb])=3$: <strong>sghembe</strong>.</p>
+      <p class="mb0"><strong>(d)</strong> $l_2:\ \vec r=\begin{bmatrix}3\\2\\1\end{bmatrix}+s\begin{bmatrix}2\\1\\-3\end{bmatrix}$. Cambia solo l'ultima componente della direzione, ma
+      $$[A|\vb]=\begin{bmatrix}1&-2&2\\-1&-1&0\\0&3&-2\end{bmatrix}\to\begin{bmatrix}1&-2&2\\0&-3&2\\0&0&0\end{bmatrix}\ \Rightarrow\ s=-\tfrac23,\quad t=\tfrac23.$$
+      <strong>Incidenti</strong> in $P\left(\tfrac53,\tfrac43,3\right)$. Controllo su $l_1$: $(1,2,3)+\tfrac23(1,-1,0)=\left(\tfrac53,\tfrac43,3\right)$ ✓. Per il punto basta $s$ <em>oppure</em> $t$: l'altro serve solo come controllo.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (e) e (f) (Lezione 7): direzioni proporzionali</div>
+      <p>$l_1:\ \vec r=\begin{bmatrix}3\\2\\1\end{bmatrix}+t\begin{bmatrix}2\\1\\-3\end{bmatrix}$ in entrambi.</p>
+      <p><strong>(e)</strong> $l_2:\ \vec r=\begin{bmatrix}1\\1\\4\end{bmatrix}+s\begin{bmatrix}4\\2\\-6\end{bmatrix}$: $\vec v=2\vec u$ e $\vec b=(-2,-1,3)=-\vec u$. Tutto è multiplo di $\vec u$: $l_1=l_2$. Infatti $t=2s-1$ trasforma un'equazione nell'altra.</p>
+      <p class="mb0"><strong>(f)</strong> $l_2:\ \vec r=\begin{bmatrix}1\\1\\1\end{bmatrix}+s\begin{bmatrix}-4\\-2\\6\end{bmatrix}$: $\vec v=-2\vec u$, ma $\vec b=(-2,-1,0)$ non è multiplo di $\vec u$. Parallele distinte.</p>
+    </div>
+
+    <h3 id="rs-lab">Laboratorio: due rette nello spazio</h3>
+    <div class="widget">
+      <div class="widget-head"><span>Che posizione hanno?</span><span class="faint" style="text-transform:none;font-weight:400">scegli un esempio o scrivi i tuoi vettori</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="rlSel">esempio</label>
+            <select id="rlSel">
+              <option value="0">(c) sghembe</option>
+              <option value="1">(d) incidenti</option>
+              <option value="2">(e) coincidenti</option>
+              <option value="3">(f) parallele distinte</option>
+            </select>
+          </div>
+        </div>
+        <div class="controls">
+          <div class="ctrl"><label for="rlR1">$\vec r_1$</label><input type="text" id="rlR1" style="width:96px"></div>
+          <div class="ctrl"><label for="rlU">$\vec u$</label><input type="text" id="rlU" style="width:96px"></div>
+          <div class="ctrl"><label for="rlR2">$\vec r_2$</label><input type="text" id="rlR2" style="width:96px"></div>
+          <div class="ctrl"><label for="rlV">$\vec v$</label><input type="text" id="rlV" style="width:96px"></div>
+        </div>
+        <div class="matrice-wrap" id="rlMat"></div>
+        <div class="readout" id="rlOut"></div>
+      </div>
+    </div>
+    <p class="small muted">Scrivi tre numeri interi separati da virgole. La matrice mostrata è $[\vec u\,|-\vec v\,|\,\vec b]$ ridotta a scala in aritmetica esatta.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="piani">4 · Due piani</h2>
+
+    <h3 id="piano-eq">Perché $ax+by+cz=d$ è un piano</h3>
+    <p>Finora lo abbiamo dato per buono. Se $(a,b,c)\ne\underline0$, la matrice $[a\ b\ c]$ e la completa $[a\ b\ c\ d]$ hanno entrambe rango $1$, quindi per Rouché-Capelli le soluzioni sono
+    $$(x,y,z)=\vv_0+t_1\vv_1+t_2\vv_2,\qquad t_1,t_2\in\R.$$
+    I vettori $\vv_1,\vv_2$ sono indipendenti perché generano le soluzioni dell'omogenea $ax+by+cz=0$, che per <a href="5-lineari.html#nullita">rango + nullità</a> sono un sottospazio di dimensione $3-1=2$. È l'equazione parametrica di un piano.</p>
+    <p>La condizione $(a,b,c)\ne\underline0$ è anche <strong>necessaria</strong>: se $a=b=c=0$, le soluzioni sono l'insieme vuoto (se $d\ne0$) oppure tutto $\R^{3}$ (se $d=0$).</p>
+
+    <h3 id="piani-cart">Equazioni cartesiane</h3>
+    <p>Per $\Pi_1:\ a_1x+b_1y+c_1z=d_1$ e $\Pi_2:\ a_2x+b_2y+c_2z=d_2$ il sistema dell'intersezione ha due righe non nulle, quindi $1\le r(A)\le r([A|\underline d])\le2$. I casi sono tre:</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>$r(A)$</th><th>$r([A|\underline d])$</th><th>Soluzioni</th><th>Piani</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>2</td><td>nessuna</td><td><strong>paralleli distinti</strong></td></tr>
+        <tr><td>1</td><td>1</td><td>infinite, 2 parametri</td><td><strong>coincidenti</strong></td></tr>
+        <tr><td>2</td><td>2</td><td>infinite, 1 parametro</td><td><strong>incidenti</strong> lungo una retta</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted">Nota: due piani nello spazio non possono incontrarsi in un punto solo, e non esistono «piani sghembi». La situazione è simile a quella delle rette nel piano.</p>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 7)</div>
+      <p><strong>(a)</strong> $\Pi_1:\ x+y-z=1$, $\ \Pi_2:\ z-x-y=2$. La seconda riga di $A$ è $-1$ volte la prima, ma $[A|\underline d]$ ha righe indipendenti: $r(A)=1$, $r([A|\underline d])=2$. Paralleli distinti.</p>
+      <p><strong>(b)</strong> $\Pi_1:\ 2x-y-3z=1$, $\ \Pi_2:\ 2y-4x+6z=-2$. La seconda riga della completa è $-2$ volte la prima: stessa equazione, $\Pi_1=\Pi_2$.</p>
+      <p class="mb0"><strong>(c)</strong> $\Pi_1:\ x+y+z=0$, $\ \Pi_2:\ 2x+3y+z=1$. $r(A)=2$: incidenti. Risolvendo con $z=t$,
+      $$\left[\begin{array}{ccc|c}1&1&1&0\\2&3&1&1\end{array}\right]\to\left[\begin{array}{ccc|c}1&1&1&0\\0&1&-1&1\end{array}\right]\ \Rightarrow\ \vec r=\begin{bmatrix}-1\\1\\0\end{bmatrix}+t\begin{bmatrix}-2\\1\\1\end{bmatrix}.$$
+      <strong>Controllo:</strong> il punto $(-1,1,0)$ sta su entrambi ($0$ e $-2+3=1$) e la direzione annulla entrambe le omogenee ($-2+1+1=0$, $-4+3+1=0$) ✓.</p>
+    </div>
+
+    <h3 id="piani-param">Equazioni parametriche</h3>
+    <p>Con $\Pi_1:\ \vec r=\vec r_1+t\vec u_1+s\vec v_1$ e $\Pi_2:\ \vec r=\vec r_2+t'\vec u_2+s'\vec v_2$ si può ragionare in due modi.</p>
+    <div class="box tip">
+      <div class="box-title">✓ L'idea dei piani spostati</div>
+      <p class="mb0">Trasliamo ciascun piano per portarlo sull'origine: restano $\tilde\Pi_1=\operatorname{span}\{\vec u_1,\vec v_1\}$ e $\tilde\Pi_2=\operatorname{span}\{\vec u_2,\vec v_2\}$. Allora $\Pi_1\parallel\Pi_2\iff\tilde\Pi_1=\tilde\Pi_2\iff r([\vec u_1|\vec v_1|\vec u_2|\vec v_2])=2$.</p>
+    </div>
+    <p>Il sistema dell'intersezione è $A\,(t,s,t',s')^{T}=\vb$, con $A:=[\vec u_1|\vec v_1|-\vec u_2|-\vec v_2]$ e $\vb:=\vec r_2-\vec r_1$. La matrice ha tre righe e le prime due colonne sono indipendenti, quindi $2\le r(A)\le r([A|\vb])\le3$:</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>$r(A)$</th><th>$r([A|\vb])$</th><th>Soluzioni</th><th>Piani</th></tr></thead>
+      <tbody>
+        <tr><td>2</td><td>2</td><td>infinite, $4-2=2$ parametri</td><td>coincidenti</td></tr>
+        <tr><td>2</td><td>3</td><td>nessuna</td><td>paralleli distinti</td></tr>
+        <tr><td>3</td><td>3</td><td>infinite, $4-3=1$ parametro</td><td>incidenti lungo una retta</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 7, Parte 1)</div>
+      <p class="mb0">$\Pi_1:\ x=1-t-s,\ y=2+t,\ z=-3+s$ e $\Pi_2:\ x=-1+t,\ y=s-2t,\ z=1+t-s$. Il MEG dà $r(A)=r([A|\vb])=2$: i piani <strong>coincidono</strong>. Sommando le tre coordinate si vede subito perché: in entrambi i casi $x+y+z=0$, indipendentemente dai parametri.</p>
+    </div>
+
+    <h3 id="piani-misti">Un piano per tipo</h3>
+    <p>Se uno è cartesiano e l'altro parametrico, si <strong>sostituisce</strong> la forma parametrica nell'equazione cartesiana.</p>
+    <div class="box ex">
+      <div class="box-title">Due esempi (Lezione 7)</div>
+      <p><strong>1.</strong> $\Pi_1:\ x+y+z=0$ e $\Pi_2:\ \vec r=\begin{bmatrix}1\\0\\-1\end{bmatrix}+s\begin{bmatrix}1\\-1\\2\end{bmatrix}+t\begin{bmatrix}0\\1\\1\end{bmatrix}$. Sostituendo $x=1+s$, $y=-s+t$, $z=-1+2s+t$:
+      $$2s+2t=0\iff s=-t.$$
+      Mettendo $s=-t$ in $\Pi_2$ si ottiene la retta intersezione $\vec r=(1,0,-1)+t(-1,2,-1)$.</p>
+      <p class="mb0"><strong>2.</strong> $\Pi_1:\ x+y+z=1$ e $\Pi_2:\ \vec r=\begin{bmatrix}1\\1\\1\end{bmatrix}+s\begin{bmatrix}-1\\0\\1\end{bmatrix}+t\begin{bmatrix}1\\-2\\1\end{bmatrix}$. Sostituendo, i parametri si cancellano e resta $3=1$: nessun punto comune, i piani sono paralleli distinti.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="retta-piano">5 · Una retta e un piano</h2>
+    <p>Anche qui si guarda $l\cap\Pi$:</p>
+    <ul>
+      <li>un punto solo: $l$ e $\Pi$ sono <strong>incidenti</strong>;</li>
+      <li>vuota: $l$ è <strong>parallela</strong> a $\Pi$ in senso stretto;</li>
+      <li>infinita: $l$ è <strong>contenuta</strong> in $\Pi$.</li>
+    </ul>
+
+    <div class="box ex">
+      <div class="box-title">Retta parametrica, piano cartesiano: si sostituisce (Addendum, Esempio 1)</div>
+      <p>Con $\Pi:\ x+y+z=1$:</p>
+      <ul class="mb0">
+        <li>$l:\ \vec r=(-1,0,1)+t(1,-2,1)$ dà $0=1$: nessun punto, $l\parallel\Pi$ in senso stretto.</li>
+        <li>$l_1:\ \vec r=(1,1,-1)+t(1,-2,1)$ dà $1=1$, vera per ogni $t$: $l_1\subset\Pi$.</li>
+        <li>$l_2:\ \vec r=(1,1,-1)+t(1,0,1)$ dà $t=0$: incidenti in $P(1,1,-1)$.</li>
+      </ul>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">Entrambi cartesiani: i ranghi</div>
+      <p>Con $\Pi:\ ax+by+cz=d$ e $l$ data da due equazioni, l'intersezione è un sistema $3\times3$. Le due righe di $l$ sono indipendenti, perché descrivono una retta, quindi $r(A)\ge2$:</p>
+      <ul class="mb0">
+        <li>$r(A)=3$: unica soluzione (Cramer), <strong>incidenti</strong>;</li>
+        <li>$r(A)=2$ e $r([A|\underline d])=2$: infinite soluzioni, $l\subset\Pi$;</li>
+        <li>$r(A)=2$ e $r([A|\underline d])=3$: nessuna soluzione, parallelismo in senso stretto.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 7)</div>
+      <p>$l:\ x-y+z+1=x+y+z-3=0$ è contenuta in $\Pi:\ x+z=1$: il sistema delle tre equazioni ha
+      $$\left[\begin{array}{ccc|c}1&-1&1&-1\\1&1&1&3\\1&0&1&1\end{array}\right]\to\left[\begin{array}{ccc|c}1&-1&1&-1\\0&2&0&4\\0&0&0&0\end{array}\right],$$
+      con infinite soluzioni $x=1-t$, $y=2$, $z=t$. Abbiamo ottenuto anche la forma parametrica di $l$.</p>
+      <p class="mb0">Invece $l':\ \vec r=(1,3,2)+t(1,1,1)$ dà $(1+t)+(2+t)=1$, cioè $t=-1$: incidente in $P(0,2,1)$.</p>
+    </div>
+
+    <p>Con entrambi in forma parametrica, $l:\ \vec r=\vec r_0+t\vec u$ e $\Pi:\ \vec r=\vec r_1+s_1\vec v_1+s_2\vec v_2$, si usa di nuovo l'idea degli oggetti spostati sull'origine: $l\parallel\Pi$ in senso largo se e solo se $\operatorname{span}\{\vec u\}\subset\operatorname{span}\{\vec v_1,\vec v_2\}$. Vale la pena risolvere il problema in generale.</p>
+
+    <h3 id="inclusione">Quando $U\subset V$? <span class="badge star2">da conoscere</span></h3>
+    <div class="box teo">
+      <div class="box-title">Proposizione 1 (Addendum alla Lezione 7)</div>
+      <p class="mb0">Sia $W$ uno spazio vettoriale, $U=\operatorname{span}\{\vu_1,\dots,\vu_k\}$ e $V$ sottospazi di $W$. Allora
+      $$U\subset V\iff\vu_j\in V\quad\text{per }j=1,\dots,k.$$
+      Basta controllare i <strong>generatori</strong>.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Proposizione 2 (Addendum alla Lezione 7)</div>
+      <p class="mb0">Siano $\vv_1,\dots,\vv_m\in W$ <strong>linearmente indipendenti</strong> e $\vu\in W$. Allora
+      $$\vu\in\operatorname{span}\{\vv_1,\dots,\vv_m\}\iff\vu,\vv_1,\dots,\vv_m\ \text{sono linearmente dipendenti}.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione delle due proposizioni a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Prop. 1, $\Rightarrow$: è ovvio?</div>
+            <div class="step-content">Sì: ogni generatore appartiene al sottospazio che genera, quindi $\vu_j\in U\subset V$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Prop. 1, $\Leftarrow$: quale proprietà di $V$ si usa?</div>
+            <div class="step-content">$V$ è un sottospazio, quindi contiene ogni combinazione lineare dei suoi elementi. Ogni elemento di $U$ è $c_1\vu_1+\dots+c_k\vu_k$ con $\vu_j\in V$: dunque sta in $V$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Prop. 2, $\Rightarrow$: quale relazione non banale si scrive?</div>
+            <div class="step-content">Se $\vu=\sum_i\alpha_i\vv_i$, allora $1\cdot\vu-\sum_i\alpha_i\vv_i=\vzero$, una combinazione nulla col coefficiente $1\ne0$: i vettori sono dipendenti.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Prop. 2, $\Leftarrow$: dove entra l'ipotesi di indipendenza?</div>
+            <div class="step-content">Esiste $(c,c_1,\dots,c_m)\ne\underline0$ con $c\vu+c_1\vv_1+\dots+c_m\vv_m=\vzero$. Se fosse $c=0$, resterebbe una combinazione nulla non banale dei $\vv_i$, contro l'ipotesi. Quindi $c\ne0$ e si può dividere:
+            $$\vu=\sum_{i=1}^{m}\left(-\frac{c_i}{c}\right)\vv_i\in\operatorname{span}\{\vv_1,\dots,\vv_m\}.\qquad\blacksquare$$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box prop">
+      <div class="box-title">Conseguenza: criterio per retta e piano parametrici</div>
+      <p class="mb0">$l\parallel\Pi$ in senso largo $\iff\vec u,\vec v_1,\vec v_2$ sono <strong>linearmente dipendenti</strong>. Per distinguere $l\subset\Pi$ dal parallelismo stretto si guarda il sistema dell'intersezione, con $A:=[\vec v_1|\vec v_2|-\vec u]$ e $\vec b:=\vec r_0-\vec r_1$: se $r([A|\vec b])=2$ allora $l\subset\Pi$; se $r([A|\vec b])=3$ allora $l\cap\Pi=\emptyset$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 3 (Addendum)</div>
+      <p>Il piano $x+y+z=1$ si scrive $\vec r=(1,0,0)+s_1(-1,1,0)+s_2(-1,0,1)$. Per le rette $l,l_1$ dell'Esempio 1 si ha $\vec u=(1,-2,1)$ e
+      $$[\vec v_1|\vec v_2|\vec u]=\begin{bmatrix}-1&-1&1\\1&0&-2\\0&1&1\end{bmatrix}\to\begin{bmatrix}-1&-1&1\\0&-1&-1\\0&0&0\end{bmatrix}:$$
+      rango $2$, vettori dipendenti, quindi entrambe sono parallele a $\Pi$ in senso largo. Per $l_2$, con $\vec u_2=(1,0,1)$, il rango è $3$: incidente.</p>
+      <p class="mb0">Per separare $l$ da $l_1$: con $\vec b=(-2,0,1)$ si ottiene $r([A|\vec b])=3$, quindi $l\cap\Pi=\emptyset$; con $\vec b=(0,1,-1)$ si ottiene $r([A|\vec b])=2$, quindi $l_1\subset\Pi$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rette-cart">6 · Rette nello spazio con equazioni cartesiane</h2>
+    <div class="box prop">
+      <div class="box-title">Le rette sono esattamente questi sistemi (Lezione 7, Parte 2)</div>
+      <p class="mb0">Due equazioni $a_1x+b_1y+c_1z=d_1$ e $a_2x+b_2y+c_2z=d_2$ con $(a_1,b_1,c_1)$, $(a_2,b_2,c_2)$ <strong>indipendenti</strong> descrivono una retta. Viceversa ogni retta si scrive così: data $\vec r=\vec r_0+t\vec u$, l'equazione $u_1a+u_2b+u_3c=0$ nelle incognite $a,b,c$ ha due soluzioni indipendenti, che danno i coefficienti; $d_1,d_2$ si ottengono sostituendo $\vec r_0$.</p>
+    </div>
+
+    <h3 id="omogeneo">Il sistema omogeneo associato</h3>
+    <div class="box prop">
+      <div class="box-title">Che cosa descrive</div>
+      <p class="mb0">Se un sistema descrive la retta $l$, il sistema <strong>omogeneo associato</strong> descrive la retta $\tilde l$ <strong>parallela a $l$ e passante per l'origine</strong>. Infatti $l$ è l'insieme delle controimmagini di $(d_1,d_2)$ rispetto alla mappa $L$ rappresentata dalla matrice dei coefficienti, e $\tilde l=\ker L$: per la <a href="5-lineari.html#controimmagini">struttura delle controimmagini</a>, $l=\vec r_0+\ker L$, quindi le due rette hanno lo stesso vettore direzione.</p>
+    </div>
+    <p>In parole: <strong>la direzione sta nei coefficienti, la posizione nei termini noti</strong>. Per questo cambiare un termine noto sposta la retta senza ruotarla.</p>
+
+    <p>Per due rette $l_1,l_2$ date ciascuna da due equazioni, l'intersezione è un sistema di 4 equazioni in 3 incognite, e $2\le r(A)\le3$ perché le prime due righe sono indipendenti e le colonne sono tre.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>$r(A)$</th><th>$r([A|\underline d])$</th><th>$l_1,l_2$ sono…</th><th>Perché</th></tr></thead>
+      <tbody>
+        <tr><td>3</td><td>3</td><td>incidenti</td><td>soluzione unica</td></tr>
+        <tr><td>3</td><td>4</td><td>sghembe</td><td>nessuna soluzione, e $\tilde l_1\cap\tilde l_2=\{\underline0\}$: non parallele</td></tr>
+        <tr><td>2</td><td>2</td><td>coincidenti</td><td>infinite soluzioni</td></tr>
+        <tr><td>2</td><td>3</td><td>parallele distinte</td><td>nessuna soluzione, ma $\tilde l_1=\tilde l_2$</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box warnb">
+      <div class="box-title">⚠ Non ha senso imparare la tabella</div>
+      <p class="mb0">Lo dice il prof. Il ragionamento è: analizza il sistema dell'intersezione con Rouché-Capelli; per distinguere sghembe da parallele distinte analizza il sistema omogeneo, cioè le rette spostate sull'origine. Se $\tilde l_1,\tilde l_2$ sono incidenti, le rette senza punti comuni sono sghembe; se $\tilde l_1=\tilde l_2$, sono parallele.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 7, Parte 2)</div>
+      <p>$l_1:\ \begin{cases}x+y+z=2\\x+2y-z=0\end{cases}$ e $l_2:\ \begin{cases}x-y+2z=3\\2x-y-z=1\end{cases}$. Il MEG dà
+      $$[A|\underline d]\to\left[\begin{array}{ccc|c}1&1&1&2\\0&1&-2&-2\\0&0&-3&-3\\0&0&0&0\end{array}\right],$$
+      quindi $r(A)=r([A|\underline d])=3$: <strong>incidenti</strong> in $(1,0,1)$. Controllo sulle quattro equazioni: $2$, $0$, $3$, $1$ ✓.</p>
+      <p>Se cambia il termine noto $2x-y-z=2$, l'ultima riga diventa $[0\ 0\ 0\ |\ 1]$: $r([A|\underline d])=4$, <strong>sghembe</strong>. La direzione non è cambiata, la retta si è solo spostata.</p>
+      <p>Però spostare una retta non produce sempre rette sghembe: con $l_2':\ x-y+2z=2,\ 2x-y-z=-2$ si resta incidenti, in $\left(0,\tfrac23,\tfrac43\right)$.</p>
+      <p class="mb0">Infine $l_2'':\ x+3z=4,\ 2x+3y=2$ dà $r(A)=r([A|\underline d])=2$: è la stessa retta $l_1$, scritta con altre due equazioni.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="ortogonalita">7 · Ortogonalità</h2>
+
+    <h3 id="scalare">Il prodotto scalare</h3>
+    <p>Oltre alla struttura di spazio vettoriale, i vettori liberi hanno il <strong>prodotto scalare</strong> (o prodotto interno, da non confondere con il prodotto per scalare $\lambda\vec u$), definito in geometria euclidea con lunghezze e angoli:
+    $$\vec u\cdot\vec v:=|\vec u|\,|\vec v|\cos\alpha,\qquad|\vec u|=\sqrt{\vec u\cdot\vec u}.$$</p>
+    <div class="box def">
+      <div class="box-title">Prodotto scalare standard e ortogonalità in $\R^{n}$ (Addendum)</div>
+      <p class="mb0">Per $\vx,\vy\in\R^{n}$ il <strong>prodotto scalare standard</strong> è
+      $$\langle\vx,\vy\rangle:=\sum_{i=1}^{n}x_iy_i=\vx^{T}\vy.$$
+      Due vettori si dicono <strong>ortogonali</strong>, $\vx\perp\vy$, se $\langle\vx,\vy\rangle=0$. «Perpendicolare» e «ortogonale» sono sinonimi.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Perché la definizione è coerente</div>
+      <p>Un riferimento $(O,\vec i,\vec j)$ è <strong>cartesiano</strong> se $|\vec i|=|\vec j|=1$ e $\vec i\perp\vec j$; nello spazio, $(O,\vec i,\vec j,\vec k)$ con vettori unitari e a due a due ortogonali. Allora, per $\vec u=u_1\vec i+u_2\vec j$ e $\vec v=v_1\vec i+v_2\vec j$,
+      $$\vec u\cdot\vec v=u_1v_1\,\vec i\cdot\vec i+u_1v_2\,\vec i\cdot\vec j+u_2v_1\,\vec j\cdot\vec i+u_2v_2\,\vec j\cdot\vec j=u_1v_1+u_2v_2.$$</p>
+      <p class="mb0">Il prodotto scalare geometrico coincide col prodotto standard delle coordinate. <strong>Attenzione:</strong> vale solo in un riferimento cartesiano. Più avanti nel corso arriverà il prodotto scalare astratto, su uno spazio vettoriale reale qualsiasi.</p>
+    </div>
+
+    <h3 id="normale">Vettore normale a un piano <span class="badge star">risultato centrale</span></h3>
+    <div class="box teo">
+      <div class="box-title">Conclusione (Lezione 7, parte 2)</div>
+      <p class="mb0">I coefficienti $a,b,c$ dell'equazione cartesiana di un piano $\Pi:\ ax+by+cz=d$ sono le coordinate di un vettore <strong>ortogonale</strong> a $\Pi$. Di più: $\vec u\perp\Pi$ se e solo se $\vec u$ è un <strong>multiplo</strong> di $(a,b,c)$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa vuol dire $\vec u\perp\Pi$?</div>
+            <div class="step-content">$\vec u\perp\overrightarrow{AB}$ per ogni coppia di punti $A,B\in\Pi$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quale equazione soddisfa $\overrightarrow{AB}$?</div>
+            <div class="step-content">$\vec r_A$ e $\vec r_B$ soddisfano $ax+by+cz=d$. Sottraendo, $\overrightarrow{AB}=\vec r_B-\vec r_A$ soddisfa l'equazione <strong>omogenea</strong> associata $ax+by+cz=0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E come si legge quell'equazione omogenea?</div>
+            <div class="step-content">$ax+by+cz=[x\ y\ z]\begin{bmatrix}a\\b\\c\end{bmatrix}$ è il prodotto scalare di $(x,y,z)$ con $(a,b,c)$. Quindi $\overrightarrow{AB}\perp(a,b,c)$ per ogni $A,B\in\Pi$: il vettore $(a,b,c)$ è ortogonale al piano.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché tutti i vettori ortogonali sono suoi multipli?</div>
+            <div class="step-content">Geometricamente, due vettori non nulli perpendicolari allo stesso piano sono paralleli. Quindi ogni $\vec u\perp\Pi$ è multiplo di $(a,b,c)$; e ogni multiplo è chiaramente ortogonale. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box prop">
+      <div class="box-title">Due test da avere in tasca</div>
+      <ul class="mb0">
+        <li>$\vec u\perp\Pi\iff\vec u=\lambda(a,b,c)$.</li>
+        <li>$\vec u\parallel\Pi\iff\vec u$ soddisfa l'<strong>omogenea associata</strong> $au_1+bu_2+cu_3=0$.</li>
+      </ul>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Una forma comoda dell'equazione del piano</div>
+      <p class="mb0">Se $P_0(x_0,y_0,z_0)\in\Pi$, l'equazione si scrive direttamente
+      $$a(x-x_0)+b(y-y_0)+c(z-z_0)=0,$$
+      senza calcolare $d$. È la condizione $\overrightarrow{P_0P}\perp(a,b,c)$.</p>
+    </div>
+
+    <h3 id="perp-esempi">Problemi di perpendicolarità</h3>
+    <div class="box ex">
+      <div class="box-title">Quale retta è perpendicolare, quale parallela? (Lezione 7, parte 2)</div>
+      <p>Dato $\Pi:\ 2z-x-y=2$, cioè $-x-y+2z=2$, e le direzioni $\vec v_1=(1,1,-2)$, $\vec v_2=(1,1,1)$, $\vec v_3=(1,0,1)$ di tre rette per $(1,0,1)$, $(1,2,3)$, $(1,1,2)$:</p>
+      <ul class="mb0">
+        <li>solo $\vec v_1$ è multiplo di $(-1,-1,2)$: $l_1\perp\Pi$;</li>
+        <li>$\vec v_2$ soddisfa $-x-y+2z=0$, quindi $l_2\parallel\Pi$; ed è parallela in senso stretto, perché $(1,2,3)\notin\Pi$ (si ha $-1-2+6=3\ne2$);</li>
+        <li>$\vec v_3$ non è né multiplo né soluzione dell'omogenea: $l_3$ è incidente, non ortogonale.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Quattro problemi tipo (Addendum)</div>
+      <p><strong>Es. 4: piano per un punto, con retta normale.</strong> $P_0(1,2,3)$ e normale $l:\ \vec r=(3,2,-1)+t(2,-3,7)$. La direzione di $l$ è ortogonale a $\Pi$, quindi $2(x-1)-3(y-2)+7(z-3)=0$, cioè $2x-3y+7z=17$.</p>
+      <p><strong>Es. 5: retta normale a un piano.</strong> $\Pi:\ 3x+4y+2z=5$, per $P_0(5,6,7)$: i coefficienti sono la direzione, $l:\ \vec r=(5,6,7)+t(3,4,2)$.</p>
+      <p><strong>Es. 6: perpendicolare nel piano.</strong> Retta $l_1\perp l:\ 4x-3y=1$ per $P_0(2,-1)$. La parametrica è immediata: $\vec r=(2,-1)+t(4,-3)$. Per la cartesiana serve un vettore ortogonale a $(a_0,b_0)=(4,-3)$, e nel piano ce n'è uno pronto: $(-b_0,a_0)=(3,4)$. Quindi $3(x-2)+4(y+1)=0$, cioè $3x+4y=2$.</p>
+      <p class="mb0"><strong>Da parametrica a cartesiana.</strong> Retta per $P(0,1,2)$ ortogonale a $x+y+z=1$: $x=t$, $y=1+t$, $z=2+t$. Eliminando il parametro, $x-y+1=x-z+2=0$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Incidenti e ortogonali (Lezione 7, parte 2)</div>
+      <p class="mb0">$l_1:\ \vec r=(1,3,2)+t(1,2,1)$ e $l_2:\ \vec r=(1,0,2)+s(1,-1,1)$. Il sistema $t(1,2,1)+s(-1,1,-1)=(0,-3,0)$ ha $r(A)=r([A|\vb])=2=\#\text{incognite}$, quindi soluzione unica, $t=s=-1$: si incontrano in $(0,1,1)$. E $\langle(1,2,1),(1,-1,1)\rangle=1-2+1=0$: $l_1\perp l_2$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="fasci">8 · Fasci di rette e piani</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 7, parte 3)</div>
+      <p class="mb0">Un <strong>fascio</strong> di rette o piani è un insieme di rette o piani descritto da una o più equazioni con uno o più parametri.</p>
+    </div>
+    <p class="small muted">Nell'Addendum il prof scrive «fascia», nella versione nuova della Lezione 7 «fascio»: è lo stesso oggetto, e qui usiamo «fascio».</p>
+    <div class="box ex">
+      <div class="box-title">Le rette per un punto</div>
+      <p class="mb0">Il fascio delle rette del piano per $P(2,1)$ è $a(x-2)+b(y-1)=0$, con i parametri $a,b$ non contemporaneamente nulli ($a^{2}+b^{2}\ne0$).</p>
+    </div>
+
+    <h3 id="fascio-par">Piani paralleli a un piano dato</h3>
+    <div class="box prop">
+      <div class="box-title">Tipo 1</div>
+      <p class="mb0">I piani paralleli a $\Pi_0:\ ax+by+cz=d$ sono i piani ortogonali a $(a,b,c)$: basta sostituire il termine noto con un parametro,
+      $$ax+by+cz=q,\qquad q\in\R.$$
+      Il valore di $q$ si fissa imponendo una condizione in più.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Due esempi (Addendum e Lezione 7, parte 3)</div>
+      <p><strong>1.</strong> Paralleli a $2x+3y+4z=5$ per $P_0(-1,0,1)$: nel fascio $2x+3y+4z=q$ si sostituisce $P_0$ e si trova $q=2$. Risposta: $2x+3y+4z=2$.</p>
+      <p class="mb0"><strong>2.</strong> Il piano parallelo a $x+y+z=1$ che contiene $l:\ x+2y-1=x+2z+1=0$. Nel fascio $x+y+z=q$ si cerca $q$ tale che il sistema abbia infinite soluzioni:
+      $$\left[\begin{array}{ccc|c}1&2&0&1\\1&0&2&-1\\1&1&1&q\end{array}\right]\to\left[\begin{array}{ccc|c}1&2&0&1\\0&-2&2&-2\\0&0&0&q\end{array}\right].$$
+      Infinite soluzioni $\iff q=0$: il piano è $x+y+z=0$.</p>
+    </div>
+
+    <h3 id="fascio-retta">Piani passanti per una retta <span class="badge star">risultato centrale</span></h3>
+    <div class="box prop">
+      <div class="box-title">Tipo 2</div>
+      <p class="mb0">Data $l:\ a_1x+b_1y+c_1z+d_1=a_2x+b_2y+c_2z+d_2=0$, un piano contiene $l$ se e solo se la sua equazione è una combinazione lineare delle due:
+      $$p\,(a_1x+b_1y+c_1z+d_1)+q\,(a_2x+b_2y+c_2z+d_2)=0,\qquad p^{2}+q^{2}\ne0.$$</p>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">⚠ I parametri sono definiti a meno di un multiplo</div>
+      <p class="mb0">$(p,q)$ e $(2p,2q)$ danno la stessa equazione moltiplicata per $2$, quindi lo stesso piano. Per questo una condizione sola basta a individuare il piano: si ottiene una relazione fra $p$ e $q$ e se ne sceglie <strong>una</strong> soluzione non nulla.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 7, parte 3)</div>
+      <p class="mb0">Il piano per $l:\ x+2y-1=x+2z+1=0$ e per $P_0(1,2,3)$. Nel fascio $p(x+2y-1)+q(x+2z+1)=0$ si sostituisce $P_0$: $4p+8q=0$, cioè $p+2q=0$. Scelti $p=2$, $q=-1$:
+      $$2(x+2y-1)-(x+2z+1)=0\iff x+4y-2z=3.$$
+      <strong>Controllo:</strong> $1+8-6=3$ ✓.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Addendum): tre richieste sullo stesso fascio</div>
+      <p>Per la retta $2x+3y+z=3$, $3x+4y-z=5$ il fascio è
+      $$(2\alpha+3\beta)x+(3\alpha+4\beta)y+(\alpha-\beta)z=3\alpha+5\beta.$$</p>
+      <p><strong>Passante per $P_0(1,2,-3)$.</strong> Sostituendo: $2\alpha+9\beta=0$. Con $\alpha=9$, $\beta=-2$ si ottiene $12x+19y+11z=17$.</p>
+      <p class="mb0"><strong>Ortogonale a $(1,1,-2)$.</strong> Il vettore dei coefficienti deve essere multiplo di $(1,1,-2)$, cioè la matrice con queste due colonne deve avere rango $1$: il MEG dà $\alpha+\beta=0$. Con $\alpha=-1$, $\beta=1$ si ottiene $x+y-2z=2$.</p>
+    </div>
+
+    <h3 id="fascio-extra">Un esempio in più</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 7, parte 3): piano parallelo a una retta, per due punti</div>
+      <p>Trovare il piano $\Pi$ parallelo a $l_0:\ 3x-y-z=x-z+2=0$ e passante per $P(1,0,-1)$, $Q(1,1,0)$.</p>
+      <p><strong>Fascio per $P$:</strong> $a(x-1)+by+c(z+1)=0$, cioè $ax+by+cz=a-c$, con $a^{2}+b^{2}+c^{2}\ne0$.</p>
+      <p><strong>Passaggio per $Q$:</strong> $a+b=a-c$, quindi $c=-b$ e resta $ax+by-bz=a+b$.</p>
+      <p><strong>Parallelismo:</strong> il sistema fra $\Pi$ e $l_0$ non deve avere soluzioni:
+      $$\left[\begin{array}{ccc|c}1&0&-1&-2\\3&-1&-1&0\\a&b&-b&a+b\end{array}\right]\to\left[\begin{array}{ccc|c}1&0&-1&-2\\0&-1&2&6\\0&0&a+b&3a+7b\end{array}\right].$$
+      Se $a+b\ne0$ c'è un'unica soluzione. Quindi serve $a+b=0$ e $3a+7b\ne0$: $a=t$, $b=-t$ con $t\ne0$. Sostituendo e dividendo per $t$:
+      $$\boxed{x-y+z=0}.$$</p>
+      <p class="mb0"><strong>Controllo:</strong> $P$ dà $1-0-1=0$ ✓, $Q$ dà $1-1+0=0$ ✓. La direzione di $l_0$ è $(1,2,1)$ e $\langle(1,2,1),(1,-1,1)\rangle=0$ ✓. Inoltre $(0,-2,2)\in l_0$ non sta su $\Pi$ ($0+2+2\ne0$): il parallelismo è in senso stretto.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 6</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Dove si cade</div>
+      <ul class="mb0">
+        <li><strong>Usare lo stesso parametro per due rette.</strong> Si trova un'intersezione solo se le rette «ci passano allo stesso valore di $t$», e si dichiarano sghembe rette incidenti.</li>
+        <li><strong>Dire «sghembe» appena due rette non si incontrano.</strong> Prima si controllano le direzioni: se sono dipendenti, sono parallele distinte.</li>
+        <li><strong>Portare il risultato del piano nello spazio.</strong> Direzioni indipendenti implicano l'incidenza solo nel piano. Nello spazio resta il caso sghembo.</li>
+        <li><strong>Dimenticare il segno in $A=[\vec v_1|-\vec v_2]$.</strong> Per il rango non cambia nulla, per i valori di $t$ e $s$ sì.</li>
+        <li><strong>Prendere come direzione di una retta cartesiana i coefficienti di un'equazione.</strong> Quelli sono normali ai piani: la direzione è la soluzione dell'omogenea associata.</li>
+        <li><strong>Prendere $(a,b,c)$ come vettore parallelo al piano.</strong> È ortogonale. Parallelo è un vettore che soddisfa l'omogenea.</li>
+        <li><strong>Usare $\langle\vec u,\vec v\rangle$ per l'angolo in un riferimento non cartesiano.</strong> Il prodotto standard delle coordinate coincide col prodotto geometrico solo se la base è di vettori unitari ortogonali.</li>
+        <li><strong>Cercare «il» valore di $(p,q)$ nel fascio.</strong> I parametri contano a meno di un multiplo: una relazione fra $p$ e $q$ basta, e se ne sceglie una soluzione non nulla.</li>
+        <li><strong>Prendere $p=q=0$.</strong> Quella non è l'equazione di un piano: serve $p^{2}+q^{2}\ne0$.</li>
+        <li><strong>Sostituire nel fascio e fermarsi.</strong> Alla fine si controlla sempre il piano trovato sul punto dato e su un punto della retta.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="7-grassmann.html">Sezione 7 · Somma di sottospazi →</a>
+      <a class="btn" href="5-lineari.html">← Sezione 5</a>
+      <a class="btn" href="../esercizi.html?sez=6">Esercizi della Sezione 6</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 6 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261104"></script>
+<script src="../data/quiz.js?v=20261104"></script>
+<script src="../../assets/js/meg.js?v=20261104"></script>
+<script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../../assets/js/app.js?v=20261104"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.renderChecklist('#checklistBox', 6, 'geometria');
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 6; }), { statKey: 'geo6' });
+
+  /* ---------- posizione reciproca di due rette nello spazio ---------- */
+  (function () {
+    var ES = [
+      { r1: '1, 2, 3', u: '1, -1, 0', r2: '3, 2, 1', v: '2, 1, 1' },
+      { r1: '1, 2, 3', u: '1, -1, 0', r2: '3, 2, 1', v: '2, 1, -3' },
+      { r1: '3, 2, 1', u: '2, 1, -3', r2: '1, 1, 4', v: '4, 2, -6' },
+      { r1: '3, 2, 1', u: '2, 1, -3', r2: '1, 1, 1', v: '-4, -2, 6' }
+    ];
+    var sel = document.getElementById('rlSel');
+    var campi = { r1: 'rlR1', u: 'rlU', r2: 'rlR2', v: 'rlV' };
+    var mat = document.getElementById('rlMat'), out = document.getElementById('rlOut');
+
+    function leggi(id) {
+      var p = document.getElementById(id).value.split(/[,;\s]+/).filter(Boolean).map(Number);
+      return p.length === 3 && p.every(function (x) { return Number.isInteger(x); }) ? p : null;
+    }
+    function nullo(v) { return v.every(function (x) { return x === 0; }); }
+    function aggiorna() {
+      var r1 = leggi('rlR1'), u = leggi('rlU'), r2 = leggi('rlR2'), v = leggi('rlV');
+      if (!r1 || !u || !r2 || !v) { mat.innerHTML = ''; out.innerHTML = 'Servono quattro terne di numeri interi, per esempio 1, 2, 3.'; return; }
+      if (nullo(u) || nullo(v)) { mat.innerHTML = ''; out.innerHTML = 'Un vettore direzione non può essere nullo: non sarebbe una retta.'; return; }
+      var M = [0, 1, 2].map(function (i) { return [u[i], -v[i], r2[i] - r1[i]]; });
+      var res = MEG.riduci(MEG.da(M), 2);
+      var p = res.passi[res.passi.length - 1];
+      mat.innerHTML = MEG.html(p.M, { nA: 2, pivot: p.pivot });
+      var ra = res.rangoA, rt = res.rangoTot, esito;
+      if (ra === 1 && rt === 1) esito = '<span style="color:var(--ok)"><b>COINCIDENTI</b>: infinite soluzioni, l₁ = l₂.</span>';
+      else if (ra === 1) esito = '<span style="color:var(--accent)"><b>PARALLELE DISTINTE</b>: direzioni dipendenti e nessuna soluzione.</span>';
+      else if (rt === 2) {
+        var J = MEG.riduciJ(MEG.da(M), 2).finale, s = J[1][2];
+        var P = [0, 1, 2].map(function (i) { return MEG.F.str(MEG.F.add(MEG.F(r2[i]), MEG.F.mul(s, MEG.F(v[i])))); });
+        esito = '<span style="color:var(--ok)"><b>INCIDENTI</b> nel punto (' + P.join(', ') + '), con s = ' + MEG.F.str(s) + '.</span>';
+      } else esito = '<span style="color:var(--danger)"><b>SGHEMBE</b>: nessuna soluzione, ma le direzioni sono indipendenti.</span>';
+      out.innerHTML = 'r(A) = <b>' + ra + '</b> &nbsp;·&nbsp; r([A|b]) = <b>' + rt + '</b><br>' + esito;
+    }
+    function carica(i) {
+      var e = ES[i];
+      Object.keys(campi).forEach(function (k) { document.getElementById(campi[k]).value = e[k]; });
+      aggiorna();
+    }
+    sel.addEventListener('change', function () { carica(+sel.value); });
+    Object.keys(campi).forEach(function (k) { document.getElementById(campi[k]).addEventListener('input', aggiorna); });
+    carica(0);
+  })();
+});
+</script>
+</body>
+</html>

@@ -7,7 +7,7 @@ Appunti interattivi del primo anno, raccolti in un unico sito.
 | Materia | Contenuto | Stato |
 |---|---|---|
 | [Analisi Matematica 1](https://olix-boop.github.io/appunti/analisi/) | Numeri reali e complessi · successioni e limiti · serie numeriche | prima parte completa (primo parziale) |
-| [Geometria e Algebra Lineare](https://olix-boop.github.io/appunti/geometria/) | Preliminari · sistemi lineari e MEG · matrici e invertibilità · spazi vettoriali · numeri complessi · applicazioni lineari e rango | programma svolto finora |
+| [Geometria e Algebra Lineare](https://olix-boop.github.io/appunti/geometria/) | Preliminari · sistemi lineari e MEG · matrici e invertibilità · spazi vettoriali · numeri complessi · applicazioni lineari e rango · posizione reciproca, ortogonalità, fasci · somma di sottospazi e Grassmann · determinanti | programma fino alla Lezione 9 |
 | [Fondamenti di Informatica](https://olix-boop.github.io/appunti/informatica/) | Algoritmi · macchina astratta C · istruzioni · array e stringhe | 5 capitoli |
 
 ## Cosa c'è dentro
@@ -42,7 +42,9 @@ analisi/
   materiale/               PDF del corso
 geometria/
   index.html teoremi.html esercizi.html
-  sezioni/0-preliminari.html 1-sistemi.html 2-matrici.html 3-complessi.html
+  sezioni/0-preliminari.html 1-sistemi.html 2-matrici.html 3-spazi.html
+           4-complessi.html 5-lineari.html 6-posizione.html
+           7-grassmann.html 8-determinanti.html
   data/                    topics · teoremi · esercizi · quiz
   materiale/               PDF del corso
 informatica/               single-page app autonoma, installabile come PWA

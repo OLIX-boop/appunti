@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 8 · Determinanti — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="../../due-parziali.html">Parziali</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 8</h4>
+    <a href="#checklist">Checklist del programma</a>
+    <a href="#definizione">1 · Definizione</a>
+    <a href="#caso2" class="sub">Il caso $2\times2$</a>
+    <a href="#con-meg">2 · Calcolo con il MEG</a>
+    <a href="#det-rango" class="sub">$\det A\ne0\iff r(A)=n$</a>
+    <a href="#sarrus" class="sub">Regola di Sarrus</a>
+    <a href="#trasposta">3 · Trasposta e colonne</a>
+    <a href="#laplace">4 · Sviluppi di Laplace</a>
+    <a href="#invertibilita">5 · Invertibilità e dipendenza</a>
+    <a href="#basi-det" class="sub">Riconoscere una base</a>
+    <a href="#binet">6 · Teorema di Binet</a>
+    <a href="#inversa">7 · Formula di Laplace per l'inversa</a>
+    <a href="#cramer">8 · Regola di Cramer</a>
+    <a href="#kronecker">9 · Teorema di Kronecker</a>
+    <a href="#kron-base" class="sub">Rango e base dell'immagine</a>
+    <a href="#potenze">10 · Potenze e matrici simili</a>
+    <a href="#simili" class="sub">Matrici simili</a>
+    <a href="#fibonacci" class="sub">Fibonacci</a>
+    <a href="#volumi">11 · Area e volume</a>
+    <a href="#area" class="sub">Il determinante come area</a>
+    <a href="#endomorfismo" class="sub">Determinante di una mappa</a>
+    <a href="#ipervolume" class="sub">Ipervolume</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 8 · Geometria e Algebra Lineare · Lezione 9</div>
+      <h1>Determinanti</h1>
+      <p class="lead">Un solo numero associato a una matrice quadrata, che dice se è invertibile, se le sue colonne sono una base, quanto una mappa lineare dilata i volumi. E che dà formule chiuse per l'inversa e per i sistemi.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Il determinante non è una formula strana da imparare: è l'<strong>unica</strong> funzione che si comporta bene rispetto alle operazioni del MEG. Per questo si calcola col MEG, e per questo $\det A\ne0$ dice la stessa cosa di $r(A)=n$. Da lì arrivano tutte le applicazioni: Binet, l'inversa, la regola di Cramer, il rango con i minori. Alla fine scopriremo cosa misura: un'<strong>area con segno</strong>.</p>
+    </div>
+    <p class="small muted">Dagli appunti: <em>Lezione 9</em>, parti 1a, 1b, 2, 3. Libro: <em>ALG</em> §§ 5-7, pp. 271-281.</p>
+
+    <h2 id="checklist">Checklist del programma</h2>
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Avanzamento Sezione 8</strong>
+        <span class="muted small"><span data-progress-txt="g8">0/19</span> · <span data-progress-pct="g8">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="g8"><span style="width:0"></span></div>
+    </div>
+    <div id="checklistBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="definizione">1 · Definizione</h2>
+    <div class="box teo">
+      <div class="box-title">Proposizione (Lezione 9) <span class="badge star">risultato centrale</span></div>
+      <p>Per ogni $n\in\N$ esiste un'<strong>unica</strong> mappa $\det:\M_{\K}(n,n)\to\K$, detta determinante di ordine $n$, con le seguenti proprietà:</p>
+      <ol class="mb0" type="i">
+        <li>se $A'$ si ottiene da $A$ <strong>scambiando due righe</strong>, allora $\det A'=-\det A$;</li>
+        <li>se $A''$ si ottiene moltiplicando <strong>una</strong> riga di $A$ per $\lambda\in\K$, allora $\det A''=\lambda\det A$;</li>
+        <li>se $A'''$ si ottiene sommando o sottraendo a una riga un multiplo di un'<strong>altra</strong> riga, allora $\det A'''=\det A$;</li>
+        <li>se $A$ è <strong>triangolare alta</strong>, cioè ha tutti zeri sotto la diagonale principale, allora $\det A=a_{11}a_{22}\cdots a_{nn}$.</li>
+      </ol>
+    </div>
+    <p>Il determinante si scrive anche con le sbarre al posto delle parentesi: $|A|=\begin{vmatrix}a_{11}&\dots\\ \vdots&\ddots\end{vmatrix}$.</p>
+    <div class="box tip">
+      <div class="box-title">✓ Perché proprio queste proprietà</div>
+      <p class="mb0">Sono le tre operazioni del MEG più la matrice a cui il MEG arriva. Dicono esattamente come cambia il numero a ogni passo della riduzione, e qual è il suo valore alla fine. Per questo la definizione è anche un <strong>algoritmo</strong>.</p>
+    </div>
+
+    <h3 id="caso2">Il caso $2\times2$</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p>$A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$.</p>
+      <p><strong>Caso $a\ne0$.</strong> Con $R_2\to R_2-\frac caR_1$, che non cambia il determinante per (iii), si ottiene una triangolare alta:
+      $$\det A=\begin{vmatrix}a&b\\0&d-\frac{bc}{a}\end{vmatrix}=a\left(d-\frac{bc}{a}\right)=ad-bc.$$</p>
+      <p class="mb0"><strong>Caso $a=0$.</strong> Con $R_1\leftrightarrow R_2$ si ottiene $\begin{bmatrix}c&d\\0&b\end{bmatrix}$, quindi per (i) $\det A=-cb=0\cdot d-bc$. La formula vale ancora:
+      $$\boxed{\det A=ad-bc}.$$</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="con-meg">2 · Calcolo con il MEG</h2>
+    <p>Ogni matrice quadrata a scala è triangolare alta, quindi $\det A$ si ottiene riducendo a scala e tenendo il conto dei cambi di segno e dei fattori.</p>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p class="mb0">$$\begin{vmatrix}0&1&1\\3&4&6\\3&2&2\end{vmatrix}\overset{R_1\leftrightarrow R_3}{=}-\begin{vmatrix}3&2&2\\3&4&6\\0&1&1\end{vmatrix}\overset{R_2-R_1}{=}-\begin{vmatrix}3&2&2\\0&2&4\\0&1&1\end{vmatrix}\overset{(ii)}{=}-2\begin{vmatrix}3&2&2\\0&1&2\\0&1&1\end{vmatrix}\overset{R_3-R_2}{=}-2\begin{vmatrix}3&2&2\\0&1&2\\0&0&-1\end{vmatrix}=-2\cdot3\cdot1\cdot(-1)=6.$$</p>
+    </div>
+
+    <h3 id="det-rango">$\det A\ne0\iff r(A)=n$ <span class="badge star">risultato centrale</span></h3>
+    <div class="box teo">
+      <div class="box-title">Risultato (Lezione 9)</div>
+      <p class="mb0">Per ogni matrice $A$ di ordine $n$:
+      $$\det A\ne0\iff r(A)=n.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Da quale tipo di matrice conviene partire?</div>
+            <div class="step-content">Da una matrice a scala di ordine $n$. Essendo triangolare alta, $\det$ è il prodotto degli elementi sulla diagonale.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quando quella diagonale è tutta non nulla?</div>
+            <div class="step-content">Se e solo se non ci sono righe nulle, cioè se il rango coincide con l'ordine. Quindi per una matrice a scala $\det\ne0\iff r=n$. Esempio degli appunti: $\begin{bmatrix}1&2&3\\0&4&5\\0&0&6\end{bmatrix}$ ha $r=3$ e $\det=24$; una matrice a scala $4\times4$ con uno zero sulla diagonale ha $r\lt4$ e $\det=0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si passa a una matrice qualsiasi?</div>
+            <div class="step-content">Con il MEG, che usa solo le operazioni (i) e (iii): il determinante cambia al più di segno, quindi la condizione $\det\ne0$ resta invariata. Anche il rango resta invariato. Le due condizioni equivalenti sulla matrice ridotta valgono allora anche su $A$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <h3 id="sarrus">Regola di Sarrus (solo ordine 3)</h3>
+    <div class="box prop">
+      <div class="box-title">Formula</div>
+      <p class="mb0">$$\det A=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}.$$
+      Tre prodotti lungo le diagonali «discendenti» col segno $+$, tre lungo quelle «ascendenti» col segno $-$. È particolarmente utile quando $A$ ha molti zeri.</p>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">⚠ Non si generalizza</div>
+      <p class="mb0">Sarrus vale <strong>solo</strong> per $n=3$. Per una $4\times4$ le diagonali non danno il determinante: si usa il MEG o Laplace.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="trasposta">3 · Trasposta e colonne</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 9, senza dimostrazione)</div>
+      <p class="mb0">Per ogni matrice quadrata, $\det(A^{T})=\det A$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p class="mb0">$A=\begin{bmatrix}1&2&3\\0&2&0\\3&2&1\end{bmatrix}$. Con $R_1-R_2$, $R_3-R_2$ e Sarrus: $\begin{vmatrix}1&0&3\\0&2&0\\3&0&1\end{vmatrix}=2-18=-16$. E per la trasposta, col MEG: $\begin{vmatrix}1&0&3\\2&2&2\\3&0&1\end{vmatrix}=\begin{vmatrix}1&0&3\\0&2&-4\\0&0&-8\end{vmatrix}=-16$ ✓.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Conseguenza: tutto vale anche per le colonne</div>
+      <ul class="mb0">
+        <li>scambiando due <strong>colonne</strong> il determinante cambia segno;</li>
+        <li>moltiplicando una colonna per $\lambda$ il determinante viene moltiplicato per $\lambda$;</li>
+        <li>sommando a una colonna un multiplo di un'altra il determinante non cambia;</li>
+        <li>una matrice <strong>triangolare bassa</strong> (zeri sopra la diagonale) ha determinante $a_{11}\cdots a_{nn}$: la sua trasposta è triangolare alta con la stessa diagonale.</li>
+      </ul>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Attenzione: questo vale solo per il determinante</div>
+      <p class="mb0">Nel MEG per risolvere un sistema si lavora solo sulle righe, perché operare sulle colonne cambia le soluzioni. Per calcolare un determinante, invece, righe e colonne si possono mescolare liberamente: ecco la vera libertà in più.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 9)</div>
+      <p>$$\begin{vmatrix}1&-1&1\\-2&2&2\\3&3&-3\end{vmatrix}\ \overset{C_2+C_1,\ C_3-C_1}{=}\ \begin{vmatrix}1&0&0\\-2&0&4\\3&6&-6\end{vmatrix}=-1\cdot4\cdot6=-24.$$</p>
+      <p class="mb0">Mescolando righe e colonne:
+      $$\begin{vmatrix}13&14&12\\12&14&11\\17&20&17\end{vmatrix}\ \overset{C_1-C_3,\ C_2-C_3}{=}\ \begin{vmatrix}1&2&12\\1&3&11\\0&3&17\end{vmatrix}\ \overset{R_2-R_1}{=}\ \begin{vmatrix}1&2&12\\0&1&-1\\0&3&17\end{vmatrix}\ \overset{R_3-3R_2}{=}\ \begin{vmatrix}1&2&12\\0&1&-1\\0&0&20\end{vmatrix}=20.$$</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="laplace">4 · Sviluppi di Laplace</h2>
+    <p>L'idea: ridurre un determinante di ordine $n$ a determinanti di ordine $n-1$.</p>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 9)</div>
+      <p class="mb0">$A_{ij}$ è la matrice ottenuta da $A$ cancellando la riga $i$ e la colonna $j$. Il suo determinante (e a volte la matrice stessa) si chiama <strong>minore complementare</strong> di $a_{ij}$. Il <strong>cofattore</strong>, o <strong>complemento algebrico</strong>, di $a_{ij}$ è
+      $$C_{ij}:=(-1)^{i+j}\det(A_{ij}).$$</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p class="mb0">Per $A=\begin{bmatrix}1&2&3\\4&5&6\\7&8&9\end{bmatrix}$ si ha $A_{21}=\begin{bmatrix}2&3\\8&9\end{bmatrix}$ e $C_{21}=(-1)^{3}\begin{vmatrix}2&3\\8&9\end{vmatrix}=-(18-24)=6$.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 9, senza dimostrazione) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Sia $A$ di ordine $n$. Per ogni riga $i_0$ e per ogni colonna $j_0$:
+      $$\det A=\sum_{j=1}^{n}a_{i_0j}C_{i_0j}\qquad\text{e}\qquad\det A=\sum_{i=1}^{n}a_{ij_0}C_{ij_0}.$$</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 9)</div>
+      <p>Lo stesso determinante lungo la prima riga e lungo la seconda colonna:
+      $$\begin{vmatrix}1&0&2\\2&1&3\\0&3&1\end{vmatrix}=\begin{vmatrix}1&3\\3&1\end{vmatrix}+2\begin{vmatrix}2&1\\0&3\end{vmatrix}=-8+12=4,$$
+      $$\begin{vmatrix}1&0&2\\2&1&3\\0&3&1\end{vmatrix}=\begin{vmatrix}1&2\\0&1\end{vmatrix}-3\begin{vmatrix}1&2\\2&3\end{vmatrix}=1+3=4.$$</p>
+      <p class="mb0">Si sceglie la riga o la colonna con <strong>più zeri</strong>:
+      $$\begin{vmatrix}2&1&0&0\\0&1&0&1\\1&0&4&1\\0&2&0&3\end{vmatrix}=4\begin{vmatrix}2&1&0\\0&1&1\\0&2&3\end{vmatrix}=4\cdot2\begin{vmatrix}1&1\\2&3\end{vmatrix}=8.$$
+      La terza colonna ha un solo elemento non nullo, in posizione $(3,3)$, con segno $+$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Il segno a scacchiera</div>
+      <p class="mb0">I segni $(-1)^{i+j}$ formano una scacchiera con $+$ in alto a sinistra: $\begin{bmatrix}+&-&+\\-&+&-\\+&-&+\end{bmatrix}$. La strategia migliore è spesso mista: prima qualche operazione elementare per creare zeri, poi Laplace.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="invertibilita">5 · Invertibilità e dipendenza lineare</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 9, parte 2) <span class="badge star">risultato centrale</span></div>
+      <p>Sia $A$ una matrice quadrata di ordine $n$. Sono equivalenti:</p>
+      <ul class="mb0">
+        <li>(a) $A$ è invertibile;</li>
+        <li>(b) $\det A\ne0$;</li>
+        <li>(c) $A$ ha rango massimo, $r(A)=n$;</li>
+        <li>(d) le righe di $A$ sono linearmente indipendenti;</li>
+        <li>(e) le colonne di $A$ sono linearmente indipendenti;</li>
+        <li>(f) $A\vx=\vzero$ ammette solo la soluzione banale;</li>
+        <li>(g) esiste $\vb\in\K^{n}$ tale che $A\vx=\vb$ ammette una unica soluzione;</li>
+        <li>(h) per ogni $\vb\in\K^{n}$, $A\vx=\vb$ ammette una unica soluzione, data da $\vx=A^{-1}\vb$;</li>
+        <li>(i) $L_A(\vx):=A\vx$ è iniettiva;</li>
+        <li>(j) $L_A$ è suriettiva;</li>
+        <li>(k) $L_A$ è biettiva.</li>
+      </ul>
+    </div>
+    <p class="small muted">(f), (g) e (h) sono equivalenti solo per matrici <strong>quadrate</strong>. È la lista da avere in testa: a seconda dell'esercizio conviene passare da una condizione all'altra.</p>
+    <div class="box prop">
+      <div class="box-title">Conseguenza semplice ma utile</div>
+      <p class="mb0">Se $A$ ha una riga o una colonna <strong>nulla</strong>, oppure una riga multiplo di un'altra riga, oppure una colonna multiplo di un'altra colonna, allora $\det A=0$. Si vede a occhio, senza fare conti.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 9)</div>
+      <p class="mb0">$\begin{vmatrix}1&3\\2&6\end{vmatrix}=0$ perché la seconda colonna è $3$ volte la prima. $\begin{vmatrix}0&1&0\\1&1&1\\0&1&0\end{vmatrix}=0$ perché due colonne coincidono. E
+      $$\begin{vmatrix}1&2&3\\4&5&6\\7&8&9\end{vmatrix}\overset{R_2-R_1,\ R_3-R_1}{=}\begin{vmatrix}1&2&3\\3&3&3\\6&6&6\end{vmatrix}=0,$$
+      perché la terza riga è il doppio della seconda.</p>
+    </div>
+
+    <h3 id="basi-det">Riconoscere una base</h3>
+    <div class="box prop">
+      <div class="box-title">Corollario 1 (Lezione 9, parte 2)</div>
+      <p class="mb0">$n$ vettori $\vv_1,\dots,\vv_n\in\K^{n}$ formano una base di $\K^{n}$ se e solo se $\det[\vv_1|\dots|\vv_n]\ne0$. Siccome $\det A=\det A^{T}$, si possono mettere i vettori anche per righe.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p>Quali di questi sono basi di $\R^{3}$?
+      $B_1=\{(1,2,0),(0,2,3),(1,0,3)\}$, $\ B_2=\{(1,2,3),(3,2,1),(1,1,1)\}$, $\ B_3$ con quattro vettori, $\ B_4$ con due vettori.</p>
+      <p><strong>Prima si contano:</strong> $B_3$ e $B_4$ non hanno $3$ elementi, quindi non sono basi. Poi:
+      $$\begin{vmatrix}1&2&0\\0&2&3\\1&0&3\end{vmatrix}=6+6=12\ne0,\qquad\begin{vmatrix}1&2&3\\3&2&1\\1&1&1\end{vmatrix}\overset{R_1-2R_3,\ R_2-2R_3}{=}\begin{vmatrix}-1&0&1\\1&0&-1\\1&1&1\end{vmatrix}=0.$$
+      $B_1$ è una base, $B_2$ no.</p>
+      <p class="mb0"><strong>Funziona anche su $\C$.</strong> $\{(1,1,i,1),(0,i,0,-i),(i,0,1,0),(0,1,0,1)\}$ è una base di $\C^{4}$: con $R_3\to R_3-iR_1$ e due sviluppi di Laplace si ottiene $\det=4i\ne0$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="binet">6 · Teorema di Binet</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 9, parte 2) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Se $A,B$ sono matrici quadrate dello stesso ordine,
+      $$\det(AB)=\det A\,\det B=\det(BA).$$
+      In particolare, se $A$ è invertibile, $\det(A^{-1})=\dfrac{1}{\det A}$.</p>
+    </div>
+    <p class="small muted">La seconda formula segue dalla prima applicata a $AA^{-1}=I$, dato che $\det I=1$.</p>
+    <div class="box trap">
+      <div class="box-title">✗ Il determinante non è lineare</div>
+      <p class="mb0">Binet riguarda il <strong>prodotto</strong>. In generale $\det(A+B)\ne\det A+\det B$. E per la proprietà (ii), applicata a tutte le $n$ righe, $\det(\lambda A)=\lambda^{n}\det A$, non $\lambda\det A$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p class="mb0">Trovare $\det A$ sapendo che $BA^{-1}=C$, con $B=\begin{bmatrix}1&2&3\\0&4&5\\0&0&6\end{bmatrix}$ e $C=\begin{bmatrix}1&0&0\\1&2&0\\1&2&3\end{bmatrix}$. Per Binet, $\det B/\det A=\det C$, quindi
+      $$\det A=\frac{\det B}{\det C}=\frac{24}{6}=4.$$
+      Abbiamo trovato $\det A$ senza trovare $A$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="inversa">7 · Formula di Laplace per l'inversa</h2>
+    <div class="box teo">
+      <div class="box-title">Formula di Laplace (Lezione 9, parte 2) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Sia $A$ di ordine $n$ con $\det A\ne0$ e sia $C:=[C_{ij}]$ la matrice dei complementi algebrici. Allora
+      $$A^{-1}=\frac{1}{\det A}\,C^{T}.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti (per ordine 3, il caso generale è identico)</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa conviene calcolare?</div>
+            <div class="step-content">Il prodotto $AC^{T}$. Il suo elemento $(i,j)$ è $\lambda_{ij}:=a_{i1}C_{j1}+a_{i2}C_{j2}+a_{i3}C_{j3}$: la riga $i$ di $A$ per la riga $j$ di $C$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quanto vale sulla diagonale, $i=j$?</div>
+            <div class="step-content">$\lambda_{ii}$ è esattamente lo sviluppo di Laplace di $\det A$ lungo la riga $i$. Quindi $\lambda_{ii}=\det A$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Fuori dalla diagonale? Per esempio $\lambda_{12}=a_{11}C_{21}+a_{12}C_{22}+a_{13}C_{23}$.</div>
+            <div class="step-content">È lo sviluppo lungo la seconda riga della matrice $A'$ ottenuta da $A$ mettendo la prima riga <strong>al posto della seconda</strong>. I complementi algebrici di una riga non dipendono dagli elementi di quella riga, quindi sono gli stessi di $A$. Ma $A'$ ha due righe uguali: $\lambda_{12}=\det A'=0$. Allo stesso modo $\lambda_{ij}=0$ per ogni $i\ne j$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Conclusione</div>
+            <div class="step-content">$AC^{T}=\det(A)\,I$. Se $\det A\ne0$, dividendo si ottiene $A\cdot\frac{1}{\det A}C^{T}=I$, cioè la formula. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p>$A=\begin{bmatrix}1&1&1\\2&3&4\\0&1&0\end{bmatrix}$. I complementi algebrici sono
+      $$C=\begin{bmatrix}-4&0&2\\1&0&-1\\1&-2&1\end{bmatrix}.$$
+      Lungo la prima riga $\det A=1\cdot(-4)+1\cdot0+1\cdot2=-2\ne0$. Quindi
+      $$A^{-1}=-\frac12\begin{bmatrix}-4&1&1\\0&0&-2\\2&-1&1\end{bmatrix}=\begin{bmatrix}2&-\frac12&-\frac12\\0&0&1\\-1&\frac12&-\frac12\end{bmatrix}.$$</p>
+      <p class="mb0"><strong>Attenzione:</strong> si usa $C^{T}$, non $C$. Controllo sulla prima riga di $AA^{-1}$: $(2+0-1,\ -\tfrac12+0+\tfrac12,\ -\tfrac12+1-\tfrac12)=(1,0,0)$ ✓.</p>
+    </div>
+    <p class="small muted">Per $n=2$ la formula dà $\begin{bmatrix}a&b\\c&d\end{bmatrix}^{-1}=\dfrac{1}{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}$, già vista nella <a href="2-matrici.html#inversa">Sezione 2</a>. Per matrici grandi il <a href="2-matrici.html#inversa-megj">MEG-J</a> resta molto più conveniente.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="cramer">8 · Regola di Cramer</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 3 (Lezione 9, parte 2) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Sia $A$ quadrata di ordine $n$ con $\det A\ne0$ e sia $\vb\in\K^{n}$. L'unica soluzione di $A\vx=\vb$ ha componenti
+      $$x_j=\frac{\det A_j}{\det A},\qquad j=1,\dots,n,$$
+      dove $A_j$ è la matrice ottenuta da $A$ sostituendo la colonna $j$ con il vettore $\vb$.</p>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">⚠ Due cose diverse con lo stesso nome</div>
+      <p class="mb0">Il <a href="2-matrici.html#cramer"><strong>teorema di Cramer</strong></a> della Lezione 2 dice <em>quando</em> un sistema quadrato ha una sola soluzione: se e solo se $r(A)=n$. La <strong>regola di Cramer</strong> qui sotto dice <em>quanto vale</em> quella soluzione. Attento anche alle due notazioni: $A_{ij}$ ha riga e colonna cancellate, $A_j$ ha la colonna sostituita.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Da dove si parte?</div>
+            <div class="step-content">$\det A\ne0$ implica $A$ invertibile, quindi l'unica soluzione è $\vx=A^{-1}\vb$. Per definizione di prodotto,
+            $$x_j=\sum_{i=1}^{n}(A^{-1})_{ji}\,b_i.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa si sostituisce?</div>
+            <div class="step-content">La formula di Laplace: $A^{-1}=\frac{1}{\det A}C^{T}$, cioè $(A^{-1})_{ji}=\dfrac{C_{ij}}{\det A}$. Quindi
+            $$x_j=\frac{1}{\det A}\sum_{i=1}^{n}C_{ij}\,b_i.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quella somma è un oggetto noto?</div>
+            <div class="step-content">Sì: è lo <strong>sviluppo di Laplace di $\det A_j$ lungo la colonna $j$</strong>. La colonna $j$ di $A_j$ è $\vb$, e i complementi algebrici di quella colonna non dipendono da essa, quindi sono i $C_{ij}$ di $A$. Dunque $\sum_iC_{ij}b_i=\det A_j$ e
+            $$x_j=\frac{\det A_j}{\det A}.\qquad\blacksquare$$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9)</div>
+      <p>$\begin{cases}x+y+z=4\\2x-y-z=-7\\-x+2y+z=8\end{cases}$. Si ha $\Delta:=\det A=3\ne0$. Poi, sostituendo la colonna $\vb=(4,-7,8)$:
+      $$\Delta_1=\begin{vmatrix}4&1&1\\-7&-1&-1\\8&2&1\end{vmatrix}=-3,\quad\Delta_2=\begin{vmatrix}1&4&1\\2&-7&-1\\-1&8&1\end{vmatrix}=6,\quad\Delta_3=\begin{vmatrix}1&1&4\\2&-1&-7\\-1&2&8\end{vmatrix}=9.$$
+      Quindi $(x,y,z)=\left(\tfrac{-3}{3},\tfrac63,\tfrac93\right)=(-1,2,3)$.</p>
+      <p class="mb0"><strong>Controllo:</strong> $-1+2+3=4$, $\ -2-2-3=-7$, $\ 1+4+3=8$ ✓.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Quando conviene davvero</div>
+      <p class="mb0">Per risolvere un sistema intero quasi mai: servono $n+1$ determinanti, e il MEG costa molto meno. Conviene quando vuoi <strong>una sola incognita</strong>, o quando i coefficienti contengono un <strong>parametro</strong> e vuoi una formula chiusa.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="kronecker">9 · Teorema di Kronecker sul rango</h2>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 9, parte 2)</div>
+      <ul class="mb0">
+        <li>Un <strong>minore di ordine $k$</strong> di una matrice $M$, non necessariamente quadrata, è il determinante di una sottomatrice $k\times k$ di $M$.</li>
+        <li>Un minore $\det B$ di ordine $p+1$ <strong>orla</strong> il minore $\det A$ di ordine $p$ se $A$ è una sottomatrice di $B$.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 1 (Lezione 9)</div>
+      <p class="mb0">$M=\begin{bmatrix}1&2&3&4\\5&6&7&8\\9&0&-1&3\end{bmatrix}$. Con righe 1, 2 e colonne 1, 3 si ha il minore $\begin{vmatrix}1&3\\5&7\end{vmatrix}=-8$. Il minore $\begin{vmatrix}1&3&4\\5&7&8\\9&-1&3\end{vmatrix}=-72$, di ordine 3, lo orla.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema 4 (di Kronecker, Lezione 9, parte 2) <span class="badge star">risultato centrale</span></div>
+      <p>Sia $M$ una matrice qualsiasi.</p>
+      <ol class="mb0" type="a">
+        <li>Se $A$ è una sottomatrice quadrata di $M$ con $\det A\ne0$, allora le righe di $M$ che contengono le righe di $A$ sono linearmente indipendenti, e lo stesso vale per le colonne di $M$ che contengono le colonne di $A$.</li>
+        <li>Se $M$ ha un minore non nullo di ordine $p$, allora $r(M)\ge p$.</li>
+        <li>Ogni minore di $M$ di ordine $p>r(M)$ è nullo.</li>
+        <li>Se $M$ ha un minore $\delta$ di ordine $p$ tale che $\delta\ne0$ e ogni minore di ordine $p+1$ che orla $\delta$ è nullo, allora $r(M)=p$.</li>
+      </ol>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Perché (a) è vera, e perché (d) fa risparmiare conti</div>
+      <p class="mb0">Per (a): se le righe lunghe di $M$ fossero dipendenti, la stessa relazione varrebbe sulle loro parti dentro $A$, e $A$ avrebbe righe dipendenti, contro $\det A\ne0$. (b) e (c) sono la stessa affermazione al contrario e vengono da (a). La vera novità è (d): per concludere non servono <em>tutti</em> i minori di ordine $p+1$, ma solo quelli che <strong>orlano</strong> $\delta$.</p>
+    </div>
+
+    <h3 id="kron-base">Rango e base dell'immagine</h3>
+    <div class="box prop">
+      <div class="box-title">Metodo</div>
+      <ol class="mb0">
+        <li>Si parte da un minore non nullo $\delta$, di ordine $p$.</li>
+        <li>Si calcolano i minori di ordine $p+1$ che lo orlano. Se uno è non nullo, si riparte da quello.</li>
+        <li>Se sono tutti nulli, $r(M)=p$, e le colonne di $M$ che contengono le colonne di $\delta$ sono una <strong>base di $\Imag(M)$</strong>.</li>
+      </ol>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 9)</div>
+      <p><strong>1.</strong> Nell'Esempio 1, $\delta=-72\ne0$ ha ordine $3$, e $M$ non ha minori di ordine $4$: la condizione sugli orlati è automatica. Quindi $r(M)=3$, e le colonne 1, 3, 4 sono una base di $\Imag(M)$.</p>
+      <p class="mb0"><strong>2.</strong> $M=\begin{bmatrix}1&2&3&4&5\\5&4&3&2&1\\1&1&1&1&1\end{bmatrix}$. Il minore $\delta=\begin{vmatrix}1&2\\5&4\end{vmatrix}=-6\ne0$ ha tre soli orlati, tutti nulli:
+      $$\begin{vmatrix}1&2&3\\5&4&3\\1&1&1\end{vmatrix}=\begin{vmatrix}1&2&4\\5&4&2\\1&1&1\end{vmatrix}=\begin{vmatrix}1&2&5\\5&4&1\\1&1&1\end{vmatrix}=0.$$
+      Quindi $r(M)=2$ e una base di $\Imag(M)$ è $\{(1,5,1),(2,4,1)\}$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ MEG o Kronecker?</div>
+      <p class="mb0">Con numeri puri il MEG è di solito più veloce. Kronecker dà il meglio con un <strong>parametro</strong>: non servono divisioni per espressioni che potrebbero annullarsi, e il determinante degli orlati dice subito per quali valori il rango cala. È il metodo che il tutor ha usato nell'esercitazione del 7 ottobre.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="potenze">10 · Potenze e matrici simili</h2>
+    <div class="box def">
+      <div class="box-title">Potenze (Lezione 9, parte 3)</div>
+      <p class="mb0">Per $A$ quadrata: $A^{0}:=I$ e $A^{n}:=A\cdots A$ ($n$ volte). Se $A$ è invertibile, $A^{-n}:=(A^{-1})^{n}$. Valgono $A^{n}A^{m}=A^{m}A^{n}=A^{n+m}$ e $(A^{n})^{m}=A^{nm}$, e per Binet
+      $$\det(A^{n})=(\det A)^{n}.$$</p>
+    </div>
+
+    <h3 id="simili">Matrici simili <span class="badge star">risultato centrale</span></h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 9, parte 3)</div>
+      <p class="mb0">Due matrici $A,B$ di ordine $n$ si dicono <strong>simili</strong> se esiste una matrice invertibile $S$ di ordine $n$ tale che $B=S^{-1}AS$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">È una relazione di equivalenza (Lezione 9, parte 3)</div>
+      <ul class="mb0">
+        <li><strong>Riflessiva:</strong> $A=I^{-1}AI$.</li>
+        <li><strong>Simmetrica:</strong> da $B=S^{-1}AS$ segue $A=SBS^{-1}=S_1^{-1}BS_1$ con $S_1:=S^{-1}$.</li>
+        <li><strong>Transitiva:</strong> da $B=S^{-1}AS$ e $C=S_1^{-1}BS_1$ segue $C=(SS_1)^{-1}A(SS_1)$, per l'<a href="3-spazi.html#prodotto">invertibilità del prodotto</a>.</li>
+      </ul>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 9, parte 3)</div>
+      <p class="mb0">Matrici simili hanno lo stesso determinante. Inoltre, se $B=S^{-1}AS$, allora per ogni $n\in\N_0$
+      $$B^{n}=S^{-1}A^{n}S,$$
+      e se $A$ è invertibile anche $B$ lo è, con $B^{-1}=S^{-1}A^{-1}S$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Determinante: quale teorema si usa?</div>
+            <div class="step-content">Binet:
+            $$\det B=\det(S^{-1})\det A\det S=\frac{1}{\det S}\det A\det S=\det A.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Potenze: con quale tecnica?</div>
+            <div class="step-content">Per induzione. Per $n=0$: $B^{0}=I=S^{-1}IS$. Se vale per $n$:
+            $$B^{n+1}=BB^{n}=(S^{-1}AS)(S^{-1}A^{n}S)=S^{-1}A(SS^{-1})A^{n}S=S^{-1}A^{n+1}S.$$
+            I fattori $SS^{-1}$ in mezzo si cancellano: è il motivo per cui la formula è così comoda.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E l'inversa?</div>
+            <div class="step-content">Se $A$ è invertibile, $B=S^{-1}AS$ è un prodotto di tre invertibili, e invertendo con l'ordine scambiato
+            $$B^{-1}=S^{-1}A^{-1}(S^{-1})^{-1}=S^{-1}A^{-1}S.\qquad\blacksquare$$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box trap">
+      <div class="box-title">✗ Il viceversa è falso</div>
+      <p class="mb0">Stesso determinante <strong>non</strong> implica simili: $I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ hanno entrambe determinante $1$, ma $S^{-1}IS=I$ per ogni $S$, quindi l'unica matrice simile a $I$ è $I$. Il determinante serve per dimostrare che due matrici <em>non</em> sono simili.</p>
+    </div>
+
+    <h3 id="fibonacci">Esempio: la successione di Fibonacci</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9, parte 3)</div>
+      <p>Le potenze di matrici descrivono i processi in cui la stessa azione si ripete. La successione $F_0:=0$, $F_1:=1$, $F_{k+1}=F_k+F_{k-1}$ si riscrive con $\vu_k:=\begin{bmatrix}F_k\\F_{k-1}\end{bmatrix}$:
+      $$\vu_{k+1}=\begin{bmatrix}F_k+F_{k-1}\\F_k\end{bmatrix}=\begin{bmatrix}1&1\\1&0\end{bmatrix}\begin{bmatrix}F_k\\F_{k-1}\end{bmatrix}=A\vu_k.$$
+      Quindi, partendo da $\vu_1=(1,0)$,
+      $$\begin{bmatrix}F_k\\F_{k-1}\end{bmatrix}=A^{k-1}\begin{bmatrix}1\\0\end{bmatrix}.$$</p>
+      <p class="mb0">Il prof annuncia che dalla prossima lezione uscirà una formula esplicita per le potenze di $A$, e quindi per il $k$-esimo numero di Fibonacci.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="volumi">11 · Area e volume</h2>
+
+    <h3 id="area">Il determinante come area <span class="badge star2">da conoscere</span></h3>
+    <div class="box teo">
+      <div class="box-title">Proposizione e corollario (Lezione 9, parte 3)</div>
+      <p class="mb0">Siano $\vec u(u_1,u_2)$, $\vec v(v_1,v_2)$ indipendenti nel piano cartesiano, con la rotazione da $Ox$ a $Oy$ in senso antiorario, e sia $\Pi$ il parallelogramma che formano. Allora
+      $$\begin{vmatrix}u_1&v_1\\u_2&v_2\end{vmatrix}=\begin{cases}\ \ \operatorname{area}(\Pi)&\text{se $\vec v$ si ottiene ruotando il raggio di $\vec u$ in senso antiorario,}\\-\operatorname{area}(\Pi)&\text{se in senso orario.}\end{cases}$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quale operazione non cambia né il determinante né l'area?</div>
+            <div class="step-content">Sostituire $\vec u$ con $\vec u':=\vec u-\lambda\vec v$. Per il determinante è la proprietà (iii) sulle colonne. Per il parallelogramma è uno scorrimento lungo $\vec v$: base e altezza restano le stesse.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si sceglie $\lambda$?</div>
+            <div class="step-content">In modo che $\vec u'\parallel Ox$, cioè $u_2'=0$. La matrice diventa triangolare:
+            $$\det[\vec u|\vec v]=\det[\vec u'|\vec v]=\begin{vmatrix}u_1'&v_1\\0&v_2\end{vmatrix}=u_1'v_2.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa vale $u_1'v_2$?</div>
+            <div class="step-content">Base $u_1'$ per altezza $v_2$: l'area di $\Pi'$, che è uguale a quella di $\Pi$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E il caso orario?</div>
+            <div class="step-content">Basta scambiare $\vec u$ e $\vec v$: per (i) sulle colonne il determinante cambia segno. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="widget">
+      <div class="widget-head"><span>Determinante = area con segno</span><span class="faint" style="text-transform:none;font-weight:400">sposta le punte dei due vettori</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="daU1">$u_1$</label><input type="range" id="daU1" min="-4" max="4" value="3" step="1"><output data-out="daU1">3</output></div>
+          <div class="ctrl"><label for="daU2">$u_2$</label><input type="range" id="daU2" min="-4" max="4" value="1" step="1"><output data-out="daU2">1</output></div>
+          <div class="ctrl"><label for="daV1">$v_1$</label><input type="range" id="daV1" min="-4" max="4" value="1" step="1"><output data-out="daV1">1</output></div>
+          <div class="ctrl"><label for="daV2">$v_2$</label><input type="range" id="daV2" min="-4" max="4" value="2" step="1"><output data-out="daV2">2</output></div>
+        </div>
+        <canvas class="plot" id="daPlot"></canvas>
+        <div class="readout" id="daOut"></div>
+      </div>
+    </div>
+
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 9, parte 3): area di un triangolo</div>
+      <p class="mb0">$A(1,2)$, $B(2,3)$, $C(3,1)$. Il triangolo è metà del parallelogramma formato da $\overrightarrow{AC}=(2,-1)$ e $\overrightarrow{AB}=(1,1)$:
+      $$\operatorname{area}(\triangle ABC)=\frac12\left|\,\begin{vmatrix}2&1\\-1&1\end{vmatrix}\,\right|=\frac12\,|2+1|=\frac32.$$
+      Il valore assoluto toglie il problema dell'orientamento.</p>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">In dimensione $n$</div>
+      <p class="mb0">Per $\vv_1,\dots,\vv_n\in\R^{n}$:
+      $$\det[\vv_1|\dots|\vv_n]=\pm\operatorname{Vol}_n(\Pi),$$
+      dove $\Pi$ è il parallelepipedo $n$-dimensionale formato dai vettori. Il segno dipende dall'<strong>orientamento</strong>: per $n=3$ è $+$ per una terna destrorsa, $-$ per una sinistrorsa. Il caso $n>3$ il prof lo salta.</p>
+    </div>
+
+    <h3 id="endomorfismo">Il determinante di una mappa</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 9, parte 3)</div>
+      <p class="mb0">Un <strong>endomorfismo</strong> di $V$ è una mappa lineare $L:V\to V$. Se $\dim V\lt+\infty$ e $A$ è la matrice rappresentativa di $L$ rispetto a una base $B$ di $V$, usata sia nel dominio sia nel codominio, si pone $\det(L):=\det A$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Non dipende dalla base</div>
+      <p class="mb0">Rispetto a un'altra base $\tilde B$, per il <a href="5-lineari.html#trasformazione">teorema di trasformazione</a> la matrice è $\tilde A=S^{-1}AS$, con $S$ matrice di passaggio. Quindi $A$ e $\tilde A$ sono simili e $\det\tilde A=\det A$. Il determinante è una proprietà della <strong>mappa</strong>, non della matrice scelta per scriverla.</p>
+    </div>
+
+    <h3 id="ipervolume">Ipervolume</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 9, parte 3)</div>
+      <p class="mb0">L'ipercubo $K_n(a):=\{\vx\in\R^{n}:0\le x_i\le a\}$ ha ipervolume $a^{n}$. Per un insieme $K\subset\R^{n}$ si fissa un piccolo $\eps>0$, si considera la griglia di ipercubetti di lato $\eps$ e si contano quelli contenuti in $K$, $N(\eps)$, e quelli che lo intersecano, $M(\eps)$. Se
+      $$\lim_{\eps\to0}N(\eps)\eps^{n}\quad\text{e}\quad\lim_{\eps\to0}M(\eps)\eps^{n}$$
+      esistono finiti e coincidono, il loro valore è $\operatorname{Vol}_n(K)$. Non tutti gli insiemi limitati hanno un ipervolume ben definito.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema 5 (Lezione 9, parte 3)</div>
+      <p class="mb0">Sia $L:\R^{n}\to\R^{n}$ lineare e $K\subset\R^{n}$ un insieme con ipervolume ben definito. Allora
+      $$\operatorname{Vol}_n(L(K))=|\det L|\,\operatorname{Vol}_n(K).$$
+      Il determinante è il <strong>fattore di cambiamento dell'ipervolume</strong>.</p>
+    </div>
+    <details class="reveal">
+      <summary>L'idea della dimostrazione (negli appunti: non richiesta per l'esame)</summary>
+      <div class="reveal-body">
+        <p class="mb0">Ogni ipercubetto è il parallelepipedo formato da $\eps\mathbf e_1,\dots,\eps\mathbf e_n$. La sua immagine è il parallelepipedo formato da $\eps L(\mathbf e_1),\dots,\eps L(\mathbf e_n)$, con ipervolume $\eps^{n}|\det L|$. Quindi $N(\eps)\eps^{n}|\det L|\le\operatorname{Vol}_n(L(K))\le M(\eps)\eps^{n}|\det L|$, e passando al limite per $\eps\to0$ si ha la tesi.</p>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 9, parte 3): ellisse ed ellissoide</div>
+      <p>L'immagine del disco unitario tramite $L(x,y):=(ax,by)$ è un'ellisse di semiassi $a,b$, quindi
+      $$\operatorname{area}=\left|\,\begin{vmatrix}a&0\\0&b\end{vmatrix}\,\right|\cdot\pi=\pi ab.$$</p>
+      <p class="mb0">Allo stesso modo l'ellissoide di semiassi $a,b,c$ è l'immagine della palla unitaria tramite $\operatorname{diag}(a,b,c)$, e il suo volume è $abc\cdot\tfrac43\pi=\tfrac43\pi abc$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 8</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Dove si cade</div>
+      <ul class="mb0">
+        <li><strong>Dimenticare il cambio di segno</strong> a ogni scambio di righe durante il MEG.</li>
+        <li><strong>Dividere una riga per $2$ senza moltiplicare davanti per $2$.</strong> La proprietà (ii) va tenuta in conto: il determinante non resta uguale.</li>
+        <li><strong>Scrivere $\det(\lambda A)=\lambda\det A$.</strong> Si moltiplicano tutte le $n$ righe: $\det(\lambda A)=\lambda^{n}\det A$.</li>
+        <li><strong>Scrivere $\det(A+B)=\det A+\det B$.</strong> Binet vale per il prodotto, non per la somma.</li>
+        <li><strong>Usare Sarrus su una $4\times4$.</strong> Vale solo per l'ordine 3.</li>
+        <li><strong>Sbagliare il segno dei cofattori.</strong> $C_{ij}$ contiene $(-1)^{i+j}$: scacchiera con $+$ in alto a sinistra.</li>
+        <li><strong>Dimenticare la trasposta nella formula dell'inversa.</strong> È $A^{-1}=\frac{1}{\det A}C^{T}$, non $\frac{1}{\det A}C$.</li>
+        <li><strong>Sostituire una riga invece di una colonna</strong> nella regola di Cramer.</li>
+        <li><strong>Applicare Cramer con $\det A=0$.</strong> La formula perde senso: si torna a Rouché-Capelli.</li>
+        <li><strong>Controllare tutti i minori di ordine $p+1$.</strong> Per Kronecker bastano quelli che orlano $\delta$.</li>
+        <li><strong>Prendere le righe invece delle colonne</strong> per la base dell'immagine.</li>
+        <li><strong>Dedurre che due matrici sono simili perché hanno lo stesso determinante.</strong> Vale solo l'implicazione opposta.</li>
+        <li><strong>Dimenticare il valore assoluto per un'area.</strong> Il determinante ha segno, l'area no.</li>
+        <li><strong>Calcolare il determinante di una matrice non quadrata.</strong> Non esiste: i minori di una matrice rettangolare sono determinanti di sue sottomatrici quadrate.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="../teoremi.html">Teoremi e dimostrazioni →</a>
+      <a class="btn" href="7-grassmann.html">← Sezione 7</a>
+      <a class="btn" href="../esercizi.html?sez=8">Esercizi della Sezione 8</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 8 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261104"></script>
+<script src="../data/quiz.js?v=20261104"></script>
+<script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../../assets/js/app.js?v=20261104"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.renderChecklist('#checklistBox', 8, 'geometria');
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 8; }), { statKey: 'geo8' });
+
+  /* ---------- il determinante 2x2 come area con segno ---------- */
+  (function () {
+    var u = [3, 1], v = [1, 2];
+    var out = document.getElementById('daOut');
+    var p = new Plot('daPlot', { xmin: -8.5, xmax: 8.5, ymin: -8.5, ymax: 8.5, height: 360, equal: true });
+
+    p.draw(function (g) {
+      var c = g.ctx, d = u[0] * v[1] - u[1] * v[0];
+      var colore = d > 0 ? 'accent' : d < 0 ? 'danger' : 'muted';
+      c.save();
+      c.fillStyle = g.col(colore); c.globalAlpha = 0.18;
+      c.beginPath();
+      c.moveTo(g.X(0), g.Y(0));
+      c.lineTo(g.X(u[0]), g.Y(u[1]));
+      c.lineTo(g.X(u[0] + v[0]), g.Y(u[1] + v[1]));
+      c.lineTo(g.X(v[0]), g.Y(v[1]));
+      c.closePath(); c.fill();
+      c.restore();
+      g.seg(u[0], u[1], u[0] + v[0], u[1] + v[1], { color: 'muted', width: 1.4, dash: [5, 4] });
+      g.seg(v[0], v[1], u[0] + v[0], u[1] + v[1], { color: 'muted', width: 1.4, dash: [5, 4] });
+      if (u[0] || u[1]) g.arrow(0, 0, u[0], u[1], { color: 'ok', width: 2.6 });
+      if (v[0] || v[1]) g.arrow(0, 0, v[0], v[1], { color: 'purple', width: 2.6 });
+      g.text(u[0], u[1], ' u', { color: 'ok', size: 14, bold: true, dy: -8, halo: true });
+      g.text(v[0], v[1], ' v', { color: 'purple', size: 14, bold: true, dy: -8, halo: true });
+    });
+
+    function aggiorna() {
+      var d = u[0] * v[1] - u[1] * v[0];
+      var verso = d > 0
+        ? '<span style="color:var(--accent)">da u a v si gira in senso <b>antiorario</b>: segno +</span>'
+        : d < 0
+          ? '<span style="color:var(--danger)">da u a v si gira in senso <b>orario</b>: segno −</span>'
+          : '<span style="color:var(--text-muted)">vettori <b>dipendenti</b>: il parallelogramma è schiacciato</span>';
+      out.innerHTML =
+        'det[u|v] = u₁v₂ − u₂v₁ = (' + u[0] + ')(' + v[1] + ') − (' + u[1] + ')(' + v[0] + ') = <b>' + d + '</b><br>' +
+        'area del parallelogramma = |det| = <b>' + Math.abs(d) + '</b><br>' + verso;
+    }
+    [['daU1', u, 0], ['daU2', u, 1], ['daV1', v, 0], ['daV2', v, 1]].forEach(function (x) {
+      plotSlider(x[0], function (val) { x[1][x[2]] = val; p.redraw(); aggiorna(); });
+    });
+    aggiorna();
+  })();
+});
+</script>
+</body>
+</html>

@@ -228,7 +228,7 @@ $$A^{-1}=\frac{1}{4-t^{2}}\begin{bmatrix}4&-t\\-t&1\end{bmatrix}$$
 <strong>Che cosa succede nei casi esclusi.</strong> Per $t=2$: $A=\begin{bmatrix}1&2\\2&4\end{bmatrix}$, la seconda riga è il doppio della prima, quindi $\rg A=1<2$. Il sistema omogeneo $A\vx=\vzero$ ha soluzioni non banali (per esempio $(2,-1)$), coerentemente con le condizioni di invertibilità. Analogamente per $t=-2$. $\blacksquare$` },
 
 { id: 'G2.5', sez: 2, tema: 'Cramer', d: 2,
-  t: r`Risolvere con il teorema di Cramer $$\begin{cases}2x+y-z=3\\ x-y+2z=0\\ 3x+2y+z=7\end{cases}$$ calcolando la sola incognita $y$.`,
+  t: r`Risolvere con la regola di Cramer (Sezione 8) $$\begin{cases}2x+y-z=3\\ x-y+2z=0\\ 3x+2y+z=7\end{cases}$$ calcolando la sola incognita $y$.`,
   hints: [ r`Cramer dà $x_j=\dfrac{\det A_j}{\det A}$, dove $A_j$ ha la colonna $j$ sostituita da $\vb$.`,
            r`Per $y$ serve $j=2$: sostituisci la <strong>seconda</strong> colonna.`,
            r`Calcola prima $\det A$: se fosse $0$, Cramer non sarebbe applicabile.` ],
@@ -957,7 +957,360 @@ $$\boxed{\vv_1,\vv_2,\vv_3\ \text{indipendenti}\iff k\ne1}$$
 <strong>Per $k=1$:</strong> $\vv_3=(1,2,1,2)$ e cerchiamo $\vv_3=a\vv_1+b\vv_2=(-b,\ a,\ a+b,\ 2a+2b)$: $b=-1$, $a=2$, e le ultime due componenti tornano ($1$ e $2$). Quindi
 $$2\vv_1-\vv_2-\vv_3=\vzero.$$
 <strong>Controllo:</strong> $2(0,1,1,2)-(-1,0,1,2)=(1,2,1,2)$ ✓.<br><br>
-<strong>Il metodo dei minori del tutor.</strong> Nell'esercitazione il rango si calcola anche con i determinanti delle sottomatrici quadrate («teorema di Kronecker», o degli orlati, non ancora visto a lezione): il minore $\begin{vmatrix}0&1\\-1&0\end{vmatrix}=1\ne0$ dà rango $\ge2$; orlandolo con la terza riga e la terza colonna si ottiene $k-1$; per $k=1$ anche l'orlato con la quarta colonna vale $0$, quindi il rango è $2$. Stessa conclusione. $\blacksquare$` }
+<strong>Il metodo dei minori del tutor.</strong> Nell'esercitazione il rango si calcola anche con il <a href="sezioni/8-determinanti.html#kronecker">teorema di Kronecker</a>, che il prof ha poi trattato nella Lezione 9: il minore $\begin{vmatrix}0&1\\-1&0\end{vmatrix}=1\ne0$ dà rango $\ge2$; orlandolo con la terza riga e la terza colonna si ottiene $k-1$; per $k=1$ anche l'orlato con la quarta colonna vale $0$, quindi il rango è $2$. Stessa conclusione. $\blacksquare$` },
+
+/* ==================== SEZIONE 6: POSIZIONE RECIPROCA ==================== */
+{ id: 'G6.1', sez: 6, tema: 'Rette nel piano', d: 1,
+  t: r`Determinare la posizione reciproca di $l_1:\ \vec r=(1,2)+t(2,-1)$ e $l_2:\ \vec r=(0,4)+s(1,1)$. Se sono incidenti, trovare il punto comune.`,
+  hints: [ r`Guarda prima i vettori direzione: sono proporzionali?`,
+           r`Scrivi $t\vec v_1-s\vec v_2=\vec r_2-\vec r_1$.`,
+           r`Il sistema è $2t-s=-1$, $-t-s=2$.` ],
+  sol: r`Le direzioni $(2,-1)$ e $(1,1)$ non sono proporzionali: $r(A)=2$, quindi le rette sono <strong>incidenti</strong>. Da $\vec r_2-\vec r_1=(-1,2)$:
+$$\begin{cases}2t-s=-1\\-t-s=2\end{cases}\quad\Rightarrow\quad t=-1,\ s=-1.$$
+Sostituendo in $l_1$: $P=(1,2)-(2,-1)=(-1,3)$.<br><br>
+<strong>Controllo</strong> su $l_2$: $(0,4)-(1,1)=(-1,3)$ ✓. $\blacksquare$` },
+
+{ id: 'G6.2', sez: 6, tema: 'Rette nello spazio', d: 2,
+  t: r`Sia $l:\ \vec r=(1,0,2)+t(1,1,-1)$. Stabilire la posizione reciproca di $l$ con ciascuna delle rette
+$$\text{(a) }\vec r=(2,1,1)+s(2,2,-2),\quad\text{(b) }\vec r=(1,1,2)+s(-1,-1,1),$$
+$$\text{(c) }\vec r=(0,0,0)+s(1,0,1),\quad\text{(d) }\vec r=(3,1,2)+s(1,0,1).$$`,
+  hints: [ r`In (a) e (b) i vettori direzione sono proporzionali: resta da guardare $\vec b=\vec r_2-\vec r_1$.`,
+           r`In (c) e (d) sono indipendenti: la domanda è «incidenti o sghembe?».`,
+           r`Calcola $\det[\vec u|\vec v|\vec b]$: tre vettori di $\R^{3}$ sono indipendenti se e solo se è non nullo.` ],
+  sol: r`Sia $\vec u=(1,1,-1)$.<br>
+<strong>(a)</strong> $\vec v=2\vec u$ e $\vec b=(1,1,-1)=\vec u$: tutto multiplo di $\vec u$, le rette <strong>coincidono</strong>.<br>
+<strong>(b)</strong> $\vec v=-\vec u$ e $\vec b=(0,1,0)$ non è multiplo di $\vec u$: <strong>parallele distinte</strong>.<br>
+<strong>(c)</strong> $\vec v=(1,0,1)$, $\vec b=(-1,0,-2)$ e
+$$\det\begin{bmatrix}1&1&-1\\1&0&0\\-1&1&-2\end{bmatrix}=1\ne0:$$
+tre vettori indipendenti, rette <strong>sghembe</strong>.<br>
+<strong>(d)</strong> $\vec b=(2,1,0)$ e il determinante vale $0$: <strong>incidenti</strong>. Il sistema $t-s=2$, $t=1$, $-t-s=0$ dà $t=1$, $s=-1$ e $P(2,1,1)$.<br><br>
+<strong>Controllo</strong> di (d) su entrambe le rette: $(1,0,2)+(1,1,-1)=(2,1,1)$ e $(3,1,2)-(1,0,1)=(2,1,1)$ ✓. $\blacksquare$` },
+
+{ id: 'G6.3', sez: 6, tema: 'Rette nello spazio', d: 2,
+  t: r`Date $l_1:\ \begin{cases}x+y=1\\z=2\end{cases}$ e $l_2:\ \begin{cases}x-y=1\\z=k\end{cases}$, stabilire per quali $k\in\R$ sono incidenti, e che cosa succede negli altri casi.`,
+  hints: [ r`Scrivi la matrice completa del sistema delle quattro equazioni.`,
+           r`Le direzioni si leggono dagli omogenei: $(1,-1,0)$ e $(1,1,0)$. Sono parallele?`,
+           r`Il MEG lascia una riga $[0\ 0\ 0\ |\ k-2]$.` ],
+  sol: r`$$[A|\underline d]=\left[\begin{array}{ccc|c}1&1&0&1\\0&0&1&2\\1&-1&0&1\\0&0&1&k\end{array}\right]\to\left[\begin{array}{ccc|c}1&1&0&1\\0&-2&0&0\\0&0&1&2\\0&0&0&k-2\end{array}\right].$$
+Quindi $r(A)=3$ per ogni $k$.<br>
+<strong>$k=2$:</strong> $r([A|\underline d])=3$: <strong>incidenti</strong> in $(1,0,2)$.<br>
+<strong>$k\ne2$:</strong> $r([A|\underline d])=4$: nessun punto comune. Le direzioni $(1,-1,0)$ e $(1,1,0)$ sono indipendenti, quindi non sono parallele: sono <strong>sghembe</strong>.<br><br>
+<strong>Controllo:</strong> $(1,0,2)$ soddisfa $x+y=1$, $x-y=1$, $z=2$ ✓. $\blacksquare$` },
+
+{ id: 'G6.4', sez: 6, tema: 'Retta e piano', d: 2,
+  t: r`Sia $l:\ \vec r=(1,0,1)+t(1,k,1)$ e $\Pi:\ x+y+z=h$. Discutere la posizione reciproca al variare di $k,h\in\R$.`,
+  hints: [ r`Sostituisci la forma parametrica nell'equazione del piano.`,
+           r`Si ottiene un'equazione di primo grado in $t$: $(k+2)\,t=h-2$.`,
+           r`Attenzione a non dividere per $k+2$ senza discutere il caso $k=-2$.` ],
+  sol: r`Sostituendo: $(1+t)+kt+(1+t)=h$, cioè
+$$(k+2)\,t=h-2.$$
+<strong>$k\ne-2$:</strong> una sola soluzione, $l$ e $\Pi$ sono <strong>incidenti</strong>.<br>
+<strong>$k=-2$, $h=2$:</strong> $0=0$ per ogni $t$: $l\subset\Pi$.<br>
+<strong>$k=-2$, $h\ne2$:</strong> $0=h-2\ne0$: $l$ è <strong>parallela</strong> a $\Pi$ in senso stretto.<br><br>
+<strong>Controllo:</strong> per $k=-2$ la direzione $(1,-2,1)$ soddisfa l'omogenea $x+y+z=0$, quindi è davvero parallela al piano ✓. $\blacksquare$` },
+
+{ id: 'G6.5', sez: 6, tema: 'Perpendicolarità', d: 1,
+  t: r`Scrivere l'equazione cartesiana del piano per $P(2,-1,3)$ ortogonale alla retta $\vec r=(0,1,1)+t(1,2,-2)$.`,
+  hints: [ r`La direzione della retta è un vettore normale al piano.`,
+           r`Usa la forma $a(x-x_0)+b(y-y_0)+c(z-z_0)=0$.` ],
+  sol: r`Il vettore $(1,2,-2)$ è normale al piano, quindi
+$$1(x-2)+2(y+1)-2(z-3)=0\iff x+2y-2z=-6.$$
+<strong>Controllo:</strong> in $P$ si ha $2-2-6=-6$ ✓. $\blacksquare$` },
+
+{ id: 'G6.6', sez: 6, tema: 'Perpendicolarità', d: 2,
+  t: r`Trovare il piede $H$ della perpendicolare condotta da $P(2,3,4)$ al piano $\Pi:\ x+y+z=6$.`,
+  hints: [ r`Scrivi la retta per $P$ ortogonale a $\Pi$: la direzione è data dai coefficienti del piano.`,
+           r`$H$ è l'intersezione di questa retta con $\Pi$.` ],
+  sol: r`La retta è $\vec r=(2,3,4)+t(1,1,1)$. Sostituendo in $\Pi$:
+$$(2+t)+(3+t)+(4+t)=6\iff 9+3t=6\iff t=-1.$$
+Quindi $H(1,2,3)$.<br><br>
+<strong>Controllo:</strong> $1+2+3=6$, quindi $H\in\Pi$, e $\overrightarrow{HP}=(1,1,1)$ è multiplo di $(1,1,1)$ ✓. $\blacksquare$` },
+
+{ id: 'G6.7', sez: 6, tema: 'Fasci', d: 2,
+  t: r`Scrivere l'equazione del piano che contiene la retta $l:\ x-y+z=1,\ 2x+y-z=0$ e passa per $P_0(1,2,1)$.`,
+  hints: [ r`Fascio per $l$: $p(x-y+z-1)+q(2x+y-z)=0$.`,
+           r`Sostituisci $P_0$: si ottiene una relazione fra $p$ e $q$.`,
+           r`I parametri sono definiti a meno di un multiplo: basta una soluzione non nulla.` ],
+  sol: r`Sostituendo $P_0$ nel fascio: $p(1-2+1-1)+q(2+2-1)=0$, cioè $-p+3q=0$. Con $p=3$, $q=1$:
+$$3(x-y+z-1)+(2x+y-z)=0\iff 5x-2y+2z=3.$$
+<strong>Controllo:</strong> $P_0$ dà $5-4+2=3$ ✓. Il punto $\left(\tfrac13,-\tfrac23,0\right)$ di $l$ dà $\tfrac53+\tfrac43=3$ ✓. $\blacksquare$` },
+
+{ id: 'G6.8', sez: 6, tema: 'Fasci', d: 2,
+  t: r`Nel fascio di piani per la retta $x+y=1,\ y+z=1$ trovare il piano perpendicolare a $\Pi_0:\ x+y+z=0$.`,
+  hints: [ r`Due piani sono perpendicolari quando lo sono i loro vettori normali.`,
+           r`Il normale del piano generico del fascio è $(p,\,p+q,\,q)$.`,
+           r`Imponi $\langle(p,p+q,q),(1,1,1)\rangle=0$.` ],
+  sol: r`Il fascio è $p(x+y-1)+q(y+z-1)=0$, con normale $(p,p+q,q)$. La condizione è
+$$p+(p+q)+q=2p+2q=0\iff p=-q.$$
+Con $p=1$, $q=-1$: $(x+y-1)-(y+z-1)=0$, cioè $\boxed{x-z=0}$.<br><br>
+<strong>Controllo:</strong> $\langle(1,0,-1),(1,1,1)\rangle=0$ ✓, e il punto $(1,0,1)$ della retta soddisfa $x-z=0$ ✓. $\blacksquare$` },
+
+{ id: 'G6.9', sez: 6, tema: 'Fasci', d: 3,
+  t: r`Trovare il piano parallelo alla retta $l_0:\ x-y=0,\ y-z=1$ e passante per $P(1,0,0)$ e $Q(0,1,0)$. Risolvere con il fascio come nella Lezione 7, oppure con il vettore normale.`,
+  hints: [ r`La direzione di $l_0$ si trova risolvendo il sistema omogeneo: $(1,1,1)$.`,
+           r`Il normale $(a,b,c)$ deve essere ortogonale a $(1,1,1)$ e a $\overrightarrow{PQ}=(-1,1,0)$.`,
+           r`Trovato il piano, controlla che $l_0$ non vi sia contenuta.` ],
+  sol: r`La direzione di $l_0$ è $(1,1,1)$ e $\overrightarrow{PQ}=(-1,1,0)$. Il normale soddisfa
+$$a+b+c=0,\qquad-a+b=0\quad\Rightarrow\quad(a,b,c)=(1,1,-2).$$
+Per $P$: $(x-1)+y-2z=0$, cioè $\boxed{x+y-2z=1}$.<br><br>
+<strong>Controllo:</strong> $P$ e $Q$ danno $1$ ✓; $\langle(1,1,1),(1,1,-2)\rangle=0$ ✓. Il punto $(0,0,-1)$ di $l_0$ dà $2\ne1$: il parallelismo è in senso stretto. $\blacksquare$` },
+
+{ id: 'G6.10', sez: 6, tema: 'Rette nello spazio', d: 3,
+  t: r`Date $l_1:\ \vec r=(1,1,0)+t(1,0,1)$ e $l_2:\ \vec r=(0,k,1)+s(1,1,0)$, stabilire per quali $k\in\R$ sono incidenti e trovare il punto comune. Negli altri casi, che posizione hanno?`,
+  hints: [ r`Le direzioni sono indipendenti per ogni $k$: le rette non sono mai parallele.`,
+           r`Incidenti $\iff\vec u,\vec v,\vec b$ dipendenti, con $\vec b=(-1,k-1,1)$.`,
+           r`Il determinante vale $k+1$.` ],
+  sol: r`Con $\vec u=(1,0,1)$, $\vec v=(1,1,0)$, $\vec b=(-1,k-1,1)$:
+$$\det[\vec u|\vec v|\vec b]=\begin{vmatrix}1&1&-1\\0&1&k-1\\1&0&1\end{vmatrix}=k+1.$$
+<strong>$k\ne-1$:</strong> vettori indipendenti, rette <strong>sghembe</strong>.<br>
+<strong>$k=-1$:</strong> <strong>incidenti</strong>. Il sistema $t-s=-1$, $-s=-2$, $t=1$ dà $t=1$, $s=2$ e $P(2,1,1)$.<br><br>
+<strong>Controllo:</strong> $(1,1,0)+(1,0,1)=(2,1,1)$ e $(0,-1,1)+2(1,1,0)=(2,1,1)$ ✓. $\blacksquare$` },
+
+{ id: 'G6.11', sez: 6, tema: 'Due piani', d: 2,
+  t: r`Sia $\Pi_1:\ \vec r=(1,0,0)+t(1,1,0)+s(0,1,1)$. Trovarne l'equazione cartesiana e stabilire la sua posizione reciproca con $\Pi_2:\ x-y+z=k$ e con $\Pi_3:\ x+y+z=2$.`,
+  hints: [ r`Il normale $(a,b,c)$ è ortogonale ai due vettori direzione: $a+b=0$, $b+c=0$.`,
+           r`Per $\Pi_2$ confronta solo i termini noti: i coefficienti sono gli stessi.`,
+           r`Per $\Pi_3$: $r(A)=2$, quindi una retta. Sottraendo le equazioni trovi $y$.` ],
+  sol: r`Da $a+b=0$, $b+c=0$ si ha il normale $(1,-1,1)$, e passando per $(1,0,0)$: $\Pi_1:\ x-y+z=1$.<br>
+<strong>$\Pi_2$:</strong> stessi coefficienti. Se $k=1$, $\Pi_1=\Pi_2$; se $k\ne1$, paralleli distinti.<br>
+<strong>$\Pi_3$:</strong> $(1,-1,1)$ e $(1,1,1)$ sono indipendenti: incidenti. Sottraendo, $2y=1$, quindi $y=\tfrac12$ e $x+z=\tfrac32$:
+$$\vec r=\left(\tfrac32,\tfrac12,0\right)+t(-1,0,1).$$
+<strong>Controllo:</strong> il punto base dà $\tfrac32-\tfrac12=1$ e $\tfrac32+\tfrac12=2$ ✓; la direzione annulla entrambe le omogenee ✓. $\blacksquare$` },
+
+{ id: 'G6.12', sez: 6, tema: 'Perpendicolarità', d: 2,
+  t: r`Verificare che $l_1:\ \vec r=(1,0,0)+t(1,2,2)$ e $l_2:\ \vec r=(0,3,2)+s(2,-1,0)$ sono incidenti e ortogonali.`,
+  hints: [ r`Scrivi $t\vec u-s\vec v=\vec r_2-\vec r_1=(-1,3,2)$.`,
+           r`La terza equazione dà subito $t$.`,
+           r`Per l'ortogonalità basta il prodotto scalare dei vettori direzione.` ],
+  sol: r`Il sistema è $t-2s=-1$, $2t+s=3$, $2t=2$. Da qui $t=1$ e $s=1$, che soddisfano tutte e tre le equazioni: soluzione unica, rette <strong>incidenti</strong> in $P(2,2,2)$.<br>
+Inoltre $\langle(1,2,2),(2,-1,0)\rangle=2-2+0=0$: <strong>ortogonali</strong>.<br><br>
+<strong>Controllo:</strong> $(0,3,2)+(2,-1,0)=(2,2,2)$ ✓. $\blacksquare$` },
+
+/* ==================== SEZIONE 7: SOMMA DI SOTTOSPAZI ==================== */
+{ id: 'G7.1', sez: 7, tema: 'Completamento', d: 1,
+  t: r`Completare $\vv_1=(1,0,1)$, $\vv_2=(0,1,1)$ a una base di $\R^{3}$.`,
+  hints: [ r`Controlla che siano indipendenti.`,
+           r`Riduci $[\vv_1|\vv_2|\mathbf e_1|\mathbf e_2|\mathbf e_3]$, in quest'ordine.` ],
+  sol: r`$\vv_1,\vv_2$ non sono proporzionali. Allora
+$$\begin{bmatrix}1&0&1&0&0\\0&1&0&1&0\\1&1&0&0&1\end{bmatrix}\to\begin{bmatrix}1&0&1&0&0\\0&1&0&1&0\\0&0&-1&-1&1\end{bmatrix}.$$
+Pivot nelle colonne 1, 2, 3: la base è $\{\vv_1,\vv_2,\mathbf e_1\}$.<br><br>
+<strong>Controllo:</strong> $\det[\vv_1|\vv_2|\mathbf e_1]=-1\ne0$ ✓. $\blacksquare$` },
+
+{ id: 'G7.2', sez: 7, tema: 'Completamento', d: 2,
+  t: r`Completare $\vv_1=(1,1,0,0)$, $\vv_2=(0,1,1,0)$ a una base di $\R^{4}$.`,
+  hints: [ r`Servono due vettori in più, e la matrice ha sei colonne.`,
+           r`Dopo il MEG i pivot cadono nelle colonne 1, 2, 3 e 6.` ],
+  sol: r`$$\begin{bmatrix}1&0&1&0&0&0\\1&1&0&1&0&0\\0&1&0&0&1&0\\0&0&0&0&0&1\end{bmatrix}\to\begin{bmatrix}1&0&1&0&0&0\\0&1&-1&1&0&0\\0&0&1&-1&1&0\\0&0&0&0&0&1\end{bmatrix}.$$
+Pivot nelle colonne 1, 2, 3, 6: si aggiungono $\mathbf e_1$ ed $\mathbf e_4$.<br><br>
+<strong>Controllo:</strong> ha senso che serva $\mathbf e_4$, perché la quarta componente di $\vv_1$, $\vv_2$ ed $\mathbf e_1$ è sempre nulla. $\blacksquare$` },
+
+{ id: 'G7.3', sez: 7, tema: 'Completamento', d: 2,
+  t: r`Completare $q_1(x)=1+x$, $q_2(x)=x+x^{2}$ a una base di $P_2$.`,
+  hints: [ r`Usa l'isomorfismo $P_2\cong\R^{3}$ dato dalla base $\{1,x,x^{2}\}$.`,
+           r`Ai polinomi corrispondono $(1,1,0)$ e $(0,1,1)$.` ],
+  sol: r`$$\begin{bmatrix}1&0&1&0&0\\1&1&0&1&0\\0&1&0&0&1\end{bmatrix}\to\begin{bmatrix}1&0&1&0&0\\0&1&-1&1&0\\0&0&1&-1&1\end{bmatrix}.$$
+Pivot nelle colonne 1, 2, 3: si aggiunge $\mathbf e_1$, cioè il polinomio $1$. La base è $\{1+x,\ x+x^{2},\ 1\}$.<br><br>
+<strong>Controllo:</strong> $x=q_1-1$ e $x^{2}=q_2-q_1+1$, quindi tutta la base canonica si ottiene da questi tre polinomi ✓. $\blacksquare$` },
+
+{ id: 'G7.4', sez: 7, tema: 'Grassmann', d: 2,
+  t: r`In $\R^{4}$ siano $W_1=\operatorname{span}\{(1,0,1,0),(0,1,0,1)\}$ e $W_2=\operatorname{span}\{(1,1,1,1),(1,0,0,1)\}$. Trovare $\dim(W_1+W_2)$, $\dim(W_1\cap W_2)$ e una base di entrambi.`,
+  hints: [ r`Metti i quattro generatori nelle colonne di una matrice e calcola il rango.`,
+           r`Il terzo vettore è la somma dei primi due.`,
+           r`Grassmann dà $\dim(W_1\cap W_2)$; se vale $1$, basta un vettore comune non nullo.` ],
+  sol: r`Con i generatori $\mathbf a,\mathbf b,\mathbf c,\mathbf d$ nelle colonne, il rango è $3$, con pivot nelle colonne 1, 2, 4. Infatti $\mathbf c=\mathbf a+\mathbf b$. Quindi $\{\mathbf a,\mathbf b,\mathbf d\}$ è una base di $W_1+W_2$ e $\dim(W_1+W_2)=3$.<br>
+Per Grassmann, $\dim(W_1\cap W_2)=2+2-3=1$. Il vettore $\mathbf c=(1,1,1,1)$ sta in $W_2$ e, essendo $\mathbf a+\mathbf b$, anche in $W_1$: è una base dell'intersezione.<br><br>
+<strong>Controllo:</strong> $(1,0,0,1)\notin W_1$, perché gli elementi di $W_1$ hanno la forma $(\alpha,\beta,\alpha,\beta)$: quindi $W_2\ne W_1$ e la dimensione $1$ è coerente ✓. $\blacksquare$` },
+
+{ id: 'G7.5', sez: 7, tema: 'Grassmann', d: 2,
+  t: r`In $\R^{4}$ con coordinate $(x,y,z,w)$ siano $U:\ x+y=0,\ z+w=0$ e $V:\ x-z=0,\ y-w=0$. Trovare $U\cap V$ e $\dim(U+V)$.`,
+  hints: [ r`L'intersezione è il sistema di tutte e quattro le equazioni.`,
+           r`Le quattro equazioni hanno rango $3$.`,
+           r`$\dim U=\dim V=2$: Grassmann fa il resto.` ],
+  sol: r`Da $x=z$, $y=w$, $y=-x$ si ottiene $(x,y,z,w)=x(1,-1,1,-1)$, e $z+w=0$ è automatica. Quindi
+$$U\cap V=\operatorname{span}\{(1,-1,1,-1)\}.$$
+$\dim U=\dim V=4-2=2$ per rango + nullità, e per Grassmann $\dim(U+V)=2+2-1=3$.<br><br>
+<strong>Controllo:</strong> il vettore soddisfa tutte e quattro le equazioni ✓. $\blacksquare$` },
+
+{ id: 'G7.6', sez: 7, tema: 'Somma diretta', d: 2,
+  t: r`In $\R^{3}$ siano $W_1:\ x+y+z=0$ e $W_2=\operatorname{span}\{(1,1,1)\}$. Mostrare che $\R^{3}=W_1\oplus W_2$ e scrivere $(3,0,0)$ come somma di un elemento di $W_1$ e uno di $W_2$.`,
+  hints: [ r`Serve $W_1\cap W_2=\{\underline0\}$: quali multipli di $(1,1,1)$ stanno su $W_1$?`,
+           r`Poi Grassmann dà la dimensione della somma.`,
+           r`Cerca $c$ tale che $(3,0,0)-c(1,1,1)\in W_1$.` ],
+  sol: r`$c(1,1,1)\in W_1\iff3c=0\iff c=0$, quindi $W_1\cap W_2=\{\underline0\}$. Per Grassmann $\dim(W_1+W_2)=2+1-0=3$, cioè la somma è tutto $\R^{3}$ ed è diretta.<br>
+Per la decomposizione: $(3-c,-c,-c)\in W_1\iff3-3c=0\iff c=1$. Quindi
+$$(3,0,0)=(2,-1,-1)+(1,1,1).$$
+<strong>Controllo:</strong> $2-1-1=0$ ✓. La scrittura è unica, proprio perché la somma è diretta. $\blacksquare$` },
+
+{ id: 'G7.7', sez: 7, tema: 'Somma diretta', d: 3,
+  t: r`In $\M_{\R}(2,2)$ siano $S$ le matrici simmetriche e $T$ quelle antisimmetriche ($A^{T}=-A$). Mostrare che $\M_{\R}(2,2)=S\oplus T$ e decomporre $\begin{bmatrix}1&2\\3&4\end{bmatrix}$.`,
+  hints: [ r`Trova le dimensioni: $\dim S=3$, $\dim T=1$.`,
+           r`Se $A=A^{T}$ e $A=-A^{T}$, che cosa si può dire di $A$?`,
+           r`Ogni matrice si scrive $A=\frac12(A+A^{T})+\frac12(A-A^{T})$.` ],
+  sol: r`Una simmetrica ha tre elementi liberi, un'antisimmetrica ha diagonale nulla e un solo elemento libero: $\dim S=3$, $\dim T=1$.<br>
+Se $A\in S\cap T$, allora $A=A^{T}=-A$, quindi $A=O$: l'intersezione è banale. Per Grassmann $\dim(S+T)=4=\dim\M_{\R}(2,2)$, e la somma è diretta.<br>
+La decomposizione è $A=\frac12(A+A^{T})+\frac12(A-A^{T})$:
+$$\begin{bmatrix}1&2\\3&4\end{bmatrix}=\begin{bmatrix}1&\frac52\\\frac52&4\end{bmatrix}+\begin{bmatrix}0&-\frac12\\\frac12&0\end{bmatrix}.$$
+<strong>Controllo:</strong> $\frac52-\frac12=2$ e $\frac52+\frac12=3$ ✓. $\blacksquare$` },
+
+{ id: 'G7.8', sez: 7, tema: 'Complementi', d: 2,
+  t: r`Trovare il complemento ortogonale di $W=\operatorname{span}\{(1,1,0,0),(0,0,1,1)\}$ in $\R^{4}$.`,
+  hints: [ r`$W^{\perp}$ è l'insieme delle soluzioni del sistema $\langle\vx,\vw_i\rangle=0$.`,
+           r`La matrice dei coefficienti ha i generatori per righe.` ],
+  sol: r`Il sistema è $x+y=0$, $z+w=0$, con due variabili libere:
+$$W^{\perp}=\operatorname{span}\{(1,-1,0,0),(0,0,1,-1)\}.$$
+<strong>Controllo:</strong> $\dim W+\dim W^{\perp}=2+2=4$ ✓, e i prodotti scalari con i generatori di $W$ sono tutti nulli ✓. $\blacksquare$` },
+
+{ id: 'G7.9', sez: 7, tema: 'Complementi', d: 2,
+  t: r`Sia $W:\ x+y+z=0$ in $\R^{3}$. Trovare un complemento di $W$ con il metodo del completamento, e poi il complemento ortogonale. Coincidono?`,
+  hints: [ r`Base di $W$: $(-1,1,0)$ e $(-1,0,1)$.`,
+           r`Completala con la ricetta: il complemento è lo span del vettore aggiunto.`,
+           r`Il complemento ortogonale si legge dai coefficienti dell'equazione.` ],
+  sol: r`$$\begin{bmatrix}-1&-1&1&0&0\\1&0&0&1&0\\0&1&0&0&1\end{bmatrix}\to\begin{bmatrix}-1&-1&1&0&0\\0&-1&1&1&0\\0&0&1&1&1\end{bmatrix}.$$
+Pivot nelle colonne 1, 2, 3: si aggiunge $\mathbf e_1$, e un complemento è $U=\operatorname{span}\{(1,0,0)\}$.<br>
+Il complemento ortogonale è $W^{\perp}=\operatorname{span}\{(1,1,1)\}$.<br>
+<strong>Non coincidono:</strong> un sottospazio ha infiniti complementi, e quello ortogonale è uno solo di essi.<br><br>
+<strong>Controllo:</strong> $(1,0,0)$ e $(1,1,1)$ non soddisfano $x+y+z=0$, quindi entrambe le rette sono davvero fuori da $W$ ✓. $\blacksquare$` },
+
+{ id: 'G7.10', sez: 7, tema: 'Grassmann', d: 3,
+  t: r`Mostrare con la formula di Grassmann che: (a) due sottospazi di dimensione $3$ di $\R^{4}$ hanno in comune almeno un piano; (b) due piani per l'origine di $\R^{3}$ non possono avere in comune solo $\underline0$.`,
+  hints: [ r`Riscrivi la formula come $\dim(W_1\cap W_2)=\dim W_1+\dim W_2-\dim(W_1+W_2)$.`,
+           r`$W_1+W_2$ è un sottospazio dello spazio ambiente: quanto può valere al massimo la sua dimensione?` ],
+  sol: r`Poiché $\dim(W_1+W_2)\le\dim V$:
+$$\dim(W_1\cap W_2)\ge\dim W_1+\dim W_2-\dim V.$$
+<strong>(a)</strong> $\dim(W_1\cap W_2)\ge3+3-4=2$.<br>
+<strong>(b)</strong> $\dim(W_1\cap W_2)\ge2+2-3=1$: l'intersezione contiene almeno una retta.<br><br>
+<strong>Morale:</strong> quando le dimensioni sono grandi rispetto allo spazio, i sottospazi sono costretti a incontrarsi. $\blacksquare$` },
+
+/* ==================== SEZIONE 8: DETERMINANTI ==================== */
+{ id: 'G8.1', sez: 8, tema: 'Calcolo del determinante', d: 1,
+  t: r`Calcolare con il MEG $\begin{vmatrix}2&1&3\\4&1&7\\-2&2&0\end{vmatrix}$.`,
+  hints: [ r`Annulla la prima colonna con $R_2-2R_1$ e $R_3+R_1$: queste operazioni non cambiano il determinante.`,
+           r`Alla fine hai una triangolare alta.` ],
+  sol: r`$$\begin{vmatrix}2&1&3\\4&1&7\\-2&2&0\end{vmatrix}=\begin{vmatrix}2&1&3\\0&-1&1\\0&3&3\end{vmatrix}=\begin{vmatrix}2&1&3\\0&-1&1\\0&0&6\end{vmatrix}=2\cdot(-1)\cdot6=-12.$$
+<strong>Controllo con Sarrus:</strong> $0-14+24+6-28-0=-12$ ✓. $\blacksquare$` },
+
+{ id: 'G8.2', sez: 8, tema: 'Calcolo del determinante', d: 1,
+  t: r`Calcolare con la regola di Sarrus $\begin{vmatrix}0&2&0\\1&3&4\\5&0&1\end{vmatrix}$.`,
+  hints: [ r`Con molti zeri, solo pochi dei sei prodotti sopravvivono.` ],
+  sol: r`I tre prodotti col $+$ sono $0\cdot3\cdot1$, $2\cdot4\cdot5$, $0\cdot1\cdot0$; quelli col $-$ sono $0\cdot3\cdot5$, $0\cdot4\cdot0$, $2\cdot1\cdot1$. Quindi $\det=40-2=38$.<br><br>
+<strong>Controllo</strong> lungo la prima riga: $-2\begin{vmatrix}1&4\\5&1\end{vmatrix}=-2(1-20)=38$ ✓. $\blacksquare$` },
+
+{ id: 'G8.3', sez: 8, tema: 'Calcolo del determinante', d: 2,
+  t: r`Calcolare con Laplace $\begin{vmatrix}1&0&2&0\\3&1&0&1\\0&0&2&0\\1&2&1&3\end{vmatrix}$.`,
+  hints: [ r`Cerca la riga o la colonna con più zeri.`,
+           r`La terza riga ha un solo elemento non nullo, in posizione $(3,3)$.` ],
+  sol: r`Lungo la terza riga, con segno $(-1)^{3+3}=+$:
+$$\det=2\begin{vmatrix}1&0&0\\3&1&1\\1&2&3\end{vmatrix}=2\cdot1\cdot\begin{vmatrix}1&1\\2&3\end{vmatrix}=2\cdot1=2.$$
+<strong>Controllo:</strong> il minore $3\times3$ si sviluppa lungo la prima riga, e $3-2=1$ ✓. $\blacksquare$` },
+
+{ id: 'G8.4', sez: 8, tema: 'Calcolo del determinante', d: 2,
+  t: r`Per quali $k\in\R$ la matrice $A=\begin{bmatrix}1&1&1\\1&k&1\\1&1&k\end{bmatrix}$ è invertibile?`,
+  hints: [ r`Invertibile $\iff\det A\ne0$.`,
+           r`Con $R_2-R_1$ e $R_3-R_1$ diventa triangolare, senza dividere per nulla.` ],
+  sol: r`$$\det A=\begin{vmatrix}1&1&1\\0&k-1&0\\0&0&k-1\end{vmatrix}=(k-1)^{2}.$$
+$A$ è invertibile $\iff k\ne1$.<br><br>
+<strong>Controllo:</strong> per $k=1$ le tre righe coincidono, e infatti $r(A)=1$ ✓. $\blacksquare$` },
+
+{ id: 'G8.5', sez: 8, tema: 'Binet', d: 2,
+  t: r`Siano $A,B$ di ordine $3$ con $\det A=3$ e $\det B=-2$. Calcolare $\det(2A)$, $\det(A^{T}B^{-1})$, $\det(A^{2}B)$, $\det(B^{-1}AB)$.`,
+  hints: [ r`Attenzione al primo: $2A$ moltiplica tutte e tre le righe.`,
+           r`$\det(A^{T})=\det A$ e $\det(B^{-1})=1/\det B$.`,
+           r`L'ultima matrice è simile ad $A$.` ],
+  sol: r`$\det(2A)=2^{3}\cdot3=24$.<br>
+$\det(A^{T}B^{-1})=3\cdot\left(-\tfrac12\right)=-\tfrac32$.<br>
+$\det(A^{2}B)=3^{2}\cdot(-2)=-18$.<br>
+$\det(B^{-1}AB)=\det A=3$, perché le due matrici sono simili.<br><br>
+<strong>Attenzione:</strong> la risposta $6$ per $\det(2A)$ è l'errore classico. $\blacksquare$` },
+
+{ id: 'G8.6', sez: 8, tema: 'Inversa', d: 2,
+  t: r`Calcolare con la formula di Laplace l'inversa di $A=\begin{bmatrix}2&1&0\\1&1&0\\0&3&1\end{bmatrix}$.`,
+  hints: [ r`La terza colonna ha un solo elemento non nullo: $\det A$ si calcola subito.`,
+           r`Calcola i nove complementi algebrici, con i segni a scacchiera.`,
+           r`Non dimenticare di trasporre.` ],
+  sol: r`Lungo la terza colonna $\det A=\begin{vmatrix}2&1\\1&1\end{vmatrix}=1$. I complementi algebrici sono
+$$C=\begin{bmatrix}1&-1&3\\-1&2&-6\\0&0&1\end{bmatrix},\qquad A^{-1}=\frac11C^{T}=\begin{bmatrix}1&-1&0\\-1&2&0\\3&-6&1\end{bmatrix}.$$
+<strong>Controllo:</strong> $AA^{-1}$ ha righe $(2-1,\,-2+2,\,0)=(1,0,0)$, $(1-1,\,-1+2,\,0)=(0,1,0)$, $(-3+3,\,6-6,\,1)=(0,0,1)$ ✓. $\blacksquare$` },
+
+{ id: 'G8.7', sez: 8, tema: 'Regola di Cramer', d: 2,
+  t: r`Risolvere con la regola di Cramer $\begin{cases}x+y=3\\y+z=5\\x+z=4\end{cases}$.`,
+  hints: [ r`Calcola $\Delta=\det A$ prima di tutto.`,
+           r`Per $\Delta_j$ sostituisci la colonna $j$ con $(3,5,4)$.` ],
+  sol: r`$$\Delta=\begin{vmatrix}1&1&0\\0&1&1\\1&0&1\end{vmatrix}=2,\ \ \Delta_1=\begin{vmatrix}3&1&0\\5&1&1\\4&0&1\end{vmatrix}=2,\ \ \Delta_2=\begin{vmatrix}1&3&0\\0&5&1\\1&4&1\end{vmatrix}=4,\ \ \Delta_3=\begin{vmatrix}1&1&3\\0&1&5\\1&0&4\end{vmatrix}=6.$$
+Quindi $(x,y,z)=(1,2,3)$.<br><br>
+<strong>Controllo:</strong> $1+2=3$, $2+3=5$, $1+3=4$ ✓. $\blacksquare$` },
+
+{ id: 'G8.8', sez: 8, tema: 'Kronecker', d: 2,
+  t: r`Con il teorema di Kronecker, trovare il rango di $M=\begin{bmatrix}1&2&1&0\\2&4&3&1\\1&2&2&k\end{bmatrix}$ al variare di $k\in\R$, e una base di $\Imag(M)$.`,
+  hints: [ r`Parti da un minore non nullo di ordine $2$: per esempio righe 1, 2 e colonne 1, 3.`,
+           r`Gli orlati di quel minore sono due: con la colonna 2 e con la colonna 4.`,
+           r`La colonna 2 è il doppio della colonna 1, quindi il primo orlato è nullo.` ],
+  sol: r`Sia $\delta=\begin{vmatrix}1&1\\2&3\end{vmatrix}=1\ne0$. I due orlati sono
+$$\begin{vmatrix}1&2&1\\2&4&3\\1&2&2\end{vmatrix}=0,\qquad\begin{vmatrix}1&1&0\\2&3&1\\1&2&k\end{vmatrix}=k-1.$$
+<strong>$k=1$:</strong> entrambi nulli, quindi $r(M)=2$; una base di $\Imag(M)$ è data dalle colonne 1 e 3.<br>
+<strong>$k\ne1$:</strong> c'è un minore non nullo di ordine $3$, che è il massimo possibile: $r(M)=3$; una base è data dalle colonne 1, 3, 4.<br><br>
+<strong>Controllo col MEG:</strong> per $k=1$ la terza riga è la differenza delle prime due, quindi $r(M)=2$ ✓. $\blacksquare$` },
+
+{ id: 'G8.9', sez: 8, tema: 'Matrici simili', d: 3,
+  t: r`(a) Mostrare che $\begin{bmatrix}1&2\\0&3\end{bmatrix}$ e $\begin{bmatrix}1&0\\0&4\end{bmatrix}$ non sono simili. (b) Mostrare che se $A$ è simile a $I$, allora $A=I$. (c) Dedurne che avere lo stesso determinante non basta per essere simili.`,
+  hints: [ r`Per (a) confronta i determinanti.`,
+           r`Per (b) calcola $S^{-1}IS$.`,
+           r`Per (c) prova $\begin{bmatrix}1&1\\0&1\end{bmatrix}$.` ],
+  sol: r`<strong>(a)</strong> I determinanti sono $3$ e $4$. Matrici simili hanno lo stesso determinante, quindi non sono simili.<br>
+<strong>(b)</strong> $S^{-1}IS=S^{-1}S=I$, per ogni $S$ invertibile.<br>
+<strong>(c)</strong> $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ ha determinante $1=\det I$, ma è diversa da $I$: per (b) non è simile a $I$.<br><br>
+<strong>Morale:</strong> il determinante è un test solo in una direzione. Se è diverso, le matrici non sono simili; se è uguale, non si conclude nulla. $\blacksquare$` },
+
+{ id: 'G8.10', sez: 8, tema: 'Potenze', d: 3,
+  t: r`Sia $A=\begin{bmatrix}1&1\\1&0\end{bmatrix}$. (a) Calcolare $A^{5}$ e ricavare $F_6$ e $F_5$. (b) Mostrare per induzione che $A^{n}=\begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}$ per $n\ge1$. (c) Usando il determinante, dedurre l'identità $F_{n+1}F_{n-1}-F_n^{2}=(-1)^{n}$.`,
+  hints: [ r`$A^{2}=\begin{bmatrix}2&1\\1&1\end{bmatrix}$.`,
+           r`Per l'induzione calcola $A^{n}\cdot A$ e usa la relazione di ricorrenza.`,
+           r`$\det(A^{n})=(\det A)^{n}$ e $\det A=-1$.` ],
+  sol: r`<strong>(a)</strong> $A^{5}=\begin{bmatrix}8&5\\5&3\end{bmatrix}$, e $\vu_6=A^{5}\begin{bmatrix}1\\0\end{bmatrix}=\begin{bmatrix}8\\5\end{bmatrix}$: $F_6=8$, $F_5=5$.<br>
+<strong>(b)</strong> Per $n=1$: $A=\begin{bmatrix}F_2&F_1\\F_1&F_0\end{bmatrix}$ ✓. Poi
+$$A^{n+1}=\begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}\begin{bmatrix}1&1\\1&0\end{bmatrix}=\begin{bmatrix}F_{n+1}+F_n&F_{n+1}\\F_n+F_{n-1}&F_n\end{bmatrix}=\begin{bmatrix}F_{n+2}&F_{n+1}\\F_{n+1}&F_n\end{bmatrix}.$$
+<strong>(c)</strong> $\det(A^{n})=(-1)^{n}$, e il determinante della matrice in (b) è $F_{n+1}F_{n-1}-F_n^{2}$.<br><br>
+<strong>Controllo</strong> per $n=5$: $8\cdot3-25=-1$ ✓. $\blacksquare$` },
+
+{ id: 'G8.11', sez: 8, tema: 'Area e volume', d: 1,
+  t: r`Calcolare l'area del triangolo di vertici $A(1,1)$, $B(4,2)$, $C(2,5)$.`,
+  hints: [ r`Il triangolo è metà del parallelogramma formato da $\overrightarrow{AB}$ e $\overrightarrow{AC}$.`,
+           r`Non dimenticare il valore assoluto.` ],
+  sol: r`$\overrightarrow{AB}=(3,1)$, $\overrightarrow{AC}=(1,4)$:
+$$\operatorname{area}=\frac12\left|\,\begin{vmatrix}3&1\\1&4\end{vmatrix}\,\right|=\frac{11}{2}.$$
+Il determinante è positivo: da $\overrightarrow{AB}$ a $\overrightarrow{AC}$ si gira in senso antiorario.<br><br>
+<strong>Controllo</strong> partendo da $B$: $\overrightarrow{BA}=(-3,-1)$, $\overrightarrow{BC}=(-2,3)$ e $\tfrac12|-9-2|=\tfrac{11}{2}$ ✓. $\blacksquare$` },
+
+{ id: 'G8.12', sez: 8, tema: 'Area e volume', d: 2,
+  t: r`(a) Sia $L:\R^{2}\to\R^{2}$ rappresentata da $\begin{bmatrix}3&1\\1&1\end{bmatrix}$. Quanto vale l'area dell'immagine del disco di raggio $2$? (b) Quanto vale il volume dell'ellissoide di semiassi $1,2,3$?`,
+  hints: [ r`Usa $\operatorname{Vol}_n(L(K))=|\det L|\operatorname{Vol}_n(K)$.`,
+           r`Il disco di raggio $2$ ha area $4\pi$.`,
+           r`L'ellissoide è l'immagine della palla unitaria, di volume $\tfrac43\pi$.` ],
+  sol: r`<strong>(a)</strong> $\det L=3-1=2$, quindi l'area è $2\cdot4\pi=8\pi$.<br>
+<strong>(b)</strong> $\operatorname{diag}(1,2,3)$ ha determinante $6$: il volume è $6\cdot\tfrac43\pi=8\pi$.<br><br>
+<strong>Controllo:</strong> (b) coincide con la formula $\tfrac43\pi abc$ ✓. $\blacksquare$` },
+
+{ id: 'G8.13', sez: 8, tema: 'Calcolo del determinante', d: 2,
+  t: r`Per quali $k$ i vettori $(1,k,0)$, $(0,1,k)$, $(k,0,1)$ formano una base di $\R^{3}$? E di $\C^{3}$, se $k\in\C$?`,
+  hints: [ r`Sono tre vettori in dimensione tre: basta $\det\ne0$.`,
+           r`Il determinante vale $1+k^{3}$.`,
+           r`Su $\C$ l'equazione $k^{3}=-1$ ha tre soluzioni.` ],
+  sol: r`Mettendo i vettori per colonne, lungo la prima riga:
+$$\begin{vmatrix}1&0&k\\k&1&0\\0&k&1\end{vmatrix}=1\cdot1+k\cdot k^{2}=1+k^{3}.$$
+<strong>Su $\R$:</strong> base $\iff k\ne-1$.<br>
+<strong>Su $\C$:</strong> base $\iff k\notin\left\{-1,\ \tfrac12+\tfrac{\sqrt3}{2}i,\ \tfrac12-\tfrac{\sqrt3}{2}i\right\}$, le tre radici cubiche di $-1$.<br><br>
+<strong>Controllo:</strong> per $k=-1$ i tre vettori sommano a $\underline0$, quindi sono dipendenti ✓. $\blacksquare$` },
+
+{ id: 'G8.14', sez: 8, tema: 'Area e volume', d: 2,
+  t: r`Sia $L:P_2\to P_2$, $L(p):=p+p'$. Calcolare $\det(L)$ usando la base $\{1,x,x^{2}\}$ e poi la base $\{1,\,x+1,\,x^{2}\}$. Che cosa si osserva?`,
+  hints: [ r`Nella matrice rappresentativa, nelle colonne vanno le coordinate delle immagini dei vettori di base.`,
+           r`$L(x^{2})=x^{2}+2x$.`,
+           r`Nella seconda base: $x^{2}+2x=-2\cdot1+2(x+1)+x^{2}$.` ],
+  sol: r`<strong>Prima base.</strong> $L(1)=1$, $L(x)=1+x$, $L(x^{2})=2x+x^{2}$:
+$$A=\begin{bmatrix}1&1&0\\0&1&2\\0&0&1\end{bmatrix},\qquad\det A=1.$$
+<strong>Seconda base.</strong> $L(1)=1$, $L(x+1)=x+2=1+(x+1)$, $L(x^{2})=-2+2(x+1)+x^{2}$:
+$$\tilde A=\begin{bmatrix}1&1&-2\\0&1&2\\0&0&1\end{bmatrix},\qquad\det\tilde A=1.$$
+Le matrici sono diverse, ma i determinanti coincidono: $\det(L)=1$ non dipende dalla base, perché $A$ e $\tilde A$ sono simili.<br><br>
+<strong>Controllo:</strong> $L$ è invertibile, coerente con $\det(L)\ne0$: $p+p'=0$ con $p$ polinomio implica $p=0$ ✓. $\blacksquare$` }
 
   ];
 

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 7 · Somma di sottospazi e Grassmann — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="../../due-parziali.html">Parziali</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 7</h4>
+    <a href="#checklist">Checklist del programma</a>
+    <a href="#completamento">1 · Completamento a una base</a>
+    <a href="#ricetta" class="sub">La ricetta in $\K^{n}$</a>
+    <a href="#riferimento-piano" class="sub">Un riferimento adatto a un piano</a>
+    <a href="#completa-pn" class="sub">Il caso dei polinomi</a>
+    <a href="#intersezione">2 · Intersezione di sottospazi</a>
+    <a href="#unione" class="sub">L'unione non funziona</a>
+    <a href="#somma">3 · Somma di sottospazi</a>
+    <a href="#somma-base" class="sub">Una base della somma</a>
+    <a href="#diretta">4 · Somma diretta</a>
+    <a href="#diretta-base" class="sub">Base e dimensione</a>
+    <a href="#grassmann">5 · Formula di Grassmann</a>
+    <a href="#grassmann-lab" class="sub">Laboratorio</a>
+    <a href="#interna">6 · Interna ed esterna</a>
+    <a href="#complementi">7 · Complementi</a>
+    <a href="#ortogonale" class="sub">Complemento ortogonale</a>
+    <a href="#m-spazi">8 · Più di due spazi</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 7 · Geometria e Algebra Lineare · Lezione 8</div>
+      <h1>Completamento a base, somma di sottospazi, Grassmann</h1>
+      <p class="lead">Come si costruisce una base attorno a vettori dati, come si combinano due sottospazi, e perché la dimensione della somma non è la somma delle dimensioni: la differenza è esattamente l'<strong>intersezione</strong>.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Il punto d'arrivo è la <strong>formula di Grassmann</strong>:
+      $$\dim(W_1+W_2)=\dim W_1+\dim W_2-\dim(W_1\cap W_2).$$
+      È il principio di inclusione-esclusione delle dimensioni, e la sua dimostrazione è un'applicazione elegante di <a href="5-lineari.html#nullita">rango + nullità</a>. Tutto il resto della lezione serve a costruire gli oggetti che appaiono nella formula.</p>
+    </div>
+    <p class="small muted">Dagli appunti: <em>Lezione 8</em>. Libro: <em>ALG</em> pp. 180-184, p. 197 (proposizioni 8.5-8.7), pp. 239-242.</p>
+
+    <h2 id="checklist">Checklist del programma</h2>
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Avanzamento Sezione 7</strong>
+        <span class="muted small"><span data-progress-txt="g7">0/13</span> · <span data-progress-pct="g7">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="g7"><span style="width:0"></span></div>
+    </div>
+    <div id="checklistBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="completamento">1 · Completamento a una base</h2>
+    <div class="box def">
+      <div class="box-title">Il problema (Lezione 8)</div>
+      <p class="mb0">Sia $V$ uno spazio vettoriale con $n:=\dim V\lt+\infty$ e siano $\vv_1,\dots,\vv_k\in V$, con $k\lt n$, <strong>linearmente indipendenti</strong>. Trovare una base di $V$ che contiene questi $k$ vettori.</p>
+    </div>
+
+    <h3 id="ricetta">La ricetta in $\K^{n}$ <span class="badge star">risultato centrale</span></h3>
+    <div class="box prop">
+      <div class="box-title">Algoritmo</div>
+      <ol class="mb0">
+        <li>Si controlla che i vettori dati siano indipendenti: se non lo sono, nessuna scelta dei vettori aggiunti produrrà una base.</li>
+        <li>Si aggiunge una base di $\K^{n}$, per esempio la canonica: $[\vv_1|\dots|\vv_k|\mathbf e_1|\dots|\mathbf e_n]$.</li>
+        <li>Si riduce a scala con il MEG e si prendono, <strong>nella matrice di partenza</strong>, le colonne dei pivot.</li>
+      </ol>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">⚠ L'ordine è importante</div>
+      <p class="mb0">Prima i vettori dati, poi la base canonica. Il MEG sceglie le colonne da sinistra: se metti prima $\mathbf e_1,\dots,\mathbf e_n$, il risultato è la base canonica e i tuoi vettori restano fuori.</p>
+    </div>
+    <p>Il caso generale si riduce a questo: fissata una base di $V$, l'isomorfismo delle coordinate identifica $V$ con $\K^{n}$.</p>
+
+    <div class="box ex">
+      <div class="box-title">Esempio 1 (Lezione 8)</div>
+      <p>$\vv_1=(1,1,1)$ e $\vv_2=(1,2,3)$ sono indipendenti, perché nessuno è multiplo dell'altro. Allora
+      $$\begin{bmatrix}1&1&1&0&0\\1&2&0&1&0\\1&3&0&0&1\end{bmatrix}\to\begin{bmatrix}1&1&1&0&0\\0&1&-1&1&0\\0&2&-1&0&1\end{bmatrix}\to\begin{bmatrix}1&1&1&0&0\\0&1&-1&1&0\\0&0&1&-2&1\end{bmatrix}.$$
+      I pivot stanno nelle prime tre colonne: $\{\vv_1,\vv_2,\mathbf e_1\}$ è una base di $\R^{3}$.</p>
+      <p class="mb0">La risposta <strong>non è unica</strong>. Per esercizio: anche $\vv_3=(1,0,1)$ va bene, e infatti $\det[\vv_1|\vv_2|\vv_3]=2\ne0$.</p>
+    </div>
+
+    <h3 id="riferimento-piano">Un riferimento adatto a un piano</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio 2 (Lezione 8)</div>
+      <p>Trovare un sistema di riferimento $(O,\vec v_1,\vec v_2,\vec v_3)$ rispetto a cui il piano $\Pi:\ y+2z=-1$ ha equazione $z'=0$.</p>
+      <p><strong>Idea:</strong> si sceglie l'origine su $\Pi$ e si fa in modo che $\vec v_1,\vec v_2$ siano paralleli al piano. Con $x=t$ e $z=s$:
+      $$\vec r=\begin{bmatrix}0\\-1\\0\end{bmatrix}+t\begin{bmatrix}1\\0\\0\end{bmatrix}+s\begin{bmatrix}0\\-2\\1\end{bmatrix},$$
+      quindi $O(0,-1,0)$, $\vv_1=(1,0,0)$, $\vv_2=(0,-2,1)$.</p>
+      <p><strong>Completamento:</strong>
+      $$\begin{bmatrix}1&0&1&0&0\\0&-2&0&1&0\\0&1&0&0&1\end{bmatrix}\xrightarrow{R_2\leftrightarrow R_3}\begin{bmatrix}1&0&1&0&0\\0&1&0&0&1\\0&-2&0&1&0\end{bmatrix}\xrightarrow{R_3\to R_3+2R_2}\begin{bmatrix}1&0&1&0&0\\0&1&0&0&1\\0&0&0&1&2\end{bmatrix}.$$
+      I pivot sono nelle colonne 1, 2 e 4: $\vec v_3=\mathbf e_2=(0,1,0)$.</p>
+      <p class="mb0"><strong>Controllo.</strong> Si ha $x=x'$, $y=-2y'+z'-1$, $z=y'$ (metodo della <a href="5-lineari.html#cambio-origine">Lezione 5</a>). Sostituendo in $y+2z=-1$: $-2y'+z'-1+2y'=-1\iff z'=0$ ✓.</p>
+    </div>
+    <p class="small muted">Se il riferimento di partenza è cartesiano, quello trovato non lo è: $\langle\vv_2,\vv_3\rangle=-2\ne0$. Più avanti la procedura di Gram-Schmidt lo trasformerà in uno cartesiano, mantenendo l'equazione del piano nella forma $z''=0$.</p>
+
+    <h3 id="completa-pn">Il caso dei polinomi</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio 3 (Lezione 8)</div>
+      <p>Completare a una base di $P_3$ il sistema $q_1(x):=(x+1)^{3}$, $q_2(x):=x^{3}+3x^{2}+1$.</p>
+      <p><strong>Si passa in $\R^{4}$</strong> con l'isomorfismo indotto da $\{1,x,x^{2},x^{3}\}$, che manda $a_0+a_1x+a_2x^{2}+a_3x^{3}$ in $(a_0,a_1,a_2,a_3)$. Ai polinomi corrispondono $\vv_1=(1,3,3,1)$ e $\vv_2=(1,0,3,1)$, indipendenti. Allora
+      $$\begin{bmatrix}1&1&1&0&0&0\\3&0&0&1&0&0\\3&3&0&0&1&0\\1&1&0&0&0&1\end{bmatrix}\to\begin{bmatrix}1&1&1&0&0&0\\0&-3&-3&1&0&0\\0&0&-3&0&1&0\\0&0&-1&0&0&1\end{bmatrix}\xrightarrow{R_4\to3R_4-R_3}\begin{bmatrix}1&1&1&0&0&0\\0&-3&-3&1&0&0\\0&0&-3&0&1&0\\0&0&0&0&-1&3\end{bmatrix}.$$
+      Pivot nelle colonne 1, 2, 3, 5: si aggiungono $\mathbf e_1$ ed $\mathbf e_3$, cioè i polinomi $1$ e $x^{2}$.</p>
+      <p class="mb0"><strong>Risposta:</strong> $\{q_1,q_2,1,x^{2}\}$ è una base di $P_3$. Non è l'unica: anche $\{q_1,q_2,1,x^{3}\}$ lo è, perché la matrice delle coordinate ha determinante $9\ne0$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="intersezione">2 · Intersezione di sottospazi</h2>
+    <div class="box teo">
+      <div class="box-title">Proposizione 1 (Lezione 8) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Se $W_1,\dots,W_k$ sono sottospazi di $V$, anche $W:=\bigcap_{i=1}^{k}W_i$ è un sottospazio di $V$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa va verificato?</div>
+            <div class="step-content">Che, presi $\vu,\vv\in W$ e $\alpha,\beta\in\K$, si abbia $\alpha\vu+\beta\vv\in W$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa significa $\vu,\vv\in W$?</div>
+            <div class="step-content">Che $\vu,\vv\in W_i$ per <strong>ogni</strong> $i=1,\dots,k$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dove entra l'ipotesi?</div>
+            <div class="step-content">Ogni $W_i$ è un sottospazio, quindi $\alpha\vu+\beta\vv\in W_i$ per ogni $i$. Stando in tutti i $W_i$, sta nell'intersezione: $\alpha\vu+\beta\vv\in W$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Tre esempi (Lezione 8)</div>
+      <p><strong>1.</strong> In $\R^{3}$, $W_1:\ x+y+z=0$ e $W_2:\ x-z=0$ sono piani per l'origine. L'intersezione è il sistema delle due equazioni: una retta per l'origine, di dimensione $1$.</p>
+      <p><strong>2.</strong> In $\R^{4}$, $W_1=\operatorname{span}\{(1,2,2,1),(1,1,1,1)\}$ e $W_2=\operatorname{span}\{(-1,0,0,1),(0,1,-1,0)\}$. Un vettore comune soddisfa
+      $$t_1\begin{bmatrix}1\\2\\2\\1\end{bmatrix}+t_2\begin{bmatrix}1\\1\\1\\1\end{bmatrix}=s_1\begin{bmatrix}-1\\0\\0\\1\end{bmatrix}+s_2\begin{bmatrix}0\\1\\-1\\0\end{bmatrix}\iff\begin{bmatrix}1&1&1&0\\2&1&0&-1\\2&1&0&1\\1&1&-1&0\end{bmatrix}\begin{bmatrix}t_1\\t_2\\s_1\\s_2\end{bmatrix}=\underline0.$$
+      Il MEG dà $r(A)=4=\#\text{incognite}$: solo la soluzione banale, quindi $W_1\cap W_2=\{\underline0\}$.</p>
+      <p class="mb0"><strong>3.</strong> In $\M_{\K}(n,n)$ siano $W_1$ le matrici simmetriche, $W_2$ le triangolari alte, $W_3$ le triangolari basse. Allora $W_1\cap W_2\cap W_3$ è il sottospazio delle matrici diagonali, e in realtà coincidono con esso anche le tre intersezioni a due a due.</p>
+    </div>
+
+    <h3 id="unione">L'unione non funziona</h3>
+    <div class="box trap">
+      <div class="box-title">✗ L'analogo per l'unione è falso</div>
+      <p class="mb0">In $\R^{2}$ prendi $W_1:\ y=x$ e $W_2:\ y=-x$. Allora $(1,1),(-1,1)\in W_1\cup W_2$ ma $(1,1)+(-1,1)=(0,2)\notin W_1\cup W_2$. L'unione non è chiusa rispetto alla somma, quindi non è un sottospazio.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="somma">3 · Somma di sottospazi</h2>
+    <p>Esiste però un modo di costruire un sottospazio che contiene due sottospazi dati.</p>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 8)</div>
+      <p class="mb0">La <strong>somma</strong> dei sottospazi $W_1,W_2\subset V$ è
+      $$W_1+W_2:=\{\vw\in V:\ \exists\,\vw_1\in W_1,\ \vw_2\in W_2\ \text{tali che}\ \vw=\vw_1+\vw_2\}.$$</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Proposizione 2 (Lezione 8) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">$W_1+W_2$ è un sottospazio di $V$. Inoltre, se $W_1=\operatorname{span}\{\vv_1,\dots,\vv_k\}$ e $W_2=\operatorname{span}\{\vu_1,\dots,\vu_m\}$, allora
+      $$W_1+W_2=\operatorname{span}\{\vv_1,\dots,\vv_k,\vu_1,\dots,\vu_m\}.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché è un sottospazio? Come si scrivono due elementi generici?</div>
+            <div class="step-content">$\vu=\vu_1+\vu_2$ e $\vv=\vv_1+\vv_2$ con $\vu_1,\vv_1\in W_1$ e $\vu_2,\vv_2\in W_2$. Riordinando:
+            $$\alpha\vu+\beta\vv=(\alpha\vu_1+\beta\vv_1)+(\alpha\vu_2+\beta\vv_2),$$
+            somma di un elemento di $W_1$ e uno di $W_2$, perché entrambi sono sottospazi.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché $W_1\subset W_1+W_2$?</div>
+            <div class="step-content">Ogni $\vw_1\in W_1$ si scrive $\vw_1+\vzero$, e $\vzero\in W_2$ perché ogni sottospazio contiene il vettore nullo. Lo stesso vale per $W_2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Inclusione $\operatorname{span}\{\dots\}\subset W_1+W_2$?</div>
+            <div class="step-content">Per il passo precedente tutti i $\vv_i$ e i $\vu_j$ stanno in $W_1+W_2$, che è un sottospazio: contiene quindi tutte le loro combinazioni lineari.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Inclusione opposta?</div>
+            <div class="step-content">Sia $\vw=\vw_1+\vw_2$. Scrivendo $\vw_1=\sum_i\alpha_i\vv_i$ e $\vw_2=\sum_j\beta_j\vu_j$ si ottiene che $\vw$ è combinazione lineare di tutti i generatori. Valgono le due inclusioni, quindi l'uguaglianza. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box prop">
+      <div class="box-title">Osservazione</div>
+      <p class="mb0">$W_1+W_2$ è il <strong>più piccolo</strong> sottospazio che contiene sia $W_1$ sia $W_2$: se $W$ è un sottospazio con $W_1,W_2\subset W$, ogni $\vw=\vw_1+\vw_2$ sta in $W$.</p>
+    </div>
+
+    <h3 id="somma-base">Una base della somma</h3>
+    <p>La Proposizione 2 dà un insieme di generatori: per avere una base si estrae un sottosistema indipendente massimale, con le <a href="5-lineari.html#basi-span">colonne pivot</a>.</p>
+    <div class="box ex">
+      <div class="box-title">Esempio 4 (Lezione 8)</div>
+      <p>$W_1:=\operatorname{span}\{(x+1)^{2},(x-1)^{2}\}$ e $W_2:=\operatorname{span}\{x^{3}+x^{2}+1,\ x^{3}-x^{2}-1\}$ in $P_3$. Con l'isomorfismo $P_3\cong\R^{4}$:
+      $$\begin{bmatrix}1&1&1&-1\\2&-2&0&0\\1&1&1&-1\\0&0&1&1\end{bmatrix}\to\begin{bmatrix}1&1&1&-1\\0&-4&-2&2\\0&0&1&1\\0&0&0&0\end{bmatrix}.$$
+      I primi tre vettori sono indipendenti, tutti e quattro no. Una base di $W_1+W_2$ è quindi $\{(x+1)^{2},\ (x-1)^{2},\ x^{3}+x^{2}+1\}$, e $\dim(W_1+W_2)=3$.</p>
+      <p class="mb0">Nota: $\dim W_1=\dim W_2=2$, ma $3\lt2+2$. La dimensione della somma può essere <strong>minore</strong> della somma delle dimensioni.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="diretta">4 · Somma diretta</h2>
+    <p>Ecco un'altra costruzione, che parte da due spazi qualsiasi, senza che stiano in uno spazio comune.</p>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 8)</div>
+      <p class="mb0">Siano $U,V$ spazi vettoriali su $\K$. La <strong>somma diretta</strong> $U\oplus V$ è l'insieme delle coppie ordinate $(\vu,\vv)$ con $\vu\in U$, $\vv\in V$, con le operazioni componente per componente:
+      $$(\vu_1,\vv_1)+(\vu_2,\vv_2):=(\vu_1+\vu_2,\vv_1+\vv_2),\qquad\lambda(\vu,\vv):=(\lambda\vu,\lambda\vv).$$</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 8)</div>
+      <ul class="mb0">
+        <li>$\K^{2}\oplus\K^{2}\cong\M_{\K}(2,2)$, tramite $L(\vx,\vy):=[\vx|\vy]$, che è biettiva e lineare.</li>
+        <li>$\K^{2}\oplus\K^{2}\cong\K^{4}$, e più in generale $\K^{n}\oplus\K^{m}\cong\K^{n+m}$: si incollano le coordinate.</li>
+        <li>Se $U\ne V$, formalmente $U\oplus V$ e $V\oplus U$ sono spazi diversi, ma sono isomorfi tramite $(\vu,\vv)\mapsto(\vv,\vu)$.</li>
+      </ul>
+    </div>
+
+    <h3 id="diretta-base">Base e dimensione</h3>
+    <div class="box teo">
+      <div class="box-title">Proposizione 3 (Lezione 8) <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">Se $\{\vu_1,\dots,\vu_n\}$ è una base di $U$ e $\{\vv_1,\dots,\vv_m\}$ è una base di $V$, allora
+      $$B:=\{(\vu_1,\vzero),\dots,(\vu_n,\vzero),(\vzero,\vv_1),\dots,(\vzero,\vv_m)\}$$
+      è una base di $U\oplus V$. In particolare $\dim(U\oplus V)=\dim U+\dim V$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Indipendenza: a che cosa equivale una combinazione nulla?</div>
+            <div class="step-content">Per le operazioni componente per componente,
+            $$\sum_i\alpha_i(\vu_i,\vzero)+\sum_j\beta_j(\vzero,\vv_j)=\Big(\sum_i\alpha_i\vu_i,\ \sum_j\beta_j\vv_j\Big)=(\vzero,\vzero),$$
+            cioè alle due uguaglianze $\sum_i\alpha_i\vu_i=\vzero$ e $\sum_j\beta_j\vv_j=\vzero$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dove si usa che sono basi?</div>
+            <div class="step-content">I $\vu_i$ sono indipendenti e i $\vv_j$ pure: tutti gli $\alpha_i$ e i $\beta_j$ sono nulli. Quindi $B$ è indipendente.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Generatori: come si spezza un elemento generico?</div>
+            <div class="step-content">$(\vu,\vv)=(\vu,\vzero)+(\vzero,\vv)$. Scrivendo $\vu=\sum_i\alpha_i\vu_i$ e $\vv=\sum_j\beta_j\vv_j$ e applicando le mappe lineari $\vu\mapsto(\vu,\vzero)$ e $\vv\mapsto(\vzero,\vv)$ si ottiene
+            $$(\vu,\vv)=\sum_i\alpha_i(\vu_i,\vzero)+\sum_j\beta_j(\vzero,\vv_j).\qquad\blacksquare$$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- ============================================================ -->
+    <h2 id="grassmann">5 · Formula di Grassmann</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 8) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Se $W_1,W_2$ sono sottospazi di $V$ con $\dim W_1,\dim W_2\lt+\infty$, allora
+      $$\dim(W_1+W_2)=\dim W_1+\dim W_2-\dim(W_1\cap W_2).$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Qual è l'idea? Quale mappa ha come immagine $W_1+W_2$?</div>
+            <div class="step-content">$L:W_1\oplus W_2\to V$, $\ L(\vw_1,\vw_2):=\vw_1+\vw_2$. È lineare e la sua immagine è per definizione $W_1+W_2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quale teorema si applica, e che cosa manca?</div>
+            <div class="step-content">Rango + nullità, con la Proposizione 3 per il dominio:
+            $$\dim(W_1+W_2)=\dim(W_1\oplus W_2)-\dim\ker L=\dim W_1+\dim W_2-\dim\ker L.$$
+            Resta da mostrare che $\dim\ker L=\dim(W_1\cap W_2)$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Chi è il nucleo di $L$?</div>
+            <div class="step-content">$(\vw_1,\vw_2)\in\ker L\iff\vw_1+\vw_2=\vzero\iff\vw_2=-\vw_1$. Posto $\vv:=\vw_1$, si ha $\vv\in W_1$ e $-\vv\in W_2$; ma $-\vv\in W_2\iff\vv\in W_2$, perché $W_2$ è un sottospazio. Quindi
+            $$\ker L=\{(\vv,-\vv):\ \vv\in W_1\cap W_2\}.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché quel nucleo ha la dimensione di $W_1\cap W_2$?</div>
+            <div class="step-content">È l'immagine di $\mathcal M:W_1\cap W_2\to W_1\oplus W_2$, $\mathcal M(\vv):=(\vv,-\vv)$, che è lineare con $\ker\mathcal M=\{\vzero\}$. Di nuovo per rango + nullità, $\dim\ker L=\dim\Imag\mathcal M=\dim(W_1\cap W_2)$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box tip">
+      <div class="box-title">✓ Come si usa negli esercizi</div>
+      <p class="mb0">Dei quattro numeri nella formula, $\dim W_1$ e $\dim W_2$ si leggono subito. Il rango di tutti i generatori dà $\dim(W_1+W_2)$, e la formula regala $\dim(W_1\cap W_2)$ <strong>senza risolvere nessun sistema</strong>. Se poi quella dimensione è $1$, basta trovare un solo vettore non nullo comune.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Tre esempi (Lezione 8)</div>
+      <p><strong>1.</strong> Le rette $W_1:\ y=x$ e $W_2:\ y=-x$ di $\R^{2}$: $\dim(W_1+W_2)=1+1-0=2$, quindi $W_1+W_2=\R^{2}$.</p>
+      <p><strong>2.</strong> I piani $W_1:\ x+y+z=0$ e $W_2:\ x-z=0$ di $\R^{3}$: $\dim(W_1+W_2)=2+2-1=3$, quindi $W_1+W_2=\R^{3}$. Due piani distinti per l'origine generano tutto lo spazio.</p>
+      <p class="mb0"><strong>3.</strong> Nell'Esempio 4: $\dim(W_1\cap W_2)=2+2-3=1$. Basta un polinomio comune non nullo, e
+      $$\tfrac12(x+1)^{2}+\tfrac12(x-1)^{2}=x^{2}+1=\tfrac12(x^{3}+x^{2}+1)-\tfrac12(x^{3}-x^{2}-1).$$
+      Una base di $W_1\cap W_2$ è $\{x^{2}+1\}$.</p>
+    </div>
+
+    <h3 id="grassmann-lab">Laboratorio: Grassmann in $\R^{4}$</h3>
+    <div class="widget">
+      <div class="widget-head"><span>Le quattro dimensioni</span><span class="faint" style="text-transform:none;font-weight:400">scrivi i generatori, il MEG fa il resto</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="grSel">esempio</label>
+            <select id="grSel">
+              <option value="0">intersezione banale</option>
+              <option value="1">intersezione di dimensione 1</option>
+              <option value="2">stesso sottospazio</option>
+            </select>
+          </div>
+        </div>
+        <div class="controls">
+          <div class="ctrl"><label for="grA">$W_1$</label><input type="text" id="grA" style="width:128px"> <input type="text" id="grB" style="width:128px" aria-label="Secondo generatore di W1"></div>
+          <div class="ctrl"><label for="grC">$W_2$</label><input type="text" id="grC" style="width:128px"> <input type="text" id="grD" style="width:128px" aria-label="Secondo generatore di W2"></div>
+        </div>
+        <div class="matrice-wrap" id="grMat"></div>
+        <div class="readout" id="grOut"></div>
+      </div>
+    </div>
+    <p class="small muted">Ogni campo è un vettore di $\R^{4}$: quattro interi separati da virgole. La matrice ridotta ha per colonne, nell'ordine, i due generatori di $W_1$ e i due di $W_2$.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="interna">6 · Somma diretta interna ed esterna</h2>
+    <p>Leggendo la dimostrazione di Grassmann si vede che la mappa $L$ è iniettiva esattamente quando il suo nucleo è banale.</p>
+    <div class="box teo">
+      <div class="box-title">Corollario 1 e osservazione (Lezione 8)</div>
+      <p class="mb0">Per due sottospazi $W_1,W_2\subset V$:
+      $$W_1\cap W_2=\{\vzero\}\iff W_1+W_2\cong W_1\oplus W_2.$$
+      Se l'intersezione è banale, un isomorfismo è $L(\vw_1,\vw_2):=\vw_1+\vw_2$. Viceversa, spazi isomorfi hanno la stessa dimensione, e dalla formula di Grassmann segue $\dim(W_1\cap W_2)=0$.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Due significati dello stesso simbolo</div>
+      <ul class="mb0">
+        <li><strong>Somma diretta esterna:</strong> $W_1\oplus W_2$ è lo spazio delle coppie, un sottospazio di $V\oplus V$.</li>
+        <li><strong>Somma diretta interna:</strong> quando $W_1\cap W_2=\{\vzero\}$, si identifica la somma esterna con $W:=W_1+W_2\subset V$, e si scrive $W=W_1\oplus W_2$.</li>
+      </ul>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">⚠ La condizione</div>
+      <p class="mb0">La somma diretta <strong>interna</strong> è definita se e solo se $W_1\cap W_2=\{\vzero\}$. Nell'esempio delle rette $y=\pm x$ si ha $W_1\oplus W_2=\R^{2}$. Nell'esempio dei due piani invece $W_1+W_2=\R^{3}$ ma <strong>non</strong> si può scrivere $\R^{3}=W_1\oplus W_2$: la loro intersezione è una retta.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="complementi">7 · Complementi</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 8)</div>
+      <p class="mb0">Un <strong>complemento</strong> del sottospazio $W\subset V$ è un sottospazio $U\subset V$ tale che $W\oplus U=V$, in senso interno.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Esistenza e metodo</div>
+      <p class="mb0">Se $\dim V\lt+\infty$, ogni sottospazio ha almeno un complemento. In $\K^{n}$ si trova così: si prende una base di $W$, la si <strong>completa</strong> a una base di $\K^{n}$, e il complemento è lo span dei vettori aggiunti.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 8)</div>
+      <p>Complemento del piano $W:\ z=3y$ di $\R^{3}$. Con $x,y$ libere, una base è $\vv_1=(1,0,0)$, $\vv_2=(0,1,3)$. Completando:
+      $$\begin{bmatrix}1&0&1&0&0\\0&1&0&1&0\\0&3&0&0&1\end{bmatrix}\xrightarrow{R_3\to R_3-3R_2}\begin{bmatrix}1&0&1&0&0\\0&1&0&1&0\\0&0&0&-3&1\end{bmatrix}.$$
+      Pivot nelle colonne 1, 2, 4: si aggiunge $\mathbf e_2$, e
+      $$U=\operatorname{span}\{(0,1,0)\}=\{(x,y,z)\in\R^{3}:\ x=z=0\}.$$</p>
+      <p class="mb0"><strong>Controllo:</strong> $U\not\subset W$, perché $(0,1,0)$ non soddisfa $z=3y$; quindi $W\cap U=\{\underline0\}$ e la somma ha dimensione $2+1=3$ ✓.</p>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">⚠ «Il» complemento non esiste</div>
+      <p class="mb0">Ogni sottospazio $W\ne V$, $W\ne\{\vzero\}$, ha <strong>infiniti</strong> complementi. Per un piano per l'origine di $\R^{3}$, va bene qualunque retta per l'origine non contenuta nel piano.</p>
+    </div>
+
+    <h3 id="ortogonale">Complemento ortogonale</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 8)</div>
+      <p class="mb0">Sia $W$ un sottospazio di $\R^{n}$. Il <strong>complemento ortogonale</strong> di $W$ è
+      $$W^{\perp}:=\{\vu\in\R^{n}:\ \vu\perp\vw\ \ \forall\,\vw\in W\}.$$
+      Più avanti vedremo che è un sottospazio, che $W\oplus W^{\perp}=\R^{n}$ e che $(W^{\perp})^{\perp}=W$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Come si calcola</div>
+      <p class="mb0">Se $W=\operatorname{span}\{\vw_1,\dots,\vw_k\}$, allora $W^{\perp}$ è l'insieme delle soluzioni del sistema omogeneo $\langle\vx,\vw_i\rangle=0$, $i=1,\dots,k$. La matrice dei coefficienti ha i $\vw_i$ come <strong>righe</strong>: $A=[\vw_1|\dots|\vw_k]^{T}$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 8)</div>
+      <p class="mb0">Per $W=\operatorname{span}\{(1,0,0),(0,1,3)\}$ il sistema è $x=0$, $y+3z=0$, quindi $W^{\perp}=\operatorname{span}\{(0,-3,1)\}$. C'è una via più veloce: $\dim W^{\perp}=3-2=1$, e i coefficienti dell'equazione $0x-3y+z=0$ di $W$ sono proprio un <a href="6-posizione.html#normale">vettore ortogonale al piano</a>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="m-spazi">8 · Più di due spazi</h2>
+    <div class="box prop">
+      <div class="box-title">Ultima osservazione della lezione</div>
+      <p>La somma diretta si definisce per un numero finito qualsiasi di spazi: $V_1\oplus\dots\oplus V_m$ è l'insieme delle $m$-uple $(\vv_1,\dots,\vv_m)$, con le operazioni componente per componente. Per esempio $\K^{n}\oplus\dots\oplus\K^{n}$, $m$ volte, è isomorfo a $\M_{\K}(n,m)$.</p>
+      <p>Uno spazio $V$ è la somma diretta interna dei sottospazi $W_1,\dots,W_m$, e si scrive $V=\bigoplus_{i=1}^{m}W_i$, se ogni $\vv\in V$ si rappresenta <strong>in uno e un solo modo</strong> come
+      $$\vv=\vw_1+\dots+\vw_m,\qquad\vw_i\in W_i.$$
+      Equivale a dire che $L(\vw_1,\dots,\vw_m):=\sum_i\vw_i$ è un isomorfismo.</p>
+      <p class="mb0">Esempio: $\R^{m}=\operatorname{span}\{\mathbf e_1\}\oplus\dots\oplus\operatorname{span}\{\mathbf e_m\}$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 7</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Dove si cade</div>
+      <ul class="mb0">
+        <li><strong>Mettere la base canonica prima dei vettori dati</strong> nel completamento: il MEG sceglie le colonne da sinistra e i vettori dati spariscono.</li>
+        <li><strong>Non controllare che i vettori da completare siano indipendenti.</strong> Se sono dipendenti, il problema non ha soluzione.</li>
+        <li><strong>Prendere i vettori della matrice ridotta</strong> invece di quelli di partenza: si leggono le posizioni dei pivot, ma si prendono le colonne originali.</li>
+        <li><strong>Dire che $W_1\cup W_2$ è un sottospazio.</strong> In generale non è chiusa rispetto alla somma: il sottospazio giusto è $W_1+W_2$.</li>
+        <li><strong>Scrivere $\dim(W_1+W_2)=\dim W_1+\dim W_2$.</strong> Vale solo se l'intersezione è banale: in generale c'è $\le$, e la differenza è $\dim(W_1\cap W_2)$.</li>
+        <li><strong>Scrivere $W_1\oplus W_2$ in senso interno senza aver controllato</strong> che $W_1\cap W_2=\{\vzero\}$.</li>
+        <li><strong>Confondere «complemento» e «complementare insiemistico».</strong> Il complemento è un sottospazio e contiene $\vzero$; il complementare di un sottospazio no.</li>
+        <li><strong>Dire «il complemento di $W$».</strong> Ce ne sono infiniti. Unico è il complemento <em>ortogonale</em>.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="8-determinanti.html">Sezione 8 · Determinanti →</a>
+      <a class="btn" href="6-posizione.html">← Sezione 6</a>
+      <a class="btn" href="../esercizi.html?sez=7">Esercizi della Sezione 7</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 7 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261104"></script>
+<script src="../data/quiz.js?v=20261104"></script>
+<script src="../../assets/js/meg.js?v=20261104"></script>
+<script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../../assets/js/app.js?v=20261104"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.renderChecklist('#checklistBox', 7, 'geometria');
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 7; }), { statKey: 'geo7' });
+
+  /* ---------- Grassmann in R^4 ---------- */
+  (function () {
+    var ES = [
+      ['1, 2, 2, 1', '1, 1, 1, 1', '-1, 0, 0, 1', '0, 1, -1, 0'],
+      ['1, 0, 1, 0', '0, 1, 0, 1', '1, 1, 1, 1', '1, 0, 0, 1'],
+      ['1, 0, 1, 0', '0, 1, 0, 1', '1, 1, 1, 1', '1, -1, 1, -1']
+    ];
+    var ID = ['grA', 'grB', 'grC', 'grD'];
+    var sel = document.getElementById('grSel');
+    var mat = document.getElementById('grMat'), out = document.getElementById('grOut');
+
+    function leggi(id) {
+      var p = document.getElementById(id).value.split(/[,;\s]+/).filter(Boolean).map(Number);
+      return p.length === 4 && p.every(function (x) { return Number.isInteger(x); }) ? p : null;
+    }
+    function colonne(c) { return [0, 1, 2, 3].map(function (i) { return c.map(function (v) { return v[i]; }); }); }
+    function rango(c) { return MEG.riduci(MEG.da(colonne(c)), c.length).rangoA; }
+    function aggiorna() {
+      var v = ID.map(leggi);
+      if (v.some(function (x) { return !x; })) { mat.innerHTML = ''; out.innerHTML = 'Ogni campo deve contenere quattro numeri interi, per esempio 1, 0, 1, 0.'; return; }
+      var res = MEG.riduci(MEG.da(colonne(v)), 4);
+      var p = res.passi[res.passi.length - 1];
+      mat.innerHTML = MEG.html(p.M, { nA: 4, pivot: p.pivot });
+      var d1 = rango(v.slice(0, 2)), d2 = rango(v.slice(2)), ds = res.rangoA, di = d1 + d2 - ds;
+      out.innerHTML =
+        'dim W₁ = <b>' + d1 + '</b> &nbsp;·&nbsp; dim W₂ = <b>' + d2 + '</b> &nbsp;·&nbsp; dim(W₁+W₂) = <b>' + ds + '</b> (il rango)<br>' +
+        'dim(W₁∩W₂) = ' + d1 + ' + ' + d2 + ' − ' + ds + ' = <b>' + di + '</b><br>' +
+        (di === 0
+          ? '<span style="color:var(--ok)">L\'intersezione è banale: la somma è <b>diretta</b>.</span>'
+          : '<span style="color:var(--accent)">La somma non è diretta: i sottospazi hanno in comune uno spazio di dimensione ' + di + '.</span>');
+    }
+    function carica(i) { ID.forEach(function (id, k) { document.getElementById(id).value = ES[i][k]; }); aggiorna(); }
+    sel.addEventListener('change', function () { carica(+sel.value); });
+    ID.forEach(function (id) { document.getElementById(id).addEventListener('input', aggiorna); });
+    carica(0);
+  })();
+});
+</script>
+</body>
+</html>

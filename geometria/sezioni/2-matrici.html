@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261021">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
 </head>
 <body>
 
@@ -29,6 +29,9 @@
       <a href="3-spazi.html">3 · Spazi vettoriali</a>
       <a href="4-complessi.html">4 · Complessi</a>
       <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
       <a href="../teoremi.html">Teoremi</a>
       <a href="../esercizi.html">Esercizi</a>
     </nav>
@@ -54,7 +57,7 @@
     <a href="#inversa">4 · Matrice inversa</a>
     <a href="#condizioni" class="sub">Condizioni di invertibilità</a>
     <a href="#calcolo" class="sub">Calcolo dell'inversa</a>
-    <a href="#cramer">5 · Determinante e Cramer</a>
+    <a href="#cramer">5 · Sistemi quadrati e Cramer</a>
     <a href="#megj">6 · Gauss-Jordan (MEG-J)</a>
     <a href="#totridotta" class="sub">Totalmente ridotta</a>
     <a href="#labj" class="sub">Laboratorio MEG-J</a>
@@ -336,27 +339,38 @@
     </div>
 
     <!-- ============================================================ -->
-    <h2 id="cramer">5 · Determinante e teorema di Cramer</h2>
-
-    <div class="box def">
-      <div class="box-title">Determinante in ordine basso</div>
-      <p class="mb0">$$\det\begin{bmatrix}a&b\\c&d\end{bmatrix}=ad-bc,$$
-      $$\det\begin{bmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{bmatrix}=a_{11}\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\end{vmatrix}-a_{12}\begin{vmatrix}a_{21}&a_{23}\\a_{31}&a_{33}\end{vmatrix}+a_{13}\begin{vmatrix}a_{21}&a_{22}\\a_{31}&a_{32}\end{vmatrix}$$
-      (sviluppo di Laplace lungo la prima riga; si può sviluppare lungo qualunque riga o colonna, alternando i segni secondo $(-1)^{i+j}$).</p>
-    </div>
-    <p class="small muted">Conviene sviluppare lungo la riga o la colonna con <strong>più zeri</strong>: ogni zero elimina un minore da calcolare.</p>
+    <h2 id="cramer">5 · Sistemi quadrati: il teorema di Cramer</h2>
 
     <div class="box teo">
-      <div class="box-title">Teorema di Cramer <span class="badge star">risultato centrale</span></div>
-      <p class="mb0">Sia $A$ quadrata con $\det A\ne0$. Allora $A\vx=\vb$ ha una e una sola soluzione, data da
-      $$x_j=\frac{\det A_j}{\det A},\qquad j=1,\dots,n,$$
-      dove $A_j$ è $A$ con la <strong>$j$-esima colonna sostituita da $\vb$</strong>.</p>
+      <div class="box-title">Teorema 2 (di Cramer, Lezione 2) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Un sistema lineare $A\vx=\vb$ di $n$ equazioni in $n$ incognite ammette <strong>una unica soluzione</strong> se e solo se $r(A)=n$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Che cosa dice, per un sistema quadrato</div>
+      <ul>
+        <li>se $r(A)=n$, allora per <strong>ogni</strong> $\vb\in\K^{n}$ c'è una unica soluzione;</li>
+        <li>se $r(A)\ne n$, allora per alcuni $\vb$ non ci sono soluzioni, mentre per altri ce ne sono infinite.</li>
+      </ul>
+      <p class="mb0">È un <strong>corollario di Rouché-Capelli</strong>: la completa ha $n$ righe, quindi se $r(A)=n$ allora $n\ge r([A|\vb])\ge r(A)=n$. I due ranghi coincidono e valgono $\#\text{incognite}$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Due esempi (Lezione 2)</div>
+      <p><strong>1.</strong> $\begin{cases}x_1+x_2=b_1\\x_1-x_2=b_2\end{cases}$ ha $r(A)=2$: per ogni $b_1,b_2$ c'è una unica soluzione, $x_1=\frac{b_1+b_2}{2}$, $x_2=\frac{b_1-b_2}{2}$.</p>
+      <p class="mb0"><strong>2.</strong> $\begin{cases}x_1+x_2+x_3=b_1\\x_1-x_2+x_3=b_2\\x_1+x_3=b_3\end{cases}$ ha $r(A)=2\lt3$. La riduzione a scala lascia l'ultima riga $[0\ 0\ 0\ |\ b_3-\frac{b_1+b_2}{2}]$: nessuna soluzione se $b_3\ne\frac{b_1+b_2}{2}$, infinite altrimenti.</p>
+    </div>
+
+    <div class="box prop">
+      <div class="box-title">Il caso $2\times2$ (Teorema 5, Lezione 2, senza dimostrazione)</div>
+      <p class="mb0">$A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$ è invertibile se e solo se $ad-bc\ne0$, e in tal caso
+      $$A^{-1}=\frac{1}{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}.$$
+      Il numero $ad-bc$ è il <strong>determinante</strong> di $A$, trattato per ogni ordine nella <a href="8-determinanti.html">Sezione 8</a>.</p>
     </div>
 
     <div class="box warnb">
-      <div class="box-title">⚠ Quando usarlo davvero</div>
-      <p class="mb0">Quasi mai per risolvere un sistema: richiede $n+1$ determinanti di ordine $n$, molto più costosi del MEG. Serve invece quando ti interessa <strong>una sola incognita</strong>, oppure quando i coefficienti dipendono da un <strong>parametro</strong> e vuoi una formula chiusa. E richiede $A$ <em>quadrata</em> con $\det A\ne0$: se $\det A=0$ si torna a Rouché-Capelli.</p>
+      <div class="box-title">⚠ Teorema e regola di Cramer non sono la stessa cosa</div>
+      <p class="mb0">Quello sopra dice <em>quando</em> la soluzione è unica. La <a href="8-determinanti.html#cramer"><strong>regola di Cramer</strong></a> (Lezione 9) dice <em>quanto vale</em>: se $\det A\ne0$, allora $x_j=\dfrac{\det A_j}{\det A}$, dove $A_j$ è $A$ con la colonna $j$ sostituita da $\vb$. Si usa quasi mai per risolvere tutto un sistema, perché richiede $n+1$ determinanti; conviene quando interessa <strong>una sola incognita</strong> o quando c'è un <strong>parametro</strong>.</p>
     </div>
+    <p class="small muted">Nota: prima della Lezione 9 questa pagina chiamava «teorema di Cramer» la formula, come fanno molti libri. Ora segue la notazione del prof.</p>
 
     <!-- ============================================================ -->
     <h2 id="megj">6 · Eliminazione di Gauss-Jordan (MEG-J)</h2>
@@ -548,7 +562,7 @@
         <li><strong>Semplificare $AB=AC$ in $B=C$</strong> senza sapere che $A$ è invertibile.</li>
         <li><strong>Scrivere $(AB)^{-1}=A^{-1}B^{-1}$ o $(AB)^{T}=A^{T}B^{T}$.</strong> L'ordine si inverte.</li>
         <li><strong>Contare i parametri liberi come $n-m$.</strong> Sono $n-r$.</li>
-        <li><strong>Applicare Cramer con $\det A=0$</strong>, o a matrici non quadrate.</li>
+        <li><strong>Applicare la regola di Cramer con $\det A=0$</strong>, o a matrici non quadrate.</li>
         <li><strong>Dedurre da $\det A=0$ che il sistema è incompatibile.</strong> Dice solo che non c'è soluzione <em>unica</em>: può essere incompatibile oppure avere infinite soluzioni.</li>
         <li><strong>Dividere per un'espressione con parametro</strong> senza discutere il caso in cui si annulla.</li>
       </ul>
@@ -566,12 +580,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261021"></script>
-<script src="../data/topics.js?v=20261021"></script>
-<script src="../data/quiz.js?v=20261021"></script>
-<script src="../../assets/js/meg.js?v=20261021"></script>
-<script src="../../assets/js/plot.js?v=20261021"></script>
-<script src="../../assets/js/app.js?v=20261021"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261104"></script>
+<script src="../data/quiz.js?v=20261104"></script>
+<script src="../../assets/js/meg.js?v=20261104"></script>
+<script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../../assets/js/app.js?v=20261104"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 2, 'geometria');

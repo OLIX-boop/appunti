@@ -39,7 +39,10 @@ aggiungere una materia sono nel `README.md`.
   - Geometria: $\K$ per il campo, $\M_{\K}(m,n)$ per le matrici, $\tau_{\vv}$ per le traslazioni,
     gli assiomi di spazio vettoriale numerati (i)–(viii) nel suo ordine, «matrice
     **totalmente ridotta**» (non «forma a scala ridotta»), MEG-J in tre parti (MEG,
-    normalizzazione, seconda eliminazione).
+    normalizzazione, seconda eliminazione); **teorema di Cramer** = «soluzione unica $\iff r(A)=n$»
+    (Lezione 2), **regola di Cramer** = $x_j=\det A_j/\det A$ (Lezione 9); $\langle\vx,\vy\rangle$
+    per il prodotto scalare standard, $C^{T}$ (non $\operatorname{adj}$) nell'inversa, «fascio»
+    (non «fascia»), $A=[\vec v_1|-\vec v_2]$ per l'intersezione di due rette.
   - Se una convenzione del corso differisce dai libri, si scrive quella del corso e si aggiunge
     una nota breve che spiega la differenza.
 - **Refusi negli appunti del prof**: si segnalano in piccolo (`small muted`) nel punto in cui
@@ -48,9 +51,10 @@ aggiungere una materia sono nel `README.md`.
   dal programma ufficiale (badge «dim. scritto · n° N» / «dim. orale»). Per Geometria non c'è un
   documento equivalente: le stelline sono **redazionali** («risultato centrale» / «da conoscere»)
   e non vanno mai presentate come richieste del docente.
-- Quando un argomento non è ancora negli appunti pubblicati (es. il metodo dei minori di
-  Kronecker, che il tutor di Geometria usa nell'esercitazione del 7 ottobre), si usa la
-  definizione standard e lo si **dichiara** esplicitamente.
+- Quando un argomento non è ancora negli appunti pubblicati (com'era il metodo dei minori di
+  Kronecker, usato dal tutor di Geometria il 7 ottobre e arrivato solo con la Lezione 9), si usa
+  la definizione standard e lo si **dichiara** esplicitamente; appena il prof lo tratta, si
+  allinea il sito alla sua versione.
 - Anche le soluzioni dei **tutor** si verificano: se un passaggio è sbagliato si corregge e lo si
   segnala in piccolo (`small muted`), come per i refusi del prof.
 

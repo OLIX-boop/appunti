@@ -68,8 +68,8 @@
         { id: 'g2-12', t: r`Matrice inversa: definizione e unicità`, mark: '*', q: 'cap. 3 §1-5' },
         { id: 'g2-13', t: r`Condizioni di invertibilità; $(AB)^{-1}=B^{-1}A^{-1}$`, mark: '*', q: 'cap. 3 §1-5' },
         { id: 'g2-14', t: r`Calcolo dell'inversa con il MEG-J: $[A\,|\,I]\longrightarrow[I\,|\,A^{-1}]$`, q: 'Lez. 2 bis' },
-        { id: 'g2-15', t: r`Determinante $2\times2$ e $3\times3$; sviluppo di Laplace`, q: 'cap. 3 §1-5' },
-        { id: 'g2-16', t: r`Teorema di Cramer`, mark: '*', q: 'cap. 3 §1-5' },
+        { id: 'g2-15', t: r`Inversa di una matrice $2\times2$: $ad-bc\ne0$ (il determinante in generale è nella Sezione 8)`, q: 'Lez. 2' },
+        { id: 'g2-16', t: r`Teorema di Cramer: un sistema quadrato ha una unica soluzione $\iff r(A)=n$`, mark: '*', q: 'Lez. 2' },
         { id: 'g2-17', t: r`Eliminazione di Gauss-Jordan (MEG-J); matrice <em>totalmente ridotta</em> (unica)`, q: 'Lez. 2 bis' },
         { id: 'g2-18', t: r`Equazioni con matrici incognite: $AX=B$, $YA=B$, $A$ singolare, trasposizione`, q: 'Lez. 2 tres' }
       ]
@@ -156,6 +156,79 @@
         { id: 'g5-16', t: r`Teorema di rango + nullità`, mark: '*', q: 'Lez. 6' },
         { id: 'g5-17', t: r`Un punto sta in un piano? Equazione cartesiana di un piano col rango`, q: 'Lez. 6' }
       ]
+    },
+    {
+      n: 6,
+      slug: 'sezioni/6-posizione.html',
+      titolo: 'Posizione reciproca, ortogonalità, fasci',
+      sommario: r`Rette e piani si incontrano, sono paralleli o sghembi: lo decide il sistema dell'intersezione. Poi il prodotto scalare e i fasci.`,
+      topics: [
+        { id: 'g6-01', t: r`Vettori direzione; rette incidenti, parallele (senso largo e stretto), sghembe`, q: 'Lez. 7' },
+        { id: 'g6-02', t: r`Due rette nel piano, parametriche: il sistema $A\binom ts=\vec r_2-\vec r_1$ con $A=[\vec v_1|-\vec v_2]$`, mark: '*', q: 'Lez. 7' },
+        { id: 'g6-03', t: r`Due rette nel piano, cartesiane: incidenti $\iff a_1b_2-a_2b_1\ne0$`, q: 'Lez. 7' },
+        { id: 'g6-04', t: r`Due rette nello spazio: i quattro casi e il criterio con $\vec u,\vec v,\vec b$`, mark: '*', q: 'Lez. 7' },
+        { id: 'g6-05', t: r`$ax+by+cz=d$ descrive un piano $\iff(a,b,c)\ne\underline0$`, q: 'Lez. 7' },
+        { id: 'g6-06', t: r`Due piani con equazioni cartesiane: paralleli, coincidenti, incidenti`, mark: '*', q: 'Lez. 7' },
+        { id: 'g6-07', t: r`Due piani parametrici, o uno per tipo: i piani spostati e la sostituzione`, q: 'Lez. 7' },
+        { id: 'g6-08', t: r`Retta e piano: incidenti, paralleli, retta contenuta`, mark: '*', q: 'Lez. 7' },
+        { id: 'g6-09', t: r`$U\subset V$ si controlla sui generatori; $\vu\in\operatorname{span}$ e dipendenza lineare`, mark: '**', q: 'Add. Lez. 7' },
+        { id: 'g6-10', t: r`Rette cartesiane nello spazio; il sistema omogeneo è la retta parallela per l'origine`, q: 'Lez. 7' },
+        { id: 'g6-11', t: r`Due rette cartesiane nello spazio: distinguere sghembe da parallele`, mark: '*', q: 'Lez. 7' },
+        { id: 'g6-12', t: r`Prodotto scalare geometrico e standard $\langle\vx,\vy\rangle$; ortogonalità in $\R^{n}$`, q: 'Add. Lez. 7' },
+        { id: 'g6-13', t: r`Vettore normale: $\vec u\perp\Pi\iff\vec u$ è multiplo di $(a,b,c)$`, mark: '*', q: 'Lez. 7' },
+        { id: 'g6-14', t: r`Problemi di perpendicolarità: piano e retta normali, rette ortogonali`, q: 'Lez. 7' },
+        { id: 'g6-15', t: r`Fasci: definizione; rette per un punto; piani paralleli a un piano dato`, q: 'Lez. 7' },
+        { id: 'g6-16', t: r`Fascio di piani per una retta; parametri definiti a meno di un multiplo`, mark: '*', q: 'Lez. 7' },
+        { id: 'g6-17', t: r`Problemi con i fasci: piano per retta e punto, ortogonale a un vettore, parallelo a una retta`, q: 'Lez. 7' }
+      ]
+    },
+    {
+      n: 7,
+      slug: 'sezioni/7-grassmann.html',
+      titolo: 'Completamento a base, somma di sottospazi, Grassmann',
+      sommario: r`Costruire una base attorno a vettori dati, sommare e intersecare sottospazi, e la formula che lega le quattro dimensioni.`,
+      topics: [
+        { id: 'g7-01', t: r`Completamento a una base: il problema e la ricetta in $\K^{n}$ (conta l'ordine)`, mark: '*', q: 'ALG pp. 180-184' },
+        { id: 'g7-02', t: r`Riferimento adatto a un piano; completamento in $P_3$ tramite l'isomorfismo con $\R^{4}$`, q: 'Lez. 8' },
+        { id: 'g7-03', t: r`L'intersezione di sottospazi è un sottospazio`, mark: '*', q: 'Lez. 8' },
+        { id: 'g7-04', t: r`L'unione di sottospazi in generale non lo è: il controesempio`, q: 'Lez. 8' },
+        { id: 'g7-05', t: r`Somma $W_1+W_2$: è un sottospazio, generatori, il più piccolo che li contiene`, mark: '*', q: 'Lez. 8' },
+        { id: 'g7-06', t: r`Calcolo: base della somma e dell'intersezione`, q: 'Lez. 8' },
+        { id: 'g7-07', t: r`Somma diretta $U\oplus V$: coppie ordinate; $\K^{n}\oplus\K^{m}\cong\K^{n+m}$`, q: 'ALG p. 197' },
+        { id: 'g7-08', t: r`Base e dimensione di $U\oplus V$`, mark: '**', q: 'Lez. 8' },
+        { id: 'g7-09', t: r`Formula di Grassmann`, mark: '*', q: 'Lez. 8' },
+        { id: 'g7-10', t: r`$W_1\cap W_2=\{\vzero\}\iff W_1+W_2\cong W_1\oplus W_2$; somma interna ed esterna`, mark: '**', q: 'Lez. 8' },
+        { id: 'g7-11', t: r`Complemento di un sottospazio: esistenza, calcolo, infiniti complementi`, q: 'ALG pp. 239-242' },
+        { id: 'g7-12', t: r`Complemento ortogonale $W^{\perp}$ e suo calcolo`, q: 'Lez. 8' },
+        { id: 'g7-13', t: r`Somma diretta di $m$ spazi; scrittura unica`, q: 'Lez. 8' }
+      ]
+    },
+    {
+      n: 8,
+      slug: 'sezioni/8-determinanti.html',
+      titolo: 'Determinanti',
+      sommario: r`Il numero che dice se una matrice è invertibile: calcolo, Laplace, Binet, inversa, Cramer, Kronecker, matrici simili, volumi.`,
+      topics: [
+        { id: 'g8-01', t: r`Il determinante come unica mappa con le proprietà (i)–(iv)`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-02', t: r`Determinante $2\times2$; calcolo con il MEG`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-03', t: r`$\det A\ne0\iff r(A)=n$`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-04', t: r`Regola di Sarrus (solo ordine 3)`, q: 'Lez. 9' },
+        { id: 'g8-05', t: r`$\det(A^{T})=\det A$; proprietà sulle colonne; matrici triangolari basse`, q: 'Lez. 9' },
+        { id: 'g8-06', t: r`Minore complementare e cofattore (complemento algebrico)`, q: 'Lez. 9' },
+        { id: 'g8-07', t: r`Sviluppi di Laplace lungo una riga o una colonna`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-08', t: r`Le condizioni equivalenti (a)–(k): invertibilità, rango, indipendenza, $L_A$`, mark: '*', q: 'ALG pp. 271-281' },
+        { id: 'g8-09', t: r`Righe nulle o proporzionali danno $\det=0$; $n$ vettori sono base $\iff\det\ne0$`, q: 'Lez. 9' },
+        { id: 'g8-10', t: r`Teorema di Binet; $\det(A^{-1})=1/\det A$`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-11', t: r`Formula di Laplace per l'inversa: $A^{-1}=\frac{1}{\det A}C^{T}$`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-12', t: r`Regola di Cramer: $x_j=\det A_j/\det A$`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-13', t: r`Minori di una matrice; minori che orlano; teorema di Kronecker`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-14', t: r`Rango e base dell'immagine con i minori orlati`, q: 'Lez. 9' },
+        { id: 'g8-15', t: r`Potenze di una matrice; $\det(A^{n})=(\det A)^{n}$; Fibonacci`, q: 'Lez. 9' },
+        { id: 'g8-16', t: r`Matrici simili: relazione di equivalenza, stesso determinante, $B^{n}=S^{-1}A^{n}S$`, mark: '*', q: 'Lez. 9' },
+        { id: 'g8-17', t: r`Il determinante $2\times2$ come area con segno; volumi e orientamento`, mark: '**', q: 'Lez. 9' },
+        { id: 'g8-18', t: r`Determinante di un endomorfismo: non dipende dalla base`, q: 'Lez. 9' },
+        { id: 'g8-19', t: r`Ipervolume e $\operatorname{Vol}_n(L(K))=|\det L|\operatorname{Vol}_n(K)$; ellisse ed ellissoide`, q: 'Lez. 9' }
+      ]
     }
   ];
 
@@ -163,7 +236,7 @@
   window.AM.registraMateria({
     key: 'geometria',
     nome: 'Geometria e Algebra Lineare',
-    sottotitolo: 'Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari',
+    sottotitolo: 'Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari, determinanti',
     base: 'geometria/',
     prefisso: 'g',
     qLabel: '',

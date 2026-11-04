@@ -172,19 +172,17 @@ Inoltre, se $A$ e $B$ sono invertibili dello stesso ordine, $AB$ è invertibile 
     note: r`L'ordine si inverte: $(AB)^{-1}=B^{-1}A^{-1}$, <strong>non</strong> $A^{-1}B^{-1}$. Si capisce dall'analogia con vestirsi e svestirsi: per disfare «prima calze, poi scarpe» si tolgono prima le scarpe. E attenzione: la somma di matrici invertibili può non essere invertibile ($A$ e $-A$).`
   },
   {
-    id: 'G-cramer', sez: 2, mark: '*', q: 'ALG cap. 3',
+    id: 'G-cramer', sez: 2, mark: '*', q: 'Lez. 2, Teor. 2',
     titolo: 'Teorema di Cramer',
-    enunciato: r`Sia $A$ quadrata di ordine $n$ con $\det A\ne0$. Allora il sistema $A\vx=\vb$ ha <strong>una e una sola</strong> soluzione, data da
-$$x_j=\frac{\det A_j}{\det A},\qquad j=1,\dots,n,$$
-dove $A_j$ è la matrice ottenuta da $A$ <strong>sostituendo la $j$-esima colonna con il vettore $\vb$</strong>.`,
-    idea: r`Esistenza e unicità vengono dall'invertibilità; la formula si ottiene dalla regola $A^{-1}=\frac{1}{\det A}\operatorname{adj}A$.`,
+    enunciato: r`Un sistema lineare $A\vx=\vb$ di $n$ equazioni in $n$ incognite ammette <strong>una unica soluzione</strong> se e solo se $r(A)=n$.`,
+    idea: r`È un corollario di Rouché-Capelli: in un sistema quadrato, rango massimo vuol dire compatibile e senza incognite libere.`,
     steps: [
-      { cue: r`Esistenza e unicità`, body: r`$\det A\ne0$ equivale all'invertibilità di $A$. Allora $\vx=A^{-1}\vb$ è soluzione, ed è l'unica: se $A\vx_1=A\vx_2=\vb$, moltiplicando per $A^{-1}$ si ottiene $\vx_1=\vx_2$.` },
-      { cue: r`Da dove esce la formula`, body: r`Dalla scrittura dell'inversa tramite la matrice dei cofattori, $$A^{-1}=\frac{1}{\det A}\,\operatorname{adj}A,\qquad (\operatorname{adj}A)_{ij}=C_{ji},$$ con $C_{ji}=(-1)^{i+j}\det(A_{\hat j\hat i})$. La componente $j$-esima di $\vx=A^{-1}\vb$ vale allora $$x_j=\frac{1}{\det A}\sum_{i=1}^{n}C_{ij}\,b_i.$$` },
-      { cue: r`Il riconoscimento finale`, body: r`La somma $\sum_i C_{ij}b_i$ è esattamente lo <strong>sviluppo di Laplace lungo la colonna $j$</strong> della matrice $A_j$, cioè di $A$ con la colonna $j$ rimpiazzata da $\vb$. Dunque $\sum_i C_{ij}b_i=\det A_j$ e $$x_j=\frac{\det A_j}{\det A}.\qquad\blacksquare$$` },
-      { cue: r`Quando conviene usarlo davvero`, body: r`Quasi mai per risolvere: richiede $n+1$ determinanti di ordine $n$, contro il costo molto minore del MEG. Serve invece quando si vuole <strong>una sola</strong> incognita, o quando i coefficienti dipendono da un <strong>parametro</strong> e si vuole discutere il sistema in forma chiusa.` }
+      { cue: r`Se $r(A)=n$, quanto vale il rango della completa?`, body: r`$[A|\vb]$ ha $n$ righe, quindi $r([A|\vb])\le n$. D'altra parte $r([A|\vb])\ge r(A)=n$. Dunque $r([A|\vb])=r(A)=n$.` },
+      { cue: r`Che cosa dice allora Rouché-Capelli?`, body: r`I due ranghi coincidono: il sistema è compatibile. E $r=n=\#\text{incognite}$: non ci sono incognite libere, quindi la soluzione è unica, per <strong>ogni</strong> $\vb\in\K^{n}$.` },
+      { cue: r`Il viceversa?`, body: r`Se c'è una unica soluzione, per Rouché-Capelli il sistema è compatibile con $n-r(A)=0$ parametri liberi, cioè $r(A)=n$. $\blacksquare$` },
+      { cue: r`E se $r(A)\ne n$?`, body: r`Per alcuni $\vb$ il sistema non ha soluzioni, per altri ne ha infinite: mai esattamente una.` }
     ],
-    note: r`Ipotesi da non dimenticare: $A$ <strong>quadrata</strong> e $\det A\ne0$. Se $\det A=0$ la formula non ha senso (si dividerebbe per zero) e il sistema va discusso con Rouché-Capelli: può essere incompatibile oppure avere infinite soluzioni.`
+    note: r`Non è la <strong>regola di Cramer</strong> della Lezione 9, che dà la formula $x_j=\det A_j/\det A$. Il teorema dice <em>quando</em> la soluzione è unica, la regola dice <em>quanto vale</em>.`
   },
 
   /* ====== SEZIONE 3: vettori e spazi vettoriali ====== */
@@ -409,6 +407,167 @@ $$\operatorname{span}\{\vv_1,\dots,\vv_n\}=\Big\{\sum_{j=1}^{n}\alpha_j\vv_j\ :\
       { cue: r`Conclusione`, body: r`$r(L_A)+\dim\ker L_A=r(A)+n-r(A)=n=\dim\K^n$. $\blacksquare$ Per una $L$ qualunque si passa alla matrice rappresentativa rispetto a due basi (Lezione 4).` }
     ],
     note: r`La somma è la dimensione del <strong>dominio</strong>, non del codominio. Esempi del prof: $A$ di tipo $3\times4$ con $r=3$ ha $\dim\ker A=1$; $L(p)=\int_0^1p$ su $P_2$ ha $r=1$ e $\dim\ker L=2$, con $\ker L=\operatorname{span}\{-\frac12+x,\,-\frac13+x^2\}$.`
+  },
+
+  /* ====== SEZIONE 6: posizione reciproca, ortogonalità, fasci ====== */
+  {
+    id: 'G-rette3d', sez: 6, mark: '*', q: 'Lez. 7, Teor. 1',
+    titolo: 'Posizione reciproca di due rette nello spazio',
+    enunciato: r`Siano $l_1:\ \vec r=\vec r_1+t\vec u$ e $l_2:\ \vec r=\vec r_2+s\vec v$ due rette nello spazio e $\vec b:=\vec r_2-\vec r_1$.
+<ol type="i"><li>Se $\vec u,\vec v$ sono linearmente dipendenti, allora $l_1\parallel l_2$; in tal caso $l_1\ne l_2$ se e solo se $\vec u,\vec b$ sono indipendenti.</li>
+<li>Se $\vec u,\vec v,\vec b$ sono linearmente indipendenti, allora $l_1,l_2$ sono sghembe.</li>
+<li>Se $\vec u,\vec v$ sono indipendenti ma $\vec u,\vec v,\vec b$ sono dipendenti, allora $l_1,l_2$ sono incidenti.</li></ol>`,
+    idea: r`È Rouché-Capelli applicato al sistema dell'intersezione, letto col rango per colonne.`,
+    steps: [
+      { cue: r`Da dove si parte?`, body: r`Dal sistema $t\vec u-s\vec v=\vec b$, con $A=[\vec u|-\vec v]$. Cambiare segno a una colonna non cambia il rango: $r(A)=r([\vec u|\vec v])$ e $r([A|\vec b])=r([\vec u|\vec v|\vec b])$.` },
+      { cue: r`Caso (i)`, body: r`Con $\vec u,\vec v$ dipendenti e non nulli, $r(A)=1$. Se $\vec b$ è multiplo di $\vec u$, $r([A|\vec b])=1$: infinite soluzioni, $l_1=l_2$. Se $\vec u,\vec b$ sono indipendenti, $r([A|\vec b])=2$: nessuna soluzione, parallele distinte.` },
+      { cue: r`Caso (ii)`, body: r`$r([A|\vec b])=3>2=r(A)$: nessun punto comune. Poiché $\vec u,\vec v$ sono indipendenti, le rette non sono parallele. Quindi sono sghembe.` },
+      { cue: r`Caso (iii)`, body: r`$r(A)=2$ e $\vec b\in\operatorname{span}\{\vec u,\vec v\}$ dà $r([A|\vec b])=2=\#\text{incognite}$: soluzione unica, le rette sono incidenti. $\blacksquare$` }
+    ],
+    note: r`Nel piano il caso (ii) non può capitare: i vettori stanno in $\R^{2}$ e tre vettori di $\R^{2}$ sono sempre dipendenti. Ecco perché nel piano non esistono rette sghembe.`
+  },
+  {
+    id: 'G-inclusione', sez: 6, mark: '**', q: 'Add. Lez. 7, Prop. 1-2',
+    titolo: 'Inclusione di sottospazi e dipendenza lineare',
+    enunciato: r`<strong>(1)</strong> Se $U=\operatorname{span}\{\vu_1,\dots,\vu_k\}$ e $V$ sono sottospazi di $W$, allora $U\subset V\iff\vu_j\in V$ per ogni $j$.<br>
+<strong>(2)</strong> Se $\vv_1,\dots,\vv_m\in W$ sono indipendenti e $\vu\in W$, allora $\vu\in\operatorname{span}\{\vv_1,\dots,\vv_m\}\iff\vu,\vv_1,\dots,\vv_m$ sono dipendenti.`,
+    idea: r`La (1) riduce un'inclusione di insiemi infiniti a un numero finito di controlli; la (2) trasforma l'appartenenza a uno span in un conto di rango.`,
+    steps: [
+      { cue: r`(1), $\Rightarrow$`, body: r`Ogni generatore sta nel sottospazio generato: $\vu_j\in U\subset V$.` },
+      { cue: r`(1), $\Leftarrow$: quale proprietà di $V$ si usa?`, body: r`$V$ è un sottospazio, quindi contiene tutte le combinazioni lineari dei suoi elementi. Ogni elemento di $U$ è una combinazione lineare dei $\vu_j\in V$.` },
+      { cue: r`(2), $\Rightarrow$`, body: r`Se $\vu=\sum_i\alpha_i\vv_i$, allora $\vu-\sum_i\alpha_i\vv_i=\vzero$ è una relazione non banale: il coefficiente di $\vu$ è $1$.` },
+      { cue: r`(2), $\Leftarrow$: dove entra l'indipendenza?`, body: r`Sia $c\vu+\sum_ic_i\vv_i=\vzero$ con coefficienti non tutti nulli. Se $c=0$ si avrebbe una relazione non banale fra i $\vv_i$, contro l'ipotesi. Quindi $c\ne0$ e $\vu=\sum_i\left(-\frac{c_i}{c}\right)\vv_i$. $\blacksquare$` }
+    ],
+    note: r`Applicazione: $l\parallel\Pi$ in senso largo $\iff\vec u,\vec v_1,\vec v_2$ sono dipendenti, con $\vec u$ direzione di $l$ e $\vec v_1,\vec v_2$ direzioni di $\Pi$.`
+  },
+  {
+    id: 'G-normale', sez: 6, mark: '*', q: 'Lez. 7',
+    titolo: 'Il vettore normale a un piano',
+    enunciato: r`In un riferimento cartesiano, sia $\Pi:\ ax+by+cz=d$. Allora $(a,b,c)$ è ortogonale a $\Pi$, e un vettore $\vec u$ è perpendicolare a $\Pi$ se e solo se è un multiplo di $(a,b,c)$.`,
+    idea: r`La differenza di due punti del piano soddisfa l'equazione omogenea, e l'equazione omogenea è un prodotto scalare nullo.`,
+    steps: [
+      { cue: r`Che cosa vuol dire $\vec u\perp\Pi$?`, body: r`$\vec u\perp\overrightarrow{AB}$ per ogni $A,B\in\Pi$.` },
+      { cue: r`Quale equazione soddisfa $\overrightarrow{AB}$?`, body: r`$\vec r_A,\vec r_B$ soddisfano $ax+by+cz=d$. Sottraendo, $\overrightarrow{AB}$ soddisfa l'omogenea $ax+by+cz=0$.` },
+      { cue: r`Come si legge l'omogenea?`, body: r`$ax+by+cz=\langle(x,y,z),(a,b,c)\rangle$. Quindi $\overrightarrow{AB}\perp(a,b,c)$ per ogni $A,B\in\Pi$.` },
+      { cue: r`Perché tutti i normali sono multipli?`, body: r`Due vettori non nulli perpendicolari allo stesso piano sono paralleli tra loro. $\blacksquare$` }
+    ],
+    note: r`Un vettore è invece <strong>parallelo</strong> al piano se e solo se soddisfa l'omogenea associata. Da non scambiare: i coefficienti danno la direzione ortogonale, le soluzioni dell'omogenea quelle parallele.`
+  },
+
+  /* ====== SEZIONE 7: somma di sottospazi e Grassmann ====== */
+  {
+    id: 'G-intersez', sez: 7, mark: '*', q: 'Lez. 8, Prop. 1',
+    titolo: "L'intersezione di sottospazi è un sottospazio",
+    enunciato: r`Se $W_1,\dots,W_k$ sono sottospazi di $V$, allora $W:=\bigcap_{i=1}^{k}W_i$ è un sottospazio di $V$.`,
+    idea: r`Stare nell'intersezione vuol dire stare in tutti: la chiusura si eredita da ciascun $W_i$.`,
+    steps: [
+      { cue: r`Che cosa va verificato?`, body: r`Che $\alpha\vu+\beta\vv\in W$ per ogni $\vu,\vv\in W$ e $\alpha,\beta\in\K$.` },
+      { cue: r`Che cosa significa $\vu,\vv\in W$?`, body: r`Che $\vu,\vv\in W_i$ per ogni $i=1,\dots,k$.` },
+      { cue: r`Dove entra l'ipotesi?`, body: r`Ogni $W_i$ è un sottospazio, quindi $\alpha\vu+\beta\vv\in W_i$ per ogni $i$, cioè $\alpha\vu+\beta\vv\in W$. $\blacksquare$` }
+    ],
+    note: r`Per l'unione è falso: in $\R^{2}$, le rette $y=x$ e $y=-x$ contengono $(1,1)$ e $(-1,1)$, ma non la loro somma $(0,2)$.`
+  },
+  {
+    id: 'G-sommaSub', sez: 7, mark: '*', q: 'Lez. 8, Prop. 2',
+    titolo: 'La somma di due sottospazi',
+    enunciato: r`$W_1+W_2:=\{\vw_1+\vw_2:\vw_1\in W_1,\vw_2\in W_2\}$ è un sottospazio di $V$. Se $W_1=\operatorname{span}\{\vv_1,\dots,\vv_k\}$ e $W_2=\operatorname{span}\{\vu_1,\dots,\vu_m\}$, allora $W_1+W_2=\operatorname{span}\{\vv_1,\dots,\vv_k,\vu_1,\dots,\vu_m\}$.`,
+    idea: r`Per la seconda parte: doppia inclusione.`,
+    steps: [
+      { cue: r`Perché è un sottospazio?`, body: r`Con $\vu=\vu_1+\vu_2$ e $\vv=\vv_1+\vv_2$: $\alpha\vu+\beta\vv=(\alpha\vu_1+\beta\vv_1)+(\alpha\vu_2+\beta\vv_2)$, somma di un elemento di $W_1$ e uno di $W_2$.` },
+      { cue: r`Perché $W_1\subset W_1+W_2$?`, body: r`$\vw_1=\vw_1+\vzero$ e $\vzero\in W_2$. Allo stesso modo per $W_2$.` },
+      { cue: r`Inclusione $\operatorname{span}\subset W_1+W_2$`, body: r`Tutti i generatori stanno in $W_1+W_2$, che è un sottospazio: contiene le loro combinazioni lineari.` },
+      { cue: r`Inclusione opposta`, body: r`$\vw=\vw_1+\vw_2$ con $\vw_1=\sum_i\alpha_i\vv_i$ e $\vw_2=\sum_j\beta_j\vu_j$: è una combinazione lineare di tutti i generatori. $\blacksquare$` }
+    ],
+    note: r`$W_1+W_2$ è il più piccolo sottospazio che contiene $W_1$ e $W_2$.`
+  },
+  {
+    id: 'G-diretta', sez: 7, mark: '**', q: 'Lez. 8, Prop. 3',
+    titolo: 'Base e dimensione della somma diretta',
+    enunciato: r`Se $\{\vu_1,\dots,\vu_n\}$ è una base di $U$ e $\{\vv_1,\dots,\vv_m\}$ è una base di $V$, allora $\{(\vu_i,\vzero)\}_i\cup\{(\vzero,\vv_j)\}_j$ è una base di $U\oplus V$. In particolare $\dim(U\oplus V)=\dim U+\dim V$.`,
+    idea: r`Le operazioni su $U\oplus V$ sono componente per componente: tutto si spezza in un problema su $U$ e uno su $V$.`,
+    steps: [
+      { cue: r`Indipendenza: a che cosa equivale una combinazione nulla?`, body: r`$\sum_i\alpha_i(\vu_i,\vzero)+\sum_j\beta_j(\vzero,\vv_j)=\left(\sum_i\alpha_i\vu_i,\sum_j\beta_j\vv_j\right)=(\vzero,\vzero)$, cioè alle due uguaglianze $\sum_i\alpha_i\vu_i=\vzero$ e $\sum_j\beta_j\vv_j=\vzero$.` },
+      { cue: r`Dove si usa che sono basi?`, body: r`I $\vu_i$ e i $\vv_j$ sono indipendenti: tutti i coefficienti sono nulli.` },
+      { cue: r`Generatori`, body: r`$(\vu,\vv)=(\vu,\vzero)+(\vzero,\vv)$; scrivendo $\vu$ e $\vv$ nelle rispettive basi si ottiene una combinazione lineare degli elementi dell'insieme. $\blacksquare$` }
+    ],
+    note: r`Attenzione al contrasto con la somma di sottospazi, dove in generale vale solo $\dim(W_1+W_2)\le\dim W_1+\dim W_2$.`
+  },
+  {
+    id: 'G-grassmann', sez: 7, mark: '*', q: 'Lez. 8, Teor. 1',
+    titolo: 'Formula di Grassmann',
+    enunciato: r`Se $W_1,W_2$ sono sottospazi di $V$ di dimensione finita, allora $$\dim(W_1+W_2)=\dim W_1+\dim W_2-\dim(W_1\cap W_2).$$`,
+    idea: r`Si applica rango + nullità alla mappa $(\vw_1,\vw_2)\mapsto\vw_1+\vw_2$: il suo nucleo è una copia di $W_1\cap W_2$.`,
+    steps: [
+      { cue: r`Quale mappa ha come immagine $W_1+W_2$?`, body: r`$L:W_1\oplus W_2\to V$, $L(\vw_1,\vw_2):=\vw_1+\vw_2$, che è lineare.` },
+      { cue: r`Quale teorema si applica?`, body: r`Rango + nullità e la Proposizione 3: $\dim(W_1+W_2)=\dim(W_1\oplus W_2)-\dim\ker L=\dim W_1+\dim W_2-\dim\ker L$.` },
+      { cue: r`Chi è il nucleo?`, body: r`$\vw_1+\vw_2=\vzero\iff\vw_2=-\vw_1$. Con $\vv:=\vw_1$ si ha $\vv\in W_1$ e $-\vv\in W_2$, cioè $\vv\in W_2$. Quindi $\ker L=\{(\vv,-\vv):\vv\in W_1\cap W_2\}$.` },
+      { cue: r`Perché ha la dimensione di $W_1\cap W_2$?`, body: r`È l'immagine di $\mathcal M:W_1\cap W_2\to W_1\oplus W_2$, $\mathcal M(\vv):=(\vv,-\vv)$, lineare e iniettiva. Per rango + nullità, $\dim\ker L=\dim(W_1\cap W_2)$. $\blacksquare$` }
+    ],
+    note: r`Uso tipico: il rango di tutti i generatori dà $\dim(W_1+W_2)$, e la formula dà $\dim(W_1\cap W_2)$ senza risolvere sistemi. Se $W_1\cap W_2=\{\vzero\}$ la somma è diretta.`
+  },
+
+  /* ====== SEZIONE 8: determinanti ====== */
+  {
+    id: 'G-detRango', sez: 8, mark: '*', q: 'Lez. 9',
+    titolo: 'Determinante e rango',
+    enunciato: r`Per ogni matrice $A$ di ordine $n$: $\det A\ne0\iff r(A)=n$.`,
+    idea: r`Vero a vista per le matrici a scala; il MEG porta lì senza cambiare nessuna delle due condizioni.`,
+    steps: [
+      { cue: r`Da quale tipo di matrice si parte?`, body: r`Da una matrice a scala di ordine $n$: è triangolare alta, quindi $\det$ è il prodotto della diagonale.` },
+      { cue: r`Quando quella diagonale è tutta non nulla?`, body: r`Se e solo se non ci sono righe nulle, cioè $r=n$.` },
+      { cue: r`Come si passa al caso generale?`, body: r`Il MEG usa solo (i) e (iii): il determinante cambia al più di segno, quindi $\det\ne0$ resta invariata. Anche il rango resta invariato. $\blacksquare$` }
+    ],
+    note: r`È il ponte fra il mondo del MEG e quello dei determinanti: da qui segue tutta la lista delle condizioni equivalenti (a)–(k).`
+  },
+  {
+    id: 'G-laplaceInv', sez: 8, mark: '*', q: 'Lez. 9',
+    titolo: "Formula di Laplace per l'inversa",
+    enunciato: r`Se $\det A\ne0$ e $C=[C_{ij}]$ è la matrice dei complementi algebrici, allora $$A^{-1}=\frac{1}{\det A}\,C^{T}.$$`,
+    idea: r`Si calcola $AC^{T}$: sulla diagonale ci sono sviluppi di Laplace, fuori dalla diagonale determinanti con due righe uguali.`,
+    steps: [
+      { cue: r`Che cosa si calcola?`, body: r`Il prodotto $AC^{T}$, il cui elemento $(i,j)$ è $\lambda_{ij}=\sum_ka_{ik}C_{jk}$.` },
+      { cue: r`Sulla diagonale?`, body: r`$\lambda_{ii}$ è lo sviluppo di Laplace di $\det A$ lungo la riga $i$: $\lambda_{ii}=\det A$.` },
+      { cue: r`Fuori dalla diagonale?`, body: r`Per $i\ne j$, $\lambda_{ij}$ è lo sviluppo lungo la riga $j$ della matrice ottenuta mettendo la riga $i$ al posto della riga $j$. Quella matrice ha due righe uguali, quindi $\lambda_{ij}=0$.` },
+      { cue: r`Conclusione`, body: r`$AC^{T}=\det(A)\,I$, e dividendo per $\det A\ne0$ si ottiene la formula. $\blacksquare$` }
+    ],
+    note: r`Si usa $C^{T}$, non $C$: l'elemento $(i,j)$ dell'inversa è $C_{ji}/\det A$.`
+  },
+  {
+    id: 'G-regolaCramer', sez: 8, mark: '*', q: 'Lez. 9, Teor. 3',
+    titolo: 'Regola di Cramer',
+    enunciato: r`Se $A$ è quadrata con $\det A\ne0$, l'unica soluzione di $A\vx=\vb$ ha componenti $$x_j=\frac{\det A_j}{\det A},\qquad j=1,\dots,n,$$ dove $A_j$ è $A$ con la <strong>colonna $j$ sostituita da $\vb$</strong>.`,
+    idea: r`Si scrive $\vx=A^{-1}\vb$, si sostituisce la formula di Laplace e si riconosce uno sviluppo lungo la colonna $j$.`,
+    steps: [
+      { cue: r`Da dove si parte?`, body: r`$A$ è invertibile, quindi $\vx=A^{-1}\vb$, e $x_j=\sum_i(A^{-1})_{ji}b_i$.` },
+      { cue: r`Che cosa si sostituisce?`, body: r`La formula di Laplace: $(A^{-1})_{ji}=\dfrac{C_{ij}}{\det A}$. Quindi $x_j=\dfrac{1}{\det A}\sum_iC_{ij}b_i$.` },
+      { cue: r`Il riconoscimento finale`, body: r`$\sum_iC_{ij}b_i$ è lo <strong>sviluppo di Laplace di $\det A_j$ lungo la colonna $j$</strong>: i cofattori di quella colonna non dipendono da essa, quindi sono gli stessi di $A$. $\blacksquare$` }
+    ],
+    note: r`Serve $A$ quadrata con $\det A\ne0$. Conviene per una sola incognita o con un parametro; per tutto il sistema il MEG costa molto meno.`
+  },
+  {
+    id: 'G-simili', sez: 8, mark: '*', q: 'Lez. 9',
+    titolo: 'Matrici simili',
+    enunciato: r`Se $B=S^{-1}AS$ con $S$ invertibile, allora $\det B=\det A$ e $B^{n}=S^{-1}A^{n}S$ per ogni $n\in\N_0$. Se $A$ è invertibile, anche $B$ lo è e $B^{-1}=S^{-1}A^{-1}S$.`,
+    idea: r`Binet per il determinante; per le potenze i fattori $SS^{-1}$ in mezzo si cancellano.`,
+    steps: [
+      { cue: r`Determinante`, body: r`Per Binet: $\det B=\det(S^{-1})\det A\det S=\dfrac{1}{\det S}\det A\det S=\det A$.` },
+      { cue: r`Potenze: per induzione`, body: r`Per $n=0$ è $I=S^{-1}IS$. Se vale per $n$: $B^{n+1}=BB^{n}=(S^{-1}AS)(S^{-1}A^{n}S)=S^{-1}A(SS^{-1})A^{n}S=S^{-1}A^{n+1}S$.` },
+      { cue: r`Inversa`, body: r`$B$ è prodotto di tre invertibili, e $B^{-1}=S^{-1}A^{-1}(S^{-1})^{-1}=S^{-1}A^{-1}S$. $\blacksquare$` }
+    ],
+    note: r`Il viceversa è falso: $I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ hanno lo stesso determinante ma non sono simili, perché l'unica matrice simile a $I$ è $I$.`
+  },
+  {
+    id: 'G-area', sez: 8, mark: '**', q: 'Lez. 9',
+    titolo: 'Il determinante come area',
+    enunciato: r`Se $\vec u,\vec v$ sono indipendenti nel piano e il raggio di $\vec v$ si ottiene ruotando in senso antiorario quello di $\vec u$, allora $\det[\vec u|\vec v]=\operatorname{area}(\Pi)$, dove $\Pi$ è il parallelogramma formato dai due vettori. In senso orario vale $-\operatorname{area}(\Pi)$.`,
+    idea: r`Uno scorrimento lungo $\vec v$ non cambia né il determinante né l'area, e riduce tutto a base per altezza.`,
+    steps: [
+      { cue: r`Quale operazione non cambia nulla?`, body: r`Sostituire $\vec u$ con $\vec u':=\vec u-\lambda\vec v$: è (iii) sulle colonne, e geometricamente uno scorrimento con base e altezza invariate.` },
+      { cue: r`Come si sceglie $\lambda$?`, body: r`In modo che $\vec u'\parallel Ox$: la matrice diventa triangolare e $\det[\vec u|\vec v]=u_1'v_2$.` },
+      { cue: r`Che cosa vale $u_1'v_2$?`, body: r`Base per altezza, cioè $\operatorname{area}(\Pi')=\operatorname{area}(\Pi)$.` },
+      { cue: r`Il caso orario`, body: r`Si scambiano $\vec u$ e $\vec v$: il determinante cambia segno. $\blacksquare$` }
+    ],
+    note: r`In generale $\det[\vv_1|\dots|\vv_n]=\pm\operatorname{Vol}_n(\Pi)$ e $\operatorname{Vol}_n(L(K))=|\det L|\operatorname{Vol}_n(K)$. La dimostrazione di quest'ultimo fatto, negli appunti, è indicata come non richiesta per l'esame.`
   }
   ];
 
