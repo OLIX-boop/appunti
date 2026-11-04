@@ -41,7 +41,7 @@
   .capitoli li::before { content: "›"; position: absolute; left: 2px; color: var(--accent); font-weight: 700; }
   /* Blocco col solo titolo: non è un link, quindi al passaggio non si solleva */
   .materia-vuota:hover { transform: none; box-shadow: var(--shadow); border-color: var(--border); }
-  /* Blocco concluso: tutto in grigio, compresi icona, barra e badge */
+  /* Blocchi conclusi: tutto in grigio, compresi icona, barra e badge */
   .materia-archivio { background: var(--bg-sunken); box-shadow: none; filter: grayscale(1); }
   .materia-archivio:hover { background: var(--bg-elev); }
   .materia-archivio .sub { color: var(--text-muted); }
@@ -83,21 +83,6 @@
           </div>
         </div>
       </div>
-
-      <a class="materia" href="analisi/primo-parziale.html" style="border-left:4px solid var(--accent)">
-        <div class="materia-top">
-          <div class="materia-icona" style="background:linear-gradient(135deg,#a8690a,#b3261e)">🔥</div>
-          <div>
-            <h2>Allenamento di oggi</h2>
-            <div class="sub">Analisi · primo parziale</div>
-          </div>
-        </div>
-        <p>La sessione quotidiana: definizioni, quesiti teorici, idee delle dimostrazioni e quiz. Il motore sceglie <em>cosa</em> chiederti in base a quanto lo sbagli.</p>
-        <div class="materia-foot" style="margin-top:auto">
-          <span class="faint" id="hub-oggi">da fare ogni mattina · 12-15 min</span>
-          <span class="badge warn">ripetizione dilazionata</span>
-        </div>
-      </a>
 
       <a class="materia" href="geometria/index.html">
         <div class="materia-top">
@@ -148,8 +133,23 @@
         </div>
       </a>
 
-      <!-- Riquadro temporaneo: si toglie dopo il primo parziale di Analisi (2 novembre 2026) -->
-      <a class="materia" href="analisi/statistiche-parziale.html" style="border-left:4px solid var(--warn)">
+      <!-- Tre blocchi del primo parziale di Analisi, concluso il 2 novembre 2026: restano consultabili, in grigio e in fondo -->
+      <a class="materia materia-archivio" href="analisi/primo-parziale.html">
+        <div class="materia-top">
+          <div class="materia-icona" style="background:linear-gradient(135deg,#a8690a,#b3261e)">🔥</div>
+          <div>
+            <h2>Allenamento di oggi</h2>
+            <div class="sub">Analisi · primo parziale</div>
+          </div>
+        </div>
+        <p>La sessione quotidiana: definizioni, quesiti teorici, idee delle dimostrazioni e quiz. Il motore sceglie <em>cosa</em> chiederti in base a quanto lo sbagli.</p>
+        <div class="materia-foot" style="margin-top:auto">
+          <span class="faint">12-15 min a sessione</span>
+          <span class="badge warn">concluso</span>
+        </div>
+      </a>
+
+      <a class="materia materia-archivio" href="analisi/statistiche-parziale.html">
         <div class="materia-top">
           <div class="materia-icona" style="background:linear-gradient(135deg,#1c7a4e,#1f5fa8)">📊</div>
           <div>
@@ -165,11 +165,10 @@
         </ul>
         <div class="materia-foot" style="margin-top:auto">
           <span class="faint">fino al 2 novembre</span>
-          <span class="badge warn">temporaneo</span>
+          <span class="badge warn">concluso</span>
         </div>
       </a>
 
-      <!-- Prima metà del corso, conclusa col parziale del 2 novembre: resta consultabile, in grigio e in fondo -->
       <a class="materia materia-archivio" href="analisi/index.html">
         <div class="materia-top">
           <div class="materia-icona" style="background:linear-gradient(135deg,#1f5fa8,#6b3fa0)">∫</div>
