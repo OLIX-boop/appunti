@@ -39,7 +39,9 @@
   .capitoli { list-style: none; padding: 0; margin: 0; font-size: 13.2px; color: var(--text-muted); }
   .capitoli li { margin: 0 0 4px; padding-left: 15px; position: relative; }
   .capitoli li::before { content: "›"; position: absolute; left: 2px; color: var(--accent); font-weight: 700; }
-  /* Blocco col solo titolo: non è un link, quindi al passaggio non si solleva */
+  /* Blocco col solo titolo: striscia su tutta la riga, altrimenti la griglia lo stira all'altezza
+     dei vicini e diventa un riquadro vuoto. Non è un link, quindi al passaggio non si solleva. */
+  .materia-vuota { grid-column: 1 / -1; padding: 16px 22px; }
   .materia-vuota:hover { transform: none; box-shadow: var(--shadow); border-color: var(--border); }
   /* Blocco concluso: tutto in grigio, compresi icona, barra e badge */
   .materia-archivio { background: var(--bg-sunken); box-shadow: none; filter: grayscale(1); }
