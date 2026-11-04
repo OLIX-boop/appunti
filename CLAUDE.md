@@ -24,7 +24,11 @@ aggiungere una materia sono nel `README.md`.
   Se il modello predefinito risponde 503 (sovraccarico) o 429 (quota del piano gratuito), prima
   di arrendersi si prova un altro modello con `--modello` (`--modelli` li elenca): il 19/10/2026
   `gemini-3.5-flash` ha retto 11 pagine, poi `gemini-3.5-flash-lite` le altre, con qualità
-  sufficiente ma qualche indice sbagliato in più. Se lo script non è utilizzabile (manca la
+  sufficiente ma qualche indice sbagliato in più. La quota gratuita vale circa 20 richieste al
+  giorno **per modello**: un PDF lungo si divide su più modelli, perché lo script riprende dalle
+  pagine mancanti. Sulle pagine quasi vuote Gemini può inventare testo leggendo l'inchiostro
+  dell'altra facciata: un esercizio senza enunciato si controlla sull'immagine (è successo con
+  l'esercitazione del 14 ottobre, p. 14). Se lo script non è utilizzabile (manca la
   chiave, quota finita su tutti i modelli) si torna alle immagini in griglie 2×2 a risoluzione
   moderata.
 - Il sito usa **le convenzioni e la notazione del prof**, non quelle dei libri. Casi già

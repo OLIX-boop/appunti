@@ -422,6 +422,87 @@ $$A(\vv_1+\vv_2)=A\vv_1+A\vv_2=\vb_1+\vb_2,$$
 quindi $\vv_1+\vv_2$ è soluzione di $S_3$. $\blacksquare$<br><br>
 <strong>Collegamento:</strong> è la linearità di $L_A(\vx)=A\vx$ (Sezione 5). Con $\vb_2=\vzero$ dice che sommando a una soluzione di $A\vx=\vb_1$ una soluzione dell'omogeneo si ottiene ancora una soluzione: metà della <a href="sezioni/2-matrici.html#struttura">struttura delle soluzioni</a>.` },
 
+{ id: 'G2.16', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`(Esercitazione sulle equazioni matriciali, EQ1.) Sia $A=\begin{bmatrix}1&2&3\\2&4&6\\1&1&1\end{bmatrix}$. Risolvere (a) $AX=B$ con $B=\begin{bmatrix}3&1&2\\6&2&4\\2&1&1\end{bmatrix}$; (b) $YA=C$ con $C=\begin{bmatrix}2&3&4\\1&2&3\\1&1&1\end{bmatrix}$.`,
+  hints: [ r`Prima di tutto: $A$ è invertibile? Le prime due righe sono proporzionali.`,
+           r`Per (a) riduci $[A\,|\,B]$: ogni colonna di $B$ è un sistema, con le sue incognite.`,
+           r`Per (b) trasponi: $YA=C$ diventa $A^{T}Y^{T}=C^{T}$, e alla fine ritrasponi.` ],
+  sol: r`$\det A=0$ perché le prime due righe sono proporzionali, e il MEG dà $r(A)=2$: $A^{-1}$ non esiste.<br><br>
+<strong>(a)</strong>
+$$\left[\begin{array}{ccc|ccc}1&2&3&3&1&2\\2&4&6&6&2&4\\1&1&1&2&1&1\end{array}\right]\to\left[\begin{array}{ccc|ccc}1&2&3&3&1&2\\0&-1&-2&-1&0&-1\\0&0&0&0&0&0\end{array}\right].$$
+Tre sistemi, uno per colonna di $B$, ciascuno con un parametro:
+$$X=\begin{bmatrix}r+1&s+1&t\\1-2r&-2s&1-2t\\r&s&t\end{bmatrix},\qquad r,s,t\in\R.$$
+<strong>(b)</strong> Da $A^{T}Y^{T}=C^{T}$:
+$$\left[\begin{array}{ccc|ccc}1&2&1&2&1&1\\2&4&1&3&2&1\\3&6&1&4&3&1\end{array}\right]\to\left[\begin{array}{ccc|ccc}1&2&1&2&1&1\\0&0&-1&-1&0&-1\\0&0&0&0&0&0\end{array}\right].$$
+Con $x_2$ libera nei tre sistemi:
+$$Y^{T}=\begin{bmatrix}1-2r&1-2s&-2t\\r&s&t\\1&0&1\end{bmatrix}\ \Rightarrow\ Y=\begin{bmatrix}1-2r&r&1\\1-2s&s&0\\-2t&t&1\end{bmatrix}.$$
+<strong>Controllo:</strong> la prima riga di $AX$ è $(r+1)+2(1-2r)+3r=3$, $(s+1)-4s+3s=1$, $t+2-4t+3t=2$ ✓; la prima riga di $YA$ è $(1-2r)+2r+1=2$, $2(1-2r)+4r+1=3$, $3(1-2r)+6r+1=4$ ✓. $\blacksquare$` },
+
+{ id: 'G2.17', sez: 2, tema: 'Equazioni di matrici', d: 1,
+  t: r`(Esercitazione sulle equazioni matriciali, EQ2.) Sia $A=\begin{bmatrix}2&1\\1&1\end{bmatrix}$. Risolvere (a) $AX=B$ con $B=\begin{bmatrix}3&5\\4&6\end{bmatrix}$; (b) $YA=C$ con $C=\begin{bmatrix}1&2\\3&4\end{bmatrix}$.`,
+  hints: [ r`Qui $\det A=1\ne0$: $A$ è invertibile e c'è una sola soluzione.`,
+           r`$X=A^{-1}B$, ma $Y=CA^{-1}$: il lato in cui si moltiplica conta.` ],
+  sol: r`$\det A=2-1=1$, e $A^{-1}=\begin{bmatrix}1&-1\\-1&2\end{bmatrix}$, con il <a href="sezioni/2-matrici.html#inversa-megj">MEG-J</a> o con la <a href="sezioni/8-determinanti.html#inversa">formula di Laplace</a>.
+$$X=A^{-1}B=\begin{bmatrix}1&-1\\-1&2\end{bmatrix}\begin{bmatrix}3&5\\4&6\end{bmatrix}=\begin{bmatrix}-1&-1\\5&7\end{bmatrix},$$
+$$Y=CA^{-1}=\begin{bmatrix}1&2\\3&4\end{bmatrix}\begin{bmatrix}1&-1\\-1&2\end{bmatrix}=\begin{bmatrix}-1&3\\-1&5\end{bmatrix}.$$
+<strong>Controllo:</strong> $AX$ ha prima riga $(-2+5,\,-2+7)=(3,5)$ ✓; $YA$ ha prima riga $(-2+3,\,-1+3)=(1,2)$ ✓. $\blacksquare$` },
+
+{ id: 'G2.18', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`(Esercitazione sulle equazioni matriciali, EQ3.) Sia $A=\begin{bmatrix}1&2\\2&4\end{bmatrix}$. Risolvere (a) $AX=B$ con $B=\begin{bmatrix}1&3\\2&6\end{bmatrix}$; (b) $YA=C$ con $C=\begin{bmatrix}1&2\\3&6\end{bmatrix}$.`,
+  hints: [ r`$\det A=0$: niente inversa.`,
+           r`In (a) resta una sola equazione per ciascuna colonna di $B$.`,
+           r`In (b) nota che $A^{T}=A$.` ],
+  sol: r`$\det A=0$, quindi $A$ è singolare.<br><br>
+<strong>(a)</strong> $\left[\begin{array}{cc|cc}1&2&1&3\\2&4&2&6\end{array}\right]\to\left[\begin{array}{cc|cc}1&2&1&3\\0&0&0&0\end{array}\right]$. Quindi
+$$X=\begin{bmatrix}1-2t&3-2s\\t&s\end{bmatrix},\qquad t,s\in\R.$$
+<strong>(b)</strong> $A^{T}=A$ e $C^{T}=\begin{bmatrix}1&3\\2&6\end{bmatrix}$: è lo stesso sistema di (a). Trasponendo la soluzione:
+$$Y=\begin{bmatrix}1-2t&t\\3-2s&s\end{bmatrix},\qquad t,s\in\R.$$
+<strong>Controllo:</strong> la prima riga di $AX$ è $(1-2t+2t,\ 3-2s+2s)=(1,3)$ ✓; la seconda riga di $YA$ è $(3-2s+2s,\ 6-4s+4s)=(3,6)$ ✓. $\blacksquare$` },
+
+{ id: 'G2.19', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`(Esercitazione sulle equazioni matriciali, EQ4: caso $(2,3)$, rango $2$.) Sia $A=\begin{bmatrix}1&2&1\\0&1&1\end{bmatrix}$. Risolvere (a) $AX=B$ con $B=\begin{bmatrix}3&5\\1&2\end{bmatrix}$; (b) $YA=C$ con $C=\begin{bmatrix}1&2&1\\1&3&2\end{bmatrix}$.`,
+  hints: [ r`Primo passo sempre: il tipo. $(2,3)(p,q)=(2,2)$ dà $X\in\M_{\R}(3,2)$.`,
+           r`$[A\,|\,B]$ è già a scala, con una variabile libera per sistema.`,
+           r`In (b) si ha $Y\in\M_{\R}(2,2)$, e $A^{T}$ ha rango massimo per colonne.` ],
+  sol: r`<strong>(a)</strong> $X$ è di tipo $3\times2$. $\left[\begin{array}{ccc|cc}1&2&1&3&5\\0&1&1&1&2\end{array}\right]$ è già a scala, e con $x_3=s$, $x_3'=t$:
+$$X=\begin{bmatrix}1+s&1+t\\1-s&2-t\\s&t\end{bmatrix},\qquad s,t\in\R.$$
+<strong>(b)</strong> $Y$ è di tipo $2\times2$. Da $A^{T}Y^{T}=C^{T}$:
+$$\left[\begin{array}{cc|cc}1&0&1&1\\2&1&2&3\\1&1&1&2\end{array}\right]\to\left[\begin{array}{cc|cc}1&0&1&1\\0&1&0&1\\0&0&0&0\end{array}\right]\ \Rightarrow\ Y^{T}=\begin{bmatrix}1&1\\0&1\end{bmatrix},\quad Y=\begin{bmatrix}1&0\\1&1\end{bmatrix}.$$
+<strong>Controllo:</strong> $AX$ ha prima riga $(1+s+2-2s+s,\ 1+t+4-2t+t)=(3,5)$ ✓; $YA=\begin{bmatrix}1&2&1\\1&3&2\end{bmatrix}=C$ ✓. $\blacksquare$` },
+
+{ id: 'G2.20', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`(Esercitazione sulle equazioni matriciali, EQ5: caso $(2,3)$, rango $1$.) Sia $A=\begin{bmatrix}1&2&3\\2&4&6\end{bmatrix}$. Risolvere (a) $AX=B$ con $B=\begin{bmatrix}1&2\\2&4\end{bmatrix}$; (b) $YA=C$ con $C=\begin{bmatrix}3&6&9\\2&4&6\end{bmatrix}$.`,
+  hints: [ r`Rango $1$: una sola equazione per sistema.`,
+           r`In (a) ogni sistema ha tre incognite e un'equazione: due parametri a colonna.`,
+           r`In (b) $Y$ è $2\times2$.` ],
+  sol: r`<strong>(a)</strong> $X$ è $3\times2$, e $R_2-2R_1$ annulla la seconda riga di $[A\,|\,B]$. Restano $x_1+2x_2+3x_3=1$ e $x_1'+2x_2'+3x_3'=2$, quindi
+$$X=\begin{bmatrix}1-2r-3s&2-2r'-3s'\\r&r'\\s&s'\end{bmatrix},\qquad r,s,r',s'\in\R.$$
+<strong>(b)</strong> $Y$ è $2\times2$. In $[A^{T}\,|\,C^{T}]$ resta una riga, $[1\ 2\ |\ 3\ 2]$:
+$$Y^{T}=\begin{bmatrix}3-2s&2-2t\\s&t\end{bmatrix}\ \Rightarrow\ Y=\begin{bmatrix}3-2s&s\\2-2t&t\end{bmatrix},\qquad s,t\in\R.$$
+<strong>Controllo:</strong> la prima riga di $AX$ è $(1-2r-3s+2r+3s,\ \dots)=(1,2)$ ✓; la prima riga di $YA$ è $(3-2s+2s,\ 6-4s+4s,\ 9-6s+6s)=(3,6,9)$ ✓. $\blacksquare$` },
+
+{ id: 'G2.21', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`(Esercitazione sulle equazioni matriciali, EQ6: caso $(3,2)$, rango $2$.) Sia $A=\begin{bmatrix}1&0\\1&1\\0&1\end{bmatrix}$. Risolvere (a) $AX=B$ con $B=\begin{bmatrix}2&1\\5&1\\3&0\end{bmatrix}$; (b) $YA=C$ con $C=\begin{bmatrix}4&3\\2&6\end{bmatrix}$.`,
+  hints: [ r`In (a) $X$ è $2\times2$ e $A$ ha colonne indipendenti: al massimo una soluzione.`,
+           r`In (b) $Y$ è $2\times3$: più incognite che equazioni.` ],
+  sol: r`<strong>(a)</strong>
+$$\left[\begin{array}{cc|cc}1&0&2&1\\1&1&5&1\\0&1&3&0\end{array}\right]\to\left[\begin{array}{cc|cc}1&0&2&1\\0&1&3&0\\0&0&0&0\end{array}\right]\ \Rightarrow\ X=\begin{bmatrix}2&1\\3&0\end{bmatrix}.$$
+<strong>(b)</strong> $Y$ è $2\times3$ e $[A^{T}\,|\,C^{T}]=\left[\begin{array}{ccc|cc}1&1&0&4&2\\0&1&1&3&6\end{array}\right]$ è già a scala. Con $x_3=s$, $x_3'=t$:
+$$Y^{T}=\begin{bmatrix}1+s&t-4\\3-s&6-t\\s&t\end{bmatrix}\ \Rightarrow\ Y=\begin{bmatrix}1+s&3-s&s\\t-4&6-t&t\end{bmatrix},\qquad s,t\in\R.$$
+<strong>Controllo:</strong> $AX=\begin{bmatrix}2&1\\5&1\\3&0\end{bmatrix}=B$ ✓; $YA$ ha righe $(1+s+3-s,\ 3-s+s)=(4,3)$ e $(t-4+6-t,\ 6-t+t)=(2,6)$ ✓. $\blacksquare$` },
+
+{ id: 'G2.22', sez: 2, tema: 'Equazioni di matrici', d: 2,
+  t: r`(Esercitazione sulle equazioni matriciali, EQ7: caso $(3,2)$, rango $1$.) Sia $A=\begin{bmatrix}1&2\\2&4\\1&2\end{bmatrix}$. Risolvere (a) $AX=B$ con $B=\begin{bmatrix}3&5\\6&10\\3&5\end{bmatrix}$; (b) $YA=C$ con $C=\begin{bmatrix}4&8\\2&4\end{bmatrix}$. Quanti parametri liberi ci si aspetta in ciascun caso?`,
+  hints: [ r`Tutte le righe di $A$ sono multiple della prima.`,
+           r`In (a) $X$ è $2\times2$, in (b) $Y$ è $2\times3$.`,
+           r`Ogni colonna di $B$ è un sistema con $n-r$ parametri.` ],
+  sol: r`<strong>(a)</strong> $R_2-2R_1$ e $R_3-R_1$ annullano due righe di $[A\,|\,B]$. Restano $x_1+2x_2=3$ e $x_1'+2x_2'=5$:
+$$X=\begin{bmatrix}3-2r&5-2t\\r&t\end{bmatrix},\qquad r,t\in\R.$$
+<strong>(b)</strong> $[A^{T}\,|\,C^{T}]\to\left[\begin{array}{ccc|cc}1&2&1&4&2\\0&0&0&0&0\end{array}\right]$, quindi
+$$Y=\begin{bmatrix}4-2r-t&r&t\\2-2r'-t'&r'&t'\end{bmatrix},\qquad r,t,r',t'\in\R.$$
+<strong>Controllo:</strong> la prima riga di $AX$ è $(3-2r+2r,\ 5-2t+2t)=(3,5)$ ✓; la prima riga di $YA$ è $(4-2r-t+2r+t,\ 8-4r-2t+4r+2t)=(4,8)$ ✓.<br><br>
+<strong>Morale:</strong> se $A\in\M_{\K}(m,n)$ ha rango $r$ e il sistema è compatibile, $AX=B$ ha $(\#\text{colonne di }B)\cdot(n-r)$ parametri e $YA=C$ ne ha $(\#\text{righe di }C)\cdot(m-r)$. Qui $2\cdot1=2$ e $2\cdot2=4$. Vale per tutti i casi EQ1–EQ7. $\blacksquare$` },
+
 /* ====== SEZIONE 3: vettori e spazi vettoriali ====== */
 { id: 'G3.1', sez: 3, tema: 'Spazi vettoriali', d: 2,
   t: r`Stabilire quali dei seguenti sottoinsiemi di $\R^{2}$ sono spazi vettoriali con le operazioni usuali:
@@ -959,6 +1040,65 @@ $$2\vv_1-\vv_2-\vv_3=\vzero.$$
 <strong>Controllo:</strong> $2(0,1,1,2)-(-1,0,1,2)=(1,2,1,2)$ ✓.<br><br>
 <strong>Il metodo dei minori del tutor.</strong> Nell'esercitazione il rango si calcola anche con il <a href="sezioni/8-determinanti.html#kronecker">teorema di Kronecker</a>, che il prof ha poi trattato nella Lezione 9: il minore $\begin{vmatrix}0&1\\-1&0\end{vmatrix}=1\ne0$ dà rango $\ge2$; orlandolo con la terza riga e la terza colonna si ottiene $k-1$; per $k=1$ anche l'orlato con la quarta colonna vale $0$, quindi il rango è $2$. Stessa conclusione. $\blacksquare$` },
 
+{ id: 'G5.25', sez: 5, tema: 'Dipendenza lineare', d: 2,
+  t: r`(Esercitazione del 14 ottobre, tema del 2021.) In $\M_{\R}(2,2)$ si considerino $A=\begin{bmatrix}h&0\\-2&1\end{bmatrix}$, $B=\begin{bmatrix}h&3h\\1&h\end{bmatrix}$, $C=\begin{bmatrix}1&2\\0&1\end{bmatrix}$, con $h\in\R$. Determinare $h$ in modo che siano linearmente dipendenti.`,
+  hints: [ r`Scrivi $xA+yB+zC=O$ entrata per entrata: quattro equazioni in tre incognite.`,
+           r`Servono soluzioni non banali (il tutor le chiama <em>autosoluzioni</em>), cioè rango della matrice dei coefficienti minore di $3$.`,
+           r`Con Kronecker: il minore di righe 2, 4 e colonne 1, 3 vale $-2$. Orlalo.`,
+           r`Con il MEG: dopo le prime operazioni confronta le righe $(0,3h,2)$ e $(0,2h+1,2)$. Basta sottrarle.` ],
+  sol: r`$xA+yB+zC=O$ equivale a $H(x,y,z)^{T}=\underline0$ con
+$$H=\begin{bmatrix}h&h&1\\0&3h&2\\-2&1&0\\1&h&1\end{bmatrix}.$$
+Le matrici sono dipendenti $\iff r(H)\lt3$.<br><br>
+<strong>Con Kronecker.</strong> Il minore di righe 2, 4 e colonne 1, 3 vale $\begin{vmatrix}0&2\\1&1\end{vmatrix}=-2\ne0$, quindi $r(H)\ge2$. I suoi due orlati sono
+$$\begin{vmatrix}0&3h&2\\-2&1&0\\1&h&1\end{vmatrix}=2h-2,\qquad\begin{vmatrix}h&h&1\\0&3h&2\\1&h&1\end{vmatrix}=h(h-1).$$
+Si annullano entrambi solo per $h=1$. Quindi $r(H)=2$ se $h=1$, e $r(H)=3$ altrimenti.<br><br>
+<strong>Con il MEG.</strong> Con scambi di righe, $R_3\to2R_3+R_1$ e $R_4\to2R_4+hR_1$ si arriva a righe $(-2,1,0)$, $(0,3h,2)$, $(0,2h+1,2)$, $(0,3h,2)$. Con $R_4-R_2$ l'ultima si annulla, e con $R_3-R_2$ la terza diventa $(0,1-h,0)$: rango $3$ se e solo se $h\ne1$.<br><br>
+$$\boxed{A,B,C\ \text{dipendenti}\iff h=1}$$
+<strong>Controllo:</strong> per $h=1$ si ha $A+2B-3C=O$: le entrate sono $1+2-3$, $0+6-6$, $-2+2-0$, $1+2-3$ ✓.<br>
+<span class="small muted">Nell'esercitazione l'orlato «con la prima riga» è scritto con le righe 1, 3, 4, che non contengono la riga 2 del minore di partenza: l'orlato giusto è quello sopra, con le righe 1, 2, 4. Il risultato non cambia. Il tutor poi lascia il MEG a metà, definendolo «più complicato», perché pensa a dividere per $3h$: con $R_3-R_2$ non serve.</span> $\blacksquare$` },
+
+{ id: 'G5.26', sez: 5, tema: 'Dipendenza lineare', d: 2,
+  t: r`(Esercitazione del 14 ottobre.) Per quali $h\in\R$ i polinomi di $P_2$ dati da $P_1(t)=t^{2}$, $P_2(t)=ht-1$, $P_3(t)=2t^{2}+h-1$ sono linearmente dipendenti?`,
+  hints: [ r`Scrivi $aP_1+bP_2+cP_3=0$ e raccogli le potenze di $t$.`,
+           r`Un polinomio è nullo se e solo se tutti i suoi coefficienti sono nulli.`,
+           r`Il sistema è quadrato: servono soluzioni non banali, cioè determinante nullo.` ],
+  sol: r`$aP_1+bP_2+cP_3=(a+2c)t^{2}+hb\,t+\big((h-1)c-b\big)$, quindi il sistema omogeneo ha matrice
+$$M=\begin{bmatrix}1&0&2\\0&h&0\\0&-1&h-1\end{bmatrix},\qquad|M|=\begin{vmatrix}h&0\\-1&h-1\end{vmatrix}=h(h-1).$$
+$$\boxed{\text{dipendenti}\iff h=0\ \text{oppure}\ h=1}$$
+Lo stesso col MEG: $R_2\leftrightarrow R_3$ e $R_3\to R_3+hR_2$ danno il pivot $a_{33}=h(h-1)$.<br><br>
+<strong>Controllo:</strong> per $h=0$ si ha $P_3=2P_1+P_2$: $2t^{2}-1$ ✓. Per $h=1$ si ha $P_3=2P_1$ ✓. $\blacksquare$` },
+
+{ id: 'G5.27', sez: 5, tema: 'Basi di nucleo e span', d: 1,
+  t: r`(Esercitazione del 14 ottobre.) Determinare una base di $V=\{(x,y,x+y,x-y)\in\R^{4}:\ x,y\in\R\}$.`,
+  hints: [ r`Separa il vettore generico nella parte con $x$ e in quella con $y$.`,
+           r`Controlla che i due generatori siano indipendenti, con un minore o con il MEG.` ],
+  sol: r`$(x,y,x+y,x-y)=x(1,0,1,1)+y(0,1,1,-1)$, quindi $V=\operatorname{span}\{\vv_1,\vv_2\}$ con $\vv_1=(1,0,1,1)$, $\vv_2=(0,1,1,-1)$.<br>
+In $H=[\vv_1|\vv_2]$ il minore delle prime due righe vale $\begin{vmatrix}1&0\\0&1\end{vmatrix}=1\ne0$, quindi $r(H)=2$: i vettori sono indipendenti e $\{\vv_1,\vv_2\}$ è una base di $V$.<br><br>
+<strong>Controllo col MEG:</strong> $R_3-R_1$, $R_4-R_1$, poi $R_3-R_2$, $R_4+R_2$ lasciano due righe non nulle ✓. $\blacksquare$` },
+
+{ id: 'G5.28', sez: 5, tema: 'Dipendenza lineare', d: 2,
+  t: r`(Esercitazione del 14 ottobre.) Stabilire se $A=\begin{bmatrix}1&2\\-1&0\end{bmatrix}$, $B=\begin{bmatrix}1&0\\0&-1\end{bmatrix}$, $C=\begin{bmatrix}-1&2\\-1&2\end{bmatrix}$ sono linearmente dipendenti, in due modi: con la definizione e passando a $\R^{4}$.`,
+  hints: [ r`Definizione: $x_1A+x_2B+x_3C=O$ dà quattro equazioni, due delle quali coincidono a meno di un fattore.`,
+           r`Secondo modo: $M\mapsto(a_{11},a_{12},a_{21},a_{22})$ è un isomorfismo.`,
+           r`Il minore delle righe 1, 2 e colonne 1, 2 è non nullo: controlla i suoi due orlati.` ],
+  sol: r`<strong>Con la definizione.</strong> $x_1A+x_2B+x_3C=O$ equivale a
+$$x_1+x_2-x_3=0,\quad x_1+x_3=0,\quad -x_2+2x_3=0,$$
+più una quarta equazione multipla della seconda. Dalle ultime due $x_1=-x_3$, $x_2=2x_3$, e la prima diventa $0=0$. Con $x_3=1$: $-A+2B+C=O$. Sono <strong>dipendenti</strong>.<br><br>
+<strong>In $\R^{4}$.</strong> $H=\begin{bmatrix}1&1&-1\\2&0&2\\-1&0&-1\\0&-1&2\end{bmatrix}$. Il minore $\begin{vmatrix}1&1\\2&0\end{vmatrix}=-2\ne0$ ha due orlati, entrambi nulli:
+$$\begin{vmatrix}1&1&-1\\2&0&2\\-1&0&-1\end{vmatrix}=0,\qquad\begin{vmatrix}1&1&-1\\2&0&2\\0&-1&2\end{vmatrix}=0.$$
+Per Kronecker $r(H)=2\lt3$.<br><br>
+<strong>Controllo:</strong> le entrate di $-A+2B+C$ sono $-1+2-1$, $-2+0+2$, $1+0-1$, $0-2+2$, tutte nulle ✓. $\blacksquare$` },
+
+{ id: 'G5.29', sez: 5, tema: 'Dipendenza lineare', d: 2,
+  t: r`(Esercitazione del 14 ottobre.) Per quali $h\in\R$ i polinomi $P_1(x)=x^{2}+h$, $P_2(x)=x^{2}+x$, $P_3(x)=hx-1$ sono linearmente dipendenti?`,
+  hints: [ r`Metti nelle colonne le coordinate rispetto a $\{x^{2},x,1\}$.`,
+           r`La matrice è quadrata: serve determinante nullo.` ],
+  sol: r`$t_1P_1+t_2P_2+t_3P_3=(t_1+t_2)x^{2}+(t_2+ht_3)x+(ht_1-t_3)$, quindi
+$$A=\begin{bmatrix}1&1&0\\0&1&h\\h&0&-1\end{bmatrix},\qquad|A|=h^{2}-1.$$
+$$\boxed{\text{dipendenti}\iff h=\pm1}$$
+Col MEG, $R_3-hR_1$ e $R_3+hR_2$ danno il pivot $a_{33}=h^{2}-1$. Passando a $\R^{3}$ si ottiene la stessa matrice: le sue colonne sono proprio le coordinate dei polinomi.<br><br>
+<strong>Controllo:</strong> per $h=1$ si ha $P_1-P_2=1-x=-P_3$ ✓; per $h=-1$ si ha $P_1-P_2=-1-x=P_3$ ✓. $\blacksquare$` },
+
 /* ==================== SEZIONE 6: POSIZIONE RECIPROCA ==================== */
 { id: 'G6.1', sez: 6, tema: 'Rette nel piano', d: 1,
   t: r`Determinare la posizione reciproca di $l_1:\ \vec r=(1,2)+t(2,-1)$ e $l_2:\ \vec r=(0,4)+s(1,1)$. Se sono incidenti, trovare il punto comune.`,
@@ -1180,6 +1320,37 @@ $$\dim(W_1\cap W_2)\ge\dim W_1+\dim W_2-\dim V.$$
 <strong>(a)</strong> $\dim(W_1\cap W_2)\ge3+3-4=2$.<br>
 <strong>(b)</strong> $\dim(W_1\cap W_2)\ge2+2-3=1$: l'intersezione contiene almeno una retta.<br><br>
 <strong>Morale:</strong> quando le dimensioni sono grandi rispetto allo spazio, i sottospazi sono costretti a incontrarsi. $\blacksquare$` },
+
+{ id: 'G7.11', sez: 7, tema: 'Somma diretta', d: 2,
+  t: r`(Esercitazione del 14 ottobre.) In $\R^{4}$ siano $U:\ x_1-x_3=0,\ x_2+x_4=0$ e $V:\ x_1+x_4=0,\ x_2-x_4=0$. (i) Trovare generatori e dimensione di $U$ e $V$. (ii) Stabilire se $U+V$ è una somma diretta, e darne una rappresentazione cartesiana.`,
+  hints: [ r`Risolvi ciascun sistema: due equazioni indipendenti in quattro incognite lasciano due parametri.`,
+           r`La somma è diretta $\iff U\cap V=\{\underline0\}$: metti insieme le quattro equazioni.`,
+           r`In alternativa: se i quattro generatori hanno determinante non nullo, $\dim(U+V)=4$.` ],
+  sol: r`<strong>(i)</strong> $U=\operatorname{span}\{(1,0,1,0),(0,-1,0,1)\}$ e $V=\operatorname{span}\{(-1,1,0,1),(0,0,1,0)\}$. In entrambi i casi la matrice dei generatori ha un minore $2\times2$ non nullo, quindi $\dim U=\dim V=2$.<br><br>
+<strong>(ii), primo modo.</strong> Da $x_2=-x_4$ e $x_2=x_4$ segue $x_2=x_4=0$, poi $x_1=0$ e $x_3=0$. Quindi $U\cap V=\{\underline0\}$: la somma è <strong>diretta</strong>.<br>
+<strong>Secondo modo.</strong> Con la formula di Grassmann basta $\dim(U+V)=4$, cioè
+$$|H|=\begin{vmatrix}1&0&-1&0\\0&-1&1&0\\1&0&0&1\\0&1&1&0\end{vmatrix}=-\begin{vmatrix}1&0&-1\\0&-1&1\\0&1&1\end{vmatrix}=2\ne0,$$
+sviluppando lungo l'ultima colonna.<br><br>
+Quindi $U\oplus V=\R^{4}$, e la sua «equazione cartesiana» è quella banale, $0=0$: non c'è nessun vincolo.<br><br>
+<strong>Controllo:</strong> $2+2=4=\dim\R^{4}$ ✓. $\blacksquare$` },
+
+{ id: 'G7.12', sez: 7, tema: 'Grassmann', d: 3,
+  t: r`(Esercitazione del 14 ottobre.) In $\R^{4}$ siano $V=\operatorname{span}\{\vv_1,\vv_2\}$ con $\vv_1=(1,1,0,1)$, $\vv_2=(2,0,0,1)$, e $W=\operatorname{span}\{\vw_1,\vw_2\}$ con $\vw_1=(-1,1,0,0)$, $\vw_2=(0,0,0,1)$. Trovare dimensione e base di $V$, $W$, $V\cap W$ e $V+W$.`,
+  hints: [ r`Per $V\cap W$ conviene passare alle equazioni cartesiane: $\vx\in V\iff r([\vv_1|\vv_2|\vx])=2$.`,
+           r`Si ottiene $V:\ x_3=0,\ x_1+x_2-2x_4=0$ e $W:\ x_3=0,\ x_1+x_2=0$.`,
+           r`Per la base di $V+W$ usa Kronecker e prendi le colonne del minore <strong>non nullo</strong>.`,
+           r`Attenzione: $\vw_1=\vv_1-\vv_2$.` ],
+  sol: r`I generatori di $V$ e quelli di $W$ sono indipendenti, quindi $\dim V=\dim W=2$ con basi $\{\vv_1,\vv_2\}$ e $\{\vw_1,\vw_2\}$.<br><br>
+<strong>Equazioni cartesiane.</strong> Orlando in $[\vv_1|\vv_2|\vx]$ il minore $\begin{vmatrix}1&2\\1&0\end{vmatrix}=-2$ si ottiene $V:\ x_3=0,\ x_1+x_2-2x_4=0$. Allo stesso modo $W:\ x_3=0,\ x_1+x_2=0$.<br><br>
+<strong>Intersezione.</strong> Mettendo insieme le equazioni: $x_3=0$, $x_4=0$, $x_1=-x_2$. Quindi
+$$V\cap W=\operatorname{span}\{(-1,1,0,0)\},\qquad\dim(V\cap W)=1.$$
+<strong>Somma.</strong> Sia $H=[\vv_1|\vv_2|\vw_1|\vw_2]$, con terza riga nulla. Il minore $\begin{vmatrix}1&2\\1&0\end{vmatrix}$ ha due orlati:
+$$\begin{vmatrix}1&2&-1\\1&0&1\\1&1&0\end{vmatrix}=0,\qquad\begin{vmatrix}1&2&0\\1&0&0\\1&1&1\end{vmatrix}=-2\ne0.$$
+Quindi $r(H)=3$, e il minore non nullo usa le colonne 1, 2, 4:
+$$\boxed{\{\vv_1,\vv_2,\vw_2\}\ \text{è una base di}\ V+W,\qquad\dim(V+W)=3.}$$
+Un'altra base viene dall'equazione $x_3=0$ di $V+W$: $\{\mathbf e_1,\mathbf e_2,\mathbf e_4\}$.<br><br>
+<strong>Controllo con Grassmann:</strong> $2+2-1=3$ ✓. E $\vv_1-\vv_2=(-1,1,0,0)=\vw_1$: il vettore comune sta davvero in entrambi ✓.<br>
+<span class="small muted">Negli appunti del tutor (p. 11) la base scritta è $\{\vv_1,\vv_2,\vw_1\}$, «col minore $[c_1,c_2,c_3]$». Non è una base: quel minore è proprio l'orlato nullo, e $\vw_1=\vv_1-\vv_2$. La dimensione $3$ è invece corretta. Sulla stessa pagina «$V+W=\operatorname{span}\{(-1,1,0,0)\}$» va letto $V\cap W$.</span> $\blacksquare$` },
 
 /* ==================== SEZIONE 8: DETERMINANTI ==================== */
 { id: 'G8.1', sez: 8, tema: 'Calcolo del determinante', d: 1,
