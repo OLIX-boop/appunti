@@ -39,6 +39,12 @@
   .capitoli { list-style: none; padding: 0; margin: 0; font-size: 13.2px; color: var(--text-muted); }
   .capitoli li { margin: 0 0 4px; padding-left: 15px; position: relative; }
   .capitoli li::before { content: "›"; position: absolute; left: 2px; color: var(--accent); font-weight: 700; }
+  /* Blocco col solo titolo: non è un link, quindi al passaggio non si solleva */
+  .materia-vuota:hover { transform: none; box-shadow: var(--shadow); border-color: var(--border); }
+  /* Blocco concluso: tutto in grigio, compresi icona, barra e badge */
+  .materia-archivio { background: var(--bg-sunken); box-shadow: none; filter: grayscale(1); }
+  .materia-archivio:hover { background: var(--bg-elev); }
+  .materia-archivio .sub { color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -68,26 +74,15 @@
 
     <div class="materie">
 
-      <a class="materia" href="analisi/index.html">
+      <!-- Seconda metà del corso: per ora solo il titolo, senza link perché la pagina non esiste ancora -->
+      <div class="materia materia-vuota">
         <div class="materia-top">
           <div class="materia-icona" style="background:linear-gradient(135deg,#1f5fa8,#6b3fa0)">∫</div>
           <div>
             <h2>Analisi Matematica 1</h2>
-            <div class="sub">Prof. G. Meglioli · a.a. 2026/27</div>
           </div>
         </div>
-        <p>Numeri reali e complessi, successioni e limiti, serie numeriche. Con le 14 dimostrazioni richieste allo scritto.</p>
-        <ul class="capitoli">
-          <li>Numeri reali e complessi</li>
-          <li>Funzioni, successioni e limiti</li>
-          <li>Serie numeriche</li>
-        </ul>
-        <div class="pbar" data-progress-for="analisi"><span style="width:0"></span></div>
-        <div class="materia-foot">
-          <span><span data-progress-txt="analisi">0/0</span> argomenti</span>
-          <span class="badge ok">primo parziale</span>
-        </div>
-      </a>
+      </div>
 
       <a class="materia" href="analisi/primo-parziale.html" style="border-left:4px solid var(--accent)">
         <div class="materia-top">
@@ -171,6 +166,28 @@
         <div class="materia-foot" style="margin-top:auto">
           <span class="faint">fino al 2 novembre</span>
           <span class="badge warn">temporaneo</span>
+        </div>
+      </a>
+
+      <!-- Prima metà del corso, conclusa col parziale del 2 novembre: resta consultabile, in grigio e in fondo -->
+      <a class="materia materia-archivio" href="analisi/index.html">
+        <div class="materia-top">
+          <div class="materia-icona" style="background:linear-gradient(135deg,#1f5fa8,#6b3fa0)">∫</div>
+          <div>
+            <h2>Analisi primo parziale</h2>
+            <div class="sub">Prof. G. Meglioli · a.a. 2026/27</div>
+          </div>
+        </div>
+        <p>Numeri reali e complessi, successioni e limiti, serie numeriche. Con le 14 dimostrazioni richieste allo scritto.</p>
+        <ul class="capitoli">
+          <li>Numeri reali e complessi</li>
+          <li>Funzioni, successioni e limiti</li>
+          <li>Serie numeriche</li>
+        </ul>
+        <div class="pbar" data-progress-for="analisi"><span style="width:0"></span></div>
+        <div class="materia-foot">
+          <span><span data-progress-txt="analisi">0/0</span> argomenti</span>
+          <span class="badge ok">concluso</span>
         </div>
       </a>
 
