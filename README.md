@@ -50,7 +50,7 @@ geometria/
            4-complessi.html 5-lineari.html 6-posizione.html
            7-grassmann.html 8-determinanti.html
   data/                    topics · teoremi · esercizi · quiz · laboratorio
-                           mappe · primalettura · schemi
+                           mappe · primalettura · primalettura-altre · schemi · schemi-altre
   materiale/               PDF del corso
 informatica/               single-page app autonoma, installabile come PWA
 ```

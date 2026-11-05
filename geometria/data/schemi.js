@@ -270,4 +270,6 @@
   window.SCHEMI = {
     5: { lineari, nucleo, inversa, basi, rappresentativa, isomorfismi, passaggio, 'rette-piani': rette, dipendenza, 'basi-span': basiSpan, rango }
   };
+  // gli strumenti servono anche agli schemi delle altre sezioni (data/schemi-altre.js)
+  window.SCHEMA_H = { n, svg, T, L, F, P, O, E, B, pan, griglia, grigliaObliqua, matrice };
 })();

@@ -152,8 +152,9 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - Lo studente ha chiesto di togliere le checklist di Geometria: il capitolo si riassume in **un punto
   solo**, cioè una frase, la mappa dei concetti e una spunta unica. La spunta scrive tutte le voci di
   `data/topics.js` della sezione, così le barre di avanzamento restano vere e gli id non cambiano.
-- I dati stanno in `geometria/data/`: `mappe.js` per le nove sezioni, `primalettura.js` e `schemi.js`
-  per la prima lettura. La logica è in `assets/js/capitolo.js`, lo stile in `assets/css/capitolo.css`.
+- I dati stanno in `geometria/data/`: `mappe.js` per le nove sezioni; `primalettura.js` e `schemi.js`
+  per la Sezione 5, `primalettura-altre.js` e `schemi-altre.js` per le altre otto. La logica è in
+  `assets/js/capitolo.js`, lo stile in `assets/css/capitolo.css`.
   Nella mappa i prerequisiti di un nodo stanno sempre in una riga più in alto, e `a` è un'ancora che esiste.
 - La **prima lettura** serve a studiare il capitolo la prima volta. Ogni paragrafo, nell'ordine del prof,
   è uno strato semplice: **una frase, uno schema, pochi punti brevi, una domanda**. Le definizioni del
@@ -163,8 +164,9 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
   Gli schemi sono SVG fermi: spiegano l'idea, non decorano, e si leggono anche a 375px. Le coordinate
   degli esempi si calcolano nel codice, e ogni schema si guarda davvero: un cerchio sul pivot sbagliato
   si vede solo così.
-- Per ora tutto questo esiste solo per la Sezione 5: estenderlo a un'altra sezione vuol dire aggiungere
-  i passi in `primalettura.js`, gli schemi in `schemi.js` e i due script nella pagina.
+- Ogni `h2` numerato di una sezione ha il suo passo, nello stesso ordine: se aggiungi un paragrafo agli
+  appunti (Lezione nuova), aggiungi anche il passo, lo schema e il nodo della mappa, e controlla sul
+  browser che il passo si veda. Le parti da seconda lettura si elencano in `seconda`.
 
 ### Laboratorio (`geometria/laboratorio.html`)
 
