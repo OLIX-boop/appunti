@@ -2,9 +2,9 @@
    capitolo.js — il capitolo in un punto solo (Geometria)
    Al posto della checklist: una frase, la mappa dei concetti e una
    spunta sola. Dove esistono i dati (window.PRIMA) aggiunge la prima
-   lettura: un paragrafo alla volta, senza dimostrazioni, con l'idea
-   prima della definizione e una domanda prima di andare avanti.
-   I contenuti stanno in geometria/data/mappe.js.
+   lettura: un paragrafo alla volta, con una frase, uno schema, pochi
+   punti e una domanda; le definizioni del prof si aprono con un clic.
+   I contenuti stanno in geometria/data: mappe, primalettura, schemi.
    ============================================================ */
 (function () {
   'use strict';
@@ -138,23 +138,31 @@
       if (nascondi) f.classList.add('seconda');
     });
 
-    // l'idea subito sotto il titolo, la domanda in fondo al paragrafo
+    // sotto il titolo lo strato semplice: frase, schema, pochi punti, domanda.
+    // Le definizioni del prof restano nella pagina e si aprono con un clic.
+    const schemi = (window.SCHEMI && window.SCHEMI[n]) || {};
     P.passi.forEach((p, k) => {
-      const h2 = document.getElementById(p.h2), figli = main.querySelectorAll('[data-passo="' + (k + 1) + '"]');
-      const idea = document.createElement('div');
-      idea.className = 'box tip prima-solo';
-      idea.dataset.passo = k + 1;
-      idea.innerHTML = '<div class="box-title">↳ Perché ti serve</div><p>' + p.perche + '</p>' +
-        '<p class="' + (p.lab ? '' : 'mb0') + '"><strong>L\'idea.</strong> ' + p.idea + '</p>' +
-        (p.lab ? '<p class="mb0"><a href="../laboratorio.html#' + p.lab + '">Provalo con le mani nel laboratorio →</a></p>' : '');
-      h2.after(idea);
-      const dom = document.createElement('div');
-      dom.className = 'box prima-solo prima-domanda';
-      dom.dataset.passo = k + 1;
-      dom.innerHTML = '<div class="box-title">✎ Prima di andare avanti</div><p>' + p.domanda + '</p>' +
+      const h2 = document.getElementById(p.h2), passo = k + 1;
+      main.querySelectorAll('[data-passo="' + passo + '"]').forEach(f => { if (f !== h2) f.classList.add('formale'); });
+      const crea = (classe, html) => {
+        const d = document.createElement('div');
+        d.className = classe;
+        d.dataset.passo = passo;
+        d.innerHTML = html;
+        return d;
+      };
+      const idea = crea('prima-solo prima-blocco',
+        '<p class="prima-frase">' + p.frase + '</p>' + (schemi[p.h2] ? schemi[p.h2]() : '') +
+        '<ul class="prima-punti">' + p.punti.map(x => '<li>' + x + '</li>').join('') + '</ul>' +
+        (p.lab ? '<p class="prima-lab"><a href="../laboratorio.html#' + p.lab + '">Provalo con le mani nel laboratorio →</a></p>' : ''));
+      const dom = crea('box prima-solo prima-domanda',
+        '<div class="box-title">✎ Prima di andare avanti</div><p>' + p.domanda + '</p>' +
         '<details class="reveal sol prima-check"><summary>Ho risposto: fammi controllare</summary>' +
-        '<div class="reveal-body"><p class="mb0">' + p.risposta + '</p></div></details>';
-      figli[figli.length - 1].after(dom);
+        '<div class="reveal-body"><p class="mb0">' + p.risposta + '</p></div></details>');
+      const apri = crea('prima-solo formale-apri', '<button type="button" class="btn" data-formale></button>');
+      h2.after(idea);
+      idea.after(dom);
+      dom.after(apri);
       AM.typeset(idea);
       AM.typeset(dom);
     });
@@ -172,8 +180,14 @@
 
     const titolo = i => (i === 0 ? 'Mappa del capitolo' : P.passi[i - 1].titolo);
 
+    let formaleAperto = false;
+
     function disegna() {
       document.body.classList.toggle('prima-on', stato.attiva);
+      document.body.classList.toggle('formale-aperto', formaleAperto);
+      main.querySelectorAll('[data-formale]').forEach(b => {
+        b.textContent = formaleAperto ? 'Chiudi la versione degli appunti' : 'Apri la versione degli appunti: definizioni e teoremi del prof';
+      });
       main.querySelectorAll('[data-passo]').forEach(f => f.classList.toggle('qui', +f.dataset.passo === stato.passo));
       const i = stato.passo;
       testa.innerHTML = '<div class="passo-riga"><strong>Prima lettura</strong><span class="muted">' +
@@ -195,8 +209,9 @@
       AM.typeset(piede);
     }
 
-    function vai(i, inCima) {
+    function vai(i, inCima, tieniFormale) {
       stato.passo = Math.max(0, Math.min(N, i));
+      if (!tieniFormale) formaleAperto = false;
       salva();
       disegna();
       if (inCima) window.scrollTo({ top: 0, behavior: 'auto' });
@@ -215,15 +230,17 @@
       if (vaiBtn) { vai(+vaiBtn.dataset.vai, true); return; }
       if (e.target.closest('[data-tutto]')) { imposta(false); return; }
       if (e.target.closest('[data-prima]')) { imposta(true); return; }
-      // un link interno a un paragrafo di un altro passo: prima si apre quel passo, poi il browser ci scorre
+      if (e.target.closest('[data-formale]')) { formaleAperto = !formaleAperto; disegna(); return; }
+      // un link interno a un altro punto della pagina: prima lo si rende visibile, poi il browser ci scorre
       const a = e.target.closest('a[href^="#"]');
       if (!a || !stato.attiva) return;
       const dest = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
       const contenitore = dest && dest.closest('[data-passo]');
       if (!contenitore) return;
-      const k = +contenitore.dataset.passo;
-      if (k < 0) imposta(false);
-      else if (k !== stato.passo) vai(k, false);
+      const k = +contenitore.dataset.passo, formale = contenitore.classList.contains('formale');
+      if (k < 0) { imposta(false); return; }
+      if (k !== stato.passo) { formaleAperto = formale; vai(k, false, true); }
+      else if (formale && !formaleAperto) { formaleAperto = true; disegna(); }
     }, true);
 
     // l'indice laterale non può usare i titoli nascosti: in prima lettura segna il passo aperto
@@ -239,8 +256,10 @@
     if (location.hash) {
       const dest = document.getElementById(decodeURIComponent(location.hash.slice(1)));
       const contenitore = dest && dest.closest('[data-passo]');
-      if (contenitore && +contenitore.dataset.passo >= 0) stato.passo = +contenitore.dataset.passo;
-      else if (contenitore) stato.attiva = false;
+      if (contenitore && +contenitore.dataset.passo >= 0) {
+        stato.passo = +contenitore.dataset.passo;
+        formaleAperto = contenitore.classList.contains('formale');
+      } else if (contenitore) stato.attiva = false;
     }
     disegna();
     spia();

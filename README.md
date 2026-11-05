@@ -49,7 +49,8 @@ geometria/
   sezioni/0-preliminari.html 1-sistemi.html 2-matrici.html 3-spazi.html
            4-complessi.html 5-lineari.html 6-posizione.html
            7-grassmann.html 8-determinanti.html
-  data/                    topics · teoremi · esercizi · quiz · laboratorio · mappe
+  data/                    topics · teoremi · esercizi · quiz · laboratorio
+                           mappe · primalettura · schemi
   materiale/               PDF del corso
 informatica/               single-page app autonoma, installabile come PWA
 ```

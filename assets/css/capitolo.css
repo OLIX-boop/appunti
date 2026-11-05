@@ -51,6 +51,28 @@ body.prima-on main > [data-passo]:not(.qui) { display: none; }
 body.prima-on main > .seconda { display: none; }
 body.prima-on main details.reveal:not(.prima-check) { display: none; }
 body.prima-on main .box .small.muted { display: none; }
+/* Le definizioni del prof: dietro un clic, a ogni passo */
+body.prima-on:not(.formale-aperto) main > .formale { display: none; }
+
+.prima-frase { font-size: 19px; font-weight: 650; line-height: 1.4; margin: 0 0 14px; letter-spacing: -.01em; }
+.prima-punti { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.6; }
+.prima-punti li { margin-bottom: 7px; }
+.prima-lab { margin: 10px 0 0; font-size: 14.5px; }
+.formale-apri { margin: 18px 0 0; }
+.formale-apri .btn { white-space: normal; text-align: left; }
+
+/* Gli schemi: fermi, in SVG, con i colori del tema */
+.schema { display: block; width: 100%; max-width: 500px; height: auto; margin: 6px auto 16px; color: var(--text); }
+.schema text { font-family: var(--font-sans); font-size: 13.5px; fill: currentColor; }
+.schema .s-g { font-weight: 700; }
+.schema .s-p { font-size: 12.5px; }
+.s-blu { color: var(--accent); }
+.s-ara { color: var(--warn); }
+.s-ros { color: var(--danger); }
+.s-ver { color: var(--ok); }
+.s-vio { color: var(--purple); }
+.s-gri { color: var(--border-strong); }
+.s-mut { color: var(--text-muted); }
 
 .passo-testa { margin: 20px 0 6px; }
 .passo-riga { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 14px; margin-bottom: 8px; }

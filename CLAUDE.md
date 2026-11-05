@@ -152,14 +152,19 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - Lo studente ha chiesto di togliere le checklist di Geometria: il capitolo si riassume in **un punto
   solo**, cioè una frase, la mappa dei concetti e una spunta unica. La spunta scrive tutte le voci di
   `data/topics.js` della sezione, così le barre di avanzamento restano vere e gli id non cambiano.
-- I dati stanno in `geometria/data/mappe.js`: `MAPPE` per le nove sezioni, `PRIMA` per la prima lettura.
-  La logica è in `assets/js/capitolo.js`, lo stile in `assets/css/capitolo.css`. Nella mappa i
-  prerequisiti di un nodo stanno sempre in una riga più in alto, e `a` è un'ancora che esiste.
-- La **prima lettura** serve a studiare il capitolo la prima volta: un paragrafo alla volta, nell'ordine
-  del prof, con «perché ti serve» e l'idea prima della definizione e una domanda prima di andare avanti.
-  Nasconde dimostrazioni, refusi e le parti in `seconda`: «Mostra tutto il capitolo» riporta la pagina
-  completa. Non riscrive gli appunti, ci aggiunge sopra uno strato. Per ora esiste solo per la Sezione 5:
-  estenderla a un'altra sezione vuol dire aggiungere i dati in `PRIMA`, verificando ogni esempio.
+- I dati stanno in `geometria/data/`: `mappe.js` per le nove sezioni, `primalettura.js` e `schemi.js`
+  per la prima lettura. La logica è in `assets/js/capitolo.js`, lo stile in `assets/css/capitolo.css`.
+  Nella mappa i prerequisiti di un nodo stanno sempre in una riga più in alto, e `a` è un'ancora che esiste.
+- La **prima lettura** serve a studiare il capitolo la prima volta. Ogni paragrafo, nell'ordine del prof,
+  è uno strato semplice: **una frase, uno schema, pochi punti brevi, una domanda**. Le definizioni del
+  prof restano nella pagina dietro un clic («versione degli appunti»), e «Mostra tutto il capitolo»
+  riporta la pagina completa. Non riscrive gli appunti, ci aggiunge sopra uno strato.
+- Lo studente ha chiesto di semplificare il più possibile e di avere **uno schema in ogni paragrafo**.
+  Gli schemi sono SVG fermi: spiegano l'idea, non decorano, e si leggono anche a 375px. Le coordinate
+  degli esempi si calcolano nel codice, e ogni schema si guarda davvero: un cerchio sul pivot sbagliato
+  si vede solo così.
+- Per ora tutto questo esiste solo per la Sezione 5: estenderlo a un'altra sezione vuol dire aggiungere
+  i passi in `primalettura.js`, gli schemi in `schemi.js` e i due script nella pagina.
 
 ### Laboratorio (`geometria/laboratorio.html`)
 
