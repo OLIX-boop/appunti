@@ -146,6 +146,17 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
   `assets/js/meg.js` (`MEG.riduci`, `MEG.riduciJ`) da Node, oppure a mano con il controllo
   finale. Mai pubblicare una soluzione non verificata.
 
+### Laboratorio (`geometria/laboratorio.html`)
+
+- Ogni round chiede una **risposta o una mossa prima** di mostrare il risultato, e un errore mostra
+  dove porta la risposta sbagliata. Lo studente non vuole grafici decorativi né animazioni che
+  partono da sole: si muove solo ciò che muove lui.
+- I round stanno in `geometria/data/laboratorio.js`, la logica in `assets/js/laboratorio.js`, lo stile
+  in `assets/css/laboratorio.css`. I numeri dei round si verificano con Node, come tutti gli altri.
+- Il risultato di un trascinamento si controlla **al rilascio**: passare sopra la soluzione non basta.
+- Le prove nel browser scrivono i progressi in `localStorage` (chiavi `am1:lab:l1`–`l4`): dopo aver
+  collaudato vanno cancellate, sennò lo studente trova i round già fatti.
+
 ### Verifiche in PDF (fuori dal sito)
 
 - Vanno sul Desktop, **non** nel repository e non sul sito.

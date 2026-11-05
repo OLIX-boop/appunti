@@ -35,17 +35,19 @@ assets/
   js/app.js                tema, KaTeX, reveal, progressi, quiz, flashcard, timer
   js/plot.js               motore di grafici su canvas, senza dipendenze
   js/meg.js                eliminazione di Gauss su frazioni esatte
+  js/laboratorio.js        i quattro livelli del Laboratorio delle basi
+  css/laboratorio.css      stile del laboratorio
 analisi/
   index.html teoremi.html quesiti.html esercizi.html simulazione.html
   sezioni/1-numeri.html 2-successioni.html 3-serie.html
   data/                    topics · teoremi · quesiti · esercizi · quiz
   materiale/               PDF del corso
 geometria/
-  index.html teoremi.html esercizi.html
+  index.html teoremi.html esercizi.html laboratorio.html
   sezioni/0-preliminari.html 1-sistemi.html 2-matrici.html 3-spazi.html
            4-complessi.html 5-lineari.html 6-posizione.html
            7-grassmann.html 8-determinanti.html
-  data/                    topics · teoremi · esercizi · quiz
+  data/                    topics · teoremi · esercizi · quiz · laboratorio
   materiale/               PDF del corso
 informatica/               single-page app autonoma, installabile come PWA
 ```

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratorio delle basi — Geometria</title>
+<meta name="description" content="Basi, coordinate, rango e applicazioni lineari da capire con le mani: ogni round chiede una risposta prima di mostrare il risultato.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/geometria-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../assets/css/laboratorio.css?v=20261105">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="index.html">Piano</a>
+      <a href="../due-parziali.html">Parziali</a>
+      <a href="sezioni/0-preliminari.html">0 · Preliminari</a>
+      <a href="sezioni/1-sistemi.html">1 · Sistemi</a>
+      <a href="sezioni/2-matrici.html">2 · Matrici</a>
+      <a href="sezioni/3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="sezioni/4-complessi.html">4 · Complessi</a>
+      <a href="sezioni/5-lineari.html">5 · Lineari</a>
+      <a href="sezioni/6-posizione.html">6 · Posizione</a>
+      <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
+      <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
+      <a href="teoremi.html">Teoremi</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="laboratorio.html">Laboratorio</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Laboratorio</h4>
+    <a href="#come">Come si usa</a>
+    <a href="#livello-1">1 · Raggiungi il bersaglio</a>
+    <a href="#livello-2">2 · Stesso punto, due griglie</a>
+    <a href="#livello-3">3 · Nello spazio</a>
+    <a href="#livello-4">4 · Dove vanno $\mathbf e_1$ ed $\mathbf e_2$</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Laboratorio · Geometria e Algebra Lineare · Sezione 5</div>
+      <h1>Laboratorio delle basi</h1>
+      <p class="lead">Basi, coordinate, rango e applicazioni lineari si capiscono meglio con le mani che leggendo. Qui ogni round ti chiede prima una risposta o una mossa: il risultato arriva dopo.</p>
+    </div>
+
+    <div class="box tip" id="come">
+      <div class="box-title">↳ Come si usa</div>
+      <ul class="mb0">
+        <li><strong>Rispondi prima di guardare.</strong> Se sbagli, il laboratorio ti mostra dove ti porta la tua risposta: spesso è la parte più utile.</li>
+        <li><strong>Segui i livelli in ordine.</strong> Sono quattro, circa mezz'ora in tutto, e i progressi restano su questo dispositivo.</li>
+        <li><strong>I disegni arrivano fino a $\R^3$.</strong> Polinomi e matrici non si disegnano, ma le <a href="sezioni/5-lineari.html#isomorfismi">coordinate</a> li trasformano in vettori di $\R^n$, quindi gli stessi ragionamenti restano validi.</li>
+        <li><strong>Non sostituisce gli esercizi a mano.</strong> Alla fine di ogni livello trovi quali fare.</li>
+      </ul>
+    </div>
+
+    <div class="grid g4" id="labStat" style="margin:20px 0"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="livello-1">1 · Raggiungi il bersaglio</h2>
+    <p>Hai due vettori e un punto da centrare. Puoi solo decidere quanto usare di ciascuno. Prima dici se ci riuscirai, poi provi.</p>
+    <div class="widget">
+      <div class="widget-head" id="l1Testa"></div>
+      <div class="widget-body">
+        <div class="lab-griglia">
+          <div class="lab-tela"><canvas class="plot" id="l1Plot" role="img" aria-label="Piano con i vettori, il bersaglio e il cammino delle dosi"></canvas></div>
+          <div class="lab-pannello" id="l1Box"></div>
+        </div>
+      </div>
+    </div>
+    <details class="reveal"><summary>Il succo del livello: aprilo dopo aver giocato</summary><div class="reveal-body">
+      <p>La definizione di <a href="sezioni/5-lineari.html#base-def">base</a> è questo gioco scritto in simboli:
+      $$\forall\,\vv\in V\quad\exists!\ \mathbf c\ \text{ tale che }\ \vv=c_1\vv_1+\dots+c_n\vv_n.$$
+      <strong>$\exists$</strong> vuol dire «ogni bersaglio è raggiungibile», cioè i vettori generano. <strong>$!$</strong> vuol dire «in un solo modo», cioè sono <a href="sezioni/5-lineari.html#dip-def">indipendenti</a>. Le dosi $c_j$ sono le coordinate.</p>
+      <p class="mb0"><strong>Ora a mano:</strong> <a href="esercizi.html?sez=5">G5.3 e G5.4</a> (dipendenza lineare).</p>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="livello-2">2 · Stesso punto, due griglie</h2>
+    <p>Il punto $P$ non si muove mai. Cambiano la griglia e, con lei, i numeri che lo descrivono. Qui scrivi tu le coordinate: se sbagli vedi dove finisci.</p>
+    <div class="widget">
+      <div class="widget-head" id="l2Testa"></div>
+      <div class="widget-body">
+        <div class="lab-griglia">
+          <div class="lab-tela"><canvas class="plot" id="l2Plot" role="img" aria-label="Piano con la griglia della base e il punto P"></canvas></div>
+          <div class="lab-pannello" id="l2Box"></div>
+        </div>
+      </div>
+    </div>
+    <details class="reveal"><summary>Il succo del livello: aprilo dopo aver giocato</summary><div class="reveal-body">
+      <p>Un vettore e le sue coordinate sono due cose diverse: il vettore sta nel piano, le coordinate dipendono dalla base. Con $S=[\,\vv_1\,|\,\vv_2\,]$ vale $\vx=S\mathbf c$: $S$ trasforma i numeri nel vettore, e $S^{-1}$ fa il contrario, $\mathbf c=S^{-1}\vx$ (<a href="sezioni/5-lineari.html#parametrizzazione">Lezione 4</a>).</p>
+      <p>Fra due basi, $\mathbf c=S\tilde{\mathbf c}$, dove le colonne di $S$ sono i vettori nuovi scritti nella base vecchia (<a href="sezioni/5-lineari.html#passaggio">Lezione 5</a>).</p>
+      <p class="mb0"><strong>Ora a mano:</strong> <a href="esercizi.html?sez=5">G5.15–G5.17</a> (basi e coordinate) e <a href="esercizi.html?sez=5">G5.19–G5.20</a> (passaggio tra basi).</p>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="livello-3">3 · Nello spazio il rango si vede</h2>
+    <p>Tre vettori di $\R^3$ possono riempire lo spazio, stare in un piano o stare su una retta. Da una sola inquadratura spesso non si capisce: devi girarci intorno.</p>
+    <div class="widget">
+      <div class="widget-head" id="l3Testa"></div>
+      <div class="widget-body">
+        <div class="lab-griglia">
+          <div class="lab-tela"><canvas class="lab-scena" id="l3Scena" tabindex="0" role="img" aria-label="Scena tridimensionale con tre vettori: si ruota trascinando o con i tasti freccia"></canvas></div>
+          <div class="lab-pannello" id="l3Box"></div>
+        </div>
+      </div>
+    </div>
+    <details class="reveal"><summary>Il succo del livello: aprilo dopo aver giocato</summary><div class="reveal-body">
+      <p>Il <a href="sezioni/5-lineari.html#rango">rango</a> di $[\,\vv_1\,|\,\vv_2\,|\,\vv_3\,]$ è la dimensione di $\operatorname{span}\{\vv_1,\vv_2,\vv_3\}$: il numero di direzioni vere fra i tre vettori. Il MEG le conta con i pivot, l'occhio le conta ruotando la scena.</p>
+      <p class="mb0"><strong>Ora a mano:</strong> <a href="esercizi.html?sez=5">G5.25, G5.26, G5.28 e G5.29</a> (dipendenza con parametro).</p>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="livello-4">4 · Dove vanno $\mathbf e_1$ ed $\mathbf e_2$</h2>
+    <p>Una matrice $2\times2$ è una mappa del piano in sé, e per conoscerla basta sapere dove finiscono $\mathbf e_1$ ed $\mathbf e_2$. A sinistra il piano di partenza, a destra quello di arrivo: stessi colori, stesse frecce.</p>
+    <div class="widget">
+      <div class="widget-head" id="l4Testa"></div>
+      <div class="widget-body">
+        <p class="lab-q" id="l4Q"></p>
+        <div class="lab-due">
+          <div class="lab-tela"><p class="lab-didascalia">Dominio: da dove parti</p><div class="lab-tela"><canvas class="plot" id="l4Dom" role="img" aria-label="Piano di partenza con la F e i vettori e uno, e due"></canvas></div></div>
+          <div class="lab-tela"><p class="lab-didascalia">Codominio: dove arrivi</p><div class="lab-tela"><canvas class="plot" id="l4Cod" role="img" aria-label="Piano di arrivo con la F trasformata e le immagini di e uno ed e due"></canvas></div></div>
+        </div>
+        <div class="readout" id="l4Dati"></div>
+        <div class="lab-pannello" id="l4Box"></div>
+      </div>
+    </div>
+    <details class="reveal"><summary>Il succo del livello: aprilo dopo aver giocato</summary><div class="reveal-body">
+      <p>$A=[\,L(\mathbf e_1)\,|\,L(\mathbf e_2)\,]$: le colonne sono le immagini della base canonica (<a href="sezioni/5-lineari.html#rappr-kn">teorema di rappresentazione</a>). Il nucleo è ciò che viene schiacciato su $\vzero$, l'immagine è ciò che resta, e <a href="sezioni/5-lineari.html#nullita">rango + nullità</a> dice che le dimensioni perse più quelle rimaste fanno sempre $\dim V$.</p>
+      <p>Le soluzioni di $A\vx=\vb$, quando esistono, sono $\vx_0+\ker A$: una copia del nucleo spostata (<a href="sezioni/5-lineari.html#controimmagini">struttura delle controimmagini</a>).</p>
+      <p class="mb0"><strong>Ora a mano:</strong> <a href="esercizi.html?sez=5">G5.14 e G5.18</a> (matrice rappresentativa), <a href="esercizi.html?sez=5">G5.2</a> (nucleo e immagine), <a href="esercizi.html?sez=5">G5.8</a> (rango e nullità).</p>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="errori">Errori tipici</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Quello che il laboratorio serve a smontare</div>
+      <ul class="mb0">
+        <li><strong>Confondere il vettore con le sue coordinate.</strong> $(3,3)$ e $(2,1)$ possono essere lo stesso punto: dipende dalla base.</li>
+        <li><strong>Pensare che una base debba essere perpendicolare.</strong> Bastano vettori indipendenti nel numero giusto.</li>
+        <li><strong>Controllare l'indipendenza a coppie.</strong> $(1,1,0)$, $(0,1,1)$, $(1,0,-1)$ non sono multipli l'uno dell'altro, eppure sono dipendenti.</li>
+        <li><strong>Sbagliare il verso di $S$.</strong> $S$ manda le coordinate nuove in quelle vecchie: per le nuove serve $S^{-1}$.</li>
+        <li><strong>Mettere nucleo e immagine nello stesso spazio.</strong> $\ker L$ sta nel dominio, $\Imag L$ nel codominio. Nel Livello 4 stanno in due disegni diversi per questo.</li>
+        <li><strong>Dimenticare che le soluzioni sono una retta spostata.</strong> Quelle di $A\vx=\vb$ non sono un sottospazio se $\vb\ne\vzero$: non passano per l'origine.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow">
+      <a class="btn primary" href="sezioni/5-lineari.html">Torna alla Sezione 5</a>
+      <a class="btn" href="esercizi.html?sez=5">Esercizi della Sezione 5</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Laboratorio delle basi · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../assets/js/materie.js?v=20261104"></script>
+<script src="data/topics.js?v=20261104"></script>
+<script src="data/laboratorio.js?v=20261105"></script>
+<script src="../assets/js/plot.js?v=20261104"></script>
+<script src="../assets/js/meg.js?v=20261104"></script>
+<script src="../assets/js/app.js?v=20261104"></script>
+<script src="../assets/js/laboratorio.js?v=20261105"></script>
+</body>
+</html>
