@@ -1,0 +1,77 @@
+/* ============================================================
+   capitolo.css — mappa del capitolo e prima lettura (Geometria)
+   Usa i token di style.css, quindi segue il tema chiaro e scuro.
+   ============================================================ */
+
+.cap-frase { font-size: 16.5px; line-height: 1.6; margin: 0 0 16px; }
+
+/* La mappa: righe di concetti, con i fili disegnati sotto */
+.mappa { position: relative; margin: 0 0 14px; }
+.mappa-fili { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.mappa-fili path { fill: none; stroke: var(--border-strong); stroke-width: 1.6; }
+.mappa-fili path.pre { stroke: var(--accent); stroke-width: 2.6; }
+.mappa-fili path.dopo { stroke: var(--ok); stroke-width: 2.6; }
+.mappa-riga { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 30px; }
+.mappa-riga:last-child { margin-bottom: 0; }
+.mappa-nodo {
+  flex: 0 1 158px; min-height: 54px; padding: 8px 10px;
+  border: 1.5px solid var(--border-strong); border-radius: var(--radius);
+  background: var(--bg-elev); color: var(--text); box-shadow: var(--shadow);
+  font: inherit; font-size: 13.5px; font-weight: 600; line-height: 1.3; text-align: center;
+  cursor: pointer; transition: opacity .14s, border-color .14s, background .14s;
+}
+.mappa-nodo:hover { border-color: var(--accent); }
+.mappa-nodo.esterno { border-style: dashed; background: var(--bg-sunken); box-shadow: none; }
+.mappa-nodo.sel { border-color: var(--accent); background: var(--accent); color: #fff; }
+.mappa-nodo.pre { border-color: var(--accent); background: var(--accent-soft); }
+.mappa-nodo.dopo { border-color: var(--ok); background: var(--ok-soft); }
+.mappa-nodo.spento { opacity: .45; }
+
+.mappa-info {
+  padding: 11px 14px; border-radius: var(--radius-sm); font-size: 14.5px; line-height: 1.55;
+  border: 1px solid var(--border); background: var(--bg-sunken); min-height: 48px;
+}
+.mappa-rel { margin-top: 5px; font-size: 13.5px; color: var(--text-muted); }
+.mappa-rel .pre { color: var(--accent); font-weight: 700; }
+.mappa-rel .dopo { color: var(--ok); font-weight: 700; }
+.mappa-vai { margin-top: 9px; }
+
+/* La spunta unica del capitolo */
+.cap-fatto { display: inline-flex; align-items: center; gap: 9px; margin: 14px 0 0; font-size: 14.5px; font-weight: 600; cursor: pointer; }
+.cap-fatto input { width: 17px; height: 17px; accent-color: var(--ok); }
+
+.cap-modo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 14px; }
+.cap-modo:empty { display: none; }
+
+/* Prima lettura: un paragrafo alla volta */
+.prima-solo { display: none; }
+body.prima-on .prima-solo { display: block; }
+body.prima-on .passo-piede.prima-solo { display: flex; }
+body.prima-on main > [data-passo]:not(.qui) { display: none; }
+body.prima-on main > .seconda { display: none; }
+body.prima-on main details.reveal:not(.prima-check) { display: none; }
+body.prima-on main .box .small.muted { display: none; }
+
+.passo-testa { margin: 20px 0 6px; }
+.passo-riga { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 14px; margin-bottom: 8px; }
+.passo-riga .btn { margin-left: auto; }
+.passo-barra { height: 6px; border-radius: 3px; background: var(--bg-sunken); overflow: hidden; border: 1px solid var(--border); }
+.passo-barra span { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+
+.prima-domanda { border-left-color: var(--purple); }
+.prima-domanda .box-title { color: var(--purple); }
+.prima-domanda .reveal { margin-bottom: 0; }
+
+.passo-piede { flex-wrap: wrap; gap: 10px; justify-content: space-between; margin: 26px 0 8px; }
+.passo-piede .btn { white-space: normal; text-align: left; }
+.passo-piede .btn.primary { margin-left: auto; }
+.passo-fine { flex: 1 1 100%; margin: 0 0 4px; }
+
+@media (max-width: 560px) {
+  /* Tre riquadri stanno ancora su una riga: così i fili non passano dietro a quelli vicini */
+  .mappa-riga { gap: 8px; margin-bottom: 24px; }
+  .mappa-nodo { flex: 1 1 28%; min-width: 0; font-size: 12.5px; padding: 7px 5px; overflow-wrap: anywhere; hyphens: auto; }
+  .mappa-riga[data-n="4"] .mappa-nodo { flex-basis: 42%; }
+  .mappa-riga[data-n="1"] .mappa-nodo, .mappa-riga[data-n="2"] .mappa-nodo { flex: 0 1 46%; }
+  .passo-riga .btn { margin-left: 0; }
+}

@@ -88,7 +88,8 @@ Nell'ordine:
    - un riquadro `box tip` «↳ Dove stiamo andando» o simile;
    - dopo un aggiornamento importante, un riquadro `box warnb` «★ Novità delle Lezioni …» con un
      link a ogni punto nuovo, perché le aggiunte in mezzo alla pagina non si trovano;
-   - `h2#checklist` + card di avanzamento + `div#checklistBox`;
+   - Analisi: `h2#checklist` + card di avanzamento + `div#checklistBox`. Geometria: niente checklist,
+     solo `h2#mappa` + `div#mappaBox`, riempito da `AM.mappaCapitolo` (vedi «Mappa e prima lettura»);
    - paragrafi `h2` numerati «N · Titolo», con sottoparagrafi `h3`;
    - `h2#test` «Mettiti alla prova» con `#quizBox`; `h2#errori` «Errori tipici» in un `box trap`;
    - `.btnrow` di navigazione: sezione successiva, precedente, esercizi della sezione.
@@ -145,6 +146,20 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - **Tutti i conti numerici si verificano** prima di scriverli: aritmetica esatta con
   `assets/js/meg.js` (`MEG.riduci`, `MEG.riduciJ`) da Node, oppure a mano con il controllo
   finale. Mai pubblicare una soluzione non verificata.
+
+### Mappa e prima lettura (Geometria)
+
+- Lo studente ha chiesto di togliere le checklist di Geometria: il capitolo si riassume in **un punto
+  solo**, cioè una frase, la mappa dei concetti e una spunta unica. La spunta scrive tutte le voci di
+  `data/topics.js` della sezione, così le barre di avanzamento restano vere e gli id non cambiano.
+- I dati stanno in `geometria/data/mappe.js`: `MAPPE` per le nove sezioni, `PRIMA` per la prima lettura.
+  La logica è in `assets/js/capitolo.js`, lo stile in `assets/css/capitolo.css`. Nella mappa i
+  prerequisiti di un nodo stanno sempre in una riga più in alto, e `a` è un'ancora che esiste.
+- La **prima lettura** serve a studiare il capitolo la prima volta: un paragrafo alla volta, nell'ordine
+  del prof, con «perché ti serve» e l'idea prima della definizione e una domanda prima di andare avanti.
+  Nasconde dimostrazioni, refusi e le parti in `seconda`: «Mostra tutto il capitolo» riporta la pagina
+  completa. Non riscrive gli appunti, ci aggiunge sopra uno strato. Per ora esiste solo per la Sezione 5:
+  estenderla a un'altra sezione vuol dire aggiungere i dati in `PRIMA`, verificando ogni esempio.
 
 ### Laboratorio (`geometria/laboratorio.html`)
 

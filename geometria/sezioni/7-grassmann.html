@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105">
 </head>
 <body>
 
@@ -44,7 +45,7 @@
 <div class="layout">
   <aside class="sidebar">
     <h4>Sezione 7</h4>
-    <a href="#checklist">Checklist del programma</a>
+    <a href="#mappa">Mappa del capitolo</a>
     <a href="#completamento">1 · Completamento a una base</a>
     <a href="#ricetta" class="sub">La ricetta in $\K^{n}$</a>
     <a href="#riferimento-piano" class="sub">Un riferimento adatto a un piano</a>
@@ -80,15 +81,8 @@
     </div>
     <p class="small muted">Dagli appunti: <em>Lezione 8</em>. Libro: <em>ALG</em> pp. 180-184, p. 197 (proposizioni 8.5-8.7), pp. 239-242.</p>
 
-    <h2 id="checklist">Checklist del programma</h2>
-    <div class="card" style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-        <strong>Avanzamento Sezione 7</strong>
-        <span class="muted small"><span data-progress-txt="g7">0/13</span> · <span data-progress-pct="g7">0%</span></span>
-      </div>
-      <div class="pbar" data-progress-for="g7"><span style="width:0"></span></div>
-    </div>
-    <div id="checklistBox"></div>
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="completamento">1 · Completamento a una base</h2>
@@ -450,10 +444,12 @@
 <script src="../data/quiz.js?v=20261104"></script>
 <script src="../../assets/js/meg.js?v=20261104"></script>
 <script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../data/mappe.js?v=20261105"></script>
 <script src="../../assets/js/app.js?v=20261104"></script>
+<script src="../../assets/js/capitolo.js?v=20261105"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklistBox', 7, 'geometria');
+  AM.mappaCapitolo('#mappaBox', 7);
   AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 7; }), { statKey: 'geo7' });
 
   /* ---------- Grassmann in R^4 ---------- */

@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105">
 </head>
 <body>
 
@@ -44,7 +45,7 @@
 <div class="layout">
   <aside class="sidebar">
     <h4>Sezione 0</h4>
-    <a href="#checklist">Checklist</a>
+    <a href="#mappa">Mappa del capitolo</a>
     <a href="#notazione">1 · Notazione per gli insiemi</a>
     <a href="#numerici" class="sub">Gli insiemi numerici</a>
     <a href="#rn">2 · Lo spazio $\R^n$</a>
@@ -62,15 +63,8 @@
       <p class="lead">Il vocabolario che il corso dà per acquisito dalla prima lezione. Si legge in venti minuti, ma saltarlo significa inciampare su notazioni che compaiono ovunque.</p>
     </div>
 
-    <h2 id="checklist">Checklist</h2>
-    <div class="card" style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-        <strong>Avanzamento Sezione 0</strong>
-        <span class="muted small"><span data-progress-txt="g0">0/8</span> · <span data-progress-pct="g0">0%</span></span>
-      </div>
-      <div class="pbar" data-progress-for="g0"><span style="width:0"></span></div>
-    </div>
-    <div id="checklistBox"></div>
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
 
     <h2 id="notazione">1 · Notazione per gli insiemi</h2>
     <div class="box def">
@@ -178,10 +172,12 @@
 <script src="../../assets/js/materie.js?v=20261104"></script>
 <script src="../data/topics.js?v=20261104"></script>
 <script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../data/mappe.js?v=20261105"></script>
 <script src="../../assets/js/app.js?v=20261104"></script>
+<script src="../../assets/js/capitolo.js?v=20261105"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklistBox', 0, 'geometria');
+  AM.mappaCapitolo('#mappaBox', 0);
 });
 </script>
 </body>

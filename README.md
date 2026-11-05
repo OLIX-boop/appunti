@@ -36,7 +36,9 @@ assets/
   js/plot.js               motore di grafici su canvas, senza dipendenze
   js/meg.js                eliminazione di Gauss su frazioni esatte
   js/laboratorio.js        i quattro livelli del Laboratorio delle basi
+  js/capitolo.js           mappa del capitolo e prima lettura di Geometria
   css/laboratorio.css      stile del laboratorio
+  css/capitolo.css         stile di mappa e prima lettura
 analisi/
   index.html teoremi.html quesiti.html esercizi.html simulazione.html
   sezioni/1-numeri.html 2-successioni.html 3-serie.html
@@ -47,7 +49,7 @@ geometria/
   sezioni/0-preliminari.html 1-sistemi.html 2-matrici.html 3-spazi.html
            4-complessi.html 5-lineari.html 6-posizione.html
            7-grassmann.html 8-determinanti.html
-  data/                    topics · teoremi · esercizi · quiz · laboratorio
+  data/                    topics · teoremi · esercizi · quiz · laboratorio · mappe
   materiale/               PDF del corso
 informatica/               single-page app autonoma, installabile come PWA
 ```

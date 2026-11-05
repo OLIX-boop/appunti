@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105">
 </head>
 <body>
 
@@ -44,7 +45,7 @@
 <div class="layout">
   <aside class="sidebar">
     <h4>Sezione 5</h4>
-    <a href="#checklist">Checklist del programma</a>
+    <a href="#mappa">Mappa del capitolo</a>
     <a href="#lineari">1 · Applicazioni lineari</a>
     <a href="#lineari-def" class="sub">Definizione ed esempi</a>
     <a href="#composta" class="sub">$L_A$ e la composizione</a>
@@ -115,15 +116,8 @@
       </ul>
     </div>
 
-    <h2 id="checklist">Checklist del programma</h2>
-    <div class="card" style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-        <strong>Avanzamento Sezione 5</strong>
-        <span class="muted small"><span data-progress-txt="g5">0/30</span> · <span data-progress-pct="g5">0%</span></span>
-      </div>
-      <div class="pbar" data-progress-for="g5"><span style="width:0"></span></div>
-    </div>
-    <div id="checklistBox"></div>
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="lineari">1 · Applicazioni lineari</h2>
@@ -1020,10 +1014,12 @@
 <script src="../data/topics.js?v=20261104"></script>
 <script src="../data/quiz.js?v=20261104"></script>
 <script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../data/mappe.js?v=20261105"></script>
 <script src="../../assets/js/app.js?v=20261104"></script>
+<script src="../../assets/js/capitolo.js?v=20261105"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklistBox', 5, 'geometria');
+  AM.mappaCapitolo('#mappaBox', 5);
   AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 5; }), { statKey: 'geo5' });
 
   /* ---------- l'ellisse come circonferenza nel riferimento (O', A', B') ---------- */

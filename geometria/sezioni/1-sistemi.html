@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105">
 </head>
 <body>
 
@@ -44,7 +45,7 @@
 <div class="layout">
   <aside class="sidebar">
     <h4>Sezione 1</h4>
-    <a href="#checklist">Checklist del programma</a>
+    <a href="#mappa">Mappa del capitolo</a>
     <a href="#sistemi">1 · Che cos'è un sistema lineare</a>
     <a href="#matrici" class="sub">Dalla scrittura alla matrice</a>
     <a href="#equivalenza">2 · Operazioni elementari</a>
@@ -76,15 +77,8 @@
       <p class="mb0">Riduzioni a scala e ranghi (anche con un parametro), la dimostrazione sulle matrici $2\times n$ di rango $\lt2$, tre sistemi e la parabola per tre punti, con le soluzioni del tutor verificate: sono gli <a href="../esercizi.html?sez=1">esercizi G1.5–G1.11</a> della palestra.</p>
     </div>
 
-    <h2 id="checklist">Checklist del programma</h2>
-    <div class="card" style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-        <strong>Avanzamento Sezione 1</strong>
-        <span class="muted small"><span data-progress-txt="g1">0/14</span> · <span data-progress-pct="g1">0%</span></span>
-      </div>
-      <div class="pbar" data-progress-for="g1"><span style="width:0"></span></div>
-    </div>
-    <div id="checklistBox"></div>
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
 
     <!-- ============================================================ -->
     <h2 id="sistemi">1 · Che cos'è un sistema lineare</h2>
@@ -315,10 +309,12 @@
 <script src="../data/quiz.js?v=20261104"></script>
 <script src="../../assets/js/meg.js?v=20261104"></script>
 <script src="../../assets/js/plot.js?v=20261104"></script>
+<script src="../data/mappe.js?v=20261105"></script>
 <script src="../../assets/js/app.js?v=20261104"></script>
+<script src="../../assets/js/capitolo.js?v=20261105"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  AM.renderChecklist('#checklistBox', 1, 'geometria');
+  AM.mappaCapitolo('#mappaBox', 1);
   AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 1; }), { statKey: 'geo1' });
 
   /* ---------- riconoscere una matrice a scala ---------- */
