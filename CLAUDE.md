@@ -71,8 +71,7 @@ aggiungere una materia sono nel `README.md`.
   **non si rinumerano** con leggerezza: sono le chiavi di `localStorage` con i progressi dello
   studente. Se una sezione cambia numero serve una migrazione una tantum (c'è l'esempio in
   `geometria/data/topics.js`, `geo:migrato-sez4`).
-- Ad ogni lezione nuova di Analisi si aggiorna il taglio predefinito `cutoff` in
-  `analisi/primo-parziale.html` e si aggiunge la card della lezione nella sezione «Materiale» di
+- Ad ogni lezione nuova di Analisi si aggiunge la card della lezione nella sezione «Materiale» di
   `analisi/index.html`.
 
 ### Struttura di una pagina di sezione
@@ -138,9 +137,9 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
   - La risposta giusta è **sempre la prima** (`a: 0`): le opzioni vengono mescolate a runtime.
   - I distrattori sono errori plausibili, cioè le idee sbagliate tipiche; `why` spiega perché la
     giusta è giusta **e** perché le altre sono sbagliate.
-- **Flashcard** (`analisi/data/definizioni.js`): `{ id: 'D50', sez, topic, t, d }`; `topic`
-  collega la scheda alla voce della checklist, che serve all'allenamento quotidiano (ripetizione
-  dilazionata SM-2 in `assets/js/srs.js`) per rispettare il taglio «fin dove siete arrivati».
+- **Flashcard** (`analisi/data/definizioni.js`): `{ id: 'D50', sez, topic, t, d }`. Dal 06/11/2026
+  nessuna pagina le mostra: l'Allenamento è stato eliminato con i parziali, e la pagina col suo motore
+  `assets/js/srs.js` si recupera dalla storia di git se servirà per la sessione.
 - **Teoremi** (`data/teoremi.js`): `{ id, n, sez, mark, q, titolo, enunciato, idea, steps:
   [{cue, body}], note }`; `n` è il numero della dimostrazione nel programma ufficiale, se c'è.
 - **Tutti i conti numerici si verificano** prima di scriverli: aritmetica esatta con

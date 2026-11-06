@@ -288,7 +288,7 @@
           '<div class="stat-val" style="color:' + (pct >= 70 ? 'var(--ok)' : pct >= 50 ? 'var(--warn)' : 'var(--danger)') + '">' + pct + '%</div>' +
           '<div class="stat-lab">' + right + ' risposte corrette su ' + qs.length + '</div>' +
           '<p class="small muted" style="margin-top:14px">' +
-          (pct >= 70 ? 'Ottimo. Soglia del parziale (7/14 nella prima parte) ampiamente superata.'
+          (pct >= 70 ? 'Ottimo: questa parte è solida.'
                      : pct >= 50 ? 'Sei sopra la soglia minima, ma il margine è sottile: ripassa gli errori.'
                      : 'Sotto la soglia. Torna alla teoria della sezione prima di rifare il test.') +
           '</p>' +
