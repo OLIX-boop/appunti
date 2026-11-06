@@ -80,7 +80,7 @@ aggiungere una materia sono nel `README.md`.
 Nell'ordine:
 
 1. `header.topbar`: `☰` (`#menuBtn`), marchio della materia, `nav.topnav` con tutte le pagine
-   della materia più «Piano» e «Parziali», pulsante tema `#themeBtn`.
+   della materia più «Piano», pulsante tema `#themeBtn`.
 2. `aside.sidebar`: indice della pagina; ogni `h2` e i `h3` importanti hanno una voce (`.sub`
    per i `h3`). Se aggiungi un paragrafo, aggiungi anche la voce.
 3. `main`:
