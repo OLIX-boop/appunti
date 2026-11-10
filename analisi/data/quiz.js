@@ -489,6 +489,18 @@
   a: 0,
   why: r`Sommando $|a_n|$ a $-|a_n|\le a_n\le|a_n|$ si ottiene una serie a termini non negativi maggiorata da $2|a_n|$, che converge per confronto; poi $\sum a_n=\sum(a_n+|a_n|)-\sum|a_n|$. Leibniz riguarda solo le serie alternate, e il rapporto non c'entra. $|a_n|\le a_n$ è falso quando $a_n\lt0$.` },
 
+{ id: 'Q93', sez: 3, tag: 'Leibniz',
+  q: r`$c_n=\frac1{\sqrt n}+\frac{(-1)^n}n$ è positiva per $n>1$, infinitesima e $c_n\sim\frac1{\sqrt n}$, che è decrescente. Che cosa si può dire di $\sum(-1)^nc_n$ con Leibniz? (Esercitazione 6)`,
+  opts: [ r`niente: la monotonia va verificata su $c_n$, e $c_n$ non è decrescente`, r`converge, perché $c_n\sim\frac1{\sqrt n}$ decrescente`, r`converge assolutamente`, r`diverge, perché $c_n$ non è decrescente` ],
+  a: 0,
+  why: r`Un asintotico non eredita la monotonia: $c_2\approx1{,}21$, $c_3\approx0{,}24$, $c_4=0{,}75$. Leibniz quindi non si applica, e infatti la serie (che è $\sum\frac{(-1)^n}{\sqrt n}+\sum\frac1n$) diverge a $+\infty$. Ma la quarta è sbagliata come ragionamento: Leibniz è una condizione sufficiente, se non si applica non dice che la serie diverge.` },
+
+{ id: 'Q94', sez: 3, tag: 'confronto asintotico',
+  q: r`Se $a_n\sim b_n$ e $\sum b_n$ converge, quando si può concludere che $\sum a_n$ converge?`,
+  opts: [ r`quando i termini sono definitivamente non negativi`, r`sempre`, r`solo se $a_n$ e $b_n$ sono a segno alterno`, r`mai: serve anche $a_n\le b_n$` ],
+  a: 0,
+  why: r`Il confronto asintotico vale per serie a termini (definitivamente) non negativi. Controesempio dell'Esercitazione 6: $\frac{(-1)^n}{\sqrt n}+\frac1n\sim\frac{(-1)^n}{\sqrt n}$, ma la prima serie diverge e la seconda converge. Con termini positivi invece basta $a_n\sim b_n$, senza alcuna disuguaglianza.` },
+
 /* ---------------- Sezione 4 (Lezioni 12–13) ---------------- */
 { id: 'Q69', sez: 4, tag: 'punti di accumulazione',
   q: r`Sia $E=[0,1)\cup\{3\}$. Quale affermazione è vera?`,

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261110">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261110a">
 </head>
 <body>
 
@@ -77,11 +77,12 @@
     </div>
 
     <div class="box warnb">
-      <div class="box-title">★ Novità delle Lezioni 10–11 (14 e 19 ottobre)</div>
+      <div class="box-title">★ Novità delle Lezioni 10–11 (14 e 19 ottobre) e dell'Esercitazione 6 (23 ottobre)</div>
       <ul class="mb0">
         <li><strong>Lezione 10:</strong> <a href="#prof-notazione">la definizione di serie come la scrive il prof</a> e la linearità, <a href="#telescopiche">le telescopiche nella forma $A_{k+1}-A_k$</a>, <a href="#necessaria">condizione necessaria</a> con l'esempio dell'arcotangente, <a href="#confronto">criterio del confronto con la dimostrazione della lezione</a>, <a href="#confrontoas">confronto asintotico</a> con il corollario $a_m\sim b_m$ e cinque esercizi svolti</li>
         <li><strong>Lezione 11:</strong> <a href="#rapporto">criterio del rapporto dimostrato come a lezione</a>, <a href="#radice">criterio della radice</a>, <a href="#leibniz">Leibniz con i due esempi</a>, <a href="#assoluta">convergenza assoluta</a>, <a href="#riepilogo">l'esercizio di riepilogo con $\tan\alpha$</a></li>
         <li>Le dimostrazioni n° 11–14 nella pagina <a href="../teoremi.html">Teoremi</a> e nelle <a href="../domande.html">Domande teoriche</a> ora seguono la versione del prof</li>
+        <li><strong>Esercitazione 6:</strong> <a href="#leibniz-asintotici">il controesempio $\sum\left(\frac{(-1)^n}{\sqrt n}+\frac1n\right)$</a>, che mostra due cose da non fare con le serie a segno variabile, e quindici esercizi di convergenza semplice e assoluta nella <a href="../esercizi.html?sez=3">palestra</a> (E3.18–E3.32)</li>
       </ul>
     </div>
 
@@ -459,6 +460,15 @@
       <p class="mb0">In particolare la <strong>monotonia</strong>: senza di essa il criterio può fallire anche con $b_n\to0$. E se $b_n\not\to0$ il criterio non si applica affatto — in quel caso la condizione necessaria dice già che la serie non converge.</p>
     </div>
 
+    <div class="box trap" id="leibniz-asintotici">
+      <div class="box-title">✗ Leibniz e gli asintotici non vanno d'accordo (Esercitazione 6)</div>
+      <p>Prendi $\displaystyle\sum_{n\ge1}\left(\frac{(-1)^n}{\sqrt n}+\frac1n\right)$. Per la linearità (Lezione 10) è la somma di $\sum\frac{(-1)^n}{\sqrt n}$, che converge per Leibniz, e di $\sum\frac1n=+\infty$: quindi <strong>diverge a $+\infty$</strong>. Eppure:</p>
+      <ul class="mb0">
+        <li>il termine è $(-1)^nc_n$ con $c_n=\frac1{\sqrt n}+\frac{(-1)^n}n$ positiva, infinitesima e $\sim\frac1{\sqrt n}$, che è decrescente. Ma $c_n$ <strong>non</strong> è decrescente ($c_2\approx1{,}21$, $c_3\approx0{,}24$, $c_4=0{,}75$): <strong>la monotonia per Leibniz va verificata sulla successione vera, non su una asintotica</strong>;</li>
+        <li>il termine è $\sim\frac{(-1)^n}{\sqrt n}$, la cui serie converge, e la nostra diverge: <strong>il confronto asintotico vale solo per serie a termini definitivamente non negativi</strong>.</li>
+      </ul>
+    </div>
+
     <h3 id="assoluta">Convergenza assoluta <span class="badge star">dim. scritto · n° 14</span></h3>
     <div class="box def">
       <div class="box-title">Definizione</div>
@@ -541,7 +551,8 @@
         <li><strong>Applicare il criterio del confronto a serie con termini di segno variabile.</strong> Serve $a_n\ge0$.</li>
         <li><strong>Concludere qualcosa quando il rapporto o la radice danno $L=1$.</strong> Il criterio non decide: passa all'asintotico.</li>
         <li><strong>Sbagliare la semplificazione dei fattoriali.</strong> $(n+1)!=(n+1)\cdot n!$ e $(2n+2)!=(2n+2)(2n+1)(2n)!$.</li>
-        <li><strong>Applicare Leibniz senza verificare la monotonia</strong>, o applicarlo quando $b_n\not\to0$.</li>
+        <li><strong>Applicare Leibniz senza verificare la monotonia</strong>, o applicarlo quando $b_n\not\to0$. E verificare la monotonia su un asintotico di $b_n$ invece che su $b_n$: <a href="#leibniz-asintotici">il controesempio dell'Esercitazione 6</a>.</li>
+        <li><strong>Usare il confronto asintotico su una serie a segno variabile</strong>: $\frac{(-1)^n}{\sqrt n}+\frac1n\sim\frac{(-1)^n}{\sqrt n}$, ma una serie diverge e l'altra converge.</li>
         <li><strong>Confondere «$\sum|a_n|$ diverge» con «$\sum a_n$ diverge».</strong> Dal fallimento dell'assoluta non segue nulla sulla semplice.</li>
         <li><strong>Nel confronto asintotico con $\ell=0$, concludere anche quando $\sum b_n$ diverge.</strong> Quella implicazione non c'è.</li>
         <li><strong>Dimenticare di indicare quale criterio si sta usando.</strong> Nella terza parte della prova è richiesto lo svolgimento «completo e dettagliato»: il nome del criterio e la verifica delle ipotesi sono parte della risposta.</li>
@@ -560,11 +571,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261110"></script>
-<script src="../data/topics.js?v=20261110"></script>
-<script src="../data/quiz.js?v=20261110"></script>
-<script src="../../assets/js/plot.js?v=20261110"></script>
-<script src="../../assets/js/app.js?v=20261110"></script>
+<script src="../../assets/js/materie.js?v=20261110a"></script>
+<script src="../data/topics.js?v=20261110a"></script>
+<script src="../data/quiz.js?v=20261110a"></script>
+<script src="../../assets/js/plot.js?v=20261110a"></script>
+<script src="../../assets/js/app.js?v=20261110a"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 3);

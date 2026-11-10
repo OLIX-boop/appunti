@@ -1037,6 +1037,142 @@ $$\boxed{\,\text{converge}\iff 0\lt x<1\,}$$
            r`Per $\alpha>0$ confronta asintoticamente con $\frac1{n^{\alpha+1}}$.` ],
   sol: r`Il termine è $\sim a_n:=\dfrac{\log n}{2^\alpha n^{2\alpha+1}}$.<ul><li>$\alpha\le0$: $a_n\ge\frac1{2^\alpha n^{2\alpha+1}}$ definitivamente (per $n\ge3$), e $\sum\frac1{n^{2\alpha+1}}$ diverge perché $2\alpha+1\le1$: per confronto e confronto asintotico la serie <strong>diverge</strong>.</li><li>$\alpha>0$: con $b_n=\frac1{n^{\alpha+1}}$, $\frac{a_n}{b_n}=\frac{\log n}{2^\alpha n^\alpha}\to0$ e $\sum b_n$ converge ($\alpha+1>1$): la serie <strong>converge</strong>.</li></ul> $\blacksquare$` },
 
+/* ---------- Esercitazione 6 (23 ottobre): convergenza semplice e assoluta ---------- */
+{ id: 'E3.18', sez: 3, tema: 'Serie alternate', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=0}^{\infty}(-1)^n\frac{n}{n^2+1}$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Con $a_n=\frac n{n^2+1}$: positiva e infinitesima. Per Leibniz manca la monotonia.`,
+           r`$a_{n+1}\le a_n\iff(n+1)(n^2+1)\le n\left[(n+1)^2+1\right]$: sviluppa e semplifica.`,
+           r`Per l'assoluta: $a_n\sim\frac1n$.` ],
+  sol: r`<strong>Semplice.</strong> $a_n:=\frac n{n^2+1}>0$ e $a_n\to0$. La monotonia: $$\frac{n+1}{(n+1)^2+1}\le\frac n{n^2+1}\iff n^3+n^2+n+1\le n^3+2n^2+2n\iff0\le n^2+n-1,$$ vera definitivamente (anzi per ogni $n\ge1$), perché $n^2+n-1\to+\infty$. Per il <strong>criterio di Leibniz</strong> la serie converge semplicemente.<br>
+<strong>Assoluta.</strong> $|(-1)^na_n|=\frac n{n^2+1}\sim\frac1n$, e la serie armonica diverge: per confronto asintotico la serie dei moduli diverge. La serie <strong>converge semplicemente ma non assolutamente</strong>. $\blacksquare$<br>
+<em>Morale:</em> per la monotonia si scrive la disuguaglianza $a_{n+1}\le a_n$ e la si riduce a qualcosa di ovvio, «almeno definitivamente».` },
+
+{ id: 'E3.19', sez: 3, tema: 'Serie alternate', d: 1,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}\sin\left(\frac\pi2+n\pi\right)\frac1{\sqrt n}$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Quanto vale $\sin\left(\frac\pi2+n\pi\right)$? Usa la formula di addizione, o il grafico.`,
+           r`È $(-1)^n$: la serie è $\sum\frac{(-1)^n}{\sqrt n}$.` ],
+  sol: r`$\sin\left(\frac\pi2+n\pi\right)=\sin\frac\pi2\cos(n\pi)+\sin(n\pi)\cos\frac\pi2=(-1)^n$, quindi la serie è $\sum\frac{(-1)^n}{\sqrt n}$.<br>
+$a_n=\frac1{\sqrt n}$ è positiva, infinitesima e strettamente decrescente (perché $\sqrt n$ è strettamente crescente): per <strong>Leibniz</strong> la serie converge semplicemente. Ma $\sum\frac1{n^{1/2}}$ diverge ($\frac12\le1$): <strong>non converge assolutamente</strong>. $\blacksquare$` },
+
+{ id: 'E3.20', sez: 3, tema: 'Convergenza assoluta', d: 1,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=0}^{\infty}(-1)^ne^{-n^2}$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Passa ai moduli: $|a_n|=e^{-n^2}$.`,
+           r`Criterio della radice: $\sqrt[n]{e^{-n^2}}=e^{-n}$.` ],
+  sol: r`$|a_n|=e^{-n^2}$ e $\sqrt[n]{|a_n|}=\left(e^{-n^2}\right)^{1/n}=e^{-n}\to0\lt1$: per il <strong>criterio della radice</strong> la serie dei moduli converge. La serie <strong>converge assolutamente, quindi anche semplicemente</strong>. $\blacksquare$<br><span class="small muted">Negli appunti la radice è scritta su $a_n$; va presa su $|a_n|$, perché la radice $n$-esima di un numero negativo non serve al criterio.</span>` },
+
+{ id: 'E3.21', sez: 3, tema: 'Serie alternate', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}(-1)^n\frac{n+1}{2n^2-3n}$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`$a_n=\frac{n+1}{2n^2-3n}$ è positiva solo definitivamente: per quali $n$?`,
+           r`La monotonia: $(n+2)(2n^2-3n)\le(n+1)(2n^2+n-1)$ si riduce a $2n^2+6n-1\ge0$.`,
+           r`Per l'assoluta: $a_n\sim\frac1{2n}$.` ],
+  sol: r`$a_n:=\frac{n+1}{2n^2-3n}$: per $n=1$ vale $-2$, ma $2n^2-3n>0$ per $n\ge2$, quindi $a_n>0$ definitivamente, e $a_n\to0$.<br>
+<strong>Monotonia</strong> (per $n\ge2$, dove i denominatori sono positivi): $$\frac{n+2}{2n^2+n-1}\le\frac{n+1}{2n^2-3n}\iff(n+2)(2n^2-3n)\le(n+1)(2n^2+n-1)\iff2n^2+6n-1\ge0,$$ vera definitivamente. Per <strong>Leibniz</strong> la serie converge semplicemente.<br>
+<strong>Assoluta.</strong> $a_n=\frac{n+o(n)}{2n^2+o(n^2)}\sim\frac1{2n}$ e $\frac12\sum\frac1n$ diverge: <strong>non converge assolutamente</strong>. <strong>Controllo:</strong> $a_2=1{,}5$, $a_3=0{,}44$, $a_4=0{,}25$, e $n\,a_n\to\frac12$. $\blacksquare$` },
+
+{ id: 'E3.22', sez: 3, tema: 'Serie alternate', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}\frac{(-1)^n\log n}{n}$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Per l'assoluta basta un confronto: $\frac{\log n}n\ge\frac1n$ per $n\ge3$.`,
+           r`Per la monotonia di $\frac{\log n}n$ passa a $\log\left((n+1)^n\right)\le\log\left(n^{n+1}\right)$.`,
+           r`Si arriva a $\left(1+\frac1n\right)^n\le n$: il primo membro tende a $e$, il secondo a $+\infty$.` ],
+  sol: r`<strong>Assoluta.</strong> $\left|\frac{(-1)^n\log n}n\right|=\frac{\log n}n\ge\frac1n$ per $n\ge3$, e $\sum\frac1n$ diverge: per il <strong>criterio del confronto</strong> la serie dei moduli diverge.<br>
+<strong>Semplice.</strong> $\frac{\log n}n\ge0$, $\to0$ per la gerarchia degli infiniti, ed è definitivamente non crescente: $$\frac{\log(n+1)}{n+1}\le\frac{\log n}n\iff n\log(n+1)\le(n+1)\log n\iff(n+1)^n\le n^{n+1}\iff\left(1+\frac1n\right)^n\le n,$$ vera definitivamente perché $\left(1+\frac1n\right)^n\to e$ e $n\to+\infty$ (si usa che $\log$ è crescente). Per <strong>Leibniz</strong> converge semplicemente. $\blacksquare$<br>
+<strong>Controllo:</strong> $\frac{\log2}2\approx0{,}347\lt\frac{\log3}3\approx0{,}366$: la successione decresce solo da $n=3$, ed è per questo che serve «definitivamente».` },
+
+{ id: 'E3.23', sez: 3, tema: 'Criterio del rapporto', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=0}^{\infty}\frac{(-1)^n(2n)!}{5^n(n!)^2}$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Passa ai moduli e usa il rapporto: ci sono fattoriali.`,
+           r`$(2n+2)!=(2n+2)(2n+1)(2n)!$ e $[(n+1)!]^2=(n+1)^2(n!)^2$.` ],
+  sol: r`Il modulo del termine è $a_n:=\frac{(2n)!}{5^n(n!)^2}$. $$\frac{a_{n+1}}{a_n}=\frac{(2n+2)(2n+1)(2n)!}{5\cdot5^n(n+1)^2(n!)^2}\cdot\frac{5^n(n!)^2}{(2n)!}=\frac{4n^2+6n+2}{5(n^2+2n+1)}\to\frac45\lt1.$$ Per il <strong>criterio del rapporto</strong> la serie dei moduli converge: la serie <strong>converge assolutamente, quindi semplicemente</strong>. <strong>Controllo:</strong> per $n=10^4$ il rapporto vale $\approx0{,}79996$. $\blacksquare$` },
+
+{ id: 'E3.24', sez: 3, tema: 'Serie alternate', d: 1,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}(-1)^n\left(e^{1/\sqrt n}-1\right)$. <span class="small muted">(Esercitazione 6, per casa)</span>`,
+  hints: [ r`$e^{1/\sqrt n}-1\sim\frac1{\sqrt n}$: che cosa dice sull'assoluta?`,
+           r`Per la monotonia: $\frac1{\sqrt{n+1}}\lt\frac1{\sqrt n}$ e l'esponenziale è crescente.` ],
+  sol: r`$e^{1/\sqrt n}-1>0$ per $n\ge1$ e $e^{1/\sqrt n}-1\sim\frac1{\sqrt n}$: la serie dei moduli diverge, quindi <strong>non converge assolutamente</strong>. Però il termine tende a $0$ ed è strettamente decrescente, perché $\sqrt{n+1}>\sqrt n\Rightarrow\frac1{\sqrt{n+1}}\lt\frac1{\sqrt n}\Rightarrow e^{1/\sqrt{n+1}}\lt e^{1/\sqrt n}$ ($e^x$ è strettamente crescente). Per <strong>Leibniz</strong> la serie converge semplicemente. $\blacksquare$<br><em>Morale:</em> la monotonia si ricava dalla monotonia delle funzioni che compongono il termine, non dall'asintotico.` },
+
+{ id: 'E3.25', sez: 3, tema: 'Serie alternate', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}(-1)^n\sin\frac3n$. <span class="small muted">(Esercitazione 6, per casa)</span>`,
+  hints: [ r`Per $n\ge1$ è $0\lt\frac3n\le3\lt\pi$: segno del seno?`,
+           r`Il seno è crescente solo su $\left[0,\frac\pi2\right]$: da quale $n$ in poi $\frac3n$ ci sta?` ],
+  sol: r`Per $n\ge1$, $0\lt\frac3n\lt\pi$, quindi $\sin\frac3n>0$; inoltre $\sin\frac3n\sim\frac3n\to0$.<br>
+<strong>Monotonia:</strong> $\frac3{n+1}\lt\frac3n$ e $\sin$ è strettamente crescente su $\left[0,\frac\pi2\right]$, dove $\frac3n$ sta per $n\ge2$: la successione è definitivamente decrescente. (Fra $n=1$ e $n=2$ no: $\sin3\approx0{,}14\lt\sin1{,}5\approx1$.) Per <strong>Leibniz</strong> converge semplicemente.<br>
+<strong>Assoluta:</strong> $\sin\frac3n\sim\frac3n$, e la serie armonica diverge: per confronto asintotico <strong>non converge assolutamente</strong>. $\blacksquare$` },
+
+{ id: 'E3.26', sez: 3, tema: 'Serie alternate', d: 3,
+  t: r`Studiare la serie $\displaystyle\sum_{n=1}^{\infty}\left(\frac{(-1)^n}{\sqrt n}+\frac1n\right)$. Che cosa insegna sul criterio di Leibniz e sul confronto asintotico? <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Spezzala: $\sum\frac{(-1)^n}{\sqrt n}$ converge (Leibniz), $\sum\frac1n$ diverge. Si possono sommare? (Linearità, Lezione 10.)`,
+           r`Il termine si scrive $(-1)^n\left[\frac1{\sqrt n}+\frac{(-1)^n}n\right]$ con la parentesi positiva, infinitesima e $\sim\frac1{\sqrt n}$. Perché Leibniz non si applica?`,
+           r`Il termine è $\sim\frac{(-1)^n}{\sqrt n}$, la cui serie converge. Che cosa vuol dire per il confronto asintotico?` ],
+  sol: r`<strong>Carattere.</strong> Per la linearità (Lezione 10): se $\sum a_n$ e $\sum b_n$ sono regolari e la somma non è $+\infty-\infty$, allora $\sum(a_n+b_n)=\sum a_n+\sum b_n$. Qui $\sum\frac{(-1)^n}{\sqrt n}$ converge (Leibniz, esercizio E3.19) e $\sum\frac1n=+\infty$: la serie <strong>diverge a $+\infty$</strong>, quindi non converge né semplicemente né assolutamente.<br><br>
+<strong>Lezione 1: la monotonia per Leibniz non si verifica su un asintotico.</strong> Il termine è $(-1)^nc_n$ con $c_n=\frac1{\sqrt n}+\frac{(-1)^n}n$, che è positivo per $n>1$, infinitesimo e $\sim\frac1{\sqrt n}$, una successione decrescente. Ma $c_n$ <strong>non</strong> è decrescente ($c_2\approx1{,}21$, $c_3\approx0{,}24$, $c_4=0{,}75$): se lo fosse, Leibniz darebbe la convergenza, mentre la serie diverge.<br><br>
+<strong>Lezione 2: il confronto asintotico vale solo per serie a termini (definitivamente) non negativi.</strong> Il termine è $\sim\frac{(-1)^n}{\sqrt n}$, la cui serie converge, eppure la nostra diverge. $\blacksquare$` },
+
+{ id: 'E3.27', sez: 3, tema: 'Convergenza assoluta', d: 3,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}(-1)^n\,\frac{4+(-1)^n3n\sin\frac5{n^2}}{7+\sqrt n}$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Moltiplica dentro: $(-1)^n\cdot(-1)^n=1$. Il termine è $\frac{(-1)^n4}{7+\sqrt n}+\frac{3n\sin(5/n^2)}{7+\sqrt n}$.`,
+           r`La prima serie converge per Leibniz, la seconda ha termini positivi e $\sim\frac{15}{n^{3/2}}$.`,
+           r`Per l'assoluta: $(-1)^n3n\sin\frac5{n^2}\sim(-1)^n\frac{15}n\to0$, quindi il modulo è $\sim\frac4{\sqrt n}$.` ],
+  sol: r`<strong>Semplice.</strong> Il termine è $a_n+b_n$ con $a_n:=\frac{(-1)^n4}{7+\sqrt n}$ e $b_n:=\frac{3n\sin(5/n^2)}{7+\sqrt n}$.<ul>
+<li>$\frac4{7+\sqrt n}$ è positiva, infinitesima e strettamente decrescente ($\sqrt n\lt\sqrt{n+1}$): $\sum a_n$ converge per <strong>Leibniz</strong>.</li>
+<li>$b_n>0$ per $n\ge2$ (lì $0\lt\frac5{n^2}\lt\pi$) e $b_n\sim\frac{3n\cdot5/n^2}{\sqrt n}=\frac{15}{n^{3/2}}$: $\sum b_n$ converge per <strong>confronto asintotico</strong>.</li></ul>
+Somma di due serie convergenti: la serie <strong>converge semplicemente</strong>.<br>
+<strong>Assoluta.</strong> $(-1)^n3n\sin\frac5{n^2}\sim(-1)^n\frac{15}n\to0$, quindi definitivamente $4+(-1)^n3n\sin\frac5{n^2}>0$ e il modulo del termine è $$\frac{4+o(1)}{7+\sqrt n}\sim\frac4{n^{1/2}}:$$ per confronto asintotico la serie dei moduli diverge. <strong>Non converge assolutamente.</strong> $\blacksquare$<br>
+<em>Morale:</em> quando il termine non è della forma $(-1)^nc_n$ con $c_n$ monotòna, si spezza in una parte alla Leibniz e una parte a termini positivi.` },
+
+{ id: 'E3.28', sez: 3, tema: 'Serie con parametro', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=0}^{\infty}\frac1{\sqrt{n+1}}\,\frac{(\alpha-3)^n}{2^n}$ al variare di $\alpha\in\R$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`Scrivi $a_n=\frac{q^n}{\sqrt{n+1}}$ con $q=\frac{\alpha-3}2$: tutto dipende da $q$ rispetto a $\pm1$.`,
+           r`$|q|\lt1$: confronto con la geometrica. $q=\pm1$: armonica generalizzata o Leibniz.`,
+           r`$q\lt-1$: il termine non tende a $0$ e cambia segno.` ],
+  sol: r`Sia $q:=\frac{\alpha-3}2$, $a_n=\frac{q^n}{\sqrt{n+1}}$.<ul>
+<li>$q>1$ ($\alpha>5$): $a_n\to+\infty$ per la gerarchia; termini positivi, <strong>diverge a $+\infty$</strong>.</li>
+<li>$q=1$ ($\alpha=5$): $a_n=\frac1{\sqrt{n+1}}\sim\frac1{n^{1/2}}$: <strong>diverge a $+\infty$</strong> (confronto asintotico).</li>
+<li>$|q|\lt1$ ($1\lt\alpha\lt5$): $0\le|a_n|\le|q|^n$ e la geometrica di ragione $|q|$ converge: <strong>converge assolutamente</strong> (confronto), quindi semplicemente.</li>
+<li>$q=-1$ ($\alpha=1$): $a_n=\frac{(-1)^n}{\sqrt{n+1}}$, con $\frac1{\sqrt{n+1}}$ infinitesima e strettamente decrescente: <strong>converge semplicemente</strong> (Leibniz), non assolutamente.</li>
+<li>$q\lt-1$ ($\alpha\lt1$): $a_n=(-1)^n\frac{|q|^n}{\sqrt{n+1}}$ con $\frac{|q|^n}{\sqrt{n+1}}\to+\infty$: $a_n$ non ha limite, la serie è <strong>irregolare</strong> (e la serie dei moduli diverge).</li></ul>
+<strong>Riassunto:</strong> diverge a $+\infty$ per $\alpha\ge5$; converge assolutamente per $1\lt\alpha\lt5$; solo semplicemente per $\alpha=1$; irregolare per $\alpha\lt1$. $\blacksquare$` },
+
+{ id: 'E3.29', sez: 3, tema: 'Serie con parametro', d: 3,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}\frac{3^n}n\left(\frac\alpha{\alpha+1}\right)^n$ al variare di $\alpha\in\R$, $\alpha\ne-1$. <span class="small muted">(Esercitazione 6)</span>`,
+  hints: [ r`$a_n=\frac{q^n}n$ con $q=\frac{3\alpha}{\alpha+1}$. Risolvi $q>1$, $q=1$, $|q|\lt1$, $q=-1$, $q\lt-1$.`,
+           r`$q>1\iff\frac{2\alpha-1}{\alpha+1}>0$; $\ q>-1\iff\frac{4\alpha+1}{\alpha+1}>0$.`,
+           r`I valori di confine sono $\alpha=\frac12$ ($q=1$) e $\alpha=-\frac14$ ($q=-1$).` ],
+  sol: r`$a_n=\frac{q^n}n$ con $q:=\frac{3\alpha}{\alpha+1}$.<ul>
+<li>$q>1\iff\frac{2\alpha-1}{\alpha+1}>0\iff\alpha\lt-1$ o $\alpha>\frac12$: $a_n\to+\infty$, <strong>diverge a $+\infty$</strong>.</li>
+<li>$q=1\iff\alpha=\frac12$: serie armonica, <strong>diverge a $+\infty$</strong>.</li>
+<li>$|q|\lt1$: serve anche $q>-1\iff\frac{4\alpha+1}{\alpha+1}>0\iff\alpha\lt-1$ o $\alpha>-\frac14$; con $q\lt1$ ($-1\lt\alpha\lt\frac12$) si ottiene $-\frac14\lt\alpha\lt\frac12$. Lì $|a_n|\le|q|^n$: <strong>converge assolutamente</strong> per confronto con la geometrica.</li>
+<li>$q=-1\iff\alpha=-\frac14$ (infatti $\frac{-3/4}{3/4}=-1$): $\sum\frac{(-1)^n}n$, <strong>converge semplicemente</strong> (Leibniz), non assolutamente.</li>
+<li>$q\lt-1\iff-1\lt\alpha\lt-\frac14$: $|a_n|=\frac{|q|^n}n\to+\infty$ e il segno alterna: <strong>irregolare</strong>.</li></ul>
+<strong>Riassunto:</strong> diverge a $+\infty$ per $\alpha\lt-1$ o $\alpha\ge\frac12$; converge assolutamente per $-\frac14\lt\alpha\lt\frac12$; solo semplicemente per $\alpha=-\frac14$; irregolare per $-1\lt\alpha\lt-\frac14$. <strong>Controllo:</strong> $q(0{,}4)\approx0{,}857$, $q(-0{,}3)\approx-1{,}29$, $q(-2)=6$. $\blacksquare$` },
+
+{ id: 'E3.30', sez: 3, tema: 'Criterio della radice', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}(-1)^n\frac{n^5}{e^n}\left[\log\left(\left(1+\frac1{e^n}\right)^{e^n}\right)\right]^n$. <span class="small muted">(Esercitazione 6, per casa)</span>`,
+  hints: [ r`C'è una potenza $n$-esima: radice sui moduli.`,
+           r`$\left(1+\frac1{e^n}\right)^{e^n}\to e$, perché $\left(1+\frac1{x_n}\right)^{x_n}\to e$ per ogni $x_n\to+\infty$.` ],
+  sol: r`Il modulo del termine è positivo, e $$\sqrt[n]{|a_n|}=\frac{n^{5/n}}e\cdot\log\left(\left(1+\frac1{e^n}\right)^{e^n}\right)\to\frac1e\cdot\log e=\frac1e\lt1,$$ perché $n^{5/n}=e^{5\log n/n}\to1$ e $\left(1+\frac1{e^n}\right)^{e^n}\to e$. Per il <strong>criterio della radice</strong> la serie <strong>converge assolutamente</strong>, quindi semplicemente. $\blacksquare$` },
+
+{ id: 'E3.31', sez: 3, tema: 'Serie alternate', d: 3,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}(-1)^n\left(\sqrt[n]{n+1}-\cos\frac1{n+1}\right)$. <span class="small muted">(Esercitazione 6, per casa)</span>`,
+  hints: [ r`$\sqrt[n]{n+1}=e^{\log(n+1)/n}\to1$ e $\cos\frac1{n+1}\to1$: il termine è infinitesimo. Segno? $\sqrt[n]{n+1}>1\ge\cos(\cdot)$.`,
+           r`Monotonia: $\sqrt[n]{n+1}$ decresce (si riduce a $\left(1+\frac1{n+1}\right)^{n+1}\lt n+2$), $\cos\frac1{n+1}$ cresce. La differenza?`,
+           r`Assoluta: $e^t-1\sim t$ e $1-\cos t\sim\frac{t^2}2$; quale dei due addendi domina?` ],
+  sol: r`Siano $a_n:=\sqrt[n]{n+1}$ e $b_n:=\cos\frac1{n+1}$. $a_n=e^{\log(n+1)/n}\to1$ e $b_n\to1$, quindi $a_n-b_n\to0$; e $a_n-b_n>0$, perché $a_n>1\ge b_n$.<br>
+<strong>Monotonia.</strong> $a_{n+1}\lt a_n\iff\frac{\log(n+2)}{n+1}\lt\frac{\log(n+1)}n\iff(n+2)^n\lt(n+1)^{n+1}\iff\left(1+\frac1{n+1}\right)^{n+1}\cdot\frac1{n+2}\lt1$, vero perché il primo fattore è $\lt e\lt3\le n+2$. Invece $b_n$ è strettamente crescente ($\cos$ decresce su $[0,\pi]$ e $\frac1{n+1}$ decresce). Quindi $a_{n+1}-b_{n+1}\lt a_n-b_{n+1}\lt a_n-b_n$: la differenza è decrescente, e per <strong>Leibniz</strong> la serie converge semplicemente.<br>
+<strong>Assoluta.</strong> $$a_n-b_n=\underbrace{e^{\frac{\log(n+1)}n}-1}_{\sim\frac{\log n}n}+\underbrace{1-\cos\tfrac1{n+1}}_{\sim\frac1{2n^2}}\sim\frac{\log n}n,$$ perché $\frac{1/(2n^2)}{\log n/n}=\frac1{2n\log n}\to0$. Poiché $\frac{\log n}n\ge\frac1n$ per $n\ge3$, $\sum\frac{\log n}n$ diverge: per confronto asintotico <strong>non converge assolutamente</strong>. <strong>Controllo:</strong> $\frac{n\,(a_n-b_n)}{\log n}\approx1{,}00001$ per $n=10^6$. $\blacksquare$<br>
+<em>Morale:</em> differenza fra una successione decrescente e una crescente è decrescente. È il modo pulito di avere la monotonia per Leibniz quando il termine è una differenza.` },
+
+{ id: 'E3.32', sez: 3, tema: 'Serie con parametro', d: 2,
+  t: r`Studiare la convergenza semplice e assoluta di $\displaystyle\sum_{n=1}^{\infty}\frac{\alpha^{n+3}}{7^n\arctan(n)\log(n^3+1)}$ al variare di $\alpha\in\R$. <span class="small muted">(Esercitazione 6, per casa)</span>`,
+  hints: [ r`Raccogli $\alpha^3$: resta $a_n=\frac{(\alpha/7)^n}{\arctan(n)\log(n^3+1)}$.`,
+           r`Per $\alpha=7$: $\arctan n\to\frac\pi2$ e $\log(n^3+1)\sim3\log n$; e $\frac1{\log n}>\frac1n$.`,
+           r`Per $\alpha=-7$: Leibniz, perché il denominatore è prodotto di funzioni crescenti.` ],
+  sol: r`La serie è $\alpha^3\sum a_n$ con $a_n:=\frac{(\alpha/7)^n}{\arctan(n)\log(n^3+1)}$ (per $\alpha=0$ è la serie nulla).<ul>
+<li>$\alpha>7$: $a_n\to+\infty$ (gerarchia): <strong>diverge a $+\infty$</strong>. $\alpha\lt-7$: $a_n$ alterna il segno con modulo $\to+\infty$: <strong>irregolare</strong>.</li>
+<li>$\alpha=7$: $a_n=\frac1{\arctan(n)\log(n^3+1)}\sim\frac1{\frac\pi2\cdot3\log n}=\frac2{3\pi\log n}$, e $\sum\frac1{\log n}$ diverge per confronto con l'armonica ($\frac1{\log n}>\frac1n$): <strong>diverge a $+\infty$</strong>.</li>
+<li>$\alpha=-7$: $a_n=\frac{(-1)^n}{\arctan(n)\log(n^3+1)}$; la frazione è positiva, infinitesima e strettamente decrescente (il denominatore è prodotto di funzioni crescenti e positive): <strong>converge semplicemente</strong> (Leibniz), non assolutamente (caso $\alpha=7$).</li>
+<li>$-7\lt\alpha\lt7$: per $n\ge2$ il denominatore è $>1$ ($\arctan2\cdot\log9\approx2{,}43$), quindi $|a_n|\lt\left|\frac\alpha7\right|^n$: <strong>converge assolutamente</strong> per confronto con la geometrica.</li></ul>
+<strong>Riassunto:</strong> diverge a $+\infty$ per $\alpha\ge7$; converge assolutamente per $-7\lt\alpha\lt7$; solo semplicemente per $\alpha=-7$; irregolare per $\alpha\lt-7$. $\blacksquare$<br><span class="small muted">Per $n=1$ il denominatore vale $\frac\pi4\log2\approx0{,}54\lt1$: la stima con la geometrica vale da $n=2$, e basta «definitivamente».</span>` },
+
 /* ======================= SEZIONE 4 ======================= */
 { id: 'E4.1', sez: 4, tema: 'Verifica con la definizione', d: 1,
   t: r`Verificare con la definizione che $\displaystyle\lim_{x\to-1}(4-2x)=6$.`,
