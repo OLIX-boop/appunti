@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 4 · Limiti di funzioni e continuità — Analisi 1</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/analisi-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/analisi-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1f5fa8">
+<meta name="apple-mobile-web-app-title" content="Analisi 1">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261110">
+<style>
+  .retta { display: block; width: 100%; max-width: 340px; height: auto; margin: 6px 0 2px; }
+  .retta .asse { stroke: var(--text-muted); stroke-width: 1.4; }
+  .retta .tratto { stroke-width: 5; stroke-linecap: butt; opacity: .85; }
+  .retta text { font: 12px var(--font-sans, sans-serif); fill: var(--text); }
+  .retta .vuoto { fill: var(--bg-elev); stroke-width: 2; }
+  .retta .pieno { stroke-width: 2; }
+  .figure-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 6px 18px; margin: 8px 0 12px; }
+  .figure-row figure { margin: 0; }
+  .figure-row figcaption { font-size: 13px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">∫</span> Analisi 1</a>
+    <nav class="topnav">
+      <a href="../seconda.html">Piano</a>
+      <a href="4-limiti.html">4 · Limiti</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../quesiti.html">Quesiti</a>
+      <a href="../domande.html">Domande</a>
+      <a href="../esercizi.html?sez=4">Esercizi</a>
+      <a href="../index.html">Prima parte</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 4</h4>
+    <a href="#checklist">Checklist del programma</a>
+    <a href="#infinito">1 · Limiti per $x\to\pm\infty$</a>
+    <a href="#verifiche-inf" class="sub">Verifiche con la definizione</a>
+    <a href="#intorni">2 · Intorni e punti di accumulazione</a>
+    <a href="#accumulazione" class="sub">Punto di accumulazione</a>
+    <a href="#alfinito">3 · Limite per $x\to x_0$</a>
+    <a href="#epsdelta" class="sub">Il gioco di ε e δ</a>
+    <a href="#verifiche-fin" class="sub">Verifiche con la definizione</a>
+    <a href="#destrosinistro">4 · Limiti destro e sinistro</a>
+    <a href="#legame" class="sub">Legame con il limite</a>
+    <a href="#ponte">5 · Il teorema ponte</a>
+    <a href="#nonesiste" class="sub">Come si dimostra che non esiste</a>
+    <a href="#teoremi">6 · I teoremi sui limiti</a>
+    <a href="#permanenza" class="sub">Permanenza del segno</a>
+    <a href="#unicita" class="sub">Unicità del limite</a>
+    <a href="#carabinieri" class="sub">Due carabinieri</a>
+    <a href="#limitata" class="sub">Infinitesima per limitata</a>
+    <a href="#notevoli">7 · Limiti notevoli</a>
+    <a href="#cambio" class="sub">Il cambio di variabile</a>
+    <a href="#ordini">8 · Infinitesimi e infiniti</a>
+    <a href="#monotone">9 · Limiti di funzioni monotòne</a>
+    <a href="#asintoti">10 · Asintoti</a>
+    <a href="#obliquo" class="sub">Asintoto obliquo</a>
+    <a href="#continue">11 · Funzioni continue</a>
+    <a href="#elementari" class="sub">Continuità delle elementari</a>
+    <a href="#composta" class="sub">Funzione composta</a>
+    <a href="#inversa" class="sub">Funzione inversa</a>
+    <a href="#discontinuita">12 · Punti di discontinuità</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 4 · Seconda parte</div>
+      <h1>Limiti di funzioni e continuità</h1>
+      <p class="lead">Il limite di una successione guarda che cosa succede quando $n$ diventa grande. Il limite di una funzione fa la stessa domanda quando $x$ si avvicina a un punto qualsiasi: a $\pm\infty$, a un numero $x_0$, da destra o da sinistra. Le idee sono quelle della Sezione 2; cambia la geografia.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Prima si scrivono le <strong>quindici definizioni</strong> di limite (il prof le numera da 1 a 15) e si capisce di che cosa ha bisogno il punto $x_0$ perché abbia senso avvicinarlo: deve essere un <strong>punto di accumulazione</strong>. Poi il <strong>teorema ponte</strong> traduce i limiti di funzioni in limiti di successioni, e porta con sé tutti i teoremi della Sezione 2. Da lì si arriva alle <strong>funzioni continue</strong>, che sono quelle per cui il limite si calcola sostituendo: è il risultato che userai in ogni esercizio, spesso senza accorgertene.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">★ Novità delle Lezioni 12–13 (26 ottobre e 4 novembre)</div>
+      <ul class="mb0">
+        <li><strong>Lezione 12:</strong> <a href="#infinito">le sei definizioni per $x\to\pm\infty$</a>, <a href="#intorni">intorni e punti di accumulazione</a>, <a href="#alfinito">limite per $x\to x_0$</a>, <a href="#destrosinistro">limiti destro e sinistro</a> con le tre osservazioni, <a href="#ponte">teorema ponte</a> e <a href="#nonesiste">la non esistenza di $\lim_{x\to0}\cos\frac1x$</a>, <a href="#teoremi">permanenza del segno, unicità, carabinieri, infinitesima per limitata</a>, <a href="#notevoli">limiti notevoli</a></li>
+        <li><strong>Lezione 13:</strong> <a href="#cambio">$x^\alpha\log_a x$, $x^{1/x}$ e $x^x$</a>, <a href="#ordini">infinitesimi, infiniti e o-piccolo</a>, <a href="#monotone">limiti di funzioni monotòne</a>, <a href="#asintoti">asintoti</a> con il <a href="#obliquo">teorema sull'asintoto obliquo</a>, <a href="#continue">funzioni continue</a> e <a href="#elementari">continuità delle funzioni elementari</a>, <a href="#composta">funzione composta</a>, <a href="#inversa">funzione inversa</a>, <a href="#discontinuita">punti di discontinuità</a></li>
+        <li>Le due dimostrazioni da orale di questa sezione (<a href="#obliquo">asintoti</a> e <a href="#elementari">continuità delle funzioni elementari</a>) sono anche nella pagina <a href="../teoremi.html">Teoremi</a>; i quesiti 2.1–2.13 e 2.19 hanno la risposta modello nella pagina <a href="../quesiti.html">Quesiti</a></li>
+      </ul>
+    </div>
+
+    <h2 id="checklist">Checklist del programma</h2>
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Avanzamento Sezione 4</strong>
+        <span class="muted small"><span data-progress-txt="s4">0/0</span> · <span data-progress-pct="s4">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="s4"><span style="width:0"></span></div>
+    </div>
+    <div id="checklistBox"></div>
+    <p class="small muted">Le ultime voci (permanenza del segno per funzioni continue, zeri, valori intermedi, Weierstrass) arrivano con le prossime lezioni: la checklist contiene già tutto il programma della sezione.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="infinito">1 · Limiti per $x\to\pm\infty$</h2>
+
+    <p>Sia $f:A\subseteq\R\to\R$. Per parlare di $x\to+\infty$ serve che $f$ sia definita per $x$ grandi quanto si vuole: il prof chiede $A\supseteq(a,+\infty)$ per qualche $a$. Allo stesso modo, per $x\to-\infty$ serve $A\supseteq(-\infty,a)$.</p>
+
+    <div class="box def">
+      <div class="box-title">Definizioni 1–3 · $x\to+\infty$ (Lezione 12)</div>
+      <ul class="mb0">
+        <li><strong>(1)</strong> $\displaystyle\lim_{x\to+\infty}f(x)=\ell\in\R$ se $\ \forall\eps>0\ \exists\nu_\eps>0$ t.c. $|f(x)-\ell|\lt\eps\quad\forall x>\nu_\eps\ (x\in A)$;</li>
+        <li><strong>(2)</strong> $\displaystyle\lim_{x\to+\infty}f(x)=+\infty$ se $\ \forall M>0\ \exists\nu_M>0$ t.c. $f(x)>M\quad\forall x>\nu_M$;</li>
+        <li><strong>(3)</strong> $\displaystyle\lim_{x\to+\infty}f(x)=-\infty$ se $\ \forall M>0\ \exists\nu_M>0$ t.c. $f(x)\lt-M\quad\forall x>\nu_M$.</li>
+      </ul>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizioni 4–6 · $x\to-\infty$ (Lezione 12)</div>
+      <ul class="mb0">
+        <li><strong>(4)</strong> $\displaystyle\lim_{x\to-\infty}f(x)=\ell\in\R$ se $\ \forall\eps>0\ \exists\nu_\eps\lt0$ t.c. $|f(x)-\ell|\lt\eps\quad\forall x\lt\nu_\eps$;</li>
+        <li><strong>(5)</strong> $\displaystyle\lim_{x\to-\infty}f(x)=+\infty$ se $\ \forall M>0\ \exists\nu_M\lt0$ t.c. $f(x)>M\quad\forall x\lt\nu_M$;</li>
+        <li><strong>(6)</strong> $\displaystyle\lim_{x\to-\infty}f(x)=-\infty$ se $\ \forall M>0\ \exists\nu_M\lt0$ t.c. $f(x)\lt-M\quad\forall x\lt\nu_M$.</li>
+      </ul>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">✓ Come leggerle: sono le definizioni delle successioni</div>
+      <p>La (1) è la definizione di $a_n\to\ell$ con $x$ al posto di $n$: «comunque stretta sia la striscia $(\ell-\eps,\ell+\eps)$, da un certo punto $\nu_\eps$ in poi il grafico ci sta dentro». Le differenze sono due, e piccole:</p>
+      <ul class="mb0">
+        <li>$x$ è un numero reale, quindi anche la soglia $\nu_\eps$ è reale (non serve che sia intera);</li>
+        <li>per $x\to-\infty$ la condizione diventa $x\lt\nu_\eps$, e il prof prende $\nu_\eps\lt0$. Non è una restrizione: se una soglia funziona, funziona anche ogni soglia più a sinistra.</li>
+      </ul>
+    </div>
+
+    <h3 id="verifiche-inf">Verifiche con la definizione</h3>
+    <p>Verificare un limite con la definizione vuol dire <strong>costruire</strong> la soglia: dato $\eps$ (o $M$), si risolve la disequazione e si legge da dove in poi vale. È un esercizio di disequazioni, e allo scritto può capitare come domanda aperta.</p>
+
+    <details class="reveal proof"><summary>Verifica: $\displaystyle\lim_{x\to+\infty}\frac1x=0$</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa devo trovare?</div>
+          <div class="step-content">Fissato $\eps>0$, un $\nu_\eps>0$ tale che $\left|\frac1x-0\right|\lt\eps$ per ogni $x>\nu_\eps$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Risolvo la disequazione (dove posso togliere il modulo?)</div>
+          <div class="step-content">Per $x>0$ è $\left|\frac1x\right|=\frac1x$, e $\frac1x\lt\eps\iff x>\frac1\eps$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Qual è la soglia?</div>
+          <div class="step-content">$\nu_\eps:=\frac1\eps>0$: per ogni $x>\nu_\eps$ vale $\left|\frac1x\right|\lt\eps$. Per la definizione (1), il limite è $0$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <details class="reveal proof"><summary>Verifica: $\displaystyle\lim_{x\to-\infty}e^x=0$ (attenzione a $\nu_\eps\lt0$)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale definizione?</div>
+          <div class="step-content">La (4): fissato $\eps>0$, serve $\nu_\eps\lt0$ con $|e^x-0|\lt\eps$ per ogni $x\lt\nu_\eps$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">La disequazione</div>
+          <div class="step-content">$e^x>0$, quindi $|e^x|=e^x$, e $e^x\lt\eps\iff x\lt\log\eps$ (il logaritmo è crescente).</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Basta $\nu_\eps=\log\eps$?</div>
+          <div class="step-content">Solo se $\eps\lt1$: per $\eps\ge1$ è $\log\eps\ge0$, e il prof vuole una soglia negativa. Si prende $\nu_\eps:=\min\{\log\eps,-1\}\lt0$: se $x\lt\nu_\eps$ allora $x\lt\log\eps$ e $e^x\lt\eps$. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Il caso $\eps\ge1$ è banale (è $e^x\lt1$ già per ogni $x\lt0$), ma è proprio il tipo di dettaglio che distingue una verifica completa da una approssimativa.</p>
+    </div></details>
+
+    <details class="reveal proof"><summary>Verifica: $\displaystyle\lim_{x\to+\infty}\sqrt x=+\infty$</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa si fissa questa volta?</div>
+          <div class="step-content">Un $M>0$ qualsiasi (definizione (2)): serve $\nu_M>0$ con $\sqrt x>M$ per ogni $x>\nu_M$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">La disequazione e la soglia</div>
+          <div class="step-content">Entrambi i membri sono positivi, quindi si può elevare al quadrato: $\sqrt x>M\iff x>M^2$. La soglia è $\nu_M:=M^2>0$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="intorni">2 · Intorni e punti di accumulazione</h2>
+
+    <div class="box def">
+      <div class="box-title">Definizione · intorni (Lezione 12)</div>
+      <p>Siano $x_0\in\R$ e $r>0$. Ricorda che $|x-x_0|\lt r\iff x_0-r\lt x\lt x_0+r$.</p>
+      <ul class="mb0">
+        <li>$I_r(x_0):=\{x\in\R:\ |x-x_0|\lt r\}=(x_0-r,\,x_0+r)$ è l'<strong>intorno</strong> (circolare) di centro $x_0$ e raggio $r$;</li>
+        <li>$I^+_r(x_0):=\{x\in\R:\ x_0\lt x\lt x_0+r\}$ è l'<strong>intorno destro</strong>;</li>
+        <li>$I^-_r(x_0):=\{x\in\R:\ x_0-r\lt x\lt x_0\}$ è l'<strong>intorno sinistro</strong>.</li>
+      </ul>
+    </div>
+    <div class="figure-row">
+      <figure>
+        <svg class="retta" viewBox="0 0 300 54" role="img" aria-label="Intorno di x0 di raggio r">
+          <line class="asse" x1="8" y1="26" x2="292" y2="26"/>
+          <line class="tratto" x1="80" y1="26" x2="220" y2="26" style="stroke:var(--accent)"/>
+          <circle class="vuoto" cx="80" cy="26" r="5" style="stroke:var(--accent)"/>
+          <circle class="vuoto" cx="220" cy="26" r="5" style="stroke:var(--accent)"/>
+          <line x1="150" y1="20" x2="150" y2="32" style="stroke:var(--text);stroke-width:1.6"/>
+          <text x="150" y="50" text-anchor="middle">x₀</text>
+          <text x="80" y="50" text-anchor="middle">x₀ − r</text>
+          <text x="220" y="50" text-anchor="middle">x₀ + r</text>
+        </svg>
+        <figcaption>$I_r(x_0)$: aperto, simmetrico, contiene $x_0$</figcaption>
+      </figure>
+      <figure>
+        <svg class="retta" viewBox="0 0 300 54" role="img" aria-label="Intorno destro di x0">
+          <line class="asse" x1="8" y1="26" x2="292" y2="26"/>
+          <line class="tratto" x1="150" y1="26" x2="220" y2="26" style="stroke:var(--ok)"/>
+          <circle class="vuoto" cx="150" cy="26" r="5" style="stroke:var(--ok)"/>
+          <circle class="vuoto" cx="220" cy="26" r="5" style="stroke:var(--ok)"/>
+          <text x="150" y="50" text-anchor="middle">x₀</text>
+          <text x="220" y="50" text-anchor="middle">x₀ + r</text>
+        </svg>
+        <figcaption>$I^+_r(x_0)$: solo a destra, <strong>senza</strong> $x_0$</figcaption>
+      </figure>
+      <figure>
+        <svg class="retta" viewBox="0 0 300 54" role="img" aria-label="Intorno sinistro di x0">
+          <line class="asse" x1="8" y1="26" x2="292" y2="26"/>
+          <line class="tratto" x1="80" y1="26" x2="150" y2="26" style="stroke:var(--purple)"/>
+          <circle class="vuoto" cx="80" cy="26" r="5" style="stroke:var(--purple)"/>
+          <circle class="vuoto" cx="150" cy="26" r="5" style="stroke:var(--purple)"/>
+          <text x="80" y="50" text-anchor="middle">x₀ − r</text>
+          <text x="150" y="50" text-anchor="middle">x₀</text>
+        </svg>
+        <figcaption>$I^-_r(x_0)$: solo a sinistra, <strong>senza</strong> $x_0$</figcaption>
+      </figure>
+    </div>
+
+    <h3 id="accumulazione">Punto di accumulazione</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 12)</div>
+      <p class="mb0">Sia $E\subseteq\R$. Un punto $x\in\R$ si dice <strong>punto di accumulazione</strong> per $E$ se
+      $$\forall r>0\qquad \bigl[I_r(x)\cap E\bigr]\setminus\{x\}\ne\emptyset.$$
+      In parole: in ogni intorno di $x$, per quanto piccolo, c'è almeno un punto di $E$ <strong>diverso da $x$</strong>.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Perché serve</div>
+      <p class="mb0">Per fare il limite per $x\to x_0$ bisogna poter prendere $x\in A$ vicino a $x_0$ quanto si vuole, e diversi da $x_0$. Un punto di accumulazione è esattamente un punto che si può avvicinare restando dentro $A$. Il punto $x_0$ <strong>non deve</strong> stare in $E$: conta soltanto che $E$ gli si «accumuli» attorno. E se ci sta, non basta: un punto isolato di $E$ non è di accumulazione.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Gli esempi della Lezione 12</div>
+      <div class="tablewrap" style="margin:0">
+        <table>
+          <thead><tr><th>Insieme $E$</th><th>$x_0$ è di accumulazione?</th><th>Perché</th></tr></thead>
+          <tbody>
+            <tr><td>$(a,b)$, con $a\lt x_0\lt b$</td><td><strong>sì</strong></td><td>ogni intorno di $x_0$ contiene altri punti dell'intervallo</td></tr>
+            <tr><td>$(a,x_0)\cup(x_0,b)$</td><td><strong>sì</strong></td><td>$x_0\notin E$, ma $E$ gli arriva vicino da entrambi i lati</td></tr>
+            <tr><td>$[x_0,b)$</td><td><strong>sì</strong></td><td>basta un lato: a destra di $x_0$ ci sono punti di $E$</td></tr>
+            <tr><td>$[a,b)\cup\{x_0\}$, con $x_0>b$</td><td><strong>no</strong></td><td>un intorno di raggio $r\lt x_0-b$ contiene solo $x_0$: è un <strong>punto isolato</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <details class="reveal"><summary>Altri esempi da tenere a mente (non negli appunti)</summary><div class="reveal-body">
+      <ul class="mb0">
+        <li>$E=\left\{\frac1n:\ n\ge1\right\}$: $0$ è di accumulazione (anche se $0\notin E$), mentre ogni $\frac1n$ è isolato.</li>
+        <li>$E=\N$: nessun punto di accumulazione. Per questo non ha senso «$\lim_{x\to3}$» di una successione: l'unico limite possibile per una successione è per $n\to+\infty$.</li>
+        <li>$E=\Q$: ogni numero reale è di accumulazione, perché fra due reali c'è sempre un razionale.</li>
+        <li>$E=\R\setminus\{0\}$, l'insieme di definizione di $\frac1x$ o di $\frac{\sin x}x$: $0$ è di accumulazione, ed è per questo che si può cercare il limite in $0$.</li>
+      </ul>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="alfinito">3 · Limite per $x\to x_0$</h2>
+    <p>Da qui in avanti $x_0$ è un <strong>punto di accumulazione</strong> per l'insieme di definizione $A$ di $f$.</p>
+
+    <div class="box def">
+      <div class="box-title">Definizione 7 · limite finito (Lezione 12)</div>
+      <p>$\displaystyle\lim_{x\to x_0}f(x)=\ell\in\R$ se
+      $$\forall\eps>0\ \ \exists\delta>0\ \ (\delta=\delta_{\eps,x_0})\ \text{ t.c.}$$
+      $$|f(x)-\ell|\lt\eps\qquad\forall x\in I_\delta(x_0)\cap A,\ x\ne x_0.$$</p>
+      <p class="mb0">La richiesta su $x$ si scrive in tre modi equivalenti: $x\in I_\delta(x_0)\cap A$ con $x\ne x_0$; $\ x\in A$ con $|x-x_0|\lt\delta$ e $x\ne x_0$; $\ x\in A$ con $0\lt|x-x_0|\lt\delta$.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizioni 8–9 · limite infinito al finito (Lezione 12)</div>
+      <ul class="mb0">
+        <li><strong>(8)</strong> $\displaystyle\lim_{x\to x_0}f(x)=+\infty$ se $\ \forall M>0\ \exists\delta>0\ (\delta=\delta_{M,x_0})$ t.c. $f(x)>M\quad\forall x\in I_\delta(x_0)\cap A,\ x\ne x_0$;</li>
+        <li><strong>(9)</strong> $\displaystyle\lim_{x\to x_0}f(x)=-\infty$ se $\ \forall M>0\ \exists\delta>0$ t.c. $f(x)\lt-M\quad\forall x\in I_\delta(x_0)\cap A,\ x\ne x_0$.</li>
+      </ul>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">✓ Le due clausole che fanno la differenza</div>
+      <ul class="mb0">
+        <li><strong>$x\ne x_0$.</strong> Il valore $f(x_0)$ non conta: può non esistere ($\frac{\sin x}x$ in $0$) oppure essere «sbagliato» (la funzione che vale $1$ per $x\ne0$ e $5$ in $0$ ha limite $1$). Il limite descrive dove va $f$ <em>vicino</em> a $x_0$, non che cosa fa <em>in</em> $x_0$.</li>
+        <li><strong>$x_0$ di accumulazione.</strong> Se $x_0$ fosse isolato, per $\delta$ piccolo non ci sarebbe nessun $x$ da controllare e la condizione sarebbe vera per <em>ogni</em> $\ell$: il limite non sarebbe più unico. È qui che si usa l'ipotesi, come si vede bene nella <a href="#unicita">dimostrazione dell'unicità</a>.</li>
+      </ul>
+    </div>
+
+    <h3 id="epsdelta">Il gioco di ε e δ</h3>
+    <p>La definizione è un gioco a due: l'avversario sceglie la striscia orizzontale (cioè $\eps$), tu devi rispondere con una striscia verticale (cioè $\delta$) tale che il grafico sopra quella striscia, punto $x_0$ escluso, stia tutto nella striscia orizzontale. Il limite è $\ell$ se <strong>vinci sempre</strong>, per ogni $\eps$.</p>
+    <div class="widget">
+      <div class="widget-head"><span>Sfida sulla definizione</span><span class="faint" style="text-transform:none;font-weight:400">dato ε, scegli tu δ</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="edSel">funzione</label>
+            <select id="edSel">
+              <option value="0">$f(x)=3x-1$, $x_0=2$</option>
+              <option value="1">$f(x)=x^2$, $x_0=1$</option>
+              <option value="2">$f(x)=\dfrac{\sin x}{x}$, $x_0=0$</option>
+              <option value="3">$f(x)=x\sin\dfrac1x$, $x_0=0$</option>
+              <option value="4">$f(x)=\sqrt x$, $x_0=0$</option>
+              <option value="5">$f(x)=\operatorname{sgn}x$, $x_0=0$</option>
+            </select>
+          </div>
+          <div class="ctrl"><label for="edL">$\ell$ candidato</label><input type="range" id="edL" min="-2" max="6" value="5" step="0.05"><output data-out="edL">5</output></div>
+          <div class="ctrl"><label for="edEps">$\eps$</label><input type="range" id="edEps" min="0.02" max="1.5" value="0.6" step="0.01"><output data-out="edEps">0.6</output></div>
+          <div class="ctrl"><label for="edDel">il tuo $\delta$</label><input type="range" id="edDel" min="0.005" max="1.5" value="0.5" step="0.005"><output data-out="edDel">0.5</output></div>
+          <button class="btn sm" id="edBest">Mostra il δ più grande</button>
+        </div>
+        <canvas class="plot" id="edPlot"></canvas>
+        <div class="readout" id="edOut"></div>
+      </div>
+    </div>
+    <p class="small muted">Prova a spostare $\ell$ su un valore sbagliato: per $\eps$ grande trovi ancora un $\delta$, ma stringendo $\eps$ prima o poi nessun $\delta$ funziona più. Con $\operatorname{sgn}x$ succede per <em>ogni</em> $\ell$, appena $\eps\le1$: è il segno che il limite non esiste.</p>
+
+    <h3 id="verifiche-fin">Verifiche con la definizione</h3>
+    <details class="reveal proof"><summary>Verifica: $\displaystyle\lim_{x\to2}(3x-1)=5$</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa va reso piccolo?</div>
+          <div class="step-content">$|f(x)-\ell|=|3x-1-5|=|3x-6|=3|x-2|$. La quantità da controllare è già scritta in funzione di $|x-x_0|$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale $\delta$?</div>
+          <div class="step-content">$3|x-2|\lt\eps\iff|x-2|\lt\frac\eps3$. Con $\delta:=\frac\eps3$, per ogni $x$ con $0\lt|x-2|\lt\delta$ vale $|f(x)-5|\lt\eps$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <details class="reveal proof"><summary>Verifica: $\displaystyle\lim_{x\to3}x^2=9$ (il trucco del $\min$)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Si fattorizza</div>
+          <div class="step-content">$|x^2-9|=|x-3|\cdot|x+3|$. Il primo fattore è piccolo, ma il secondo dipende da $x$: serve una stima.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Come si tiene fermo $|x+3|$?</div>
+          <div class="step-content">Si decide in anticipo che $\delta\le1$. Allora $|x-3|\lt1$ dà $2\lt x\lt4$, quindi $|x+3|\lt7$ e $|x^2-9|\lt7|x-3|$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale $\delta$, allora?</div>
+          <div class="step-content">$7|x-3|\lt\eps$ se $|x-3|\lt\frac\eps7$. Si prende $\delta:=\min\left\{1,\frac\eps7\right\}$: entrambe le condizioni sono soddisfatte e $|x^2-9|\lt7\cdot\frac\eps7=\eps$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <details class="reveal proof"><summary>Verifica: $\displaystyle\lim_{x\to0}\frac1{x^2}=+\infty$</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale definizione, e che cosa si fissa?</div>
+          <div class="step-content">La (8): fissato $M>0$, serve $\delta>0$ con $\frac1{x^2}>M$ per $0\lt|x|\lt\delta$. Il punto $0$ non è nel dominio $\R\setminus\{0\}$, ma è di accumulazione.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">La disequazione</div>
+          <div class="step-content">Per $x\ne0$: $\frac1{x^2}>M\iff x^2\lt\frac1M\iff|x|\lt\frac1{\sqrt M}$. Quindi $\delta:=\frac1{\sqrt M}$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="destrosinistro">4 · Limiti destro e sinistro</h2>
+
+    <div class="box def">
+      <div class="box-title">Definizione · accumulazione da destra e da sinistra (Lezione 12)</div>
+      <p class="mb0">Sia $E\subseteq\R$. Un punto $x_0\in\R$ si dice <strong>punto di accumulazione da destra</strong> per $E$ se $\ \forall r>0\ \ \bigl[I^+_r(x_0)\cap E\bigr]\setminus\{x_0\}\ne\emptyset$, e <strong>da sinistra</strong> se $\ \forall r>0\ \ \bigl[I^-_r(x_0)\cap E\bigr]\setminus\{x_0\}\ne\emptyset$.</p>
+    </div>
+    <p>Se $x_0$ è di accumulazione da destra per $A$, si può guardare $x\to x_0^+$ (cioè $x\to x_0$ con $x>x_0$); se lo è da sinistra, $x\to x_0^-$.</p>
+    <div class="box def">
+      <div class="box-title">Definizioni 10–15 (Lezione 12)</div>
+      <ul>
+        <li><strong>(10)</strong> $\displaystyle\lim_{x\to x_0^+}f(x)=\ell\in\R$ se $\ \forall\eps>0\ \exists\delta=\delta_{\eps,x_0}>0$ t.c. $|f(x)-\ell|\lt\eps\quad\forall x\in I^+_\delta(x_0)\cap A$;</li>
+        <li><strong>(13)</strong> $\displaystyle\lim_{x\to x_0^-}f(x)=\ell\in\R$ se $\ \forall\eps>0\ \exists\delta=\delta_{\eps,x_0}>0$ t.c. $|f(x)-\ell|\lt\eps\quad\forall x\in I^-_\delta(x_0)\cap A$.</li>
+      </ul>
+      <p class="mb0">Le (11), (12), (14), (15) sono le analoghe con $+\infty$ e $-\infty$: si sostituisce $|f(x)-\ell|\lt\eps$ con $f(x)>M$ oppure $f(x)\lt-M$, come nelle (8)–(9). Gli appunti le lasciano ai puntini.</p>
+    </div>
+    <p class="small muted">Non serve scrivere $x\ne x_0$: gli intorni destro e sinistro escludono già $x_0$.</p>
+
+    <h3 id="legame">Legame con il limite (Lezione 12)</h3>
+    <div class="box prop">
+      <div class="box-title">Osservazione · tre fatti</div>
+      <ul class="mb0">
+        <li><strong>(i)</strong> Se $\displaystyle\lim_{x\to x_0^-}f(x)=\ell_1\ne\ell_2=\lim_{x\to x_0^+}f(x)$, allora $\displaystyle\nexists\lim_{x\to x_0}f(x)$.</li>
+        <li><strong>(ii)</strong> Se $\displaystyle\lim_{x\to x_0^-}f(x)=\ell=\lim_{x\to x_0^+}f(x)$, allora $\displaystyle\exists\lim_{x\to x_0}f(x)=\ell$.</li>
+        <li><strong>(iii)</strong> Supponiamo che $x_0$ sia di accumulazione <strong>da destra e da sinistra</strong> per $A$. Se esiste $\displaystyle\lim_{x\to x_0}f(x)=\ell$, allora esistono $\displaystyle\lim_{x\to x_0^\pm}f(x)=\ell$.</li>
+      </ul>
+    </div>
+    <details class="reveal proof"><summary>Perché valgono (ii) e (iii)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">(ii) Due $\delta$, uno per lato: come se ne ottiene uno solo?</div>
+          <div class="step-content">Fissato $\eps$, il limite sinistro dà $\delta_1$ con $|f(x)-\ell|\lt\eps$ su $I^-_{\delta_1}(x_0)\cap A$, il destro dà $\delta_2$ su $I^+_{\delta_2}(x_0)\cap A$. Con $\delta:=\min\{\delta_1,\delta_2\}$ entrambe valgono, e $I_\delta(x_0)\setminus\{x_0\}=I^-_\delta(x_0)\cup I^+_\delta(x_0)$: è la definizione 7.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">(iii) Dove serve l'ipotesi sui due lati?</div>
+          <div class="step-content">Il $\delta$ della definizione 7 funziona anche per i limiti da un lato, perché $I^\pm_\delta(x_0)\subseteq I_\delta(x_0)\setminus\{x_0\}$. Ma per <em>parlare</em> di limite destro serve che $x_0$ sia di accumulazione da destra: altrimenti il limite destro non è definito. (i) è la contronominale di (iii), con l'unicità del limite.</div></div></div>
+      </div>
+      <p class="small muted mb0">Ragionamento nostro: negli appunti le tre osservazioni sono enunciate senza dimostrazione.</p>
+    </div></details>
+    <div class="box ex">
+      <div class="box-title">Gli esempi della Lezione 12</div>
+      <p><strong>$f(x)=\sqrt x$, $x_0=0$.</strong> $\lim_{x\to0}\sqrt x=\lim_{x\to0^+}\sqrt x=0$, mentre $\lim_{x\to0^-}\sqrt x$ <strong>non esiste</strong>: $0$ non è di accumulazione da sinistra per $[0,+\infty)$. Per questo in (iii) serve l'ipotesi sui due lati.</p>
+      <p><strong>$f(x)=\frac1x$, $x_0=0$.</strong> Su $A=(-\infty,0)\cup(0,+\infty)$: $\lim_{x\to0^-}\frac1x=-\infty$ e $\lim_{x\to0^+}\frac1x=+\infty$, quindi $\nexists\lim_{x\to0}\frac1x$.</p>
+      <p class="mb0"><strong>$f(x)=\operatorname{sgn}x$</strong> ($=1$ per $x>0$, $0$ in $0$, $-1$ per $x\lt0$). $\lim_{x\to0^-}=-1\ne1=\lim_{x\to0^+}$, quindi $\nexists\lim_{x\to0}\operatorname{sgn}x$; e il valore $f(0)=0$ non c'entra.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="ponte">5 · Il teorema ponte</h2>
+    <p>Data $f:A\to\R$ e una successione $\{x_m\}\subseteq A$, la composizione $b_m:=f(x_m)$ è una nuova successione. Il teorema ponte dice che il limite di $f$ in $x_0$ si può leggere su <em>tutte</em> queste successioni.</p>
+    <div class="box teo">
+      <div class="box-title">Teorema ponte (Lezione 12)</div>
+      <p class="mb0">Sia $f:A\subseteq\R\to\R$ e $x_0$ punto di accumulazione per $A$. Allora
+      $$\lim_{x\to x_0}f(x)=\ell\quad\iff\quad\Bigl[\ \forall\{x_m\}\subseteq A\setminus\{x_0\}\ \text{ con }\ x_m\xrightarrow{m\to\infty}x_0\ \Longrightarrow\ \lim_{m\to\infty}f(x_m)=\ell\ \Bigr].$$
+      A destra c'è un <strong>limite di successione</strong>. Vale anche con $\ell=\pm\infty$ e con $x_0=\pm\infty$, nella stessa forma.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (non negli appunti: per capire)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: che cosa si fissa e che cosa dà l'ipotesi?</div>
+          <div class="step-content">Si fissa $\eps>0$. Il limite dà $\delta>0$ con $|f(x)-\ell|\lt\eps$ per ogni $x\in A$, $0\lt|x-x_0|\lt\delta$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: come entra la successione?</div>
+          <div class="step-content">$x_m\to x_0$: usando la definizione con $\delta$ al posto di $\eps$, esiste $\nu$ con $|x_m-x_0|\lt\delta$ per $m>\nu$. Inoltre $x_m\ne x_0$, quindi $0\lt|x_m-x_0|\lt\delta$ e $|f(x_m)-\ell|\lt\eps$ per ogni $m>\nu$: $f(x_m)\to\ell$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»: quale strategia?</div>
+          <div class="step-content">Contronominale: se $f(x)\not\to\ell$, costruisco una successione che va a $x_0$ ma su cui $f$ non va a $\ell$. Negare la definizione dà: $\exists\eps_0>0$ tale che per ogni $\delta>0$ c'è un $x\in A$ con $0\lt|x-x_0|\lt\delta$ e $|f(x)-\ell|\ge\eps_0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»: quale $\delta$ conviene scegliere?</div>
+          <div class="step-content">$\delta=\frac1m$, per ogni $m\ge1$: si trova $x_m\in A$ con $0\lt|x_m-x_0|\lt\frac1m$ e $|f(x_m)-\ell|\ge\eps_0$. Allora $x_m\to x_0$ (carabinieri), $x_m\ne x_0$, ma $f(x_m)$ resta sempre a distanza $\ge\eps_0$ da $\ell$: non tende a $\ell$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box ex">
+      <div class="box-title">Esempio della Lezione 12 · $f(x)=x^2$, $x_0=0$</div>
+      <p>Una successione sola non basta, ma è un buon controllo: con $x_m=\frac1{\sqrt m}\to0$ si ha $f(x_m)=\frac1m\to0$.</p>
+      <p class="mb0">Per concludere serve una successione <strong>qualsiasi</strong>: sia $\{x_m\}\subseteq\R\setminus\{0\}$ con $x_m\to0$. Allora $b_m:=f(x_m)=(x_m)^2\to0$ per l'algebra dei limiti di successioni. Quindi $\lim_{x\to0}x^2=0$ per il teorema ponte.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ A che cosa serve davvero</div>
+      <p class="mb0">A due cose. <strong>Trasportare i teoremi</strong>: algebra dei limiti, permanenza del segno, carabinieri e limiti notevoli valgono per le funzioni perché valgono per ogni successione $f(x_m)$. E soprattutto <strong>dimostrare che un limite non esiste</strong>, che è l'uso da esercizio.</p>
+    </div>
+
+    <h3 id="nonesiste">Come si dimostra che un limite non esiste</h3>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 12)</div>
+      <p class="mb0">Siano $\{x_m\},\{y_m\}\subseteq A\setminus\{x_0\}$ con $x_m\to x_0$ e $y_m\to x_0$. Se
+      $$\lim_{m\to\infty}f(x_m)=\ell_1\ne\ell_2=\lim_{m\to\infty}f(y_m),\qquad\text{allora}\qquad\nexists\lim_{x\to x_0}f(x).$$</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio della Lezione 12 · $f(x)=\cos\frac1x$, $x_0=0$</div>
+      <p>Si cercano punti dove il coseno vale $1$ e punti dove vale $-1$, sempre più vicini a $0$:</p>
+      <ul class="mb0">
+        <li>$x_m=\dfrac1{2m\pi}\to0$, e $f(x_m)=\cos(2m\pi)=1\to1$;</li>
+        <li>$y_m=\dfrac1{(2m+1)\pi}\to0$, e $f(y_m)=\cos\bigl((2m+1)\pi\bigr)=-1\to-1$.</li>
+      </ul>
+      <p class="mb0" style="margin-top:8px">Due limiti diversi: per il teorema ponte $\nexists\lim_{x\to0}\cos\frac1x$.</p>
+    </div>
+    <div class="widget">
+      <div class="widget-head"><span>Il teorema ponte al lavoro</span><span class="faint" style="text-transform:none;font-weight:400">due successioni verso $x_0=0$</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="ptSel">funzione</label>
+            <select id="ptSel">
+              <option value="0">$\cos\dfrac1x$</option>
+              <option value="1">$\sin\dfrac1x$</option>
+              <option value="2">$x\sin\dfrac1x$</option>
+            </select>
+          </div>
+          <div class="ctrl"><label for="ptM">termini delle successioni</label><input type="range" id="ptM" min="1" max="12" value="4" step="1"><output data-out="ptM">4</output></div>
+        </div>
+        <canvas class="plot" id="ptPlot"></canvas>
+        <div class="readout" id="ptOut"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="teoremi">6 · I teoremi sui limiti</h2>
+    <p>Per le funzioni valgono gli stessi teoremi delle successioni, con $\delta$ al posto di $\nu_\eps$. <strong>Nessuno di questi ha la stellina nel programma</strong>: allo scritto ti possono chiedere l'enunciato (quesito 2.4), non la dimostrazione. Le dimostrazioni qui sotto però sono quelle della Sezione 2 riscritte con gli intorni, e rifarle è il modo migliore per prendere confidenza con $\delta$.</p>
+
+    <div class="box prop">
+      <div class="box-title">L'algebra dei limiti resta invariata (Lezione 12)</div>
+      <p class="mb0">Somma, prodotto e quoziente di limiti si comportano come per le successioni, anche con $\pm\infty$; le forme indeterminate sono le stesse: $$+\infty-\infty,\qquad 0\cdot\infty,\qquad\frac\infty\infty,\qquad\frac00,\qquad1^\infty,\qquad0^0,\qquad\infty^0.$$ Il riepilogo completo è nella <a href="2-successioni.html#algebra-limiti">Sezione 2</a>.</p>
+    </div>
+
+    <h3 id="permanenza">Permanenza del segno</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 12)</div>
+      <p class="mb0">Sia $f:A\subseteq\R\to\R$, $x_0$ punto di accumulazione per $A$. Se $\displaystyle\lim_{x\to x_0}f(x)=M>0$, allora $\exists\delta>0$ t.c. per ogni $x\in I_\delta(x_0)\cap A$, $x\ne x_0$,
+      $$f(x)>\frac M2\qquad(\text{in particolare }f(x)>0).$$</p>
+    </div>
+    <p class="small muted">Negli appunti è scritto $x\in I_\delta(x)\cap A$: è un refuso per $I_\delta(x_0)$.</p>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale $\eps$ si sceglie? (te lo suggerisce l'enunciato)</div>
+          <div class="step-content">$\eps:=\frac M2>0$. Il limite dà $\delta>0$ con $|f(x)-M|\lt\frac M2$ per ogni $x\in I_\delta(x_0)\cap A$, $x\ne x_0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale metà della disuguaglianza serve?</div>
+          <div class="step-content">Quella di sinistra: $-\frac M2\lt f(x)-M$, cioè $f(x)>M-\frac M2=\frac M2>0$. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Vale anche con $M=+\infty$ (si usa la definizione 8 con un $M'$ qualsiasi) e, specularmente, con limite negativo. Il viceversa non vale con il segno stretto: $f(x)=x^2>0$ per $x\ne0$, ma $\lim_{x\to0}x^2=0$.</p>
+    </div></details>
+
+    <h3 id="unicita">Unicità del limite</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 12)</div>
+      <p class="mb0">Se esiste $\displaystyle\lim_{x\to x_0}f(x)=\ell$, allora il limite è <strong>unico</strong>.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (come per le successioni)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Impostazione</div>
+          <div class="step-content">Per assurdo, $f\to\ell_1$ e $f\to\ell_2$ con $\ell_1\ne\ell_2$. Fissato $\eps>0$, ci sono $\delta_1,\delta_2$ con $|f(x)-\ell_1|\lt\eps$ su $I_{\delta_1}(x_0)\cap A\setminus\{x_0\}$ e $|f(x)-\ell_2|\lt\eps$ su $I_{\delta_2}(x_0)\cap A\setminus\{x_0\}$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dove valgono entrambe, e perché c'è almeno un punto lì?</div>
+          <div class="step-content">Con $\delta:=\min\{\delta_1,\delta_2\}$ valgono entrambe su $I_\delta(x_0)\cap A\setminus\{x_0\}$. Questo insieme <strong>non è vuoto</strong> perché $x_0$ è di accumulazione per $A$: è il punto in cui entra l'ipotesi.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">La disuguaglianza triangolare</div>
+          <div class="step-content">Preso un $x$ in quell'insieme: $|\ell_1-\ell_2|\le|\ell_1-f(x)|+|f(x)-\ell_2|\lt2\eps$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">La scelta di $\eps$</div>
+          <div class="step-content">$\eps:=\frac{|\ell_1-\ell_2|}2>0$ dà $|\ell_1-\ell_2|\lt|\ell_1-\ell_2|$. Assurdo, quindi $\ell_1=\ell_2$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <h3 id="carabinieri">Teorema dei due carabinieri</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 12)</div>
+      <p class="mb0">Siano $f,g,h$ tre funzioni e $A$ l'insieme di definizione. Supponiamo che per un $\delta>0$
+      $$g(x)\le f(x)\le h(x)\qquad\forall x\in\bigl[I_\delta(x_0)\setminus\{x_0\}\bigr]\cap A.$$
+      Se $\displaystyle\lim_{x\to x_0}g(x)=\lim_{x\to x_0}h(x)=\ell$, allora $\displaystyle\exists\lim_{x\to x_0}f(x)=\ell$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quanti $\delta$ ci sono in gioco?</div>
+          <div class="step-content">Tre. Fissato $\eps>0$: $\delta_g$ con $\ell-\eps\lt g(x)\lt\ell+\eps$, $\delta_h$ con $\ell-\eps\lt h(x)\lt\ell+\eps$, e il $\delta$ dell'ipotesi, dove vale $g\le f\le h$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">La catena</div>
+          <div class="step-content">Con $\delta':=\min\{\delta,\delta_g,\delta_h\}$, per $x\in I_{\delta'}(x_0)\cap A$, $x\ne x_0$:
+          $$\ell-\eps\lt g(x)\le f(x)\le h(x)\lt\ell+\eps,$$ cioè $|f(x)-\ell|\lt\eps$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <h3 id="limitata">Infinitesima per limitata</h3>
+    <div class="box prop">
+      <div class="box-title">Lemma e corollario (Lezione 12)</div>
+      <p><strong>Lemma.</strong> $f(x)\xrightarrow{x\to x_0}0\iff|f(x)|\xrightarrow{x\to x_0}0$. <span class="small muted">(Vero perché $|f(x)-0|=\bigl||f(x)|-0\bigr|$: le due definizioni sono la stessa frase.)</span></p>
+      <p class="mb0"><strong>Corollario.</strong> Se $f(x)\xrightarrow{x\to x_0}0$ e $g$ è una funzione <strong>limitata in un intorno</strong> di $x_0$, allora $\displaystyle\lim_{x\to x_0}f(x)\,g(x)=0$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione del corollario a passi coperti</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa vuol dire «limitata in un intorno»?</div>
+          <div class="step-content">Esistono $K>0$ e $r>0$ con $|g(x)|\le K$ per ogni $x\in I_r(x_0)\cap A$, $x\ne x_0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quali carabinieri?</div>
+          <div class="step-content">$0\le|f(x)g(x)|=|f(x)|\,|g(x)|\le K|f(x)|$ vicino a $x_0$. Per il lemma $K|f(x)|\to0$, quindi per i carabinieri $|f(x)g(x)|\to0$, e per il lemma di nuovo $f(x)g(x)\to0$. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Esempio classico: $\lim_{x\to0}x\sin\frac1x=0$, perché $x\to0$ e $\left|\sin\frac1x\right|\le1$. Nel widget del teorema ponte si vede bene: il grafico oscilla, ma l'ampiezza si schiaccia.</p>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="notevoli">7 · Limiti notevoli</h2>
+    <p>Sono quelli della <a href="2-successioni.html#notevoli">Sezione 2</a>, ora con la variabile reale. Il prof li elenca alla fine della Lezione 12:</p>
+    <div class="box prop">
+      <div class="box-title">Limiti notevoli (Lezione 12)</div>
+      <div class="tablewrap" style="margin:0">
+        <table>
+          <tbody>
+            <tr><td>$\displaystyle\lim_{x\to0}\sin x=0$</td><td>$\displaystyle\lim_{x\to0}\cos x=1$</td></tr>
+            <tr><td>$\displaystyle\lim_{x\to0}\frac{\sin x}x=1$</td><td>$\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12$</td></tr>
+            <tr><td>$\displaystyle\lim_{x\to+\infty}\left(1+\frac1x\right)^x=e$</td><td>$\displaystyle\lim_{x\to0}\frac{e^x-1}x=1$</td></tr>
+            <tr><td>$\displaystyle\lim_{x\to0}\frac{\log(1+x)}x=1$</td><td>$\displaystyle\lim_{x\to0}\frac{(1+x)^\alpha-1}x=\alpha\quad\forall\alpha\in\R$</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mb0" style="margin-top:10px"><strong>Gerarchia degli infiniti</strong> (per $a>1$, $\alpha>0$): $\displaystyle\lim_{x\to+\infty}\frac{\log_ax}{x^\alpha}=0$ e $\displaystyle\lim_{x\to+\infty}\frac{x^\alpha}{a^x}=0$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ La forma da usare negli esercizi</div>
+      <p class="mb0">Ogni limite notevole vale con al posto di $x$ una qualsiasi funzione che tende a $0$ (o a $+\infty$ per quello di $e$): $\frac{\sin(3x^2)}{3x^2}\to1$ per $x\to0$, $\frac{e^{1/x}-1}{1/x}\to1$ per $x\to+\infty$. È il <a href="#composta">teorema sul limite della funzione composta</a>, ed è lo stesso meccanismo degli asintotici della Sezione 2: $\sin t\sim t$, $1-\cos t\sim\frac{t^2}2$, $e^t-1\sim t$, $\log(1+t)\sim t$, $(1+t)^\alpha-1\sim\alpha t$ per $t\to0$.</p>
+    </div>
+
+    <h3 id="cambio">Il cambio di variabile: gli esempi della Lezione 13</h3>
+    <details class="reveal proof" open><summary>$\displaystyle\lim_{x\to0^+}x^\alpha\log_ax=0$ per ogni $\alpha>0$, $a>1$</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che forma è?</div>
+          <div class="step-content">$x^\alpha\to0$ e $\log_ax\to-\infty$: forma indeterminata $0\cdot(-\infty)$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale sostituzione la riporta a qualcosa di noto?</div>
+          <div class="step-content">$y:=\frac1x$: quando $x\to0^+$, $y\to+\infty$. Allora $x^\alpha=\left(\frac1y\right)^\alpha=\frac1{y^\alpha}$ e $\log_ax=\log_a(y^{-1})=-\log_ay$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Conclusione</div>
+          <div class="step-content">$$\lim_{x\to0^+}x^\alpha\log_ax=\lim_{y\to+\infty}\frac{-\log_ay}{y^\alpha}=0$$ per la gerarchia degli infiniti. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Morale: «il logaritmo perde contro qualsiasi potenza», anche vicino a $0$. Con $\alpha=1$ e $a=e$: $x\log x\to0$ per $x\to0^+$, che serve subito qui sotto.</p>
+    </div></details>
+    <div class="box ex">
+      <div class="box-title">Potenze con la variabile in base e in esponente (Lezione 13)</div>
+      <p>Il trucco è sempre lo stesso: $f(x)^{g(x)}=e^{\log\left(f(x)^{g(x)}\right)}=e^{g(x)\log f(x)}$, si calcola il limite dell'esponente e si usa la continuità dell'esponenziale.</p>
+      <ul class="mb0">
+        <li>$\displaystyle\lim_{x\to+\infty}x^{\frac1x}=\lim_{x\to+\infty}e^{\frac1x\log x}=e^0=1$, perché $\frac{\log x}x\to0$ (gerarchia);</li>
+        <li>$\displaystyle\lim_{x\to0^+}x^x=\lim_{x\to0^+}e^{x\log x}=e^0=1$, perché $x\log x\to0$ (esempio precedente).</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="ordini">8 · Infinitesimi e infiniti</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 13)</div>
+      <p class="mb0">$f$ si dice <strong>infinitesima</strong> per $x\to x_0$ (o per $x\to\pm\infty$) se $\lim f(x)=0$, e <strong>infinita</strong> se $\lim f(x)=\pm\infty$.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Confronto (Lezione 13) · $x_0\in\R\cup\{\pm\infty\}$</div>
+      <div class="tablewrap" style="margin:0">
+        <table>
+          <thead><tr><th>$\displaystyle\lim_{x\to x_0}\frac{f(x)}{g(x)}$</th><th>$f,g$ <strong>infinitesime</strong></th><th>$f,g$ <strong>infinite</strong></th></tr></thead>
+          <tbody>
+            <tr><td class="c">$0$</td><td>$f$ è di <strong>ordine superiore</strong> a $g$</td><td>$f$ è di <strong>ordine inferiore</strong> a $g$</td></tr>
+            <tr><td class="c">$\pm\infty$</td><td>$f$ è di <strong>ordine inferiore</strong> a $g$</td><td>$f$ è di <strong>ordine superiore</strong> a $g$</td></tr>
+            <tr><td class="c">$\ell\in\R\setminus\{0\}$</td><td colspan="2">$f$ e $g$ sono dello <strong>stesso ordine</strong></td></tr>
+            <tr><td class="c">$\nexists$</td><td colspan="2">$f$ e $g$ sono <strong>non paragonabili</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mb0" style="margin-top:10px"><strong>Osservazione.</strong> Il caso $\ell=1$ è speciale: $f$ e $g$ sono <strong>asintoticamente equivalenti</strong>, $f\sim g$ per $x\to x_0$.</p>
+    </div>
+    <p class="small muted">Negli appunti il terzo caso è scritto «$=\ell$»: va inteso con $\ell\ne0$ finito, perché $\ell=0$ è il primo caso.</p>
+    <div class="box tip">
+      <div class="box-title">✓ Perché i due versi sono opposti</div>
+      <p class="mb0">Il rapporto $\frac fg\to0$ dice che $f$ è «trascurabile» rispetto a $g$. Fra infinitesimi, trascurabile vuol dire che va a zero <em>più in fretta</em> (ordine superiore: $x^3$ rispetto a $x^2$ per $x\to0$). Fra infiniti vuol dire che va all'infinito <em>più piano</em> (ordine inferiore: $x^2$ rispetto a $x^3$ per $x\to+\infty$). Se ricordi questa frase non devi imparare la tabella.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">o-piccolo (Lezione 13)</div>
+      <p>Se $\displaystyle\lim_{x\to x_0}\frac{f(x)}{g(x)}=0$ si scrive $f(x)=o(g(x))$ per $x\to x_0$. In particolare $\displaystyle\lim_{x\to x_0}\frac{o(g(x))}{g(x)}=0$.</p>
+      <p class="mb0"><strong>Esempi.</strong> $x^3=o(x^2)$ per $x\to0$, perché $\frac{x^3}{x^2}=x\to0$; ma $x^2=o(x^3)$ per $x\to+\infty$, perché $\frac{x^2}{x^3}=\frac1x\to0$.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ L'o-piccolo dipende dal punto</div>
+      <p class="mb0">«$x^3=o(x^2)$» senza dire dove è una frase senza senso: vale per $x\to0$ ed è falsa per $x\to+\infty$. Scrivi sempre «per $x\to x_0$». Le regole di calcolo ($o(g)+o(g)=o(g)$, $c\cdot o(g)=o(g)$, $f\cdot o(g)=o(fg)$, …) sono le stesse della <a href="2-successioni.html#o-piccolo">Sezione 2</a>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="monotone">9 · Limiti di funzioni monotòne</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 13)</div>
+      <p>Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$.</p>
+      <ul>
+        <li>Se $f$ è <strong>crescente</strong>: $\displaystyle\lim_{x\to x_0^-}f(x)=\sup_{a\lt x\lt x_0}f(x)$ e $\displaystyle\lim_{x\to x_0^+}f(x)=\inf_{x_0\lt x\lt b}f(x)$.</li>
+        <li>Se $f$ è <strong>decrescente</strong>: $\displaystyle\lim_{x\to x_0^-}f(x)=\inf_{a\lt x\lt x_0}f(x)$ e $\displaystyle\lim_{x\to x_0^+}f(x)=\sup_{x_0\lt x\lt b}f(x)$.</li>
+      </ul>
+      <p class="mb0">All'infinito: se $f$ è crescente in $(a,+\infty)$, $\lim_{x\to+\infty}f=\sup_{x>a}f$; se è decrescente, $\lim_{x\to+\infty}f=\inf_{x>a}f$. Se $f$ è crescente in $(-\infty,a)$, $\lim_{x\to-\infty}f=\inf_{x\lt a}f$; se è decrescente, $\lim_{x\to-\infty}f=\sup_{x\lt a}f$.</p>
+    </div>
+    <svg class="retta" viewBox="0 0 300 150" style="max-width:320px" role="img" aria-label="Funzione crescente con un salto in x0">
+      <line class="asse" x1="20" y1="130" x2="290" y2="130"/>
+      <line class="asse" x1="30" y1="140" x2="30" y2="10"/>
+      <path d="M40 118 Q 110 100 150 78" fill="none" style="stroke:var(--accent);stroke-width:2.4"/>
+      <path d="M150 48 Q 200 36 280 22" fill="none" style="stroke:var(--accent);stroke-width:2.4"/>
+      <circle class="vuoto" cx="150" cy="78" r="4.5" style="stroke:var(--accent)"/>
+      <circle class="vuoto" cx="150" cy="48" r="4.5" style="stroke:var(--accent)"/>
+      <circle cx="150" cy="62" r="4" style="fill:var(--accent)"/>
+      <line x1="30" y1="78" x2="146" y2="78" style="stroke:var(--ok);stroke-dasharray:4 3"/>
+      <line x1="30" y1="48" x2="146" y2="48" style="stroke:var(--purple);stroke-dasharray:4 3"/>
+      <line x1="150" y1="130" x2="150" y2="84" style="stroke:var(--text-faint);stroke-dasharray:3 3"/>
+      <text x="150" y="146" text-anchor="middle">x₀</text>
+      <text x="34" y="74" style="fill:var(--ok)">sup a sinistra</text>
+      <text x="34" y="44" style="fill:var(--purple)">inf a destra</text>
+    </svg>
+    <p class="small muted">Funzione crescente con un salto in $x_0$: da sinistra arriva al $\sup$ dei valori prima di $x_0$, da destra all'$\inf$ dei valori dopo. Il valore $f(x_0)$ sta in mezzo.</p>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti del caso crescente da sinistra (non negli appunti: è la stessa idea della dimostrazione n° 9)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Il $\sup$ è finito?</div>
+          <div class="step-content">Sì: per $a\lt x\lt x_0$ la crescenza dà $f(x)\le f(x_0)$, quindi l'insieme $\{f(x):a\lt x\lt x_0\}$ è limitato superiormente e per la completezza ha $S:=\sup\in\R$, con $S\le f(x_0)$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa dice la caratterizzazione del $\sup$?</div>
+          <div class="step-content">Fissato $\eps>0$, $S-\eps$ non è un maggiorante: esiste $\bar x\in(a,x_0)$ con $f(\bar x)>S-\eps$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dove entra la monotonia, e quale $\delta$?</div>
+          <div class="step-content">Per $\bar x\lt x\lt x_0$: $S-\eps\lt f(\bar x)\le f(x)\le S$. Quindi $|f(x)-S|\lt\eps$ per ogni $x\in I^-_\delta(x_0)$ con $\delta:=x_0-\bar x$. È la definizione 13. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box tip">
+      <div class="box-title">✓ La conseguenza da ricordare</div>
+      <p class="mb0">Una funzione monotòna su un intervallo ha <strong>sempre</strong> limite destro e sinistro finiti nei punti interni. Quindi può avere solo <a href="#discontinuita">discontinuità di salto</a>: mai oscillazioni come $\cos\frac1x$, mai asintoti verticali dentro l'intervallo.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="asintoti">10 · Asintoti <span class="badge star2">dim. orale</span></h2>
+    <div class="box def">
+      <div class="box-title">Asintoto verticale (Lezione 13)</div>
+      <ul class="mb0">
+        <li>Se $\lim_{x\to x_0}f(x)=\pm\infty$ (oppure $\lim_{x\to x_0^-}f(x)=\pm\infty$ e $\lim_{x\to x_0^+}f(x)=\mp\infty$), la retta $x=x_0$ è <strong>asintoto verticale</strong> per $f$.</li>
+        <li>Se $\lim_{x\to x_0^-}f(x)=\pm\infty$, $x=x_0$ è <strong>asintoto verticale sinistro</strong>; se $\lim_{x\to x_0^+}f(x)=\pm\infty$, <strong>asintoto verticale destro</strong>.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 13)</div>
+      <p>$f(x)=\frac1x$ su $\R\setminus\{0\}$: $\lim_{x\to0^+}\frac1x=+\infty$ e $\lim_{x\to0^-}\frac1x=-\infty$, quindi $x=0$ è asintoto verticale.</p>
+      <p class="mb0">$f(x)=\frac1{\sqrt x}$ su $(0,+\infty)$: $\lim_{x\to0^+}f(x)=+\infty$, quindi $x=0$ è asintoto verticale <strong>destro</strong> (a sinistra la funzione non è definita).</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Asintoto orizzontale (Lezione 13)</div>
+      <p class="mb0">Se $\lim_{x\to\pm\infty}f(x)=b\in\R$, la retta $y=b$ è <strong>asintoto orizzontale</strong> per $f$ per $x\to\pm\infty$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 13)</div>
+      <p>$f(x)=\operatorname{arctg}x$: $y=\frac\pi2$ è asintoto orizzontale per $x\to+\infty$, $y=-\frac\pi2$ per $x\to-\infty$. Gli asintoti a destra e a sinistra possono essere diversi.</p>
+      <p class="mb0">$f(x)=\frac{\sin x}x$ su $\R\setminus\{0\}$: $\lim_{x\to\pm\infty}f(x)=0$ (infinitesima per limitata), quindi $y=0$ è asintoto orizzontale per $x\to\pm\infty$. Il grafico lo <strong>attraversa</strong> infinite volte: un asintoto non è una retta che il grafico non tocca mai.</p>
+    </div>
+
+    <h3 id="obliquo">Asintoto obliquo</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 13)</div>
+      <p class="mb0">Sia $f:(c,+\infty)\to\R$. La retta $y=mx+q$ è un <strong>asintoto</strong> per $f$ per $x\to+\infty$ se $$\lim_{x\to+\infty}\bigl[f(x)-mx-q\bigr]=0.$$ Se $m=0$ l'asintoto è <strong>orizzontale</strong>, se $m\ne0$ è <strong>obliquo</strong>. Per $x\to-\infty$ è lo stesso, con $f:(-\infty,c)\to\R$.</p>
+    </div>
+    <p>Come si stabilisce se ci sono $m$ e $q$? Con due limiti.</p>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 13)</div>
+      <p class="mb0">$f$ ha asintoto $y=mx+q$ per $x\to+\infty$ (o $-\infty$) $\iff$ esistono <strong>finiti</strong> i limiti $$m=\lim_{x\to+\infty}\frac{f(x)}x\qquad\text{e}\qquad q=\lim_{x\to+\infty}\bigl[f(x)-mx\bigr].$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 13)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: da dove si parte?</div>
+          <div class="step-content">Dalla definizione di asintoto: $f(x)-mx-q\xrightarrow{x\to+\infty}0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: come si fa comparire $\frac{f(x)}x$?</div>
+          <div class="step-content">Si divide per $x$: $\frac{f(x)-mx-q}x=\frac{f(x)}x-m-\frac qx\to0$ (infinitesima per $\frac1x\to0$). Poiché $\frac qx\to0$, necessariamente $\frac{f(x)}x-m\to0$, cioè $\frac{f(x)}x\to m$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: e $q$?</div>
+          <div class="step-content">Si legge direttamente dalla definizione: $f(x)-mx-q\to0$ vuol dire $f(x)-mx\to q$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»</div>
+          <div class="step-content">Se $m$ e $q$ esistono finiti, la retta $y=mx+q$ esiste, e il secondo limite dice $f(x)-mx-q\to0$: è la definizione di asintoto. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Attenzione al «finiti»: se $\frac{f(x)}x\to\pm\infty$ (come per $x^2$) non c'è asintoto obliquo; e anche con $m$ finito, il secondo limite può non esistere o essere infinito.</p>
+    </div></details>
+    <div class="box ex">
+      <div class="box-title">Esempio della Lezione 13 · $f(x)=2x+\sin x$</div>
+      <p class="mb0">$\frac{f(x)}x=2+\frac{\sin x}x\to2$: esiste finito, quindi il candidato è $m=2$. Ma $f(x)-2x=\sin x$, che per $x\to+\infty$ <strong>non ha limite</strong>: l'asintoto non c'è. Il grafico oscilla attorno alla retta $y=2x$ senza avvicinarsi.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Un esempio in cui c'è (nostro)</div>
+      <p class="mb0">$f(x)=\dfrac{x^2+1}{x-1}$. Per $x\to\pm\infty$: $\frac{f(x)}x=\frac{x^2+1}{x^2-x}\to1$ e $f(x)-x=\frac{x^2+1-x^2+x}{x-1}=\frac{x+1}{x-1}\to1$. Quindi $y=x+1$ è asintoto obliquo sia a $+\infty$ sia a $-\infty$; inoltre $x=1$ è asintoto verticale, perché $f\to\pm\infty$ per $x\to1^\pm$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="continue">11 · Funzioni continue</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 13)</div>
+      <p>Siano $f:A\subseteq\R\to\R$ e $x_0\in A$ punto di accumulazione per $A$. $f$ è <strong>continua in $x_0$</strong> se $$\lim_{x\to x_0}f(x)=f(x_0).$$</p>
+      <p><strong>Osservazione.</strong> Cioè $\forall\eps>0\ \exists\delta=\delta(\eps,x_0)>0$ t.c. $|f(x)-f(x_0)|\lt\eps$ per ogni $x\in A\cap I_\delta(x_0)$.</p>
+      <p class="mb0">$f$ è <strong>continua in $A$</strong> se è continua in ogni $x_0\in A$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Che cosa chiede, in tre condizioni</div>
+      <p class="mb0">(1) $x_0$ sta nel dominio, quindi $f(x_0)$ esiste; (2) il limite in $x_0$ esiste finito; (3) i due numeri coincidono. Nell'osservazione non c'è più «$x\ne x_0$»: per $x=x_0$ la disuguaglianza $|f(x_0)-f(x_0)|\lt\eps$ è comunque vera. Per gli esercizi la conseguenza è una sola: <strong>dove $f$ è continua, il limite si calcola sostituendo</strong>.</p>
+    </div>
+
+    <h3 id="elementari">Continuità delle funzioni elementari <span class="badge star2">dim. orale</span></h3>
+    <p>Sono le dimostrazioni che giustificano il «sostituire». Il prof parte dall'esponenziale.</p>
+    <div class="box prop">
+      <div class="box-title">Proposizione (Lezione 13)</div>
+      <p class="mb0">Sia $a>0$. Allora $\displaystyle\lim_{x\to0}a^x=a^0\ (=1)$, cioè $a^x$ è continua in $x_0=0$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 13)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quali casi?</div>
+          <div class="step-content">Tre: $a=1$ (immediato: $a^x=1$ per ogni $x$), $a>1$, e $0\lt a\lt1$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$a>1$: quale disuguaglianza va risolta, e perché $\eps\lt1$?</div>
+          <div class="step-content">Fissato $0\lt\eps\lt1$ arbitrario, si vuole $-\eps\lt a^x-a^0\lt\eps$, cioè $(0\lt)\ 1-\eps\lt a^x\lt1+\eps$. Con $\eps\lt1$ il membro di sinistra è positivo e si può passare al logaritmo; se la tesi vale per gli $\eps$ piccoli, vale anche per i grandi.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Si passa al logaritmo (in base $e$): che cosa si ottiene?</div>
+          <div class="step-content">$\log(1-\eps)\lt x\log a\lt\log(1+\eps)$, e dividendo per $\log a>0$:
+          $$x_1:=\frac{\log(1-\eps)}{\log a}\lt x\lt\frac{\log(1+\eps)}{\log a}=:x_2,\qquad x_1\lt0,\ x_2>0.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">L'intervallo $(x_1,x_2)$ non è simmetrico: quale $\delta$?</div>
+          <div class="step-content">$\delta:=\min\{-x_1,x_2\}$. Allora $I_\delta(0)\subseteq(x_1,x_2)$: se $-\delta\lt x\lt\delta$, allora $-\eps\lt a^x-a^0\lt\eps$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$0\lt a\lt1$</div>
+          <div class="step-content">Si scrive $a^x=\left(\frac1a\right)^{-x}$ e si applica il caso precedente alla base $\frac1a>1$ (quando $x\to0$ anche $-x\to0$). $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box prop">
+      <div class="box-title">Proposizione (Lezione 13)</div>
+      <p>La funzione esponenziale $a^x$, $a>0$, è continua in $\R$: $\lim_{x\to x_0}a^x=a^{x_0}$ per ogni $x_0\in\R$.</p>
+      <p class="mb0"><em>Dim.</em> $a^x-a^{x_0}=a^{x_0}\bigl(a^{x-x_0}-1\bigr)\xrightarrow{x\to x_0}0$: con $y:=x-x_0$, quando $x\to x_0$ si ha $y\to0$, e $a^y-a^0\to0$ per la proposizione precedente. $\square$</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Proposizione (Lezione 13)</div>
+      <p>I polinomi e le funzioni razionali sono continui nel loro insieme di definizione.</p>
+      <p class="mb0"><em>Dim.</em> $\lim_{x\to x_0}x=x_0$ (cioè $f(x)=x$ è continua: basta $\delta=\eps$). Per l'algebra dei limiti $\lim_{x\to x_0}x^m=x_0^m$, poi per $P(x)=a_mx^m+\dots+a_0$:
+      $$\lim_{x\to x_0}P(x)=a_m\lim_{x\to x_0}x^m+\dots+a_0=a_mx_0^m+\dots+a_0=P(x_0),$$
+      e infine $\lim_{x\to x_0}\frac{P(x)}{Q(x)}=\frac{P(x_0)}{Q(x_0)}$ se $Q(x_0)\ne0$, ancora per l'algebra dei limiti. $\square$</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Proposizione (Lezione 13)</div>
+      <p class="mb0">Le funzioni seno e coseno sono continue in $\R$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 13)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale identità trasforma la differenza in un prodotto?</div>
+          <div class="step-content">Le formule di <strong>prostaferesi</strong>:
+          $$\sin x-\sin x_0=2\cos\frac{x+x_0}2\,\sin\frac{x-x_0}2,\qquad \cos x-\cos x_0=-2\sin\frac{x+x_0}2\,\sin\frac{x-x_0}2.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quali due stime servono?</div>
+          <div class="step-content">$\left|\cos\frac{x+x_0}2\right|\le1$, e $|\sin t|\le|t|$ per ogni $t$ (la disuguaglianza geometrica della <a href="2-successioni.html#notevoli">Sezione 2</a>). Allora
+          $$0\le|\sin x-\sin x_0|\le2\left|\sin\frac{x-x_0}2\right|\le2\left|\frac{x-x_0}2\right|=|x-x_0|\xrightarrow{x\to x_0}0.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale teorema chiude?</div>
+          <div class="step-content">I <strong>due carabinieri</strong>: $|\sin x-\sin x_0|\to0$, e per il lemma questo equivale a $\sin x\to\sin x_0$. Per il coseno è identico, con $\left|\sin\frac{x+x_0}2\right|\le1$. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Negli appunti le due formule sono scritte con $\frac{x-x_0}2$ in entrambi i fattori (per esempio $\sin x-\sin x_0=-2\sin\frac{x-x_0}2\cos\frac{x-x_0}2$), ma nelle prostaferesi uno dei due argomenti è $\frac{x+x_0}2$. La stima e la conclusione non cambiano: usano solo che seno e coseno sono, in modulo, al più $1$, e che $|\sin t|\le|t|$.</p>
+    </div></details>
+    <div class="box prop">
+      <div class="box-title">Corollario (Lezione 13)</div>
+      <p>$x\mapsto\operatorname{tg}x$ e $x\mapsto\operatorname{ctg}x$ sono continue nel loro insieme di definizione.</p>
+      <p class="mb0"><em>Dim.</em> $\displaystyle\lim_{x\to x_0}\operatorname{tg}x=\lim_{x\to x_0}\frac{\sin x}{\cos x}=\frac{\lim_{x\to x_0}\sin x}{\lim_{x\to x_0}\cos x}=\frac{\sin x_0}{\cos x_0}=\operatorname{tg}x_0$: nell'ordine, definizione di tangente, algebra dei limiti, continuità di seno e coseno, definizione di tangente. $\square$</p>
+    </div>
+    <p class="small muted">Negli appunti: «continue in $\R$». Va letto sull'insieme di definizione: la tangente richiede $\cos x_0\ne0$, ed è esattamente lì che serve l'algebra dei limiti per il quoziente.</p>
+
+    <h3 id="composta">Limite e continuità della funzione composta</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema · limite della funzione composta (Lezione 13)</div>
+      <p class="mb0">Sia $\displaystyle\lim_{x\to x_0}f(x)=y_0$ e sia $g$ una funzione <strong>continua in $y_0$</strong>. Allora
+      $$\lim_{x\to x_0}g\bigl(f(x)\bigr)=g\Bigl(\lim_{x\to x_0}f(x)\Bigr)=g(y_0).$$</p>
+    </div>
+    <p class="small muted">Negli appunti il primo membro è scritto $(f\circ g)(x)$, e così nel corollario. Con la notazione della Lezione 4, $(g\circ f)(x)=g(f(x))$ (prima $f$, poi $g$), la funzione di cui si parla è $g\circ f$: conta la formula $g[f(x)]$, che è quella giusta.</p>
+    <div class="box prop">
+      <div class="box-title">Corollario · continuità della funzione composta (Lezione 13)</div>
+      <p>Siano $f$ continua in $x_0$ e $g$ continua in $y_0=f(x_0)$. Allora $g\circ f$ è continua in $x_0$.</p>
+      <p class="mb0"><em>Dim.</em> Bisogna provare che $\lim_{x\to x_0}g(f(x))=g(f(x_0))$. Per ipotesi $\lim_{x\to x_0}f(x)=f(x_0)=y_0$, e $g$ è continua in $y_0$, quindi per il teorema precedente $\lim_{x\to x_0}g[f(x)]=g\bigl[\lim_{x\to x_0}f(x)\bigr]=g[f(x_0)]$. $\square$</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 13)</div>
+      <ul class="mb0">
+        <li>$\displaystyle\lim_{x\to0}\sin(x^2)=\sin\Bigl(\lim_{x\to0}x^2\Bigr)=\sin0=0$;</li>
+        <li>$\displaystyle\lim_{x\to0}e^{\operatorname{tg}x+1}=e^{\operatorname{tg}0+1}=e$.</li>
+      </ul>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema · continuità con le successioni (Lezione 13)</div>
+      <p class="mb0">$f:A\subseteq\R\to\R$ è continua in $x_0\in A$ $\iff$ per ogni $\{x_n\}\subseteq A$ con $x_n\xrightarrow{n\to+\infty}x_0$ si ha $\displaystyle\lim_{n\to+\infty}f(x_n)=f(x_0)$.</p>
+    </div>
+    <p class="small muted">È il teorema ponte con $\ell=f(x_0)$; qui le successioni possono anche passare per $x_0$, perché in $x_0$ la funzione vale proprio $f(x_0)$.</p>
+
+    <h3 id="inversa">Continuità della funzione inversa</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 13)</div>
+      <p class="mb0">Sia $I\subseteq\R$ un <strong>intervallo</strong> e $f:I\to\R$ continua e invertibile in $I$. Allora $f(I)$ è un intervallo e $f^{-1}:f(I)\to I$ è continua su $f(I)$.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ L'ipotesi «intervallo» è necessaria (Lezione 13)</div>
+      <p>Sia $f(x)=\begin{cases}x & 0\le x\lt1\\ x-1 & 2\le x\le3\end{cases}$ su $D=[0,1)\cup[2,3]$, che <strong>non è un intervallo</strong>. $f$ è continua in $D$ e invertibile, con $f(D)=[0,2]$ e
+      $$f^{-1}(y)=\begin{cases}y & 0\le y\lt1\\ y+1 & 1\le y\le2.\end{cases}$$</p>
+      <p class="mb0">Ma $f^{-1}$ <strong>non è continua</strong> in $y=1$: $\lim_{y\to1^-}f^{-1}(y)=1\ne f^{-1}(1)=2$.</p>
+      <svg class="retta" viewBox="0 0 320 150" style="max-width:340px;margin-top:10px" role="img" aria-label="Grafici di f e della sua inversa">
+        <g transform="translate(10,0)">
+          <line class="asse" x1="10" y1="125" x2="140" y2="125"/><line class="asse" x1="20" y1="135" x2="20" y2="10"/>
+          <line x1="20" y1="125" x2="56" y2="89" style="stroke:var(--accent);stroke-width:2.4"/>
+          <circle class="vuoto" cx="56" cy="89" r="4" style="stroke:var(--accent)"/>
+          <line x1="92" y1="89" x2="128" y2="53" style="stroke:var(--accent);stroke-width:2.4"/>
+          <circle cx="92" cy="89" r="3.5" style="fill:var(--accent)"/><circle cx="128" cy="53" r="3.5" style="fill:var(--accent)"/>
+          <text x="56" y="140" text-anchor="middle">1</text><text x="92" y="140" text-anchor="middle">2</text><text x="128" y="140" text-anchor="middle">3</text>
+          <text x="60" y="22">f</text>
+        </g>
+        <g transform="translate(170,0)">
+          <line class="asse" x1="10" y1="125" x2="140" y2="125"/><line class="asse" x1="20" y1="135" x2="20" y2="10"/>
+          <line x1="20" y1="125" x2="56" y2="89" style="stroke:var(--danger);stroke-width:2.4"/>
+          <circle class="vuoto" cx="56" cy="89" r="4" style="stroke:var(--danger)"/>
+          <line x1="56" y1="53" x2="92" y2="17" style="stroke:var(--danger);stroke-width:2.4"/>
+          <circle cx="56" cy="53" r="3.5" style="fill:var(--danger)"/><circle cx="92" cy="17" r="3.5" style="fill:var(--danger)"/>
+          <text x="56" y="140" text-anchor="middle">1</text><text x="92" y="140" text-anchor="middle">2</text>
+          <text x="100" y="40">f⁻¹</text>
+        </g>
+      </svg>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 13)</div>
+      <p class="mb0">Per questo teorema le inverse delle funzioni circolari ($\arcsin$, $\arccos$, $\operatorname{arctg}$) sono continue nei loro insiemi di definizione, e anche $\log_ax$, $a>0$, $a\ne1$, è continua in $(0,+\infty)$, perché è l'inversa di $a^x$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="discontinuita">12 · Punti di discontinuità</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 13)</div>
+      <p class="mb0">Siano $f:D\subseteq\R\to\R$ e $x_0\in D$ punto di accumulazione per $D$. $x_0$ è un <strong>punto di discontinuità</strong> per $f$ se $f$ non è continua in $x_0$, cioè se $\lim_{x\to x_0}f(x)\ne f(x_0)$ (o il limite non esiste).</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Caso 1 · discontinuità di prima specie, o di salto (Lezione 13)</div>
+      <p>Esistono <strong>finiti</strong> i limiti destro e sinistro, ma sono diversi: $\displaystyle\lim_{x\to x_0^-}f(x)=\ell_1\ne\ell_2=\lim_{x\to x_0^+}f(x)$. Il numero
+      $$s(x_0)=\Bigl|\lim_{x\to x_0^+}f(x)-\lim_{x\to x_0^-}f(x)\Bigr|$$ è il <strong>salto</strong> di $f$ in $x_0$.</p>
+      <p class="mb0"><strong>Esempio:</strong> la parte intera $f(x)=[x]$ in $x_0=1$: $\lim_{x\to1^-}[x]=0$, $\lim_{x\to1^+}[x]=1=[1]=f(1)$. Salto $s(1)=1$. La funzione è continua da destra ma non da sinistra.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Caso 2 · discontinuità di seconda specie (Lezione 13)</div>
+      <p>Esistono i limiti destro e sinistro, ma <strong>almeno uno dei due è $\pm\infty$</strong>.</p>
+      <p class="mb0"><strong>Esempio:</strong> $f(x)=e^{1/x}$ per $x\ne0$, $f(0)=0$, definita su $D=\R$. $\lim_{x\to0^-}f(x)=0$ (perché $\frac1x\to-\infty$) e $\lim_{x\to0^+}f(x)=+\infty$: $x_0=0$ è di seconda specie.</p>
+    </div>
+    <p class="small muted">Gli appunti della Lezione 13 si chiudono con il grafico di $\frac1x$, su $\R\setminus\{0\}$, senza ancora il commento: lo aggiungiamo con la lezione successiva. Tieni presente che nella definizione $x_0$ deve stare nel dominio, e $0$ non sta nel dominio di $\frac1x$.</p>
+
+    <div class="widget">
+      <div class="widget-head"><span>Avvicinati da destra e da sinistra</span><span class="faint" style="text-transform:none;font-weight:400">prima rispondi, poi controlla</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="dsSel">funzione</label>
+            <select id="dsSel">
+              <option value="0">$[x]$ in $x_0=1$</option>
+              <option value="1">$e^{1/x}$ ($f(0)=0$) in $x_0=0$</option>
+              <option value="2">$\operatorname{arctg}\dfrac1x$ ($f(0)=0$) in $x_0=0$</option>
+              <option value="3">$x\sin\dfrac1x$ ($f(0)=0$) in $x_0=0$</option>
+              <option value="4">$\operatorname{sgn}x$ in $x_0=0$</option>
+            </select>
+          </div>
+          <div class="ctrl"><label for="dsH">distanza $h$ da $x_0$</label><input type="range" id="dsH" min="0" max="1" value="0.2" step="0.01"><output data-out="dsH"></output></div>
+        </div>
+        <canvas class="plot" id="dsPlot"></canvas>
+        <div class="readout" id="dsOut"></div>
+        <div class="btnrow" id="dsBtns" style="margin-top:10px">
+          <button class="btn sm" data-ds="cont">continua in $x_0$</button>
+          <button class="btn sm" data-ds="salto">1ª specie (salto)</button>
+          <button class="btn sm" data-ds="seconda">2ª specie</button>
+        </div>
+        <div class="readout" id="dsVerdetto" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 4</h2>
+    <div class="box trap">
+      <ul class="mb0">
+        <li><strong>Pretendere che $x_0$ stia nel dominio.</strong> Basta che sia di accumulazione: $\lim_{x\to0}\frac{\sin x}x$ esiste anche se $\frac{\sin x}x$ in $0$ non è definita.</li>
+        <li><strong>Usare $f(x_0)$ per calcolare il limite.</strong> La definizione esclude $x=x_0$. Si può sostituire solo quando $f$ è <a href="#continue">continua</a> in $x_0$, e questo va saputo, non supposto.</li>
+        <li><strong>Dimostrare che un limite esiste con una sola successione.</strong> Il teorema ponte chiede <em>tutte</em> le successioni: una o due servono solo per dimostrare che il limite <em>non</em> esiste.</li>
+        <li><strong>Dimenticare $x_m\ne x_0$ nel teorema ponte</strong>: le successioni stanno in $A\setminus\{x_0\}$.</li>
+        <li><strong>Dire che il limite non esiste perché destro e sinistro sono diversi senza calcolarli entrambi</strong>, oppure quando $x_0$ è di accumulazione da un lato solo (come $0$ per $\sqrt x$): lì il limite è quello dall'unico lato possibile.</li>
+        <li><strong>Nelle verifiche con la definizione, scegliere $\delta$ che dipende da $x$.</strong> $\delta$ può dipendere solo da $\eps$ (e da $x_0$): è per questo che in $\lim_{x\to3}x^2$ si stima $|x+3|\lt7$.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="../esercizi.html?sez=4">Esercizi della Sezione 4 →</a>
+      <a class="btn" href="3-serie.html">← Sezione 3</a>
+      <a class="btn" href="../seconda.html">Piano della seconda parte</a>
+    </div>
+  </main>
+</div>
+
+<footer>Analisi Matematica 1 · Sezione 4 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261110"></script>
+<script src="../data/topics2.js?v=20261110"></script>
+<script src="../data/quiz.js?v=20261110"></script>
+<script src="../../assets/js/plot.js?v=20261110"></script>
+<script src="../../assets/js/app.js?v=20261110"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.renderChecklist('#checklistBox', 4);
+  AM.mountQuiz('#quizBox', AM.quizPerSezione(4), { statKey: 'sez4' });
+  function fmt(v) {
+    if (!isFinite(v)) return v > 0 ? '+∞' : v < 0 ? '−∞' : '—';
+    var a = Math.abs(v);
+    if (a !== 0 && (a >= 1e5 || a < 1e-3)) return v.toExponential(2).replace('-', '−');
+    return (Math.round(v * 1e4) / 1e4).toString().replace('-', '−');
+  }
+  // disegna f a destra e a sinistra di x0 senza unire i due pezzi
+  function dueRami(g, f, x0, o) {
+    var e = (g.xmax - g.xmin) * 1e-6;
+    if (x0 > g.xmin) g.fn(f, Object.assign({ to: x0 - e }, o));
+    if (x0 < g.xmax) g.fn(f, Object.assign({ from: x0 + e }, o));
+  }
+  function setRange(id, min, max, step, val) {
+    var el = document.getElementById(id);
+    el.min = min; el.max = max; el.step = step; el.value = val;
+    el.dispatchEvent(new Event('input'));
+  }
+
+  /* ---------- ε contro δ ---------- */
+  (function () {
+    var F = [
+      { f: function (x) { return 3 * x - 1; }, x0: 2, L: 5, w: { xmin: 0.4, xmax: 3.6, ymin: 0.5, ymax: 9.5 }, dmax: 1.5, nome: '3x − 1' },
+      { f: function (x) { return x * x; }, x0: 1, L: 1, w: { xmin: -0.4, xmax: 2.4, ymin: -0.6, ymax: 3.6 }, dmax: 1.3, nome: 'x²' },
+      { f: function (x) { return x === 0 ? NaN : Math.sin(x) / x; }, x0: 0, L: 1, w: { xmin: -8, xmax: 8, ymin: -0.6, ymax: 1.6 }, dmax: 7, nome: 'sen x / x', buco: true },
+      { f: function (x) { return x === 0 ? NaN : x * Math.sin(1 / x); }, x0: 0, L: 0, w: { xmin: -0.5, xmax: 0.5, ymin: -0.5, ymax: 0.5 }, dmax: 0.45, nome: 'x·sen(1/x)', buco: true },
+      { f: function (x) { return x < 0 ? NaN : Math.sqrt(x); }, x0: 0, L: 0, w: { xmin: -0.6, xmax: 2.2, ymin: -0.5, ymax: 1.7 }, dmax: 2, nome: '√x', fx0: 0 },
+      { f: function (x) { return x > 0 ? 1 : x < 0 ? -1 : 0; }, x0: 0, L: 0, w: { xmin: -2, xmax: 2, ymin: -1.8, ymax: 1.8 }, dmax: 1.8, nome: 'sgn x', fx0: 0, nolim: true }
+    ];
+    var i = 0, L = 5, eps = 0.6, del = 0.5;
+    var out = document.getElementById('edOut');
+    var p = new Plot('edPlot', Object.assign({ height: 330 }, F[0].w));
+
+    // il punto peggiore nella striscia 0 < |x − x0| < d
+    function peggiore(d) {
+      var S = F[i], worst = -1, wx = null;
+      function prova(x) {
+        var y = S.f(x); if (!isFinite(y)) return;
+        var e = Math.abs(y - L); if (e > worst) { worst = e; wx = x; }
+      }
+      for (var k = 1; k <= 1500; k++) { var t = d * k / 1500; prova(S.x0 + t); prova(S.x0 - t); }
+      for (var j = 1; j <= 40; j++) { var u = d * Math.pow(2, -j); prova(S.x0 + u); prova(S.x0 - u); }
+      return { e: worst, x: wx };
+    }
+    // il δ più grande che funziona (o null se nessuno)
+    function migliore() {
+      var S = F[i], ok = 0, ds = [];
+      for (var j = 40; j >= 13; j--) ds.push(S.dmax * Math.pow(2, -j));   // distanze piccolissime
+      for (var k = 1; k <= 4000; k++) ds.push(S.dmax * k / 4000);
+      for (var n = 0; n < ds.length; n++) {
+        var d = ds[n];
+        if (fallisce(S.x0 + d) || fallisce(S.x0 - d)) return ok > 0 ? ok : null;
+        ok = d;
+      }
+      return S.dmax;
+      function fallisce(x) { var y = S.f(x); return isFinite(y) && Math.abs(y - L) >= eps; }
+    }
+
+    p.draw(function (g) {
+      var S = F[i];
+      g.hband(L - eps, L + eps, { color: 'ok', alpha: .15 });
+      g.hline(L, { color: 'ok', width: 1.4, dash: [6, 4] });
+      g.vband(S.x0 - del, S.x0 + del, { color: 'accent', alpha: .1 });
+      g.vline(S.x0 - del, { color: 'accent', width: 1, dash: [4, 3] });
+      g.vline(S.x0 + del, { color: 'accent', width: 1, dash: [4, 3] });
+      dueRami(g, S.f, S.x0, { color: 'faint', width: 1.6, samples: 1600 });
+      for (var k = 1; k <= 500; k++) {
+        var t = del * k / 500;
+        [S.x0 + t, S.x0 - t].forEach(function (x) {
+          var y = S.f(x); if (!isFinite(y)) return;
+          g.dot(x, Math.max(g.ymin, Math.min(g.ymax, y)), { color: Math.abs(y - L) < eps ? 'ok' : 'danger', r: 1.7 });
+        });
+      }
+      if (S.buco) g.dot(S.x0, S.L, { hollow: true, color: 'text', r: 4 });
+      if (S.fx0 !== undefined) g.dot(S.x0, S.fx0, { color: 'text', r: 3.6 });
+      if (S.nolim) { g.dot(0, 1, { hollow: true, color: 'text', r: 4 }); g.dot(0, -1, { hollow: true, color: 'text', r: 4 }); }
+      g.text(g.xmax, L + eps, 'ℓ + ε', { color: 'ok', size: 11, align: 'right', dy: -2, halo: true });
+      g.text(g.xmax, L - eps, 'ℓ − ε', { color: 'ok', size: 11, align: 'right', dy: 13, halo: true });
+      g.text(S.x0, g.ymin, 'x₀', { color: 'text', size: 12, bold: true, align: 'center', dy: -4, halo: true });
+    });
+
+    function refresh(msg) {
+      var S = F[i], w = peggiore(del), ok = w.e < eps;
+      out.innerHTML = 'f(x) = <b>' + S.nome + '</b>, x₀ = ' + S.x0 + ' &nbsp;·&nbsp; ℓ = ' + fmt(L) + ', ε = ' + fmt(eps) + ', δ = ' + fmt(del) + '<br>' +
+        (ok ? '<span style="color:var(--ok)"><b>✓ Questo δ funziona:</b> sopra la striscia blu, x₀ escluso, il grafico sta tutto fra ℓ − ε e ℓ + ε.</span>'
+            : '<span style="color:var(--danger)"><b>✗ Non funziona:</b> per x = ' + fmt(w.x) + ' è |f(x) − ℓ| = ' + fmt(w.e) + ' ≥ ε. Prova un δ più piccolo.</span>') +
+        (msg ? '<br>' + msg : '') +
+        '<br><span style="color:var(--text-faint)">Il limite è ℓ se per <i>ogni</i> ε trovi un δ: stringi ε e cerca di nuovo.</span>';
+    }
+    function cambia() {
+      var S = F[i];
+      p.setWindow(S.w);
+      var span = S.w.ymax - S.w.ymin, st = span < 2 ? 0.005 : 0.01, sd = S.dmax < 1 ? 0.001 : 0.005;
+      function tonda(v, s) { return (Math.round(v / s) * s).toFixed(3); }
+      setRange('edL', S.w.ymin, S.w.ymax, st, S.L);
+      setRange('edEps', st, tonda(span / 2.2, st), st, tonda(span / 6, st));
+      setRange('edDel', sd, S.dmax, sd, tonda(S.dmax / 2, sd));
+    }
+    plotSlider('edL', function (v) { L = v; p.redraw(); refresh(); });
+    plotSlider('edEps', function (v) { eps = v; p.redraw(); refresh(); });
+    plotSlider('edDel', function (v) { del = v; p.redraw(); refresh(); });
+    document.getElementById('edSel').onchange = function () { i = +this.value; cambia(); };
+    document.getElementById('edBest').onclick = function () {
+      var d = migliore(), S = F[i];
+      if (d === null) {
+        refresh('<b>Nessun δ funziona con questo ε.</b> ' + (S.nolim
+          ? 'Da una parte f vale 1, dall\'altra −1: con ε ≤ 1 nessun ℓ le tiene entrambe nella striscia. Il limite non esiste.'
+          : 'Quindi ℓ = ' + fmt(L) + ' non è il limite.'));
+        return;
+      }
+      var el = document.getElementById('edDel'), st = +el.step;
+      setRange('edDel', el.min, el.max, el.step, Math.max(+el.min, Math.floor(d / st) * st));
+      refresh('Il δ più grande che funziona è circa <b>' + fmt(d) + '</b>' + (S.x0 === 1 && S.nome === 'x²' ? ' (la verifica con il min usa δ = min{1, ε/3}: è più piccolo, ma va bene lo stesso: qualunque δ minore funziona).' : '.'));
+    };
+    cambia();
+  })();
+
+  /* ---------- Teorema ponte ---------- */
+  (function () {
+    var F = [
+      { f: function (x) { return Math.cos(1 / x); }, xm: function (m) { return 1 / (2 * m * Math.PI); }, ym: function (m) { return 1 / ((2 * m + 1) * Math.PI); },
+        tx: 'xₘ = 1/(2mπ)', ty: 'yₘ = 1/((2m+1)π)', lx: 1, ly: -1, nome: 'cos(1/x)', w: { ymin: -1.4, ymax: 1.4 } },
+      { f: function (x) { return Math.sin(1 / x); }, xm: function (m) { return 1 / (m * Math.PI); }, ym: function (m) { return 1 / (Math.PI / 2 + 2 * m * Math.PI); },
+        tx: 'xₘ = 1/(mπ)', ty: 'yₘ = 1/(π/2 + 2mπ)', lx: 0, ly: 1, nome: 'sen(1/x)', w: { ymin: -1.4, ymax: 1.4 } },
+      { f: function (x) { return x * Math.sin(1 / x); }, xm: function (m) { return 1 / (m * Math.PI); }, ym: function (m) { return 1 / (Math.PI / 2 + 2 * m * Math.PI); },
+        tx: 'xₘ = 1/(mπ)', ty: 'yₘ = 1/(π/2 + 2mπ)', lx: 0, ly: 0, nome: 'x·sen(1/x)', w: { ymin: -0.4, ymax: 0.4 } }
+    ];
+    var i = 0, M = 4, out = document.getElementById('ptOut');
+    var p = new Plot('ptPlot', { xmin: -0.03, xmax: 0.36, ymin: -1.4, ymax: 1.4, height: 300 });
+    p.draw(function (g) {
+      var S = F[i];
+      dueRami(g, S.f, 0, { color: 'faint', width: 1.2, samples: 4000 });
+      for (var m = 1; m <= M; m++) {
+        g.dot(S.xm(m), S.f(S.xm(m)), { color: 'ok', r: 4, ring: true });
+        g.dot(S.ym(m), S.f(S.ym(m)), { color: 'purple', r: 4, ring: true });
+      }
+      g.legend([{ label: S.tx, color: 'ok' }, { label: S.ty, color: 'purple' }], { bottom: true });
+    });
+    function refresh() {
+      var S = F[i], a = S.f(S.xm(M)), b = S.f(S.ym(M));
+      out.innerHTML = 'f(x) = <b>' + S.nome + '</b> &nbsp;·&nbsp; m = ' + M + ': &nbsp;f(xₘ) = ' + fmt(a) + ', &nbsp;f(yₘ) = ' + fmt(b) + '<br>' +
+        'Entrambe le successioni tendono a 0, ma f(xₘ) → <b>' + S.lx + '</b> e f(yₘ) → <b>' + S.ly + '</b>.<br>' +
+        (S.lx !== S.ly
+          ? '<span style="color:var(--danger)"><b>Limiti diversi ⇒ per il teorema ponte il limite per x → 0 non esiste.</b></span>'
+          : '<span style="color:var(--warn)"><b>Stesso limite, ma non basta!</b> Due successioni non dimostrano che il limite esiste: il teorema ponte le chiede tutte. Qui il limite è 0 per un altro motivo: infinitesima (x) per limitata (sen(1/x)).</span>');
+    }
+    document.getElementById('ptSel').onchange = function () { i = +this.value; p.setWindow(F[i].w); p.redraw(); refresh(); };
+    plotSlider('ptM', function (v) { M = v; p.redraw(); refresh(); });
+  })();
+
+  /* ---------- Destra e sinistra ---------- */
+  (function () {
+    var F = [
+      { f: Math.floor, x0: 1, fx0: 1, w: { xmin: 0.01, xmax: 1.99, ymin: -0.6, ymax: 1.7 }, nome: '[x] in x₀ = 1', v: 'salto',
+        sp: 'Da sinistra [x] = 0, da destra [x] = 1: limiti finiti e diversi. Prima specie, salto s(1) = 1; f(1) = 1 coincide con il limite destro.' },
+      { f: function (x) { return x === 0 ? 0 : Math.exp(1 / x); }, x0: 0, fx0: 0, w: { xmin: -1, xmax: 1, ymin: -0.6, ymax: 6 }, nome: 'e^(1/x) in x₀ = 0', v: 'seconda',
+        sp: 'Da sinistra 1/x → −∞ ed e^(1/x) → 0; da destra 1/x → +∞ ed e^(1/x) → +∞. Un limite laterale è infinito: seconda specie.' },
+      { f: function (x) { return x === 0 ? 0 : Math.atan(1 / x); }, x0: 0, fx0: 0, w: { xmin: -1, xmax: 1, ymin: -2, ymax: 2 }, nome: 'arctg(1/x) in x₀ = 0', v: 'salto',
+        sp: 'Da sinistra 1/x → −∞ e arctg → −π/2; da destra → π/2. Limiti finiti e diversi: prima specie, salto π.' },
+      { f: function (x) { return x === 0 ? 0 : x * Math.sin(1 / x); }, x0: 0, fx0: 0, w: { xmin: -0.4, xmax: 0.4, ymin: -0.4, ymax: 0.4 }, nome: 'x·sen(1/x) in x₀ = 0', v: 'cont',
+        sp: 'Oscilla, ma con ampiezza che va a zero: infinitesima per limitata, quindi il limite è 0 = f(0). È continua in 0.' },
+      { f: function (x) { return x > 0 ? 1 : x < 0 ? -1 : 0; }, x0: 0, fx0: 0, w: { xmin: -1, xmax: 1, ymin: -1.6, ymax: 1.6 }, nome: 'sgn x in x₀ = 0', v: 'salto',
+        sp: 'Da sinistra −1, da destra 1: prima specie, salto 2. Il valore f(0) = 0 non c\'entra con il tipo di discontinuità.' }
+    ];
+    var NOMI = { cont: 'continua in x₀', salto: 'discontinuità di prima specie (salto)', seconda: 'discontinuità di seconda specie' };
+    var i = 0, h = 0.2, out = document.getElementById('dsOut'), ver = document.getElementById('dsVerdetto');
+    var p = new Plot('dsPlot', Object.assign({ height: 300 }, F[0].w));
+    function hh() { return Math.max(0.002, h * (F[i].w.xmax - F[i].x0)); }
+    p.draw(function (g) {
+      var S = F[i], d = hh(), a = S.f(S.x0 - d), b = S.f(S.x0 + d);
+      g.vline(S.x0, { color: 'faint', width: 1, dash: [4, 3] });
+      dueRami(g, S.f, S.x0, { color: 'accent', width: 2, samples: 2400 });
+      if (S.f === Math.floor) { g.dot(1, 0, { hollow: true, color: 'accent', r: 4 }); }
+      g.dot(S.x0, S.fx0, { color: 'text', r: 4 });
+      g.seg(S.x0 - d, g.ymin, S.x0 - d, Math.min(g.ymax, a), { color: 'purple', width: 1, dash: [3, 3] });
+      g.seg(S.x0 + d, g.ymin, S.x0 + d, Math.min(g.ymax, b), { color: 'ok', width: 1, dash: [3, 3] });
+      if (isFinite(a) && a <= g.ymax) g.dot(S.x0 - d, a, { color: 'purple', r: 5, ring: true });
+      if (isFinite(b) && b <= g.ymax) g.dot(S.x0 + d, b, { color: 'ok', r: 5, ring: true });
+    });
+    function refresh() {
+      var S = F[i], d = hh();
+      out.innerHTML = '<b>' + S.nome + '</b> &nbsp;·&nbsp; h = ' + fmt(d) + '<br>' +
+        '<span style="color:var(--purple)">f(x₀ − h) = <b>' + fmt(S.f(S.x0 - d)) + '</b></span> &nbsp;·&nbsp; ' +
+        '<span style="color:var(--ok)">f(x₀ + h) = <b>' + fmt(S.f(S.x0 + d)) + '</b></span> &nbsp;·&nbsp; f(x₀) = ' + fmt(S.fx0) + '<br>' +
+        '<span style="color:var(--text-faint)">Porta h verso 0, poi scegli la tua risposta qui sotto.</span>';
+    }
+    document.getElementById('dsSel').onchange = function () {
+      i = +this.value; p.setWindow(F[i].w); ver.style.display = 'none'; p.redraw(); refresh();
+    };
+    plotSlider('dsH', function (v) { h = v; document.querySelector('[data-out="dsH"]').textContent = fmt(hh()); p.redraw(); refresh(); });
+    document.querySelectorAll('#dsBtns [data-ds]').forEach(function (b) {
+      b.onclick = function () {
+        var S = F[i], giusta = b.dataset.ds === S.v;
+        ver.style.display = '';
+        ver.innerHTML = (giusta ? '<span style="color:var(--ok)"><b>✓ Giusto: ' + NOMI[S.v] + '.</b></span> '
+          : '<span style="color:var(--danger)"><b>✗ No: hai detto «' + NOMI[b.dataset.ds] + '», ma è ' + NOMI[S.v] + '.</b></span> ') + S.sp;
+      };
+    });
+  })();
+});
+</script>
+</body>
+</html>

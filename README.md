@@ -6,7 +6,7 @@ Appunti interattivi del primo anno, raccolti in un unico sito.
 
 | Materia | Contenuto | Stato |
 |---|---|---|
-| [Analisi Matematica 1](https://olix-boop.github.io/appunti/analisi/) | Numeri reali e complessi · successioni e limiti · serie numeriche | prima parte completa (primo parziale) |
+| [Analisi Matematica 1](https://olix-boop.github.io/appunti/analisi/seconda.html) | Numeri reali e complessi · successioni e limiti · serie numeriche · limiti di funzioni e continuità | prima parte completa; seconda parte fino alla Lezione 13 |
 | [Geometria e Algebra Lineare](https://olix-boop.github.io/appunti/geometria/) | Preliminari · sistemi lineari e MEG · matrici e invertibilità · spazi vettoriali · numeri complessi · applicazioni lineari e rango · posizione reciproca, ortogonalità, fasci · somma di sottospazi e Grassmann · determinanti | programma fino alla Lezione 9 |
 | [Fondamenti di Informatica](https://olix-boop.github.io/appunti/informatica/) | Algoritmi · macchina astratta C · istruzioni · array e stringhe | 5 capitoli |
 
@@ -40,9 +40,12 @@ assets/
   css/laboratorio.css      stile del laboratorio
   css/capitolo.css         stile di mappa e prima lettura
 analisi/
-  index.html teoremi.html quesiti.html esercizi.html simulazione.html
-  sezioni/1-numeri.html 2-successioni.html 3-serie.html
-  data/                    topics · teoremi · quesiti · esercizi · quiz
+  index.html               prima parte (Sezioni 1–3)
+  seconda.html             seconda parte (Sezioni 4–6)
+  teoremi.html quesiti.html domande.html esercizi.html   condivise fra le due parti
+  formulario.html simulazione.html                       solo prima parte
+  sezioni/1-numeri.html 2-successioni.html 3-serie.html 4-limiti.html
+  data/                    topics (1–3) · topics2 (4–6) · teoremi · quesiti · esercizi · quiz · voce
   materiale/               PDF del corso
 geometria/
   index.html teoremi.html esercizi.html laboratorio.html

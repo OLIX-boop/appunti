@@ -1035,7 +1035,160 @@ $$\boxed{\,\text{converge}\iff 0\lt x<1\,}$$
   hints: [ r`Termini definitivamente $\ge0$; usa $e^{1/n}-1\sim\frac1n$ e $1-\cos\frac1n\sim\frac1{2n^2}$.`,
            r`Il termine è $\sim\frac{\log n}{2^\alpha n^{2\alpha+1}}$. Per $\alpha\le0$ minoralo togliendo il logaritmo.`,
            r`Per $\alpha>0$ confronta asintoticamente con $\frac1{n^{\alpha+1}}$.` ],
-  sol: r`Il termine è $\sim a_n:=\dfrac{\log n}{2^\alpha n^{2\alpha+1}}$.<ul><li>$\alpha\le0$: $a_n\ge\frac1{2^\alpha n^{2\alpha+1}}$ definitivamente (per $n\ge3$), e $\sum\frac1{n^{2\alpha+1}}$ diverge perché $2\alpha+1\le1$: per confronto e confronto asintotico la serie <strong>diverge</strong>.</li><li>$\alpha>0$: con $b_n=\frac1{n^{\alpha+1}}$, $\frac{a_n}{b_n}=\frac{\log n}{2^\alpha n^\alpha}\to0$ e $\sum b_n$ converge ($\alpha+1>1$): la serie <strong>converge</strong>.</li></ul> $\blacksquare$` }
+  sol: r`Il termine è $\sim a_n:=\dfrac{\log n}{2^\alpha n^{2\alpha+1}}$.<ul><li>$\alpha\le0$: $a_n\ge\frac1{2^\alpha n^{2\alpha+1}}$ definitivamente (per $n\ge3$), e $\sum\frac1{n^{2\alpha+1}}$ diverge perché $2\alpha+1\le1$: per confronto e confronto asintotico la serie <strong>diverge</strong>.</li><li>$\alpha>0$: con $b_n=\frac1{n^{\alpha+1}}$, $\frac{a_n}{b_n}=\frac{\log n}{2^\alpha n^\alpha}\to0$ e $\sum b_n$ converge ($\alpha+1>1$): la serie <strong>converge</strong>.</li></ul> $\blacksquare$` },
+
+/* ======================= SEZIONE 4 ======================= */
+{ id: 'E4.1', sez: 4, tema: 'Verifica con la definizione', d: 1,
+  t: r`Verificare con la definizione che $\displaystyle\lim_{x\to-1}(4-2x)=6$.`,
+  hints: [ r`Scrivi $|f(x)-\ell|$ e raccogli: deve comparire $|x-(-1)|=|x+1|$.`,
+           r`$|4-2x-6|=2|x+1|$. Per quali $x$ è $\lt\eps$?` ],
+  sol: r`Fissato $\eps>0$: $|f(x)-6|=|-2x-2|=2|x+1|\lt\eps\iff|x+1|\lt\frac\eps2$. Con $\delta:=\frac\eps2$, per ogni $x$ con $0\lt|x+1|\lt\delta$ vale $|f(x)-6|\lt\eps$: è la definizione 7. <strong>Controllo</strong> con un numero: $\eps=0{,}1$, $\delta=0{,}05$, $x=-0{,}96$ dà $f(x)=5{,}92$, a distanza $0{,}08\lt0{,}1$ da $6$. $\blacksquare$` },
+
+{ id: 'E4.2', sez: 4, tema: 'Verifica con la definizione', d: 1,
+  t: r`Verificare con la definizione che $\displaystyle\lim_{x\to0}x\sin\frac1x=0$.`,
+  hints: [ r`Non serve risolvere una disequazione: basta una maggiorazione.`,
+           r`$\left|\sin\frac1x\right|\le1$, quindi $\left|x\sin\frac1x\right|\le|x|$.` ],
+  sol: r`Per $x\ne0$: $\left|x\sin\frac1x-0\right|=|x|\left|\sin\frac1x\right|\le|x|$. Fissato $\eps>0$, con $\delta:=\eps$ si ha, per $0\lt|x|\lt\delta$, $\left|x\sin\frac1x\right|\le|x|\lt\eps$. $\blacksquare$<br><em>Morale:</em> è la dimostrazione di «infinitesima per limitata» in un caso particolare. Basta <strong>una</strong> maggiorazione $|f(x)-\ell|\le C|x-x_0|$ per avere $\delta=\frac\eps C$.` },
+
+{ id: 'E4.3', sez: 4, tema: 'Verifica con la definizione', d: 2,
+  t: r`Verificare con la definizione che $\displaystyle\lim_{x\to+\infty}\frac{2x+1}{x+3}=2$, rispettando la convenzione $\nu_\eps>0$.`,
+  hints: [ r`Calcola $\frac{2x+1}{x+3}-2$ facendo il denominatore comune.`,
+           r`Viene $-\frac5{x+3}$; per $x>-3$ il modulo è $\frac5{x+3}$.`,
+           r`$\frac5{x+3}\lt\eps\iff x>\frac5\eps-3$, che può essere negativo: come rendi la soglia positiva?` ],
+  sol: r`$\dfrac{2x+1}{x+3}-2=\dfrac{2x+1-2x-6}{x+3}=-\dfrac5{x+3}$. Per $x>-3$: $\left|\dfrac{2x+1}{x+3}-2\right|=\dfrac5{x+3}\lt\eps\iff x+3>\dfrac5\eps\iff x>\dfrac5\eps-3$.<br>
+Per $\eps\ge\frac53$ la soglia $\frac5\eps-3$ è $\le0$, quindi si prende $\nu_\eps:=\max\left\{\frac5\eps-3,\,1\right\}>0$: se $x>\nu_\eps$ allora $x>-3$ e $x>\frac5\eps-3$, dunque $|f(x)-2|\lt\eps$. $\blacksquare$<br><strong>Controllo:</strong> $\eps=0{,}5$ dà $\nu=7$; per $x=8$, $f(8)=\frac{17}{11}\approx1{,}545$, e $|1{,}545-2|=0{,}455\lt0{,}5$.` },
+
+{ id: 'E4.4', sez: 4, tema: 'Verifica con la definizione', d: 2,
+  t: r`Verificare con la definizione che $\displaystyle\lim_{x\to2}x^2=4$.`,
+  hints: [ r`Fattorizza: $|x^2-4|=|x-2|\,|x+2|$.`,
+           r`Il fattore $|x+2|$ dipende da $x$: limitalo decidendo che $\delta\le1$.`,
+           r`Se $|x-2|\lt1$ allora $1\lt x\lt3$ e $|x+2|\lt5$. Prendi il minimo fra due numeri.` ],
+  sol: r`$|x^2-4|=|x-2|\,|x+2|$. Se $|x-2|\lt1$, allora $1\lt x\lt3$, quindi $3\lt x+2\lt5$ e $|x^2-4|\lt5|x-2|$.<br>
+Fissato $\eps>0$, sia $\delta:=\min\left\{1,\frac\eps5\right\}$. Per $0\lt|x-2|\lt\delta$ valgono entrambe le condizioni, e $|x^2-4|\lt5\cdot\frac\eps5=\eps$. $\blacksquare$<br>
+<strong>Attenzione:</strong> «$\delta=\frac{\eps}{|x+2|}$» è sbagliato: $\delta$ non può dipendere da $x$. Il $\min$ serve proprio a togliere quella dipendenza.` },
+
+{ id: 'E4.5', sez: 4, tema: 'Verifica con la definizione', d: 2,
+  t: r`Verificare con la definizione che $\displaystyle\lim_{x\to4}\sqrt x=2$.`,
+  hints: [ r`Razionalizza: $\sqrt x-2=\dfrac{x-4}{\sqrt x+2}$.`,
+           r`Il denominatore è sempre $\ge2$ sul dominio $[0,+\infty)$.` ],
+  sol: r`Per $x\ge0$: $|\sqrt x-2|=\dfrac{|x-4|}{\sqrt x+2}\le\dfrac{|x-4|}2$, perché $\sqrt x+2\ge2$. Fissato $\eps>0$, con $\delta:=2\eps$, per $x\in[0,+\infty)$ con $0\lt|x-4|\lt\delta$ si ha $|\sqrt x-2|\lt\frac{2\eps}2=\eps$. $\blacksquare$<br>
+<strong>Controllo:</strong> $\eps=0{,}1$, $\delta=0{,}2$, $x=4{,}19$: $\sqrt{4{,}19}\approx2{,}047$, distanza $0{,}047\lt0{,}1$.` },
+
+{ id: 'E4.6', sez: 4, tema: 'Verifica con la definizione', d: 2,
+  t: r`Verificare con la definizione che $\displaystyle\lim_{x\to1^+}\frac1{x-1}=+\infty$ e che $\displaystyle\lim_{x\to1^-}\frac1{x-1}=-\infty$. Che cosa se ne deduce su $\lim_{x\to1}\frac1{x-1}$ e sugli asintoti?`,
+  hints: [ r`Da destra $x-1\in(0,\delta)$: quanto vale almeno $\frac1{x-1}$?`,
+           r`Prova $\delta=\frac1M$, sia da destra sia da sinistra.` ],
+  sol: r`<strong>Da destra.</strong> Fissato $M>0$, sia $\delta:=\frac1M$. Se $x\in I^+_\delta(1)$, cioè $0\lt x-1\lt\frac1M$, allora $\frac1{x-1}>M$: è la definizione (11).<br>
+<strong>Da sinistra.</strong> Se $x\in I^-_\delta(1)$, cioè $-\frac1M\lt x-1\lt0$, allora $\frac1{x-1}\lt-M$: definizione (15).<br>
+I limiti laterali sono diversi, quindi $\nexists\lim_{x\to1}\frac1{x-1}$; e $x=1$ è <strong>asintoto verticale</strong> (limiti laterali infiniti di segno opposto, come per $\frac1x$ nella Lezione 13). $\blacksquare$` },
+
+{ id: 'E4.7', sez: 4, tema: 'Teorema ponte', d: 1,
+  t: r`Dimostrare che $\displaystyle\lim_{x\to+\infty}\sin x$ non esiste.`,
+  hints: [ r`Cerca due successioni che vanno a $+\infty$: una dove il seno vale sempre $0$, una dove vale sempre $1$.`,
+           r`$x_m=m\pi$ e $y_m=\frac\pi2+2m\pi$.` ],
+  sol: r`$x_m:=m\pi\to+\infty$ e $\sin x_m=0\to0$; $\ y_m:=\frac\pi2+2m\pi\to+\infty$ e $\sin y_m=1\to1$. Due successioni che vanno a $+\infty$ con limiti diversi di $\sin$: per il teorema ponte (nella versione con $x_0=+\infty$) il limite non esiste. $\blacksquare$` },
+
+{ id: 'E4.8', sez: 4, tema: 'Teorema ponte', d: 2,
+  t: r`Dimostrare che $\displaystyle\lim_{x\to0}\sin\frac1x$ non esiste.`,
+  hints: [ r`Imita l'esempio di $\cos\frac1x$ della Lezione 12: scegli i punti in cui $\frac1x$ è un multiplo di $\pi$ e quelli in cui vale $\frac\pi2+2m\pi$.`,
+           r`$x_m=\frac1{m\pi}$, $y_m=\frac1{\frac\pi2+2m\pi}$: tendono a $0$? sono diversi da $0$?` ],
+  sol: r`$x_m:=\frac1{m\pi}\to0$, $x_m\ne0$, e $\sin\frac1{x_m}=\sin(m\pi)=0\to0$.<br>
+$y_m:=\frac1{\frac\pi2+2m\pi}\to0$, $y_m\ne0$, e $\sin\frac1{y_m}=\sin\left(\frac\pi2+2m\pi\right)=1\to1$.<br>
+Limiti diversi lungo due successioni in $\R\setminus\{0\}$ che tendono a $0$: per il teorema ponte $\nexists\lim_{x\to0}\sin\frac1x$. $\blacksquare$` },
+
+{ id: 'E4.9', sez: 4, tema: 'Teorema ponte', d: 2,
+  t: r`Dimostrare che $\displaystyle\lim_{x\to+\infty}x\sin x$ non esiste (né finito né infinito).`,
+  hints: [ r`Riusa le successioni di $\lim_{x\to+\infty}\sin x$.`,
+           r`Su $x_m=m\pi$ la funzione vale $0$; su $y_m=\frac\pi2+2m\pi$ vale $y_m$.` ],
+  sol: r`Con $x_m=m\pi\to+\infty$: $f(x_m)=m\pi\sin(m\pi)=0\to0$. Con $y_m=\frac\pi2+2m\pi\to+\infty$: $f(y_m)=y_m\cdot1\to+\infty$. Due limiti diversi ($0$ e $+\infty$): per il teorema ponte il limite non esiste. In particolare non è $+\infty$, anche se la funzione è illimitata. $\blacksquare$<br><em>Morale:</em> «illimitata» non vuol dire «tende a $+\infty$».` },
+
+{ id: 'E4.10', sez: 4, tema: 'Limiti destro e sinistro', d: 2,
+  t: r`Studiare $\displaystyle\lim_{x\to0}\frac{x^2+|x|}{x}$.`,
+  hints: [ r`Il modulo cambia forma a seconda del segno di $x$: separa $x>0$ e $x\lt0$.`,
+           r`Per $x>0$ la funzione vale $x+1$, per $x\lt0$ vale $x-1$.` ],
+  sol: r`Per $x>0$: $\frac{x^2+x}x=x+1\to1$. Per $x\lt0$: $\frac{x^2-x}x=x-1\to-1$. Quindi $\lim_{x\to0^+}=1\ne-1=\lim_{x\to0^-}$ e, per l'osservazione (i) della Lezione 12, il limite <strong>non esiste</strong>. $\blacksquare$` },
+
+{ id: 'E4.11', sez: 4, tema: 'Limiti notevoli', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{\sin(5x)}{3x}$ e $\displaystyle\lim_{x\to0^+}\sqrt x\,\log x$.`,
+  hints: [ r`Nel primo moltiplica e dividi per $5x$.`,
+           r`Il secondo è $x^\alpha\log x$ con $\alpha=\frac12$ (Lezione 13).` ],
+  sol: r`$\dfrac{\sin(5x)}{3x}=\dfrac{\sin(5x)}{5x}\cdot\dfrac53\to1\cdot\dfrac53=\boxed{\tfrac53}$.<br>
+$\sqrt x\log x=x^{1/2}\log x\to\boxed{0}$ per $x\to0^+$, perché $\lim_{x\to0^+}x^\alpha\log_ax=0$ per ogni $\alpha>0$ (sostituzione $y=\frac1x$ e gerarchia degli infiniti). <strong>Controllo numerico:</strong> $x=10^{-6}$: $\frac{\sin(5\cdot10^{-6})}{3\cdot10^{-6}}\approx1{,}6667$; $\ \sqrt{10^{-6}}\log10^{-6}\approx-0{,}0138$. $\blacksquare$` },
+
+{ id: 'E4.12', sez: 4, tema: 'Limiti notevoli', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{1-\cos(2x)}{x\sin x}$.`,
+  hints: [ r`Al numeratore $1-\cos t\sim\frac{t^2}2$ con $t=2x$.`,
+           r`Al denominatore $\sin x\sim x$.` ],
+  sol: r`$1-\cos(2x)\sim\frac{(2x)^2}2=2x^2$ e $x\sin x\sim x\cdot x=x^2$, quindi il limite vale $\frac{2x^2}{x^2}=\boxed{2}$.<br>
+In forma esplicita: $\dfrac{1-\cos2x}{(2x)^2}\cdot\dfrac{4x^2}{x\sin x}=\dfrac{1-\cos2x}{(2x)^2}\cdot4\cdot\dfrac{x}{\sin x}\to\dfrac12\cdot4\cdot1=2$. <strong>Controllo:</strong> $x=0{,}001$ dà $\approx2{,}0000$. $\blacksquare$` },
+
+{ id: 'E4.13', sez: 4, tema: 'Limiti notevoli', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{e^{3x}-1}{\log(1+2x)}$.`,
+  hints: [ r`Due limiti notevoli: $e^t-1\sim t$ e $\log(1+t)\sim t$ per $t\to0$.`,
+           r`Con $t=3x$ sopra e $t=2x$ sotto.` ],
+  sol: r`$\dfrac{e^{3x}-1}{\log(1+2x)}=\dfrac{e^{3x}-1}{3x}\cdot\dfrac{2x}{\log(1+2x)}\cdot\dfrac{3x}{2x}\to1\cdot1\cdot\dfrac32=\boxed{\tfrac32}$. <strong>Controllo:</strong> $x=10^{-4}$ dà $\approx1{,}5004$. $\blacksquare$` },
+
+{ id: 'E4.14', sez: 4, tema: 'Limiti notevoli', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to+\infty}\left(1+\frac2x\right)^x$.`,
+  hints: [ r`Scrivi la potenza come esponenziale: $f^g=e^{g\log f}$ (Lezione 13).`,
+           r`L'esponente è $x\log\left(1+\frac2x\right)$, e $\log(1+t)\sim t$ con $t=\frac2x$.` ],
+  sol: r`$\left(1+\frac2x\right)^x=e^{x\log\left(1+\frac2x\right)}$. Con $t=\frac2x\to0^+$: $x\log\left(1+\frac2x\right)=2\cdot\dfrac{\log(1+t)}t\to2$. Per la continuità dell'esponenziale il limite è $\boxed{e^2}$. <strong>Controllo:</strong> $x=10^6$ dà $\approx7{,}3890$, ed $e^2\approx7{,}3891$. $\blacksquare$<br><strong>Attenzione:</strong> «$1^\infty=1$» è falso: è una forma indeterminata.` },
+
+{ id: 'E4.15', sez: 4, tema: 'Limiti notevoli', d: 3,
+  t: r`Calcolare $\displaystyle\lim_{x\to0^+}x^{\sin x}$.`,
+  hints: [ r`Come per $x^x$: $x^{\sin x}=e^{\sin x\,\log x}$.`,
+           r`$\sin x\log x=\dfrac{\sin x}x\cdot x\log x$.` ],
+  sol: r`$x^{\sin x}=e^{\sin x\log x}$ e $\sin x\log x=\dfrac{\sin x}x\cdot(x\log x)\to1\cdot0=0$, perché $x\log x\to0$ per $x\to0^+$ (Lezione 13). Quindi il limite è $e^0=\boxed{1}$. <strong>Controllo:</strong> $x=10^{-4}$: $\sin x\log x\approx-0{,}00092$ e $x^{\sin x}\approx0{,}9991$. $\blacksquare$` },
+
+{ id: 'E4.16', sez: 4, tema: 'Asintoti', d: 2,
+  t: r`Trovare gli asintoti di $f(x)=\dfrac{2x^2-3x+1}{x+2}$.`,
+  hints: [ r`Verticale: dove si annulla il denominatore ma non il numeratore.`,
+           r`Obliquo: $m=\lim\frac{f(x)}x$, poi $q=\lim[f(x)-mx]$.`,
+           r`$f(x)-2x=\dfrac{-7x+1}{x+2}$.` ],
+  sol: r`<strong>Verticale.</strong> In $x=-2$ il numeratore vale $8+6+1=15\ne0$: $\lim_{x\to-2^+}f=+\infty$, $\lim_{x\to-2^-}f=-\infty$, quindi $x=-2$ è asintoto verticale.<br>
+<strong>Obliquo</strong> (per $x\to\pm\infty$): $m=\lim\dfrac{2x^2-3x+1}{x^2+2x}=2$; $\ q=\lim\left[\dfrac{2x^2-3x+1}{x+2}-2x\right]=\lim\dfrac{2x^2-3x+1-2x^2-4x}{x+2}=\lim\dfrac{-7x+1}{x+2}=-7$.<br>
+Asintoto obliquo $\boxed{y=2x-7}$, sia a $+\infty$ sia a $-\infty$. <strong>Controllo:</strong> con la divisione fra polinomi $f(x)=2x-7+\dfrac{15}{x+2}$, e $\frac{15}{x+2}\to0$. $\blacksquare$` },
+
+{ id: 'E4.17', sez: 4, tema: 'Asintoti', d: 2,
+  t: r`Trovare gli asintoti di $f(x)=x+\operatorname{arctg}x$ per $x\to\pm\infty$.`,
+  hints: [ r`$\frac{\operatorname{arctg}x}x\to0$, quindi $m=1$ da entrambe le parti.`,
+           r`$q=\lim[f(x)-x]=\lim\operatorname{arctg}x$: quanto vale a $+\infty$ e a $-\infty$?` ],
+  sol: r`$m=\lim_{x\to\pm\infty}\left(1+\frac{\operatorname{arctg}x}x\right)=1$ (limitata su infinita). $q=\lim[f(x)-x]=\lim\operatorname{arctg}x$, che vale $\frac\pi2$ a $+\infty$ e $-\frac\pi2$ a $-\infty$.<br>
+Asintoti obliqui: $\boxed{y=x+\frac\pi2}$ per $x\to+\infty$ e $\boxed{y=x-\frac\pi2}$ per $x\to-\infty$. Come per $\operatorname{arctg}$ (Lezione 13), a destra e a sinistra l'asintoto può cambiare. $\blacksquare$` },
+
+{ id: 'E4.18', sez: 4, tema: 'Asintoti', d: 3,
+  t: r`Trovare gli asintoti di $f(x)=\sqrt{x^2+2x}$ (insieme di definizione $(-\infty,-2]\cup[0,+\infty)$).`,
+  hints: [ r`$\sqrt{x^2+2x}=|x|\sqrt{1+\frac2x}$: il modulo cambia segno fra $+\infty$ e $-\infty$.`,
+           r`$m=1$ a $+\infty$ e $m=-1$ a $-\infty$.`,
+           r`Per $q$ razionalizza: $\sqrt{x^2+2x}-mx=\dfrac{x^2+2x-m^2x^2}{\sqrt{x^2+2x}+mx}$.` ],
+  sol: r`<strong>$x\to+\infty$.</strong> $\frac{f(x)}x=\sqrt{1+\frac2x}\to1$. $\ f(x)-x=\dfrac{2x}{\sqrt{x^2+2x}+x}=\dfrac{2}{\sqrt{1+\frac2x}+1}\to1$. Asintoto $y=x+1$.<br>
+<strong>$x\to-\infty$.</strong> Qui $|x|=-x$: $\frac{f(x)}x=-\sqrt{1+\frac2x}\to-1$. $\ f(x)+x=\dfrac{2x}{\sqrt{x^2+2x}-x}=\dfrac{2x}{-x\left(\sqrt{1+\frac2x}+1\right)}\to\dfrac{2}{-2}=-1$. Asintoto $y=-x-1$.<br>
+Non ci sono asintoti verticali: $f$ è continua e limitata vicino a ogni punto del dominio. <strong>Controllo:</strong> $f(1000)-1001\approx-0{,}0005$ e $f(-1000)-999\approx-0{,}0005$. $\blacksquare$` },
+
+{ id: 'E4.19', sez: 4, tema: 'Asintoti', d: 3,
+  t: r`Trovare gli asintoti di $f(x)=x\,e^{1/x}$.`,
+  hints: [ r`Per gli obliqui: $\frac{f(x)}x=e^{1/x}$, e poi $f(x)-x=x\left(e^{1/x}-1\right)$: sostituisci $t=\frac1x$.`,
+           r`In $0$ studia i due limiti laterali: da sinistra $e^{1/x}\to0$, da destra $\frac{e^t}t$ con $t=\frac1x\to+\infty$.` ],
+  sol: r`<strong>Obliqui.</strong> $m=\lim_{x\to\pm\infty}e^{1/x}=e^0=1$. $\ q=\lim_{x\to\pm\infty}x\left(e^{1/x}-1\right)=\lim_{t\to0^\pm}\dfrac{e^t-1}t=1$. Asintoto $\boxed{y=x+1}$ da entrambe le parti.<br>
+<strong>In $0$.</strong> $\lim_{x\to0^-}xe^{1/x}=0\cdot0=0$; $\ \lim_{x\to0^+}xe^{1/x}=\lim_{t\to+\infty}\dfrac{e^t}t=+\infty$ (gerarchia degli infiniti). Quindi $x=0$ è asintoto verticale <strong>destro</strong>. <strong>Controllo:</strong> $f(1000)-1001\approx0{,}0005$. $\blacksquare$` },
+
+{ id: 'E4.20', sez: 4, tema: 'Continuità e discontinuità', d: 1,
+  t: r`Determinare $a\in\R$ in modo che $f(x)=\begin{cases}ax+1 & x\le1\\ x^2+2 & x>1\end{cases}$ sia continua in $\R$.`,
+  hints: [ r`Fuori da $x=1$ è un polinomio, quindi continua: resta solo $x=1$.`,
+           r`Serve $\lim_{x\to1^-}f=\lim_{x\to1^+}f=f(1)$.` ],
+  sol: r`Per $x\ne1$ $f$ coincide con un polinomio, quindi è continua. In $x=1$: $f(1)=a+1=\lim_{x\to1^-}f(x)$ e $\lim_{x\to1^+}f(x)=1+2=3$. La continuità richiede $a+1=3$, cioè $\boxed{a=2}$. <strong>Controllo:</strong> con $a=2$ entrambi i rami valgono $3$ in $x=1$. $\blacksquare$` },
+
+{ id: 'E4.21', sez: 4, tema: 'Continuità e discontinuità', d: 2,
+  t: r`Determinare $b\in\R$ in modo che $f(x)=\begin{cases}\dfrac{\sin(3x)}x & x\lt0\\[4pt] x^2+b & x\ge0\end{cases}$ sia continua in $0$.`,
+  hints: [ r`Il limite da sinistra è un limite notevole.`,
+           r`Da destra e in $0$ vale $b$.` ],
+  sol: r`$\lim_{x\to0^-}\dfrac{\sin3x}x=\lim 3\cdot\dfrac{\sin3x}{3x}=3$; $\ \lim_{x\to0^+}(x^2+b)=b=f(0)$. Continuità in $0$ $\iff b=3$. $\boxed{b=3}$ $\blacksquare$` },
+
+{ id: 'E4.22', sez: 4, tema: 'Continuità e discontinuità', d: 2,
+  t: r`Classificare il punto $x_0=1$ per $f(x)=\begin{cases}\dfrac{x^2-1}{|x-1|} & x\ne1\\[4pt] 0 & x=1.\end{cases}$`,
+  hints: [ r`$x^2-1=(x-1)(x+1)$, e $\frac{x-1}{|x-1|}$ vale $\pm1$.`,
+           r`Calcola i due limiti laterali: sono finiti?` ],
+  sol: r`$f(x)=\dfrac{(x-1)(x+1)}{|x-1|}$. Per $x>1$: $f(x)=x+1\to2$. Per $x\lt1$: $f(x)=-(x+1)\to-2$. I limiti laterali sono finiti e diversi: <strong>discontinuità di prima specie</strong>, con salto $s(1)=|2-(-2)|=\boxed{4}$. Il valore $f(1)=0$ non cambia la classificazione. $\blacksquare$` }
   ];
 
   const AM = (window.AM = window.AM || {});

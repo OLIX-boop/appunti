@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="assets/css/style.css?v=20261110">
 <style>
   .hero { padding: 40px 0 12px; }
   .hero h1 { font-size: clamp(30px, 5.4vw, 46px); margin-bottom: 12px; }
@@ -39,10 +39,6 @@
   .capitoli { list-style: none; padding: 0; margin: 0; font-size: 13.2px; color: var(--text-muted); }
   .capitoli li { margin: 0 0 4px; padding-left: 15px; position: relative; }
   .capitoli li::before { content: "›"; position: absolute; left: 2px; color: var(--accent); font-weight: 700; }
-  /* Blocco col solo titolo: striscia su tutta la riga, altrimenti la griglia lo stira all'altezza
-     dei vicini e diventa un riquadro vuoto. Non è un link, quindi al passaggio non si solleva. */
-  .materia-vuota { grid-column: 1 / -1; padding: 16px 22px; }
-  .materia-vuota:hover { transform: none; box-shadow: var(--shadow); border-color: var(--border); }
   /* Blocco concluso: tutto in grigio, compresi icona, barra e badge */
   .materia-archivio { background: var(--bg-sunken); box-shadow: none; filter: grayscale(1); }
   .materia-archivio:hover { background: var(--bg-elev); }
@@ -56,7 +52,7 @@
     <a class="brand" href="index.html"><span class="brand-mark">P</span> Appunti · PoliMi</a>
     <nav class="topnav">
       <a href="index.html">Materie</a>
-      <a href="analisi/index.html">Analisi 1</a>
+      <a href="analisi/seconda.html">Analisi 1</a>
       <a href="geometria/index.html">Geometria</a>
       <a href="informatica/index.html">Informatica</a>
     </nav>
@@ -75,15 +71,27 @@
 
     <div class="materie">
 
-      <!-- Seconda metà del corso: per ora solo il titolo, senza link perché la pagina non esiste ancora -->
-      <div class="materia materia-vuota">
+      <!-- Seconda metà del corso: cresce lezione dopo lezione -->
+      <a class="materia" href="analisi/seconda.html">
         <div class="materia-top">
           <div class="materia-icona" style="background:linear-gradient(135deg,#1f5fa8,#6b3fa0)">∫</div>
           <div>
             <h2>Analisi Matematica 1</h2>
+            <div class="sub">Prof. G. Meglioli · seconda parte</div>
           </div>
         </div>
-      </div>
+        <p>Limiti di funzioni e continuità, poi derivate e integrali. Con le dimostrazioni a passi coperti e le verifiche con la definizione.</p>
+        <ul class="capitoli">
+          <li>Limiti di funzioni e continuità</li>
+          <li>Calcolo differenziale</li>
+          <li>Calcolo integrale</li>
+        </ul>
+        <div class="pbar" data-progress-for="analisi2"><span style="width:0"></span></div>
+        <div class="materia-foot">
+          <span><span data-progress-txt="analisi2">0/0</span> argomenti</span>
+          <span class="badge warn">in costruzione</span>
+        </div>
+      </a>
 
       <a class="materia" href="geometria/index.html">
         <div class="materia-top">
@@ -180,14 +188,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
-<script src="assets/js/materie.js?v=20261104"></script>
-<script src="analisi/data/topics.js?v=20261104"></script>
-<script src="geometria/data/topics.js?v=20261104"></script>
-<script src="assets/js/plot.js?v=20261104"></script>
-<script src="assets/js/app.js?v=20261106"></script>
+<script src="assets/js/materie.js?v=20261110"></script>
+<script src="analisi/data/topics.js?v=20261110"></script>
+<script src="analisi/data/topics2.js?v=20261110"></script>
+<script src="geometria/data/topics.js?v=20261110"></script>
+<script src="assets/js/plot.js?v=20261110"></script>
+<script src="assets/js/app.js?v=20261110"></script>
 <script>
 document.addEventListener('am:ready', function () {
-  var chiavi = ['analisi', 'geometria'];
+  var chiavi = ['analisi', 'analisi2', 'geometria'];
   var fatti = 0, tot = 0;
   chiavi.forEach(function (k) { fatti += AM.contaFatti(k); tot += AM.contaArgomenti(k); });
 

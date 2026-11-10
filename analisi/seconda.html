@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analisi Matematica 1 — seconda parte</title>
+<meta name="description" content="Appunti interattivi per Analisi Matematica 1, Politecnico di Milano — seconda parte del programma: limiti di funzioni e continuità, calcolo differenziale, calcolo integrale.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/analisi-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/analisi-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f5fa8">
+<meta name="apple-mobile-web-app-title" content="Analisi 1">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261110">
+<style>
+  .card.in-arrivo { background: var(--bg-sunken); box-shadow: none; color: var(--text-muted); }
+  .card.in-arrivo h3 { color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../index.html"><span class="brand-mark">∫</span> Analisi 1</a>
+    <nav class="topnav">
+      <a href="seconda.html">Piano</a>
+      <a href="sezioni/4-limiti.html">4 · Limiti</a>
+      <a href="teoremi.html">Teoremi</a>
+      <a href="quesiti.html">Quesiti</a>
+      <a href="domande.html">Domande</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="index.html">Prima parte</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro" title="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>In questa pagina</h4>
+    <a href="#obiettivo">L'obiettivo</a>
+    <a href="#progressi">I tuoi progressi</a>
+    <a href="#percorso">Gli strumenti</a>
+    <a href="#esame">Struttura della prova</a>
+    <a href="#materiale">Materiale del corso</a>
+
+    <h4>Sezioni</h4>
+    <a href="sezioni/4-limiti.html">4 · Limiti e continuità</a>
+
+    <h4>Strumenti</h4>
+    <a href="teoremi.html">Dimostrazioni</a>
+    <a href="quesiti.html">Quesiti teorici</a>
+    <a href="domande.html">Domande teoriche a voce</a>
+    <a href="esercizi.html?sez=4">Palestra esercizi</a>
+    <a href="index.html">Prima parte (Sezioni 1–3)</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Politecnico di Milano · a.a. 2026/27 · Prof. Giulia Meglioli</div>
+      <h1>Analisi Matematica 1 — seconda parte</h1>
+      <p class="lead">Dalle successioni alle <strong>funzioni</strong>: limiti e continuità, poi derivate e integrali. Stesso metodo della prima parte: teoria da rivelare, dimostrazioni a passi coperti, esercizi con suggerimenti progressivi. Le pagine crescono lezione dopo lezione.</p>
+    </div>
+
+    <section id="obiettivo">
+      <div class="grid g4">
+        <div class="card stat"><div class="stat-val" style="color:var(--accent)">3</div><div class="stat-lab">sezioni (4, 5, 6)</div></div>
+        <div class="card stat"><div class="stat-val" style="color:var(--danger)">14</div><div class="stat-lab">dimostrazioni allo scritto (n° 15–28)</div></div>
+        <div class="card stat"><div class="stat-val" style="color:var(--purple)">66</div><div class="stat-lab">quesiti teorici (2.1–2.66)</div></div>
+        <div class="card stat"><div class="stat-val" style="color:var(--ok)">2</div><div class="stat-lab">lezioni integrate (12–13)</div></div>
+      </div>
+
+      <div class="box tip" style="margin-top:22px">
+        <div class="box-title">↳ Cosa cambia rispetto alla prima parte</div>
+        <p class="mb0">Quasi niente nelle idee, molto nella notazione. Un limite di funzione è la stessa definizione con $\eps$ di una successione, ma la variabile $x$ ora si avvicina a un punto <em>qualsiasi</em> $x_0$, da destra o da sinistra, e al posto dell'indice $\nu_\eps$ compare un raggio $\delta$. Il <strong>teorema ponte</strong> collega i due mondi: tutto quello che hai dimostrato sulle successioni (unicità, permanenza del segno, carabinieri, limiti notevoli) si trasporta alle funzioni.</p>
+      </div>
+    </section>
+
+    <h2 id="progressi">I tuoi progressi</h2>
+    <p class="muted small">Spunta gli argomenti nelle pagine delle sezioni man mano che li padroneggi. Il salvataggio è locale, su questo dispositivo.</p>
+
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Programma della seconda parte</strong>
+        <span class="muted small"><span data-progress-txt="analisi2">0/0</span> · <span data-progress-pct="analisi2">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="analisi2"><span style="width:0"></span></div>
+    </div>
+
+    <div class="grid g3">
+      <a class="card" href="sezioni/4-limiti.html">
+        <h3>4 · Limiti di funzioni e continuità</h3>
+        <p>Intorni e punti di accumulazione, le definizioni di limite, limiti destro e sinistro, teorema ponte, teoremi sui limiti.</p>
+        <p class="small" style="margin-top:8px"><span class="badge star">novità</span> Lezioni 12 e 13</p>
+        <div style="margin-top:12px"><div class="pbar" data-progress-for="s4"><span style="width:0"></span></div>
+        <div class="muted small" style="margin-top:5px"><span data-progress-txt="s4">0/0</span> argomenti</div></div>
+      </a>
+      <div class="card in-arrivo">
+        <h3>5 · Calcolo differenziale</h3>
+        <p>Derivate, Fermat, Rolle, Lagrange, studio di funzione, de l'Hôpital, Taylor.</p>
+        <p class="small mb0" style="margin-top:8px"><span class="badge">in arrivo</span></p>
+      </div>
+      <div class="card in-arrivo">
+        <h3>6 · Calcolo integrale</h3>
+        <p>Primitive, integrale di Riemann, teorema fondamentale, integrali impropri.</p>
+        <p class="small mb0" style="margin-top:8px"><span class="badge">in arrivo</span></p>
+      </div>
+    </div>
+
+    <h2 id="percorso">Gli strumenti</h2>
+    <div class="grid g2">
+      <a class="card" href="teoremi.html">
+        <h3>🎯 Le dimostrazioni</h3>
+        <p>Per la Sezione 4 ci sono le due dimostrazioni da orale (asintoti, continuità delle elementari). Quelle dello scritto, n° 15–28, arrivano con le lezioni su zeri, Weierstrass, derivate e integrali.</p>
+      </a>
+      <a class="card" href="quesiti.html">
+        <h3>📖 I quesiti teorici</h3>
+        <p>Le domande da cui la prof pesca per i 10 punti di teoria, con la risposta modello. Per la Sezione 4 ci sono già i quesiti 2.1–2.6, quelli assegnati nella settimana del 26 ottobre.</p>
+      </a>
+      <a class="card" href="esercizi.html?sez=4">
+        <h3>✎ Palestra esercizi</h3>
+        <p>Verifiche di limiti con la definizione, non esistenza con il teorema ponte, calcolo di limiti: un suggerimento alla volta, poi lo svolgimento.</p>
+      </a>
+      <a class="card" href="domande.html">
+        <h3>🎙 Domande teoriche</h3>
+        <p>Una domanda con dimostrazione a caso, da rispondere a voce un passo alla volta. Della seconda parte ci sono già i due quesiti blu della Sezione 4: asintoti e continuità delle funzioni elementari.</p>
+      </a>
+    </div>
+
+    <h2 id="esame">Struttura della prova</h2>
+    <p>Stessa struttura del primo parziale: <strong>14 punti</strong> di test (soglia 7), <strong>10 punti</strong> di teoria a risposta aperta (soglia 5), <strong>8 punti</strong> di esercizi con svolgimento.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Prova</th><th>Programma</th><th class="c">Durata</th><th>Per superarla</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Seconda prova in itinere</strong></td><td>Seconda parte (Sezioni 4–6)</td><td class="c">1 ora</td><td>≥ 15/32, con ≥ 7/14 nella prima parte e ≥ 5/10 nella seconda; poi media delle due prove ≥ 18</td></tr>
+          <tr><td><strong>Appello completo</strong></td><td>Tutto il corso (Sezioni 1–6)</td><td class="c">2 ore</td><td>≥ 18/32, con ≥ 7/14 nella prima parte e ≥ 5/10 nella seconda</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">La seconda prova in itinere è nel periodo gennaio-febbraio, insieme al primo appello. Chi ha superato la prima prova sceglie all'iscrizione fra seconda prova e appello completo, e la scelta è vincolante. Fonte: <a href="materiale/Modalit%C3%A0%20di%20esame.pdf">Modalità d'esame</a>.</p>
+
+    <h2 id="materiale">Materiale del corso</h2>
+    <p class="muted small">I PDF originali pubblicati dalla docente.</p>
+    <div class="grid g2">
+      <a class="card" href="materiale/Lezione%2012%20(26%20ottobre)%20AM1%202026-27.pdf"><h3>📓 Lezione 12 — 26 ottobre</h3><p>Inizio della seconda parte: le definizioni di limite per $x\to\pm\infty$, intorni e punti di accumulazione, limite per $x\to x_0$ e limiti destro e sinistro, teorema ponte.</p></a>
+      <a class="card" href="materiale/Lezione%2013%20(4%20novembre)%20AM1%202026-27.pdf"><h3>📓 Lezione 13 — 4 novembre</h3><p>Esempi con $x^\alpha\log_ax$ e $x^x$, infinitesimi e infiniti, o-piccolo, limiti di funzioni monotòne, asintoti, funzioni continue e continuità delle elementari, composta e inversa, punti di discontinuità.</p></a>
+      <a class="card" href="materiale/settimana%207.pdf"><h3>📄 Guida allo studio — settimana 7</h3><p>26–30 ottobre: limiti di funzioni, teoremi sui limiti, teorema ponte, limiti notevoli. Quesiti 2.1–2.6.</p></a>
+      <a class="card" href="materiale/Programma%20di%20massima%20e%20bibliografia.pdf"><h3>📄 Programma e bibliografia</h3><p>Il programma completo con le indicazioni (*) e (**) sulle dimostrazioni.</p></a>
+      <a class="card" href="materiale/Modalit%C3%A0%20di%20esame.pdf"><h3>📄 Modalità d'esame</h3><p>Struttura, punteggi, soglie, e l'elenco ufficiale delle 28 dimostrazioni.</p></a>
+      <a class="card" href="materiale/Domande%20di%20Teoria%20AM1.pdf"><h3>📄 Quesiti teorici</h3><p>La raccolta completa: i quesiti 2.1–2.66 sono quelli della seconda parte.</p></a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  Guida di studio non ufficiale · Analisi Matematica 1, seconda parte · Ingegneria Informatica, Politecnico di Milano<br>
+  I contenuti seguono il programma della Prof. Giulia Meglioli, a.a. 2026/27. Appunti non ufficiali.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
+<script src="../assets/js/materie.js?v=20261110"></script>
+<script src="data/topics2.js?v=20261110"></script>
+<script src="../assets/js/plot.js?v=20261110"></script>
+<script src="../assets/js/app.js?v=20261110"></script>
+</body>
+</html>

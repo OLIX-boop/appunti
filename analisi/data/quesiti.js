@@ -437,7 +437,102 @@ allora la serie $\sum_n(-1)^n b_n$ <strong>converge</strong>. Inoltre, detta $S$
 <strong>Teorema.</strong> La convergenza assoluta implica la convergenza semplice: $$\sum_n|a_n|\ \text{converge}\ \Longrightarrow\ \sum_n a_n\ \text{converge},\qquad\text{e}\qquad \left|\sum_n a_n\right|\le\sum_n|a_n|.$$
 <em>Dimostrazione:</em> si pone $b_n=a_n+|a_n|\in[0,2|a_n|]$, si applica il criterio del confronto a $\sum b_n$ e si scrive $\sum a_n=\sum b_n-\sum|a_n|$.<br><br>
 <strong>Il viceversa è falso.</strong> $\sum_{n\ge1}\frac{(-1)^{n}}{n}$ converge per Leibniz ma $\sum\frac1n$ diverge: si dice <strong>semplicemente convergente</strong> (o condizionatamente convergente).<br><br>
-<strong>Perché la distinzione conta.</strong> In una serie assolutamente convergente si possono riordinare i termini senza cambiare la somma; in una serie semplicemente convergente no — per il teorema di Riemann sul riordinamento, riordinandola si può ottenere qualunque somma. Traccia completa nella pagina <em>Teoremi</em>.` }
+<strong>Perché la distinzione conta.</strong> In una serie assolutamente convergente si possono riordinare i termini senza cambiare la somma; in una serie semplicemente convergente no — per il teorema di Riemann sul riordinamento, riordinandola si può ottenere qualunque somma. Traccia completa nella pagina <em>Teoremi</em>.` },
+
+/* ---------- Sezione 4: limiti di funzioni e continuità (seconda parte) ---------- */
+{ id: '2.1', sez: 4, t: r`Dare le definizioni di intorno circolare di un punto, di intorno circolare destro e sinistro. Dare le definizioni di punto di accumulazione di un sottoinsieme di $\R$, di punto di accumulazione destro e sinistro.`,
+  a: r`Siano $x_0\in\R$ e $r>0$.<ul><li><strong>Intorno</strong> di centro $x_0$ e raggio $r$: $I_r(x_0)=\{x\in\R:\ |x-x_0|\lt r\}=(x_0-r,x_0+r)$.</li><li><strong>Intorno destro</strong>: $I^+_r(x_0)=\{x:\ x_0\lt x\lt x_0+r\}$; <strong>sinistro</strong>: $I^-_r(x_0)=\{x:\ x_0-r\lt x\lt x_0\}$.</li></ul>
+Sia $E\subseteq\R$. $x_0\in\R$ è <strong>punto di accumulazione</strong> per $E$ se $$\forall r>0\qquad\bigl[I_r(x_0)\cap E\bigr]\setminus\{x_0\}\ne\emptyset,$$ cioè ogni intorno di $x_0$ contiene punti di $E$ diversi da $x_0$. È <strong>di accumulazione da destra</strong> (da sinistra) se vale lo stesso con $I^+_r(x_0)$ ($I^-_r(x_0)$).<br><br>
+<strong>Esempi (Lezione 12).</strong> Per $E=(a,x_0)\cup(x_0,b)$, $x_0$ è di accumulazione anche se $x_0\notin E$; per $E=[x_0,b)$ lo è (da destra); per $E=[a,b)\cup\{x_0\}$ con $x_0>b$ non lo è: $x_0$ è un <strong>punto isolato</strong>. Il punto non deve stare in $E$, e se ci sta non basta.<br><br>
+<strong>A che cosa serve:</strong> il limite per $x\to x_0$ ha senso solo se $x_0$ è di accumulazione per il dominio, perché bisogna poter avvicinare $x_0$ con punti del dominio diversi da $x_0$.` },
+
+{ id: '2.2', sez: 4, t: r`Dare le definizioni di limite di una funzione finito al finito, infinito al finito, infinito all'infinito, finito all'infinito. Inoltre, spiegare le definizioni servendosi di disegni.`,
+  a: r`Sia $f:A\subseteq\R\to\R$.<br><strong>Finito al finito</strong> ($x_0$ di accumulazione per $A$): $\lim_{x\to x_0}f(x)=\ell\in\R$ se $\forall\eps>0\ \exists\delta>0$ t.c. $|f(x)-\ell|\lt\eps$ per ogni $x\in A$ con $0\lt|x-x_0|\lt\delta$. <em>Disegno:</em> la striscia orizzontale $(\ell-\eps,\ell+\eps)$ e quella verticale $(x_0-\delta,x_0+\delta)$; sopra la seconda, escluso $x_0$, il grafico sta nella prima.<br><br>
+<strong>Infinito al finito:</strong> $\lim_{x\to x_0}f(x)=+\infty$ se $\forall M>0\ \exists\delta>0$ t.c. $f(x)>M$ per $x\in A$, $0\lt|x-x_0|\lt\delta$ (per $-\infty$: $f(x)\lt-M$). <em>Disegno:</em> sopra la striscia verticale il grafico sta sopra la retta $y=M$, per quanto alta. Esempio: $\frac1{x^2}$ in $0$.<br><br>
+<strong>Finito all'infinito</strong> ($A\supseteq(a,+\infty)$): $\lim_{x\to+\infty}f(x)=\ell$ se $\forall\eps>0\ \exists\nu_\eps>0$ t.c. $|f(x)-\ell|\lt\eps$ per ogni $x>\nu_\eps$. Per $x\to-\infty$: $\exists\nu_\eps\lt0$ e $x\lt\nu_\eps$. <em>Disegno:</em> da $\nu_\eps$ in poi il grafico sta nella striscia: è un asintoto orizzontale. Esempio: $\frac1x\to0$, con $\nu_\eps=\frac1\eps$.<br><br>
+<strong>Infinito all'infinito:</strong> $\lim_{x\to+\infty}f(x)=+\infty$ se $\forall M>0\ \exists\nu_M>0$ t.c. $f(x)>M$ per $x>\nu_M$ (e le varianti con $-\infty$). Esempio: $\sqrt x$, con $\nu_M=M^2$.<br><br>
+In tutto il prof numera <strong>quindici</strong> definizioni: sei per $x\to\pm\infty$, tre per $x\to x_0$, tre da destra e tre da sinistra.` },
+
+{ id: '2.3', sez: 4, t: r`Dare le definizioni di limite destro e sinistro. Qual è il legame tra limite e limite destro o sinistro?`,
+  a: r`Se $x_0$ è di accumulazione da destra per $A$: $\lim_{x\to x_0^+}f(x)=\ell$ se $\forall\eps>0\ \exists\delta>0$ t.c. $|f(x)-\ell|\lt\eps$ per ogni $x\in I^+_\delta(x_0)\cap A$. Il limite sinistro è lo stesso con $I^-_\delta(x_0)$ e $x_0$ di accumulazione da sinistra. Analoghe le versioni con $\pm\infty$.<br><br>
+<strong>Legame (Lezione 12).</strong><ul><li>(i) Se i limiti destro e sinistro esistono e sono <strong>diversi</strong>, il limite non esiste. Esempi: $\operatorname{sgn}x$ in $0$ ($-1$ e $1$), $\frac1x$ in $0$ ($-\infty$ e $+\infty$).</li><li>(ii) Se sono <strong>uguali</strong> a $\ell$, il limite esiste e vale $\ell$ (con $\delta=\min\{\delta_-,\delta_+\}$).</li><li>(iii) Se $x_0$ è di accumulazione da destra e da sinistra ed esiste il limite $\ell$, esistono anche i limiti laterali e valgono $\ell$.</li></ul>
+<strong>Attenzione all'ipotesi di (iii):</strong> per $\sqrt x$ si ha $\lim_{x\to0}\sqrt x=\lim_{x\to0^+}\sqrt x=0$, mentre il limite sinistro non esiste, perché $0$ non è di accumulazione da sinistra per $[0,+\infty)$.` },
+
+{ id: '2.4', sez: 4, t: r`Enunciare i teoremi su: unicità del limite, permanenza del segno, confronto (o dei due carabinieri), prodotto di funzione infinitesima per funzione limitata.`,
+  a: r`Sia $x_0$ di accumulazione per il dominio $A$ (oppure $x_0=\pm\infty$).<ul>
+<li><strong>Unicità.</strong> Se esiste $\lim_{x\to x_0}f(x)=\ell$, il limite è unico.</li>
+<li><strong>Permanenza del segno.</strong> Se $\lim_{x\to x_0}f(x)=M>0$, esiste $\delta>0$ t.c. $f(x)>\frac M2$ (in particolare $f(x)>0$) per ogni $x\in I_\delta(x_0)\cap A$, $x\ne x_0$.</li>
+<li><strong>Due carabinieri.</strong> Se $g(x)\le f(x)\le h(x)$ per $x\in[I_\delta(x_0)\setminus\{x_0\}]\cap A$ e $\lim g=\lim h=\ell$, allora esiste $\lim_{x\to x_0}f(x)=\ell$.</li>
+<li><strong>Infinitesima per limitata.</strong> Se $f(x)\to0$ e $g$ è limitata in un intorno di $x_0$, allora $f(x)g(x)\to0$. Si basa sul lemma $f\to0\iff|f|\to0$.</li></ul>
+Le dimostrazioni sono quelle delle successioni con $\delta$ al posto di $\nu_\eps$ (nel programma non hanno la stellina). Esempio: $\lim_{x\to0}x\sin\frac1x=0$; $\lim_{x\to\pm\infty}\frac{\sin x}x=0$.` },
+
+{ id: '2.5', sez: 4, t: r`Descrivere l'algebra dei limiti anche con l'infinito e le forme indeterminate.`,
+  a: r`Se $f\to\ell_1$ e $g\to\ell_2$ (finiti): $f\pm g\to\ell_1\pm\ell_2$, $fg\to\ell_1\ell_2$, $\frac fg\to\frac{\ell_1}{\ell_2}$ se $\ell_2\ne0$. Con l'infinito (per il prof «l'algebra dei limiti resta invariata» rispetto alle successioni):
+<ul><li>$\ell+(\pm\infty)=\pm\infty$; $\ +\infty+\infty=+\infty$;</li>
+<li>$\ell\cdot(\pm\infty)=\pm\infty$ se $\ell>0$ (segno opposto se $\ell\lt0$); $\ (+\infty)(+\infty)=+\infty$;</li>
+<li>$\frac\ell{\pm\infty}=0$; $\ \frac\ell{0^\pm}=\pm\infty$ se $\ell>0$.</li></ul>
+<strong>Forme indeterminate:</strong> $$+\infty-\infty,\quad0\cdot\infty,\quad\frac\infty\infty,\quad\frac00,\quad1^\infty,\quad0^0,\quad\infty^0.$$ «Indeterminata» vuol dire che il risultato dipende dalle funzioni: per esempio $\frac{x}{x}\to1$, $\frac{x^2}x\to+\infty$, $\frac x{x^2}\to0$ per $x\to+\infty$. Le ultime tre si trattano con $f^g=e^{g\log f}$ (Lezione 13: $x^x\to1$ per $x\to0^+$).` },
+
+{ id: '2.6', sez: 4, t: r`Enunciare il teorema ponte e spiegare la sua applicazione alla non esistenza di limiti di funzioni.`,
+  a: r`<strong>Teorema ponte.</strong> Sia $f:A\subseteq\R\to\R$ e $x_0$ di accumulazione per $A$. Allora $$\lim_{x\to x_0}f(x)=\ell\iff\Bigl[\forall\{x_m\}\subseteq A\setminus\{x_0\},\ x_m\to x_0\ \Rightarrow\ \lim_{m\to\infty}f(x_m)=\ell\Bigr].$$ A destra c'è un limite di <em>successione</em>. Vale anche con $\ell=\pm\infty$ e $x_0=\pm\infty$.<br><br>
+<strong>Applicazione.</strong> Se esistono due successioni $\{x_m\},\{y_m\}\subseteq A\setminus\{x_0\}$, entrambe tendenti a $x_0$, con $\lim f(x_m)=\ell_1\ne\ell_2=\lim f(y_m)$, allora $\nexists\lim_{x\to x_0}f(x)$.<br><br>
+<strong>Esempio (Lezione 12).</strong> $\cos\frac1x$ in $0$: $x_m=\frac1{2m\pi}$ dà $\cos(2m\pi)=1$, $y_m=\frac1{(2m+1)\pi}$ dà $\cos((2m+1)\pi)=-1$: il limite non esiste. Analogamente $\sin x$ per $x\to+\infty$ ($m\pi$ e $\frac\pi2+2m\pi$).<br><br>
+<strong>Attenzione:</strong> una o due successioni non bastano a dimostrare che il limite <em>esiste</em>: servono tutte. Il teorema serve anche a trasportare alle funzioni i risultati sulle successioni (per esempio $\lim_{x\to0}x^2=0$ perché $x_m^2\to0$ per ogni $x_m\to0$).` },
+
+{ id: '2.7', sez: 4, t: r`Dare le definizioni di funzioni infinite, infinitesime. Scrivere i vari casi di confronto tra funzioni infinite (o infinitesime).`,
+  a: r`$f$ è <strong>infinitesima</strong> per $x\to x_0$ (anche $\pm\infty$) se $\lim f(x)=0$, <strong>infinita</strong> se $\lim f(x)=\pm\infty$.<br><br>
+<strong>Confronto</strong> tramite $L=\lim_{x\to x_0}\frac{f(x)}{g(x)}$ (Lezione 13):
+<ul><li>$f,g$ <strong>infinitesime</strong>: $L=0$ ⇒ $f$ di ordine <strong>superiore</strong> a $g$; $L=\pm\infty$ ⇒ di ordine <strong>inferiore</strong>; $L\in\R\setminus\{0\}$ ⇒ stesso ordine; $L$ non esiste ⇒ non paragonabili.</li>
+<li>$f,g$ <strong>infinite</strong>: $L=0$ ⇒ $f$ di ordine <strong>inferiore</strong>; $L=\pm\infty$ ⇒ <strong>superiore</strong>; $L\in\R\setminus\{0\}$ ⇒ stesso ordine; $L$ non esiste ⇒ non paragonabili.</li></ul>
+Se $L=1$, $f$ e $g$ sono <strong>asintoticamente equivalenti</strong>: $f\sim g$. Se $L=0$ si scrive $f=o(g)$ per $x\to x_0$.<br><br>
+<strong>Esempi:</strong> $x^3=o(x^2)$ per $x\to0$ ($x^3$ infinitesimo di ordine superiore), ma $x^2=o(x^3)$ per $x\to+\infty$ ($x^2$ infinito di ordine inferiore). Gerarchia: $\log_ax=o(x^\alpha)$ e $x^\alpha=o(a^x)$ per $x\to+\infty$ ($a>1$, $\alpha>0$). Non paragonabili: $x\left(2+\sin\frac1x\right)$ e $x$ per $x\to0$, il cui rapporto oscilla fra $1$ e $3$.` },
+
+{ id: '2.8', sez: 4, t: r`Enunciare il teorema sul limite di funzioni monotòne.`,
+  a: r`Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$.<ul><li>Se $f$ è <strong>crescente</strong>: $\lim_{x\to x_0^-}f(x)=\sup_{a\lt x\lt x_0}f(x)$ e $\lim_{x\to x_0^+}f(x)=\inf_{x_0\lt x\lt b}f(x)$.</li><li>Se $f$ è <strong>decrescente</strong>: $\lim_{x\to x_0^-}f(x)=\inf_{a\lt x\lt x_0}f(x)$ e $\lim_{x\to x_0^+}f(x)=\sup_{x_0\lt x\lt b}f(x)$.</li></ul>
+All'infinito: $f$ crescente in $(a,+\infty)$ ⇒ $\lim_{x\to+\infty}f=\sup_{x>a}f$ (che può essere $+\infty$); decrescente ⇒ $\inf$. In $(-\infty,a)$: crescente ⇒ $\lim_{x\to-\infty}f=\inf_{x\lt a}f$, decrescente ⇒ $\sup$.<br><br>
+<strong>Conseguenza:</strong> nei punti interni i limiti laterali di una funzione monotòna esistono sempre finiti (per una crescente, $\sup_{x\lt x_0}f\le f(x_0)\le\inf_{x>x_0}f$), quindi le sue discontinuità sono solo di salto. È l'analogo del teorema sulla regolarità delle successioni monotòne, e si dimostra allo stesso modo, con la caratterizzazione del $\sup$.` },
+
+{ id: '2.9', sez: 4, mark: '**', teo: 'T-asi', t: r`Introdurre gli asintoti verticali, orizzontali ed obliqui.`,
+  a: r`<strong>Verticale.</strong> Se $\lim_{x\to x_0}f(x)=\pm\infty$ (oppure i limiti laterali sono infiniti di segno opposto), $x=x_0$ è asintoto verticale; se lo è solo da un lato, asintoto verticale destro o sinistro. Esempi: $\frac1x$ in $0$; $\frac1{\sqrt x}$ in $0$ (destro).<br><br>
+<strong>Orizzontale.</strong> Se $\lim_{x\to\pm\infty}f(x)=b\in\R$, $y=b$ è asintoto orizzontale per $x\to\pm\infty$. Esempi: $\operatorname{arctg}x$ ha $y=\frac\pi2$ a $+\infty$ e $y=-\frac\pi2$ a $-\infty$; $\frac{\sin x}x$ ha $y=0$, e il grafico lo attraversa infinite volte.<br><br>
+<strong>Obliquo.</strong> $y=mx+q$ è asintoto per $x\to+\infty$ se $\lim_{x\to+\infty}[f(x)-mx-q]=0$ (obliquo se $m\ne0$, orizzontale se $m=0$).<br>
+<strong>Teorema</strong> (dimostrazione da orale): $f$ ha asintoto $y=mx+q$ per $x\to+\infty$ $\iff$ esistono finiti $m=\lim\frac{f(x)}x$ e $q=\lim[f(x)-mx]$.<br>
+<em>Idea:</em> «⇒» dividendo $f(x)-mx-q\to0$ per $x$ si ottiene $\frac{f(x)}x\to m$; $q$ si legge dalla definizione. «⇐» il secondo limite è la definizione.<br><br>
+<strong>Controesempio (Lezione 13):</strong> $f(x)=2x+\sin x$ ha $m=2$, ma $f(x)-2x=\sin x$ non ha limite: niente asintoto.` },
+
+{ id: '2.10', sez: 4, t: r`Dare la definizione di funzione continua in un punto, di funzione continua in un insieme.`,
+  a: r`Sia $f:A\subseteq\R\to\R$ e $x_0\in A$ punto di accumulazione per $A$. $f$ è <strong>continua in $x_0$</strong> se $$\lim_{x\to x_0}f(x)=f(x_0),$$ cioè $\forall\eps>0\ \exists\delta>0$ t.c. $|f(x)-f(x_0)|\lt\eps$ per ogni $x\in A\cap I_\delta(x_0)$ (qui non serve escludere $x=x_0$). $f$ è <strong>continua in $A$</strong> se è continua in ogni punto di $A$.<br><br>
+Contiene tre richieste: $f(x_0)$ esiste, il limite esiste finito, e i due coincidono. Esempio di funzione non continua con limite: $f(x)=1$ per $x\ne0$, $f(0)=5$.<br><br>
+<strong>Caratterizzazione con le successioni:</strong> $f$ è continua in $x_0$ $\iff$ per ogni $\{x_n\}\subseteq A$ con $x_n\to x_0$ si ha $f(x_n)\to f(x_0)$.<br><br>
+<strong>Uso pratico:</strong> dove $f$ è continua, il limite si calcola sostituendo.` },
+
+{ id: '2.11', sez: 4, mark: '**', teo: 'T-cont', t: r`Dedurre la continuità delle funzioni elementari.`,
+  a: r`Schema della Lezione 13 (dimostrazione da orale):<ol>
+<li><strong>$a^x$ è continua in $0$</strong>: per $a>1$ e $0\lt\eps\lt1$, $|a^x-1|\lt\eps\iff\frac{\log(1-\eps)}{\log a}\lt x\lt\frac{\log(1+\eps)}{\log a}$, e si prende $\delta$ uguale al minimo dei due estremi in modulo; per $0\lt a\lt1$ si scrive $a^x=\left(\frac1a\right)^{-x}$.</li>
+<li><strong>$a^x$ è continua in $\R$</strong>: $a^x-a^{x_0}=a^{x_0}(a^{x-x_0}-1)\to0$.</li>
+<li><strong>Polinomi e razionali</strong>: $x\to x_0$ e l'algebra dei limiti danno $P(x)\to P(x_0)$, $\frac PQ\to\frac{P(x_0)}{Q(x_0)}$ se $Q(x_0)\ne0$.</li>
+<li><strong>$\sin$ e $\cos$</strong>: con le prostaferesi, $|\sin x-\sin x_0|=2\left|\cos\frac{x+x_0}2\right|\left|\sin\frac{x-x_0}2\right|\le|x-x_0|$, e si conclude con i carabinieri; uguale per il coseno.</li>
+<li><strong>$\operatorname{tg}$, $\operatorname{ctg}$</strong>: quozienti di funzioni continue, dove il denominatore non si annulla.</li>
+<li><strong>Inverse</strong>: per il teorema sulla continuità della funzione inversa sono continue $\log_ax$, $\arcsin$, $\arccos$, $\operatorname{arctg}$.</li></ol>
+Poi la continuità della composta estende il risultato a tutte le funzioni costruite componendo queste.` },
+
+{ id: '2.12', sez: 4, t: r`Enunciare il teorema sul limite della funzione composta. Dedurne il teorema sulla continuità della funzione composta.`,
+  a: r`<strong>Limite della composta (Lezione 13).</strong> Se $\lim_{x\to x_0}f(x)=y_0$ e $g$ è continua in $y_0$, allora $$\lim_{x\to x_0}g(f(x))=g\Bigl(\lim_{x\to x_0}f(x)\Bigr)=g(y_0).$$
+<strong>Corollario: continuità della composta.</strong> Se $f$ è continua in $x_0$ e $g$ è continua in $y_0=f(x_0)$, allora $g\circ f$ è continua in $x_0$.<br>
+<em>Dimostrazione:</em> per la continuità di $f$, $\lim_{x\to x_0}f(x)=f(x_0)=y_0$; poiché $g$ è continua in $y_0$, il teorema dà $\lim_{x\to x_0}g(f(x))=g(f(x_0))$, che è la definizione di continuità di $g\circ f$ in $x_0$.<br><br>
+<strong>Esempi:</strong> $\lim_{x\to0}\sin(x^2)=\sin0=0$; $\lim_{x\to0}e^{\operatorname{tg}x+1}=e$.<br>
+<small>Negli appunti la composta è indicata con $f\circ g$, ma la formula è $g[f(x)]$, cioè $g\circ f$ nella notazione della Lezione 4.</small>` },
+
+{ id: '2.13', sez: 4, t: r`Cosa si intende per punto di discontinuità? Illustrarne vari casi.`,
+  a: r`Sia $f:D\to\R$ e $x_0\in D$ di accumulazione per $D$. $x_0$ è un <strong>punto di discontinuità</strong> se $f$ non è continua in $x_0$.<br><br>
+<strong>Caso 1 · prima specie (salto):</strong> i limiti destro e sinistro esistono finiti ma diversi; il <strong>salto</strong> è $s(x_0)=\left|\lim_{x\to x_0^+}f-\lim_{x\to x_0^-}f\right|$. Esempio: $[x]$ in $x_0=1$, con limiti $0$ e $1$ e salto $1$.<br><br>
+<strong>Caso 2 · seconda specie:</strong> esistono i limiti destro e sinistro ma almeno uno è $\pm\infty$. Esempio: $f(x)=e^{1/x}$ per $x\ne0$, $f(0)=0$: da sinistra $0$, da destra $+\infty$.<br><br>
+<small>Gli appunti della Lezione 13 si fermano qui (con il grafico di $\frac1x$, il cui $0$ però non sta nel dominio): gli altri casi si aggiungono con la lezione successiva.</small>` },
+
+{ id: '2.19', sez: 4, t: r`Enunciare il teorema sulla continuità della funzione inversa. Discutere il ruolo delle ipotesi.`,
+  a: r`<strong>Teorema (Lezione 13).</strong> Sia $I\subseteq\R$ un <strong>intervallo</strong> e $f:I\to\R$ continua e invertibile. Allora $f(I)$ è un intervallo e $f^{-1}:f(I)\to I$ è continua.<br><br>
+<strong>L'ipotesi «intervallo» è necessaria.</strong> $f(x)=x$ su $[0,1)$, $f(x)=x-1$ su $[2,3]$: il dominio $D=[0,1)\cup[2,3]$ non è un intervallo, $f$ è continua e invertibile, $f(D)=[0,2]$, ma $$f^{-1}(y)=\begin{cases}y&0\le y\lt1\\y+1&1\le y\le2\end{cases}$$ non è continua in $y=1$: $\lim_{y\to1^-}f^{-1}(y)=1\ne2=f^{-1}(1)$.<br><br>
+<strong>Conseguenze:</strong> $\log_ax$ (inversa di $a^x$) e le inverse delle funzioni circolari ($\arcsin$, $\arccos$, $\operatorname{arctg}$) sono continue nei loro insiemi di definizione.` }
   ];
 
   const AM = (window.AM = window.AM || {});

@@ -304,6 +304,30 @@
         r`«Il viceversa è falso: $\sum\frac{(-1)^n}n$ converge per Leibniz, ma la serie dei moduli è l'armonica.»`
       ],
       chiudi: r`Fai capire a cosa serve: per studiare una serie a segno variabile si guarda prima la serie dei moduli.`
+    },
+
+    'T-asi': {
+      apri: r`«Definisco l'asintoto: $y=mx+q$ è asintoto per $x\to+\infty$ se $f(x)-mx-q\to0$. Dimostro che c'è se e solo se $\frac{f(x)}x$ e $f(x)-mx$ hanno limiti finiti.» Di' subito la parola «finiti».`,
+      passi: [
+        r`«Per il verso diretto parto dalla definizione: $f(x)-mx-q$ tende a zero.»`,
+        r`«Divido per $x$: $\frac{f(x)}x-m-\frac qx$ tende a zero, e siccome $\frac qx\to0$, $\frac{f(x)}x\to m$.» Spiega perché il quoziente per $x$ resta infinitesimo.`,
+        r`«$q$ lo leggo dalla definizione: $f(x)-mx\to q$.»`,
+        r`«Il viceversa: se i due limiti sono finiti, il secondo è proprio la definizione di asintoto.»`
+      ],
+      chiudi: r`Chiudi con il controesempio del prof: $2x+\sin x$ ha $m=2$, ma $f(x)-2x=\sin x$ non ha limite.`
+    },
+
+    'T-cont': {
+      apri: r`«Mostro che esponenziali, polinomi, seno e coseno sono continui, cioè che il limite in $x_0$ è il valore in $x_0$.» Elenca le famiglie prima di cominciare.`,
+      passi: [
+        r`«Per $a^x$ in zero, con $a>1$ e $\eps\lt1$, risolvo $1-\eps\lt a^x\lt1+\eps$ passando ai logaritmi.» Di' perché $\eps\lt1$: serve $1-\eps>0$.`,
+        r`«L'intervallo trovato non è simmetrico, quindi prendo come $\delta$ il più piccolo dei due estremi in modulo. Se $a\lt1$ uso la base $\frac1a$.»`,
+        r`«In un punto qualsiasi raccolgo $a^{x_0}$: resta $a^{x-x_0}-1$, che tende a zero per il passo precedente.»`,
+        r`«Per i polinomi basta sapere che $x\to x_0$ e usare l'algebra dei limiti.»`,
+        r`«Per il seno uso la prostaferesi e le stime $|\cos|\le1$, $|\sin t|\le|t|$: la differenza è al più $|x-x_0|$.»`,
+        r`«Concludo con i carabinieri; il coseno è uguale, la tangente è un quoziente.»`
+      ],
+      chiudi: r`Aggiungi che le inverse ($\log$, $\arcsin$, $\operatorname{arctg}$) sono continue per il teorema sulla funzione inversa.`
     }
   };
 

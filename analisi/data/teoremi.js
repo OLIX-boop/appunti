@@ -378,6 +378,36 @@ Se $\ell=1$ il criterio non decide.`,
       { cue: 'Il viceversa vale?', body: r`<strong>No.</strong> $\sum\frac{(-1)^n}{n}$ converge per il criterio di Leibniz, ma $\sum\left|\frac{(-1)^n}{n}\right|=\sum\frac1n$ è la serie armonica, che diverge: converge <em>semplicemente</em> ma non assolutamente.` }
     ],
     note: r`È il modo di trattare le serie a segno variabile con gli strumenti delle serie a termini positivi: si passa ai moduli e, se quella serie converge, si è finito. Se invece $\sum|a_n|$ diverge non si conclude nulla e si prova Leibniz. Esempio di riepilogo della Lezione 11: $\sum\frac{(\tan\alpha)^m\log m}{m^2}$ converge assolutamente per $|\tan\alpha|\le1$.`
+  },
+
+  /* ===================== SEZIONE 4 (seconda parte) ===================== */
+  {
+    id: 'T-asi', sez: 4, mark: '**', q: '2.9',
+    titolo: 'Asintoti obliqui: come si trovano $m$ e $q$',
+    enunciato: r`Sia $f:(c,+\infty)\to\R$. La retta $y=mx+q$ è <strong>asintoto</strong> per $f$ per $x\to+\infty$ se $\lim_{x\to+\infty}[f(x)-mx-q]=0$ (obliquo se $m\ne0$, orizzontale se $m=0$).<br><strong>Teorema.</strong> $f$ ha asintoto $y=mx+q$ per $x\to+\infty$ $\iff$ esistono <strong>finiti</strong> $$m=\lim_{x\to+\infty}\frac{f(x)}x\qquad\text{e}\qquad q=\lim_{x\to+\infty}\bigl[f(x)-mx\bigr].$$ Lo stesso per $x\to-\infty$.`,
+    idea: r`Se il grafico si avvicina a una retta, divisa per $x$ la funzione si avvicina alla pendenza; tolta la pendenza, resta la quota.`,
+    steps: [
+      { cue: r`«⇒»: da dove si parte?`, body: r`Dalla definizione di asintoto: $f(x)-mx-q\xrightarrow{x\to+\infty}0$.` },
+      { cue: r`«⇒»: come compare $\frac{f(x)}x$?`, body: r`Dividendo per $x$: $\dfrac{f(x)-mx-q}x=\dfrac{f(x)}x-m-\dfrac qx\to0$ (infinitesima per $\frac1x$). Poiché $\frac qx\to0$, necessariamente $\frac{f(x)}x-m\to0$, cioè $\frac{f(x)}x\to m$.` },
+      { cue: r`«⇒»: e $q$?`, body: r`Dalla definizione: $f(x)-mx-q\to0$ significa $f(x)-mx\to q$.` },
+      { cue: r`«⇐»`, body: r`Se $m$ e $q$ esistono finiti, la retta $y=mx+q$ è definita, e il secondo limite dice $f(x)-mx-q\to0$: è la definizione di asintoto. $\blacksquare$` }
+    ],
+    note: r`Il «finiti» conta: per $x^2$ si ha $\frac{f(x)}x\to+\infty$ e non c'è asintoto. Controesempio della Lezione 13: $f(x)=2x+\sin x$ ha $m=2$, ma $f(x)-2x=\sin x$ non ha limite, quindi l'asintoto non c'è. Gli asintoti verticali ($\lim_{x\to x_0}f=\pm\infty$) e orizzontali ($\lim_{x\to\pm\infty}f=b$) si definiscono direttamente con un limite.`
+  },
+  {
+    id: 'T-cont', sez: 4, mark: '**', q: '2.11',
+    titolo: 'Continuità delle funzioni elementari',
+    enunciato: r`<ul class="mb0"><li>Per $a>0$, $a^x$ è continua in $\R$.</li><li>Polinomi e funzioni razionali sono continui nel loro insieme di definizione.</li><li>$\sin x$ e $\cos x$ sono continue in $\R$; $\operatorname{tg}x$ e $\operatorname{ctg}x$ nel loro insieme di definizione.</li></ul>`,
+    idea: r`Per l'esponenziale si risolve la disuguaglianza della definizione con i logaritmi; per i polinomi basta l'algebra dei limiti; per seno e coseno una stima $|\sin x-\sin x_0|\le|x-x_0|$ e i carabinieri.`,
+    steps: [
+      { cue: r`$a^x$ in $0$, con $a>1$: quale disuguaglianza, e perché $\eps\lt1$?`, body: r`Fissato $0\lt\eps\lt1$, si vuole $1-\eps\lt a^x\lt1+\eps$. Con $\eps\lt1$ il primo membro è positivo e si può passare al logaritmo: $\log(1-\eps)\lt x\log a\lt\log(1+\eps)$, cioè $$x_1:=\frac{\log(1-\eps)}{\log a}\lt x\lt\frac{\log(1+\eps)}{\log a}=:x_2,\qquad x_1\lt0\lt x_2.$$` },
+      { cue: r`Quale $\delta$, visto che $(x_1,x_2)$ non è simmetrico? E se $0\lt a\lt1$?`, body: r`$\delta:=\min\{-x_1,x_2\}$: se $|x|\lt\delta$ allora $|a^x-a^0|\lt\eps$. Per $0\lt a\lt1$ si scrive $a^x=\left(\frac1a\right)^{-x}$ e si usa il caso $\frac1a>1$; per $a=1$ è immediato.` },
+      { cue: r`Da $0$ a un $x_0$ qualsiasi`, body: r`$a^x-a^{x_0}=a^{x_0}\bigl(a^{x-x_0}-1\bigr)\to0$, perché $y:=x-x_0\to0$ e $a^y\to a^0=1$ per il passo precedente.` },
+      { cue: r`Polinomi e razionali: che cosa basta?`, body: r`$\lim_{x\to x_0}x=x_0$ (con $\delta=\eps$) e l'<strong>algebra dei limiti</strong>: $x^m\to x_0^m$, $P(x)\to P(x_0)$, e $\frac{P(x)}{Q(x)}\to\frac{P(x_0)}{Q(x_0)}$ se $Q(x_0)\ne0$.` },
+      { cue: r`Seno: quale identità e quale stima?`, body: r`Prostaferesi: $\sin x-\sin x_0=2\cos\frac{x+x_0}2\sin\frac{x-x_0}2$. Con $|\cos|\le1$ e $|\sin t|\le|t|$: $$0\le|\sin x-\sin x_0|\le2\left|\sin\frac{x-x_0}2\right|\le|x-x_0|\xrightarrow{x\to x_0}0.$$` },
+      { cue: r`Quale teorema chiude? E il coseno, la tangente?`, body: r`I <strong>carabinieri</strong>: $|\sin x-\sin x_0|\to0$, cioè $\sin x\to\sin x_0$. Per il coseno: $\cos x-\cos x_0=-2\sin\frac{x+x_0}2\sin\frac{x-x_0}2$, stessa stima. La tangente è $\frac{\sin x}{\cos x}$: algebra dei limiti dove $\cos x_0\ne0$. $\blacksquare$` }
+    ],
+    note: r`Negli appunti della Lezione 13 le prostaferesi sono scritte con $\frac{x-x_0}2$ in entrambi i fattori: è un refuso, ma la stima non cambia. Per il teorema sulla continuità della funzione inversa sono continue anche $\log_ax$, $\arcsin$, $\arccos$, $\operatorname{arctg}$.`
   }
   ];
 

@@ -26,7 +26,11 @@ aggiungere una materia sono nel `README.md`.
   `gemini-3.5-flash` ha retto 11 pagine, poi `gemini-3.5-flash-lite` le altre, con qualità
   sufficiente ma qualche indice sbagliato in più. La quota gratuita vale circa 20 richieste al
   giorno **per modello**: un PDF lungo si divide su più modelli, perché lo script riprende dalle
-  pagine mancanti. Sulle pagine quasi vuote Gemini può inventare testo leggendo l'inchiostro
+  pagine mancanti. Il 10/11/2026 `gemini-3.8-flash` e `gemini-3.7-flash` davano solo 429/503,
+  `gemini-3.5-flash` funzionava ma a circa due minuti a pagina e `gemini-3.5-flash-lite` era
+  veloce: per lavorare in parallelo si copia il PDF nello scratchpad con due nomi diversi e si
+  lancia una metà delle pagine per copia, su modelli diversi (due processi sullo stesso `.md` si
+  cancellano a vicenda le pagine). Sulle pagine quasi vuote Gemini può inventare testo leggendo l'inchiostro
   dell'altra facciata: un esercizio senza enunciato si controlla sull'immagine (è successo con
   l'esercitazione del 14 ottobre, p. 14). Se lo script non è utilizzabile (manca la
   chiave, quota finita su tutti i modelli) si torna alle immagini in griglie 2×2 a risoluzione
@@ -39,7 +43,11 @@ aggiungere una materia sono nel `README.md`.
     radici $n$-esime con $w=Re^{i\varphi}$, $z=re^{i\theta}$, $h=0,\dots,m-1$ e il ragionamento
     $k=mq+h$; unicità del limite dimostrata con la disuguaglianza triangolare; dopo la permanenza
     del segno due corollari (Lezione 7): $a_n\ge0\Rightarrow a\ge0$ per assurdo, e la proprietà
-    del confronto dimostrata da quello applicato a $a_n-b_n$.
+    del confronto dimostrata da quello applicato a $a_n-b_n$. Seconda parte: limiti di funzioni
+    con $\delta=\delta_{\eps,x_0}$ e gli intorni $I_r(x_0)$, $I_r^\pm(x_0)$; le quindici
+    definizioni di limite numerate (1)–(15) come nella Lezione 12; $\nu_\eps>0$ per
+    $x\to+\infty$ e $\nu_\eps\lt0$ per $x\to-\infty$; permanenza del segno con $f(x)>\frac M2$;
+    $\log$ per il logaritmo naturale, $\operatorname{tg}$, $\operatorname{arctg}$.
   - Geometria: $\K$ per il campo, $\M_{\K}(m,n)$ per le matrici, $\tau_{\vv}$ per le traslazioni,
     gli assiomi di spazio vettoriale numerati (i)–(viii) nel suo ordine, «matrice
     **totalmente ridotta**» (non «forma a scala ridotta»), MEG-J in tre parti (MEG,
@@ -72,7 +80,16 @@ aggiungere una materia sono nel `README.md`.
   studente. Se una sezione cambia numero serve una migrazione una tantum (c'è l'esempio in
   `geometria/data/topics.js`, `geo:migrato-sez4`).
 - Ad ogni lezione nuova di Analisi si aggiunge la card della lezione nella sezione «Materiale» di
-  `analisi/index.html`.
+  `analisi/seconda.html` (fino alla Lezione 11 stavano in `analisi/index.html`).
+- **Seconda parte di Analisi** (dalla Lezione 12): casa `analisi/seconda.html`, sezioni
+  `analisi/sezioni/4-limiti.html` e seguenti, programma in `analisi/data/topics2.js`, registrato
+  come materia a sé (`analisi2`) perché il blocco «Analisi primo parziale» dell'hub resti fermo alle
+  Sezioni 1–3. Quiz, esercizi, quesiti, teoremi e `voce.js` restano nei file condivisi, con
+  `sez: 4` e seguenti; nelle pagine condivise (Teoremi, Quesiti, Esercizi) ogni sezione nuova
+  vuole il suo chip di filtro (e in `teoremi.html` anche l'elenco `[1, 2, 3, 4…]` dell'indice).
+  Le pagine della seconda parte hanno la topnav corta: Piano (`seconda.html`), le sezioni nuove,
+  Teoremi, Quesiti, Domande, Esercizi, Prima parte. I quesiti della seconda parte si scrivono man
+  mano che il prof spiega l'argomento, non tutti in anticipo.
 
 ### Struttura di una pagina di sezione
 

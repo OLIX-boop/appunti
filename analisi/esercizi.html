@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=20261021">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261110">
 </head>
 <body>
 
@@ -25,6 +25,7 @@
       <a href="sezioni/1-numeri.html">1 · Numeri</a>
       <a href="sezioni/2-successioni.html">2 · Successioni</a>
       <a href="sezioni/3-serie.html">3 · Serie</a>
+      <a href="sezioni/4-limiti.html">4 · Limiti</a>
       <a href="formulario.html">Formulario</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="quesiti.html">Quesiti</a>
@@ -56,6 +57,7 @@
       <button class="chip" data-v="1">1 · Numeri</button>
       <button class="chip" data-v="2">2 · Successioni</button>
       <button class="chip" data-v="3">3 · Serie</button>
+      <button class="chip" data-v="4">4 · Limiti</button>
     </div>
     <div class="chips" id="fDiff">
       <span class="small muted" style="align-self:center;margin-right:6px">Difficoltà:</span>
@@ -85,22 +87,22 @@
   </main>
 </div>
 
-<footer>Analisi Matematica 1 · Palestra esercizi della prima parte</footer>
+<footer>Analisi Matematica 1 · Palestra esercizi · Appunti non ufficiali</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../assets/js/materie.js?v=20261021"></script>
-<script src="data/topics.js?v=20261021"></script>
-<script src="data/esercizi.js?v=20261021"></script>
-<script src="../assets/js/plot.js?v=20261021"></script>
-<script src="../assets/js/app.js?v=20261106"></script>
+<script src="../assets/js/materie.js?v=20261110"></script>
+<script src="data/topics.js?v=20261110"></script>
+<script src="data/esercizi.js?v=20261110"></script>
+<script src="../assets/js/plot.js?v=20261110"></script>
+<script src="../assets/js/app.js?v=20261110"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var E = AM.ESERCIZI;
   var fs = 'all', fd = 'all', ft = 'all';
 
   // filtro sezione da querystring
-  var m = /[?&]sez=([123])/.exec(location.search);
+  var m = /[?&]sez=([1-4])/.exec(location.search);
   if (m) fs = m[1];
   // filtro tema da querystring (link dal formulario)
   var mt = /[?&]tema=([^&]+)/.exec(location.search);
