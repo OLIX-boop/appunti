@@ -56,6 +56,8 @@
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
       <a href="laboratorio.html">Laboratorio</a>
+      <a href="come-si-risolve.html">Come si risolve</a>
+      <a href="esami.html">Esame</a>
     </nav>
     <span class="topbar-spacer"></span>
     <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
@@ -154,7 +156,7 @@
       <li><strong>Per la teoria,</strong> un quarto d'ora fisso a settimana: due definizioni, una dimostrazione, un esempio inventato da te.</li>
       <li><strong>Autovalori e diagonalizzazione</strong> (Lezione 10, <a href="sezioni/9-diagonalizzazione.html">Sezione 9</a>): all'esame compaiono tanto quanto la matrice rappresentativa. Nei quiz tornano soprattutto la diagonalizzabilità con un parametro e le matrici simili.</li>
     </ol>
-    <p class="small muted">Gli esercizi guidati per tipo, basati su queste statistiche, saranno la prossima sezione del sito.</p>
+    <p class="small muted">Gli esercizi guidati per tipo, basati su queste statistiche, sono in <a href="come-si-risolve.html">Come si risolve</a>.</p>
 
     <div class="btnrow">
       <a class="btn primary" href="index.html">Torna al piano di Geometria</a>
@@ -228,7 +230,7 @@ document.addEventListener('am:ready', function () {
     tipi.map(function (t) {
       var d = E.tipi[t.k];
       return '<tr><td><strong>' + d.t + '</strong></td><td class="small">' + d.fare + '</td><td class="num">' + t.app + '/' + completi.length + '</td><td class="num">' + t.n + '</td>' +
-        '<td>' + (d.sez ? '<a href="sezioni/' + FILE[d.sez] + '.html">Sezione ' + d.sez + '</a>' : '<span class="badge">non ancora a lezione</span>') + '</td></tr>';
+        '<td>' + (d.sez ? '<a href="sezioni/' + FILE[d.sez] + '.html">Sezione ' + d.sez + '</a> · <a href="come-si-risolve.html#' + t.k + '">scheda</a>' : '<span class="badge">non ancora a lezione</span>') + '</td></tr>';
     }).join('') + '</tbody>';
   el('eserciziBox').innerHTML = '<ul class="lista-teoria mb0">' + E.esercizi.map(function (e) {
     return '<li>' + chip(e.prova) + ' Es. ' + e.n + ': ' + e.t + '</li>';

@@ -1,0 +1,66 @@
+/* ============================================================
+   «Come si risolve» (Geometria): alberi delle procedure e
+   allenatore di riconoscimento.
+   ============================================================ */
+
+/* ---------- frequenze in testa alla pagina ---------- */
+.met-indice { display: grid; gap: 8px; margin: 14px 0; padding: 0; list-style: none; }
+.met-indice li { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr) auto; gap: 10px; align-items: center;
+  padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-elev); }
+.met-indice .n { font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+.met-indice .quante { font-size: 13px; color: var(--text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.met-indice li.futuro { background: var(--bg-sunken); color: var(--text-muted); }
+.met-indice li.futuro .n { color: var(--text-faint); }
+
+/* ---------- albero della procedura ---------- */
+.albero { margin: 12px 0 18px; }
+.albero-radice { display: inline-block; font-weight: 700; padding: 6px 12px; border-radius: 999px;
+  background: var(--accent); color: #fff; font-size: 14.5px; margin-bottom: 4px; }
+.albero > .rami { margin-left: 14px; padding-left: 16px; border-left: 2px solid var(--accent-border); }
+.ramo { position: relative; margin: 10px 0; padding: 10px 13px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--bg-elev); }
+.ramo::before { content: ''; position: absolute; left: -17px; top: 19px; width: 16px; border-top: 2px solid var(--accent-border); }
+.ramo-se { font-weight: 700; margin: 0 0 4px; }
+.ramo-se::before { content: '? '; color: var(--accent); }
+.ramo-allora { margin: 0; }
+.ramo-allora > li { margin-bottom: 3px; }
+.ramo .rami { margin-top: 8px; padding-left: 14px; border-left: 2px dashed var(--border-strong); }
+.ramo .ramo { background: var(--bg); margin: 8px 0; }
+.ramo .ramo::before { left: -15px; width: 14px; border-top: 2px dashed var(--border-strong); }
+
+/* ---------- segnali nel testo ---------- */
+.segnali { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
+.segnali li { font-size: 13px; padding: 3px 10px; border-radius: 999px; background: var(--purple-soft);
+  border: 1px solid var(--purple-border); color: var(--purple); }
+
+/* ---------- allenatore ---------- */
+.all-carta { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev);
+  padding: 16px 18px; box-shadow: var(--shadow); }
+.all-testa { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between;
+  font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+.all-testo { font-size: 16px; line-height: 1.6; margin: 0 0 14px; padding: 12px 14px; border-radius: var(--radius-sm);
+  background: var(--bg-sunken); border-left: 3px solid var(--purple); }
+.all-q { font-weight: 700; margin: 14px 0 8px; }
+.all-opts { display: flex; flex-direction: column; gap: 8px; }
+.all-opts.riga { flex-direction: row; flex-wrap: wrap; }
+.all-opts.riga .all-opt { flex: 1 1 140px; width: auto; }
+.all-opt { display: block; width: 100%; text-align: left; font: inherit; font-size: 15px; line-height: 1.45; color: var(--text);
+  padding: 10px 13px; border: 1.5px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--bg); cursor: pointer; }
+.all-opt:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.all-opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.all-opt:disabled { cursor: default; opacity: .6; }
+.all-opt.giusta { border-color: var(--ok); background: var(--ok-soft); opacity: 1; }
+.all-opt.sbagliata { border-color: var(--danger); background: var(--danger-soft); opacity: 1; }
+.all-esito { margin: 10px 0 0; padding: 10px 13px; border-radius: var(--radius-sm); font-size: 14.5px; line-height: 1.55; }
+.all-esito.si { background: var(--ok-soft); border: 1px solid var(--ok-border); }
+.all-esito.no { background: var(--danger-soft); border: 1px solid var(--danger-border); }
+.all-esito p { margin: 0 0 6px; }
+.all-esito p:last-child { margin-bottom: 0; }
+.all-piede { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
+.all-punti { font-size: 13px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 640px) {
+  .all-carta { padding: 13px 13px; }
+  .albero > .rami { margin-left: 6px; padding-left: 12px; }
+  .ramo::before { left: -13px; width: 12px; }
+}

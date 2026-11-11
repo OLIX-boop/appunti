@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come si risolve — Geometria</title>
+<meta name="description" content="Gli esercizi d'esame di Geometria e Algebra Lineare per tipo, in ordine di frequenza: come riconoscerli, la procedura, un tema svolto, le trappole e un allenatore di riconoscimento.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/geometria-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../assets/css/metodo.css?v=20261111">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="index.html">Piano</a>
+      <a href="sezioni/0-preliminari.html">0 · Preliminari</a>
+      <a href="sezioni/1-sistemi.html">1 · Sistemi</a>
+      <a href="sezioni/2-matrici.html">2 · Matrici</a>
+      <a href="sezioni/3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="sezioni/4-complessi.html">4 · Complessi</a>
+      <a href="sezioni/5-lineari.html">5 · Lineari</a>
+      <a href="sezioni/6-posizione.html">6 · Posizione</a>
+      <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
+      <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
+      <a href="sezioni/9-diagonalizzazione.html">9 · Diagonalizzazione</a>
+      <a href="teoremi.html">Teoremi</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="laboratorio.html">Laboratorio</a>
+      <a href="come-si-risolve.html">Come si risolve</a>
+      <a href="esami.html">Esame</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Come si risolve</h4>
+    <a href="#ordine">I tipi, in ordine di frequenza</a>
+    <a href="#allenatore">Allenatore: che tipo è?</a>
+    <a href="#mappa">1 · Applicazioni lineari</a>
+    <a href="#mappa-tema" class="sub">Tema svolto: gennaio 2025</a>
+    <a href="#sottospazi">2 · Sottospazi: ∩ e +</a>
+    <a href="#sottospazi-tema" class="sub">Tema svolto: settembre 2025</a>
+    <a href="#rappresentativa">3 · Matrice rappresentativa</a>
+    <a href="#rappresentativa-tema" class="sub">Tema svolto: febbraio 2025</a>
+    <a href="#autovalori">4 · Autovalori</a>
+    <a href="#autovalori-tema" class="sub">Tema svolto: gennaio 2025</a>
+    <a href="#geometria">5 · Rette e piani</a>
+    <a href="#geometria-tema" class="sub">Tema svolto: febbraio 2025</a>
+    <a href="#prossime">In arrivo</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Geometria e Algebra Lineare · Parte B dell'esame</div>
+      <h1>Come si risolve</h1>
+      <p class="lead">Negli esercizi d'esame la parte difficile è capire <strong>che cosa</strong> si sta chiedendo: i conti poi sono quelli di sempre. Qui ogni tipo di esercizio ha una scheda, in ordine di frequenza nei temi del prof. Ogni scheda ha i segnali per riconoscerlo, la procedura ad albero, un tema svolto e gli esercizi.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Come usarla</div>
+      <ol class="mb0">
+        <li>Comincia dall'<a href="#allenatore">allenatore</a>: per ogni punto d'esame scegli il tipo e la prima mossa. Gli errori ti dicono quale scheda rileggere.</li>
+        <li>In una scheda, prima di aprire il tema svolto prova a percorrere l'albero da solo: ogni passo coperto è la domanda che ti devi fare.</li>
+        <li>Gli esercizi «Allenati» sono temi d'esame veri, con suggerimenti e soluzione verificata. Li trovi anche nella <a href="esercizi.html">Palestra</a>, con il tema «Tema d'esame».</li>
+      </ol>
+    </div>
+    <p class="small muted">Fonte: le nove prove raccolte in <a href="esami.html">Cosa esce all'esame</a> (2024–2026). Le procedure sono quelle che il prof usa nelle sue soluzioni.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="ordine">I tipi, in ordine di frequenza</h2>
+    <p>Quante volte ogni tipo compare nei 20 esercizi di Parte B delle prove raccolte. Un esercizio ne mescola spesso due: la somma supera 20.</p>
+    <ul class="met-indice">
+      <li><span class="n">1</span><a href="#mappa">Applicazioni lineari: linearità, nucleo, immagine</a><span class="quante">7 esercizi</span></li>
+      <li><span class="n">2</span><a href="#sottospazi">Sottospazi: basi, intersezione, somma</a><span class="quante">5 esercizi</span></li>
+      <li><span class="n">3</span><a href="#rappresentativa">Matrice rappresentativa e cambio di base</a><span class="quante">4 esercizi</span></li>
+      <li><span class="n">4</span><a href="#autovalori">Autovalori e diagonalizzazione</a><span class="quante">4 esercizi</span></li>
+      <li><span class="n">5</span><a href="#geometria">Rette, piani, sottospazi affini</a><span class="quante">3 esercizi</span></li>
+      <li class="futuro"><span class="n">·</span><span>Prodotto scalare, Gram-Schmidt, proiezioni</span><span class="quante">3 · in arrivo</span></li>
+      <li class="futuro"><span class="n">·</span><span>Coniche e quadriche</span><span class="quante">3 · in arrivo</span></li>
+      <li class="futuro"><span class="n">·</span><span>Matrici simmetriche e forme quadratiche</span><span class="quante">2 · in arrivo</span></li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="allenatore">Allenatore: che tipo è?</h2>
+    <p>Diciannove punti presi dai temi d'esame, in ordine casuale. Per ognuno scegli prima il <strong>tipo</strong>, poi la <strong>prima mossa</strong>: è proprio il momento in cui all'esame si perde tempo. Il punteggio non viene salvato.</p>
+    <div id="allenatoreBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="mappa">1 · Applicazioni lineari</h2>
+    <p><strong>Il tipo più frequente:</strong> 7 esercizi su 20, in 7 prove su 9. Copre la <a href="sezioni/5-lineari.html">Sezione 5</a>.</p>
+    <h3 id="mappa-segnali">Come lo riconosci</h3>
+    <p class="mb0">Il testo definisce una funzione con una formula, quasi sempre fra spazi di matrici o di polinomi, e chiede di studiarla.</p>
+    <ul class="segnali">
+      <li>$L(A):=A\vv$</li><li>$T(A):=CAC^{-1}$</li><li>$L(X):=AX+X^{T}A$</li><li>$\tau(M):=M^{T}$</li>
+      <li>«dimostrare che è lineare»</li><li>«nucleo e immagine»</li><li>«iniettiva? suriettiva?»</li><li>«determinare $L(H)$»</li><li>«tutti gli $\vx$ con $L(\vx)=\vb$»</li>
+    </ul>
+    <h3 id="mappa-albero">La procedura</h3>
+    <div class="albero">
+      <span class="albero-radice">Che cosa ti chiede?</span>
+      <div class="rami">
+        <div class="ramo"><p class="ramo-se">Che è lineare</p>
+          <p class="ramo-allora">Scrivi $L(\alpha X+\beta Y)$ e arriva a $\alpha L(X)+\beta L(Y)$ con le proprietà delle operazioni: distributività del prodotto, scalari che escono, $(X+Y)^{T}=X^{T}+Y^{T}$. Un esempio numerico non dimostra nulla.</p></div>
+        <div class="ramo"><p class="ramo-se">Il nucleo</p>
+          <ol class="ramo-allora"><li>Calcola $L$ sull'elemento generico: la matrice con $a,b,c,d$, il polinomio con $a,b,c$.</li>
+            <li>Poni il risultato uguale a zero: è un sistema omogeneo.</li>
+            <li>Una soluzione per ogni variabile libera dà una base; riscrivila come matrici o polinomi.</li></ol></div>
+        <div class="ramo"><p class="ramo-se">L'immagine</p>
+          <div class="rami">
+            <div class="ramo"><p class="ramo-se">Basta la dimensione</p>
+              <p class="ramo-allora">Rango + nullità: $\dim\operatorname{im}L=\dim V-\dim\ker L$. Se viene la dimensione del codominio, $\operatorname{im}L$ è tutto il codominio.</p></div>
+            <div class="ramo"><p class="ramo-se">Serve una base</p>
+              <p class="ramo-allora">Le immagini di una base del dominio generano $\operatorname{im}L$. Passa alle coordinate, riduci a scala e tieni le colonne dei pivot.</p></div>
+          </div></div>
+        <div class="ramo"><p class="ramo-se">Iniettiva, suriettiva, biiettiva</p>
+          <p class="ramo-allora">Iniettiva $\iff\ker L=\{\vzero\}$. Suriettiva $\iff\dim\operatorname{im}L=\dim$ del codominio. Se dominio e codominio hanno la stessa dimensione, una delle due basta per l'altra.</p></div>
+        <div class="ramo"><p class="ramo-se">L'immagine di un sottospazio, $L(H)$</p>
+          <p class="ramo-allora">Prendi dei generatori di $H$: $L(H)=\operatorname{span}\{L(\vv_1),\dots,L(\vv_k)\}$.</p></div>
+        <div class="ramo"><p class="ramo-se">Tutti gli $\vx$ con $L(\vx)=\vb$</p>
+          <p class="ramo-allora">Una soluzione particolare più il nucleo. Se $\vb$ è una colonna della matrice, la soluzione particolare si vede a occhio.</p></div>
+      </div>
+    </div>
+
+    <h3 id="mappa-tema">Tema svolto: gennaio 2025, esercizio 1</h3>
+    <div class="box ex">
+      <div class="box-title">Il testo</div>
+      <p>Siano $\vv:=(1,1)\in\R^{2}$, $L:\M_{\R}(2,2)\to\R^{2}$, $L(A):=A\vv$, e $H:=\{A\in\M_{\R}(2,2):\ A^{T}=A\}$.</p>
+      <p class="mb0">1.1 Dimostrare che $L$ è lineare. &nbsp;1.2 Determinare $\operatorname{im}(L)$ e $\ker(L)$. &nbsp;1.3 Determinare $L(H)$. &nbsp;1.4 Determinare $\dim(H+\ker L)$ e $\dim(H\cap\ker L)$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Prova da solo, poi apri un passo alla volta</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.1 · Quale ramo? Che cosa si scrive?</div>
+            <div class="step-content">Il ramo «è lineare». Per le proprietà del prodotto di matrici:
+            $$L(\alpha A_1+\beta A_2)=(\alpha A_1+\beta A_2)\vv=\alpha A_1\vv+\beta A_2\vv=\alpha L(A_1)+\beta L(A_2).$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.2 · Come si calcola $L$ su una matrice generica?</div>
+            <div class="step-content">$\begin{bmatrix}a&b\\c&d\end{bmatrix}\begin{bmatrix}1\\1\end{bmatrix}=\begin{bmatrix}a+b\\c+d\end{bmatrix}$. Il nucleo è $a+b=0$, $c+d=0$:
+            $$\ker L=\operatorname{span}\left\{\begin{bmatrix}1&-1\\0&0\end{bmatrix},\begin{bmatrix}0&0\\1&-1\end{bmatrix}\right\},\qquad\dim\ker L=2.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.2 · E l'immagine: serve una base o basta la dimensione?</div>
+            <div class="step-content">Basta la dimensione. Rango + nullità: $\dim\operatorname{im}L=4-2=2=\dim\R^{2}$, quindi $\operatorname{im}L=\R^{2}$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.3 · Come si trova $L(H)$?</div>
+            <div class="step-content">$H=\left\{\begin{bmatrix}a&b\\b&d\end{bmatrix}\right\}=\operatorname{span}\{A_1,A_2,A_3\}$ con $A_1=\begin{bmatrix}1&0\\0&0\end{bmatrix}$, $A_2=\begin{bmatrix}0&1\\1&0\end{bmatrix}$, $A_3=\begin{bmatrix}0&0\\0&1\end{bmatrix}$. Le immagini dei generatori sono $(1,0)$, $(1,1)$, $(0,1)$, quindi $L(H)=\R^{2}$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.4 · Prima l'intersezione: come si scrive $H\cap\ker L$?</div>
+            <div class="step-content">Mettendo insieme le equazioni: $a+b=0$, $c+d=0$ (nucleo) e $c-b=0$ (simmetrica). Il sistema ha rango $3$ su $4$ incognite: $\dim(H\cap\ker L)=1$, generato da $\begin{bmatrix}-1&1\\1&-1\end{bmatrix}$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.4 · E la somma?</div>
+            <div class="step-content">Grassmann: $\dim(H+\ker L)=3+2-1=4=\dim\M_{\R}(2,2)$, quindi $H+\ker L$ è tutto lo spazio. <span class="small muted">Nella soluzione del prof la catena di uguaglianze è scritta «$=1=3+2-1=4$»: l'$1$ in mezzo è un refuso.</span></div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box trap">
+      <div class="box-title">✗ Trappole</div>
+      <ul class="mb0">
+        <li><strong>Verificare la linearità con un esempio.</strong> Un esempio può solo smentirla; per dimostrarla serve il caso generale.</li>
+        <li><strong>Dimenticare di tornare indietro.</strong> Se il dominio è di matrici o polinomi, la base del nucleo va scritta come matrici o polinomi, non come vettori di $\R^{n}$.</li>
+        <li><strong>Confondere nucleo e immagine della matrice.</strong> Il nucleo sono le soluzioni di $A\vx=\vzero$; l'immagine è lo spazio delle colonne.</li>
+        <li><strong>Dire «suriettiva» senza guardare il codominio.</strong> Si confronta $\dim\operatorname{im}L$ con la dimensione del codominio, non del dominio.</li>
+        <li><strong>Dare una sola soluzione di $L(\vx)=\vb$</strong> quando il nucleo non è banale.</li>
+      </ul>
+    </div>
+    <h3 id="mappa-esercizi">Allenati</h3>
+    <div data-ids="G5.30, G5.31"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="sottospazi">2 · Sottospazi: basi, intersezione, somma</h2>
+    <p>5 esercizi su 20, compresa la tua prova in itinere. Copre la <a href="sezioni/7-grassmann.html">Sezione 7</a>, con i metodi della <a href="sezioni/5-lineari.html#basi-span">Sezione 5</a>.</p>
+    <h3 id="sottospazi-segnali">Come lo riconosci</h3>
+    <p class="mb0">Due sottospazi: di solito uno è dato con dei <strong>generatori</strong> e l'altro con delle <strong>condizioni</strong>. Le domande sono sempre le stesse.</p>
+    <ul class="segnali">
+      <li>$U:=\operatorname{span}\{\dots\}$</li><li>$W:=\{p:\ p(1)=2p(0)\}$</li><li>$\{A:\ A^{T}=A\}$</li><li>$x_1+\dots+x_4=0$</li>
+      <li>«base e dimensione»</li><li>$U\cap W$</li><li>$U+W$</li><li>«equazione cartesiana di $U$»</li><li>«scrivere come somma, è unica?»</li>
+    </ul>
+    <h3 id="sottospazi-albero">La procedura</h3>
+    <div class="albero">
+      <span class="albero-radice">Che cosa ti chiede?</span>
+      <div class="rami">
+        <div class="ramo"><p class="ramo-se">Una base di uno span</p>
+          <p class="ramo-allora">Vettori (o coordinate) in colonna, riduci a scala, tieni le colonne dei pivot.</p></div>
+        <div class="ramo"><p class="ramo-se">Una base di un sottospazio dato con condizioni</p>
+          <p class="ramo-allora">È il nucleo di una matrice. Per polinomi e matrici, prima traduci la condizione sui coefficienti ($p(1)=2p(0)$ diventa $-a+b+c=0$); poi una soluzione per ogni variabile libera.</p></div>
+        <div class="ramo"><p class="ramo-se">Le equazioni cartesiane di uno span</p>
+          <p class="ramo-allora">Riduci a scala $[\vv_1|\dots|\vv_k|\vx]$ e imponi che l'ultima colonna non abbia pivot: le righe nulle a sinistra danno le equazioni. In alternativa, trova $U^{\perp}$: i suoi vettori sono i coefficienti.</p></div>
+        <div class="ramo"><p class="ramo-se">$U\cap W$</p>
+          <div class="rami">
+            <div class="ramo"><p class="ramo-se">Uno con generatori, l'altro con equazioni</p>
+              <p class="ramo-allora">Scrivi l'elemento generico di quello con generatori e imponi le equazioni dell'altro.</p></div>
+            <div class="ramo"><p class="ramo-se">Tutti e due con equazioni</p>
+              <p class="ramo-allora">Metti a sistema tutte le equazioni.</p></div>
+            <div class="ramo"><p class="ramo-se">Tutti e due con generatori</p>
+              <p class="ramo-allora">Prima trova le equazioni di uno dei due, poi sei nel primo caso.</p></div>
+          </div></div>
+        <div class="ramo"><p class="ramo-se">$U+W$</p>
+          <p class="ramo-allora">Unisci i <strong>generatori</strong> ed estrai una base. Per la sola dimensione: Grassmann, $\dim(U+W)=\dim U+\dim W-\dim(U\cap W)$.</p></div>
+        <div class="ramo"><p class="ramo-se">Scrivere un vettore come somma, ed è unica?</p>
+          <p class="ramo-allora">La scrittura esiste se il vettore sta in $U+W$; è unica se e solo se $U\cap W=\{\vzero\}$.</p></div>
+      </div>
+    </div>
+
+    <h3 id="sottospazi-tema">Tema svolto: settembre 2025, esercizio 2</h3>
+    <div class="box ex">
+      <div class="box-title">Il testo</div>
+      <p>In $\R[t]_{\le2}$ si considerino $U:=\{p(t):\ p(1)=2p(0)\}$ e $W:=\operatorname{span}\{t-1,\ t^{2}\}$.</p>
+      <p class="mb0">2.1 Base e dimensione di $U$ e $W$. &nbsp;2.2 Base e dimensione di $U\cap W$ e $U+W$. &nbsp;2.3 Scrivere, se possibile, $p(t)=t$ come somma di un polinomio di $U$ e di uno di $W$. In modo unico? Perché?</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Prova da solo, poi apri un passo alla volta</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.1 · $W$: servono conti?</div>
+            <div class="step-content">No: $t-1$ e $t^{2}$ non sono uno multiplo dell'altro, quindi sono indipendenti. Base $\{t-1,t^{2}\}$, $\dim W=2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.1 · Come si traduce $p(1)=2p(0)$?</div>
+            <div class="step-content">Con $p=a+bt+ct^{2}$: $p(1)=a+b+c$ e $p(0)=a$, quindi la condizione è $-a+b+c=0$. È il nucleo di $[-1\ \ 1\ \ 1]$: base $(1,1,0)$, $(1,0,1)$, cioè $\{1+t,\ 1+t^{2}\}$, e $\dim U=2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.2 · Quale ramo per $U\cap W$?</div>
+            <div class="step-content">$W$ ha generatori, $U$ una condizione. Generico di $W$: $p=\alpha(t-1)+\beta t^{2}$, con $p(1)=\beta$ e $p(0)=-\alpha$. La condizione diventa $\beta+2\alpha=0$, cioè $(\alpha,\beta)=(-1,2)$:
+            $$U\cap W=\operatorname{span}\{2t^{2}-t+1\},\qquad\dim(U\cap W)=1.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.2 · E $U+W$?</div>
+            <div class="step-content">Grassmann: $\dim(U+W)=2+2-1=3=\dim\R[t]_{\le2}$. Quindi $U+W$ è tutto lo spazio, con base $\{1,t,t^{2}\}$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.3 · Esiste la scrittura? È unica?</div>
+            <div class="step-content">Esiste, perché $U+W$ è tutto: $t=\frac12(t-1)+\frac12(1+t)$, con il primo pezzo in $W$ e il secondo in $U$ (controllo: $p(1)=1=2\cdot\frac12=2p(0)$). Non è unica, perché $U\cap W\ne\{0\}$: aggiungendo $2t^{2}-t+1$ a un pezzo e togliendolo all'altro si ottiene un'altra scrittura.</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box trap">
+      <div class="box-title">✗ Trappole</div>
+      <ul class="mb0">
+        <li><strong>Unire le equazioni per trovare la somma.</strong> Unendo le equazioni si trova l'intersezione; per la somma si uniscono i generatori.</li>
+        <li><strong>Cercare l'intersezione fra i vettori delle due basi.</strong> Nel tema svolto le basi non hanno nulla in comune, eppure $U\cap W$ è una retta.</li>
+        <li><strong>$\dim(U+W)=\dim U+\dim W$.</strong> Si toglie sempre $\dim(U\cap W)$.</li>
+        <li><strong>Dedurre l'unicità da $U+W=V$.</strong> $U+W=V$ dà l'esistenza; l'unicità viene da $U\cap W=\{\vzero\}$.</li>
+        <li><strong>Lasciare la risposta in coordinate</strong> quando il testo parla di polinomi.</li>
+      </ul>
+    </div>
+    <h3 id="sottospazi-esercizi">Allenati</h3>
+    <div data-ids="G7.13, G7.14"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="rappresentativa">3 · Matrice rappresentativa e cambio di base</h2>
+    <p>4 esercizi su 20, spesso nello stesso esercizio con gli autovalori. Copre la <a href="sezioni/5-lineari.html#rappresentativa">Sezione 5</a>.</p>
+    <h3 id="rappresentativa-segnali">Come lo riconosci</h3>
+    <ul class="segnali">
+      <li>«matrice rappresentativa rispetto a…»</li><li>«la stessa base nel dominio e nel codominio»</li><li>una base diversa dalla canonica</li>
+      <li>«verificare che $B$ è una base»</li><li>«le due matrici sono simili?»</li><li>«l'endomorfismo che ha matrice $A$ rispetto a $B$»</li>
+    </ul>
+    <h3 id="rappresentativa-albero">La procedura</h3>
+    <div class="albero">
+      <span class="albero-radice">Che cosa ti chiede?</span>
+      <div class="rami">
+        <div class="ramo"><p class="ramo-se">La matrice rispetto a basi date</p>
+          <p class="ramo-allora">Colonna $j$ = coordinate di $L(\vb_j)$ rispetto alla base del <strong>codominio</strong>. La matrice ha tante righe quanto la dimensione del codominio e tante colonne quanto quella del dominio.</p></div>
+        <div class="ramo"><p class="ramo-se">La matrice di un endomorfismo in un'altra base</p>
+          <p class="ramo-allora">Se hai già $A$ nella base canonica: $A_B=S^{-1}AS$, con i vettori di $B$ nelle colonne di $S$. Altrimenti calcola $T(\vb_j)$ e trovane le coordinate rispetto a $B$, un sistema per colonna.</p></div>
+        <div class="ramo"><p class="ramo-se">Le due matrici sono simili?</p>
+          <p class="ramo-allora">Due matrici della stessa mappa in basi diverse sono simili, e la $S$ di sopra realizza la similitudine. Per due matrici date a caso: prima traccia, determinante e polinomio caratteristico, poi le molteplicità geometriche.</p></div>
+        <div class="ramo"><p class="ramo-se">Nucleo e immagine di $L$ data la sua matrice rispetto a $B$</p>
+          <p class="ramo-allora">Calcola $\ker A$ e $\operatorname{Col}(A)$ in $\K^{n}$, poi leggi ogni vettore come coordinate rispetto a $B$ e ricostruisci matrici o polinomi.</p></div>
+        <div class="ramo"><p class="ramo-se">Verificare che un insieme è una base</p>
+          <p class="ramo-allora">$n$ elementi in uno spazio di dimensione $n$: basta $\det\ne0$ (o rango $n$) della matrice delle loro coordinate.</p></div>
+      </div>
+    </div>
+
+    <h3 id="rappresentativa-tema">Tema svolto: febbraio 2025, esercizio 2</h3>
+    <div class="box ex">
+      <div class="box-title">Il testo</div>
+      <p>Si consideri l'endomorfismo $T:\R^{3}\to\R^{3}$, $T(x,y,z):=(x+y+z,\ y+z,\ z)$.</p>
+      <p class="mb0">2.1 Trovare la matrice di $T$ rispetto alla base canonica. &nbsp;2.2 Stabilire se $T$ è diagonalizzabile. &nbsp;2.3 Trovare la matrice di $T$ rispetto alla base $B:=\{(1,2,0),(1,1,1),(1,1,0)\}$, la stessa nel dominio e nel codominio. &nbsp;2.4 Stabilire se le matrici di 2.1 e 2.3 sono simili; in caso affermativo scrivere la matrice che realizza la similitudine.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Prova da solo, poi apri un passo alla volta</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.1 · Che cosa va in colonna?</div>
+            <div class="step-content">Le immagini della base canonica: $T(\mathbf e_1)=(1,0,0)$, $T(\mathbf e_2)=(1,1,0)$, $T(\mathbf e_3)=(1,1,1)$, quindi
+            $$A=\begin{bmatrix}1&1&1\\0&1&1\\0&0&1\end{bmatrix}.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.2 · Questa domanda di quale scheda è?</div>
+            <div class="step-content">Della <a href="#autovalori">scheda 4</a>. $A$ è triangolare con diagonale $1,1,1$: l'unico autovalore è $1$, con $m_a(1)=3$. $A-I$ ha rango $2$, quindi $m_g(1)=1\lt3$: $T$ non è diagonalizzabile. (Il prof aggiunge un'altra strada: se lo fosse, l'unico autospazio sarebbe tutto $\R^{3}$ e $T$ sarebbe l'identità.)</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.3 · Quale formula, e chi è $S$?</div>
+            <div class="step-content">$A_B=S^{-1}AS$, con i vettori di $B$ in colonna:
+            $$S=\begin{bmatrix}1&1&1\\2&1&1\\0&1&0\end{bmatrix},\quad S^{-1}=\begin{bmatrix}-1&1&0\\0&0&1\\2&-1&-1\end{bmatrix}\ \text{(con il MEG-J)},\quad A_B=\begin{bmatrix}-1&-1&-1\\0&1&0\\4&3&3\end{bmatrix}.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.3 · Come si controlla senza rifare tutto?</div>
+            <div class="step-content">La prima colonna di $A_B$ dice che $T(\vb_1)=-\vb_1+0\,\vb_2+4\,\vb_3$. Infatti $T(1,2,0)=(3,2,0)$ e $-(1,2,0)+4(1,1,0)=(3,2,0)$ ✓.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.4 · Sono simili?</div>
+            <div class="step-content">Sì: sono le matrici della stessa $T$ in due basi, e $A_B=S^{-1}AS$ con la $S$ scritta sopra.</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box trap">
+      <div class="box-title">✗ Trappole</div>
+      <ul class="mb0">
+        <li><strong>Coordinate in riga.</strong> Si ottiene la trasposta. La regola: colonna $j$ = coordinate dell'immagine del vettore $j$.</li>
+        <li><strong>$SAS^{-1}$ al posto di $S^{-1}AS$.</strong> Con $S$ che ha in colonna i vettori della base nuova, la formula è $S^{-1}AS$.</li>
+        <li><strong>Lasciare $T(\vb_j)$ in coordinate canoniche</strong> quando la base del codominio è $B$.</li>
+        <li><strong>Sbagliare la forma della matrice.</strong> $\dim$ codominio righe, $\dim$ dominio colonne: $L:W\to\M_{\R}(2,2)$ con $\dim W=3$ dà una $4\times3$.</li>
+        <li><strong>Rispondere con vettori di $\R^{n}$</strong> quando nucleo e immagine sono fatti di matrici o polinomi.</li>
+      </ul>
+    </div>
+    <h3 id="rappresentativa-esercizi">Allenati</h3>
+    <div data-ids="G5.32, G5.33"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="autovalori">4 · Autovalori e diagonalizzazione</h2>
+    <p>4 esercizi su 20, più 8 domande nei quiz delle prove raccolte. Copre la <a href="sezioni/9-diagonalizzazione.html">Sezione 9</a>.</p>
+    <h3 id="autovalori-segnali">Come lo riconosci</h3>
+    <ul class="segnali">
+      <li>«autovalori e autovettori»</li><li>«autospazi»</li><li>«diagonalizzabile»</li><li>«per quali valori di $h$»</li>
+      <li>«simile a una diagonale»</li><li>$L^{\circ5}(p)$</li><li>$A^{k}$</li><li>una mappa data a parole: trasposta, proiezione, rotazione</li>
+    </ul>
+    <h3 id="autovalori-albero">La procedura</h3>
+    <div class="albero">
+      <span class="albero-radice">Che cosa ti chiede?</span>
+      <div class="rami">
+        <div class="ramo"><p class="ramo-se">Gli autovalori</p>
+          <p class="ramo-allora">Radici di $\det(A-\lambda I)=0$; se $A$ è triangolare stanno sulla diagonale. Controllo: somma = traccia, prodotto = determinante.</p></div>
+        <div class="ramo"><p class="ramo-se">Autospazi e autovettori</p>
+          <p class="ramo-allora">Per ogni $\lambda$: MEG su $A-\lambda I$, base dalle variabili libere, controllo $A\vv=\lambda\vv$. Per una mappa su polinomi o matrici, ritraduci le coordinate.</p></div>
+        <div class="ramo"><p class="ramo-se">Diagonalizzabile?</p>
+          <div class="rami">
+            <div class="ramo"><p class="ramo-se">Autovalori tutti distinti</p>
+              <p class="ramo-allora">Sì, senza altri conti (su $\R$ se sono reali).</p></div>
+            <div class="ramo"><p class="ramo-se">Un autovalore multiplo</p>
+              <p class="ramo-allora">Solo per lui: $m_g=n-r(A-\lambda I)$ contro $m_a$. Regolare per tutti $\Rightarrow$ diagonalizzabile.</p></div>
+            <div class="ramo"><p class="ramo-se">Con un parametro</p>
+              <p class="ramo-allora">Trova per quali valori due autovalori coincidono; solo per quei valori controlla $m_g$.</p></div>
+          </div></div>
+        <div class="ramo"><p class="ramo-se">$S$ e $D$</p>
+          <p class="ramo-allora">Basi degli autospazi nelle colonne di $S$, autovalori nello stesso ordine in $D$. Controllo: $AS=SD$.</p></div>
+        <div class="ramo"><p class="ramo-se">$L^{\circ n}(\vv)$ o $A^{k}$</p>
+          <p class="ramo-allora">Scrivi $\vv$ come combinazione di autovettori: $L^{\circ n}$ moltiplica ogni pezzo per $\lambda^{n}$. Per $A^{k}$: $SD^{k}S^{-1}$.</p></div>
+        <div class="ramo"><p class="ramo-se">Una mappa data a parole</p>
+          <p class="ramo-allora">Cerca direttamente i vettori con $L(\vv)=\lambda\vv$ ragionando sulla definizione: per la trasposta sono le simmetriche ($\lambda=1$) e le antisimmetriche ($\lambda=-1$).</p></div>
+      </div>
+    </div>
+
+    <h3 id="autovalori-tema">Tema svolto: gennaio 2025, esercizio 2</h3>
+    <div class="box ex">
+      <div class="box-title">Il testo</div>
+      <p>Sia $V:=P_2$ e $L:V\to V$, $L(p(t)):=(t+1)p'(t)+(t^{2}+1)p''(t)$.</p>
+      <p class="mb0">2.1 Trovare la matrice $A$ di $L$ rispetto alla base $\{1,t,t^{2}\}$. &nbsp;2.2 Autovalori e autovettori di $A$. &nbsp;2.3 Autovalori e autovettori di $L$. &nbsp;2.4 Calcolare $L^{\circ5}(3+3t+3t^{2})$, dove $L^{\circ n}$ è $L$ applicata $n$ volte. (Suggerimento: scrivere il polinomio come combinazione di autovettori; $4^{5}=1024$.)</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Prova da solo, poi apri un passo alla volta</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.1 · Che cosa va in colonna?</div>
+            <div class="step-content">$L(1)=0$, $L(t)=t+1$, $L(t^{2})=(t+1)\,2t+(t^{2}+1)\,2=2+2t+4t^{2}$. Le coordinate in colonna:
+            $$A=\begin{bmatrix}0&1&2\\0&1&2\\0&0&4\end{bmatrix}.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.2 · Serve calcolare un determinante?</div>
+            <div class="step-content">No, $A$ è triangolare: autovalori $0$, $1$, $4$, distinti, quindi $A$ è anche diagonalizzabile. Autospazi: $\lambda=0$ dà $(1,0,0)$; $\lambda=1$ dà $(1,1,0)$; per $\lambda=4$, $A-4I=\begin{bmatrix}-4&1&2\\0&-3&2\\0&0&0\end{bmatrix}$ dà $(2,2,3)$.
+            Controllo: $A(2,2,3)=(8,8,12)=4\,(2,2,3)$ ✓.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.3 · Che differenza c'è fra gli autovettori di $A$ e quelli di $L$?</div>
+            <div class="step-content">Gli autovalori sono gli stessi. Gli autovettori di $L$ sono i polinomi che hanno quelle coordinate: $q_1=1$, $q_2=1+t$, $q_3=2+2t+3t^{2}$. <span class="small muted">Nella soluzione del prof $q_3$ è scritto $2+2t+3t^{3}$: è $3t^{2}$, perché le coordinate sono rispetto a $\{1,t,t^{2}\}$.</span></div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">2.4 · Qual è la mossa che evita cinque derivate?</div>
+            <div class="step-content">$3+3t+3t^{2}=(1+t)+(2+2t+3t^{2})=q_2+q_3$. Per la linearità, e perché $q_2,q_3$ sono autovettori con autovalori $1$ e $4$:
+            $$L^{\circ5}(q_2+q_3)=1^{5}q_2+4^{5}q_3=(1+t)+1024\,(2+2t+3t^{2})=2049+2049t+3072t^{2}.$$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box trap">
+      <div class="box-title">✗ Trappole</div>
+      <ul class="mb0">
+        <li><strong>Leggere gli autovalori sulla matrice ridotta a scala.</strong> Il MEG li cambia.</li>
+        <li><strong>«Ha un autovalore doppio, quindi non è diagonalizzabile.»</strong> Conta $m_g$ contro $m_a$, non il fatto che sia doppio.</li>
+        <li><strong>Saltare il controllo $A\vv=\lambda\vv$.</strong> Negli appunti della Lezione 10 avrebbe scoperto due errori.</li>
+        <li><strong>Fermarsi alle coordinate.</strong> Gli autovettori di una mappa su $P_2$ sono polinomi.</li>
+        <li><strong>Ordine diverso in $S$ e in $D$.</strong> La colonna $j$ di $S$ va con il posto $(j,j)$ di $D$.</li>
+      </ul>
+    </div>
+    <h3 id="autovalori-esercizi">Allenati</h3>
+    <div data-ids="G9.9, G9.10"></div>
+    <p class="small muted">Altri sullo stesso tipo nella Palestra: <a href="esercizi.html?sez=9">G9.3 e G9.4</a> (con parametro) e G9.8 (un endomorfismo di $P_2$).</p>
+
+    <!-- ============================================================ -->
+    <h2 id="geometria">5 · Rette, piani, sottospazi affini</h2>
+    <p>3 esercizi su 20. Copre la <a href="sezioni/6-posizione.html">Sezione 6</a>; in $\R^{4}$ servono anche le equazioni della <a href="#sottospazi-albero">scheda 2</a>.</p>
+    <h3 id="geometria-segnali">Come lo riconosci</h3>
+    <ul class="segnali">
+      <li>una retta come sistema di due equazioni</li><li>$\mathbf r=P+t\vv$</li><li>«parallela / perpendicolare per un punto»</li>
+      <li>«il piano che contiene»</li><li>«posizione reciproca»</li><li>«sottospazi affini $P_0+U$»</li>
+    </ul>
+    <h3 id="geometria-albero">La procedura</h3>
+    <div class="albero">
+      <span class="albero-radice">Che cosa ti chiede?</span>
+      <div class="rami">
+        <div class="ramo"><p class="ramo-se">La parallela a una retta per un punto</p>
+          <p class="ramo-allora">In cartesiana: stessi lati sinistri, termini noti ricalcolati nel punto. In parametrica: stessa direzione, punto nuovo.</p></div>
+        <div class="ramo"><p class="ramo-se">Il piano che contiene una retta e un punto (o un'altra retta)</p>
+          <p class="ramo-allora">Fascio di piani per la retta, $\alpha(\dots)+\beta(\dots)=0$, poi imponi il passaggio per il punto.</p></div>
+        <div class="ramo"><p class="ramo-se">La perpendicolare a una retta per un punto</p>
+          <p class="ramo-allora">Retta in parametrica; il vettore dal suo punto generico al punto dato deve essere ortogonale alla direzione: un'equazione in $t$, che dà il piede.</p></div>
+        <div class="ramo"><p class="ramo-se">La posizione reciproca</p>
+          <p class="ramo-allora">Metti a sistema: $r(A)$ e $r([A|\vb])$ dicono incidenti, parallele o sghembe. Per due rette: prima guarda se le direzioni sono parallele, poi cerca un punto comune.</p></div>
+        <div class="ramo"><p class="ramo-se">Sottospazi affini in $\R^{n}$</p>
+          <p class="ramo-allora">Equazioni della giacitura $U$, poi termini noti calcolati in $P_0$. Intersezione = sistema unito; somma = punti sommati più span unito.</p></div>
+      </div>
+    </div>
+
+    <h3 id="geometria-tema">Tema svolto: febbraio 2025, esercizio 1</h3>
+    <div class="box ex">
+      <div class="box-title">Il testo</div>
+      <p>In $\R^{3}$ si consideri la retta $\ell_1:\ 2x+4y+3z=7,\ \ 2x-4y-z=-5$.</p>
+      <p class="mb0">1.1 Trovare la retta $\ell_2$ parallela a $\ell_1$ e passante per $(2,1,4)$. &nbsp;1.2 Trovare il piano che contiene $\ell_1$ e $\ell_2$. &nbsp;1.3 Trovare la retta perpendicolare a $\ell_1$ e passante per $(6,-1,3)$ (due rette perpendicolari si intersecano formando un angolo retto).</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Prova da solo, poi apri un passo alla volta</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.1 · Che cosa cambia fra due rette parallele scritte in cartesiana?</div>
+            <div class="step-content">Solo i termini noti: la direzione è la soluzione del sistema omogeneo, che non cambia. Sostituendo $(2,1,4)$ nei lati sinistri: $4+4+12=20$ e $4-4-4=-4$.
+            $$\ell_2:\ 2x+4y+3z=20,\quad 2x-4y-z=-4.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.2 · Quale ramo?</div>
+            <div class="step-content">Il fascio per $\ell_1$: $\alpha(2x+4y+3z-7)+\beta(2x-4y-z+5)=0$. Il passaggio per $(2,1,4)\in\ell_2$ dà $13\alpha+\beta=0$, quindi $(\alpha,\beta)=(1,-13)$:
+            $$-24x+56y+16z-72=0\iff -3x+7y+2z=9.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.3 · Serve la forma parametrica di $\ell_1$?</div>
+            <div class="step-content">Sì. Con il MEG: $\ell_1:\ (x,y,z)=\left(\tfrac12,\tfrac32,0\right)+t\left(-\tfrac12,-\tfrac12,1\right)$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">1.3 · Quale equazione dà il piede della perpendicolare?</div>
+            <div class="step-content">Il vettore dal punto di parametro $t_0$ a $(6,-1,3)$ deve essere ortogonale a $\left(-\tfrac12,-\tfrac12,1\right)$. Viene $\tfrac32-\tfrac32t_0=0$, cioè $t_0=1$: il piede è $(0,1,1)$ e il vettore è $(6,-2,2)$.
+            $$(x,y,z)=(6,-1,3)+t\,(6,-2,2),\quad t\in\R.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si controlla tutto?</div>
+            <div class="step-content">Il piede $(0,1,1)$ sta su $\ell_1$: $0+4+3=7$ ✓ e $0-4-1=-5$ ✓. $\langle(6,-2,2),(-\tfrac12,-\tfrac12,1)\rangle=-3+1+2=0$ ✓. Sostituendo la parametrica di $\ell_1$ nel piano si ottiene $9$ per ogni $t$ ✓.</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box trap">
+      <div class="box-title">✗ Trappole</div>
+      <ul class="mb0">
+        <li><strong>Usare come direzione la normale di uno dei due piani.</strong> È ortogonale alla retta, ma la retta ottenuta in genere non la incontra.</li>
+        <li><strong>Dimenticare che «perpendicolari» vuol dire anche «incidenti».</strong> Per questo serve il piede.</li>
+        <li><strong>«Direzioni non parallele, quindi sghembe.»</strong> Prima si cerca un punto comune.</li>
+        <li><strong>Intersecare le giaciture invece dei sottospazi affini.</strong> Due piani paralleli distinti hanno la stessa giacitura e intersezione vuota.</li>
+      </ul>
+    </div>
+    <h3 id="geometria-esercizi">Allenati</h3>
+    <div data-ids="G6.13, G6.14"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="prossime">In arrivo con le prossime lezioni</h2>
+    <p>Tre tipi che nei temi tornano spesso ma non sono ancora stati fatti a lezione: <strong>prodotto scalare</strong> e Gram-Schmidt (3 esercizi), <strong>coniche e quadriche</strong> (3), <strong>matrici simmetriche e forme quadratiche</strong> (2). La scheda di ciascuno arriverà quando il prof lo spiega, con lo stesso schema.</p>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="esercizi.html">Palestra esercizi →</a>
+      <a class="btn" href="esami.html">Cosa esce all'esame</a>
+      <a class="btn" href="index.html">← Piano</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Come si risolve · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../assets/js/materie.js?v=20261104"></script>
+<script src="data/topics.js?v=20261111"></script>
+<script src="data/esercizi.js?v=20261111b"></script>
+<script src="data/metodo.js?v=20261111"></script>
+<script src="../assets/js/app.js?v=20261106"></script>
+<script src="../assets/js/metodo.js?v=20261111"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.allenatore('#allenatoreBox', window.METODO_GEO);
+  AM.eserciziInline(AM.ESERCIZI_GEO);
+});
+</script>
+</body>
+</html>

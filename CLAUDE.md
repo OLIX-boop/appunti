@@ -207,6 +207,23 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - Le prove nel browser scrivono i progressi in `localStorage` (chiavi `am1:lab:l1`–`l4`): dopo aver
   collaudato vanno cancellate, sennò lo studente trova i round già fatti.
 
+### Come si risolve (`geometria/come-si-risolve.html`)
+
+- Lo studente fatica più a **interpretare** gli esercizi d'esame che a eseguirli. La pagina ha una
+  scheda per tipo di esercizio (le chiavi di `tipi` in `data/esami.js`, usate anche come `id` degli
+  `h2`), in ordine di frequenza: segnali nel testo, procedura ad albero (`.albero` / `.ramo`), un
+  tema svolto a passi coperti, trappole, esercizi «Allenati».
+- Il tema svolto e gli esercizi sono **temi veri del prof**, con la sua soluzione verificata con
+  Node; i suoi refusi si segnalano in piccolo dopo averli visti sul PDF in `Desktop\Esami`. Gli
+  esercizi stanno in `data/esercizi.js` con `tema: 'Tema d\'esame'` e la pagina li mostra con
+  `data-ids`.
+- L'allenatore (`data/metodo.js`, logica in `assets/js/metodo.js`, stile in `assets/css/metodo.css`)
+  usa punti veri dei temi: prima il tipo, poi la prima mossa. La mossa giusta è la prima dell'elenco,
+  ogni mossa sbagliata dice **dove porta**, e non va scritta come sbagliata una strada valida: al
+  massimo «funziona, ma è lunga». Non salva nulla.
+- Quando arriva a lezione un tipo «in arrivo» (prodotto scalare, coniche, forme quadratiche), si
+  aggiungono la sua scheda, i punti dell'allenatore e la voce in `tipi` di `metodo.js`.
+
 ### Verifiche in PDF (fuori dal sito)
 
 - Vanno sul Desktop, **non** nel repository e non sul sito.

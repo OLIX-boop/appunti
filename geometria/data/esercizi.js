@@ -1578,7 +1578,128 @@ $$A=\begin{bmatrix}0&1&0\\0&1&2\\0&0&2\end{bmatrix}.$$
 <li>$\lambda=2$: $A-2I=\begin{bmatrix}-2&1&0\\0&-1&2\\0&0&0\end{bmatrix}$ dà $y=2z$, $x=z$: $(1,2,1)$, cioè $1+2x+x^{2}=(1+x)^{2}$.</li></ul>
 Base di autovettori: $\{1,\ 1+x,\ (1+x)^{2}\}$.<br><br>
 <strong>Controllo sui polinomi:</strong> $L(1)=0$ ✓; $L(1+x)=x+1$ ✓; $L((1+x)^{2})=x\cdot2(1+x)+2(1+x)=2(1+x)^{2}$ ✓.<br>
-<strong>Morale:</strong> si lavora sulla matrice e alla fine si torna ai polinomi, come nell'esercizio 2 di gennaio 2025. $\blacksquare$` }
+<strong>Morale:</strong> si lavora sulla matrice e alla fine si torna ai polinomi, come nell'esercizio 2 di gennaio 2025. $\blacksquare$` },
+
+/* ---------- Temi d'esame (usati dalla pagina «Come si risolve») ---------- */
+{ id: 'G5.30', sez: 5, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Appello di settembre 2025, esercizio 1.)</em> Sia $T:\M_{\R}(2,2)\to\M_{\R}(2,2)$, $T(A):=CAC^{-1}$, con $C:=\begin{bmatrix}1&2\\0&-1\end{bmatrix}$.<br>(a) Dimostrare che $T$ è lineare. (b) Stabilire se $T$ è iniettiva. (c) Esiste una matrice $A$ con $r(A)\ne r(T(A))$?`,
+  hints: [ r`Prima di tutto: $C$ è invertibile? Calcola $\det C$.`,
+           r`(b) Se $T(A)=0$, moltiplica a sinistra per $C^{-1}$ e a destra per $C$.`,
+           r`(c) $L_{CAC^{-1}}=L_C\circ L_A\circ L_{C^{-1}}$, e $L_C$, $L_{C^{-1}}$ sono biiettive.` ],
+  sol: r`<strong>Prima:</strong> $\det C=-1\ne0$, quindi $C$ è invertibile (anzi $C^{2}=I$, cioè $C^{-1}=C$).<br><br>
+<strong>(a)</strong> Per le proprietà del prodotto: $T(\lambda A+\mu B)=C(\lambda A+\mu B)C^{-1}=\lambda\,CAC^{-1}+\mu\,CBC^{-1}=\lambda T(A)+\mu T(B)$.<br>
+<strong>(b)</strong> Se $T(A)=0$, allora $A=C^{-1}(CAC^{-1})C=C^{-1}\,0\,C=0$. Quindi $\ker T=\{0\}$ e $T$ è iniettiva. Essendo un endomorfismo di uno spazio di dimensione $4$, è anche suriettiva.<br>
+<strong>(c)</strong> No. $L_{C^{-1}}(\R^{2})=\R^{2}$, quindi $\operatorname{im}L_{CAC^{-1}}=L_C\bigl(L_A(\R^{2})\bigr)$, e $L_C$ è un isomorfismo, che non cambia la dimensione dei sottospazi: $r(T(A))=\dim L_A(\R^{2})=r(A)$ per ogni $A$.<br><br>
+<strong>Controllo</strong> su un caso: $A=\begin{bmatrix}1&0\\0&0\end{bmatrix}$ dà $T(A)=\begin{bmatrix}1&0\\0&0\end{bmatrix}\begin{bmatrix}1&2\\0&-1\end{bmatrix}=\begin{bmatrix}1&2\\0&0\end{bmatrix}$, rango $1$ come $A$ ✓.<br>
+<strong>Morale:</strong> con matrici invertibili si ragiona sulla definizione: i conti elemento per elemento non servono. $\blacksquare$` },
+
+{ id: 'G5.31', sez: 5, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Prova in itinere dell'11/11/2025, punti a–c.)</em> Sia $L:\R^{3}\to\R[t]_{\le2}$, $L(a,b,c):=(a+c)+bt+(a+c)t^{2}$.<br>(a) Trovare una base dell'immagine e la dimensione del nucleo di $L$.<br>(b) Data $F(a,b,c):=b+(a+c)t+ct^{2}$, trovare una base di $H:=\{(a,b,c)\in\R^{3}:\ L(a,b,c)=F(a,b,c)\}$.<br>(c) Dato $K:=\operatorname{span}\{(2,2,3),(2,0,1)\}$, trovare una base di $H\cap K$.`,
+  hints: [ r`(a) Le immagini di $\mathbf e_1,\mathbf e_2,\mathbf e_3$ generano l'immagine.`,
+           r`(b) Due polinomi sono uguali se hanno gli stessi coefficienti di $1$, $t$, $t^{2}$.`,
+           r`(c) Prima di risolvere sistemi, guarda se $H$ sta già dentro $K$.` ],
+  sol: r`<strong>(a)</strong> $L(\mathbf e_1)=1+t^{2}$, $L(\mathbf e_2)=t$, $L(\mathbf e_3)=1+t^{2}$. Quindi $\operatorname{im}L=\operatorname{span}\{1+t^{2},\,t\}$, e i due polinomi sono indipendenti: base $\{1+t^{2},t\}$, dimensione $2$. Per rango + nullità $\dim\ker L=3-2=1$ (infatti $\ker L$: $a+c=0$, $b=0$, cioè $\operatorname{span}\{(1,0,-1)\}$).<br><br>
+<strong>(b)</strong> $L=F$ vuol dire $a+c=b$, $b=a+c$, $a+c=c$, cioè $a=0$ e $b=c$. Quindi $H=\operatorname{span}\{(0,1,1)\}$.<br><br>
+<strong>(c)</strong> $(0,1,1)=\frac12(2,2,3)-\frac12(2,0,1)$, quindi $H\subseteq K$ e $H\cap K=H=\operatorname{span}\{(0,1,1)\}$.<br><br>
+<strong>Controllo:</strong> $L(0,1,1)=1+t+t^{2}=F(0,1,1)$ ✓. Il punto (d) di questa prova è l'esercizio G6.14. $\blacksquare$` },
+
+{ id: 'G5.32', sez: 5, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Appello di gennaio 2026, esercizio 3.)</em> Sia $B:=\{B_1,B_2,B_3,B_4\}=\left\{\begin{bmatrix}0&0\\0&1\end{bmatrix},\begin{bmatrix}0&1\\1&0\end{bmatrix},\begin{bmatrix}1&0\\0&0\end{bmatrix},\begin{bmatrix}0&1\\-1&0\end{bmatrix}\right\}$.<br>(a) Verificare che $B$ è una base di $\M_{\R}(2,2)$.<br>(b) Determinare nucleo e spazio delle colonne di $A:=\begin{bmatrix}1&1&0&1\\0&1&1&1\\1&2&1&2\\0&1&1&1\end{bmatrix}$.<br>(c) Sia $L$ l'endomorfismo di $\M_{\R}(2,2)$ che ha matrice $A$ rispetto alla base $B$. Determinare nucleo e immagine di $L$.`,
+  hints: [ r`(a) Quattro elementi in uno spazio di dimensione $4$: basta un determinante delle coordinate rispetto alla base canonica.`,
+           r`(b) MEG: $R_3\to R_3-R_1$, poi $R_3\to R_3-R_2$ e $R_4\to R_4-R_2$.`,
+           r`(c) I vettori trovati in (b) sono <strong>coordinate rispetto a $B$</strong>: ricostruisci le matrici.` ],
+  sol: r`<strong>(a)</strong> Le coordinate rispetto alla base canonica, in colonna, danno
+$$\begin{vmatrix}0&0&1&0\\0&1&0&1\\0&1&0&-1\\1&0&0&0\end{vmatrix}=-2\ne0,$$
+quindi i quattro elementi sono indipendenti e formano una base.<br><br>
+<strong>(b)</strong> $A\to\begin{bmatrix}1&1&0&1\\0&1&1&1\\0&0&0&0\\0&0&0&0\end{bmatrix}$. Pivot nelle colonne 1 e 2: $\operatorname{Col}(A)=\operatorname{span}\{(1,0,1,0),(1,1,2,1)\}$. Nucleo: $x_1+x_2+x_4=0$, $x_2+x_3+x_4=0$ con $x_3,x_4$ libere: $\ker A=\operatorname{span}\{(1,-1,1,0),(0,-1,0,1)\}$.<br><br>
+<strong>(c)</strong> Si leggono i vettori come coordinate rispetto a $B$:
+<ul><li>$(1,0,1,0)\mapsto B_1+B_3=\begin{bmatrix}1&0\\0&1\end{bmatrix}$ e $(1,1,2,1)\mapsto B_1+B_2+2B_3+B_4=\begin{bmatrix}2&2\\0&1\end{bmatrix}$: questi generano $\operatorname{im}L$;</li>
+<li>$(1,-1,1,0)\mapsto B_1-B_2+B_3=\begin{bmatrix}1&-1\\-1&1\end{bmatrix}$ e $(0,-1,0,1)\mapsto -B_2+B_4=\begin{bmatrix}0&0\\-2&0\end{bmatrix}$: questi generano $\ker L$.</li></ul>
+<strong>Controllo:</strong> $\dim\ker L+\dim\operatorname{im}L=2+2=4$ ✓.<br>
+<strong>Attenzione:</strong> la risposta sono matrici, non vettori di $\R^{4}$. $\blacksquare$` },
+
+{ id: 'G5.33', sez: 5, tema: 'Tema d\'esame', d: 3,
+  t: r`<em>(Appello di febbraio 2026, esercizio 2.)</em> Sia $V:=\M_{\R}(2,2)$ con la base canonica $B:=\{B_1,B_2,B_3,B_4\}$ ($B_1=\begin{bmatrix}1&0\\0&0\end{bmatrix}$, $B_2=\begin{bmatrix}0&1\\0&0\end{bmatrix}$, $B_3=\begin{bmatrix}0&0\\1&0\end{bmatrix}$, $B_4=\begin{bmatrix}0&0\\0&1\end{bmatrix}$) e sia $W:=\operatorname{span}\{B_1,B_2,B_3\}$.<br>(a) Verificare che $C:=\{B_1+B_2,\ B_2+B_3,\ B_3-B_2\}$ è una base di $W$.<br>(b) Verificare che $L:W\to V$, $L(X):=AX+X^{T}A$ con $A:=\begin{bmatrix}1&2\\-2&3\end{bmatrix}$, è lineare.<br>(c) Scrivere la matrice rappresentativa di $L$ rispetto alla base $C$ di $W$ e alla base $B$ di $V$.<br>(d) Trovare una base dell'immagine di $L$ e la dimensione del nucleo.`,
+  hints: [ r`(a) Una combinazione nulla dei tre: guarda i coefficienti di $B_1$, $B_2$, $B_3$.`,
+           r`(c) Calcola $L$ sui tre elementi di $C$. Ogni colonna ha $4$ elementi, perché il codominio ha dimensione $4$.`,
+           r`(d) Confronta le colonne: una è multipla di un'altra.` ],
+  sol: r`<strong>(a)</strong> $\alpha(B_1+B_2)+\beta(B_2+B_3)+\gamma(B_3-B_2)=\alpha B_1+(\alpha+\beta-\gamma)B_2+(\beta+\gamma)B_3=0$ dà $\alpha=0$, $\beta+\gamma=0$, $\beta-\gamma=0$, cioè tutti nulli. Tre elementi indipendenti in $W$, che ha dimensione $3$: una base.<br>
+<strong>(b)</strong> $L(\lambda X+\mu Y)=A(\lambda X+\mu Y)+(\lambda X+\mu Y)^{T}A=\lambda(AX+X^{T}A)+\mu(AY+Y^{T}A)$, perché $(\lambda X+\mu Y)^{T}=\lambda X^{T}+\mu Y^{T}$.<br>
+<strong>(c)</strong> $L(B_1+B_2)=\begin{bmatrix}2&3\\-1&0\end{bmatrix}$, $L(B_2+B_3)=\begin{bmatrix}0&4\\4&0\end{bmatrix}$, $L(B_3-B_2)=\begin{bmatrix}0&2\\2&0\end{bmatrix}$. Le coordinate rispetto a $B$ vanno in colonna:
+$$M=\begin{bmatrix}2&0&0\\3&4&2\\-1&4&2\\0&0&0\end{bmatrix}.$$
+<strong>(d)</strong> La seconda colonna è il doppio della terza, la prima e la terza sono indipendenti: $r(M)=2$. Quindi $\operatorname{im}L=\operatorname{span}\left\{\begin{bmatrix}2&3\\-1&0\end{bmatrix},\begin{bmatrix}0&2\\2&0\end{bmatrix}\right\}$ e $\dim\ker L=3-2=1$.<br><br>
+<strong>Controllo:</strong> il nucleo è generato da $(B_2+B_3)-2(B_3-B_2)=\begin{bmatrix}0&3\\-1&0\end{bmatrix}$, e infatti $L\left(\begin{bmatrix}0&3\\-1&0\end{bmatrix}\right)=\begin{bmatrix}0&4\\4&0\end{bmatrix}-2\begin{bmatrix}0&2\\2&0\end{bmatrix}=0$ ✓. $\blacksquare$` },
+
+{ id: 'G6.13', sez: 6, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Appello di giugno 2026, esercizio 1.)</em> In $\R^{4}$ siano $\mathcal A:=P_0+U$ e $\mathcal B:=Q_0+W$, con $P_0:=(1,0,0,1)$, $U:=\operatorname{span}\{(1,1,0,0),(0,1,1,0)\}$, $Q_0:=(0,1,0,1)$, $W:=\operatorname{span}\{(1,0,-1,0),(0,1,1,0)\}$.<br>(a) Trovare equazioni cartesiane di $\mathcal A$ e di $\mathcal B$. (b) Stabilire se $\mathcal A\cap\mathcal B$ è vuoto. (c) Determinare $\mathcal A+\mathcal B:=\{P+Q:\ P\in\mathcal A,\ Q\in\mathcal B\}$ in forma parametrica, con la dimensione.`,
+  hints: [ r`(a) Prima le equazioni della giacitura $U$: in $\R^{4}$ un sottospazio di dimensione $2$ ne vuole $4-2=2$. Poi i termini noti si calcolano nel punto $P_0$.`,
+           r`(a) Guarda bene $W$: $(1,0,-1,0)=(1,1,0,0)-(0,1,1,0)$.`,
+           r`(c) $\mathcal A+\mathcal B=(P_0+Q_0)+(U+W)$.` ],
+  sol: r`<strong>(a)</strong> $U^{\perp}$: $x+y=0$, $y+z=0$, con $z,w$ libere, dà la base $\{(1,-1,1,0),(0,0,0,1)\}$. Quindi $U:\ x-y+z=0,\ w=0$, e con i termini noti calcolati in $P_0$:
+$$\mathcal A:\ x-y+z=1,\quad w=1.$$
+Poiché $(1,0,-1,0)=(1,1,0,0)-(0,1,1,0)$, $W=U$: stesse equazioni, con i termini noti calcolati in $Q_0$:
+$$\mathcal B:\ x-y+z=-1,\quad w=1.$$
+<strong>(b)</strong> Mettendo insieme le equazioni, $x-y+z=1$ e $x-y+z=-1$ si contraddicono: $\mathcal A\cap\mathcal B=\emptyset$. Sono due «piani» paralleli e distinti di $\R^{4}$.<br>
+<strong>(c)</strong> $\mathcal A+\mathcal B=(1,1,0,2)+\operatorname{span}\{(1,1,0,0),(0,1,1,0)\}$, perché $U+W=U$. Dimensione $2$.<br><br>
+<strong>Controllo:</strong> $P_0$ dà $1-0+0=1$ e $w=1$ ✓; $Q_0$ dà $0-1+0=-1$ e $w=1$ ✓; i due vettori di $U$ soddisfano $x-y+z=0$ ✓. $\blacksquare$` },
+
+{ id: 'G6.14', sez: 6, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Prova in itinere dell'11/11/2025, punto d.)</em> Con $L(a,b,c):=(a+c)+bt+(a+c)t^{2}$ (esercizio G5.31), verificare che $\ell_1:=\{(a,b,c)\in\R^{3}:\ L(a,b,c)=1+t^{2}\}$ è una retta e determinare la posizione reciproca di $\ell_1$ e della retta $\ell_2:\ \mathbf r=(0,0,2)+t(1,0,0)$.`,
+  hints: [ r`Uguaglia i coefficienti: quante equazioni indipendenti restano?`,
+           r`Scrivi $\ell_1$ in forma parametrica e confronta le direzioni.`,
+           r`Direzioni non parallele: incidenti o sghembe? Cerca un punto comune.` ],
+  sol: r`<strong>È una retta.</strong> $L(a,b,c)=1+t^{2}$ vuol dire $a+c=1$, $b=0$ (la terza equazione ripete la prima): due equazioni indipendenti in $\R^{3}$, quindi $3-2=1$ parametro. Con $a=s$: $\ell_1:\ (s,0,1-s)=(0,0,1)+s(1,0,-1)$.<br><br>
+<strong>Posizione.</strong> Le direzioni $(1,0,-1)$ e $(1,0,0)$ non sono parallele. Punto comune: $(s,0,1-s)=(t,0,2)$ dà $s=t$ e $1-s=2$, cioè $s=t=-1$. Le rette sono <strong>incidenti</strong> in $(-1,0,2)$.<br><br>
+<strong>Controllo:</strong> $L(-1,0,2)=1+0\,t+1\,t^{2}$ ✓ e $(-1,0,2)=(0,0,2)-1\cdot(1,0,0)$ ✓.<br>
+<strong>Attenzione:</strong> «non parallele» non vuol dire «sghembe»: il punto comune va cercato. $\blacksquare$` },
+
+{ id: 'G7.13', sez: 7, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Appello di febbraio 2026, esercizio 1.)</em> Siano $U:=\operatorname{span}\{(1,0,0,-2),(0,1,1,0),(1,-1,0,0)\}$ e $W:=\{(x_1,x_2,x_3,x_4)\in\R^{4}:\ x_1+x_2+x_3+x_4=0\}$.<br>(a) Scrivere un'equazione cartesiana di $U$. (b) Scrivere $U^{\perp}$ in forma parametrica. (c) Trovare una base di $U\cap W$ e una di $U+W$.`,
+  hints: [ r`(a) Riduci a scala $[\vv_1|\vv_2|\vv_3|\vx]$ con $\vx=(x,y,z,w)$ e imponi che l'ultima colonna non abbia pivot.`,
+           r`(b) $\dim U^{\perp}=4-3=1$, e i coefficienti dell'equazione di $U$ formano un vettore ortogonale a $U$.`,
+           r`(c) $U\cap W$: metti a sistema l'equazione di $U$ e quella di $W$. $U+W$: Grassmann.` ],
+  sol: r`<strong>(a)</strong> Righe di $[\vv_1|\vv_2|\vv_3|\vx]$: $(1,0,1\,|\,x)$, $(0,1,-1\,|\,y)$, $(0,1,0\,|\,z)$, $(-2,0,0\,|\,w)$. Con $R_3\to R_3-R_2$, $R_4\to R_4+2R_1$ e poi $R_4\to R_4-2R_3$ l'ultima riga diventa $(0,0,0\,|\,2x+2y-2z+w)$. I tre vettori sono indipendenti, $\dim U=3$, e
+$$U:\ 2x+2y-2z+w=0.$$
+<strong>(b)</strong> $U^{\perp}=\operatorname{span}\{(2,2,-2,1)\}$: $(x,y,z,w)=t(2,2,-2,1)$, $t\in\R$.<br>
+<strong>(c)</strong> Il sistema $2x+2y-2z+w=0$, $x+y+z+w=0$, sottraendo dalla prima il doppio della seconda, dà $-4z-w=0$: quindi $w=-4z$ e, dalla seconda, $x=-y+3z$. Con $y,z$ libere:
+$$U\cap W=\operatorname{span}\{(-1,1,0,0),\,(3,0,1,-4)\},\qquad\dim(U\cap W)=2.$$
+Per Grassmann $\dim(U+W)=3+3-2=4$: $U+W=\R^{4}$, con la base canonica.<br><br>
+<strong>Controllo:</strong> $(3,0,1,-4)$: $6+0-2-4=0$ ✓ e $3+0+1-4=0$ ✓. Il prof trova la base $\{(1,-1,0,0),(2,1,1,-4)\}$, che genera lo stesso piano: $(2,1,1,-4)=(3,0,1,-4)+(-1,1,0,0)$. $\blacksquare$` },
+
+{ id: 'G7.14', sez: 7, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(La tua prova in itinere, 30/10/2026.)</em> Siano $A:=\begin{bmatrix}1&0&1&0\\0&1&1&0\\1&1&2&0\\0&0&0&1\end{bmatrix}$, $U:=\operatorname{Col}(A)$ e $W:=\operatorname{span}\{\mathbf e_1,\mathbf e_2\}$ in $\R^{4}$.<br>(a) Una base di $U$ e una di $U+W$, con le dimensioni. (b) Una base di $U\cap W$. (c) Una base di $\ker L_A$; $L_A$ è iniettiva? Suriettiva? (d) Tutti gli $\vx$ con $A\vx=(1,1,2,0)$.`,
+  hints: [ r`(a) Riduci $[A\,|\,\mathbf e_1\,\mathbf e_2]$: i pivot dicono quali colonne tenere.`,
+           r`(b) Grassmann dà la dimensione. Per la base: $U$ in parametrica e le equazioni $z=w=0$ di $W$.`,
+           r`(d) Guarda il vettore: è una colonna di $A$.` ],
+  sol: r`<strong>(a)</strong> Con $R_3\to R_3-R_1$, $R_3\to R_3-R_2$, $R_3\leftrightarrow R_4$ i pivot cadono nelle colonne 1, 2, 4, 5. Base di $U$: $\{(1,0,1,0),(0,1,1,0),(0,0,0,1)\}$, $\dim U=3$ (la terza colonna è la somma delle prime due). Base di $U+W$: quei tre vettori più $\mathbf e_1$, $\dim(U+W)=4$.<br><br>
+<strong>(b)</strong> $\dim(U\cap W)=3+2-4=1$. $U$: $x=t_1$, $y=t_2$, $z=t_1+t_2$, $w=t_3$; le equazioni di $W$ sono $z=w=0$, quindi $t_3=0$, $t_1=-t_2$: $U\cap W=\operatorname{span}\{(-1,1,0,0)\}$.<br><br>
+<strong>(c)</strong> Il sistema ridotto è $x+z=0$, $y+z=0$, $w=0$: $\ker L_A=\operatorname{span}\{(1,1,-1,0)\}$. Non iniettiva. $\dim\operatorname{im}L_A=4-1=3\lt4$: non suriettiva.<br><br>
+<strong>(d)</strong> $(1,1,2,0)$ è la terza colonna di $A$, quindi $\vx_0=(0,0,1,0)$ è una soluzione. Tutte: $\vx=(0,0,1,0)+t(1,1,-1,0)=(t,\,t,\,1-t,\,0)$, $t\in\R$.<br><br>
+<strong>Controllo:</strong> $A(1,1,-1,0)=(1-1,\,1-1,\,1+1-2,\,0)=\vzero$ ✓. $\blacksquare$` },
+
+{ id: 'G9.9', sez: 9, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Appello di giugno 2026, esercizio 2.)</em> Sia $V:=\M_{\R}(3,3)$ e $\tau:V\to V$, $\tau(M):=M^{T}$. Siano $S:=\{M:\ M^{T}=M\}$ e $A:=\{M:\ M^{T}=-M\}$.<br>(a) Verificare che $\tau$ è un endomorfismo. (b) Verificare che $S$ e $A$ sono sottospazi. (c) Trovare una base e la dimensione di $S$ e di $A$. (d) Determinare gli autospazi di $\tau$ e stabilire se $\tau$ è diagonalizzabile.`,
+  hints: [ r`(c) Scrivi $M$ con nove incognite: quante equazioni impone $M^{T}=M$?`,
+           r`(d) Che cosa vuol dire $\tau(M)=\lambda M$ per $\lambda=1$? E per $\lambda=-1$?`,
+           r`(d) Somma le molteplicità geometriche e confrontala con $\dim V=9$.` ],
+  sol: r`<strong>(a)</strong> $(\lambda M+\mu N)^{T}=\lambda M^{T}+\mu N^{T}$, e $\tau$ va da $V$ in $V$: è un endomorfismo.<br>
+<strong>(b)</strong> La matrice nulla sta in $S$; se $M,N\in S$, allora $(\lambda M+\mu N)^{T}=\lambda M+\mu N$. Per $A$ allo stesso modo, con il segno meno.<br>
+<strong>(c)</strong> $M\in S$ se e solo se $m_{12}=m_{21}$, $m_{13}=m_{31}$, $m_{23}=m_{32}$: tre equazioni, sei variabili libere, $\dim S=6$. Base: $E_{11},E_{22},E_{33},E_{12}+E_{21},E_{13}+E_{31},E_{23}+E_{32}$, dove $E_{ij}$ ha $1$ al posto $(i,j)$ e zero altrove.<br>
+$M\in A$ se e solo se la diagonale è nulla e $m_{ji}=-m_{ij}$: $\dim A=3$, base $E_{12}-E_{21},\ E_{13}-E_{31},\ E_{23}-E_{32}$.<br>
+<strong>(d)</strong> $\tau(M)=M$ vuol dire $M\in S$, e $\tau(M)=-M$ vuol dire $M\in A$: sono gli autospazi degli autovalori $1$ e $-1$, con $m_g(1)=6$ e $m_g(-1)=3$. Poiché $6+3=9=\dim V$, le due basi insieme sono una base di $V$ fatta di autovettori: $\tau$ è diagonalizzabile, e non ci sono altri autovalori.<br><br>
+<strong>Controllo:</strong> ogni matrice si scrive $M=\frac12(M+M^{T})+\frac12(M-M^{T})$, simmetrica più antisimmetrica ✓.<br>
+<strong>Morale:</strong> con un endomorfismo dato a parole si ragiona sulla definizione; la matrice $9\times9$ non serve.` + '<p class="small muted mb0">' + r`Nella soluzione del prof, subito dopo «altre 6 variabili sono libere», c'è scritto $\dim(S)=9$: è $6$.` + '</p>' },
+
+{ id: 'G9.10', sez: 9, tema: 'Tema d\'esame', d: 2,
+  t: r`<em>(Appello di febbraio 2026, esercizio 3, punti i–iii.)</em> Sia $A\in\M_{\R}(3,3)$ simmetrica.<br>(i) Verificare che $A^{2}$ è simmetrica. (ii) Se $\vv$ è un autovettore di $A$ relativo a $\lambda$, verificare che è un autovettore di $A^{2}$: con quale autovalore? (iii) Detti $\lambda_1,\lambda_2,\lambda_3$ gli autovalori di $A$, quali sono quelli di $A^{2}$?`,
+  hints: [ r`(i) $(AB)^{T}=B^{T}A^{T}$.`,
+           r`(ii) Applica $A$ due volte a $\vv$.`,
+           r`(iii) Se $A=SDS^{-1}$, quanto vale $A^{2}$?` ],
+  sol: r`<strong>(i)</strong> $(A^{2})^{T}=(AA)^{T}=A^{T}A^{T}=AA=A^{2}$.<br>
+<strong>(ii)</strong> $A^{2}\vv=A(A\vv)=A(\lambda\vv)=\lambda A\vv=\lambda^{2}\vv$, e $\vv\ne\vzero$: autovettore di $A^{2}$ relativo a $\lambda^{2}$.<br>
+<strong>(iii)</strong> $\lambda_1^{2},\lambda_2^{2},\lambda_3^{2}$. Se $A=SDS^{-1}$ con $D=\diag(\lambda_1,\lambda_2,\lambda_3)$, allora $A^{2}=SD^{2}S^{-1}$ e $D^{2}=\diag(\lambda_1^{2},\lambda_2^{2},\lambda_3^{2})$ ✓.<br><br>
+<strong>Attenzione:</strong> il punto (iii) usa che una matrice simmetrica reale è <strong>diagonalizzabile</strong>, un teorema che arriverà con le matrici simmetriche. Il punto (iv) del tema, «$A^{2}$ è definita positiva», usa le forme quadratiche, che non sono ancora state fatte a lezione.<br>
+<strong>Controllo</strong> su un caso: $A=\diag(2,-1,3)$ è simmetrica, $A^{2}=\diag(4,1,9)$ ✓. $\blacksquare$` }
 
   ];
 
