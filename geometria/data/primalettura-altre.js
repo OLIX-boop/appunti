@@ -1,5 +1,5 @@
 /* ============================================================
-   Prima lettura delle altre sezioni (0-4, 6-8).
+   Prima lettura delle altre sezioni (0-4, 6-9).
    Stesso formato di data/primalettura.js: una frase, pochi punti,
    una domanda. Gli schemi stanno in data/schemi-altre.js.
    ============================================================ */
@@ -474,6 +474,116 @@
           ],
           domanda: r`Una mappa ha $\det L=-3$. Che cosa fa a un quadrato di area $2$?`,
           risposta: r`Lo trasforma in una figura di area $6$, rovesciandone l'orientamento.` }
+      ]
+    },
+    9: {
+      seconda: ['dim-infinita', 'binet-fib', 'edo'],
+      passi: [
+        { h2: 'problema', titolo: 'Il problema',
+          frase: r`Diagonalizzare vuol dire trovare una base in cui la matrice della mappa ha numeri solo sulla diagonale.`,
+          punti: [
+            r`Nella colonna $j$ ci sono le coordinate di $L(\vv_j)$: diagonale vuol dire $L(\vv_j)=\lambda_j\vv_j$.`,
+            r`In quella base la mappa allunga ogni vettore della base, senza mescolarli.`,
+            r`Una base così non sempre esiste.`
+          ],
+          domanda: r`In una base $\{\vv_1,\vv_2\}$ la matrice di $L$ è $\diag(3,-1)$. Quanto vale $L(\vv_2)$?`,
+          risposta: r`$L(\vv_2)=-\vv_2$: la seconda colonna è $(0,-1)$.` },
+        { h2: 'autovettori', titolo: 'Autovettori e autovalori',
+          frase: r`Un autovettore è un vettore non nullo che la mappa manda in un suo multiplo; il multiplo è l'autovalore.`,
+          punti: [
+            r`$L(\vv)=\lambda\vv$ con $\vv\ne\vzero$.`,
+            r`$\vzero$ non è mai un autovettore, ma $0$ può essere un autovalore.`,
+            r`$0$ è un autovalore se e solo se $\ker L$ non è banale.`
+          ],
+          domanda: r`Per la proiezione $L(x,y,z)=(x,y,0)$, che autovalore ha $(1,2,0)$?`,
+          risposta: r`$1$: $L(1,2,0)=(1,2,0)$. E $(0,0,1)$ ha autovalore $0$.` },
+        { h2: 'matrici', titolo: 'Diagonalizzare una matrice',
+          frase: r`$A$ è diagonalizzabile se $S^{-1}AS=D$ con $D$ diagonale: le colonne di $S$ sono autovettori, la diagonale di $D$ gli autovalori.`,
+          punti: [
+            r`$L$ è diagonalizzabile se e solo se lo è la sua matrice, in una base qualsiasi.`,
+            r`Diagonalizzabile su $\R$ implica su $\C$, ma non viceversa.`,
+            r`Detto senza campo, «diagonalizzabile» vuol dire su $\C$.`
+          ],
+          domanda: r`In $S$ la seconda colonna è $(1,1,0)$ e $D=\diag(2,3,-1)$. Quanto vale $A(1,1,0)$?`,
+          risposta: r`$3\cdot(1,1,0)=(3,3,0)$: la colonna $j$ di $S$ va con il posto $(j,j)$ di $D$.` },
+        { h2: 'polinomio', titolo: 'Autospazi e polinomio caratteristico',
+          frase: r`$A\vx=\lambda\vx$ diventa $(A-\lambda I)\vx=\vzero$: gli autovalori sono i $\lambda$ che rendono $\det(A-\lambda I)=0$.`,
+          punti: [
+            r`L'autospazio di $\lambda$ è $\ker(A-\lambda I)$.`,
+            r`$p(\lambda)=\det(A-\lambda I)$ è il polinomio caratteristico, di grado $n$.`,
+            r`Se $A$ è triangolare, gli autovalori sono sulla diagonale.`
+          ],
+          domanda: r`Quali sono gli autovalori di $\begin{bmatrix}2&7\\0&5\end{bmatrix}$?`,
+          risposta: r`$2$ e $5$: la matrice è triangolare.` },
+        { h2: 'calcolo', titolo: 'Calcolare gli autospazi',
+          frase: r`Per ogni autovalore si riduce a scala $A-\lambda I$: le variabili libere danno una base dell'autospazio.`,
+          punti: [
+            r`La dimensione dell'autospazio è $n-r(A-\lambda I)$.`,
+            r`Gli autovalori si calcolano sulla matrice di partenza: il MEG li cambia.`,
+            r`Alla fine si controlla $A\vv=\lambda\vv$.`
+          ],
+          domanda: r`Riducendo $A-2I$ (ordine $3$) restano due righe non nulle. Quanto è grande l'autospazio di $2$?`,
+          risposta: r`Dimensione $3-2=1$: una retta.` },
+        { h2: 'molteplicita', titolo: 'Molteplicità algebrica e geometrica',
+          frase: r`Ogni autovalore ha due numeri: quante volte è radice del polinomio ($m_a$) e quanto è grande il suo autospazio ($m_g$).`,
+          punti: [
+            r`Vale sempre $1\le m_g\le m_a$.`,
+            r`Regolare vuol dire $m_g=m_a$.`,
+            r`Un autovalore semplice ($m_a=1$) è sempre regolare.`
+          ],
+          domanda: r`$\lambda=4$ ha $m_a=3$ e $m_g=2$. È regolare?`,
+          risposta: r`No: $m_g=2\lt3=m_a$, quindi è irregolare.` },
+        { h2: 'criterio', titolo: 'Criterio di diagonalizzabilità',
+          frase: r`Una matrice è diagonalizzabile se e solo se ogni autovalore è regolare; su $\R$ servono anche autovalori reali.`,
+          punti: [
+            r`$n$ autovalori distinti bastano: sono tutti semplici.`,
+            r`I conti vanno fatti solo sugli autovalori multipli.`,
+            r`La rotazione di $90^\circ$ è diagonalizzabile su $\C$, non su $\R$.`
+          ],
+          domanda: r`$A$ è $3\times3$ con autovalori $1,1,5$ e $r(A-I)=2$. È diagonalizzabile?`,
+          risposta: r`No: $m_g(1)=3-2=1\lt2=m_a(1)$.` },
+        { h2: 'base', titolo: 'Trovare S e D',
+          frase: r`Si prende una base di ogni autospazio e le si mette insieme: le colonne di $S$ sono questi vettori, e $D$ ha gli autovalori nello stesso ordine.`,
+          punti: [
+            r`Autovettori di autovalori diversi sono indipendenti: è il lemma.`,
+            r`Per controllare basta $AS=SD$, senza calcolare $S^{-1}$.`,
+            r`$S$ e $D$ non sono uniche.`
+          ],
+          domanda: r`Autospazi: $W_2=\operatorname{span}\{(1,0)\}$ e $W_5=\operatorname{span}\{(1,1)\}$. Scrivi $S$ e $D$.`,
+          risposta: r`$S=\begin{bmatrix}1&1\\0&1\end{bmatrix}$ e $D=\diag(2,5)$, oppure le colonne scambiate insieme agli autovalori.` },
+        { h2: 'potenze-diag', titolo: 'Potenze e Fibonacci',
+          frase: r`Se $A=SDS^{-1}$, allora $A^k=SD^kS^{-1}$, e $D^k$ si calcola elevando la diagonale.`,
+          punti: [
+            r`$D^k=\diag(\lambda_1^k,\dots,\lambda_n^k)$.`,
+            r`Così si ottiene la formula di Binet per i numeri di Fibonacci.`
+          ],
+          domanda: r`Quanto vale $\diag(2,-1)^{5}$?`,
+          risposta: r`$\diag(32,-1)$.` },
+        { h2: 'traccia', titolo: 'Traccia e determinante',
+          frase: r`La somma degli autovalori è la traccia, il prodotto è il determinante.`,
+          punti: [
+            r`È il controllo più veloce sugli autovalori trovati.`,
+            r`Per una $2\times2$: $p(\lambda)=\lambda^2-\tr(A)\lambda+\det A$.`
+          ],
+          domanda: r`Una $2\times2$ ha traccia $7$ e determinante $10$. Quali sono gli autovalori?`,
+          risposta: r`$2$ e $5$: somma $7$, prodotto $10$.` },
+        { h2: 'invarianza', titolo: 'Invarianza per similitudine',
+          frase: r`Matrici simili hanno lo stesso polinomio caratteristico, quindi gli stessi autovalori; il viceversa è falso.`,
+          punti: [
+            r`La dimostrazione è Binet applicato a $S^{-1}(A-\lambda I)S$.`,
+            r`Per questo un endomorfismo ha un polinomio caratteristico, che non dipende dalla base.`,
+            r`$I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ hanno lo stesso polinomio ma non sono simili.`
+          ],
+          domanda: r`$A$ ha autovalori $1,2$. $B$ è simile ad $A$. Quanto vale $\det B$?`,
+          risposta: r`$1\cdot2=2$: stessi autovalori, quindi stesso determinante.` },
+        { h2: 'esponenziale', titolo: 'Esponenziale di una matrice',
+          frase: r`$e^{tA}$ è la serie di $e^x$ con la matrice al posto di $x$, e risolve i sistemi $\vy'=A\vy$.`,
+          punti: [
+            r`Se $A=SDS^{-1}$: $e^{tA}=S\diag(e^{t\lambda_1},\dots,e^{t\lambda_n})S^{-1}$.`,
+            r`Nelle prove d'esame raccolte non compare.`
+          ],
+          domanda: r`Quanto vale $e^{tD}$ per $D=\diag(1,3)$?`,
+          risposta: r`$\diag(e^{t},e^{3t})$.` }
       ]
     }
   });

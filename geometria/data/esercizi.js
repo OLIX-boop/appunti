@@ -1481,7 +1481,104 @@ $$A=\begin{bmatrix}1&1&0\\0&1&2\\0&0&1\end{bmatrix},\qquad\det A=1.$$
 <strong>Seconda base.</strong> $L(1)=1$, $L(x+1)=x+2=1+(x+1)$, $L(x^{2})=-2+2(x+1)+x^{2}$:
 $$\tilde A=\begin{bmatrix}1&1&-2\\0&1&2\\0&0&1\end{bmatrix},\qquad\det\tilde A=1.$$
 Le matrici sono diverse, ma i determinanti coincidono: $\det(L)=1$ non dipende dalla base, perché $A$ e $\tilde A$ sono simili.<br><br>
-<strong>Controllo:</strong> $L$ è invertibile, coerente con $\det(L)\ne0$: $p+p'=0$ con $p$ polinomio implica $p=0$ ✓. $\blacksquare$` }
+<strong>Controllo:</strong> $L$ è invertibile, coerente con $\det(L)\ne0$: $p+p'=0$ con $p$ polinomio implica $p=0$ ✓. $\blacksquare$` },
+
+/* ---------- Sezione 9 · Diagonalizzazione ---------- */
+{ id: 'G9.1', sez: 9, tema: 'Autovalori e autospazi', d: 1,
+  t: r`Sia $A=\begin{bmatrix}4&2\\-1&1\end{bmatrix}$. Trovare autovalori e autospazi di $A$, e matrici $S$ invertibile e $D$ diagonale con $A=SDS^{-1}$.`,
+  hints: [ r`Per una $2\times2$: $p(\lambda)=\lambda^2-\tr(A)\lambda+\det A$.`,
+           r`$\tr A=5$ e $\det A=6$: gli autovalori sono $2$ e $3$.`,
+           r`$A-2I=\begin{bmatrix}2&2\\-1&-1\end{bmatrix}$ dà $x+y=0$.` ],
+  sol: r`<strong>Autovalori.</strong> $p(\lambda)=\lambda^2-5\lambda+6=(\lambda-2)(\lambda-3)$: $\lambda_1=2$, $\lambda_2=3$, distinti, quindi $A$ è diagonalizzabile su $\R$.<br><br>
+<strong>$\lambda_1=2$.</strong> $A-2I=\begin{bmatrix}2&2\\-1&-1\end{bmatrix}$: una sola equazione, $x+y=0$. $W_2=\operatorname{span}\{(1,-1)\}$.<br>
+<strong>$\lambda_2=3$.</strong> $A-3I=\begin{bmatrix}1&2\\-1&-2\end{bmatrix}$: $x+2y=0$. $W_3=\operatorname{span}\{(2,-1)\}$.<br><br>
+$$S=\begin{bmatrix}1&2\\-1&-1\end{bmatrix},\qquad D=\diag(2,3).$$
+<strong>Controllo:</strong> $A(1,-1)=(2,-2)=2(1,-1)$ ✓ e $A(2,-1)=(6,-3)=3(2,-1)$ ✓. Anche $2+3=5=\tr A$ e $2\cdot3=6=\det A$ ✓. $\blacksquare$` },
+
+{ id: 'G9.2', sez: 9, tema: 'Diagonalizzare', d: 2,
+  t: r`Stabilire se $A=\begin{bmatrix}1&0&0\\1&2&0\\-1&0&2\end{bmatrix}$ è diagonalizzabile su $\R$ e, in caso affermativo, trovare $S$ e $D$ con $A=SDS^{-1}$.`,
+  hints: [ r`$A$ è triangolare bassa: gli autovalori si leggono sulla diagonale.`,
+           r`$2$ è doppio: basta calcolare $r(A-2I)$.`,
+           r`$A-2I$ ha la seconda e la terza colonna nulle.` ],
+  sol: r`<strong>Autovalori.</strong> $A$ è triangolare: $\lambda_1=1$ semplice e $\lambda_{2,3}=2$ doppio. L'autovalore semplice è regolare; resta $\lambda=2$.<br><br>
+<strong>$\lambda=2$.</strong> $A-2I=\begin{bmatrix}-1&0&0\\1&0&0\\-1&0&0\end{bmatrix}$ ha rango $1$, quindi $m_g(2)=3-1=2=m_a(2)$: regolare. $A$ è diagonalizzabile su $\R$.<br>
+L'unica equazione è $x=0$, con $y,z$ libere: $W_2=\operatorname{span}\{(0,1,0),(0,0,1)\}$.<br><br>
+<strong>$\lambda=1$.</strong> $A-I=\begin{bmatrix}0&0&0\\1&1&0\\-1&0&1\end{bmatrix}$: $x+y=0$ e $-x+z=0$, cioè $y=-x$, $z=x$. $W_1=\operatorname{span}\{(1,-1,1)\}$.<br><br>
+$$S=\begin{bmatrix}1&0&0\\-1&1&0\\1&0&1\end{bmatrix},\qquad D=\diag(1,2,2).$$
+<strong>Controllo:</strong> $A(1,-1,1)=(1,\,1-2,\,-1+2)=(1,-1,1)$ ✓; $A(0,1,0)=(0,2,0)$ ✓; $A(0,0,1)=(0,0,2)$ ✓. Quindi $AS=SD$. $\blacksquare$` },
+
+{ id: 'G9.3', sez: 9, tema: 'Diagonalizzabilità con parametro', d: 2,
+  t: r`Per quali $k\in\R$ la matrice $A_k=\begin{bmatrix}2&0&0\\k&2&0\\1&1&1\end{bmatrix}$ è diagonalizzabile? Per quei valori, trovare una base di $\R^3$ fatta di autovettori.`,
+  hints: [ r`Gli autovalori non dipendono da $k$: la matrice è triangolare.`,
+           r`L'autovalore da controllare è quello doppio, $2$.`,
+           r`$A_k-2I=\begin{bmatrix}0&0&0\\k&0&0\\1&1&-1\end{bmatrix}$: quando ha rango $1$?` ],
+  sol: r`<strong>Autovalori.</strong> $A_k$ è triangolare bassa: $2$ (doppio) e $1$ (semplice, quindi regolare).<br><br>
+<strong>$\lambda=2$.</strong> $A_k-2I=\begin{bmatrix}0&0&0\\k&0&0\\1&1&-1\end{bmatrix}$.
+<ul><li>Se $k\ne0$ le righe $(k,0,0)$ e $(1,1,-1)$ sono indipendenti: rango $2$, $m_g(2)=1\lt2$. Non diagonalizzabile.</li>
+<li>Se $k=0$ resta la sola riga $(1,1,-1)$: rango $1$, $m_g(2)=2=m_a(2)$. Diagonalizzabile.</li></ul>
+<strong>Base per $k=0$.</strong> $W_2$: $x+y-z=0$, con $x,y$ libere: $(1,0,1)$ e $(0,1,1)$. $W_1$: $A_0-I=\begin{bmatrix}1&0&0\\0&1&0\\1&1&0\end{bmatrix}$ dà $x=y=0$: $(0,0,1)$.<br>
+La base è $\{(1,0,1),(0,1,1),(0,0,1)\}$.<br><br>
+<strong>Controllo:</strong> $A_0(1,0,1)=(2,0,2)$ ✓, $A_0(0,1,1)=(0,2,2)$ ✓, $A_0(0,0,1)=(0,0,1)$ ✓.<br>
+<strong>Morale:</strong> il parametro non sposta gli autovalori, ma cambia la dimensione dell'autospazio. È il caso tipico dei quiz. $\blacksquare$` },
+
+{ id: 'G9.4', sez: 9, tema: 'Diagonalizzabilità con parametro', d: 1,
+  t: r`Per quali $k\in\R$ la matrice $\begin{bmatrix}2&1\\0&k\end{bmatrix}$ è diagonalizzabile su $\R$?`,
+  hints: [ r`Gli autovalori sono $2$ e $k$.`,
+           r`Se $k\ne2$ sono distinti. E se $k=2$?` ],
+  sol: r`La matrice è triangolare: autovalori $2$ e $k$.
+<ul><li>$k\ne2$: due autovalori reali distinti, quindi diagonalizzabile su $\R$ (Corollario).</li>
+<li>$k=2$: autovalore doppio $2$, e $A-2I=\begin{bmatrix}0&1\\0&0\end{bmatrix}$ ha rango $1$, quindi $m_g(2)=1\lt2$. Non diagonalizzabile.</li></ul>
+<strong>Risposta:</strong> diagonalizzabile se e solo se $k\ne2$.<br>
+<strong>Controllo</strong> per $k=0$: autovalori $2,0$; $A(1,0)=(2,0)=2(1,0)$ ✓ e $A(1,-2)=(0,0)=0\cdot(1,-2)$ ✓. $\blacksquare$` },
+
+{ id: 'G9.5', sez: 9, tema: 'Su R o su C', d: 2,
+  t: r`Sia $A=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$. Mostrare che $A$ è diagonalizzabile su $\C$ ma non su $\R$, e trovare $S\in\M_{\C}(2,2)$ e $D$ diagonale con $A=SDS^{-1}$. (È l'esempio chiesto nella Parte C di gennaio 2026.)`,
+  hints: [ r`$P_A(\lambda)=\lambda^2+1$.`,
+           r`Per $\lambda=i$: $A-iI=\begin{bmatrix}-i&-1\\1&-i\end{bmatrix}$, e la prima riga dà $y=-ix$.` ],
+  sol: r`<strong>Autovalori.</strong> $P_A(\lambda)=\begin{vmatrix}-\lambda&-1\\1&-\lambda\end{vmatrix}=\lambda^2+1$, con radici $i$ e $-i$.
+<ul><li>Su $\C$: due autovalori distinti in una $2\times2$, quindi diagonalizzabile.</li>
+<li>Su $\R$: gli autovalori non sono reali, quindi non diagonalizzabile (Teorema 1a).</li></ul>
+<strong>Autovettori.</strong> $\lambda=i$: $-ix-y=0$, cioè $y=-ix$: $(1,-i)$. $\lambda=-i$: $ix-y=0$: $(1,i)$.
+$$S=\begin{bmatrix}1&1\\-i&i\end{bmatrix},\qquad D=\diag(i,-i).$$
+<strong>Controllo:</strong> $A(1,-i)=(i,1)$ e $i\cdot(1,-i)=(i,-i^2)=(i,1)$ ✓; $A(1,i)=(-i,1)$ e $-i\cdot(1,i)=(-i,1)$ ✓.<br>
+<strong>Attenzione:</strong> all'esame la risposta va giustificata, come qui. Non basta scrivere la matrice. $\blacksquare$` },
+
+{ id: 'G9.6', sez: 9, tema: 'Matrici simili', d: 2,
+  t: r`Le matrici $A=\begin{bmatrix}3&1\\0&3\end{bmatrix}$ e $B=\begin{bmatrix}3&0\\1&3\end{bmatrix}$ hanno lo stesso polinomio caratteristico? Sono simili? E $A$ è simile a $3I$?`,
+  hints: [ r`Entrambe sono triangolari.`,
+           r`Matrici simili hanno le stesse molteplicità geometriche.`,
+           r`Per $3I$: quanto vale $S^{-1}(3I)S$?` ],
+  sol: r`<strong>Polinomio.</strong> Entrambe sono triangolari con diagonale $3,3$: $P_A=P_B=(3-\lambda)^2$.<br><br>
+<strong>$A$ e $B$.</strong> $A^{T}=B$, ed entrambe hanno $m_g(3)=1$ ($A-3I$ e $B-3I$ hanno rango $1$). Infatti sono simili: con $S=\begin{bmatrix}0&1\\1&0\end{bmatrix}$, che scambia i due vettori della base, $S^{-1}AS=\begin{bmatrix}3&0\\1&3\end{bmatrix}=B$.<br>
+<strong>Controllo:</strong> $AS=\begin{bmatrix}1&3\\3&0\end{bmatrix}$ e $SB=\begin{bmatrix}1&3\\3&0\end{bmatrix}$ ✓.<br><br>
+<strong>$A$ e $3I$.</strong> Stesso polinomio, ma non simili: $S^{-1}(3I)S=3I$ per ogni $S$, quindi l'unica matrice simile a $3I$ è $3I$ stessa. Lo si vede anche dalle molteplicità: $m_g(3)=2$ per $3I$ e $1$ per $A$.<br>
+<strong>Morale:</strong> lo stesso polinomio caratteristico è necessario, non sufficiente. $\blacksquare$` },
+
+{ id: 'G9.7', sez: 9, tema: 'Potenze', d: 3,
+  t: r`Sia $A=\begin{bmatrix}4&2\\-1&1\end{bmatrix}$ (esercizio G9.1). Calcolare $A^k$ per ogni $k\in\N$.`,
+  hints: [ r`Da G9.1: $A=SDS^{-1}$ con $S=\begin{bmatrix}1&2\\-1&-1\end{bmatrix}$, $D=\diag(2,3)$.`,
+           r`$\det S=1$, quindi $S^{-1}=\begin{bmatrix}-1&-2\\1&1\end{bmatrix}$.`,
+           r`$A^k=S\,\diag(2^k,3^k)\,S^{-1}$.` ],
+  sol: r`$\det S=-1+2=1$, quindi $S^{-1}=\begin{bmatrix}-1&-2\\1&1\end{bmatrix}$. Allora
+$$A^k=\begin{bmatrix}1&2\\-1&-1\end{bmatrix}\begin{bmatrix}2^k&0\\0&3^k\end{bmatrix}\begin{bmatrix}-1&-2\\1&1\end{bmatrix}=\begin{bmatrix}1&2\\-1&-1\end{bmatrix}\begin{bmatrix}-2^k&-2^{k+1}\\3^k&3^k\end{bmatrix}$$
+$$=\begin{bmatrix}2\cdot3^k-2^k&2\cdot3^k-2^{k+1}\\2^k-3^k&2^{k+1}-3^k\end{bmatrix}.$$
+<strong>Controllo:</strong> $k=0$ dà $I$ ✓; $k=1$ dà $\begin{bmatrix}6-2&6-4\\2-3&4-3\end{bmatrix}=A$ ✓; $k=2$ dà $\begin{bmatrix}14&10\\-5&-1\end{bmatrix}$, che è $A\cdot A$ ✓. $\blacksquare$` },
+
+{ id: 'G9.8', sez: 9, tema: 'Endomorfismi', d: 3,
+  t: r`Sia $L:P_2\to P_2$, $L(p)(x):=x\,p'(x)+p'(x)$. Scrivere la matrice di $L$ nella base $\{1,x,x^{2}\}$, stabilire se $L$ è diagonalizzabile e trovare una base di $P_2$ fatta di autovettori di $L$.`,
+  hints: [ r`$L(1)=0$, $L(x)=x+1$, $L(x^{2})=2x^{2}+2x$.`,
+           r`La matrice è triangolare alta.`,
+           r`Gli autovettori di $L$ sono i polinomi che hanno come coordinate gli autovettori della matrice.` ],
+  sol: r`<strong>Matrice.</strong> $L(1)=0$, $L(x)=1+x$, $L(x^{2})=2x+2x^{2}$. Le coordinate vanno in colonna:
+$$A=\begin{bmatrix}0&1&0\\0&1&2\\0&0&2\end{bmatrix}.$$
+<strong>Diagonalizzabilità.</strong> Triangolare: autovalori $0,1,2$, distinti. Quindi $A$, e con lei $L$, è diagonalizzabile.<br><br>
+<strong>Autovettori.</strong>
+<ul><li>$\lambda=0$: $A\vx=\vzero$ dà $y=0$, $z=0$: $(1,0,0)$, cioè il polinomio $1$.</li>
+<li>$\lambda=1$: $A-I$ dà $z=0$ e $x=y$: $(1,1,0)$, cioè $1+x$.</li>
+<li>$\lambda=2$: $A-2I=\begin{bmatrix}-2&1&0\\0&-1&2\\0&0&0\end{bmatrix}$ dà $y=2z$, $x=z$: $(1,2,1)$, cioè $1+2x+x^{2}=(1+x)^{2}$.</li></ul>
+Base di autovettori: $\{1,\ 1+x,\ (1+x)^{2}\}$.<br><br>
+<strong>Controllo sui polinomi:</strong> $L(1)=0$ ✓; $L(1+x)=x+1$ ✓; $L((1+x)^{2})=x\cdot2(1+x)+2(1+x)=2(1+x)^{2}$ ✓.<br>
+<strong>Morale:</strong> si lavora sulla matrice e alla fine si torna ai polinomi, come nell'esercizio 2 di gennaio 2025. $\blacksquare$` }
 
   ];
 

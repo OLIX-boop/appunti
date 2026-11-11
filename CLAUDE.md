@@ -54,7 +54,11 @@ aggiungere una materia sono nel `README.md`.
     normalizzazione, seconda eliminazione); **teorema di Cramer** = «soluzione unica $\iff r(A)=n$»
     (Lezione 2), **regola di Cramer** = $x_j=\det A_j/\det A$ (Lezione 9); $\langle\vx,\vy\rangle$
     per il prodotto scalare standard, $C^{T}$ (non $\operatorname{adj}$) nell'inversa, «fascio»
-    (non «fascia»), $A=[\vec v_1|-\vec v_2]$ per l'intersezione di due rette.
+    (non «fascia»), $A=[\vec v_1|-\vec v_2]$ per l'intersezione di due rette. Diagonalizzazione
+    (Lezione 10): $P_A(\lambda)=\det(A-\lambda I)$ (non $\det(\lambda I-A)$), $W_\lambda$ per
+    l'autospazio, $m_a$ e $m_g$, autovalore **regolare**/**irregolare** se $m_g=m_a$ o no,
+    $S^{-1}AS=D$ con gli autovettori nelle colonne di $S$, «diagonalizzabile» senza campo = su $\C$.
+    La parte 2 della Lezione 10 rimanda a «Lezione 8» e «Lezione 7» con la numerazione del 2024.
   - Se una convenzione del corso differisce dai libri, si scrive quella del corso e si aggiunge
     una nota breve che spiega la differenza.
 - **Refusi negli appunti del prof**: si segnalano in piccolo (`small muted`) nel punto in cui
@@ -168,10 +172,15 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 - Lo studente ha chiesto di togliere le checklist di Geometria: il capitolo si riassume in **un punto
   solo**, cioè una frase, la mappa dei concetti e una spunta unica. La spunta scrive tutte le voci di
   `data/topics.js` della sezione, così le barre di avanzamento restano vere e gli id non cambiano.
-- I dati stanno in `geometria/data/`: `mappe.js` per le nove sezioni; `primalettura.js` e `schemi.js`
-  per la Sezione 5, `primalettura-altre.js` e `schemi-altre.js` per le altre otto. La logica è in
+- I dati stanno in `geometria/data/`: `mappe.js` per le dieci sezioni; `primalettura.js` e `schemi.js`
+  per la Sezione 5, `primalettura-altre.js` e `schemi-altre.js` per le altre nove. La logica è in
   `assets/js/capitolo.js`, lo stile in `assets/css/capitolo.css`.
   Nella mappa i prerequisiti di un nodo stanno sempre in una riga più in alto, e `a` è un'ancora che esiste.
+  Al massimo **tre nodi per riga**: con quattro, sul telefono la riga va a capo e le frecce passano
+  dietro i nodi della seconda metà.
+- Le statistiche d'esame stanno in `geometria/data/esami.js` (pagina `geometria/esami.html`): quando
+  arriva una lezione su un argomento segnato «non ancora a lezione», si aggiornano `sez` di
+  `argomenti` e `tipi` e il `sito` delle voci di `teoria`.
 - La **prima lettura** serve a studiare il capitolo la prima volta. Ogni paragrafo, nell'ordine del prof,
   è uno strato semplice: **una frase, uno schema, pochi punti brevi, una domanda**. Le definizioni del
   prof restano nella pagina dietro un clic («versione degli appunti»), e «Mostra tutto il capitolo»

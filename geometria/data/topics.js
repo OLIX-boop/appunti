@@ -229,6 +229,28 @@
         { id: 'g8-18', t: r`Determinante di un endomorfismo: non dipende dalla base`, q: 'Lez. 9' },
         { id: 'g8-19', t: r`Ipervolume e $\operatorname{Vol}_n(L(K))=|\det L|\operatorname{Vol}_n(K)$; ellisse ed ellissoide`, q: 'Lez. 9' }
       ]
+    },
+    {
+      n: 9,
+      slug: 'sezioni/9-diagonalizzazione.html',
+      titolo: 'Diagonalizzazione',
+      sommario: r`Autovalori e autovettori, polinomio caratteristico, molteplicità, il criterio di diagonalizzabilità, potenze, traccia, invarianza per similitudine.`,
+      topics: [
+        { id: 'g9-01', t: r`Il problema della diagonalizzazione; endomorfismo diagonalizzabile`, q: 'Lez. 10' },
+        { id: 'g9-02', t: r`Autovettori e autovalori di un endomorfismo; $\lambda=0\iff\ker L\ne\{\vzero\}$`, mark: '*', q: 'Lez. 10' },
+        { id: 'g9-03', t: r`Teorema 1: $L$ diagonalizzabile $\iff$ $A$ simile a una diagonale; le colonne di $S$ sono autovettori`, mark: '*', q: 'Lez. 10' },
+        { id: 'g9-04', t: r`Matrice diagonalizzabile su $\K$; su $\R$ contro su $\C$; autovalori di una matrice`, q: 'Lez. 10' },
+        { id: 'g9-05', t: r`Proposizione 1: autospazio $\ker(A-\lambda I)$; $\lambda$ autovalore $\iff\det(A-\lambda I)=0$`, mark: '*', q: 'Lez. 10' },
+        { id: 'g9-06', t: r`Polinomio caratteristico; autovalori delle matrici triangolari`, q: 'Lez. 10' },
+        { id: 'g9-07', t: r`Calcolo di autovalori e autospazi; i controlli (il MEG non conserva gli autovalori)`, q: 'Lez. 10' },
+        { id: 'g9-08', t: r`Molteplicità algebrica e geometrica; $1\le m_g\le m_a$; autovalori regolari`, mark: '*', q: 'Lez. 10' },
+        { id: 'g9-09', t: r`Criterio di diagonalizzabilità su $\C$ e su $\R$; $n$ autovalori distinti`, mark: '*', q: 'Lez. 10' },
+        { id: 'g9-10', t: r`Lemma sugli autospazi; base di autovettori, le matrici $S$ e $D$`, mark: '*', q: 'Lez. 10' },
+        { id: 'g9-11', t: r`Potenze $A^k=SD^kS^{-1}$; formula di Binet per Fibonacci`, q: 'Lez. 10' },
+        { id: 'g9-12', t: r`Traccia; $\det A=\prod\lambda_i$ e $\tr A=\sum\lambda_i$; il caso $2\times2$`, mark: '**', q: 'Lez. 10' },
+        { id: 'g9-13', t: r`Invarianza del polinomio caratteristico per similitudine; il viceversa è falso`, mark: '*', q: 'Lez. 10' },
+        { id: 'g9-14', t: r`Esponenziale di una matrice e sistemi di equazioni differenziali`, q: 'Lez. 10' }
+      ]
     }
   ];
 
@@ -236,7 +258,7 @@
   window.AM.registraMateria({
     key: 'geometria',
     nome: 'Geometria e Algebra Lineare',
-    sottotitolo: 'Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari, determinanti',
+    sottotitolo: 'Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari, determinanti, diagonalizzazione',
     base: 'geometria/',
     prefisso: 'g',
     qLabel: '',

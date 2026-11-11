@@ -568,6 +568,70 @@ $$\operatorname{span}\{\vv_1,\dots,\vv_n\}=\Big\{\sum_{j=1}^{n}\alpha_j\vv_j\ :\
       { cue: r`Il caso orario`, body: r`Si scambiano $\vec u$ e $\vec v$: il determinante cambia segno. $\blacksquare$` }
     ],
     note: r`In generale $\det[\vv_1|\dots|\vv_n]=\pm\operatorname{Vol}_n(\Pi)$ e $\operatorname{Vol}_n(L(K))=|\det L|\operatorname{Vol}_n(K)$. La dimostrazione di quest'ultimo fatto, negli appunti, è indicata come non richiesta per l'esame.`
+  },
+
+  /* ---------- Sezione 9 · Diagonalizzazione ---------- */
+  {
+    id: 'G-diag', sez: 9, mark: '*', q: 'Lez. 10',
+    titolo: 'Diagonalizzabilità e matrice rappresentativa (Teorema 1)',
+    enunciato: r`Sia $L:V\to V$ un endomorfismo, $\dim V=n$, e sia $A$ la sua matrice rispetto a una base $B_0$. Sono equivalenti: (i) $L$ è diagonalizzabile; (ii) esiste $S\in\M_{\K}(n,n)$ invertibile con $S^{-1}AS=D$ diagonale. In tal caso (iii) la colonna $\vx_j$ di $S$ soddisfa $A\vx_j=\lambda_j\vx_j$, dove $\lambda_j$ è il posto $(j,j)$ di $D$.`,
+    idea: r`$S$ è la matrice di passaggio dalla base $B_0$ alla base in cui $L$ è diagonale, e viceversa.`,
+    steps: [
+      { cue: r`(i) ⇒ (ii)`, body: r`Sia $B$ la base in cui la matrice è $D$ e $S$ la matrice di passaggio da $B_0$ a $B$. Per il teorema di trasformazione $D=S^{-1}AS$, e gli elementi di $S$ (coordinate dei vettori di $B$) stanno in $\K$.` },
+      { cue: r`(ii) ⇒ (i): la base`, body: r`Le colonne di $S$ sono coordinate rispetto a $B_0$ di vettori $\vv_j$. $S$ invertibile $\Rightarrow r(S)=n\Rightarrow$ colonne indipendenti $\Rightarrow$ $\vv_j$ indipendenti: $n$ vettori indipendenti, quindi una base $B$.` },
+      { cue: r`(ii) ⇒ (i): la matrice`, body: r`La matrice di passaggio da $B_0$ a $B$ è $S$, quindi la matrice di $L$ rispetto a $B$ è $S^{-1}AS=D$.` },
+      { cue: r`(iii)`, body: r`$A=SDS^{-1}$ e $S^{-1}\vx_j=\mathbf e_j$, quindi $A\vx_j=SD\mathbf e_j=\lambda_jS\mathbf e_j=\lambda_j\vx_j$. $\blacksquare$` }
+    ],
+    note: r`Da qui: $A$ è diagonalizzabile su $\K$ se e solo se $\K^n$ ha una base di autovettori di $A$, che sono le colonne di $S$.`
+  },
+  {
+    id: 'G-autospazio', sez: 9, mark: '*', q: 'Lez. 10',
+    titolo: 'Autovalori e nucleo di A − λI (Proposizione 1)',
+    enunciato: r`Sia $A\in\M_{\K}(n,n)$. $\lambda\in\K$ è un autovalore di $A$ se e solo se $\ker(A-\lambda I)\ne\{\vzero\}$, e gli autovettori relativi a $\lambda$ sono gli elementi di $\ker(A-\lambda I)\setminus\{\vzero\}$. Di conseguenza $\lambda$ è un autovalore se e solo se $\det(A-\lambda I)=0$.`,
+    idea: r`$\lambda\vx=\lambda I\vx$: l'equazione degli autovettori è un sistema omogeneo.`,
+    steps: [
+      { cue: r`Riscrivere l'equazione`, body: r`$A\vx=\lambda\vx\iff A\vx=\lambda I\vx\iff(A-\lambda I)\vx=\vzero$.` },
+      { cue: r`Gli autovettori`, body: r`$\vx$ è un autovettore se e solo se $\vx\ne\vzero$ e $\vx\in\ker(A-\lambda I)$.` },
+      { cue: r`L'autovalore`, body: r`Se il nucleo è banale non ci sono autovettori; altrimenti ci sono, e $\lambda$ è un autovalore.` },
+      { cue: r`Il determinante`, body: r`Per Cramer il sistema omogeneo ha soluzioni non banali se e solo se $r(A-\lambda I)\ne n$, cioè $\det(A-\lambda I)=0$. $\blacksquare$` }
+    ],
+    note: r`Il nucleo $\ker(A-\lambda I)$ è l'autospazio $W_\lambda$, e la sua dimensione è la molteplicità geometrica.`
+  },
+  {
+    id: 'G-lemma-autospazi', sez: 9, mark: '*', q: 'Lez. 10',
+    titolo: 'Autospazi di autovalori distinti e criterio di diagonalizzabilità',
+    enunciato: r`<strong>Lemma.</strong> Se $\vu_j\in W_{\lambda_j}$ per autovalori distinti $\lambda_1,\dots,\lambda_k$ e $\vu_1+\dots+\vu_k=\vzero$, allora tutti i $\vu_j$ sono nulli.<br><strong>Criterio.</strong> Una matrice quadrata è diagonalizzabile (su $\C$) se e solo se ogni autovalore è regolare, $m_g=m_a$; su $\R$ servono anche autovalori reali.`,
+    idea: r`Moltiplicare per $A-\lambda_jI$ cancella l'addendo di $W_{\lambda_j}$ e moltiplica gli altri per $\lambda_i-\lambda_j$.`,
+    steps: [
+      { cue: r`Isolare $\vu_{i_0}$`, body: r`Moltiplicando la somma per $A-\lambda_jI$ si ottiene $\sum_i(\lambda_i-\lambda_j)\vu_i=\vzero$. Ripetendo per tutti i $j\ne i_0$: $\sum_i\prod_{j\ne i_0}(\lambda_i-\lambda_j)\,\vu_i=\vzero$.` },
+      { cue: r`Concludere il lemma`, body: r`Per $i\ne i_0$ il coefficiente contiene $\lambda_i-\lambda_i=0$; quello di $\vu_{i_0}$ è non nullo perché gli autovalori sono distinti. Quindi $\vu_{i_0}=\vzero$.` },
+      { cue: r`Criterio: l'unione delle basi è indipendente`, body: r`Una combinazione nulla degli elementi di $B_1\cup\dots\cup B_k$ si raggruppa in vettori $\vu_j\in W_{\lambda_j}$ con somma nulla: per il lemma $\vu_j=\vzero$, e ogni $B_j$ è indipendente.` },
+      { cue: r`Criterio: quanti vettori?`, body: r`$\sum m_g(\lambda_j)=\sum m_a(\lambda_j)=\deg P_A=n$ se ogni autovalore è regolare: una base di $\K^n$ di autovettori. $\blacksquare$` }
+    ],
+    note: r`Corollario: $n$ autovalori distinti bastano, perché sono semplici e quindi regolari ($1\le m_g\le m_a$).`
+  },
+  {
+    id: 'G-det-tr', sez: 9, mark: '**', q: 'Lez. 10',
+    titolo: 'Determinante, traccia e autovalori',
+    enunciato: r`Se $P_A(\lambda)=(\lambda_1-\lambda)\cdots(\lambda_n-\lambda)$, allora $\det A=\lambda_1\lambda_2\cdots\lambda_n$ e $\tr A=\lambda_1+\dots+\lambda_n$.`,
+    idea: r`Il determinante è il valore del polinomio caratteristico in $0$.`,
+    steps: [
+      { cue: r`Dalla fattorizzazione`, body: r`$P_A(0)=\lambda_1\lambda_2\cdots\lambda_n$.` },
+      { cue: r`Dalla definizione`, body: r`$P_A(0)=\det(A-0\,I)=\det A$. $\blacksquare$` }
+    ],
+    note: r`Il prof dimostra solo la parte sul determinante. Per una $2\times2$ ne segue $P_A(\lambda)=\lambda^2-\tr(A)\lambda+\det A$.`
+  },
+  {
+    id: 'G-invarianza', sez: 9, mark: '*', q: 'Lez. 10',
+    titolo: 'Invarianza del polinomio caratteristico (Teorema 2)',
+    enunciato: r`Se $A$ e $B$ sono simili, allora $P_A(\lambda)=P_B(\lambda)$. In particolare hanno gli stessi autovalori con le stesse molteplicità algebriche.`,
+    idea: r`$\lambda I$ commuta con tutto, quindi $B-\lambda I=S^{-1}(A-\lambda I)S$; poi Binet.`,
+    steps: [
+      { cue: r`Ipotesi`, body: r`$B=S^{-1}AS$ con $S$ invertibile.` },
+      { cue: r`Il trucco`, body: r`$\lambda I=S^{-1}(\lambda I)S$, quindi $B-\lambda I=S^{-1}AS-S^{-1}(\lambda I)S=S^{-1}(A-\lambda I)S$.` },
+      { cue: r`Binet`, body: r`$P_B(\lambda)=\det S^{-1}\det(A-\lambda I)\det S=\det(A-\lambda I)=P_A(\lambda)$. $\blacksquare$` }
+    ],
+    note: r`Il viceversa è falso: $I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ hanno lo stesso polinomio $(1-\lambda)^2$ ma non sono simili. Conseguenza: il polinomio caratteristico di un endomorfismo non dipende dalla base.`
   }
   ];
 

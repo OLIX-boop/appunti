@@ -126,6 +126,23 @@
         { id: 'cramer', r: 4, t: 'Regola di Cramer', a: '#cramer', da: ['inversa'], idea: r`$x_j=\det A_j/\det A$.` },
         { id: 'potenze', r: 4, t: 'Potenze e simili', a: '#potenze', da: ['binet'], idea: r`$\det(A^n)=(\det A)^n$, e le matrici simili.` }
       ]
+    },
+    9: {
+      frase: r`Si cerca una base in cui una mappa lineare ha matrice diagonale: esiste se e solo se ogni autovalore ha un autospazio grande quanto la sua molteplicità.`,
+      nodi: [
+        { id: 'problema', r: 0, t: 'Il problema', a: '#problema', idea: r`Una base in cui la matrice di $L$ è diagonale, se esiste.` },
+        { id: 'autovettori', r: 0, t: 'Autovettori e autovalori', a: '#autovettori', idea: r`$L(\vv)=\lambda\vv$ con $\vv\ne\vzero$: vettori che la mappa allunga soltanto.` },
+        { id: 'matrici', r: 1, t: 'Diagonalizzare una matrice', a: '#matrici', da: ['problema', 'autovettori'], idea: r`$S^{-1}AS=D$, con gli autovettori nelle colonne di $S$.` },
+        { id: 'polinomio', r: 1, t: 'Polinomio caratteristico', a: '#polinomio', da: ['autovettori'], idea: r`Gli autovalori sono le radici di $\det(A-\lambda I)$.` },
+        { id: 'calcolo', r: 2, t: 'Calcolo degli autospazi', a: '#calcolo', da: ['polinomio'], idea: r`Il MEG su $A-\lambda I$, e poi il controllo $A\vv=\lambda\vv$.` },
+        { id: 'molteplicita', r: 2, t: 'Molteplicità', a: '#molteplicita', da: ['polinomio'], idea: r`$m_a$ dal polinomio, $m_g$ dall'autospazio: $1\le m_g\le m_a$.` },
+        { id: 'traccia', r: 2, t: 'Traccia e determinante', a: '#traccia', da: ['polinomio'], idea: r`La somma degli autovalori è la traccia, il prodotto è il determinante.` },
+        { id: 'criterio', r: 3, t: 'Criterio', a: '#criterio', da: ['molteplicita', 'matrici'], idea: r`Diagonalizzabile se e solo se ogni autovalore è regolare.` },
+        { id: 'invarianza', r: 3, t: 'Invarianza', a: '#invarianza', da: ['molteplicita', 'matrici'], idea: r`Matrici simili hanno lo stesso polinomio caratteristico, quindi gli stessi autovalori con le stesse molteplicità.` },
+        { id: 'base', r: 4, t: 'Trovare $S$ e $D$', a: '#base', da: ['criterio'], idea: r`Si mettono insieme le basi degli autospazi.` },
+        { id: 'potenze', r: 5, t: 'Potenze e Fibonacci', a: '#potenze-diag', da: ['base'], idea: r`$A^k=SD^kS^{-1}$, e la formula di Binet.` },
+        { id: 'esponenziale', r: 5, t: 'Esponenziale', a: '#esponenziale', da: ['base'], idea: r`$e^{tA}=S\diag(e^{t\lambda_i})S^{-1}$ risolve i sistemi di equazioni differenziali.` }
+      ]
     }
   };
 })();

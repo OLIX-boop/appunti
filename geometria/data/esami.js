@@ -33,7 +33,7 @@
       G: { t: 'Somma, intersezione, Grassmann', sez: [7] },
       H: { t: 'Rette, piani, sottospazi affini', sez: [6] },
       I: { t: 'Determinanti', sez: [8] },
-      J: { t: 'Autovalori, diagonalizzazione, similitudine', sez: [8] },
+      J: { t: 'Autovalori, diagonalizzazione, similitudine', sez: [9, 8] },
       K: { t: 'Prodotto scalare, ortogonalità, proiezioni', sez: null },
       L: { t: 'Matrici simmetriche, forme quadratiche', sez: null },
       M: { t: 'Coniche e quadriche', sez: null }
@@ -120,7 +120,7 @@
       mappa: { t: 'Applicazione lineare fra spazi di matrici o polinomi', fare: 'linearità, nucleo, immagine, iniettiva o suriettiva', sez: 5 },
       sottospazi: { t: 'Sottospazi: basi, U ∩ W, U + W', fare: 'basi, equazioni, Grassmann', sez: 7 },
       rappresentativa: { t: 'Matrice rappresentativa e cambio di base', fare: 'colonne = coordinate delle immagini', sez: 5 },
-      autovalori: { t: 'Autovalori, autovettori, diagonalizzazione', fare: 'polinomio caratteristico, autospazi, molteplicità', sez: 8 },
+      autovalori: { t: 'Autovalori, autovettori, diagonalizzazione', fare: 'polinomio caratteristico, autospazi, molteplicità', sez: 9 },
       coniche: { t: 'Coniche e quadriche', fare: 'forma canonica metrica, classificazione, assi', sez: null },
       scalare: { t: 'Prodotto scalare, Gram-Schmidt, proiezioni', fare: 'basi ortonormali, proiezioni, U⊥', sez: null },
       geometria: { t: 'Rette, piani e sottospazi affini', fare: 'equazioni, parallele, perpendicolari, intersezioni', sez: 6 },
@@ -138,16 +138,16 @@
       { prova: 'f25', tipo: 'def', t: 'Dimensione di uno spazio vettoriale', sito: '5-lineari.html#dimensione' },
       { prova: 'f25', tipo: 'teo', t: 'Invertibilità del prodotto di due matrici', sito: '3-spazi.html#prodotto' },
       { prova: 'f25', tipo: 'es', t: 'Una base ortonormale di ℝ² non fatta di multipli della canonica, con le coordinate di (2,1)' },
-      { prova: 'f25', tipo: 'es', t: 'Una matrice 3×3 con tre autospazi distinti' },
+      { prova: 'f25', tipo: 'es', t: 'Una matrice 3×3 con tre autospazi distinti', sito: '9-diagonalizzazione.html#esempi-parte-c' },
       { prova: 's25', tipo: 'def', t: 'Sottospazio di uno spazio vettoriale', sito: '3-spazi.html#sottospazio' },
       { prova: 's25', tipo: 'def', t: 'Inversa di una matrice quadrata', sito: '2-matrici.html#inversa' },
       { prova: 's25', tipo: 'teo', t: 'Determinante di matrici simili', sito: '8-determinanti.html#simili' },
       { prova: 's25', tipo: 'es', t: 'Uno spazio vettoriale di dimensione infinita' },
       { prova: 's25', tipo: 'es', t: 'Una matrice 3×3 non diagonale, ortogonalmente diagonalizzabile, con un autovalore multiplo' },
-      { prova: 'g26', tipo: 'def', t: 'Endomorfismo diagonalizzabile', sito: null },
+      { prova: 'g26', tipo: 'def', t: 'Endomorfismo diagonalizzabile', sito: '9-diagonalizzazione.html#problema' },
       { prova: 'g26', tipo: 'def', t: 'Forma quadratica definita positiva', sito: null },
       { prova: 'g26', tipo: 'teo', t: 'Coordinate rispetto a una base ortogonale (coefficienti di Fourier)', sito: null },
-      { prova: 'g26', tipo: 'es', t: 'Una matrice 2×2 diagonalizzabile su ℂ ma non su ℝ' },
+      { prova: 'g26', tipo: 'es', t: 'Una matrice 2×2 diagonalizzabile su ℂ ma non su ℝ', sito: '9-diagonalizzazione.html#esempi-parte-c' },
       { prova: 'g26', tipo: 'es', t: 'Due rette U, W per l\'origine di ℝ³ con U + W uguale al piano x + y + z = 0' }
     ]
   };

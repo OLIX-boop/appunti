@@ -846,7 +846,92 @@
   q: r`Sia $L:\R^{2}\to\R^{2}$ lineare con $\det L=-2$ e $K$ un insieme di area $3$. L'area di $L(K)$ è:`,
   opts: [ r`$6$`, r`$-6$`, r`$3$`, r`$\tfrac32$` ],
   a: 0,
-  why: r`$\operatorname{Vol}_n(L(K))=|\det L|\operatorname{Vol}_n(K)=2\cdot3=6$. Il valore assoluto è essenziale: un'area non è mai negativa.` }
+  why: r`$\operatorname{Vol}_n(L(K))=|\det L|\operatorname{Vol}_n(K)=2\cdot3=6$. Il valore assoluto è essenziale: un'area non è mai negativa.` },
+
+/* ---------- Sezione 9 · Diagonalizzazione ---------- */
+{ id: 'GQ103', sez: 9, tag: 'definizione',
+  q: r`Sia $L:V\to V$ lineare. Quale affermazione è vera?`,
+  opts: [ r`$0$ può essere un autovalore di $L$, ma $\vzero$ non è mai un autovettore`,
+          r`$\vzero$ è un autovettore relativo a ogni autovalore`,
+          r`$0$ non può essere un autovalore, perché gli autovalori sono non nulli`,
+          r`$\vzero$ è un autovettore relativo all'autovalore $0$` ],
+  a: 0,
+  why: r`Per definizione un autovettore è <strong>non nullo</strong>, quindi $\vzero$ non lo è mai, nemmeno per l'autovalore $0$. Invece $\lambda=0$ può essere un autovalore: lo è esattamente quando $\ker L\ne\{\vzero\}$, come per la proiezione sul piano $(x,y)$.` },
+
+{ id: 'GQ104', sez: 9, tag: 'autovalore zero',
+  q: r`Sia $A$ quadrata con autovalore $\lambda=0$. Allora:`,
+  opts: [ r`$A$ non è invertibile`, r`$A$ è la matrice nulla`, r`$A$ non è diagonalizzabile`, r`$\ker A=\{\vzero\}$` ],
+  a: 0,
+  why: r`$0$ è un autovalore se e solo se $\det(A-0\,I)=\det A=0$, cioè se $A$ non è invertibile, e allora $\ker A\ne\{\vzero\}$. Non serve che $A$ sia nulla ($\diag(0,1)$ ha l'autovalore $0$), e $\diag(0,1)$ è diagonale, quindi diagonalizzabile.` },
+
+{ id: 'GQ105', sez: 9, tag: 'MEG',
+  q: r`Sia $U$ una riduzione a scala di una matrice quadrata $A$. Quale uguaglianza vale <strong>sempre</strong>?`,
+  opts: [ r`$r(A)=r(U)$`, r`$\det A=\det U$`, r`$\tr A=\tr U$`, r`$P_A=P_U$` ],
+  a: 0,
+  why: r`Il MEG conserva il rango, ma non gli autovalori, e quindi né il polinomio caratteristico né la traccia: l'Esempio 2 della Lezione 10 ha traccia $4$, la sua ridotta traccia $0$. Anche il determinante cambia, con gli scambi di righe e le moltiplicazioni di una riga per un numero. (Quiz di febbraio 2025.)` },
+
+{ id: 'GQ106', sez: 9, tag: 'criterio',
+  q: r`Una matrice reale $3\times3$ ha autovalori $1$, $2$, $-4$. Allora:`,
+  opts: [ r`è diagonalizzabile su $\R$`, r`è diagonalizzabile su $\C$ ma forse non su $\R$`,
+          r`non si può dire senza calcolare gli autospazi`, r`è invertibile solo se è diagonale` ],
+  a: 0,
+  why: r`Tre autovalori distinti e reali in una matrice di ordine $3$: per il Corollario (II) è diagonalizzabile su $\R$, perché autovalori semplici sono regolari. Non servono gli autospazi. È anche invertibile, perché $\det A=1\cdot2\cdot(-4)\ne0$, ma non c'entra con la diagonalità.` },
+
+{ id: 'GQ107', sez: 9, tag: 'molteplicità',
+  q: r`La matrice $\begin{bmatrix}2&1\\0&2\end{bmatrix}$:`,
+  opts: [ r`non è diagonalizzabile, perché $m_g(2)=1\lt m_a(2)=2$`,
+          r`è diagonalizzabile, perché è triangolare`,
+          r`è diagonalizzabile, perché ha un autovalore reale`,
+          r`non è diagonalizzabile, perché ha un autovalore doppio` ],
+  a: 0,
+  why: r`L'unico autovalore è $2$, doppio. $A-2I=\begin{bmatrix}0&1\\0&0\end{bmatrix}$ ha rango $1$, quindi $m_g(2)=2-1=1\lt2$: irregolare. Attenzione all'ultima opzione: un autovalore doppio da solo non basta a escludere la diagonalizzabilità (l'Esempio 1 della Lezione 10 ce l'ha ed è diagonalizzabile). Ed essere triangolare non c'entra.` },
+
+{ id: 'GQ108', sez: 9, tag: 'molteplicità',
+  q: r`$A\in\M_{\R}(3,3)$ è diagonalizzabile e $P_A(\lambda)=\lambda^2(2-\lambda)$. Detto $W_0$ l'autospazio di $0$:`,
+  opts: [ r`$\dim W_0=2$`, r`$\dim W_0=1$`, r`$A$ è invertibile`, r`$\dim W_0=0$` ],
+  a: 0,
+  why: r`$0$ è radice doppia, quindi $m_a(0)=2$. Se $A$ è diagonalizzabile ogni autovalore è regolare: $m_g(0)=\dim W_0=2$. $A$ non è invertibile, perché $0$ è un autovalore. Un autospazio non ha mai dimensione $0$. (Quiz di febbraio 2025.)` },
+
+{ id: 'GQ109', sez: 9, tag: 'simili',
+  q: r`Siano $A$, $B$ quadrate dello stesso ordine. Quale implicazione è vera?`,
+  opts: [ r`$A,B$ simili $\Rightarrow$ $P_A=P_B$`, r`$P_A=P_B$ $\Rightarrow$ $A,B$ simili`,
+          r`$r(A)=r(B)$ $\Rightarrow$ $A,B$ simili`, r`$A,B$ simili $\Rightarrow$ $A,B$ invertibili` ],
+  a: 0,
+  why: r`È il teorema di invarianza. Il viceversa è falso: $I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ hanno lo stesso polinomio $(1-\lambda)^2$ ma non sono simili. Lo stesso rango non basta. E due matrici simili possono essere entrambe non invertibili, per esempio due matrici nulle. (Quiz di febbraio 2025.)` },
+
+{ id: 'GQ110', sez: 9, tag: 'traccia',
+  q: r`Una matrice $2\times2$ ha traccia $5$ e determinante $6$. I suoi autovalori sono:`,
+  opts: [ r`$2$ e $3$`, r`$1$ e $6$`, r`$5$ e $6$`, r`$-2$ e $-3$` ],
+  a: 0,
+  why: r`La somma degli autovalori è la traccia e il prodotto è il determinante: due numeri con somma $5$ e prodotto $6$ sono $2$ e $3$. Equivalentemente $p(\lambda)=\lambda^2-5\lambda+6$. $1$ e $6$ hanno il prodotto giusto ma somma $7$; $-2,-3$ hanno somma $-5$.` },
+
+{ id: 'GQ111', sez: 9, tag: 'traccia',
+  q: r`Sia $A\in\M_{\R}(2,2)$. Quale affermazione è vera?`,
+  opts: [ r`se $\det A=0$ e $\tr A\ne0$, allora $A$ è diagonalizzabile su $\R$`,
+          r`se $\det A\ne0$ e $\tr A=0$, allora $A$ è diagonalizzabile su $\R$`,
+          r`se $\tr A=0$, allora $\det A=0$`,
+          r`se $\det A=0$, allora $\tr A=0$` ],
+  a: 0,
+  why: r`Con $\det A=0$ un autovalore è $0$, e l'altro è $\tr A-0=\tr A\ne0$: due autovalori reali distinti, quindi diagonalizzabile su $\R$. Con $\tr A=0$ e $\det A\ne0$ gli autovalori sono $\pm\sqrt{-\det A}$: se $\det A>0$ non sono reali (la rotazione di $90^\circ$). Le ultime due sono false: $\diag(1,-1)$ e $\diag(0,1)$. (Quiz di settembre 2025.)` },
+
+{ id: 'GQ112', sez: 9, tag: 'su R o su C',
+  q: r`La matrice $\begin{bmatrix}0&-1\\1&0\end{bmatrix}$ (rotazione di $90^\circ$) è:`,
+  opts: [ r`diagonalizzabile su $\C$ ma non su $\R$`, r`diagonalizzabile su $\R$`,
+          r`non diagonalizzabile né su $\R$ né su $\C$`, r`diagonalizzabile su $\R$ ma non su $\C$` ],
+  a: 0,
+  why: r`$P_A(\lambda)=\lambda^2+1$ ha le radici $\pm i$: distinte, quindi diagonalizzabile su $\C$; non reali, quindi non su $\R$. L'ultima opzione è impossibile: diagonalizzabile su $\R$ implica sempre diagonalizzabile su $\C$.` },
+
+{ id: 'GQ113', sez: 9, tag: 'S e D',
+  q: r`$A=SDS^{-1}$ con $S=[\vx_1|\vx_2|\vx_3]$ e $D=\diag(5,0,5)$. Allora:`,
+  opts: [ r`$A\vx_2=\vzero$`, r`$A\vx_2=5\vx_2$`, r`$\vx_1$ e $\vx_3$ sono proporzionali`, r`$A$ è invertibile` ],
+  a: 0,
+  why: r`La colonna $j$ di $S$ è un autovettore relativo all'autovalore al posto $(j,j)$ di $D$: $A\vx_2=0\cdot\vx_2=\vzero$. $\vx_1$ e $\vx_3$ sono due colonne di una matrice invertibile, quindi indipendenti: formano una base dell'autospazio di $5$. $A$ ha l'autovalore $0$, quindi non è invertibile.` },
+
+{ id: 'GQ114', sez: 9, tag: 'parametro',
+  q: r`Per quali $h\in\R$ la matrice $\begin{bmatrix}1&h&0\\0&1&0\\0&0&2\end{bmatrix}$ è diagonalizzabile?`,
+  opts: [ r`solo per $h=0$`, r`per ogni $h$`, r`per nessun $h$`, r`solo per $h\ne0$` ],
+  a: 0,
+  why: r`Gli autovalori sono $1$ (doppio) e $2$ (semplice). $A-I=\begin{bmatrix}0&h&0\\0&0&0\\0&0&1\end{bmatrix}$ ha rango $2$ se $h\ne0$, e allora $m_g(1)=1\lt2$; ha rango $1$ se $h=0$, e allora $m_g(1)=2$. «Per ogni $h$» è l'errore di chi si ferma agli autovalori reali.` }
 
   ];
 

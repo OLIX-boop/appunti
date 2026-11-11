@@ -31,6 +31,7 @@
       <a href="sezioni/6-posizione.html">6 · Posizione</a>
       <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
       <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
+      <a href="sezioni/9-diagonalizzazione.html">9 · Diagonalizzazione</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
       <a href="laboratorio.html">Laboratorio</a>
@@ -69,6 +70,7 @@
       <button class="chip" data-f="g6">Sezione 6 · Posizione</button>
       <button class="chip" data-f="g7">Sezione 7 · Grassmann</button>
       <button class="chip" data-f="g8">Sezione 8 · Determinanti</button>
+      <button class="chip" data-f="g9">Sezione 9 · Diagonalizzazione</button>
     </div>
 
     <div class="btnrow">
@@ -86,15 +88,15 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script src="../assets/js/materie.js?v=20261104"></script>
-<script src="data/topics.js?v=20261104"></script>
-<script src="data/teoremi.js?v=20261104"></script>
+<script src="data/topics.js?v=20261111"></script>
+<script src="data/teoremi.js?v=20261111"></script>
 <script src="../assets/js/plot.js?v=20261104"></script>
 <script src="../assets/js/app.js?v=20261106"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var T = AM.TEOREMI_GEO, filtro = 'all';
   var list = document.getElementById('list'), toc = document.getElementById('tocList');
-  var SEZNOMI = { 1: 'Sistemi lineari e MEG', 2: 'Algebra delle matrici', 3: 'Vettori e spazi vettoriali', 4: 'Numeri complessi', 5: 'Applicazioni lineari e rango', 6: 'Posizione reciproca, ortogonalità, fasci', 7: 'Somma di sottospazi e Grassmann', 8: 'Determinanti' };
+  var SEZNOMI = { 1: 'Sistemi lineari e MEG', 2: 'Algebra delle matrici', 3: 'Vettori e spazi vettoriali', 4: 'Numeri complessi', 5: 'Applicazioni lineari e rango', 6: 'Posizione reciproca, ortogonalità, fasci', 7: 'Somma di sottospazi e Grassmann', 8: 'Determinanti', 9: 'Diagonalizzazione' };
 
   function match(t) {
     if (filtro === 'all') return true;
@@ -128,7 +130,7 @@ document.addEventListener('am:ready', function () {
     list.innerHTML = sel.length ? sel.map(card).join('')
       : '<div class="box"><p class="mb0 muted">Nessun teorema con questo filtro.</p></div>';
     document.getElementById('count').textContent = sel.length + ' teoremi';
-    toc.innerHTML = [1, 2, 3, 4, 5].map(function (s) {
+    toc.innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (s) {
       var g = sel.filter(function (t) { return t.sez === s; });
       if (!g.length) return '';
       return '<h4>' + SEZNOMI[s] + '</h4>' + g.map(function (t) {

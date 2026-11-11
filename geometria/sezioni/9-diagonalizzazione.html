@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 9 · Diagonalizzazione — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105c">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
+      <a href="9-diagonalizzazione.html">9 · Diagonalizzazione</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+      <a href="../laboratorio.html">Laboratorio</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 9</h4>
+    <a href="#mappa">Mappa del capitolo</a>
+    <a href="#problema">1 · Il problema</a>
+    <a href="#autovettori">2 · Autovettori e autovalori</a>
+    <a href="#dim-infinita" class="sub">In dimensione infinita</a>
+    <a href="#matrici">3 · Diagonalizzare una matrice</a>
+    <a href="#su-r-c" class="sub">Su $\R$ o su $\C$</a>
+    <a href="#polinomio">4 · Autospazi e polinomio caratteristico</a>
+    <a href="#triangolari" class="sub">Matrici triangolari</a>
+    <a href="#calcolo">5 · Calcolare autovalori e autospazi</a>
+    <a href="#controlli" class="sub">Errori tipici e controlli</a>
+    <a href="#molteplicita">6 · Molteplicità algebrica e geometrica</a>
+    <a href="#criterio">7 · Criterio di diagonalizzabilità</a>
+    <a href="#esempi-criterio" class="sub">Quattro esempi</a>
+    <a href="#parametro" class="sub">Con un parametro</a>
+    <a href="#esempi-parte-c" class="sub">Esempi da costruire</a>
+    <a href="#base">8 · Trovare $S$ e $D$</a>
+    <a href="#lemma" class="sub">Il lemma sugli autospazi</a>
+    <a href="#potenze-diag">9 · Potenze e Fibonacci</a>
+    <a href="#binet-fib" class="sub">Il conto completo</a>
+    <a href="#traccia">10 · Traccia e determinante</a>
+    <a href="#invarianza">11 · Invarianza per similitudine</a>
+    <a href="#polcar-endo" class="sub">Polinomio di un endomorfismo</a>
+    <a href="#non-basta" class="sub">Il viceversa è falso</a>
+    <a href="#esponenziale">12 · Esponenziale di una matrice</a>
+    <a href="#edo" class="sub">Un sistema di equazioni differenziali</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 9 · Geometria e Algebra Lineare · Lezione 10</div>
+      <h1>Diagonalizzazione</h1>
+      <p class="lead">Data una mappa lineare $L:V\to V$, si cerca una base in cui la sua matrice è diagonale. In quella base la mappa allunga o accorcia ogni vettore della base, senza mescolarli. Gli strumenti sono gli autovalori, gli autovettori e il polinomio caratteristico.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Una matrice diagonale è la più facile che ci sia: le potenze, il determinante e i sistemi si leggono subito. La domanda è <strong>quando</strong> una matrice è diagonale «in un'altra base», cioè simile a una diagonale. La risposta passa da tre passi: trovare gli autovalori con $\det(A-\lambda I)=0$, trovare gli autospazi con il MEG, e confrontare due numeri per ogni autovalore, le molteplicità algebrica e geometrica. Negli esami del prof questo argomento esce in quasi ogni prova: vedi <a href="../esami.html#argomenti">Cosa esce all'esame</a>.</p>
+    </div>
+    <p class="small muted">Dagli appunti: <em>Lezione 10</em>, parti 1 e 2. Libro: <em>ALG</em> pp. 296-301 e 305-312. Nella parte 2 il prof rimanda alla «Lezione 8» per gli Esempi A, 1 e 2 e alla «Lezione 7» per Fibonacci: è la numerazione del 2024. Oggi sono la parte 1 di questa lezione e la <a href="8-determinanti.html#fibonacci">Lezione 9, parte 3</a>.</p>
+
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="problema">1 · Il problema della diagonalizzazione</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10) <span class="badge purple">chiesta in Parte C · gennaio 2026</span></div>
+      <p class="mb0">Un endomorfismo $L:V\to V$ di uno spazio vettoriale $V$ su $\K$ con $\dim V\lt+\infty$ si dice <strong>diagonalizzabile</strong> se in $V$ esiste una base $B$ rispetto a cui la matrice rappresentativa di $L$ è una matrice <strong>diagonale</strong>.</p>
+    </div>
+    <p>Il problema della diagonalizzazione è trovare questa base, <strong>se esiste</strong>: non sempre esiste.</p>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 10): che cosa vuol dire, vettore per vettore</div>
+      <p>Sia $B=\{\vv_1,\dots,\vv_n\}$ una tale base e $A=\diag(\lambda_1,\dots,\lambda_n)$ la matrice di $L$ rispetto a $B$. Le coordinate di $\vv_j$ rispetto a $B$ sono $\mathbf e_j=(0,\dots,1,\dots,0)$, con l'$1$ al posto $j$. Per il <a href="5-lineari.html#rappresentativa">teorema di rappresentazione</a> le coordinate di $L(\vv_j)$ sono $A\mathbf e_j=\lambda_j\mathbf e_j$, cioè
+      $$L(\vv_j)=0\,\vv_1+\dots+\lambda_j\vv_j+\dots+0\,\vv_n=\lambda_j\vv_j.$$</p>
+      <p class="mb0">Quindi il problema si riduce a trovare vettori $\vv\ne\vzero$ (gli elementi di una base non sono mai nulli) e scalari $\lambda\in\K$ tali che $L(\vv)=\lambda\vv$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Perché proprio la diagonale</div>
+      <p class="mb0">Nella colonna $j$ di una matrice rappresentativa ci sono le coordinate di $L(\vv_j)$. Se la matrice è diagonale, ogni colonna ha un solo numero non nullo, al posto $j$: la mappa manda ogni vettore della base in un suo multiplo e non lo mescola con gli altri. In quella base, $L$ è fatta di $n$ allungamenti indipendenti.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="autovettori">2 · Autovettori e autovalori</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10) <span class="badge star">risultato centrale</span></div>
+      <p>Sia $V$ uno spazio vettoriale su $\K$ e sia $L:V\to V$ una mappa lineare (un endomorfismo di $V$). Siano $\vv\in V$ e $\lambda\in\K$. Se
+      $$\vv\ne\vzero\qquad\text{e}\qquad L(\vv)=\lambda\vv,$$
+      allora $\lambda$ si chiama un <strong>autovalore</strong> di $L$ e $\vv$ un <strong>autovettore</strong> di $L$ relativo all'autovalore $\lambda$.</p>
+      <p class="mb0">Un autovettore è quindi un vettore non nullo la cui immagine è un multiplo del vettore stesso.</p>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">Osservazione (Lezione 10)</div>
+      <p class="mb0">Per definizione $\vzero$ <strong>non</strong> è un autovettore. Un autovalore invece <strong>può</strong> essere $0$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 10): la proiezione sul piano $(x,y)$</div>
+      <p class="mb0">$L:\R^3\to\R^3$, $L(x,y,z):=(x,y,0)$. Il vettore $\vv:=(0,0,1)$ è un autovettore relativo all'autovalore $\lambda=0$: $L(0,0,1)=\vzero=0\,\vv$. Allo stesso modo ogni vettore non nullo del piano $z=0$ è un autovettore relativo a $\lambda=1$, perché $L$ lo lascia fermo.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">L'autovalore zero (Lezione 10)</div>
+      <p class="mb0">$\lambda=0$ è un autovalore di $L$ se e solo se $\ker(L)\ne\{\vzero\}$, e in tal caso gli autovettori relativi a $0$ sono gli elementi non nulli di $\ker(L)$. Infatti $L(\vv)=0\,\vv$ vuol dire $L(\vv)=\vzero$.</p>
+    </div>
+
+    <h3 id="dim-infinita">In dimensione infinita</h3>
+    <p>Il prof aggiunge due esempi in dimensione infinita: il corso si limita alla dimensione finita, ma gli autovettori hanno senso anche lì.</p>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 10)</div>
+      <p><strong>Derivata.</strong> $V:=C^{\infty}(\R)$, le funzioni derivabili infinite volte, e $L(f):=f'$. Ogni $\lambda\in\R$ è un autovalore: gli autovettori sono le soluzioni non nulle di $f'=\lambda f$, cioè le funzioni $f(x)=c\,e^{\lambda x}$ con $c\ne0$.</p>
+      <p class="mb0"><strong>Moltiplicazione per $x$.</strong> $V:=C(\R)$, le funzioni continue, e $L(f)(x):=x\,f(x)$. Se $xf(x)=\lambda f(x)$ per ogni $x$, allora $f(x)=0$ per ogni $x\ne\lambda$, e per continuità anche in $\lambda$. Quindi $f\equiv0$, che non è un autovettore: questa $L$ <strong>non ha autovettori</strong>.</p>
+    </div>
+    <p class="small muted">Il prof ricorda anche la meccanica quantistica: i valori possibili dell'energia di un atomo sono gli autovalori di una mappa lineare, l'operatore hamiltoniano, e gli autovettori corrispondono agli stati stazionari.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="matrici">3 · Diagonalizzare una matrice</h2>
+    <p>Da qui in poi la dimensione è finita: $L:V\to V$ è un endomorfismo di $V$ su $\K$ con $n:=\dim V$, e fissiamo in $V$ una base qualsiasi $B_0$. A $L$ resta associata la sua matrice rappresentativa $A\in\M_{\K}(n,n)$ rispetto a $B_0$.</p>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 10): diagonalizzabilità e matrice rappresentativa <span class="badge star">risultato centrale</span></div>
+      <p>Nelle ipotesi sopra, sono equivalenti:</p>
+      <ol type="i">
+        <li>$L$ è diagonalizzabile;</li>
+        <li>la matrice $A$ è <strong>simile su $\K$</strong> a una matrice diagonale $D$, cioè esiste una matrice invertibile $S$ di ordine $n$ con elementi in $\K$ tale che
+        $$S^{-1}AS=D.\qquad(1)$$</li>
+      </ol>
+      <p class="mb0">Se (i) e (ii) valgono, vale anche: (iii) detta $\vx_j$ la $j$-esima colonna di $S$ in (1) e $\lambda_j$ l'elemento di posto $(j,j)$ di $D$,
+      $$A\vx_j=\lambda_j\vx_j,\qquad j=1,\dots,n.\qquad(2)$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">(i) ⇒ (ii): da dove salta fuori $S$?</div>
+            <div class="step-content">$L$ è diagonalizzabile: esiste una base $B$ in cui la sua matrice è una diagonale $D$. Si prende come $S$ la <strong>matrice di passaggio</strong> da $B_0$ a $B$. Per il <a href="5-lineari.html#trasformazione">teorema di trasformazione</a> (Lezione 5) $D=S^{-1}AS$. Gli elementi di $S$ sono le coordinate rispetto a $B_0$ dei vettori di $B$, quindi stanno in $\K$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">(ii) ⇒ (i): data $S$, come si costruisce una base di $V$?</div>
+            <div class="step-content">Siano $\vu_1,\dots,\vu_n$ gli elementi di $B_0$ e $\vx_j=(S_{1j},\dots,S_{nj})$ le colonne di $S$. Ogni colonna è il vettore delle coordinate di un vettore di $V$:
+            $$\vv_j:=S_{1j}\vu_1+S_{2j}\vu_2+\dots+S_{nj}\vu_n.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché i $\vv_j$ formano una base?</div>
+            <div class="step-content">$S$ è invertibile, quindi $r(S)=n$ e le sue colonne sono linearmente indipendenti. Dei vettori sono indipendenti se e solo se lo sono i loro vettori delle coordinate, quindi $\vv_1,\dots,\vv_n$ sono indipendenti: $n$ vettori indipendenti in uno spazio di dimensione $n$ sono una <a href="5-lineari.html#condizioni-base">base</a> $B$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che matrice ha $L$ in questa base?</div>
+            <div class="step-content">Per costruzione la matrice di passaggio da $B_0$ a $B$ è proprio $S$. Quindi la matrice di $L$ rispetto a $B$ è $S^{-1}AS=D$, diagonale: $L$ è diagonalizzabile.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">(iii): come si arriva ad $A\vx_j=\lambda_j\vx_j$?</div>
+            <div class="step-content">Da (1), per l'associatività, $SDS^{-1}=S(S^{-1}AS)S^{-1}=A$. Poi $S^{-1}\vx_j=\mathbf e_j$, perché è la colonna $j$ di $S^{-1}S=I$, e $D\mathbf e_j=\lambda_j\mathbf e_j$. Quindi
+            $$A\vx_j=SDS^{-1}\vx_j=SD\mathbf e_j=S(\lambda_j\mathbf e_j)=\lambda_jS\mathbf e_j=\lambda_j\vx_j,$$
+            perché $S\mathbf e_j$ è la colonna $j$ di $S$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10): matrice diagonalizzabile</div>
+      <p class="mb0">Sia $A\in\M_{\K}(n,n)$. $A$ si dice <strong>diagonalizzabile su $\K$</strong> se esistono una matrice invertibile $S\in\M_{\K}(n,n)$ e una matrice diagonale $D\in\M_{\K}(n,n)$ tali che $S^{-1}AS=D$, cioè $A=SDS^{-1}$.</p>
+    </div>
+    <p class="small muted">Nella definizione degli appunti (p. 14) c'è scritto $SAS^{-1}=D$, mentre il Teorema 1 usa $S^{-1}AS=D$. La condizione è la stessa: basta chiamare $S$ la matrice $S^{-1}$. Qui teniamo la forma del Teorema 1, perché è quella in cui le colonne di $S$ sono autovettori.</p>
+
+    <h3 id="su-r-c">Su $\R$ o su $\C$</h3>
+    <div class="box warnb">
+      <div class="box-title">Osservazione (Lezione 10)</div>
+      <p class="mb0">Ogni matrice diagonalizzabile su $\R$ lo è anche su $\C$, perché $\R\subset\C$. Ma esistono matrici reali diagonalizzabili su $\C$ e <strong>non</strong> su $\R$: un esempio è nel <a href="#esempi-criterio">§ 7</a>. Per questo «matrice diagonalizzabile», senza altro, vuol dire <strong>diagonalizzabile su $\C$</strong>: se si intende su $\R$ bisogna dirlo.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10): autovalori di una matrice</div>
+      <p class="mb0">Sia $A$ una matrice quadrata di ordine $n$. Un numero $\lambda$, reale o complesso, si dice un <strong>autovalore</strong> di $A$ se esiste $\vx\in\C^n$ <strong>non nullo</strong> tale che
+      $$\boxed{A\vx=\lambda\vx}\qquad(3)$$
+      Ogni $\vx\in\C^n$ non nullo che soddisfa (3) si dice un <strong>autovettore</strong> di $A$ relativo all'autovalore $\lambda$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazioni e conclusioni (Lezione 10)</div>
+      <ul class="mb0">
+        <li>$L$ è diagonalizzabile se e solo se la sua matrice $A$, rispetto a una base qualsiasi, è diagonalizzabile su $\K$.</li>
+        <li>Gli autovalori di $L$ sono gli autovalori di $A$ che stanno in $\K$.</li>
+        <li>Per ogni autovalore $\lambda$, gli autovettori di $A$ sono i vettori delle coordinate (rispetto a $B_0$) degli autovettori di $L$.</li>
+        <li>$A$ è diagonalizzabile su $\K$ se e solo se $\K^n$ ha una <strong>base fatta di autovettori</strong> di $A$. Questi autovettori sono le colonne di $S=[\vx_1|\dots|\vx_n]$, e sulla diagonale di $D=\diag(\lambda_1,\dots,\lambda_n)$ ci sono i loro autovalori, nello stesso ordine.</li>
+      </ul>
+    </div>
+    <p>Quindi, per diagonalizzare, serve un modo di trovare autovalori e autovettori di una matrice data. È il prossimo paragrafo.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="polinomio">4 · Autospazi e polinomio caratteristico</h2>
+    <div class="box teo">
+      <div class="box-title">Proposizione 1 (Lezione 10) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Sia $A$ una matrice di ordine $n$ con elementi in $\K$. Uno scalare $\lambda\in\K$ è un autovalore di $A$ se e solo se $\ker(A-\lambda I)$ <strong>non è banale</strong>. In tal caso l'insieme degli autovettori relativi a $\lambda$ è $\ker(A-\lambda I)\setminus\{\vzero\}$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si trasforma $A\vx=\lambda\vx$ in un sistema omogeneo?</div>
+            <div class="step-content">Si scrive $\lambda\vx=\lambda I\vx$, con $I$ la matrice identità di ordine $n$. Sottraendo $\lambda I\vx$ da entrambi i lati e usando la distributività:
+            $$(A-\lambda I)\vx=\vzero.\qquad(!)$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quindi chi sono gli autovettori?</div>
+            <div class="step-content">$\vx$ è un autovettore se e solo se $\vx\ne\vzero$ e vale (!), cioè se e solo se $\vx\in\ker(A-\lambda I)$ e $\vx\ne\vzero$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E quando $\lambda$ è un autovalore?</div>
+            <div class="step-content">Se $\ker(A-\lambda I)=\{\vzero\}$ non c'è nessun vettore non nullo che soddisfa (!), e $\lambda$ non è un autovalore. Se il nucleo non è banale, i suoi elementi non nulli sono autovettori, e $\lambda$ è un autovalore. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10): autospazio</div>
+      <p class="mb0">Sia $\lambda$ un autovalore di una matrice quadrata $A$. Il sottospazio $\ker(A-\lambda I)$ si chiama l'<strong>autospazio</strong> di $A$ relativo all'autovalore $\lambda$. Nella parte 2 della lezione il prof lo indica con $W_{\lambda}:=\ker(A-\lambda I)$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 10): gli autovalori con il determinante</div>
+      <p>Per il <a href="2-matrici.html#cramer">teorema di Cramer</a> (Lezione 2) il sistema omogeneo $(A-\lambda I)\vx=\vzero$ ha soluzioni non banali se e solo se $r(A-\lambda I)\ne n$, e <a href="8-determinanti.html#det-rango">$r(A-\lambda I)=n$ se e solo se $\det(A-\lambda I)\ne0$</a>. Quindi:</p>
+      <p class="mb0">$$\boxed{\lambda\ \text{è un autovalore di }A\iff\det(A-\lambda I)=0}$$</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Proposizione 2 e definizione (Lezione 10)</div>
+      <p>Sia $A$ una matrice di ordine $n$. Allora $p(\lambda):=\det(A-\lambda I)$ è un polinomio di grado $n$ (senza dimostrazione). Si chiama il <strong>polinomio caratteristico</strong> di $A$, e si scrive anche $P_A(\lambda)$.</p>
+      <p class="mb0">Un fatto: $p(\lambda)=(\lambda_1-\lambda)(\lambda_2-\lambda)\cdots(\lambda_n-\lambda)$, dove $\lambda_1,\dots,\lambda_n\in\C$ sono le radici di $p$, contate con la loro molteplicità.</p>
+    </div>
+
+    <h3 id="triangolari">Matrici triangolari</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio A (Lezione 10)</div>
+      <p>Trovare gli autovalori di $A:=\begin{bmatrix}2&1&1\\0&3&0\\0&0&-1\end{bmatrix}$.</p>
+      <p>$A-\lambda I$ è triangolare, quindi il suo determinante è il prodotto della diagonale:
+      $$p(\lambda)=\begin{vmatrix}2-\lambda&1&1\\0&3-\lambda&0\\0&0&-1-\lambda\end{vmatrix}=(2-\lambda)(3-\lambda)(-1-\lambda).$$
+      $A$ ha tre autovalori distinti: $\lambda_1=2$, $\lambda_2=3$, $\lambda_3=-1$.</p>
+      <p class="mb0"><strong>Osservazione.</strong> Per ogni matrice triangolare, bassa o alta, gli autovalori sono gli elementi sulla diagonale principale.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio A, continua: gli autospazi</div>
+      <p><strong>$\lambda_1=2$.</strong> $A-2I=\begin{bmatrix}0&1&1\\0&1&0\\0&0&-3\end{bmatrix}\xrightarrow{R_2\to R_2-R_1}\begin{bmatrix}0&1&1\\0&0&-1\\0&0&-3\end{bmatrix}\xrightarrow{R_3\to R_3-3R_2}\begin{bmatrix}0&1&1\\0&0&-1\\0&0&0\end{bmatrix}$. Il sistema dà $y=z=0$ con $x$ libera: $\ker(A-2I)=\operatorname{span}\{(1,0,0)\}$.</p>
+      <p><strong>$\lambda_2=3$.</strong> $A-3I=\begin{bmatrix}-1&1&1\\0&0&0\\0&0&-4\end{bmatrix}$: $z=0$ e $x=y$, con $y$ libera. $\ker(A-3I)=\operatorname{span}\{(1,1,0)\}$.</p>
+      <p><strong>$\lambda_3=-1$.</strong> $A+I=\begin{bmatrix}3&1&1\\0&4&0\\0&0&0\end{bmatrix}$: $y=0$ e $3x+z=0$, con $z$ libera. $\ker(A+I)=\operatorname{span}\{(-1,0,3)\}$.</p>
+      <p class="mb0"><strong>Controllo:</strong> $A(-1,0,3)=(-2+3,\,0,\,-3)=(1,0,-3)=-1\cdot(-1,0,3)$ ✓.</p>
+    </div>
+    <p class="small muted">Negli appunti (p. 38) l'elemento in alto a sinistra di $A+I$ è scritto $1+1$ invece di $2+1$, e il risultato diventa $\operatorname{span}\{(-\frac12,0,1)\}$. Il controllo lo smentisce: $A(-\frac12,0,1)=(0,0,-1)$, che non è $-1\cdot(-\frac12,0,1)$. Il vettore giusto è $(-1,0,3)$, o un suo multiplo come $(-\frac13,0,1)$.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="calcolo">5 · Calcolare autovalori e autospazi</h2>
+    <div class="box prop">
+      <div class="box-title">La procedura</div>
+      <ol class="mb0">
+        <li>Si calcola $p(\lambda)=\det(A-\lambda I)$ e se ne trovano le radici: sono gli autovalori.</li>
+        <li>Per ogni autovalore $\lambda$ si riduce a scala $A-\lambda I$ e si risolve $(A-\lambda I)\vx=\vzero$: le soluzioni sono l'autospazio, e una base si ottiene dalle variabili libere.</li>
+        <li>Si controlla che $A\vv=\lambda\vv$ per i vettori trovati.</li>
+      </ol>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 1 (Lezione 10)</div>
+      <p>Trovare autovalori e autospazi di $A:=\begin{bmatrix}3&0&-2\\1&1&-1\\1&0&0\end{bmatrix}$.</p>
+      <p><strong>Autovalori.</strong> Con lo sviluppo di Laplace lungo la seconda colonna, che ha un solo elemento non nullo:
+      $$\det(A-\lambda I)=\begin{vmatrix}3-\lambda&0&-2\\1&1-\lambda&-1\\1&0&-\lambda\end{vmatrix}=(1-\lambda)\begin{vmatrix}3-\lambda&-2\\1&-\lambda\end{vmatrix}=(1-\lambda)(\lambda^2-3\lambda+2)=(1-\lambda)(\lambda-2)(\lambda-1).$$
+      Gli autovalori sono tre, ma due coincidono: un autovalore <strong>semplice</strong> $\lambda_1=2$ e un autovalore <strong>doppio</strong> $\lambda_{2,3}=1$.</p>
+      <p><strong>$\lambda_1=2$.</strong> $A-2I=\begin{bmatrix}1&0&-2\\1&-1&-1\\1&0&-2\end{bmatrix}\xrightarrow[R_3\to R_3-R_1]{R_2\to R_2-R_1}\begin{bmatrix}1&0&-2\\0&-1&1\\0&0&0\end{bmatrix}$: $x=2z$, $y=z$, con $z$ libera. $\ker(A-2I)=\operatorname{span}\{(2,1,1)\}$.</p>
+      <p><strong>$\lambda_{2,3}=1$.</strong> $A-I=\begin{bmatrix}2&0&-2\\1&0&-1\\1&0&-1\end{bmatrix}$: dopo $R_1\to\frac12R_1$ le tre righe sono uguali, e resta una sola equazione, $x-z=0$. Le variabili libere sono $y$ e $z$, quindi $\dim\ker(A-I)=2$. Una base si ottiene dando alle variabili libere due valori indipendenti:
+      $$(y,z)=(1,0)\Rightarrow(0,1,0),\qquad(y,z)=(0,1)\Rightarrow(1,0,1).$$</p>
+      <p class="mb0">$\ker(A-I)=\operatorname{span}\{(0,1,0),(1,0,1)\}$, e i due vettori non sono solo generatori: sono una <strong>base</strong> dell'autospazio.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 2 (Lezione 10)</div>
+      <p>Trovare gli autovalori di $A:=\begin{bmatrix}3&1&-3\\1&2&-2\\1&1&-1\end{bmatrix}$ e una base di ogni autospazio.</p>
+      <p><strong>Autovalori.</strong> Con $R_1\to R_1-R_3$ e $R_2\to R_2-R_3$, che non cambiano il determinante:
+      $$\det(A-\lambda I)=\begin{vmatrix}2-\lambda&0&-2+\lambda\\0&1-\lambda&-1+\lambda\\1&1&-1-\lambda\end{vmatrix}=(2-\lambda)(1-\lambda)\begin{vmatrix}1&0&-1\\0&1&-1\\1&1&-1-\lambda\end{vmatrix},$$
+      raccogliendo $2-\lambda$ dalla prima riga e $1-\lambda$ dalla seconda. Con Sarrus l'ultimo determinante vale $1-\lambda$, quindi
+      $$p(\lambda)=(2-\lambda)(1-\lambda)^2.$$
+      Due autovalori: $\lambda_1=2$ semplice e $\lambda_{2,3}=1$ doppio, come nell'Esempio 1.</p>
+      <p><strong>$\lambda_1=2$.</strong> $A-2I=\begin{bmatrix}1&1&-3\\1&0&-2\\1&1&-3\end{bmatrix}\xrightarrow[R_3\to R_3-R_1]{R_2\to R_2-R_1}\begin{bmatrix}1&1&-3\\0&-1&1\\0&0&0\end{bmatrix}$: $y=z$ e $x=-y+3z=2z$, con $z$ libera. $\ker(A-2I)=\operatorname{span}\{(2,1,1)\}$, di dimensione $1$.</p>
+      <p><strong>$\lambda_{2,3}=1$.</strong> $A-I=\begin{bmatrix}2&1&-3\\1&1&-2\\1&1&-2\end{bmatrix}\xrightarrow{R_1\leftrightarrow R_2}\begin{bmatrix}1&1&-2\\2&1&-3\\1&1&-2\end{bmatrix}\xrightarrow[R_3\to R_3-R_1]{R_2\to R_2-2R_1}\begin{bmatrix}1&1&-2\\0&-1&1\\0&0&0\end{bmatrix}$. Solo $z$ è libera: $y=z$, $x=z$.</p>
+      <p class="mb0">Anche l'autospazio dell'autovalore <strong>doppio</strong> ha dimensione $1$, con base $\{(1,1,1)\}$. Questa è la differenza con l'Esempio 1, e il § 6 le dà un nome.</p>
+    </div>
+    <p class="small muted">Negli appunti (p. 43) l'elemento di posto $(2,2)$ di $A-2I$ è scritto $-1$ invece di $2-2=0$, e l'autospazio viene $\operatorname{span}\{(5,1,2)\}$. È proprio il controllo (2) qui sotto a scoprirlo: $A(5,1,2)=(10,3,4)$, mentre $2\cdot(5,1,2)=(10,2,4)$. Con lo zero al suo posto si trova $(2,1,1)$, e $A(2,1,1)=(4,2,2)=2\cdot(2,1,1)$ ✓.</p>
+
+    <h3 id="controlli">Errori tipici e metodi di controllo</h3>
+    <div class="box trap">
+      <div class="box-title">✗ Osservazione del prof (Lezione 10)</div>
+      <ol class="mb0">
+        <li><strong>Un errore tipico:</strong> pensare che gli autovalori della matrice ridotta a scala siano quelli della matrice di partenza. Gli autovalori <strong>non</strong> sono invarianti sotto il MEG. La matrice dell'Esempio 2 ha autovalori $2,1,1$; ridotta a scala diventa
+        $$\begin{bmatrix}1&1&-1\\0&1&-1\\0&0&-2\end{bmatrix},$$
+        che ha autovalori $1,1,-2$.</li>
+        <li><strong>Dopo aver trovato una base di un autospazio, conviene verificare</strong> che i vettori trovati siano davvero autovettori. Nell'Esempio 1: $A(2,1,1)=(6-2,\,2+1-1,\,2)=(4,2,2)=2\cdot(2,1,1)$ ✓.</li>
+        <li><strong>Un autospazio non può essere banale.</strong> Se viene $\ker(A-\lambda I)=\{\vzero\}$, allora $\lambda$ non è un autovalore, oppure c'è un errore nel calcolo del nucleo.</li>
+        <li><strong>La dimensione dell'autospazio è il numero delle variabili libere</strong> del sistema ridotto. Per il <a href="5-lineari.html#nullita">teorema di rango + nullità</a>: $\dim\ker(A-\lambda I)=n-r(A-\lambda I)$.</li>
+      </ol>
+    </div>
+    <p class="small muted">Nella riduzione del punto 1, negli appunti (p. 47) l'ultima mossa è scritta $R_3\to R_3+2R_1$: è $R_3\to R_3+2R_2$, che porta la riga $(0,-2,0)$ a $(0,0,-2)$.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="molteplicita">6 · Molteplicità algebrica e geometrica</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10) <span class="badge star">risultato centrale</span></div>
+      <p>Sia $A$ una matrice quadrata e sia $\lambda_0$ un autovalore di $A$.</p>
+      <ul class="mb0">
+        <li>La <strong>molteplicità algebrica</strong> $m_a(\lambda_0)$ è la molteplicità di $\lambda_0$ come radice del polinomio caratteristico $p(\lambda)=\det(A-\lambda I)$.</li>
+        <li>La <strong>molteplicità geometrica</strong> $m_g(\lambda_0)$ è la dimensione dell'autospazio: $m_g(\lambda_0):=\dim\ker(A-\lambda_0I)$.</li>
+        <li>$\lambda_0$ si dice <strong>semplice</strong> se $m_a(\lambda_0)=1$, <strong>multiplo</strong> se $m_a(\lambda_0)>1$.</li>
+        <li>$\lambda_0$ si dice <strong>regolare</strong> se $m_g(\lambda_0)=m_a(\lambda_0)$, <strong>irregolare</strong> se $m_g(\lambda_0)\lt m_a(\lambda_0)$.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Negli Esempi 1 e 2 (Lezione 10)</div>
+      <div class="tablewrap"><table>
+        <thead><tr><th></th><th>$\lambda$</th><th>$m_a$</th><th>$m_g$</th><th></th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2">Es. 1</td><td>$2$</td><td>$1$</td><td>$1$</td><td>regolare</td></tr>
+          <tr><td>$1$</td><td>$2$</td><td>$2$</td><td>regolare</td></tr>
+          <tr><td rowspan="2">Es. 2</td><td>$2$</td><td>$1$</td><td>$1$</td><td>regolare</td></tr>
+          <tr><td>$1$</td><td>$2$</td><td>$1$</td><td><strong>irregolare</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p class="mb0">Stesso polinomio caratteristico, $(2-\lambda)(1-\lambda)^2$, ma nell'Esempio 2 l'autovalore doppio ha un autospazio troppo piccolo.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Proposizione 3 (Lezione 10)</div>
+      <p class="mb0">Sia $A$ una matrice quadrata e $\lambda_0$ un autovalore di $A$. Allora
+      $$\boxed{1\le m_g(\lambda_0)\le m_a(\lambda_0)}$$
+      In particolare ogni autovalore semplice è regolare. (Senza dimostrazione.)</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Come leggerla</div>
+      <p class="mb0">$m_g\ge1$ è il punto 3 dei controlli: un autospazio non è mai banale. La parte utile negli esercizi è l'altra: se $m_a(\lambda_0)=1$ allora $m_g(\lambda_0)=1$ <strong>senza fare conti</strong>. Quindi gli autovalori da controllare sono solo quelli multipli.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="criterio">7 · Criterio di diagonalizzabilità</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 10, parte 2): criterio su $\C$ <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Una matrice quadrata $A$, a elementi in $\C$, è diagonalizzabile se e solo se <strong>ogni autovalore di $A$ è regolare</strong>.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema 1a (Lezione 10, parte 2): criterio su $\R$</div>
+      <p class="mb0">Una matrice quadrata $A$ a elementi reali è diagonalizzabile su $\R$ se e solo se ogni autovalore di $A$ è regolare <strong>e appartiene a $\R$</strong>.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Corollario (Lezione 10, parte 2)</div>
+      <p>(I) Se una matrice quadrata di ordine $n$ ha $n$ autovalori <strong>distinti</strong>, è diagonalizzabile (su $\C$).</p>
+      <p>(II) Se una matrice reale di ordine $n$ ha $n$ autovalori distinti <strong>reali</strong>, è diagonalizzabile su $\R$.</p>
+      <p class="mb0"><em>Perché:</em> il polinomio caratteristico ha grado $n$, quindi $n$ autovalori distinti sono tutti semplici, e per la Proposizione 3 sono regolari.</p>
+    </div>
+    <p class="small muted">Nella parte 2 la numerazione riparte da capo: questo «Teorema 1» è il criterio, diverso dal Teorema 1 del <a href="#matrici">§ 3</a>. La dimostrazione della parte «se» è nel <a href="#base">§ 8</a>.</p>
+
+    <h3 id="esempi-criterio">Quattro esempi (Lezione 10, parte 2)</h3>
+    <div class="box ex">
+      <div class="box-title">(1) L'Esempio A</div>
+      <p class="mb0">$A=\begin{bmatrix}2&1&1\\0&3&0\\0&0&-1\end{bmatrix}$ è triangolare: i suoi autovalori sono $2,3,-1$. Una matrice reale di ordine $3$ con $3$ autovalori reali distinti: per il Corollario (II) è diagonalizzabile su $\R$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">(2) La rotazione di $90^\circ$ <span class="badge purple">chiesta in Parte C · gennaio 2026</span></div>
+      <p>Sia $L:\R^2\to\R^2$ la rotazione del piano attorno all'origine di $90^\circ$ in senso antiorario. Rispetto alla base canonica la sua matrice è
+      $$A=\left[\,L(\mathbf e_1)\,\middle|\,L(\mathbf e_2)\,\right]=\begin{bmatrix}0&-1\\1&0\end{bmatrix}.$$</p>
+      <p>$L$ <strong>non ha autovettori</strong>: ruotato di $90^\circ$, ogni vettore non nullo diventa perpendicolare a sé stesso, quindi non ne è mai un multiplo. Senza autovettori non c'è una base di autovettori, e $L$ non è diagonalizzabile. Quindi $A$ non è diagonalizzabile su $\R$.</p>
+      <p class="mb0">Infatti $P_A(\lambda)=\begin{vmatrix}-\lambda&-1\\1&-\lambda\end{vmatrix}=\lambda^2+1$ ha due radici distinte <strong>non reali</strong>, $\pm i$. $A$ è diagonalizzabile su $\C$ (due autovalori distinti, Corollario (I)) ma non su $\R$ (gli autovalori non sono reali, Teorema 1a). È la risposta che il prof ha scritto per l'esempio della Parte C di gennaio 2026.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">(3) L'Esempio 1: diagonalizzabile?</div>
+      <p>$P_A(\lambda)=(2-\lambda)(1-\lambda)^2$. $\lambda_1=2$ è semplice, quindi regolare. Per il criterio, $A$ è diagonalizzabile se e solo se $\lambda_{2,3}=1$ è regolare, cioè se $m_g(1)=\dim\ker(A-I)$ vale $m_a(1)=2$.</p>
+      <p>Basta il rango: $A-I=\begin{bmatrix}2&0&-2\\1&0&-1\\1&0&-1\end{bmatrix}$ ha la seconda e la terza colonna multiple della prima, quindi lo spazio colonna ha dimensione $1$ e $r(A-I)=1$. Per rango + nullità
+      $$m_g(1)=3-r(A-I)=3-1=2=m_a(1).$$</p>
+      <p class="mb0">$\lambda_{2,3}=1$ è regolare: $A$ è diagonalizzabile, e su $\R$ perché gli autovalori sono reali.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">(4) L'Esempio 2: diagonalizzabile?</div>
+      <p class="mb0">Stesso polinomio, quindi tutto dipende da $\lambda_{2,3}=1$. Ridotta a scala, $A-I$ diventa $\begin{bmatrix}1&1&-2\\0&-1&1\\0&0&0\end{bmatrix}$, quindi $r(A-I)=2$ e $m_g(1)=3-2=1\ne2=m_a(1)$. L'autovalore è irregolare: $A$ <strong>non</strong> è diagonalizzabile, né su $\R$ né su $\C$.</p>
+    </div>
+
+    <h3 id="parametro">Con un parametro (come all'esame)</h3>
+    <p>Nei quiz del prof la domanda tipica è «per quali valori del parametro la matrice è diagonalizzabile?». Il metodo è lo stesso, e i conti si fanno solo sugli autovalori multipli. Un esempio costruito sul modello dei temi d'esame:</p>
+    <div class="box ex">
+      <div class="box-title">Esempio: $A_h=\begin{bmatrix}1&h&0\\0&1&0\\0&0&2\end{bmatrix}$, $h\in\R$</div>
+      <p>$A_h$ è triangolare: autovalori $1$ (doppio) e $2$ (semplice, quindi regolare). Resta da controllare $\lambda=1$:
+      $$A_h-I=\begin{bmatrix}0&h&0\\0&0&0\\0&0&1\end{bmatrix},\qquad r(A_h-I)=\begin{cases}2&h\ne0\\1&h=0\end{cases}$$</p>
+      <p class="mb0">Quindi $m_g(1)=3-r(A_h-I)$ vale $1$ per $h\ne0$ e $2$ per $h=0$. $A_h$ è diagonalizzabile (su $\R$) <strong>solo per $h=0$</strong>, quando è già diagonale.</p>
+    </div>
+
+    <h3 id="esempi-parte-c">Esempi da costruire (Parte C)</h3>
+    <p>Nella prova di teoria due domande su cinque chiedono di <strong>costruire un esempio</strong>, e il prof scrive: «la risposta deve essere opportunamente giustificata». Non basta la matrice: bisogna mostrare che ha le proprietà richieste. Ecco quelli su questo capitolo, usciti o vicini a quelli usciti.</p>
+    <div class="box ex">
+      <div class="box-title">Esempi giustificati</div>
+      <ul class="mb0">
+        <li><strong>Una matrice $3\times3$ con tre autospazi distinti</strong> (febbraio 2025). $A=\diag(1,2,3)$: è triangolare, i suoi autovalori sono $1,2,3$, distinti, e a ognuno corrisponde un autospazio diverso, $\operatorname{span}\{\mathbf e_1\}$, $\operatorname{span}\{\mathbf e_2\}$, $\operatorname{span}\{\mathbf e_3\}$.</li>
+        <li><strong>Una $2\times2$ diagonalizzabile su $\C$ ma non su $\R$</strong> (gennaio 2026). La rotazione $\begin{bmatrix}0&-1\\1&0\end{bmatrix}$ dell'esempio (2) qui sopra, con la stessa giustificazione.</li>
+        <li><strong>Una matrice non diagonalizzabile.</strong> $A=\begin{bmatrix}1&1\\0&1\end{bmatrix}$: l'unico autovalore è $1$, con $m_a(1)=2$. $A-I=\begin{bmatrix}0&1\\0&0\end{bmatrix}$ ha rango $1$, quindi $m_g(1)=1\lt2$: irregolare.</li>
+        <li><strong>Due matrici con lo stesso polinomio caratteristico ma non simili.</strong> $I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$: la spiegazione è nel <a href="#non-basta">§ 11</a>.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="base">8 · Trovare una base di autovettori: $S$ e $D$</h2>
+    <p>Ora sappiamo stabilire se una matrice è diagonalizzabile. Il problema successivo: data $A$ diagonalizzabile su $\K$ di ordine $n$, trovare</p>
+    <ol type="a">
+      <li>una base $B$ di $\K^n$ formata da autovettori di $A$;</li>
+      <li>una matrice invertibile $S$ e una diagonale $D$ tali che $A=SDS^{-1}$.</li>
+    </ol>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 10)</div>
+      <ul class="mb0">
+        <li>I problemi (a) e (b) sono lo stesso problema: le colonne di $S$ sono gli elementi di $B$, e sulla diagonale di $D$ ci sono gli autovalori. Più precisamente, la colonna $j$ di $S$ è un autovettore relativo all'autovalore al posto $(j,j)$ di $D$.</li>
+        <li>La soluzione esiste, ma <strong>non è mai unica</strong>: si può cambiare l'ordine, o prendere multipli degli autovettori.</li>
+      </ul>
+    </div>
+    <p>Per capire come trovarla si guarda la dimostrazione della parte «se» del criterio. Siano $\lambda_1,\dots,\lambda_k$ gli autovalori <strong>distinti</strong> di $A$ ($1\le k\le n$) e $W_{\lambda_j}:=\ker(A-\lambda_jI)$ i loro autospazi.</p>
+
+    <h3 id="lemma">Il lemma sugli autospazi</h3>
+    <div class="box teo">
+      <div class="box-title">Lemma (Lezione 10, parte 2) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Siano $\vu_1\in W_{\lambda_1},\ \vu_2\in W_{\lambda_2},\ \dots,\ \vu_k\in W_{\lambda_k}$. Se $\vu_1+\vu_2+\dots+\vu_k=\vzero$, allora $\vu_1=\vu_2=\dots=\vu_k=\vzero$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa si vuole dimostrare, esattamente?</div>
+            <div class="step-content">Abbiamo $\vu_1+\dots+\vu_k=\vzero$ (1). Fissiamo un indice qualsiasi $i_0\in\{1,\dots,k\}$ e dimostriamo che $\vu_{i_0}=\vzero$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Qual è la mossa furba per far sparire un addendo?</div>
+            <div class="step-content">Moltiplicare (1) per $A-\lambda_jI$, con $j\ne i_0$. Per la distributività e perché $A\vu_i=\lambda_i\vu_i$:
+            $$\sum_{i=1}^{k}(A-\lambda_jI)\vu_i=\sum_{i=1}^{k}(\lambda_i\vu_i-\lambda_j\vu_i)=\sum_{i=1}^{k}(\lambda_i-\lambda_j)\vu_i=\vzero.\qquad(2)$$
+            $\vu_j$ sparisce, perché il suo coefficiente è $\lambda_j-\lambda_j=0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E poi?</div>
+            <div class="step-content">Si ripete con un altro $j'\ne i_0$, moltiplicando (2) per $A-\lambda_{j'}I$, e così via per tutti i $j\ne i_0$:
+            $$\sum_{i=1}^{k}\Biggl(\prod_{j\ne i_0}(\lambda_i-\lambda_j)\Biggr)\vu_i=\vzero.\qquad(3)$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quali coefficienti restano in (3)? Dove entra l'ipotesi?</div>
+            <div class="step-content">Per $i\ne i_0$ il prodotto contiene il fattore $\lambda_i-\lambda_i=0$, quindi il coefficiente è nullo. Il coefficiente di $\vu_{i_0}$ è $\prod_{j\ne i_0}(\lambda_{i_0}-\lambda_j)\ne0$, perché gli autovalori sono <strong>distinti</strong>. Quindi (3) dice $c\,\vu_{i_0}=\vzero$ con $c\ne0$, cioè $\vu_{i_0}=\vzero$. Poiché $i_0$ era arbitrario, il lemma è dimostrato. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box teo">
+      <div class="box-title">Il criterio, parte «se» (Lezione 10, parte 2)</div>
+      <p class="mb0">Se ogni autovalore di $A$ è regolare, fissata in ogni autospazio $W_{\lambda_j}$ una base $B_j=\{\vv_{j,1},\dots,\vv_{j,m_j}\}$, con $m_j:=m_g(\lambda_j)$, l'unione $B:=B_1\cup B_2\cup\dots\cup B_k$ è una base di $\K^n$ formata da autovettori di $A$. Quindi $A$ è diagonalizzabile.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché $B$ è linearmente indipendente?</div>
+            <div class="step-content">Si prende una combinazione lineare nulla degli elementi di $B$ e la si raggruppa per autospazio:
+            $$\vzero=\sum_{j=1}^{k}\underbrace{(c_{j,1}\vv_{j,1}+\dots+c_{j,m_j}\vv_{j,m_j})}_{\vu_j\in W_{\lambda_j}}.$$
+            Per il lemma ogni $\vu_j=\vzero$. Ma i $\vv_{j,i}$ sono una base di $W_{\lambda_j}$, quindi indipendenti, e tutti i coefficienti sono nulli.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quanti elementi ha $B$? Dove entra «regolare»?</div>
+            <div class="step-content">$$\#B=\sum_{j=1}^{k}m_g(\lambda_j)=\sum_{j=1}^{k}m_a(\lambda_j)=\deg P_A=n.$$
+            La seconda uguaglianza è l'ipotesi che ogni autovalore sia regolare; la terza dice che la somma delle molteplicità delle radici di un polinomio è il suo grado. $n$ vettori indipendenti in $\K^n$ sono una base, fatta di autovettori: $A$ è diagonalizzabile. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="box prop">
+      <div class="box-title">Conclusione (Lezione 10)</div>
+      <p class="mb0">Per trovare una base di autovettori di una matrice diagonalizzabile basta trovare <strong>una base di ogni autospazio</strong> e metterle insieme.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 10): l'Esempio 1 diagonalizzato</div>
+      <p>Per $A=\begin{bmatrix}3&0&-2\\1&1&-1\\1&0&0\end{bmatrix}$ abbiamo trovato $B_1=\{(2,1,1)\}$ per $\lambda_1=2$ e $B_2=\{(0,1,0),(1,0,1)\}$ per $\lambda_2=1$. Entrambi gli autovalori sono regolari, quindi
+      $$B:=B_1\cup B_2=\{(2,1,1),\,(0,1,0),\,(1,0,1)\}$$
+      è una base di $\R^3$ formata da autovettori di $A$, e $A=SDS^{-1}$ con
+      $$S:=\begin{bmatrix}2&0&1\\1&1&0\\1&0&1\end{bmatrix},\qquad D:=\diag(2,1,1).$$</p>
+      <p class="mb0"><strong>Controllo senza calcolare $S^{-1}$:</strong> $A=SDS^{-1}$ equivale ad $AS=SD$. Le colonne di $AS$ sono $A(2,1,1)=(4,2,2)$, $A(0,1,0)=(0,1,0)$, $A(1,0,1)=(1,0,1)$, cioè le colonne di $S$ moltiplicate per $2,1,1$: è proprio $SD$ ✓.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="potenze-diag">9 · Potenze e numeri di Fibonacci</h2>
+    <div class="box prop">
+      <div class="box-title">Le potenze di una matrice diagonalizzabile (Lezione 10)</div>
+      <p>Per una matrice diagonale $D=\diag(\lambda_1,\dots,\lambda_n)$ e ogni $k\in\N$:
+      $$D^k=\diag(\lambda_1^k,\dots,\lambda_n^k).$$
+      Se $D$ è invertibile, cioè $\det D=\lambda_1\cdots\lambda_n\ne0$, la formula vale anche per $k\lt0$. Se $A=SDS^{-1}$, come nella <a href="8-determinanti.html#potenze">Sezione 8</a> si ha $A^k=SD^kS^{-1}$, quindi</p>
+      <p class="mb0">$$\boxed{A^k=S\,\diag(\lambda_1^k,\dots,\lambda_n^k)\,S^{-1}}$$</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 10): i numeri di Fibonacci</div>
+      <p>Nella <a href="8-determinanti.html#fibonacci">Sezione 8</a> abbiamo visto che $\begin{bmatrix}F_k\\F_{k-1}\end{bmatrix}=A^{k-1}\begin{bmatrix}1\\0\end{bmatrix}$ con $A:=\begin{bmatrix}1&1\\1&0\end{bmatrix}$.</p>
+      <p><strong>Autovalori.</strong> $\det(A-\lambda I)=(1-\lambda)(-\lambda)-1=\lambda^2-\lambda-1$, con due radici reali distinte:
+      $$\lambda_1=\frac{1-\sqrt5}{2},\qquad\lambda_2=\frac{1+\sqrt5}{2}.$$
+      Sono semplici, quindi $A$ è diagonalizzabile e ogni autospazio ha dimensione $1$.</p>
+      <p><strong>Autovettori.</strong> $\vv_1=\left(-1,\ \lambda_2\right)$ per $\lambda_1$ e $\vv_2=\left(\lambda_2,\ 1\right)$ per $\lambda_2$. Con $S=[\vv_1|\vv_2]$ e $D=\diag(\lambda_1,\lambda_2)$ si ottiene $A^{k-1}$, e il suo elemento di posto $(1,1)$ è $F_k$:</p>
+      <p>$$F_k=\frac{\lambda_2^k-\lambda_1^k}{\sqrt5}=\frac{(1+\sqrt5)^k-(1-\sqrt5)^k}{2^k\sqrt5},$$
+      la famosa <strong>formula di Binet</strong>.</p>
+      <p class="mb0">Con $\varphi:=\frac{1+\sqrt5}{2}$ si scrive $F_k=\frac{1}{\sqrt5}\left(\varphi^k+\frac{(-1)^{k+1}}{\varphi^k}\right)$. Per $k$ grande il secondo addendo è piccolo, quindi $F_k$ è l'intero più vicino a $\varphi^k/\sqrt5$: $\varphi^{10}/\sqrt5=55{,}0036\ldots$ dà $F_{10}=55$, e $\varphi^{15}/\sqrt5=609{,}99967\ldots$ dà $F_{15}=610$.</p>
+    </div>
+
+    <h3 id="binet-fib">Il conto completo</h3>
+    <details class="reveal">
+      <summary>Autovettori, $S^{-1}$ e $A^k$ (Lezione 10)</summary>
+      <div class="reveal-body">
+        <p><strong>$\lambda_1=\frac{1-\sqrt5}{2}$.</strong> $A-\lambda_1I=\begin{bmatrix}\frac{1+\sqrt5}{2}&1\\1&\frac{\sqrt5-1}{2}\end{bmatrix}$. Dopo $R_1\leftrightarrow R_2$ e $R_2\to R_2-\frac{\sqrt5+1}{2}R_1$ la seconda riga si annulla, perché $\frac{\sqrt5-1}{2}\cdot\frac{\sqrt5+1}{2}=\frac{5-1}{4}=1$. Resta $x+\frac{\sqrt5-1}{2}y=0$: con $y:=\frac{\sqrt5+1}{2}$ (va bene qualsiasi valore non nullo) si ha $x=-1$, quindi $\vv_1=\left(-1,\frac{\sqrt5+1}{2}\right)$.</p>
+        <p><strong>$\lambda_2=\frac{1+\sqrt5}{2}$.</strong> Allo stesso modo resta $x-\frac{\sqrt5+1}{2}y=0$; con $y:=1$ si ha $\vv_2=\left(\frac{\sqrt5+1}{2},1\right)$.</p>
+        <p><strong>L'inversa.</strong> $S=\begin{bmatrix}-1&\lambda_2\\\lambda_2&1\end{bmatrix}$ e, con la formula per le $2\times2$,
+        $$S^{-1}=\frac{1}{\sqrt5}\begin{bmatrix}\lambda_1&1\\1&-\lambda_1\end{bmatrix}.$$</p>
+        <p class="mb0"><strong>Le potenze.</strong> Usando $\lambda_1\lambda_2=\det A=-1$:
+        $$A^k=S\,\diag(\lambda_1^k,\lambda_2^k)\,S^{-1}=\frac{1}{\sqrt5}\begin{bmatrix}\lambda_2^{k+1}-\lambda_1^{k+1}&\lambda_2^k-\lambda_1^k\\\lambda_2^k-\lambda_1^k&\lambda_2^{k-1}-\lambda_1^{k-1}\end{bmatrix},$$
+        un'espressione esplicita per $\begin{bmatrix}1&1\\1&0\end{bmatrix}^k$. Il suo elemento $(1,1)$ con $k-1$ al posto di $k$ dà la formula di Binet.</p>
+      </div>
+    </details>
+
+    <!-- ============================================================ -->
+    <h2 id="traccia">10 · Traccia, determinante e autovalori</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10, parte 2)</div>
+      <p class="mb0">La <strong>traccia</strong> di una matrice $A=[a_{ij}]$ di ordine $n$ è la somma degli elementi sulla diagonale principale: $\tr(A):=\sum_{i=1}^{n}a_{ii}$.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 10, parte 2): det, traccia e autovalori <span class="badge star2">da conoscere</span></div>
+      <p class="mb0">Sia $A$ di ordine $n$ e sia $p(\lambda)=\det(A-\lambda I)=(\lambda_1-\lambda)(\lambda_2-\lambda)\cdots(\lambda_n-\lambda)$ il suo polinomio caratteristico. Allora
+      $$\det(A)=\prod_{i=1}^{n}\lambda_i,\qquad\tr(A)=\sum_{i=1}^{n}\lambda_i.$$</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione per il determinante (il prof dimostra solo questa)</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">In quale punto conviene calcolare $p$?</div>
+            <div class="step-content">In $\lambda=0$. Dalla fattorizzazione, $p(0)=\lambda_1\lambda_2\cdots\lambda_n$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E dalla definizione di $p$?</div>
+            <div class="step-content">$p(0)=\det(A-0\,I)=\det A$. Quindi $\det A=\prod_i\lambda_i$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box tip">
+      <div class="box-title">✓ A che cosa serve</div>
+      <p>A <strong>controllare</strong> gli autovalori trovati. Nell'Esempio 2: $\tr A=3+2-1=4=2+1+1$ e $\det A=2=2\cdot1\cdot1$ ✓. La matrice ridotta a scala, invece, ha traccia $0$: altra prova che il MEG cambia gli autovalori.</p>
+      <p>Per le $2\times2$ serve anche a <strong>trovarli</strong>: il polinomio caratteristico si scrive
+      $$p(\lambda)=\lambda^2-\tr(A)\,\lambda+\det(A).$$</p>
+      <p class="mb0"><strong>Esempio (Lezione 10).</strong> $A=\begin{bmatrix}4&2\\-1&1\end{bmatrix}$: $\det A=4-(-2)=6$ e $\tr A=4+1=5$. Due numeri con prodotto $6$ e somma $5$: $\lambda_1=2$, $\lambda_2=3$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="invarianza">11 · Invarianza per similitudine</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 10, parte 2): invarianza del polinomio caratteristico <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Siano $A$ e $B$ due matrici quadrate <a href="8-determinanti.html#simili">simili</a>. Allora i loro polinomi caratteristici coincidono: $P_A(\lambda)=P_B(\lambda)$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa dice l'ipotesi?</div>
+            <div class="step-content">Esiste una matrice invertibile $S$ tale che $B=S^{-1}AS$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Il trucco: come si scrive $\lambda I$ «alla maniera di $B$»?</div>
+            <div class="step-content">$I=S^{-1}IS$, quindi $\lambda I=\lambda S^{-1}IS=S^{-1}(\lambda I)S$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa diventa $B-\lambda I$?</div>
+            <div class="step-content">Per la distributività, due volte:
+            $$B-\lambda I=S^{-1}AS-S^{-1}(\lambda I)S=S^{-1}\bigl(AS-(\lambda I)S\bigr)=S^{-1}(A-\lambda I)S.$$</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dove entra il teorema di Binet?</div>
+            <div class="step-content">$P_B(\lambda)=\det\bigl(S^{-1}(A-\lambda I)S\bigr)=\det S^{-1}\cdot\det(A-\lambda I)\cdot\det S=\det(A-\lambda I)=P_A(\lambda)$, perché $\det S^{-1}\det S=1$ per il <a href="8-determinanti.html#binet">teorema di Binet</a> e il suo corollario. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box prop">
+      <div class="box-title">Osservazione A (Lezione 10)</div>
+      <p>Matrici simili hanno gli <strong>stessi autovalori</strong>, con le <strong>stesse molteplicità algebriche</strong>.</p>
+      <p class="mb0">Inoltre, se $B=S^{-1}AS$ e $\vv$ è un autovettore di $B$ relativo a $\lambda$, allora $AS\vv=SB\vv=S(\lambda\vv)=\lambda S\vv$: il vettore $\vu:=S\vv$ è un autovettore di $A$ relativo a $\lambda$. Poiché $S$ è invertibile, $\vv\mapsto S\vv$ porta l'autospazio di $B$ in quello di $A$ senza perdere dimensioni: anche le <strong>molteplicità geometriche</strong> sono le stesse.</p>
+    </div>
+
+    <h3 id="polcar-endo">Il polinomio caratteristico di un endomorfismo</h3>
+    <div class="box prop">
+      <div class="box-title">Osservazione B (Lezione 10)</div>
+      <p class="mb0">Se $L:V\to V$, $\dim V\lt+\infty$, e $A$, $B$ sono le matrici di $L$ rispetto a due basi diverse, allora $A$ e $B$ sono simili, per il <a href="5-lineari.html#trasformazione">teorema di trasformazione</a>. Quindi $P_A=P_B$: il polinomio caratteristico della matrice di $L$ non dipende dalla base. Si chiama il <strong>polinomio caratteristico di $L$</strong>.</p>
+    </div>
+
+    <h3 id="non-basta">Il viceversa è falso</h3>
+    <div class="box warnb">
+      <div class="box-title">Osservazione C (Lezione 10)</div>
+      <p>Da $P_A=P_B$ <strong>non</strong> segue, in generale, che $A$ e $B$ siano simili.</p>
+      <p>Il prof rimanda agli Esempi 1 e 2: stesso polinomio $(2-\lambda)(1-\lambda)^2$, ma il primo è diagonalizzabile e il secondo no. E una matrice simile a una diagonalizzabile è diagonalizzabile: se $B=T^{-1}AT$ e $A=SDS^{-1}$, allora $B=(T^{-1}S)D(T^{-1}S)^{-1}$. Quindi le due matrici non sono simili.</p>
+      <p class="mb0">L'esempio più piccolo: $I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ hanno entrambe $P(\lambda)=(1-\lambda)^2$. Ma $I$ è simile solo a sé stessa, perché $S^{-1}IS=I$ per ogni $S$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Nei quiz «quale matrice è simile a questa?»</div>
+      <p class="mb0">Prima si scartano quelle con polinomio caratteristico diverso, cioè con traccia, determinante o autovalori diversi. Tra quelle rimaste si guardano le <strong>molteplicità geometriche</strong>: due matrici diagonalizzabili con gli stessi autovalori e le stesse molteplicità sono simili, perché sono entrambe simili alla stessa $D$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="esponenziale">12 · Esponenziale di una matrice</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 10)</div>
+      <p class="mb0">A una matrice quadrata $A$ si associa un'altra matrice quadrata, l'<strong>esponenziale</strong> di $A$:
+      $$e^{A}:=\sum_{n=0}^{+\infty}\frac{1}{n!}A^{n},\qquad\text{e per }t\in\R\text{ (o }\C\text{)}\qquad e^{tA}:=\sum_{k=0}^{+\infty}\frac{t^k}{k!}A^k.$$
+      È la serie di Maclaurin di $e^x$ con la matrice al posto della variabile.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">A che cosa serve (Lezione 10)</div>
+      <p>Gli elementi di $e^{tA}$ sono derivabili in $t$, e vale $\frac{d}{dt}e^{tA}=Ae^{tA}$. Per questo l'unica soluzione del sistema di equazioni differenziali lineari a coefficienti costanti
+      $$\frac{d\vy(t)}{dt}=A\vy(t),\qquad\vy(0)=\vy_0$$
+      è $\vy(t)=e^{tA}\vy_0$.</p>
+      <p class="mb0">Se $A=SDS^{-1}$ con $D=\diag(\lambda_1,\dots,\lambda_n)$, allora $(SDS^{-1})^k=SD^kS^{-1}$ e la serie si calcola elemento per elemento sulla diagonale:
+      $$\boxed{e^{tA}=S\,\diag\bigl(e^{t\lambda_1},\dots,e^{t\lambda_n}\bigr)\,S^{-1}}$$</p>
+    </div>
+
+    <h3 id="edo">Un sistema di equazioni differenziali</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 10)</div>
+      <p>Risolvere $\begin{cases}y_1'=y_1(t)-y_2(t)\\y_2'=4y_1(t)+y_2(t)\end{cases}$ con $y_1(0)=1$, $y_2(0)=0$. In forma matriciale è $\vy'=A\vy$ con $A:=\begin{bmatrix}1&-1\\4&1\end{bmatrix}$ e $\vy(0)=(1,0)$.</p>
+      <p>$A$ è diagonalizzabile su $\C$: $A=SDS^{-1}$ con
+      $$D=\diag(1+2i,\,1-2i),\qquad S=\begin{bmatrix}i&-i\\2&2\end{bmatrix},\qquad S^{-1}=\begin{bmatrix}-i/2&1/4\\i/2&1/4\end{bmatrix}.$$</p>
+      <p>Allora, usando $e^{2it}+e^{-2it}=2\cos2t$ e $e^{2it}-e^{-2it}=2i\sin2t$,
+      $$e^{tA}=S\,\diag\bigl(e^{(1+2i)t},e^{(1-2i)t}\bigr)\,S^{-1}=\begin{bmatrix}e^t\cos2t&-\frac12e^t\sin2t\\2e^t\sin2t&e^t\cos2t\end{bmatrix},$$
+      e la soluzione è $\vy(t)=e^{tA}\begin{bmatrix}1\\0\end{bmatrix}$:</p>
+      <p>$$y_1(t)=e^t\cos2t,\qquad y_2(t)=2e^t\sin2t.$$</p>
+      <p class="mb0"><strong>Controllo:</strong> $y_1'=e^t\cos2t-2e^t\sin2t=y_1-y_2$ ✓, $y_2'=2e^t\sin2t+4e^t\cos2t=4y_1+y_2$ ✓, e $\vy(0)=(1,0)$ ✓.</p>
+    </div>
+    <p class="small muted">L'esponenziale serve a vedere a che cosa portano gli autovalori; nelle nove prove d'esame raccolte in <a href="../esami.html">Cosa esce all'esame</a> non compare.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 9</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Dove si cade</div>
+      <ul class="mb0">
+        <li><strong>Leggere gli autovalori sulla matrice ridotta a scala.</strong> Il MEG cambia gli autovalori: si calcola $\det(A-\lambda I)$ sulla matrice di partenza.</li>
+        <li><strong>Sottrarre $\lambda$ a tutti gli elementi.</strong> In $A-\lambda I$ il $\lambda$ si sottrae solo sulla diagonale.</li>
+        <li><strong>Dire che $\vzero$ è un autovettore</strong>, oppure escludere $0$ come autovalore. È il contrario: $\vzero$ non lo è mai, $0$ può esserlo, ed è autovalore se e solo se $\det A=0$.</li>
+        <li><strong>Trovare un autospazio banale e andare avanti.</strong> Vuol dire che $\lambda$ non è un autovalore, o che c'è un errore di calcolo.</li>
+        <li><strong>Non controllare $A\vv=\lambda\vv$.</strong> Costa una moltiplicazione, e negli appunti stessi avrebbe scoperto due errori.</li>
+        <li><strong>«Ha un autovalore doppio, quindi non è diagonalizzabile.»</strong> Falso: l'Esempio 1 ha un autovalore doppio ed è diagonalizzabile. Conta $m_g$ contro $m_a$.</li>
+        <li><strong>Controllare gli autovalori semplici.</strong> Sono sempre regolari: i conti vanno fatti solo su quelli multipli.</li>
+        <li><strong>Dire «diagonalizzabile» senza dire su che campo</strong>, quando gli autovalori non sono reali: la rotazione di $90^\circ$ lo è su $\C$, non su $\R$.</li>
+        <li><strong>Mettere in $S$ gli autovettori in un ordine e in $D$ gli autovalori in un altro.</strong> La colonna $j$ di $S$ va con il posto $(j,j)$ di $D$.</li>
+        <li><strong>Dedurre la similitudine dal polinomio caratteristico.</strong> Stesso polinomio non basta: servono anche le stesse molteplicità geometriche.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="../teoremi.html">Teoremi e dimostrazioni →</a>
+      <a class="btn" href="8-determinanti.html">← Sezione 8</a>
+      <a class="btn" href="../esercizi.html?sez=9">Esercizi della Sezione 9</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 9 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261111"></script>
+<script src="../data/quiz.js?v=20261111"></script>
+<script src="../data/mappe.js?v=20261111"></script>
+<script src="../data/primalettura.js?v=20261105c"></script>
+<script src="../data/primalettura-altre.js?v=20261111"></script>
+<script src="../data/schemi.js?v=20261105c"></script>
+<script src="../data/schemi-altre.js?v=20261111"></script>
+<script src="../../assets/js/app.js?v=20261106"></script>
+<script src="../../assets/js/capitolo.js?v=20261105c"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.mappaCapitolo('#mappaBox', 9);
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 9; }), { statKey: 'geo9' });
+});
+</script>
+</body>
+</html>

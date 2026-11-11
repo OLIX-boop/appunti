@@ -1,5 +1,5 @@
 /* ============================================================
-   Schemi della prima lettura per le altre sezioni (0-4, 6-8).
+   Schemi della prima lettura per le altre sezioni (0-4, 6-9).
    Stessi strumenti di data/schemi.js: uno schema per paragrafo,
    fermo, in SVG. Negli attributi e nei testi degli SVG il segno
    «minore» si scrive &lt;.
@@ -576,6 +576,140 @@
       T(220, 116, '|det| dilata le aree, il segno dice se la figura si rovescia', 's-p'));
   }
 
+  /* ---------- Sezione 9 ---------- */
+
+  const COL3 = ['s-blu', 's-ver', 's-vio'];
+  /** pedice e esponente veri dentro un testo SVG */
+  const pd = (b, s) => b + '<tspan baseline-shift="sub" font-size="10">' + s + '</tspan>';
+  const ap = (b, s) => b + '<tspan baseline-shift="super" font-size="10">' + s + '</tspan>';
+  const MG = pd('m', 'g'), MA = pd('m', 'a'), WL = pd('W', 'λ');
+
+  function s9problema() {
+    const A = [['3', '0', '−2'], ['1', '1', '−1'], ['1', '0', '0']], D = [['2', '0', '0'], ['0', '1', '0'], ['0', '0', '1']];
+    return svg(440, 172, 'In una base qualsiasi la matrice è piena; in una base di autovettori è diagonale',
+      T(70, 16, 'Base qualsiasi', 's-g') + matrice(40, 50, A, 30, 26) +
+      F(132, 72, 268, 72, 's-ver', 2.4) + T(200, 62, 'S⁻¹AS', 's-g s-ver') +
+      T(330, 16, 'Base di autovettori', 's-g s-ver') + matrice(300, 50, D, 30, 26, COL3) +
+      T(70, 136, 'Esempio 1', 's-p') + T(330, 136, 'diagonale', 's-p') +
+      T(220, 162, 'Colonna j = coordinate di L(vⱼ), e qui L(vⱼ) = λⱼ vⱼ', 's-p s-g'));
+  }
+
+  function s9autovettori() {
+    // A = [[2,1],[0,3]]: u = (1,1) è autovettore (λ = 3), w = (0,1) no
+    const A = (x, y) => [2 * x + y, 3 * y];
+    const q = pan(40, 162, 28), o = q(0, 0);
+    const u = [1, 1], Au = A(...u), w = [0, 1], Aw = A(...w);
+    return svg(440, 182, 'Un autovettore resta sulla sua retta, un vettore qualsiasi cambia direzione',
+      L(...q(-0.4, 0), ...q(3.5, 0), 's-gri', 1) + L(...q(0, -0.4), ...q(0, 3.5), 's-gri', 1) +
+      L(...q(-0.4, -0.4), ...q(3.5, 3.5), 's-ver', 1.2, true) +
+      F(...o, ...q(...Au), 's-ver', 2.2) + F(...o, ...q(...u), 's-blu', 3) +
+      F(...o, ...q(...Aw), 's-ros', 1.6) + F(...o, ...q(...w), 's-ros', 3) +
+      T(q(...u)[0] + 12, q(...u)[1] + 6, 'u', 's-g s-blu', 'start') + T(q(...Au)[0] + 8, q(...Au)[1] + 4, 'Au', 's-g s-ver', 'start') +
+      T(q(...w)[0] - 8, q(...w)[1] + 4, 'w', 's-g s-ros', 'end') + T(q(...Aw)[0] - 8, q(...Aw)[1], 'Aw', 's-g s-ros', 'end') +
+      T(262, 51, 'A =', 's-g', 'end') + matrice(300, 40, [['2', '1'], ['0', '3']], 26, 22) +
+      T(250, 104, 'u = (1,1):  Au = (3,3) = 3u', 's-p s-blu', 'start') + T(250, 122, 'autovettore, λ = 3', 's-g s-ver', 'start') +
+      T(250, 148, 'w = (0,1):  Aw = (1,3)', 's-p s-ros', 'start') + T(250, 166, 'non è un multiplo di w', 's-g s-ros', 'start'));
+  }
+
+  function s9matrici() {
+    const S = [['2', '0', '1'], ['1', '1', '0'], ['1', '0', '1']], D = [['2', '0', '0'], ['0', '1', '0'], ['0', '0', '1']];
+    return svg(440, 182, 'Le colonne di S sono autovettori, la diagonale di D sono gli autovalori, nello stesso ordine',
+      T(90, 16, 'S: autovettori in colonna', 's-g') + matrice(60, 50, S, 30, 26, COL3) +
+      T(330, 16, 'D: autovalori', 's-g') + matrice(300, 50, D, 30, 26, COL3) +
+      T(205, 80, 'A = S D S⁻¹', 's-g') +
+      T(220, 138, 'A(2,1,1) = 2·(2,1,1)', 's-p s-blu') + T(220, 155, 'A(0,1,0) = 1·(0,1,0)', 's-p s-ver') +
+      T(220, 172, 'A(1,0,1) = 1·(1,0,1)', 's-p s-vio'));
+  }
+
+  function s9polinomio() {
+    return svg(440, 116, 'Da A v = λ v al determinante: λ è autovalore se e solo se det(A − λI) = 0',
+      catena(10, [{ t: ['A v = λ v', 'con v ≠ 0'] }, { t: ['(A − λI) v = 0', 'non banale'] }, { t: ['det(A − λI) = 0', 'λ è autovalore'], c: 's-ver' }], 62) +
+      T(220, 100, 'L\'autospazio di λ è ' + WL + ' = ker(A − λI)', 's-p s-g'));
+  }
+
+  function s9calcolo() {
+    return svg(440, 116, 'I quattro passi per trovare autovalori e autospazi',
+      catena(10, [{ t: ['1 · p(λ)', 'radici'] }, { t: ['2 · A − λI', 'a scala'] }, { t: ['3 · variabili', 'libere'] }, { t: ['4 · A v = λ v', 'controllo'], c: 's-ver' }], 62) +
+      T(220, 100, 'dim ' + WL + ' = n − r(A − λI) = numero di variabili libere', 's-p s-g'));
+  }
+
+  function s9molteplicita() {
+    const riga = (y, nome, mg, esito, classe) => {
+      let s = T(58, y + 5, nome, 's-g');
+      for (let i = 0; i < 2; i++) {
+        const x = 130 + i * 38;
+        s += B(x, y - 14, 28, 28, 's-mut', 0) + (i < mg ? B(x + 4, y - 10, 20, 20, classe, .7) : '');
+      }
+      return s + T(220, y + 5, MG + ' = ' + mg + ',  ' + MA + ' = 2', 's-p', 'start') + T(430, y + 5, esito, 's-g ' + classe, 'end');
+    };
+    return svg(440, 150, 'Molteplicità algebrica e geometrica di λ = 1 negli Esempi 1 e 2',
+      T(163, 16, 'λ = 1, doppio', 's-p s-g') +
+      riga(48, 'Esempio 1', 2, 'regolare', 's-ver') + riga(96, 'Esempio 2', 1, 'irregolare', 's-ros') +
+      T(220, 140, 'riquadri: ' + MA + ' (dal polinomio) · pieni: ' + MG + ' (dall\'autospazio)', 's-p'));
+  }
+
+  function s9criterio() {
+    return svg(440, 224, 'Il criterio: autovalori nel campo, poi ogni autovalore regolare',
+      B(110, 8, 210, 40, 's-blu') + T(215, 33, 'Autovalori tutti nel campo?', 's-g s-blu') +
+      F(322, 28, 344, 28, 's-ros', 2) + T(333, 20, 'no', 's-p s-ros') + B(348, 8, 88, 40, 's-ros') + T(392, 33, 'non diag.', 's-p s-g s-ros') +
+      F(215, 50, 215, 78, 's-ver', 2) + T(225, 68, 'sì', 's-p s-ver', 'start') +
+      B(110, 80, 210, 44, 's-blu') + T(215, 99, 'Ogni autovalore regolare?', 's-g s-blu') + T(215, 116, MG + ' = ' + MA, 's-p') +
+      F(322, 102, 344, 102, 's-ros', 2) + T(333, 94, 'no', 's-p s-ros') + B(348, 82, 88, 40, 's-ros') + T(392, 107, 'non diag.', 's-p s-g s-ros') +
+      F(215, 126, 215, 154, 's-ver', 2) + T(225, 144, 'sì', 's-p s-ver', 'start') +
+      B(110, 156, 210, 36, 's-ver', .16) + T(215, 179, 'Diagonalizzabile', 's-g s-ver') +
+      T(220, 214, 'Scorciatoia: n autovalori distinti ⇒ diagonalizzabile', 's-p'));
+  }
+
+  function s9base() {
+    const S = [['2', '0', '1'], ['1', '1', '0'], ['1', '0', '1']], D = [['2', '0', '0'], ['0', '1', '0'], ['0', '0', '1']];
+    const col = ['s-blu', 's-ver', 's-ver'];
+    return svg(440, 164, 'Le basi degli autospazi messe insieme danno le colonne di S',
+      B(4, 18, 132, 36, 's-blu') + T(70, 41, 'W₂: (2,1,1)', 's-p s-g s-blu') +
+      B(4, 66, 132, 54, 's-ver') + T(70, 89, 'W₁: (0,1,0)', 's-p s-g s-ver') + T(70, 107, 'e (1,0,1)', 's-p s-g s-ver') +
+      F(142, 68, 176, 68, 's-mut', 2) +
+      matrice(204, 46, S, 28, 24, col) + T(232, 128, 'S', 's-g') +
+      matrice(334, 46, D, 28, 24, col) + T(362, 128, 'D', 's-g') +
+      T(220, 154, 'Ogni colonna di S va con lo stesso posto di D', 's-p'));
+  }
+
+  function s9potenze() {
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const F = [1, 1]; while (F.length < 8) F.push(F[F.length - 1] + F[F.length - 2]);
+    let s = T(8, 58, 'k', 's-p s-g', 'start') + T(8, 84, 'Fₖ', 's-p s-g s-blu', 'start') + T(8, 110, 'φᵏ/√5', 's-p s-g s-ver', 'start');
+    for (let k = 1; k <= 8; k++) {
+      const x = 80 + (k - 1) * 46;
+      s += T(x, 58, String(k), 's-p') + T(x, 84, String(F[k - 1]), 's-g s-blu') +
+        T(x, 110, (Math.pow(phi, k) / Math.sqrt(5)).toFixed(2).replace('.', ','), 's-p s-ver');
+    }
+    return svg(440, 146, 'I numeri di Fibonacci sono gli interi più vicini a φ alla k diviso radice di 5',
+      T(220, 22, 'Aᵏ = S Dᵏ S⁻¹,   Dᵏ = diag(λ₁ᵏ, λ₂ᵏ)', 's-g') + L(4, 68, 436, 68, 's-gri', 1) + s +
+      T(220, 138, 'Fₖ è l\'intero più vicino a φᵏ/√5', 's-p s-g'));
+  }
+
+  function s9traccia() {
+    return svg(440, 140, 'Traccia e determinante di una matrice 2 per 2 e i suoi autovalori',
+      T(26, 59, 'A =', 's-g', 'end') + matrice(60, 50, [['4', '2'], ['−1', '1']], 36, 28) +
+      O(60, 45, 15, 's-ver', 1.6) + O(96, 73, 15, 's-ver', 1.6) +
+      T(160, 40, 'tr A = 4 + 1 = 5 = 2 + 3', 's-p', 'start') +
+      T(160, 66, 'det A = 4 − (−2) = 6 = 2 · 3', 's-p', 'start') +
+      T(160, 96, 'somma 5, prodotto 6  ⇒  λ = 2, 3', 's-g s-ver', 'start') +
+      T(220, 130, 'Per una 2×2:  p(λ) = λ² − tr(A) λ + det(A)', 's-p'));
+  }
+
+  function s9invarianza() {
+    return svg(440, 168, 'Matrici simili hanno lo stesso polinomio caratteristico; il viceversa è falso',
+      B(8, 8, 424, 38, 's-ver', .1) + T(220, 32, 'B = S⁻¹AS  ⇒  ' + pd('P', 'B') + ' = ' + pd('P', 'A'), 's-g s-ver') +
+      matrice(84, 90, [['1', '0'], ['0', '1']], 28, 26) + matrice(328, 90, [['1', '1'], ['0', '1']], 28, 26) +
+      T(220, 96, 'stesso P(λ) = (1 − λ)²', 's-p') + T(220, 116, 'ma NON simili', 's-g s-ros') +
+      T(98, 156, MG + '(1) = 2', 's-p') + T(342, 156, MG + '(1) = 1', 's-p'));
+  }
+
+  function s9esponenziale() {
+    return svg(440, 116, 'Il sistema y′ = A y si risolve con l\'esponenziale di una matrice diagonalizzabile',
+      catena(10, [{ t: ['y′ = A y', 'y(0) = y₀'] }, { t: ['A = S D S⁻¹', 'diagonalizzabile'] }, { t: ['y(t) = eᵗᴬ y₀', 'eᵗᴬ = S eᵗᴰ S⁻¹'], c: 's-ver' }], 62) +
+      T(220, 100, 'eᵗᴰ = diag(' + ap('e', 'λ₁t') + ', …, ' + ap('e', 'λₙt') + ')', 's-p s-g'));
+  }
+
   Object.assign(window.SCHEMI, {
     0: { notazione: s0notazione, rn: s0rn, quantificatori: s0quantificatori, campo: s0campo },
     1: { sistemi: s1sistemi, equivalenza: s1equivalenza, scala: s1scala, meg: s1meg, lettura: s1lettura },
@@ -584,6 +718,7 @@
     4: { richiami: s4richiami, sistemi: s4sistemi, tfa: s4tfa },
     6: { metodo: s6metodo, 'rette-piano': s6rettepiano, 'rette-spazio': s6rettespazio, piani: s6piani, 'retta-piano': s6rettapiano, 'rette-cart': s6rettecart, ortogonalita: s6ortogonalita, fasci: s6fasci },
     7: { completamento: s7completamento, intersezione: s7intersezione, somma: s7somma, diretta: s7diretta, grassmann: s7grassmann, interna: s7interna, complementi: s7complementi, 'm-spazi': s7mspazi },
-    8: { definizione: s8definizione, 'con-meg': s8meg, trasposta: s8trasposta, laplace: s8laplace, invertibilita: s8invertibilita, binet: s8binet, inversa: s8inversa, cramer: s8cramer, kronecker: s8kronecker, potenze: s8potenze, volumi: s8volumi }
+    8: { definizione: s8definizione, 'con-meg': s8meg, trasposta: s8trasposta, laplace: s8laplace, invertibilita: s8invertibilita, binet: s8binet, inversa: s8inversa, cramer: s8cramer, kronecker: s8kronecker, potenze: s8potenze, volumi: s8volumi },
+    9: { problema: s9problema, autovettori: s9autovettori, matrici: s9matrici, polinomio: s9polinomio, calcolo: s9calcolo, molteplicita: s9molteplicita, criterio: s9criterio, base: s9base, 'potenze-diag': s9potenze, traccia: s9traccia, invarianza: s9invarianza, esponenziale: s9esponenziale }
   });
 })();

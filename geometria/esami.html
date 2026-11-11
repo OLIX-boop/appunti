@@ -52,6 +52,7 @@
       <a href="sezioni/6-posizione.html">6 · Posizione</a>
       <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
       <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
+      <a href="sezioni/9-diagonalizzazione.html">9 · Diagonalizzazione</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
       <a href="laboratorio.html">Laboratorio</a>
@@ -151,7 +152,7 @@
       <li><strong>Prima le cose che tornano sempre e che avete già fatto:</strong> applicazioni lineari (Sezione 5), matrice rappresentativa e cambio di base (Sezione 5), sottospazi con Grassmann (Sezione 7), sistemi con parametro (Sezioni 1–2).</li>
       <li><strong>Per i quiz,</strong> le prime righe della tabella del paragrafo 3: sono schemi fissi, e ognuno si risolve in due o tre mosse.</li>
       <li><strong>Per la teoria,</strong> un quarto d'ora fisso a settimana: due definizioni, una dimostrazione, un esempio inventato da te.</li>
-      <li><strong>Autovalori e diagonalizzazione</strong> sono l'argomento della Lezione 10, che sto aggiungendo adesso al sito: all'esame compaiono tanto quanto la matrice rappresentativa.</li>
+      <li><strong>Autovalori e diagonalizzazione</strong> (Lezione 10, <a href="sezioni/9-diagonalizzazione.html">Sezione 9</a>): all'esame compaiono tanto quanto la matrice rappresentativa. Nei quiz tornano soprattutto la diagonalizzabilità con un parametro e le matrici simili.</li>
     </ol>
     <p class="small muted">Gli esercizi guidati per tipo, basati su queste statistiche, saranno la prossima sezione del sito.</p>
 
@@ -168,14 +169,14 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script src="../assets/js/materie.js?v=20261104"></script>
-<script src="data/topics.js?v=20261104"></script>
+<script src="data/topics.js?v=20261111"></script>
 <script src="data/esami.js?v=20261111"></script>
 <script src="../assets/js/plot.js?v=20261104"></script>
 <script src="../assets/js/app.js?v=20261106"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var E = window.ESAMI_GEO, el = function (id) { return document.getElementById(id); };
-  var FILE = { 1: '1-sistemi', 2: '2-matrici', 3: '3-spazi', 5: '5-lineari', 6: '6-posizione', 7: '7-grassmann', 8: '8-determinanti' };
+  var FILE = { 1: '1-sistemi', 2: '2-matrici', 3: '3-spazi', 5: '5-lineari', 6: '6-posizione', 7: '7-grassmann', 8: '8-determinanti', 9: '9-diagonalizzazione' };
   var prova = {}; E.prove.forEach(function (p) { prova[p.id] = p; });
   var completi = E.prove.filter(function (p) { return p.tipo === 'completo'; }).map(function (p) { return p.id; });
   var MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];

@@ -31,6 +31,7 @@
       <a href="sezioni/6-posizione.html">6 · Posizione</a>
       <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
       <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
+      <a href="sezioni/9-diagonalizzazione.html">9 · Diagonalizzazione</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
       <a href="laboratorio.html">Laboratorio</a>
@@ -58,6 +59,7 @@
     <a href="sezioni/6-posizione.html">6 · Posizione reciproca e fasci</a>
     <a href="sezioni/7-grassmann.html">7 · Somma di sottospazi e Grassmann</a>
     <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
+    <a href="sezioni/9-diagonalizzazione.html">9 · Diagonalizzazione</a>
     <h4>Strumenti</h4>
     <a href="esami.html">Cosa esce all'esame</a>
     <a href="teoremi.html">Teoremi e dimostrazioni</a>
@@ -72,7 +74,17 @@
     <div class="page-head">
       <div class="eyebrow">Politecnico di Milano · Prof. Pavel Gumenyuk</div>
       <h1>Geometria e Algebra Lineare</h1>
-      <p class="lead">Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari, geometria di rette e piani, determinanti: il programma svolto fino alla Lezione 9, con il <strong>MEG interattivo</strong> in aritmetica esatta, i teoremi a passi coperti ed esercizi con suggerimenti progressivi.</p>
+      <p class="lead">Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari, geometria di rette e piani, determinanti, diagonalizzazione: il programma svolto fino alla Lezione 10, con il <strong>MEG interattivo</strong> in aritmetica esatta, i teoremi a passi coperti ed esercizi con suggerimenti progressivi.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">★ Novità della Lezione 10 e delle statistiche d'esame</div>
+      <ul class="mb0">
+        <li><strong>Lezione 10:</strong> la nuova <a href="sezioni/9-diagonalizzazione.html">Sezione 9</a> con <a href="sezioni/9-diagonalizzazione.html#autovettori">autovettori e autovalori</a>, <a href="sezioni/9-diagonalizzazione.html#polinomio">polinomio caratteristico</a>, <a href="sezioni/9-diagonalizzazione.html#calcolo">calcolo degli autospazi</a>, <a href="sezioni/9-diagonalizzazione.html#molteplicita">molteplicità</a>, il <a href="sezioni/9-diagonalizzazione.html#criterio">criterio di diagonalizzabilità</a> (anche <a href="sezioni/9-diagonalizzazione.html#parametro">con un parametro</a>), <a href="sezioni/9-diagonalizzazione.html#base">$S$ e $D$</a>, <a href="sezioni/9-diagonalizzazione.html#traccia">traccia</a> e <a href="sezioni/9-diagonalizzazione.html#invarianza">invarianza per similitudine</a>.</li>
+        <li><strong>Teoremi ed esercizi:</strong> cinque dimostrazioni nuove nei <a href="teoremi.html">teoremi</a>, esercizi <a href="esercizi.html?sez=9">G9.1–G9.8</a> e 12 domande nel test della sezione, molte prese dai quiz d'esame.</li>
+        <li><strong>Esame:</strong> le statistiche di nove prove in <a href="esami.html">Cosa esce all'esame</a>.</li>
+        <li><strong>Refusi negli appunti della Lezione 10:</strong> in due esempi l'autovettore trovato non è un autovettore. Le correzioni, con il controllo, sono nell'<a href="sezioni/9-diagonalizzazione.html#triangolari">Esempio A</a> e nell'<a href="sezioni/9-diagonalizzazione.html#calcolo">Esempio 2</a>.</li>
+      </ul>
     </div>
 
     <div class="box warnb">
@@ -97,7 +109,7 @@
     <h2 id="progressi">I tuoi progressi</h2>
     <div class="card" style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-        <strong>Programma fino alla Lezione 9</strong>
+        <strong>Programma fino alla Lezione 10</strong>
         <span class="muted small"><span data-progress-txt="geometria">0/146</span> · <span data-progress-pct="geometria">0%</span></span>
       </div>
       <div class="pbar" data-progress-for="geometria"><span style="width:0"></span></div>
@@ -160,6 +172,12 @@
         <p>Calcolo con il MEG e con Laplace, Binet, inversa, regola di Cramer, Kronecker, matrici simili, area e volume.</p>
         <div style="margin-top:12px"><div class="pbar" data-progress-for="g8"><span style="width:0"></span></div>
         <div class="muted small" style="margin-top:5px"><span data-progress-txt="g8">0/19</span> argomenti</div></div>
+      </a>
+      <a class="card" href="sezioni/9-diagonalizzazione.html">
+        <h3>9 · Diagonalizzazione</h3>
+        <p>Autovalori e autovettori, polinomio caratteristico, molteplicità, criterio di diagonalizzabilità, $S$ e $D$, traccia, matrici simili.</p>
+        <div style="margin-top:12px"><div class="pbar" data-progress-for="g9"><span style="width:0"></span></div>
+        <div class="muted small" style="margin-top:5px"><span data-progress-txt="g9">0/14</span> argomenti</div></div>
       </a>
     </div>
 
@@ -255,9 +273,9 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script src="../assets/js/materie.js?v=20261104"></script>
-<script src="data/topics.js?v=20261104"></script>
-<script src="data/teoremi.js?v=20261104"></script>
-<script src="data/esercizi.js?v=20261104a"></script>
+<script src="data/topics.js?v=20261111"></script>
+<script src="data/teoremi.js?v=20261111"></script>
+<script src="data/esercizi.js?v=20261111"></script>
 <script src="../assets/js/plot.js?v=20261104"></script>
 <script src="../assets/js/app.js?v=20261106"></script>
 <script>
