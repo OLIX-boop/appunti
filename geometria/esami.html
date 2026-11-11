@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cosa esce all'esame — Geometria</title>
+<meta name="description" content="Statistiche dei temi d'esame di Geometria e Algebra Lineare (Gumenyuk): argomenti più frequenti, domande ricorrenti, tipi di esercizio e teoria richiesta.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/geometria-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261104">
+<style>
+  /* barre di frequenza: una serie sola, il numero sempre scritto accanto */
+  .freq { display: grid; gap: 9px; margin: 14px 0 6px; }
+  .freq-riga { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 9rem; gap: 12px; align-items: center; font-size: 14px; }
+  .freq-nome { line-height: 1.3; }
+  .freq-barra { height: 14px; background: var(--bg-sunken); border-radius: 4px; overflow: hidden; }
+  .freq-barra span { display: block; height: 100%; background: var(--accent); border-radius: 0 4px 4px 0; }
+  .freq-riga.futuro .freq-barra span { background: repeating-linear-gradient(135deg, var(--text-faint) 0 3px, var(--border-strong) 3px 6px); }
+  .freq-num { font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 13px; }
+  .freq-num strong { color: var(--text); font-size: 14px; }
+  .chip-prova { display: inline-block; font-size: 11.5px; padding: 1px 7px; margin: 1px 2px 1px 0; border-radius: 999px; background: var(--bg-sunken); border: 1px solid var(--border); color: var(--text-muted); white-space: nowrap; }
+  .lista-teoria { margin: 0; padding-left: 20px; }
+  .lista-teoria li { margin-bottom: 6px; }
+  .quando { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+  @media (max-width: 640px) {
+    .freq-riga { grid-template-columns: minmax(0, 1fr) 6.6rem; row-gap: 4px; }
+    .freq-nome { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="index.html">Piano</a>
+      <a href="sezioni/0-preliminari.html">0 · Preliminari</a>
+      <a href="sezioni/1-sistemi.html">1 · Sistemi</a>
+      <a href="sezioni/2-matrici.html">2 · Matrici</a>
+      <a href="sezioni/3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="sezioni/4-complessi.html">4 · Complessi</a>
+      <a href="sezioni/5-lineari.html">5 · Lineari</a>
+      <a href="sezioni/6-posizione.html">6 · Posizione</a>
+      <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
+      <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
+      <a href="teoremi.html">Teoremi</a>
+      <a href="esercizi.html">Esercizi</a>
+      <a href="laboratorio.html">Laboratorio</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Esami</h4>
+    <a href="#in-breve">In breve</a>
+    <a href="#struttura">1 · Com'è fatto l'esame</a>
+    <a href="#argomenti">2 · Gli argomenti</a>
+    <a href="#quiz">3 · Le domande che tornano</a>
+    <a href="#tipi">4 · Gli esercizi</a>
+    <a href="#teoria">5 · La teoria</a>
+    <a href="#studio">6 · Come usarle</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Esami · Geometria e Algebra Lineare · Prof. Gumenyuk</div>
+      <h1>Cosa esce all'esame</h1>
+      <p class="lead">Ho letto tutte le prove del Drive del corso, da novembre 2024 al tuo parziale del 30 ottobre, e ho classificato ogni domanda. Ogni numero di questa pagina viene da quei testi.</p>
+    </div>
+
+    <div class="grid g4" id="statBox" style="margin:6px 0 20px"></div>
+
+    <div class="box tip" id="in-breve">
+      <div class="box-title">↳ In breve</div>
+      <ul class="mb0">
+        <li><strong>L'esame ha due prove nello stesso giorno.</strong> Lo scritto (Parte A/B) ha 10 quiz e 3 esercizi, per 32 punti. La teoria (Parte C) ha 5 domande: 2 definizioni, 1 teorema con dimostrazione, 2 esempi da costruire. La teoria vale circa un terzo e viene corretta solo se allo scritto prendi almeno 16/32.</li>
+        <li><strong>L'argomento che torna di più sono le applicazioni lineari</strong> (nucleo, immagine, iniettività): un esercizio su di loro c'è in 5 appelli completi su 6.</li>
+        <li><strong>Le dimostrazioni servono:</strong> ogni prova di teoria ne chiede una, sempre di un teorema fatto a lezione.</li>
+        <li><strong>Circa un quarto delle domande è su argomenti che a lezione non avete ancora fatto:</strong> prodotto scalare, forme quadratiche, coniche. Arriveranno nella seconda metà del corso.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="struttura">1 · Com'è fatto l'esame</h2>
+    <p>Dal documento «Modalità dell'esame 2026/27» del prof.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Prova</th><th>Durata</th><th>Che cosa</th><th>Punti</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Parte A</strong></td><td rowspan="2">1 h 45 in tutto</td><td>10 domande a risposta multipla, una sola giusta. Il prof consiglia circa 30 minuti.</td><td>10</td></tr>
+          <tr><td><strong>Parte B</strong></td><td>Esercizi da giustificare per bene, finora sempre 3. Circa 75 minuti.</td><td>22</td></tr>
+          <tr><td><strong>Parte C</strong></td><td>circa 40 min</td><td>5 domande di teoria: definizioni, enunciato e dimostrazione di un teorema, esempi costruiti da te (non quelli degli appunti).</td><td>circa ⅓ del voto</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li><strong>Soglia:</strong> la Parte C la fanno tutti, ma viene corretta solo se la Parte A/B vale almeno <strong>16/32</strong>. Niente sbarramento separato sui quiz.</li>
+      <li><strong>Pesi:</strong> la Parte A/B conta circa due terzi, la Parte C circa un terzo. Si passa con 18/30, e il prof può chiedere un orale anche a campione.</li>
+      <li><strong>Prova in itinere:</strong> una sola, facoltativa, 60 minuti, 5 quiz e 1 esercizio, niente teoria. Il voto raddoppiato vale solo al primo appello di gennaio, con S = max{PC, ⅓·PI + ⅔·PC}: può solo alzare il voto dello scritto, non è un esonero.</li>
+    </ul>
+    <p class="small muted">Gli appelli 2026 duravano 2 h 15 per la Parte A/B; le modalità 2026/27 dicono 1 h 45. Vale il documento più recente.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="argomenti">2 · Gli argomenti, in ordine di frequenza</h2>
+    <p>Quante volte ogni argomento compare: ogni quiz della Parte A conta uno, e ogni punto di un esercizio della Parte B (1.1, 1.2, …) conta uno. Le barre a righe sono argomenti <strong>non ancora fatti a lezione</strong>.</p>
+    <div class="freq" id="argomentiBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="quiz">3 · Le domande che tornano (Parte A)</h2>
+    <p>Le 87 domande a risposta multipla raggruppate per schema. Le prime righe valgono quasi un quiz ad appello.</p>
+    <div class="tablewrap"><table id="quizBox"></table></div>
+
+    <!-- ============================================================ -->
+    <h2 id="tipi">4 · Gli esercizi (Parte B)</h2>
+    <p>I 20 esercizi letti, per tipo. Un esercizio può mescolare due tipi, per esempio una mappa lineare di cui poi si chiedono gli autovalori. «Appelli» conta gli appelli completi in cui il tipo compare, su 6.</p>
+    <div class="tablewrap"><table id="tipiBox"></table></div>
+    <details class="reveal"><summary>Tutti i 20 esercizi, uno per riga</summary><div class="reveal-body" id="eserciziBox"></div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="teoria">5 · La teoria (Parte C)</h2>
+    <div class="box warnb">
+      <div class="box-title">Le dimostrazioni vanno studiate?</div>
+      <p class="mb0"><strong>Sì.</strong> In tutte e 4 le prove di teoria la terza domanda è «Si enunci e dimostri il teorema …». Sono sempre teoremi dimostrati a lezione e brevi, da una pagina. Non esiste un elenco ufficiale come per Analisi, quindi conta ogni dimostrazione fatta in classe; quelle già uscite sono le prime da sapere.</p>
+    </div>
+    <p>Ogni prova di teoria ha la stessa forma: <strong>2 definizioni, 1 teorema con dimostrazione, 2 esempi</strong>. Ecco tutto quello che è stato chiesto.</p>
+    <div class="grid g2" id="teoriaBox"></div>
+    <div class="box tip">
+      <div class="box-title">✓ Come il prof vuole le risposte</div>
+      <ul class="mb0">
+        <li><strong>Definizioni complete, casi limite compresi.</strong> Nella soluzione ufficiale della prova di febbraio 2025, la definizione di dimensione include anche dim{0} = 0 e la dimensione infinita.</li>
+        <li><strong>Esempi giustificati.</strong> Ogni esempio vuole la formula esplicita <em>e</em> la verifica che abbia le proprietà richieste: un esempio senza giustificazione non basta.</li>
+        <li><strong>Esempi tuoi:</strong> quelli degli appunti non valgono. Conviene allenarsi a costruire esempi e controesempi, per esempio una mappa suriettiva ma non iniettiva.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="studio">6 · Come usarle per studiare</h2>
+    <ol>
+      <li><strong>Prima le cose che tornano sempre e che avete già fatto:</strong> applicazioni lineari (Sezione 5), matrice rappresentativa e cambio di base (Sezione 5), sottospazi con Grassmann (Sezione 7), sistemi con parametro (Sezioni 1–2).</li>
+      <li><strong>Per i quiz,</strong> le prime righe della tabella del paragrafo 3: sono schemi fissi, e ognuno si risolve in due o tre mosse.</li>
+      <li><strong>Per la teoria,</strong> un quarto d'ora fisso a settimana: due definizioni, una dimostrazione, un esempio inventato da te.</li>
+      <li><strong>Autovalori e diagonalizzazione</strong> sono l'argomento della Lezione 10, che sto aggiungendo adesso al sito: all'esame compaiono tanto quanto la matrice rappresentativa.</li>
+    </ol>
+    <p class="small muted">Gli esercizi guidati per tipo, basati su queste statistiche, saranno la prossima sezione del sito.</p>
+
+    <div class="btnrow">
+      <a class="btn primary" href="index.html">Torna al piano di Geometria</a>
+      <a class="btn" href="esercizi.html">Palestra esercizi</a>
+      <a class="btn" href="teoremi.html">Teoremi e dimostrazioni</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Cosa esce all'esame · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../assets/js/materie.js?v=20261104"></script>
+<script src="data/topics.js?v=20261104"></script>
+<script src="data/esami.js?v=20261111"></script>
+<script src="../assets/js/plot.js?v=20261104"></script>
+<script src="../assets/js/app.js?v=20261106"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  var E = window.ESAMI_GEO, el = function (id) { return document.getElementById(id); };
+  var FILE = { 1: '1-sistemi', 2: '2-matrici', 3: '3-spazi', 5: '5-lineari', 6: '6-posizione', 7: '7-grassmann', 8: '8-determinanti' };
+  var prova = {}; E.prove.forEach(function (p) { prova[p.id] = p; });
+  var completi = E.prove.filter(function (p) { return p.tipo === 'completo'; }).map(function (p) { return p.id; });
+  var MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
+  function breve(id) { var d = prova[id].data.split('/'); return MESI[+d[1] - 1] + ' ' + d[2].slice(2) + (prova[id].tipo === 'itinere' ? ' (itinere)' : ''); }
+  function chip(id) { return '<span class="chip-prova" title="' + prova[id].nome + ', ' + prova[id].data + '">' + breve(id) + '</span>'; }
+  function unici(a) { return a.filter(function (x, i) { return a.indexOf(x) === i; }); }
+  var punti = E.esercizi.reduce(function (a, e) { return a.concat(e.punti); }, []);
+
+  el('statBox').innerHTML = [
+    [E.prove.length, 'prove lette'], [E.quesiti.length, 'domande a quiz'],
+    [E.esercizi.length, 'esercizi, ' + punti.length + ' punti'], [unici(E.teoria.map(function (t) { return t.prova; })).length, 'prove di teoria']
+  ].map(function (s) { return '<div class="card stat"><div class="stat-val">' + s[0] + '</div><div class="stat-lab">' + s[1] + '</div></div>'; }).join('');
+
+  // 2 · argomenti
+  var righe = Object.keys(E.argomenti).map(function (k) {
+    var q = E.quesiti.filter(function (x) { return x[2] === k; }).length, b = punti.filter(function (x) { return x === k; }).length;
+    return { k: k, q: q, b: b, tot: q + b };
+  }).sort(function (a, b) { return b.tot - a.tot; });
+  var max = righe[0].tot;
+  el('argomentiBox').innerHTML = righe.map(function (r) {
+    var a = E.argomenti[r.k], futuro = !a.sez;
+    var nome = futuro ? a.t + ' <span class="badge">non ancora a lezione</span>'
+      : '<a href="sezioni/' + FILE[a.sez[0]] + '.html">' + a.t + '</a>';
+    return '<div class="freq-riga' + (futuro ? ' futuro' : '') + '" title="' + a.t + ': ' + r.q + ' quiz e ' + r.b + ' punti di esercizio">' +
+      '<div class="freq-nome">' + nome + '</div>' +
+      '<div class="freq-barra"><span style="width:' + Math.round(r.tot / max * 100) + '%"></span></div>' +
+      '<div class="freq-num"><strong>' + r.tot + '</strong> · ' + r.q + ' quiz, ' + r.b + ' es.</div></div>';
+  }).join('');
+
+  // 3 · schemi dei quiz
+  var schemi = Object.keys(E.schemi).map(function (k) {
+    var qs = E.quesiti.filter(function (x) { return x[3] === k; });
+    return { k: k, n: qs.length, prove: unici(qs.map(function (x) { return x[0]; })), arg: qs.length ? qs[0][2] : null };
+  }).filter(function (s) { return s.n; }).sort(function (a, b) { return b.n - a.n; });
+  el('quizBox').innerHTML = '<thead><tr><th>Domanda tipo</th><th>Come si attacca</th><th>Volte</th><th>Uscita in</th></tr></thead><tbody>' +
+    schemi.map(function (s) {
+      var a = E.argomenti[s.arg];
+      return '<tr><td><strong>' + E.schemi[s.k].t + '</strong>' + (a.sez ? '' : ' <span class="badge">non ancora a lezione</span>') + '</td>' +
+        '<td class="small">' + E.schemi[s.k].es + '</td><td class="num">' + s.n + '</td><td>' + s.prove.map(chip).join(' ') + '</td></tr>';
+    }).join('') + '</tbody>';
+
+  // 4 · tipi di esercizio
+  var tipi = Object.keys(E.tipi).map(function (k) {
+    var es = E.esercizi.filter(function (e) { return e.tipi.indexOf(k) >= 0; });
+    var app = unici(es.filter(function (e) { return completi.indexOf(e.prova) >= 0; }).map(function (e) { return e.prova; }));
+    return { k: k, n: es.length, app: app.length };
+  }).sort(function (a, b) { return b.app - a.app || b.n - a.n; });
+  el('tipiBox').innerHTML = '<thead><tr><th>Tipo di esercizio</th><th>Cosa si chiede</th><th>Appelli</th><th>Esercizi</th><th>Sul sito</th></tr></thead><tbody>' +
+    tipi.map(function (t) {
+      var d = E.tipi[t.k];
+      return '<tr><td><strong>' + d.t + '</strong></td><td class="small">' + d.fare + '</td><td class="num">' + t.app + '/' + completi.length + '</td><td class="num">' + t.n + '</td>' +
+        '<td>' + (d.sez ? '<a href="sezioni/' + FILE[d.sez] + '.html">Sezione ' + d.sez + '</a>' : '<span class="badge">non ancora a lezione</span>') + '</td></tr>';
+    }).join('') + '</tbody>';
+  el('eserciziBox').innerHTML = '<ul class="lista-teoria mb0">' + E.esercizi.map(function (e) {
+    return '<li>' + chip(e.prova) + ' Es. ' + e.n + ': ' + e.t + '</li>';
+  }).join('') + '</ul>';
+
+  // 5 · teoria
+  var GRUPPI = [['def', 'Definizioni chieste'], ['teo', 'Teoremi da enunciare e dimostrare'], ['es', 'Esempi da costruire']];
+  el('teoriaBox').innerHTML = GRUPPI.map(function (g) {
+    var voci = E.teoria.filter(function (t) { return t.tipo === g[0]; });
+    return '<div class="card"><h3>' + g[1] + ' <span class="badge">' + voci.length + '</span></h3><ul class="lista-teoria">' + voci.map(function (t) {
+      var link = t.sito ? ' <a class="small" href="sezioni/' + t.sito + '">sul sito</a>' : (g[0] === 'es' ? '' : ' <span class="badge">non ancora a lezione</span>');
+      return '<li>' + t.t + link + ' <span class="quando">' + breve(t.prova) + '</span></li>';
+    }).join('') + '</ul></div>';
+  }).join('');
+  AM.typeset(document.querySelector('main'));
+});
+</script>
+</body>
+</html>
