@@ -314,9 +314,20 @@
       </tbody>
     </table></div>
     <div class="box ex">
-      <div class="box-title">Esempio (Lezione 7, Parte 1)</div>
+      <div class="box-title">Esempio (a) (Lezione 7, Parte 1)</div>
       <p class="mb0">$\Pi_1:\ x=1-t-s,\ y=2+t,\ z=-3+s$ e $\Pi_2:\ x=-1+t,\ y=s-2t,\ z=1+t-s$. Il MEG dà $r(A)=r([A|\vb])=2$: i piani <strong>coincidono</strong>. Sommando le tre coordinate si vede subito perché: in entrambi i casi $x+y+z=0$, indipendentemente dai parametri.</p>
     </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (b) (Lezione 7, Parte 1)</div>
+      <p>$\Pi_1:\ x=1-t-s,\ y=2+t,\ z=-3+s$ e $\Pi_2:\ x=1-2t'+s',\ y=t',\ z=s'$. Al secondo piano si danno parametri con un altro nome, perché il punto comune non ha per forza gli stessi valori di $t,s$.</p>
+      <p>Uguagliando le coordinate e portando i parametri a sinistra:
+      $$\begin{cases}-t-s+2t'-s'=0\\t-t'=-2\\s-s'=3\end{cases}\ \to\ \begin{cases}-t-s+2t'-s'=0\\-s+t'-s'=-2\\t'-2s'=1\end{cases}$$
+      con $R_2\to R_2+R_1$ e poi $R_3\to R_3+R_2$. $r(A)=r([A|\vb])=3$: i piani sono <strong>incidenti</strong>, e la soluzione ha $4-3=1$ parametro.</p>
+      <p><strong>La retta.</strong> $s'=\tau$ è libera e $t'=1+2\tau$. Bastano queste due: sostituite nell'equazione di $\Pi_2$ danno
+      $$l:=\Pi_1\cap\Pi_2:\quad x=-1-3\tau,\quad y=1+2\tau,\quad z=\tau,\qquad\tau\in\R.$$</p>
+      <p class="mb0"><strong>Controllo</strong> (l'esercizio che lascia il prof): in forma cartesiana $\Pi_1:\ x+y+z=0$ e $\Pi_2:\ x+2y-z=1$. Sostituendo la retta: $(-1-3\tau)+(1+2\tau)+\tau=0$ ✓ e $(-1-3\tau)+2(1+2\tau)-\tau=1$ ✓.</p>
+    </div>
+    <p class="small muted">Negli appunti la prima matrice è scritta senza i segni meno davanti alle colonne di $\Pi_2$, e il prof stesso lo segnala nella pagina dopo (p. 44). Il rango non cambia, ma per trovare la retta i segni servono.</p>
 
     <h3 id="piani-misti">Un piano per tipo</h3>
     <p>Se uno è cartesiano e l'altro parametrico, si <strong>sostituisce</strong> la forma parametrica nell'equazione cartesiana.</p>
@@ -594,6 +605,7 @@
       $$\boxed{x-y+z=0}.$$</p>
       <p class="mb0"><strong>Controllo:</strong> $P$ dà $1-0-1=0$ ✓, $Q$ dà $1-1+0=0$ ✓. La direzione di $l_0$ è $(1,2,1)$ e $\langle(1,2,1),(1,-1,1)\rangle=0$ ✓. Inoltre $(0,-2,2)\in l_0$ non sta su $\Pi$ ($0+2+2\ne0$): il parallelismo è in senso stretto.</p>
     </div>
+    <p class="small muted">Negli appunti (p. 29) l'ultimo termine noto è scritto $3a+6b$: con $R_3\to R_3+bR_2$ da $3a+b$ si ottiene $3a+b+6b=3a+7b$. Il risultato non cambia, perché con $b=-a$ entrambi danno $a\ne0$.</p>
 
     <!-- ============================================================ -->
     <h2 id="test">Mettiti alla prova</h2>

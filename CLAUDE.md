@@ -30,7 +30,10 @@ aggiungere una materia sono nel `README.md`.
   `gemini-3.5-flash` funzionava ma a circa due minuti a pagina e `gemini-3.5-flash-lite` era
   veloce: per lavorare in parallelo si copia il PDF nello scratchpad con due nomi diversi e si
   lancia una metà delle pagine per copia, su modelli diversi (due processi sullo stesso `.md` si
-  cancellano a vicenda le pagine). Sulle pagine quasi vuote Gemini può inventare testo leggendo l'inchiostro
+  cancellano a vicenda le pagine). L'11/11/2026 `gemini-2.5-flash` e `gemini-2.5-flash-lite` non
+  esistevano più; hanno retto `gemini-3.5-flash-lite`, `gemini-3.1-flash-lite`,
+  `gemini-flash-lite-latest` e `gemini-3.1-flash-lite-preview`, mentre `gemini-3.6-flash` si è
+  fermato in 429 dopo 14 pagine (le ultime 3 lette dalle immagini). Sulle pagine quasi vuote Gemini può inventare testo leggendo l'inchiostro
   dell'altra facciata: un esercizio senza enunciato si controlla sull'immagine (è successo con
   l'esercitazione del 14 ottobre, p. 14). Se lo script non è utilizzabile (manca la
   chiave, quota finita su tutti i modelli) si torna alle immagini in griglie 2×2 a risoluzione

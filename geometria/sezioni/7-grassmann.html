@@ -113,6 +113,7 @@
       I pivot stanno nelle prime tre colonne: $\{\vv_1,\vv_2,\mathbf e_1\}$ è una base di $\R^{3}$.</p>
       <p class="mb0">La risposta <strong>non è unica</strong>. Per esercizio: anche $\vv_3=(1,0,1)$ va bene, e infatti $\det[\vv_1|\vv_2|\vv_3]=2\ne0$.</p>
     </div>
+    <p class="small muted">Negli appunti (p. 6) il pivot della terza riga è scritto $-3$: con $R_3\to R_3-2R_2$ è $-1-2\cdot(-1)=1$. La conclusione non cambia, perché il pivot resta nella terza colonna.</p>
 
     <h3 id="riferimento-piano">Un riferimento adatto a un piano</h3>
     <div class="box ex">
@@ -137,6 +138,7 @@
       Pivot nelle colonne 1, 2, 3, 5: si aggiungono $\mathbf e_1$ ed $\mathbf e_3$, cioè i polinomi $1$ e $x^{2}$.</p>
       <p class="mb0"><strong>Risposta:</strong> $\{q_1,q_2,1,x^{2}\}$ è una base di $P_3$. Non è l'unica: anche $\{q_1,q_2,1,x^{3}\}$ lo è, perché la matrice delle coordinate ha determinante $9\ne0$.</p>
     </div>
+    <p class="small muted">Negli appunti (p. 17) l'ultima riga è scritta $(0,0,0,0,0,3)$, con il pivot su $\mathbf e_4$, e la risposta è $\{q_1,q_2,1,x^{3}\}$. Con $R_4\to3R_4-R_3$ da $(0,0,-1,0,0,1)$ e $(0,0,-3,0,1,0)$ viene $(0,0,0,0,-1,3)$: il primo elemento non nullo è sotto $\mathbf e_3$. La base del prof resta una base (determinante $9$), ma il procedimento porta a $\{q_1,q_2,1,x^{2}\}$.</p>
 
     <!-- ============================================================ -->
     <h2 id="intersezione">2 · Intersezione di sottospazi</h2>
@@ -376,6 +378,7 @@
       $$U=\operatorname{span}\{(0,1,0)\}=\{(x,y,z)\in\R^{3}:\ x=z=0\}.$$</p>
       <p class="mb0"><strong>Controllo:</strong> $U\not\subset W$, perché $(0,1,0)$ non soddisfa $z=3y$; quindi $W\cap U=\{\underline0\}$ e la somma ha dimensione $2+1=3$ ✓.</p>
     </div>
+    <p class="small muted">Negli appunti (p. 67) le equazioni di $U$ sono scritte $x=y=0$, che è l'asse $z$. Lo span di $(0,1,0)$ è l'asse $y$: $x=z=0$.</p>
     <div class="box warnb">
       <div class="box-title">⚠ «Il» complemento non esiste</div>
       <p class="mb0">Ogni sottospazio $W\ne V$, $W\ne\{\vzero\}$, ha <strong>infiniti</strong> complementi. Per un piano per l'origine di $\R^{3}$, va bene qualunque retta per l'origine non contenuta nel piano.</p>
