@@ -227,10 +227,13 @@ coperti** (ogni passo: `.step-cue` = la domanda, `.step-content` = la risposta, 
 ### Verifiche in PDF (fuori dal sito)
 
 - Vanno sul Desktop, **non** nel repository e non sul sito.
-- Struttura: copertina con istruzioni; Parte A vero/falso con motivazione; Parte B a blocchi, ognuno
-  con un **Promemoria** della teoria minima e gli esercizi spezzati in passi a), b), c); riquadri
-  «Fermati e rifletti» e «Trappola»; **indizi** e **soluzioni** in fondo, su pagine separate;
-  griglia di autovalutazione che rimanda alle sezioni del sito.
+- Struttura: copertina breve (due righe di istruzioni e l'indice); Parte A vero/falso con
+  motivazione, con le sue soluzioni subito dopo; Parte B a blocchi, ognuno con un **Promemoria**
+  della teoria minima, gli esercizi spezzati in passi a), b), c), i riquadri «Fermati e rifletti» e
+  «Trappola», e le **soluzioni subito sotto il blocco**; griglia di autovalutazione che rimanda alle
+  sezioni del sito. **Niente indizi** e niente salti pagina fra i blocchi: lo studente l'ha chiesto
+  il 13/11/2026 («21 pagine per arrivare alle soluzioni»), vuole fare un blocco alla volta senza
+  sfogliare tutto il PDF.
 - Resa: HTML stampato con Chrome headless; formule con **MathJax in SVG** (`fontCache: 'none'`),
   non KaTeX, perché i font web nel PDF si vedono male in molti lettori; font di sistema (Cambria,
   Segoe UI); margini ampi e **cornice disegnata dopo la stampa** con PyMuPDF su ogni pagina,
