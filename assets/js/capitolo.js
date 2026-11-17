@@ -235,6 +235,17 @@
       const a = e.target.closest('a[href^="#"]');
       if (!a || !stato.attiva) return;
       const dest = document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+      // le parti da seconda lettura in prima lettura restano nascoste: per raggiungerle serve il capitolo completo
+      if (dest && dest.closest('.seconda')) {
+        // niente salto in cima (imposta): la sua animazione si mangerebbe lo scorrimento verso l'ancora
+        e.preventDefault();
+        stato.attiva = false;
+        salva();
+        disegna();
+        history.pushState(null, '', '#' + dest.id);
+        dest.scrollIntoView({ behavior: 'instant' });
+        return;
+      }
       const contenitore = dest && dest.closest('[data-passo]');
       if (!contenitore) return;
       const k = +contenitore.dataset.passo, formale = contenitore.classList.contains('formale');
@@ -253,16 +264,24 @@
     };
     addEventListener('scroll', () => requestAnimationFrame(() => requestAnimationFrame(spia)), { passive: true });
 
+    let salta = null;
     if (location.hash) {
       const dest = document.getElementById(decodeURIComponent(location.hash.slice(1)));
       const contenitore = dest && dest.closest('[data-passo]');
-      if (contenitore && +contenitore.dataset.passo >= 0) {
+      if (dest && dest.closest('.seconda')) { stato.attiva = false; salta = dest; }
+      else if (contenitore && +contenitore.dataset.passo >= 0) {
         stato.passo = +contenitore.dataset.passo;
         formaleAperto = contenitore.classList.contains('formale');
-      } else if (contenitore) stato.attiva = false;
+      } else if (contenitore) { stato.attiva = false; salta = dest; }
     }
     disegna();
     spia();
+    // il browser ha cercato l'ancora quando era ancora nascosta: ci si va a mano, anche dopo che KaTeX ha cambiato le altezze
+    if (salta) {
+      const vai = () => salta.scrollIntoView({ behavior: 'instant' });
+      requestAnimationFrame(vai);
+      addEventListener('load', vai, { once: true });
+    }
   }
 
   /* ---------------- ingresso ---------------- */
