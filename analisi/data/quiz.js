@@ -501,7 +501,7 @@
   a: 0,
   why: r`Il confronto asintotico vale per serie a termini (definitivamente) non negativi. Controesempio dell'Esercitazione 6: $\frac{(-1)^n}{\sqrt n}+\frac1n\sim\frac{(-1)^n}{\sqrt n}$, ma la prima serie diverge e la seconda converge. Con termini positivi invece basta $a_n\sim b_n$, senza alcuna disuguaglianza.` },
 
-/* ---------------- Sezione 4 (Lezioni 12–13) ---------------- */
+/* ---------------- Sezione 4 (Lezioni 12 e 14) ---------------- */
 { id: 'Q69', sez: 4, tag: 'punti di accumulazione',
   q: r`Sia $E=[0,1)\cup\{3\}$. Quale affermazione è vera?`,
   opts: [ r`$3$ è un punto isolato di $E$, e $1$ è di accumulazione per $E$`, r`$3$ è di accumulazione per $E$ perché $3\in E$`, r`$1$ non è di accumulazione per $E$ perché $1\notin E$`, r`$0$ non è di accumulazione per $E$ perché è un estremo` ],
@@ -596,7 +596,7 @@
   q: r`$\displaystyle\lim_{x\to0^+}x^x=\ ?$`,
   opts: [ r`$1$`, r`$0$`, r`non esiste`, r`$e$` ],
   a: 0,
-  why: r`Lezione 13: $x^x=e^{x\log x}$ e $x\log x\to0$ per $x\to0^+$ (il logaritmo perde contro la potenza), quindi $x^x\to e^0=1$. «$0^0$» è una forma indeterminata, non vale $0$ per forza.` },
+  why: r`Lezione 14: $x^x=e^{x\log x}$ e $x\log x\to0$ per $x\to0^+$ (il logaritmo perde contro la potenza), quindi $x^x\to e^0=1$. «$0^0$» è una forma indeterminata, non vale $0$ per forza.` },
 
 { id: 'Q83', sez: 4, tag: 'infinitesimi e infiniti',
   q: r`Per $x\to0$, $f(x)=x^2$ e $g(x)=x$ sono infinitesime. Allora:`,
@@ -608,19 +608,19 @@
   q: r`L'affermazione «$x^3=o(x^2)$» è:`,
   opts: [ r`vera per $x\to0$ e falsa per $x\to+\infty$`, r`vera per $x\to+\infty$ e falsa per $x\to0$`, r`sempre vera, perché $3>2$`, r`sempre falsa` ],
   a: 0,
-  why: r`$\frac{x^3}{x^2}=x$: tende a $0$ per $x\to0$, a $+\infty$ per $x\to+\infty$. Sono gli esempi della Lezione 13: per $x\to+\infty$ vale il contrario, $x^2=o(x^3)$. L'o-piccolo non ha senso senza dire dove va $x$.` },
+  why: r`$\frac{x^3}{x^2}=x$: tende a $0$ per $x\to0$, a $+\infty$ per $x\to+\infty$. Sono gli esempi della Lezione 14: per $x\to+\infty$ vale il contrario, $x^2=o(x^3)$. L'o-piccolo non ha senso senza dire dove va $x$.` },
 
 { id: 'Q85', sez: 4, tag: 'funzioni monotòne',
   q: r`Sia $f:(a,b)\to\R$ crescente e $x_0\in(a,b)$. Allora $\displaystyle\lim_{x\to x_0^-}f(x)$:`,
   opts: [ r`esiste ed è $\sup_{a\lt x\lt x_0}f(x)$`, r`esiste ed è $\inf_{a\lt x\lt x_0}f(x)$`, r`è sempre uguale a $f(x_0)$`, r`può non esistere` ],
   a: 0,
-  why: r`Da sinistra una funzione crescente sale verso il più piccolo maggiorante dei suoi valori (teorema della Lezione 13). Non è detto che sia $f(x_0)$: in un punto di salto $\sup_{x\lt x_0}f\lt f(x_0)$ è possibile. L'$\inf$ è il limite da destra.` },
+  why: r`Da sinistra una funzione crescente sale verso il più piccolo maggiorante dei suoi valori (teorema della Lezione 14). Non è detto che sia $f(x_0)$: in un punto di salto $\sup_{x\lt x_0}f\lt f(x_0)$ è possibile. L'$\inf$ è il limite da destra.` },
 
 { id: 'Q86', sez: 4, tag: 'asintoti',
   q: r`$f(x)=2x+\sin x$ ha un asintoto obliquo per $x\to+\infty$?`,
   opts: [ r`no: $\frac{f(x)}x\to2$, ma $f(x)-2x=\sin x$ non ha limite`, r`sì, $y=2x$`, r`sì, $y=2x+1$`, r`no, perché $\frac{f(x)}x$ non ha limite` ],
   a: 0,
-  why: r`È l'esempio della Lezione 13: per il teorema servono <em>entrambi</em> i limiti finiti. Il primo c'è ($m=2$), il secondo no. La quarta è sbagliata perché $\frac{\sin x}x\to0$.` },
+  why: r`È l'esempio della Lezione 14: per il teorema servono <em>entrambi</em> i limiti finiti. Il primo c'è ($m=2$), il secondo no. La quarta è sbagliata perché $\frac{\sin x}x\to0$.` },
 
 { id: 'Q87', sez: 4, tag: 'asintoti',
   q: r`L'asintoto obliquo di $f(x)=\dfrac{x^2+1}{x-1}$ per $x\to+\infty$ è:`,
@@ -629,7 +629,7 @@
   why: r`$m=\lim\frac{x^2+1}{x^2-x}=1$ e $q=\lim\left[\frac{x^2+1}{x-1}-x\right]=\lim\frac{x+1}{x-1}=1$. Fermarsi a $m$ dà $y=x$. Che $f\to+\infty$ è proprio il caso in cui può esserci un asintoto obliquo.` },
 
 { id: 'Q88', sez: 4, tag: 'continuità',
-  q: r`$f:A\to\R$ è continua in $x_0$ (definizione della Lezione 13) se:`,
+  q: r`$f:A\to\R$ è continua in $x_0$ (definizione della Lezione 14) se:`,
   opts: [ r`$x_0\in A$ è di accumulazione per $A$ e $\lim_{x\to x_0}f(x)=f(x_0)$`, r`$\lim_{x\to x_0}f(x)$ esiste finito`, r`$f(x_0)$ esiste`, r`limite destro e limite sinistro in $x_0$ coincidono` ],
   a: 0,
   why: r`Servono tre cose: $f(x_0)$ definito, limite esistente finito, e i due numeri uguali. Le altre opzioni ne danno una sola: per esempio la funzione che vale $1$ per $x\ne0$ e $5$ in $0$ ha limite $1$, ha limiti laterali uguali, ma non è continua in $0$.` },
@@ -638,7 +638,7 @@
   q: r`Sia $f(x)=e^{1/x}$ per $x\ne0$ e $f(0)=0$. Il punto $x_0=0$ è:`,
   opts: [ r`di discontinuità di seconda specie`, r`di discontinuità di prima specie`, r`di continuità, perché $\lim_{x\to0^-}f(x)=0=f(0)$`, r`un punto isolato del dominio` ],
   a: 0,
-  why: r`$\lim_{x\to0^-}e^{1/x}=0$ ma $\lim_{x\to0^+}e^{1/x}=+\infty$: un limite laterale è infinito, quindi seconda specie (Lezione 13). Basta il limite sinistro uguale a $f(0)$ per la continuità da sinistra, non per la continuità.` },
+  why: r`$\lim_{x\to0^-}e^{1/x}=0$ ma $\lim_{x\to0^+}e^{1/x}=+\infty$: un limite laterale è infinito, quindi seconda specie (Lezione 14). Basta il limite sinistro uguale a $f(0)$ per la continuità da sinistra, non per la continuità.` },
 
 { id: 'Q90', sez: 4, tag: 'discontinuità',
   q: r`Per la parte intera $f(x)=[x]$ nel punto $x_0=1$:`,
@@ -647,16 +647,136 @@
   why: r`$\lim_{x\to1^-}[x]=0$ e $\lim_{x\to1^+}[x]=1$: finiti e diversi, salto $|1-0|=1$. Coincidere con il limite destro rende $[x]$ continua <em>da destra</em>, non continua.` },
 
 { id: 'Q91', sez: 4, tag: 'funzione inversa',
-  q: r`Nell'esempio della Lezione 13 ($f=x$ su $[0,1)$, $f=x-1$ su $[2,3]$), perché $f^{-1}$ non è continua anche se $f$ è continua e invertibile?`,
+  q: r`Nell'esempio della Lezione 14 ($f=x$ su $[0,1)$, $f=x-1$ su $[2,3]$), perché $f^{-1}$ non è continua anche se $f$ è continua e invertibile?`,
   opts: [ r`perché il dominio $[0,1)\cup[2,3]$ non è un intervallo`, r`perché $f$ non è continua in $1$`, r`perché $f$ non è iniettiva`, r`perché $f(D)$ non è un intervallo` ],
   a: 0,
   why: r`Il teorema sulla continuità dell'inversa chiede che il dominio sia un intervallo, ed è proprio l'ipotesi che manca. $f$ è continua in ogni punto del suo dominio ($1$ non ci sta), è iniettiva, e $f(D)=[0,2]$ è un intervallo.` },
 
 { id: 'Q92', sez: 4, tag: 'continuità delle elementari',
-  q: r`Nella dimostrazione della continuità di $\sin x$ (Lezione 13), qual è la stima che chiude con i carabinieri?`,
+  q: r`Nella dimostrazione della continuità di $\sin x$ (Lezione 14), qual è la stima che chiude con i carabinieri?`,
   opts: [ r`$|\sin x-\sin x_0|\le|x-x_0|$, dalle prostaferesi e da $|\sin t|\le|t|$`, r`$\frac{\sin x}x\to1$`, r`$|\sin x|\le1$ e basta`, r`$\sin x\sim x$ per $x\to x_0$` ],
   a: 0,
-  why: r`Le prostaferesi trasformano la differenza in un prodotto; poi $|\cos(\cdot)|\le1$ e $|\sin t|\le|t|$ danno $|\sin x-\sin x_0|\le|x-x_0|\to0$. Il limite notevole riguarda $x\to0$, e $\sin x\sim x$ è falso per $x\to x_0\ne0$. La sola $|\sin x|\le1$ non rende piccola la differenza.` }
+  why: r`Le prostaferesi trasformano la differenza in un prodotto; poi $|\cos(\cdot)|\le1$ e $|\sin t|\le|t|$ danno $|\sin x-\sin x_0|\le|x-x_0|\to0$. Il limite notevole riguarda $x\to0$, e $\sin x\sim x$ è falso per $x\to x_0\ne0$. La sola $|\sin x|\le1$ non rende piccola la differenza.` },
+
+{ id: 'Q95', sez: 4, tag: 'discontinuità',
+  q: r`Sia $f(x)=[\operatorname{sgn}(x)]^2$, cioè $f(x)=1$ per $x\ne0$ e $f(0)=0$. Con i nomi della Lezione 15, $x_0=0$ è:`,
+  opts: [ r`una discontinuità eliminabile`, r`una discontinuità di terza specie`, r`una discontinuità di prima specie con salto $1$`, r`un punto di continuità, perché i limiti laterali coincidono` ],
+  a: 0,
+  why: r`I limiti laterali valgono entrambi $1$, finiti e uguali, ma $f(0)=0\ne1$: è il caso 4, eliminabile (ridefinendo $f(0)=1$ si ottiene la costante $1$). «Terza specie» è il nome che molti libri danno all'eliminabile, ma per la prof la terza specie è quella con un limite che non esiste. Non c'è salto, perché i limiti sono uguali; e limiti uguali non bastano per la continuità se il valore è diverso.` },
+
+{ id: 'Q96', sez: 4, tag: 'discontinuità',
+  q: r`Sia $f(x)=\sin\frac1x$ per $x\ne0$ e $f(0)=1$. Il punto $x_0=0$ è (Lezione 15):`,
+  opts: [ r`di discontinuità di terza specie`, r`di discontinuità di seconda specie`, r`di discontinuità eliminabile`, r`di continuità, perché $f(0)=1$ è un valore di $\sin\frac1x$` ],
+  a: 0,
+  why: r`I limiti laterali in $0$ non esistono: lungo $x_m=\frac1{m\pi}$ la funzione vale $0$, lungo $y_m=\frac1{\frac\pi2+2m\pi}$ vale $1$. Un limite che non esiste è il caso 3, terza specie. La seconda specie richiede che i limiti esistano (almeno uno infinito); l'eliminabile richiede limiti finiti e uguali.` },
+
+{ id: 'Q97', sez: 4, tag: 'teorema degli zeri',
+  q: r`$f:[-1,0]\cup[1,2]\to\R$ vale $-1$ su $[-1,0]$ e $2$ su $[1,2]$. È continua, $f(-1)\lt0\lt f(2)$, ma non si annulla mai. Quale ipotesi del teorema degli zeri manca?`,
+  opts: [ r`il dominio non è un intervallo`, r`$f$ non è continua`, r`$f$ non è strettamente monotòna`, r`$f(-1)$ e $f(2)$ non sono opposti` ],
+  a: 0,
+  why: r`È l'osservazione (ii) della Lezione 15: $f$ è continua in ogni punto del suo dominio, ma il dominio ha un buco fra $0$ e $1$, ed è lì che $f$ «salta» il valore $0$. La monotonia serve solo per l'unicità dello zero, e non si chiede che $f(a)$ e $f(b)$ siano opposti, solo di segno opposto.` },
+
+{ id: 'Q98', sez: 4, tag: 'Weierstrass',
+  q: r`Per quale di queste funzioni il teorema di Weierstrass garantisce massimo e minimo assoluti?`,
+  opts: [ r`$f(x)=x^3-5x$ su $[-2,3]$`, r`$f(x)=x$ su $(-1,1)$`, r`$f(x)=\operatorname{arctg}x$ su $\R$`, r`$f(x)=\frac1x$ per $x\ne0$, $f(0)=1$, su $[0,1]$` ],
+  a: 0,
+  why: r`Servono un intervallo chiuso e limitato e una funzione continua: solo il polinomio su $[-2,3]$ li ha. Su $(-1,1)$ manca il chiuso e infatti $\sup=1$ non è assunto; su $\R$ manca il limitato e $\operatorname{arctg}$ non raggiunge $\pm\frac\pi2$; $\frac1x$ su $[0,1]$ non è continua in $0$ e ha $\sup=+\infty$.` },
+
+{ id: 'Q99', sez: 4, tag: 'valori intermedi',
+  q: r`$f$ è continua su $[0,2]$, con $f(0)=1$ e $f(2)=5$. Che cosa si può dire con certezza?`,
+  opts: [ r`esiste $x_0\in(0,2)$ con $f(x_0)=3$`, r`$f$ è crescente su $[0,2]$`, r`il massimo di $f$ su $[0,2]$ è $5$`, r`$f$ non assume il valore $6$` ],
+  a: 0,
+  why: r`$3$ sta fra $f(0)=1$ e $f(2)=5$, quindi per i valori intermedi (o per gli zeri applicati a $f-3$) è assunto in un punto interno. Il resto non segue: $f$ può salire oltre $5$ e poi tornare giù, quindi il massimo può essere più grande di $5$, il valore $6$ può essere assunto, e $f$ non è per forza monotòna.` },
+
+{ id: 'Q100', sez: 5, tag: 'definizione di derivata',
+  q: r`$f$ è derivabile in $x_0$ (Lezione 16) se:`,
+  opts: [ r`esiste <strong>finito</strong> $\displaystyle\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h$`, r`$f$ è continua in $x_0$`, r`esiste $\displaystyle\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h$, finito o infinito`, r`esiste $\displaystyle\lim_{x\to x_0}f(x)$` ],
+  a: 0,
+  why: r`La derivata è il limite del rapporto incrementale, e il limite deve essere un numero. La continuità è una conseguenza, non la definizione ($|x|$ è continua in $0$ ma non derivabile). Un limite infinito non dà una derivata: è il caso della tangente verticale.` },
+
+{ id: 'Q101', sez: 5, tag: 'derivabilità e continuità',
+  q: r`Quale affermazione è vera?`,
+  opts: [ r`derivabile in $x_0$ $\Rightarrow$ continua in $x_0$, ma non viceversa`, r`continua in $x_0$ $\Rightarrow$ derivabile in $x_0$`, r`derivabile e continua in $x_0$ sono equivalenti`, r`una funzione continua in $\R$ è derivabile in tutti i punti tranne al più uno` ],
+  a: 0,
+  why: r`È la dimostrazione n° 18: $f(x)-f(x_0)=\frac{f(x)-f(x_0)}{x-x_0}(x-x_0)\to f'(x_0)\cdot0=0$. Il viceversa è falso: $|x|$ è continua in $0$ e non derivabile. Le funzioni continue possono avere tanti punti di non derivabilità quanti si vuole: $|\sin x|$ ne ha infiniti.` },
+
+{ id: 'Q102', sez: 5, tag: 'derivate elementari',
+  q: r`Per $a>0$, $a\ne1$, la derivata di $a^x$ è:`,
+  opts: [ r`$a^x\log a$`, r`$x\,a^{x-1}$`, r`$a^x$`, r`$\dfrac{a^x}{\log a}$` ],
+  a: 0,
+  why: r`Dall'inversa di $\log_ay$ (Lezione 16): $Da^x=\frac{a^x}{\log_ae}$, e $\frac1{\log_ae}=\log a$. $x\,a^{x-1}$ è la regola delle potenze, che vale per $x^\alpha$ con l'esponente fisso, non per la base fissa. $a^x$ vale solo per $a=e$. Dividere per $\log a$ è l'errore di chi ricorda «c'entra il logaritmo» ma non dove.` },
+
+{ id: 'Q103', sez: 5, tag: 'regole di derivazione',
+  q: r`$D\left[x^2\sin x\right]$ vale:`,
+  opts: [ r`$2x\sin x+x^2\cos x$`, r`$2x\cos x$`, r`$2x\sin x-x^2\cos x$`, r`$x^2\cos x$` ],
+  a: 0,
+  why: r`Regola del prodotto: $D[fg]=g\,Df+f\,Dg=\sin x\cdot2x+x^2\cos x$. Il prodotto delle derivate ($2x\cos x$) è l'errore più comune; il segno meno appartiene alla regola del quoziente.` },
+
+{ id: 'Q104', sez: 5, tag: 'funzione composta',
+  q: r`$D\left[\sin(x^2)\right]$ vale:`,
+  opts: [ r`$2x\cos(x^2)$`, r`$\cos(x^2)$`, r`$2\sin x\cos x$`, r`$\cos(2x)$` ],
+  a: 0,
+  why: r`Composta: derivata della funzione esterna calcolata nell'interna, per la derivata dell'interna: $\cos(x^2)\cdot2x$. Dimenticare la derivata dell'interna dà $\cos(x^2)$. $2\sin x\cos x$ è la derivata di $(\sin x)^2$: è l'esempio della Lezione 16 che mostra che l'ordine della composizione conta.` },
+
+{ id: 'Q105', sez: 5, tag: 'retta tangente',
+  q: r`La retta tangente al grafico di $f(x)=x^2$ nel punto di ascissa $x_0=1$ è:`,
+  opts: [ r`$y=2x-1$`, r`$y=2x$`, r`$y=2x+1$`, r`$y=x$` ],
+  a: 0,
+  why: r`$y=f(x_0)+f'(x_0)(x-x_0)=1+2(x-1)=2x-1$. Controllo: passa per $(1,1)$. $y=2x$ ha la pendenza giusta ma passa per l'origine, non per il punto del grafico; $y=x$ usa la pendenza $f(1)=1$ al posto di $f'(1)=2$.` },
+
+{ id: 'Q106', sez: 5, tag: 'differenziabilità',
+  q: r`Se $f(x)=f(x_0)+\lambda(x-x_0)+o(x-x_0)$ per $x\to x_0$, allora:`,
+  opts: [ r`$f$ è derivabile in $x_0$ e $f'(x_0)=\lambda$`, r`$f$ è derivabile in $x_0$, ma $\lambda$ può essere diverso da $f'(x_0)$`, r`$f$ è continua in $x_0$, ma può non essere derivabile`, r`$\lambda=f(x_0)$` ],
+  a: 0,
+  why: r`È la differenziabilità, equivalente alla derivabilità (dimostrazione n° 19): dividendo per $x-x_0$ il rapporto incrementale tende a $\lambda$, quindi $\lambda=f'(x_0)$, e non c'è altra scelta possibile. La continuità segue, ma qui si ha di più.` },
+
+{ id: 'Q107', sez: 5, tag: 'non derivabilità',
+  q: r`$f(x)=\sqrt[3]{|x|}$ in $x_0=0$ ha (Lezione 17):`,
+  opts: [ r`una cuspide`, r`un punto angoloso`, r`un flesso a tangente verticale`, r`derivata $0$` ],
+  a: 0,
+  why: r`Da destra $\frac{\sqrt[3]h}h=\frac1{h^{2/3}}\to+\infty$, da sinistra il rapporto va a $-\infty$: infiniti di segno opposto, cuspide. Il punto angoloso ha derivate laterali <em>finite</em> e diverse ($|x|$); il flesso a tangente verticale ha lo stesso infinito dalle due parti ($\sqrt[3]x$). Il minimo in $0$ non rende la derivata nulla, perché $f$ non è derivabile.` },
+
+{ id: 'Q108', sez: 5, tag: 'funzione derivata',
+  q: r`$f(x)=x^2\sin\frac1x$ per $x\ne0$, $f(0)=0$. Quale affermazione è vera?`,
+  opts: [ r`$f$ è derivabile in $0$ con $f'(0)=0$, ma $\lim_{x\to0}f'(x)$ non esiste`, r`$f$ non è derivabile in $0$, perché $\lim_{x\to0}f'(x)$ non esiste`, r`$f$ non è continua in $0$`, r`$f'$ è continua in $0$` ],
+  a: 0,
+  why: r`Il rapporto incrementale è $h\sin\frac1h\to0$: $f'(0)=0$. Per $x\ne0$, $f'(x)=2x\sin\frac1x-\cos\frac1x$, che non ha limite in $0$: la derivata esiste ovunque ma non è continua (Lezione 17). Dal fatto che $\lim f'$ non esiste non si può dedurre la non derivabilità: il teorema sul limite della derivata funziona solo quando quel limite esiste.` },
+
+{ id: 'Q109', sez: 5, tag: 'Fermat',
+  q: r`Il teorema di Fermat dice che, in un punto di estremo relativo interno in cui $f$ è derivabile, $f'=0$. Quale affermazione è vera?`,
+  opts: [ r`è una condizione necessaria: un punto critico può non essere un estremo`, r`è una condizione sufficiente: se $f'(x_0)=0$, $x_0$ è un estremo`, r`vale anche negli estremi dell'intervallo`, r`vale anche se $f$ non è derivabile in $x_0$` ],
+  a: 0,
+  why: r`$x^3$ ha $f'(0)=0$ ma $0$ non è un estremo: Fermat dà solo i candidati. Negli estremi dell'intervallo la derivata può non annullarsi (una funzione crescente su $[a,b]$ ha un minimo in $a$), e senza derivabilità non vale ($|x|$ in $0$).` },
+
+{ id: 'Q110', sez: 5, tag: 'massimi e minimi assoluti',
+  q: r`Per trovare massimo e minimo assoluti di una funzione continua su $[a,b]$ (Lezione 18) bisogna confrontare i valori di $f$:`,
+  opts: [ r`negli estremi $a$, $b$, nei punti di non derivabilità e nei punti critici`, r`solo nei punti critici`, r`solo negli estremi $a$ e $b$`, r`nei punti critici e nei punti di flesso` ],
+  a: 0,
+  why: r`Weierstrass garantisce che massimo e minimo esistono; possono stare agli estremi, in punti interni dove $f$ non è derivabile, o in punti interni dove $f'=0$ (Fermat). Nell'esempio $e^{1-x^2}$ su $[-3,3]$ il minimo è proprio negli estremi $\pm3$, dove $f'\ne0$.` },
+
+{ id: 'Q111', sez: 5, tag: 'Rolle',
+  q: r`$f(x)=|x|$ su $[-1,1]$ ha $f(-1)=f(1)$, ma $f'(x)\ne0$ in ogni punto in cui è derivabile. Quale ipotesi di Rolle manca?`,
+  opts: [ r`la derivabilità in tutto $(-1,1)$`, r`la continuità in $[-1,1]$`, r`$f(a)=f(b)$`, r`che $[-1,1]$ sia un intervallo chiuso` ],
+  a: 0,
+  why: r`È l'osservazione (ii) della Lezione 18: $|x|$ è continua su $[-1,1]$ e $f(-1)=f(1)=1$, ma non è derivabile in $0$, ed è proprio lì che il minimo «non ha la tangente orizzontale».` },
+
+{ id: 'Q112', sez: 5, tag: 'Lagrange',
+  q: r`Il teorema di Lagrange applicato a $f(x)=x^2$ su $[0,2]$ garantisce un $\xi\in(0,2)$ con:`,
+  opts: [ r`$f'(\xi)=2$, cioè $\xi=1$`, r`$f'(\xi)=0$, cioè $\xi=0$`, r`$f'(\xi)=4$, cioè $\xi=2$`, r`$f(\xi)=2$` ],
+  a: 0,
+  why: r`$f'(\xi)=\frac{f(2)-f(0)}{2-0}=\frac42=2$, e $f'(\xi)=2\xi$ dà $\xi=1$. $f'(\xi)=0$ è Rolle, che qui non si applica ($f(0)\ne f(2)$); $\xi=2$ non è interno; $f(\xi)=2$ confonde la pendenza della secante con un valore della funzione.` },
+
+{ id: 'Q113', sez: 5, tag: 'test di monotonia',
+  q: r`$f(x)=\frac1x$ ha $f'(x)=-\frac1{x^2}\lt0$ per ogni $x\ne0$. Allora:`,
+  opts: [ r`$f$ è decrescente su $(-\infty,0)$ e su $(0,+\infty)$, ma non su $\R\setminus\{0\}$`, r`$f$ è decrescente su $\R\setminus\{0\}$`, r`$f$ è crescente, perché $\frac1x$ cambia segno`, r`il test di monotonia non si applica a $\frac1x$` ],
+  a: 0,
+  why: r`Il test di monotonia vale su un <strong>intervallo</strong>: su ciascuna semiretta $f$ è decrescente. Su $\R\setminus\{0\}$ no: $-1\lt1$ ma $f(-1)=-1\lt1=f(1)$. È lo stesso fenomeno dell'esempio della Lezione 18 con $x$ su $(0,1)$ e $x-3$ su $(2,3)$.` },
+
+{ id: 'Q114', sez: 5, tag: 'limite della derivata',
+  q: r`$f$ è continua in $x_0$, derivabile fuori da $x_0$, e $\lim_{x\to x_0^+}f'(x)=2$, $\lim_{x\to x_0^-}f'(x)=-1$. Allora in $x_0$:`,
+  opts: [ r`$f$ ha un punto angoloso, con $f'_+(x_0)=2$ e $f'_-(x_0)=-1$`, r`$f$ è derivabile con $f'(x_0)=\frac12$`, r`$f$ ha una cuspide`, r`non si può dire niente` ],
+  a: 0,
+  why: r`Con la continuità, il teorema sul limite della derivata (Lezione 18) dà le derivate laterali: $f'_+(x_0)=2$ e $f'_-(x_0)=-1$, finite e diverse, quindi punto angoloso. La media non è una derivata; la cuspide richiede derivate laterali infinite. Se mancasse la continuità, invece, non si potrebbe concludere niente.` }
 
 
   ];

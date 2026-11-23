@@ -328,6 +328,152 @@
         r`«Concludo con i carabinieri; il coseno è uguale, la tangente è un quoziente.»`
       ],
       chiudi: r`Aggiungi che le inverse ($\log$, $\arcsin$, $\operatorname{arctg}$) sono continue per il teorema sulla funzione inversa.`
+    },
+
+    'T15': {
+      apri: r`«Sia $f$ continua su $[a,b]$ con $f(a)\lt0$ e $f(b)>0$. Dimostro che si annulla in un punto interno, con il metodo di bisezione.» Nomina il metodo subito: orienta chi ascolta.`,
+      passi: [
+        r`«Prendo il punto medio $c$. Se $f(c)=0$ ho finito; altrimenti tengo la metà in cui $f$ cambia segno, così agli estremi resta negativa a sinistra e positiva a destra.»`,
+        r`«Ripetendo costruisco gli estremi $a_n$ e $b_n$: $f(a_n)\lt0$, $f(b_n)>0$, e la lunghezza è $\frac{b-a}{2^n}$.» Scrivi la lunghezza: ti serve due passi dopo.`,
+        r`«$a_n$ cresce, $b_n$ decresce, e stanno fra $a$ e $b$: per il teorema sulle monotone hanno limite, e lo stesso $\xi$, perché la differenza va a zero.»`,
+        r`«Per la continuità di $f$ in $\xi$, $f(a_n)$ e $f(b_n)$ tendono a $f(\xi)$.» È il punto in cui usi l'ipotesi principale: dillo.`,
+        r`«Passando al limite, $f(\xi)\le0$ e $f(\xi)\ge0$: quindi $f(\xi)=0$.» Sottolinea il passaggio da $\lt$ a $\le$.`
+      ],
+      chiudi: r`Spesso chiedono il ruolo delle ipotesi: cita il dominio $[-1,0]\cup[1,2]$ (non è un intervallo) e $\frac12+\operatorname{sgn}x$ (non è continua).`
+    },
+
+    'T16': {
+      apri: r`«Una funzione continua su un intervallo assume tutti i valori fra il suo estremo inferiore e il suo estremo superiore. Lo deduco dal teorema degli zeri.»`,
+      passi: [
+        r`«Preso $y_0$ fra $\inf$ e $\sup$, $y_0$ non è un minorante e non è un maggiorante: trovo $a$ con $f(a)\lt y_0$ e $b$ con $f(b)>y_0$.» Cita la caratterizzazione di $\inf$ e $\sup$.`,
+        r`«Considero $g=f-y_0$: è continua, negativa in $a$ e positiva in $b$.»`,
+        r`«Siccome $I$ è un intervallo, contiene il segmento fra $a$ e $b$, e il teorema degli zeri dà $x_0$ con $g(x_0)=0$, cioè $f(x_0)=y_0$.» Di' esplicitamente dove serve «intervallo».`
+      ],
+      chiudi: r`Concludi con l'osservazione: l'immagine di un intervallo tramite una funzione continua è un intervallo.`
+    },
+
+    'T17': {
+      apri: r`«Sia $f$ continua sull'intervallo chiuso e limitato $[a,b]$. Dimostro che ha massimo e minimo in tre passi: è limitata superiormente, il $\sup$ è assunto, il minimo segue.» Annuncia i tre passi.`,
+      passi: [
+        r`«Per assurdo $f$ è illimitata superiormente: allora lo è in una delle due metà, e iterando costruisco intervalli incapsulati su cui è illimitata.»`,
+        r`«Gli estremi sono monotoni e limitati, convergono allo stesso $x_0$, e $x_0$ sta in $[a,b]$ perché l'intervallo è chiuso.» È qui che usi «chiuso»: dillo.`,
+        r`«Per la continuità in $x_0$ con $\eps=1$, vicino a $x_0$ si ha $f(x)\lt f(x_0)+1$.»`,
+        r`«Da un certo $m$ in poi $[a_m,b_m]$ sta in quell'intorno, dove $f$ è limitata: contraddizione.»`,
+        r`«Per assurdo il $\sup$ $M$ non è assunto: allora $f\lt M$ e $\frac1{M-f}$ è continua.» Spiega perché il denominatore non si annulla.`,
+        r`«Per il passo 1 è limitata da $K$: ne segue $f\le M-\frac1K$, un maggiorante più piccolo del $\sup$. Assurdo.»`,
+        r`«Per il minimo applico il passo 2 a $-f$.»`
+      ],
+      chiudi: r`Tieni pronti i tre controesempi: $x$ su $(-1,1)$, $x$ su $\R$, $\frac1x$ con $f(0)=1$ su $[0,1]$.`
+    },
+
+    'T18': {
+      apri: r`«Sia $x_0$ interno al dominio e $f$ derivabile in $x_0$. Dimostro che $f$ è continua in $x_0$, cioè che $f(x)-f(x_0)\to0$.» Di' subito che cosa vuoi far tendere a zero.`,
+      passi: [
+        r`«Per $x\ne x_0$ moltiplico e divido per $x-x_0$: compare il rapporto incrementale.»`,
+        r`«Il rapporto incrementale tende a $f'(x_0)$, che è finito; $x-x_0$ tende a zero.» La parola chiave è «finito».`,
+        r`«Il prodotto tende a $f'(x_0)\cdot0=0$, quindi $f(x)\to f(x_0)$: $f$ è continua.»`,
+        r`«Il viceversa è falso: $|x|$ è continua in zero, ma il rapporto incrementale vale $1$ a destra e $-1$ a sinistra.»`
+      ],
+      chiudi: r`La domanda dopo è quasi sempre «e il viceversa?»: rispondi con $|x|$ prima che te lo chiedano.`
+    },
+
+    'T19': {
+      apri: r`«Definisco: $f$ è differenziabile in $x_0$ se $f(x)=f(x_0)+\lambda(x-x_0)+o(x-x_0)$ per qualche $\lambda$ reale. Dimostro che è equivalente alla derivabilità, con $\lambda=f'(x_0)$.»`,
+      passi: [
+        r`«Se $f$ è derivabile, il rapporto incrementale meno $f'(x_0)$ tende a zero.»`,
+        r`«Faccio il denominatore comune: il numeratore $f(x)-f(x_0)-f'(x_0)(x-x_0)$ diviso per $x-x_0$ tende a zero, cioè è un o-piccolo di $x-x_0$.» Cita la definizione di o-piccolo.`,
+        r`«Quindi $f$ è differenziabile con $\lambda=f'(x_0)$.»`,
+        r`«Viceversa divido la relazione per $x-x_0$: il rapporto incrementale è $\lambda$ più $\frac{o(x-x_0)}{x-x_0}$.»`,
+        r`«L'ultimo termine tende a zero, quindi il rapporto incrementale tende a $\lambda$, finito: $f$ è derivabile e $f'(x_0)=\lambda$.»`
+      ],
+      chiudi: r`Dai il significato: $f(x_0)+f'(x_0)(x-x_0)$ è la retta tangente, e l'errore commesso è un o-piccolo.`
+    },
+
+    'T-der': {
+      apri: r`«Calcolo le derivate delle funzioni elementari: alcune con il rapporto incrementale, le altre con i teoremi sulla funzione inversa e composta.»`,
+      passi: [
+        r`«Per costante, $x$ e $x^2$ basta scrivere il rapporto incrementale e semplificare $h$.»`,
+        r`«Per il seno uso la formula di addizione e i limiti notevoli $\frac{\sin h}h\to1$ e $\frac{\cos h-1}h\to0$.»`,
+        r`«Per il logaritmo raccolgo $\frac1x$ e uso il limite notevole $\frac{\log_a(1+t)}t\to\log_ae$.»`,
+        r`«L'esponenziale è l'inversa del logaritmo: $Da^x$ è il reciproco di $D\log_ay$ calcolato in $y=a^x$.»`,
+        r`«Per $x^\alpha$ scrivo $e^{\alpha\log x}$ e derivo la composta.»`,
+        r`«Per l'arcoseno uso l'inversa; il coseno è positivo in $\left(-\frac\pi2,\frac\pi2\right)$, quindi prendo la radice positiva.» Di' perché il segno è $+$.`
+      ],
+      chiudi: r`Ricorda che $\frac{a^x}{\log_ae}=a^x\log a$: se ti chiedono $D2^x$, rispondi $2^x\log2$.`
+    },
+
+    'T-algder': {
+      apri: r`«Siano $f$ e $g$ derivabili in $x$. Dimostro le regole per somma, prodotto e quoziente.»`,
+      passi: [
+        r`«Per la somma il rapporto incrementale si spezza in due, e uso l'algebra dei limiti.»`,
+        r`«Per il prodotto aggiungo e tolgo $f(x)g(x+h)$, così compaiono i due rapporti incrementali.»`,
+        r`«$g(x+h)$ tende a $g(x)$ perché $g$ è derivabile, quindi continua.» È il passaggio che si dimentica: dillo.`,
+        r`«Per il quoziente derivo prima $\frac1g$ e poi uso la regola del prodotto.»`
+      ],
+      chiudi: r`Chiudi con un esempio: la derivata della tangente, $\frac1{\cos^2x}$.`
+    },
+
+    'T20': {
+      apri: r`«Sia $x_0$ un punto di massimo relativo interno ad $(a,b)$ e $f$ derivabile in $x_0$. Dimostro che $f'(x_0)=0$.» Nomina le due ipotesi, interno e derivabile: sono quelle che ti chiederanno.`,
+      passi: [
+        r`«Siccome $x_0$ è interno, c'è un intorno contenuto in $(a,b)$ in cui $f(x)\le f(x_0)$.»`,
+        r`«Il numeratore del rapporto incrementale è sempre $\le0$: il rapporto è $\le0$ per $h>0$ e $\ge0$ per $h\lt0$.» Fai il segno ad alta voce, un lato alla volta.`,
+        r`«Passando al limite, la derivata destra è $\le0$ e la sinistra $\ge0$.»`,
+        r`«Siccome $f$ è derivabile, le due coincidono con $f'(x_0)$, che quindi è zero.»`
+      ],
+      chiudi: r`Aggiungi subito che il viceversa è falso, con $x^3$, e che senza derivabilità non vale, con $|x|$.`
+    },
+
+    'T21': {
+      apri: r`«Sia $f$ continua in $[a,b]$, derivabile in $(a,b)$, con $f(a)=f(b)$. Dimostro che la derivata si annulla in un punto interno, usando Weierstrass e Fermat.»`,
+      passi: [
+        r`«Per Weierstrass $f$ ha massimo e minimo assoluti su $[a,b]$.»`,
+        r`«Se stanno tutti e due agli estremi, per l'ipotesi $f(a)=f(b)$ massimo e minimo coincidono: $f$ è costante e la derivata è sempre nulla.»`,
+        r`«Altrimenti uno dei due è interno: lì $f$ è derivabile e per Fermat la derivata è zero.» Di' perché si può usare Fermat: punto interno, estremo, derivabile.`
+      ],
+      chiudi: r`Se chiedono il ruolo delle ipotesi: $|x|$ su $[-1,1]$ non è derivabile in $0$ e la derivata non si annulla mai.`
+    },
+
+    'T22': {
+      apri: r`«Sia $f$ continua in $[a,b]$ e derivabile in $(a,b)$. Dimostro che esiste $\xi$ con $f(b)-f(a)=f'(\xi)(b-a)$, riconducendomi a Rolle.» Disegna subito secante e tangente parallela.`,
+      passi: [
+        r`«Considero $g$, la differenza fra $f$ e la retta secante per $(a,f(a))$ e $(b,f(b))$.»`,
+        r`«$g$ è continua, derivabile, e vale zero in $a$ e in $b$: posso applicare Rolle.»`,
+        r`«Esiste $\xi$ con $g'(\xi)=0$, cioè $f'(\xi)$ uguale alla pendenza della secante.»`
+      ],
+      chiudi: r`Chiudi con il significato: in un punto interno la tangente è parallela alla secante. E nomina le conseguenze: funzioni costanti, test di monotonia.`
+    },
+
+    'T23': {
+      apri: r`«Sia $I$ un intervallo e $f$ derivabile in $I$. Dimostro che derivata nulla vuol dire funzione costante, e che $f$ è crescente se e solo se $f'\ge0$.» Sottolinea la parola «intervallo».`,
+      passi: [
+        r`«Prendo $x_1\lt x_2$ in $I$; siccome $I$ è un intervallo, tutto $[x_1,x_2]$ sta in $I$.»`,
+        r`«Per Lagrange $f(x_2)-f(x_1)=f'(\xi)(x_2-x_1)=0$: $f$ prende lo stesso valore in due punti qualsiasi.»`,
+        r`«Se $f$ è crescente il rapporto incrementale è $\ge0$, e passando al limite anche $f'\ge0$.»`,
+        r`«Viceversa Lagrange dà $f(x_2)-f(x_1)=f'(\xi)(x_2-x_1)\ge0$: $f$ è crescente.»`
+      ],
+      chiudi: r`Tieni pronti i controesempi senza intervallo: $\operatorname{arctg}x+\operatorname{arctg}\frac1x$ su $\R\setminus\{0\}$, e $\frac1x$, che ha derivata negativa ma non è decrescente.`
+    },
+
+    'T-staz': {
+      apri: r`«Sia $x_0$ un punto critico di $f$, derivabile in un intervallo. Mostro come il segno di $f'$ a destra e a sinistra decide se è un massimo, un minimo o nessuno dei due.»`,
+      passi: [
+        r`«Applico il test di monotonia sui due intervallini a sinistra e a destra di $x_0$.»`,
+        r`«Se $f'$ passa da negativo a positivo, $f$ scende e poi sale: $f(x)\ge f(x_0)$ vicino a $x_0$, minimo relativo.»`,
+        r`«Con i segni opposti è un massimo; con lo stesso segno $f$ è monotòna e $x_0$ non è un estremo, è un flesso.»`
+      ],
+      chiudi: r`Fai l'esempio della prof: $2x^3-6x$, massimo relativo in $-1$ e minimo relativo in $1$.`
+    },
+
+    'T-limder': {
+      apri: r`«Sia $f$ continua in $[a,b]$ e derivabile fuori da $x_0$, e supponiamo che $f'(x)\to L$ finito per $x\to x_0$. Dimostro che $f$ è derivabile in $x_0$ con $f'(x_0)=L$.» Di' subito che la continuità in $x_0$ è un'ipotesi.`,
+      passi: [
+        r`«Da destra applico Lagrange su $[x_0,x_0+h]$: il rapporto incrementale è $f'(\xi)$ con $\xi$ fra $x_0$ e $x_0+h$.»`,
+        r`«Per $h\to0^+$ il punto $\xi$ va in $x_0$, e $f'(\xi)$ tende a $L$.»`,
+        r`«Da sinistra è uguale su $[x_0+h,x_0]$.»`,
+        r`«I limiti destro e sinistro del rapporto incrementale valgono $L$: $f$ è derivabile e $f'(x_0)=L$.»`
+      ],
+      chiudi: r`Precisa che se il limite di $f'$ non esiste non si conclude niente: $x^2\sin\frac1x$ è derivabile in zero.`
     }
   };
 

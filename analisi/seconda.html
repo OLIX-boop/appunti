@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../assets/css/style.css?v=20261110a">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261123">
 <style>
   .card.in-arrivo { background: var(--bg-sunken); box-shadow: none; color: var(--text-muted); }
   .card.in-arrivo h3 { color: var(--text-muted); }
@@ -29,6 +29,7 @@
     <nav class="topnav">
       <a href="seconda.html">Piano</a>
       <a href="sezioni/4-limiti.html">4 · Limiti</a>
+      <a href="sezioni/5-derivate.html">5 · Derivate</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="quesiti.html">Quesiti</a>
       <a href="domande.html">Domande</a>
@@ -51,6 +52,7 @@
 
     <h4>Sezioni</h4>
     <a href="sezioni/4-limiti.html">4 · Limiti e continuità</a>
+    <a href="sezioni/5-derivate.html">5 · Calcolo differenziale</a>
 
     <h4>Strumenti</h4>
     <a href="teoremi.html">Dimostrazioni</a>
@@ -72,7 +74,7 @@
         <div class="card stat"><div class="stat-val" style="color:var(--accent)">3</div><div class="stat-lab">sezioni (4, 5, 6)</div></div>
         <div class="card stat"><div class="stat-val" style="color:var(--danger)">14</div><div class="stat-lab">dimostrazioni allo scritto (n° 15–28)</div></div>
         <div class="card stat"><div class="stat-val" style="color:var(--purple)">66</div><div class="stat-lab">quesiti teorici (2.1–2.66)</div></div>
-        <div class="card stat"><div class="stat-val" style="color:var(--ok)">2</div><div class="stat-lab">lezioni integrate (12–13)</div></div>
+        <div class="card stat"><div class="stat-val" style="color:var(--ok)">6</div><div class="stat-lab">lezioni integrate (12, 14–18)</div></div>
       </div>
 
       <div class="box tip" style="margin-top:22px">
@@ -95,16 +97,18 @@
     <div class="grid g3">
       <a class="card" href="sezioni/4-limiti.html">
         <h3>4 · Limiti di funzioni e continuità</h3>
-        <p>Intorni e punti di accumulazione, le definizioni di limite, limiti destro e sinistro, teorema ponte, teoremi sui limiti.</p>
-        <p class="small" style="margin-top:8px"><span class="badge star">novità</span> Lezioni 12 e 13</p>
+        <p>Intorni e punti di accumulazione, le definizioni di limite, teorema ponte, funzioni continue e discontinuità, zeri, valori intermedi, Weierstrass.</p>
+        <p class="small" style="margin-top:8px"><span class="badge star">completa</span> Lezioni 12, 14–16</p>
         <div style="margin-top:12px"><div class="pbar" data-progress-for="s4"><span style="width:0"></span></div>
         <div class="muted small" style="margin-top:5px"><span data-progress-txt="s4">0/0</span> argomenti</div></div>
       </a>
-      <div class="card in-arrivo">
+      <a class="card" href="sezioni/5-derivate.html">
         <h3>5 · Calcolo differenziale</h3>
-        <p>Derivate, Fermat, Rolle, Lagrange, studio di funzione, de l'Hôpital, Taylor.</p>
-        <p class="small mb0" style="margin-top:8px"><span class="badge">in arrivo</span></p>
-      </div>
+        <p>Derivata e tangente, differenziabilità, regole di calcolo, Fermat, Rolle, Lagrange, monotonia, punti di non derivabilità.</p>
+        <p class="small" style="margin-top:8px"><span class="badge star">novità</span> Lezioni 16–18</p>
+        <div style="margin-top:12px"><div class="pbar" data-progress-for="s5"><span style="width:0"></span></div>
+        <div class="muted small" style="margin-top:5px"><span data-progress-txt="s5">0/0</span> argomenti</div></div>
+      </a>
       <div class="card in-arrivo">
         <h3>6 · Calcolo integrale</h3>
         <p>Primitive, integrale di Riemann, teorema fondamentale, integrali impropri.</p>
@@ -116,19 +120,19 @@
     <div class="grid g2">
       <a class="card" href="teoremi.html">
         <h3>🎯 Le dimostrazioni</h3>
-        <p>Per la Sezione 4 ci sono le due dimostrazioni da orale (asintoti, continuità delle elementari). Quelle dello scritto, n° 15–28, arrivano con le lezioni su zeri, Weierstrass, derivate e integrali.</p>
+        <p>Della seconda parte ci sono già le dimostrazioni dello scritto su zeri, valori intermedi, Weierstrass e derivate, più quelle da orale. Le altre, fino alla n° 28, arrivano con le lezioni.</p>
       </a>
       <a class="card" href="quesiti.html">
         <h3>📖 I quesiti teorici</h3>
-        <p>Le domande da cui la prof pesca per i 10 punti di teoria, con la risposta modello. Per la Sezione 4 ci sono già i quesiti 2.1–2.6, quelli assegnati nella settimana del 26 ottobre.</p>
+        <p>Le domande da cui la prof pesca per i 10 punti di teoria, con la risposta modello. Ci sono tutti i quesiti assegnati finora nelle guide allo studio, fino alla settimana 10.</p>
       </a>
-      <a class="card" href="esercizi.html?sez=4">
+      <a class="card" href="esercizi.html?sez=5">
         <h3>✎ Palestra esercizi</h3>
-        <p>Verifiche di limiti con la definizione, non esistenza con il teorema ponte, calcolo di limiti: un suggerimento alla volta, poi lo svolgimento.</p>
+        <p>Limiti, asintoti, continuità con parametri e derivate, con gli esercizi delle esercitazioni: un suggerimento alla volta, poi lo svolgimento.</p>
       </a>
       <a class="card" href="domande.html">
         <h3>🎙 Domande teoriche</h3>
-        <p>Una domanda con dimostrazione a caso, da rispondere a voce un passo alla volta. Della seconda parte ci sono già i due quesiti blu della Sezione 4: asintoti e continuità delle funzioni elementari.</p>
+        <p>Una domanda con dimostrazione a caso, da rispondere a voce un passo alla volta, con i quesiti rossi e blu della seconda parte già arrivati a lezione.</p>
       </a>
     </div>
 
@@ -149,7 +153,17 @@
     <p class="muted small">I PDF originali pubblicati dalla docente.</p>
     <div class="grid g2">
       <a class="card" href="materiale/Lezione%2012%20(26%20ottobre)%20AM1%202026-27.pdf"><h3>📓 Lezione 12 — 26 ottobre</h3><p>Inizio della seconda parte: le definizioni di limite per $x\to\pm\infty$, intorni e punti di accumulazione, limite per $x\to x_0$ e limiti destro e sinistro, teorema ponte.</p></a>
-      <a class="card" href="materiale/Lezione%2013%20(4%20novembre)%20AM1%202026-27.pdf"><h3>📓 Lezione 13 — 4 novembre</h3><p>Esempi con $x^\alpha\log_ax$ e $x^x$, infinitesimi e infiniti, o-piccolo, limiti di funzioni monotòne, asintoti, funzioni continue e continuità delle elementari, composta e inversa, punti di discontinuità.</p></a>
+      <a class="card" href="materiale/Lezione%2014%20(4%20novembre)%20AM1%202026-27.pdf"><h3>📓 Lezione 14 — 4 novembre</h3><p>Esempi con $x^\alpha\log_ax$ e $x^x$, infinitesimi e infiniti, o-piccolo, limiti di funzioni monotòne, asintoti, funzioni continue e continuità delle elementari, composta e inversa, punti di discontinuità.</p></a>
+      <a class="card" href="materiale/Lezione%2015%20(9%20novembre)%20AM1%202026-27.pdf"><h3>📓 Lezione 15 — 9 novembre</h3><p>Discontinuità di terza specie ed eliminabili, estensione continua, permanenza del segno per funzioni continue, teorema degli zeri, valori intermedi.</p></a>
+      <a class="card" href="materiale/Lezione%2016%20(11%20novembre)%20AM1%202026-27.pdf"><h3>📓 Lezione 16 — 11 novembre</h3><p>Teorema di Weierstrass; poi le derivate: definizione, significato geometrico, differenziabilità, derivabile ⇒ continua, derivate elementari, regole, composta e inversa.</p></a>
+      <a class="card" href="materiale/Lezione%2017%20(16%20novembre)%20AM1%202026-27.pdf"><h3>📓 Lezione 17 — 16 novembre</h3><p>Derivata destra e sinistra, punti angolosi, cuspidi, flessi a tangente verticale, la funzione derivata, massimi e minimi relativi, punti critici, teorema di Fermat.</p></a>
+      <a class="card" href="materiale/Lezione%2018%20(18%20novembre)%20AM1%202026-27.pdf"><h3>📓 Lezione 18 — 18 novembre</h3><p>Massimi e minimi assoluti, Rolle, Lagrange, funzioni costanti, test di monotonia, classificazione dei punti critici, limite della derivata.</p></a>
+      <a class="card" href="materiale/Esercitazione%207.pdf"><h3>✏️ Esercitazione 7 — 6 novembre</h3><p>Limiti con gli asintotici, asintoti obliqui, continuità con parametri. Versione aggiornata del 16 novembre.</p></a>
+      <a class="card" href="materiale/Esercitazione%208.pdf"><h3>✏️ Esercitazione 8 — 13 novembre</h3><p>Natura dei punti di discontinuità, continuità con razionali e irrazionali, derivabilità con i parametri, $x^2\sin\frac1x$.</p></a>
+      <a class="card" href="materiale/Esercitazione%209.pdf"><h3>✏️ Esercitazione 9 — 20 novembre</h3><p>Derivabilità nei raccordi, numero di soluzioni di un'equazione, massimi e minimi assoluti, Lagrange, identità con $\operatorname{arctg}$ e $\arcsin$, punti di non derivabilità.</p></a>
+      <a class="card" href="materiale/settimana%2010.pdf"><h3>📄 Guida allo studio — settimana 10</h3><p>16–20 novembre: derivata destra e sinistra, non derivabilità, Fermat, Rolle, Lagrange, test di monotonia, limite della derivata. Quesiti 2.25–2.34.</p></a>
+      <a class="card" href="materiale/settimana%209.pdf"><h3>📄 Guida allo studio — settimana 9</h3><p>9–13 novembre: discontinuità, zeri, valori intermedi, Weierstrass, derivate fino alla funzione inversa. Quesiti 2.13–2.20 e 2.22–2.24.</p></a>
+      <a class="card" href="materiale/settimana%208.pdf"><h3>📄 Guida allo studio — settimana 8</h3><p>3–6 novembre: calcolo di limiti, infinitesimi e infiniti, monotone, asintoti, funzioni continue, discontinuità. Quesiti 2.7–2.12.</p></a>
       <a class="card" href="materiale/settimana%207.pdf"><h3>📄 Guida allo studio — settimana 7</h3><p>26–30 ottobre: limiti di funzioni, teoremi sui limiti, teorema ponte, limiti notevoli. Quesiti 2.1–2.6.</p></a>
       <a class="card" href="materiale/Programma%20di%20massima%20e%20bibliografia.pdf"><h3>📄 Programma e bibliografia</h3><p>Il programma completo con le indicazioni (*) e (**) sulle dimostrazioni.</p></a>
       <a class="card" href="materiale/Modalit%C3%A0%20di%20esame.pdf"><h3>📄 Modalità d'esame</h3><p>Struttura, punteggi, soglie, e l'elenco ufficiale delle 28 dimostrazioni.</p></a>
@@ -165,9 +179,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
-<script src="../assets/js/materie.js?v=20261110a"></script>
-<script src="data/topics2.js?v=20261110a"></script>
-<script src="../assets/js/plot.js?v=20261110a"></script>
-<script src="../assets/js/app.js?v=20261110a"></script>
+<script src="../assets/js/materie.js?v=20261123"></script>
+<script src="data/topics2.js?v=20261123"></script>
+<script src="../assets/js/plot.js?v=20261123"></script>
+<script src="../assets/js/app.js?v=20261123"></script>
 </body>
 </html>

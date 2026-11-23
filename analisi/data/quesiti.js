@@ -471,7 +471,7 @@ Le dimostrazioni sono quelle delle successioni con $\delta$ al posto di $\nu_\ep
 <ul><li>$\ell+(\pm\infty)=\pm\infty$; $\ +\infty+\infty=+\infty$;</li>
 <li>$\ell\cdot(\pm\infty)=\pm\infty$ se $\ell>0$ (segno opposto se $\ell\lt0$); $\ (+\infty)(+\infty)=+\infty$;</li>
 <li>$\frac\ell{\pm\infty}=0$; $\ \frac\ell{0^\pm}=\pm\infty$ se $\ell>0$.</li></ul>
-<strong>Forme indeterminate:</strong> $$+\infty-\infty,\quad0\cdot\infty,\quad\frac\infty\infty,\quad\frac00,\quad1^\infty,\quad0^0,\quad\infty^0.$$ «Indeterminata» vuol dire che il risultato dipende dalle funzioni: per esempio $\frac{x}{x}\to1$, $\frac{x^2}x\to+\infty$, $\frac x{x^2}\to0$ per $x\to+\infty$. Le ultime tre si trattano con $f^g=e^{g\log f}$ (Lezione 13: $x^x\to1$ per $x\to0^+$).` },
+<strong>Forme indeterminate:</strong> $$+\infty-\infty,\quad0\cdot\infty,\quad\frac\infty\infty,\quad\frac00,\quad1^\infty,\quad0^0,\quad\infty^0.$$ «Indeterminata» vuol dire che il risultato dipende dalle funzioni: per esempio $\frac{x}{x}\to1$, $\frac{x^2}x\to+\infty$, $\frac x{x^2}\to0$ per $x\to+\infty$. Le ultime tre si trattano con $f^g=e^{g\log f}$ (Lezione 14: $x^x\to1$ per $x\to0^+$).` },
 
 { id: '2.6', sez: 4, t: r`Enunciare il teorema ponte e spiegare la sua applicazione alla non esistenza di limiti di funzioni.`,
   a: r`<strong>Teorema ponte.</strong> Sia $f:A\subseteq\R\to\R$ e $x_0$ di accumulazione per $A$. Allora $$\lim_{x\to x_0}f(x)=\ell\iff\Bigl[\forall\{x_m\}\subseteq A\setminus\{x_0\},\ x_m\to x_0\ \Rightarrow\ \lim_{m\to\infty}f(x_m)=\ell\Bigr].$$ A destra c'è un limite di <em>successione</em>. Vale anche con $\ell=\pm\infty$ e $x_0=\pm\infty$.<br><br>
@@ -481,7 +481,7 @@ Le dimostrazioni sono quelle delle successioni con $\delta$ al posto di $\nu_\ep
 
 { id: '2.7', sez: 4, t: r`Dare le definizioni di funzioni infinite, infinitesime. Scrivere i vari casi di confronto tra funzioni infinite (o infinitesime).`,
   a: r`$f$ è <strong>infinitesima</strong> per $x\to x_0$ (anche $\pm\infty$) se $\lim f(x)=0$, <strong>infinita</strong> se $\lim f(x)=\pm\infty$.<br><br>
-<strong>Confronto</strong> tramite $L=\lim_{x\to x_0}\frac{f(x)}{g(x)}$ (Lezione 13):
+<strong>Confronto</strong> tramite $L=\lim_{x\to x_0}\frac{f(x)}{g(x)}$ (Lezione 14):
 <ul><li>$f,g$ <strong>infinitesime</strong>: $L=0$ ⇒ $f$ di ordine <strong>superiore</strong> a $g$; $L=\pm\infty$ ⇒ di ordine <strong>inferiore</strong>; $L\in\R\setminus\{0\}$ ⇒ stesso ordine; $L$ non esiste ⇒ non paragonabili.</li>
 <li>$f,g$ <strong>infinite</strong>: $L=0$ ⇒ $f$ di ordine <strong>inferiore</strong>; $L=\pm\infty$ ⇒ <strong>superiore</strong>; $L\in\R\setminus\{0\}$ ⇒ stesso ordine; $L$ non esiste ⇒ non paragonabili.</li></ul>
 Se $L=1$, $f$ e $g$ sono <strong>asintoticamente equivalenti</strong>: $f\sim g$. Se $L=0$ si scrive $f=o(g)$ per $x\to x_0$.<br><br>
@@ -498,7 +498,7 @@ All'infinito: $f$ crescente in $(a,+\infty)$ ⇒ $\lim_{x\to+\infty}f=\sup_{x>a}
 <strong>Obliquo.</strong> $y=mx+q$ è asintoto per $x\to+\infty$ se $\lim_{x\to+\infty}[f(x)-mx-q]=0$ (obliquo se $m\ne0$, orizzontale se $m=0$).<br>
 <strong>Teorema</strong> (dimostrazione da orale): $f$ ha asintoto $y=mx+q$ per $x\to+\infty$ $\iff$ esistono finiti $m=\lim\frac{f(x)}x$ e $q=\lim[f(x)-mx]$.<br>
 <em>Idea:</em> «⇒» dividendo $f(x)-mx-q\to0$ per $x$ si ottiene $\frac{f(x)}x\to m$; $q$ si legge dalla definizione. «⇐» il secondo limite è la definizione.<br><br>
-<strong>Controesempio (Lezione 13):</strong> $f(x)=2x+\sin x$ ha $m=2$, ma $f(x)-2x=\sin x$ non ha limite: niente asintoto.` },
+<strong>Controesempio (Lezione 14):</strong> $f(x)=2x+\sin x$ ha $m=2$, ma $f(x)-2x=\sin x$ non ha limite: niente asintoto.` },
 
 { id: '2.10', sez: 4, t: r`Dare la definizione di funzione continua in un punto, di funzione continua in un insieme.`,
   a: r`Sia $f:A\subseteq\R\to\R$ e $x_0\in A$ punto di accumulazione per $A$. $f$ è <strong>continua in $x_0$</strong> se $$\lim_{x\to x_0}f(x)=f(x_0),$$ cioè $\forall\eps>0\ \exists\delta>0$ t.c. $|f(x)-f(x_0)|\lt\eps$ per ogni $x\in A\cap I_\delta(x_0)$ (qui non serve escludere $x=x_0$). $f$ è <strong>continua in $A$</strong> se è continua in ogni punto di $A$.<br><br>
@@ -507,7 +507,7 @@ Contiene tre richieste: $f(x_0)$ esiste, il limite esiste finito, e i due coinci
 <strong>Uso pratico:</strong> dove $f$ è continua, il limite si calcola sostituendo.` },
 
 { id: '2.11', sez: 4, mark: '**', teo: 'T-cont', t: r`Dedurre la continuità delle funzioni elementari.`,
-  a: r`Schema della Lezione 13 (dimostrazione da orale):<ol>
+  a: r`Schema della Lezione 14 (dimostrazione da orale):<ol>
 <li><strong>$a^x$ è continua in $0$</strong>: per $a>1$ e $0\lt\eps\lt1$, $|a^x-1|\lt\eps\iff\frac{\log(1-\eps)}{\log a}\lt x\lt\frac{\log(1+\eps)}{\log a}$, e si prende $\delta$ uguale al minimo dei due estremi in modulo; per $0\lt a\lt1$ si scrive $a^x=\left(\frac1a\right)^{-x}$.</li>
 <li><strong>$a^x$ è continua in $\R$</strong>: $a^x-a^{x_0}=a^{x_0}(a^{x-x_0}-1)\to0$.</li>
 <li><strong>Polinomi e razionali</strong>: $x\to x_0$ e l'algebra dei limiti danno $P(x)\to P(x_0)$, $\frac PQ\to\frac{P(x_0)}{Q(x_0)}$ se $Q(x_0)\ne0$.</li>
@@ -517,7 +517,7 @@ Contiene tre richieste: $f(x_0)$ esiste, il limite esiste finito, e i due coinci
 Poi la continuità della composta estende il risultato a tutte le funzioni costruite componendo queste.` },
 
 { id: '2.12', sez: 4, t: r`Enunciare il teorema sul limite della funzione composta. Dedurne il teorema sulla continuità della funzione composta.`,
-  a: r`<strong>Limite della composta (Lezione 13).</strong> Se $\lim_{x\to x_0}f(x)=y_0$ e $g$ è continua in $y_0$, allora $$\lim_{x\to x_0}g(f(x))=g\Bigl(\lim_{x\to x_0}f(x)\Bigr)=g(y_0).$$
+  a: r`<strong>Limite della composta (Lezione 14).</strong> Se $\lim_{x\to x_0}f(x)=y_0$ e $g$ è continua in $y_0$, allora $$\lim_{x\to x_0}g(f(x))=g\Bigl(\lim_{x\to x_0}f(x)\Bigr)=g(y_0).$$
 <strong>Corollario: continuità della composta.</strong> Se $f$ è continua in $x_0$ e $g$ è continua in $y_0=f(x_0)$, allora $g\circ f$ è continua in $x_0$.<br>
 <em>Dimostrazione:</em> per la continuità di $f$, $\lim_{x\to x_0}f(x)=f(x_0)=y_0$; poiché $g$ è continua in $y_0$, il teorema dà $\lim_{x\to x_0}g(f(x))=g(f(x_0))$, che è la definizione di continuità di $g\circ f$ in $x_0$.<br><br>
 <strong>Esempi:</strong> $\lim_{x\to0}\sin(x^2)=\sin0=0$; $\lim_{x\to0}e^{\operatorname{tg}x+1}=e$.<br>
@@ -527,12 +527,138 @@ Poi la continuità della composta estende il risultato a tutte le funzioni costr
   a: r`Sia $f:D\to\R$ e $x_0\in D$ di accumulazione per $D$. $x_0$ è un <strong>punto di discontinuità</strong> se $f$ non è continua in $x_0$.<br><br>
 <strong>Caso 1 · prima specie (salto):</strong> i limiti destro e sinistro esistono finiti ma diversi; il <strong>salto</strong> è $s(x_0)=\left|\lim_{x\to x_0^+}f-\lim_{x\to x_0^-}f\right|$. Esempio: $[x]$ in $x_0=1$, con limiti $0$ e $1$ e salto $1$.<br><br>
 <strong>Caso 2 · seconda specie:</strong> esistono i limiti destro e sinistro ma almeno uno è $\pm\infty$. Esempio: $f(x)=e^{1/x}$ per $x\ne0$, $f(0)=0$: da sinistra $0$, da destra $+\infty$.<br><br>
-<small>Gli appunti della Lezione 13 si fermano qui (con il grafico di $\frac1x$, il cui $0$ però non sta nel dominio): gli altri casi si aggiungono con la lezione successiva.</small>` },
+<strong>Caso 3 · terza specie (Lezione 15):</strong> almeno uno dei limiti laterali non esiste. Esempio: $f(x)=\sin\frac1x$ per $x\ne0$, $f(0)=1$: $\lim_{x\to0^+}\sin\frac1x$ non esiste (teorema ponte).<br><br>
+<strong>Caso 4 · eliminabile:</strong> i limiti laterali esistono finiti e uguali a $\ell$, ma $f(x_0)\ne\ell$. Ridefinendo $f(x_0)=\ell$ si ottiene una funzione continua in $x_0$. Esempio: $[\operatorname{sgn}x]^2$ in $0$ (limiti $1$, valore $0$).<br><br>
+<strong>Estensione continua.</strong> Se $x_0\notin D$ è di accumulazione e $\lim_{x\to x_0^\pm}f=\ell$ finito, ponendo $\tilde f(x_0)=\ell$ si ottiene il prolungamento continuo di $f$ in $x_0$: per esempio $\frac{\sin x}x$ con $\tilde f(0)=1$.<br><br>
+<small>Con i nomi della prof la terza specie è quella con un limite che non esiste, e l'eliminabile è un caso a parte; molti libri chiamano invece «terza specie» l'eliminabile.</small>` },
+
+{ id: '2.14', sez: 4, t: r`Enunciare il teorema della permanenza del segno per funzioni continue.`,
+  a: r`<strong>Teorema (Lezione 15).</strong> Sia $f:A\subseteq\R\to\R$ continua e $x_0\in A$. Se $f(x_0)>c$ per qualche $c\in\R$, allora esiste $\delta>0$ tale che $$f(x)>c\qquad\forall x\in I_\delta(x_0)\cap A.$$ Analogamente con $\lt$.<br><br>
+<strong>Perché vale:</strong> è la permanenza del segno per i limiti applicata a $g(x)=f(x)-c$, che è continua e quindi ha limite $g(x_0)=f(x_0)-c>0$ in $x_0$. Qui anche $x=x_0$ è compreso, perché lì la disuguaglianza è l'ipotesi.<br><br>
+<strong>La continuità serve:</strong> $f(x)=\frac12+\operatorname{sgn}x$ ha $f(0)=\frac12>0$, ma in ogni intorno di $0$ ci sono punti con $f(x)=-\frac12\lt0$.` },
+
+{ id: '2.15', sez: 4, mark: '*', teo: 'T15', t: r`Enunciare e dimostrare il teorema di esistenza degli zeri. Discutere il ruolo delle ipotesi.`,
+  a: r`<strong>Teorema.</strong> Sia $f$ continua su $[a,b]$ con $f(a)\lt0\lt f(b)$. Allora $\exists x_0\in(a,b)$ con $f(x_0)=0$.<br><br>
+<strong>Dimostrazione (bisezione, Lezione 15).</strong> Sia $c=\frac{a+b}2$: se $f(c)=0$ si ha finito, altrimenti si tiene la metà in cui $f$ cambia segno. Iterando si ottengono $a_n$ crescente e $b_n$ decrescente con $f(a_n)\lt0\lt f(b_n)$, $a\le a_n\le b_n\le b$ e $b_n-a_n=\frac{b-a}{2^n}$. Per la regolarità delle monotone $a_n\to\xi$, e $b_n=a_n+\frac{b-a}{2^n}\to\xi$. Per la continuità di $f$ in $\xi$: $f(a_n)\to f(\xi)\le0$ e $f(b_n)\to f(\xi)\ge0$, quindi $f(\xi)=0$, e $\xi\in(a,b)$ perché $f(a),f(b)\ne0$.<br><br>
+<strong>Ruolo delle ipotesi.</strong><ul><li><em>Intervallo:</em> su $[-1,0]\cup[1,2]$ la funzione che vale $-1$ e poi $2$ è continua, cambia segno, e non si annulla.</li><li><em>Continuità:</em> $\frac12+\operatorname{sgn}x$ su $[-1,1]$ va da $-\frac12$ a $\frac32$ senza annullarsi.</li><li>Se $f$ è strettamente monotòna lo zero è unico; su $[a,+\infty)$ basta $f(a)\lt0$ e $\lim_{x\to+\infty}f>0$.</li></ul>` },
+
+{ id: '2.16', sez: 4, mark: '*', teo: 'T16', t: r`Enunciare e dimostrare il teorema dei valori intermedi. Discutere il ruolo delle ipotesi.`,
+  a: r`<strong>Teorema.</strong> Se $f$ è continua in un intervallo $I$, per ogni $y_0\in\left(\inf_If,\sup_If\right)$ esiste $x_0\in I$ con $f(x_0)=y_0$. In particolare $f(I)$ è un intervallo.<br><br>
+<strong>Dimostrazione (Lezione 15).</strong> $y_0>\inf f$ non è un minorante, quindi $\exists a\in I$ con $f(a)\lt y_0$; $y_0\lt\sup f$ non è un maggiorante, quindi $\exists b\in I$ con $f(b)>y_0$. La funzione $g=f-y_0$ è continua, $g(a)\lt0\lt g(b)$, e il segmento fra $a$ e $b$ sta in $I$ perché $I$ è un intervallo: per il teorema degli zeri $\exists x_0$ con $g(x_0)=0$, cioè $f(x_0)=y_0$.<br><br>
+<strong>Ruolo delle ipotesi.</strong> Sono quelle del teorema degli zeri, con gli stessi controesempi: su $[-1,0]\cup[1,2]$ la funzione che vale $-1$ e $2$ non prende il valore $0$; $\frac12+\operatorname{sgn}x$ su $[-1,1]$ salta il valore $0$.` },
+
+{ id: '2.17', sez: 4, t: r`Dare le definizioni di massimo e di minimo assoluto, di punto di massimo e di minimo assoluto di una funzione.`,
+  a: r`Sia $f:A\subseteq\R\to\R$ e $x_0\in A$ (Lezione 16). $x_0$ è <strong>punto di massimo assoluto</strong> per $f$ in $A$ se $f(x)\le f(x_0)$ per ogni $x\in A$; è <strong>punto di minimo assoluto</strong> se $f(x)\ge f(x_0)$ per ogni $x\in A$. Il numero $f(x_0)$ è il <strong>massimo</strong> (il <strong>minimo</strong>) assoluto di $f$ in $A$: $\max_Af$, $\min_Af$.<br><br>
+<strong>Da non confondere:</strong> il punto di massimo è un elemento del dominio, il massimo è un valore. Il massimo, se esiste, è unico; i punti di massimo no: $\cos x$ ha massimo $1$, assunto in tutti i punti $2k\pi$. Il massimo può non esistere anche se esiste il $\sup$: $f(x)=x$ in $(-1,1)$ ha $\sup=1$ ma nessun massimo.` },
+
+{ id: '2.18', sez: 4, mark: '*', teo: 'T17', t: r`Enunciare e dimostrare il teorema di Weierstrass. Discutere il ruolo delle ipotesi.`,
+  a: r`<strong>Teorema.</strong> Se $f:[a,b]\to\R$ è continua, ammette massimo e minimo assoluti in $[a,b]$.<br><br>
+<strong>Dimostrazione (Lezione 16), in tre passi.</strong><ol><li><em>$f$ è limitata superiormente.</em> Per assurdo no: bisecando si trovano intervalli $[a_m,b_m]$ incapsulati, lunghi $\frac{b-a}{2^m}$, su cui $f$ è illimitata superiormente. Gli estremi convergono a uno stesso $x_0\in[a,b]$ (qui serve il chiuso). Per la continuità in $x_0$ con $\eps=1$, $f\lt f(x_0)+1$ in un intorno $(x_0-\delta,x_0+\delta)$, che definitivamente contiene $[a_m,b_m]$: assurdo.</li>
+<li><em>$f$ ha massimo.</em> Per assurdo $M=\sup f$ non è assunto: $f\lt M$, e $g=\frac1{M-f}$ è continua, quindi limitata da un $K>0$ per il passo 1. Allora $f\le M-\frac1K$: un maggiorante minore del $\sup$, assurdo.</li>
+<li><em>$f$ ha minimo:</em> è il punto di massimo di $-f$.</li></ol>
+<strong>Ruolo delle ipotesi.</strong> $f(x)=x$ in $(-1,1)$: niente massimo né minimo (non chiuso). $f(x)=x$ in $\R$: $\sup=+\infty$ (illimitato). $f(x)=\frac1x$, $f(0)=1$, su $[0,1]$: $\sup=+\infty$ (non continua). Il dominio può anche non essere un intervallo, purché chiuso e limitato, come $[a_1,b_1]\cup[a_2,b_2]$.` },
 
 { id: '2.19', sez: 4, t: r`Enunciare il teorema sulla continuità della funzione inversa. Discutere il ruolo delle ipotesi.`,
-  a: r`<strong>Teorema (Lezione 13).</strong> Sia $I\subseteq\R$ un <strong>intervallo</strong> e $f:I\to\R$ continua e invertibile. Allora $f(I)$ è un intervallo e $f^{-1}:f(I)\to I$ è continua.<br><br>
+  a: r`<strong>Teorema (Lezione 14).</strong> Sia $I\subseteq\R$ un <strong>intervallo</strong> e $f:I\to\R$ continua e invertibile. Allora $f(I)$ è un intervallo e $f^{-1}:f(I)\to I$ è continua.<br><br>
 <strong>L'ipotesi «intervallo» è necessaria.</strong> $f(x)=x$ su $[0,1)$, $f(x)=x-1$ su $[2,3]$: il dominio $D=[0,1)\cup[2,3]$ non è un intervallo, $f$ è continua e invertibile, $f(D)=[0,2]$, ma $$f^{-1}(y)=\begin{cases}y&0\le y\lt1\\y+1&1\le y\le2\end{cases}$$ non è continua in $y=1$: $\lim_{y\to1^-}f^{-1}(y)=1\ne2=f^{-1}(1)$.<br><br>
-<strong>Conseguenze:</strong> $\log_ax$ (inversa di $a^x$) e le inverse delle funzioni circolari ($\arcsin$, $\arccos$, $\operatorname{arctg}$) sono continue nei loro insiemi di definizione.` }
+<strong>Conseguenze:</strong> $\log_ax$ (inversa di $a^x$) e le inverse delle funzioni circolari ($\arcsin$, $\arccos$, $\operatorname{arctg}$) sono continue nei loro insiemi di definizione.` },
+
+/* ---------- Sezione 5: calcolo differenziale ---------- */
+{ id: '2.20', sez: 5, t: r`Dare la definizione di derivata ed illustrarne il significato geometrico.`,
+  a: r`<strong>Definizione (Lezione 16).</strong> Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$. $f$ è <strong>derivabile</strong> in $x_0$ se esiste <strong>finito</strong> il limite del rapporto incrementale $$f'(x_0)=\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}.$$ Si scrive anche $Df(x_0)$ o $\frac{df}{dx}(x_0)$ (notazione di Leibniz).<br><br>
+<strong>Significato geometrico.</strong> Il rapporto incrementale $\frac{f(x_1)-f(x_0)}{x_1-x_0}$ è il coefficiente angolare della retta <em>secante</em> il grafico nei punti $(x_0,f(x_0))$ e $(x_1,f(x_1))$. Quando $x_1\to x_0$ la secante tende alla <strong>retta tangente</strong>: $f'(x_0)$ è il coefficiente angolare della tangente al grafico in $x_0$, che ha equazione $$y=f(x_0)+f'(x_0)(x-x_0).$$
+<strong>Esempio:</strong> $f(x)=x^2$, $f'(1)=2$: la tangente in $(1,1)$ è $y=1+2(x-1)=2x-1$.` },
+
+{ id: '2.21', sez: 5, mark: '*', teo: 'T19', t: r`Dare la definizione di differenziabilità. Dimostrarne l'equivalenza con la derivabilità.`,
+  a: r`<strong>Definizione (Lezione 16).</strong> $f:(a,b)\to\R$ è <strong>differenziabile</strong> in $x_0\in(a,b)$ se esiste $\lambda\in\R$ tale che $$f(x)=f(x_0)+\lambda(x-x_0)+o(x-x_0)\qquad\text{per }x\to x_0.$$
+<strong>Teorema.</strong> Se $x_0$ è interno all'intervallo $I$: $f$ differenziabile in $x_0$ $\iff$ $f$ derivabile in $x_0$, e $\lambda=f'(x_0)$.<br><br>
+<strong>Dimostrazione.</strong> «⇐»: $\frac{f(x)-f(x_0)}{x-x_0}\to f'(x_0)\in\R$ equivale a $\frac{f(x)-f(x_0)-f'(x_0)(x-x_0)}{x-x_0}\to0$, cioè $f(x)-f(x_0)-f'(x_0)(x-x_0)=o(x-x_0)$: è la differenziabilità con $\lambda=f'(x_0)$. «⇒»: dividendo per $x-x_0$, $\frac{f(x)-f(x_0)}{x-x_0}=\lambda+\frac{o(x-x_0)}{x-x_0}\to\lambda\in\R$, quindi $f$ è derivabile e $f'(x_0)=\lambda$.<br><br>
+<strong>Significato:</strong> vicino a $x_0$ la funzione si confonde con la retta tangente, e l'errore è infinitesimo di ordine superiore a $x-x_0$.` },
+
+{ id: '2.22', sez: 5, mark: '**', teo: 'T-der', t: r`Calcolare la derivata delle funzioni elementari.`,
+  a: r`Con il rapporto incrementale (Lezione 16):<ul>
+<li>$Dc=0$; $\ Dx=1$; $\ Dx^2=2x$, da $\frac{(x+h)^2-x^2}h=2x+h$;</li>
+<li>$D\sin x=\cos x$: $\frac{\sin(x+h)-\sin x}h=\sin x\frac{\cos h-1}h+\cos x\frac{\sin h}h\to\cos x$; analogamente $D\cos x=-\sin x$;</li>
+<li>$D\log_ax=\frac1x\log_ae$: $\frac{\log_a(1+h/x)}{h/x}\cdot\frac1x\to\log_ae\cdot\frac1x$; per $a=e$, $D\log x=\frac1x$.</li></ul>
+Con la derivata dell'inversa e della composta:<ul>
+<li>$Da^x=\frac{a^x}{\log_ae}=a^x\log a$ ($a^x$ è l'inversa di $\log_ay$); $De^x=e^x$;</li>
+<li>$Dx^\alpha=\alpha x^{\alpha-1}$ per $x>0$, da $x^\alpha=e^{\alpha\log x}$;</li>
+<li>$D\arcsin x=\frac1{\cos y}\big|_{y=\arcsin x}=\frac1{\sqrt{1-x^2}}$ per $|x|\lt1$ (si prende $\cos y>0$ perché $y\in(-\frac\pi2,\frac\pi2)$);</li>
+<li>$D\operatorname{tg}x=\frac1{\cos^2x}$, con la regola del quoziente.</li></ul>
+Allo stesso modo (Esercitazione 9): $D\arccos x=-\frac1{\sqrt{1-x^2}}$, $D\operatorname{arctg}x=\frac1{1+x^2}$.` },
+
+{ id: '2.23', sez: 5, mark: '*', teo: 'T18', t: r`Dimostrare che una funzione derivabile in un punto è ivi continua. E' vero anche il viceversa?`,
+  a: r`<strong>Teorema.</strong> Se $x_0$ è interno al dominio e $f$ è derivabile in $x_0$, allora $f$ è continua in $x_0$.<br><br>
+<strong>Dimostrazione (Lezione 16).</strong> Per $x\ne x_0$: $$f(x)-f(x_0)=\frac{f(x)-f(x_0)}{x-x_0}\cdot(x-x_0)\xrightarrow{x\to x_0}f'(x_0)\cdot0=0,$$ perché il rapporto incrementale tende al numero $f'(x_0)$. Quindi $\lim_{x\to x_0}f(x)=f(x_0)$.<br><br>
+<strong>Il viceversa è falso.</strong> $f(x)=|x|$ è continua in $0$, ma $\frac{|h|}h$ vale $1$ per $h>0$ e $-1$ per $h\lt0$: il rapporto incrementale non ha limite e $|x|$ non è derivabile in $0$ (il grafico ha un angolo). Continuità è necessaria ma non sufficiente per la derivabilità.` },
+
+{ id: '2.24', sez: 5, mark: '**', teo: 'T-algder', t: r`Enunciare e dimostrare il teorema sull'algebra delle derivate.`,
+  a: r`<strong>Teorema (Lezione 16).</strong> Se $f$ e $g$ sono derivabili in $x$, allora: (i) $D[f\pm g]=Df\pm Dg$; (ii) $D[fg]=g\,Df+f\,Dg$; (iii) se $g(x)\ne0$, $D\left[\frac fg\right]=\frac{g\,Df-f\,Dg}{g^2}$.<br><br>
+<strong>Dimostrazione.</strong> (i) Il rapporto incrementale di $f+g$ è la somma dei due rapporti incrementali. (ii) Aggiungendo e togliendo $f(x)g(x+h)$: $$\frac{f(x+h)g(x+h)-f(x)g(x)}h=g(x+h)\frac{f(x+h)-f(x)}h+f(x)\frac{g(x+h)-g(x)}h\to g(x)Df(x)+f(x)Dg(x),$$ dove $g(x+h)\to g(x)$ perché $g$, derivabile, è continua. (iii) La prof la omette: si deriva $\frac1g$ (il rapporto incrementale è $-\frac{g(x+h)-g(x)}h\cdot\frac1{g(x+h)g(x)}\to-\frac{Dg}{g^2}$) e si usa (ii).<br><br>
+<strong>Esempio:</strong> $D\operatorname{tg}x=D\frac{\sin x}{\cos x}=\frac{\cos^2x+\sin^2x}{\cos^2x}=\frac1{\cos^2x}$.` },
+
+{ id: '2.25', sez: 5, t: r`Enunciare i teoremi sulla derivata della funzione composta e della funzione inversa.`,
+  a: r`<strong>Funzione composta (Lezione 16).</strong> Se $f$ e $g$ sono derivabili nel loro insieme di definizione, $f\circ g$ è derivabile e $$D[(f\circ g)(x)]=f'(g(x))\cdot g'(x).$$ Esempio: con $f(x)=x^2$, $g(x)=\sin x$: $D(\sin x)^2=2\sin x\cos x$, mentre $D\sin(x^2)=\cos(x^2)\cdot2x$. L'ordine conta.<br><br>
+<strong>Funzione inversa.</strong> Sia $f$ invertibile e continua, con $f^{-1}$ continua; se $f$ è derivabile in $x$ con $f'(x)\ne0$, allora $f^{-1}$ è derivabile in $y=f(x)$ e $$D[f^{-1}(y)]=\frac1{D[f(x)]\big|_{x=f^{-1}(y)}}.$$ Geometricamente il grafico di $f^{-1}$ è il simmetrico di quello di $f$ rispetto a $y=x$, e le pendenze delle tangenti diventano reciproche. Se $f'(x)=0$ la tangente al grafico di $f^{-1}$ è verticale e $f^{-1}$ non è derivabile: $\sqrt[3]y$ in $0$, inversa di $x^3$.<br>
+Esempi: $Da^x=\frac{a^x}{\log_ae}$, $D\arcsin x=\frac1{\sqrt{1-x^2}}$.` },
+
+{ id: '2.26', sez: 5, t: r`Dare le definizioni di massimo e minimo relativo, punti di massimo e di minimo relativo di una funzione, punti critici o stazionari.`,
+  a: r`Sia $f:A\subseteq\R\to\R$ (Lezione 17). $x_0\in A$ è un <strong>punto di massimo relativo</strong> se esiste $\delta>0$ tale che $f(x)\le f(x_0)$ per ogni $x\in I_\delta(x_0)\cap A$; di <strong>minimo relativo</strong> se $f(x)\ge f(x_0)$. Il valore $f(x_0)$ è un massimo (minimo) relativo; $x_0$ è un punto di <strong>estremo relativo</strong> se è di massimo o di minimo relativo.<br><br>
+Se $f:(a,b)\to\R$ e $x_0\in(a,b)$ è <strong>interno</strong>, $x_0$ è un <strong>punto critico</strong> (o <strong>stazionario</strong>) se $f'(x_0)=0$: lì la tangente è orizzontale, $y=f(x_0)$.<br><br>
+<strong>Legami.</strong> Un punto di massimo assoluto è anche di massimo relativo, non viceversa. Un estremo relativo interno in cui $f$ è derivabile è un punto critico (Fermat), ma un punto critico può non essere un estremo ($x^3$ in $0$). Gli estremi dell'intervallo possono essere estremi relativi senza essere punti critici. Esempio: $f(x)=2-x^2$ ha l'unico punto critico in $0$, che è il punto di massimo assoluto.` },
+
+{ id: '2.27', sez: 5, mark: '*', teo: 'T20', t: r`Enunciare e dimostrare il teorema di Fermat. Illustrare il ruolo delle ipotesi. Il teorema fornisce una condizione necessaria o sufficiente per la ricerca di punti estremanti?`,
+  a: r`<strong>Teorema.</strong> Sia $f:(a,b)\to\R$, $x_0\in(a,b)$ punto di estremo relativo e $f$ derivabile in $x_0$. Allora $f'(x_0)=0$.<br><br>
+<strong>Dimostrazione (Lezione 17)</strong>, per un massimo. Poiché $x_0$ è interno, esiste $r>0$ con $I_r(x_0)\subset(a,b)$ e $f(x)\le f(x_0)$ in $I_r(x_0)$. Per $|h|\lt r$: $f(x_0+h)-f(x_0)\le0$, quindi il rapporto incrementale è $\le0$ per $h>0$ e $\ge0$ per $h\lt0$. Al limite $f'_+(x_0)\le0\le f'_-(x_0)$, e poiché $f$ è derivabile le due coincidono con $f'(x_0)$: $f'(x_0)=0$.<br><br>
+<strong>Ruolo delle ipotesi.</strong> (i) Derivabilità: $|x|$ ha un minimo in $0$ ma lì non è derivabile. (ii) $x_0$ interno: agli estremi di un intervallo una funzione monotòna ha estremi relativi con $f'\ne0$. (iii) Il viceversa è falso: $x^3$ ha $f'(0)=0$ ma $0$ non è un estremo.<br><br>
+<strong>Condizione necessaria, non sufficiente:</strong> i punti critici sono solo i <em>candidati</em> a essere estremi interni; per decidere serve altro (il segno di $f'$, quesito 2.32).` },
+
+{ id: '2.28', sez: 5, t: r`Illustrare il metodo per il calcolo di massimi e minimi assoluti.`,
+  a: r`<strong>Problema (Lezione 18).</strong> $f:[a,b]\to\R$ continua: per Weierstrass ha massimo e minimo assoluti. Un punto di massimo o di minimo può stare (1) in un estremo $a$ o $b$; (2) in un punto interno in cui $f$ non è derivabile; (3) in un punto interno in cui $f$ è derivabile, e allora per Fermat $f'=0$.<br><br>
+<strong>Metodo.</strong> Si elencano i candidati: estremi dell'intervallo, punti di non derivabilità, punti critici. Si calcola $f$ in ciascuno e si confrontano i valori: il più grande è il massimo assoluto, il più piccolo il minimo assoluto.<br><br>
+<strong>Esempio (Lezione 18).</strong> $f(x)=e^{1-x^2}$ su $[-3,3]$: $f(\pm3)=e^{-8}$; nessun punto di non derivabilità; $f'(x)=-2xe^{1-x^2}=0\iff x=0$, $f(0)=e$. Massimo $e$ in $0$, minimo $e^{-8}$ in $\pm3$.<br><br>
+<strong>Attenzione:</strong> se l'intervallo non è chiuso e limitato o $f$ non è continua, massimo e minimo possono non esistere, e i candidati vanno confrontati anche con i limiti agli estremi.` },
+
+{ id: '2.29', sez: 5, mark: '*', teo: 'T21', t: r`Enunciare e dimostrare il teorema di Rolle.`,
+  a: r`<strong>Teorema.</strong> Sia $f:[a,b]\to\R$ continua in $[a,b]$, derivabile in $(a,b)$, con $f(a)=f(b)$. Allora $\exists\xi\in(a,b)$ con $f'(\xi)=0$.<br><br>
+<strong>Dimostrazione (Lezione 18).</strong> Per Weierstrass $f$ ha massimo $M=f(x_M)$ e minimo $m=f(x_m)$ su $[a,b]$. Se $x_m$ e $x_M$ sono entrambi agli estremi, poiché $f(a)=f(b)$ si ha $m=M$: $f$ è costante e $f'\equiv0$ in $(a,b)$. Altrimenti uno dei due è interno: è un estremo relativo in cui $f$ è derivabile, e per Fermat $f'$ vi si annulla.<br><br>
+<strong>Ruolo delle ipotesi.</strong> Su $[a,b]\cup[c,d]$ una funzione può avere $f(a)=f(d)$ e $f'\ne0$ ovunque; $|x|$ su $[-1,1]$ ha $f(-1)=f(1)$ ma non è derivabile in $0$ e $f'=\pm1$ altrove.<br>
+<strong>Geometricamente:</strong> se gli estremi del grafico sono alla stessa altezza, da qualche parte la tangente è orizzontale.` },
+
+{ id: '2.30', sez: 5, mark: '*', teo: 'T22', t: r`Enunciare e dimostrare il teorema di Lagrange.`,
+  a: r`<strong>Teorema.</strong> Sia $f:[a,b]\to\R$ continua in $[a,b]$ e derivabile in $(a,b)$. Allora $\exists\xi\in(a,b)$ con $f(b)-f(a)=f'(\xi)(b-a)$.<br><br>
+<strong>Dimostrazione (Lezione 18).</strong> Sia $g(x)=f(x)-\left[f(a)+\frac{f(b)-f(a)}{b-a}(x-a)\right]$. $g$ è continua in $[a,b]$, derivabile in $(a,b)$, e $g(a)=g(b)=0$. Per Rolle esiste $\xi\in(a,b)$ con $0=g'(\xi)=f'(\xi)-\frac{f(b)-f(a)}{b-a}$.<br><br>
+<strong>Significato geometrico:</strong> in $(\xi,f(\xi))$ la tangente è parallela alla retta per $(a,f(a))$ e $(b,f(b))$. Rolle è il caso particolare $f(a)=f(b)$.<br>
+<strong>Applicazione (Esercitazione 9):</strong> $|\sin b-\sin a|=|\cos c|\,|b-a|\le|b-a|$.` },
+
+{ id: '2.31', sez: 5, mark: '*', teo: 'T23', t: r`Enunciare e dimostrare il test di monotonìa. Enunciare e dimostrare la caratterizzazione delle funzioni costanti in un intervallo.`,
+  a: r`<strong>Funzioni costanti (Lezione 18).</strong> Se $I$ è un intervallo e $f'(x)=0$ per ogni $x\in I$, allora $f$ è costante in $I$.<br>
+<em>Dim.</em> Per $x_1\lt x_2$ in $I$, $[x_1,x_2]\subset I$ perché $I$ è un intervallo; per Lagrange $f(x_2)-f(x_1)=f'(\xi)(x_2-x_1)=0$.<br><br>
+<strong>Test di monotonia.</strong> Se $f$ è derivabile nell'intervallo $I$: $f$ crescente in $I$ $\iff$ $f'\ge0$ in $I$ (e decrescente $\iff$ $f'\le0$).<br>
+<em>Dim.</em> «⇒»: per $f$ crescente $\frac{f(x)-f(x_0)}{x-x_0}\ge0$, e al limite $f'(x_0)\ge0$ (permanenza del segno). «⇐»: per $x_1\lt x_2$, Lagrange dà $f(x_2)-f(x_1)=f'(\xi)(x_2-x_1)\ge0$.<br><br>
+<strong>L'intervallo serve.</strong> $f=1$ su $[0,1]$, $f=2$ su $[2,3]$: $f'=0$ ma non costante. $\operatorname{arctg}x+\operatorname{arctg}\frac1x$ su $\R\setminus\{0\}$: $f'=0$ ma vale $\frac\pi2$ per $x>0$ e $-\frac\pi2$ per $x\lt0$. $f=x$ su $(0,1)$, $f=x-3$ su $(2,3)$: $f'=1$ ma $f\left(\frac12\right)>f\left(\frac52\right)$.<br>
+<strong>Stretta monotonia:</strong> $f'>0$ in $I$ $\Rightarrow$ $f$ strettamente crescente; il viceversa è falso ($x^3$, $f'(0)=0$).` },
+
+{ id: '2.32', sez: 5, mark: '**', teo: 'T-staz', t: r`Come si applica il test di monotonìa per classificare i punti critici?`,
+  a: r`Sia $f$ derivabile in un intervallo e $x_0$ un punto critico ($f'(x_0)=0$). Si studia il <strong>segno di $f'$</strong> a sinistra e a destra di $x_0$ e, con il test di monotonia, la monotonia di $f$ sui due lati (Lezione 18):<ul>
+<li>$f'\lt0$ prima, $f'>0$ dopo: $f$ scende e poi sale, $x_0$ è di <strong>minimo relativo</strong>;</li>
+<li>$f'>0$ prima, $f'\lt0$ dopo: $x_0$ è di <strong>massimo relativo</strong>;</li>
+<li>stesso segno dalle due parti: $f$ è monotòna vicino a $x_0$, che non è un estremo ma un <strong>punto di flesso</strong> (a tangente orizzontale).</li></ul>
+<strong>Esempio (Lezione 18).</strong> $f(x)=2x^3-6x$, $f'(x)=6(x+1)(x-1)$: positiva per $x\lt-1$, negativa in $(-1,1)$, positiva per $x>1$. Quindi $-1$ è di massimo relativo, $1$ di minimo relativo; $f$ cresce in $(-\infty,-1)$ e $(1,+\infty)$ e decresce in $(-1,1)$.` },
+
+{ id: '2.33', sez: 5, t: r`Dare le definizioni di derivata destra e sinistra.`,
+  a: r`Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$ (Lezione 17): $$f'_+(x_0)=\lim_{h\to0^+}\frac{f(x_0+h)-f(x_0)}h,\qquad f'_-(x_0)=\lim_{h\to0^-}\frac{f(x_0+h)-f(x_0)}h,$$ sono la <strong>derivata destra</strong> e la <strong>derivata sinistra</strong> di $f$ in $x_0$ (quando i limiti esistono).<br><br>
+<strong>Legame con la derivata:</strong> per i limiti laterali della Sezione 4, $f$ è derivabile in $x_0$ $\iff$ $f'_+(x_0)$ e $f'_-(x_0)$ esistono finite e uguali, e allora $f'(x_0)$ è il loro valore comune.<br>
+<strong>Esempio:</strong> $|x|$ in $0$ ha $f'_+(0)=1$ e $f'_-(0)=-1$: non è derivabile.<br>
+<strong>Come si calcolano in pratica:</strong> con il rapporto incrementale, oppure, se $f$ è continua in $x_0$, come limiti di $f'(x)$ per $x\to x_0^\pm$ (teorema sul limite della derivata, Lezione 18).` },
+
+{ id: '2.34', sez: 5, t: r`Cosa si intende per punto di non derivabilità? Fornirne esempi significativi.`,
+  a: r`$x_0\in(a,b)$ è un <strong>punto di non derivabilità</strong> di $f$ se il limite del rapporto incrementale in $x_0$ non esiste oppure è infinito (Lezione 17). Ogni punto di discontinuità è un punto di non derivabilità. Se $f$ è continua in $x_0$:<ul>
+<li><strong>punto angoloso:</strong> $f'_+(x_0)$, $f'_-(x_0)$ finite e diverse. Esempio $|x|$ in $0$ ($1$ e $-1$).</li>
+<li><strong>flesso a tangente verticale:</strong> il rapporto incrementale tende a $+\infty$ (o a $-\infty$). Esempio $\sqrt[3]x$ in $0$: $\frac{\sqrt[3]h}h=\frac1{h^{2/3}}\to+\infty$.</li>
+<li><strong>cuspide:</strong> $f'_+(x_0)=\pm\infty$ e $f'_-(x_0)=\mp\infty$. Esempio $\sqrt[3]{|x|}$ in $0$.</li></ul>
+<strong>Altri casi (Lezione 17):</strong> $\sqrt[3]x$ per $x\ge0$ e $-x$ per $x\lt0$ ha derivate laterali $+\infty$ e $-1$; $x\sin\frac1x$ ha rapporto incrementale $\sin\frac1h$, senza limite.<br>
+<strong>Da non confondere:</strong> $x^2\sin\frac1x$ è derivabile in $0$ ($f'(0)=0$), anche se $f'(x)$ non ha limite per $x\to0$.` }
   ];
 
   const AM = (window.AM = window.AM || {});

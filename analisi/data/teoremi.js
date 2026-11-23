@@ -392,7 +392,7 @@ Se $\ell=1$ il criterio non decide.`,
       { cue: r`«⇒»: e $q$?`, body: r`Dalla definizione: $f(x)-mx-q\to0$ significa $f(x)-mx\to q$.` },
       { cue: r`«⇐»`, body: r`Se $m$ e $q$ esistono finiti, la retta $y=mx+q$ è definita, e il secondo limite dice $f(x)-mx-q\to0$: è la definizione di asintoto. $\blacksquare$` }
     ],
-    note: r`Il «finiti» conta: per $x^2$ si ha $\frac{f(x)}x\to+\infty$ e non c'è asintoto. Controesempio della Lezione 13: $f(x)=2x+\sin x$ ha $m=2$, ma $f(x)-2x=\sin x$ non ha limite, quindi l'asintoto non c'è. Gli asintoti verticali ($\lim_{x\to x_0}f=\pm\infty$) e orizzontali ($\lim_{x\to\pm\infty}f=b$) si definiscono direttamente con un limite.`
+    note: r`Il «finiti» conta: per $x^2$ si ha $\frac{f(x)}x\to+\infty$ e non c'è asintoto. Controesempio della Lezione 14: $f(x)=2x+\sin x$ ha $m=2$, ma $f(x)-2x=\sin x$ non ha limite, quindi l'asintoto non c'è. Gli asintoti verticali ($\lim_{x\to x_0}f=\pm\infty$) e orizzontali ($\lim_{x\to\pm\infty}f=b$) si definiscono direttamente con un limite.`
   },
   {
     id: 'T-cont', sez: 4, mark: '**', q: '2.11',
@@ -407,7 +407,181 @@ Se $\ell=1$ il criterio non decide.`,
       { cue: r`Seno: quale identità e quale stima?`, body: r`Prostaferesi: $\sin x-\sin x_0=2\cos\frac{x+x_0}2\sin\frac{x-x_0}2$. Con $|\cos|\le1$ e $|\sin t|\le|t|$: $$0\le|\sin x-\sin x_0|\le2\left|\sin\frac{x-x_0}2\right|\le|x-x_0|\xrightarrow{x\to x_0}0.$$` },
       { cue: r`Quale teorema chiude? E il coseno, la tangente?`, body: r`I <strong>carabinieri</strong>: $|\sin x-\sin x_0|\to0$, cioè $\sin x\to\sin x_0$. Per il coseno: $\cos x-\cos x_0=-2\sin\frac{x+x_0}2\sin\frac{x-x_0}2$, stessa stima. La tangente è $\frac{\sin x}{\cos x}$: algebra dei limiti dove $\cos x_0\ne0$. $\blacksquare$` }
     ],
-    note: r`Negli appunti della Lezione 13 le prostaferesi sono scritte con $\frac{x-x_0}2$ in entrambi i fattori: è un refuso, ma la stima non cambia. Per il teorema sulla continuità della funzione inversa sono continue anche $\log_ax$, $\arcsin$, $\arccos$, $\operatorname{arctg}$.`
+    note: r`Negli appunti della Lezione 14 le prostaferesi sono scritte con $\frac{x-x_0}2$ in entrambi i fattori: è un refuso, ma la stima non cambia. Per il teorema sulla continuità della funzione inversa sono continue anche $\log_ax$, $\arcsin$, $\arccos$, $\operatorname{arctg}$.`
+  },
+  {
+    id: 'T15', n: 15, sez: 4, mark: '*', q: '2.15',
+    titolo: 'Teorema di esistenza degli zeri',
+    enunciato: r`Sia $f$ continua su un intervallo $[a,b]$, con $f(a)\lt0$ e $f(b)>0$. Allora esiste $x_0\in(a,b)$ tale che $f(x_0)=0$.`,
+    idea: r`Bisezione: si taglia l'intervallo a metà e si tiene sempre la metà in cui $f$ cambia segno. Gli estremi formano due successioni monotone che si stringono su un punto $\xi$, e la continuità porta i segni di $f(a_n)$ e $f(b_n)$ fino a $f(\xi)$.`,
+    steps: [
+      { cue: 'Che cosa si fa con il punto medio?', body: r`$c=\frac{a+b}2$. Se $f(c)=0$ si ha finito. Se $f(c)>0$ si pone $[a_1,b_1]=[a,c]$, se $f(c)\lt0$ si pone $[a_1,b_1]=[c,b]$: in tutti e due i casi $f(a_1)\lt0\lt f(b_1)$.` },
+      { cue: 'Che cosa si costruisce ripetendo?', body: r`Successioni $\{a_n\}$, $\{b_n\}$ e $c_n=\frac{a_n+b_n}2$: se $f(c_n)>0$ allora $a_{n+1}=a_n$, $b_{n+1}=c_n$; se $f(c_n)\lt0$ allora $a_{n+1}=c_n$, $b_{n+1}=b_n$ (se $f(c_n)=0$, $x_0=c_n$). Per costruzione $f(a_n)\lt0$, $f(b_n)>0$, $b_n-a_n=\frac{b-a}{2^n}$.` },
+      { cue: r`Perché $\{a_n\}$ e $\{b_n\}$ hanno limite, e lo stesso?`, body: r`$\{a_n\}$ è crescente, $\{b_n\}$ decrescente, e $a\le a_n\le b_n\le b$: per la regolarità delle successioni monotone $a_n\to\xi\in\R$, con $a\le\xi\le b$ per confronto. Poi $b_n=a_n+\frac{b-a}{2^n}\to\xi$.` },
+      { cue: 'Dove entra la continuità?', body: r`$f$ è continua in $\xi$, quindi per il teorema ponte $f(a_n)\to f(\xi)$ e $f(b_n)\to f(\xi)$.` },
+      { cue: r`Come si conclude? $\lt$ o $\le$?`, body: r`Da $f(a_n)\lt0$ segue $f(\xi)\le0$; da $f(b_n)>0$ segue $f(\xi)\ge0$ (al limite la disuguaglianza stretta diventa larga: permanenza del segno). Quindi $f(\xi)=0$, e $\xi\ne a,b$ perché lì $f\ne0$: $x_0=\xi\in(a,b)$. $\blacksquare$` }
+    ],
+    note: r`Ruolo delle ipotesi (Lezione 15): su $[-1,0]\cup[1,2]$, con $f=-1$ sul primo pezzo e $f=2$ sul secondo, $f$ è continua e cambia segno ma non si annulla (il dominio non è un intervallo); $f(x)=\frac12+\operatorname{sgn}x$ su $[-1,1]$ cambia segno senza annullarsi (non è continua). Lo zero è unico se $f$ è strettamente monotòna. Su $[a,+\infty)$ il teorema si usa se $f(a)\lt0$ e $\lim_{x\to+\infty}f>0$.`
+  },
+  {
+    id: 'T16', n: 16, sez: 4, mark: '*', q: '2.16',
+    titolo: 'Teorema dei valori intermedi',
+    enunciato: r`Una funzione continua in un intervallo $I$ assume tutti i valori compresi fra $\inf_If$ e $\sup_If$: $$\forall y_0\in\Bigl(\inf_If,\sup_If\Bigr)\quad\exists x_0\in I\ \text{ t.c. }\ f(x_0)=y_0.$$ In particolare $f(I)$ è un intervallo.`,
+    idea: r`Si trovano un punto in cui $f$ sta sotto $y_0$ e uno in cui sta sopra, e si applica il teorema degli zeri a $f-y_0$.`,
+    steps: [
+      { cue: r`Che cosa danno $\inf$ e $\sup$?`, body: r`Siano $m=\inf_If$, $M=\sup_If$, $y_0\in(m,M)$. $y_0>m$ non è un minorante: $\exists a\in I$ con $f(a)\lt y_0$. $y_0\lt M$ non è un maggiorante: $\exists b\in I$ con $f(b)>y_0$.` },
+      { cue: 'Quale funzione ausiliaria?', body: r`$g(x)=f(x)-y_0$: è continua in $I$, $g(a)\lt0$ e $g(b)>0$.` },
+      { cue: r`Dove entra l'ipotesi «$I$ intervallo»?`, body: r`Il segmento fra $a$ e $b$ è contenuto in $I$ perché $I$ è un intervallo, quindi $g$ è continua su di esso. Per il teorema degli zeri $\exists x_0$ fra $a$ e $b$ con $g(x_0)=0$, cioè $f(x_0)=y_0$. $\blacksquare$` }
+    ],
+    note: r`Gli appunti scrivono $x_0\in(a,b)$, cioè supponono $a\lt b$; se $b\lt a$ si applica il teorema degli zeri a $-g$ su $[b,a]$. Con Weierstrass: se $f$ è continua su $[a,b]$, allora $f([a,b])=[\min f,\max f]$.`
+  },
+  {
+    id: 'T17', n: 17, sez: 4, mark: '*', q: '2.18',
+    titolo: 'Teorema di Weierstrass',
+    enunciato: r`Sia $f:[a,b]\to\R$ continua in $[a,b]$. Allora $f$ ammette massimo e minimo assoluti in $[a,b]$: esistono $x_M,x_m\in[a,b]$ con $f(x_m)\le f(x)\le f(x_M)$ per ogni $x\in[a,b]$.`,
+    idea: r`Tre passi. (1) $f$ è limitata superiormente: altrimenti, bisecando, si trova un punto $x_0$ vicino al quale $f$ è illimitata, contro la continuità. (2) Il $\sup$ è assunto: altrimenti $\frac1{M-f}$ sarebbe continua e illimitata. (3) Il minimo è il massimo di $-f$.`,
+    steps: [
+      { cue: 'Passo 1: ipotesi per assurdo e costruzione', body: r`Se $f$ non è limitata superiormente, lo è in almeno una delle due metà di $[a,b]$: la chiamo $[a_1,b_1]$. Iterando: intervalli incapsulati $[a_m,b_m]$ su cui $f$ è illimitata superiormente, con $b_m-a_m=\frac{b-a}{2^m}$.` },
+      { cue: 'Passo 1: dove si stringono? Dove serve il chiuso?', body: r`$a_m$ crescente, $b_m$ decrescente, $a\le a_m\le b_m\le b$: $a_m\to\alpha$, $b_m\to\beta$ (monotone limitate) e $\beta-\alpha=\lim\frac{b-a}{2^m}=0$. Quindi $\alpha=\beta=:x_0\in[a,b]$: è qui che serve l'intervallo chiuso.` },
+      { cue: 'Passo 1: che cosa dà la continuità in $x_0$?', body: r`Con $\eps=1$: $\exists\delta>0$ t.c. $f(x_0)-1\lt f(x)\lt f(x_0)+1$ per $x\in[a,b]$, $|x-x_0|\lt\delta$. $f$ è limitata superiormente vicino a $x_0$.` },
+      { cue: "Passo 1: l'assurdo", body: r`Poiché $a_m,b_m\to x_0$, per $m>\nu_3=\max\{\nu_1,\nu_2\}$ si ha $[a_m,b_m]\subset(x_0-\delta,x_0+\delta)$, dove $f\lt f(x_0)+1$: contro la costruzione. Quindi $f$ è limitata superiormente.` },
+      { cue: 'Passo 2: ipotesi per assurdo e funzione ausiliaria', body: r`Se $f$ non ha massimo, $M:=\sup f\in\R$ (passo 1) non è assunto: $f(x)\lt M$ per ogni $x$. Allora $g(x)=\frac1{M-f(x)}$ è continua in $[a,b]$ (denominatore $>0$), e per il passo 1 $g\le K$ con $K>0$.` },
+      { cue: "Passo 2: l'assurdo", body: r`$\frac1{M-f(x)}\le K\iff f(x)\le M-\frac1K$ per ogni $x$: $M-\frac1K\lt M$ sarebbe un maggiorante più piccolo del $\sup$, che è il minimo dei maggioranti. Quindi $\exists x_M$ con $f(x_M)=M$.` },
+      { cue: 'Passo 3: il minimo', body: r`$h=-f$ è continua e per il passo 2 ha un punto di massimo $x_m$: $-f(x_m)\ge-f(x)$, cioè $f(x_m)\le f(x)$ per ogni $x$. $\blacksquare$` }
+    ],
+    note: r`Ruolo delle ipotesi (Lezione 16): $f(x)=x$ in $(-1,1)$ non ha né massimo né minimo (intervallo non chiuso); $f(x)=x$ in $\R$ ha $\sup=+\infty$ (chiuso ma illimitato); $f(x)=\frac1x$ per $x\ne0$, $f(0)=1$, su $[0,1]$ ha $\sup=+\infty$ (non continua). Il dominio può non essere un intervallo, purché sia chiuso e limitato: per esempio $[a_1,b_1]\cup[a_2,b_2]$.`
+  },
+
+  /* ===================== SEZIONE 5 ===================== */
+  {
+    id: 'T18', n: 18, sez: 5, mark: '*', q: '2.23',
+    titolo: 'Una funzione derivabile in un punto è ivi continua',
+    enunciato: r`Sia $f:I\subseteq\R\to\R$ e sia $x_0$ un punto interno a $I$. Se $f$ è derivabile in $x_0$, allora $f$ è continua in $x_0$.`,
+    idea: r`Si scrive $f(x)-f(x_0)$ come rapporto incrementale per $(x-x_0)$: il primo fattore tende a un numero, il secondo a $0$.`,
+    steps: [
+      { cue: 'Quale identità si scrive?', body: r`Per $x\ne x_0$: $$f(x)-f(x_0)=\underbrace{\frac{f(x)-f(x_0)}{x-x_0}}_{\text{rapporto incrementale}}\cdot(x-x_0).$$` },
+      { cue: 'A che cosa tendono i due fattori?', body: r`Per $x\to x_0$ il rapporto incrementale tende a $f'(x_0)$, che è un numero perché $f$ è derivabile; $x-x_0\to0$.` },
+      { cue: 'Conclusione', body: r`Per l'algebra dei limiti $\lim_{x\to x_0}[f(x)-f(x_0)]=f'(x_0)\cdot0=0$, cioè $\lim_{x\to x_0}f(x)=f(x_0)$: è la definizione di continuità in $x_0$. $\blacksquare$` },
+      { cue: 'Il viceversa vale?', body: r`No. $f(x)=|x|$ è continua in $0$, ma $\frac{|h|-0}h$ vale $1$ per $h>0$ e $-1$ per $h\lt0$: il limite per $h\to0$ non esiste e $|x|$ non è derivabile in $0$.` }
+    ],
+    note: r`Il «finito» nella definizione di derivata serve: è quello che permette di scrivere $f'(x_0)\cdot0=0$. L'esempio di $|x|$ è il punto angoloso della Lezione 17, dove la prof classifica i punti di non derivabilità.`
+  },
+  {
+    id: 'T19', n: 19, sez: 5, mark: '*', q: '2.21',
+    titolo: 'Equivalenza tra derivabilità e differenziabilità',
+    enunciato: r`Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$. $f$ è <strong>differenziabile</strong> in $x_0$ se esiste $\lambda\in\R$ tale che $$f(x)=f(x_0)+\lambda(x-x_0)+o(x-x_0)\qquad\text{per }x\to x_0.$$ <strong>Teorema.</strong> Sia $f:I\subseteq\R\to\R$, $I$ intervallo e $x_0$ interno a $I$. Allora $f$ è differenziabile in $x_0$ $\iff$ $f$ è derivabile in $x_0$, e in tal caso $\lambda=f'(x_0)$.`,
+    idea: r`È la stessa frase scritta in due modi: «il rapporto incrementale tende a $\lambda$» equivale a «la differenza fra $f$ e la retta $f(x_0)+\lambda(x-x_0)$ è un $o(x-x_0)$».`,
+    steps: [
+      { cue: r`«⇐»: da dove si parte?`, body: r`$f$ derivabile: $\exists f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\in\R$, cioè $$\lim_{x\to x_0}\left[\frac{f(x)-f(x_0)}{x-x_0}-f'(x_0)\right]=0.$$` },
+      { cue: r`«⇐»: come compare l'o-piccolo?`, body: r`Facendo il denominatore comune: $\lim_{x\to x_0}\frac{f(x)-f(x_0)-f'(x_0)(x-x_0)}{x-x_0}=0$, che per definizione di o-piccolo significa $f(x)-f(x_0)-f'(x_0)(x-x_0)=o(x-x_0)$.` },
+      { cue: r`«⇐»: conclusione`, body: r`$f(x)=f(x_0)+f'(x_0)(x-x_0)+o(x-x_0)$: $f$ è differenziabile con $\lambda=f'(x_0)$.` },
+      { cue: r`«⇒»: che cosa si divide?`, body: r`Da $f(x)=f(x_0)+\lambda(x-x_0)+o(x-x_0)$, per $x\ne x_0$: $$\frac{f(x)-f(x_0)}{x-x_0}=\lambda+\frac{o(x-x_0)}{x-x_0}.$$` },
+      { cue: r`«⇒»: conclusione`, body: r`$\frac{o(x-x_0)}{x-x_0}\to0$ per definizione, quindi il rapporto incrementale tende a $\lambda\in\R$: il limite esiste finito, $f$ è derivabile e $f'(x_0)=\lambda$. $\blacksquare$` }
+    ],
+    note: r`Il significato: $y=f(x_0)+f'(x_0)(x-x_0)$ è la retta tangente, e la differenziabilità dice che l'errore che si fa sostituendo $f$ con la tangente va a zero <em>più in fretta</em> di $x-x_0$. Nessun'altra retta per $(x_0,f(x_0))$ ha questa proprietà: con pendenza $\mu\ne f'(x_0)$ l'errore è $(f'(x_0)-\mu)(x-x_0)+o(x-x_0)$, dello stesso ordine di $x-x_0$.`
+  },
+  {
+    id: 'T-der', sez: 5, mark: '**', q: '2.22',
+    titolo: 'Derivate delle funzioni elementari',
+    enunciato: r`$Dc=0$, $\ Dx=1$, $\ Dx^2=2x$, $\ D\sin x=\cos x$, $\ D\cos x=-\sin x$, $\ D\log_ax=\frac1x\log_ae$; e, con il teorema della funzione inversa, $\ Da^x=\frac{a^x}{\log_ae}=a^x\log a$, $\ Dx^\alpha=\alpha x^{\alpha-1}$ ($x>0$), $\ D\arcsin x=\frac1{\sqrt{1-x^2}}$ ($|x|\lt1$).`,
+    idea: r`Le prime con il rapporto incrementale e i limiti notevoli; le altre leggendo la funzione come inversa ($a^x$ di $\log_a$, $\arcsin$ di $\sin$) o come composta ($x^\alpha=e^{\alpha\log x}$).`,
+    steps: [
+      { cue: r`Costante, $x$, $x^2$`, body: r`$\frac{c-c}h=0$; $\ \frac{(x+h)-x}h=1$; $\ \frac{(x+h)^2-x^2}h=\frac{h(h+2x)}h=h+2x\xrightarrow{h\to0}2x$.` },
+      { cue: r`$\sin x$: quale formula, quali limiti notevoli?`, body: r`$\sin(x+h)=\sin x\cos h+\cos x\sin h$, quindi $$\frac{\sin(x+h)-\sin x}h=\sin x\cdot\frac{\cos h-1}h+\cos x\cdot\frac{\sin h}h\xrightarrow{h\to0}\sin x\cdot0+\cos x\cdot1=\cos x.$$` },
+      { cue: r`$\log_ax$`, body: r`$\dfrac{\log_a(x+h)-\log_ax}h=\dfrac{\log_a\left(1+\frac hx\right)}{\frac hx}\cdot\dfrac1x\xrightarrow{h\to0}\log_ae\cdot\dfrac1x$ (limite notevole con $t=\frac hx\to0$). Per $a=e$: $D\log x=\frac1x$.` },
+      { cue: r`$a^x$: perché passare dall'inversa?`, body: r`$a^x$ è l'inversa di $\log_ay$: $$Da^x=\frac1{[D\log_ay]_{y=a^x}}=\frac1{\left.\frac1y\log_ae\right|_{y=a^x}}=\frac{a^x}{\log_ae}.$$ Per $a=e$: $De^x=e^x$.` },
+      { cue: r`$x^\alpha$, $\alpha\in\R$, $x>0$`, body: r`$x^\alpha=e^{\alpha\log x}$, e con la derivata della composta $Dx^\alpha=e^{\alpha\log x}\cdot\frac\alpha x=x^\alpha\cdot\frac\alpha x=\alpha x^{\alpha-1}$.` },
+      { cue: r`$\arcsin x$: dove si sceglie il segno della radice?`, body: r`$D\arcsin x=\frac1{[D\sin y]_{y=\arcsin x}}=\frac1{\cos y}\Big|_{y=\arcsin x}$. Per $y\in\left(-\frac\pi2,\frac\pi2\right)$ è $\cos y>0$, quindi $\cos y=+\sqrt{1-\sin^2y}$, e con $\sin y=x$: $D\arcsin x=\frac1{\sqrt{1-x^2}}$, $x\in(-1,1)$. $\blacksquare$` }
+    ],
+    note: r`$\frac{a^x}{\log_ae}$ e $a^x\log a$ sono lo stesso numero, perché $\log_ae=\frac1{\log a}$. Il coseno si fa come il seno con $\cos(x+h)=\cos x\cos h-\sin x\sin h$. Con lo stesso metodo dell'arcoseno si trovano $D\arccos x=-\frac1{\sqrt{1-x^2}}$ e $D\operatorname{arctg}x=\frac1{1+x^2}$, che il tutor usa nell'Esercitazione 9.`
+  },
+  {
+    id: 'T-algder', sez: 5, mark: '**', q: '2.24',
+    titolo: 'Algebra delle derivate',
+    enunciato: r`Siano $f$ e $g$ derivabili in $x$. Allora $f\pm g$, $fg$ e, se $g(x)\ne0$, $\frac fg$ sono derivabili in $x$ e $$D[f\pm g]=Df\pm Dg,\qquad D[fg]=g\,Df+f\,Dg,\qquad D\left[\frac fg\right]=\frac{g\,Df-f\,Dg}{g^2}.$$`,
+    idea: r`Per la somma si spezza il rapporto incrementale. Per il prodotto si aggiunge e si toglie $f(x)g(x+h)$, così compaiono i due rapporti incrementali.`,
+    steps: [
+      { cue: 'Somma', body: r`$\dfrac{[f(x+h)+g(x+h)]-[f(x)+g(x)]}h=\dfrac{f(x+h)-f(x)}h+\dfrac{g(x+h)-g(x)}h\to Df(x)+Dg(x)$, per l'algebra dei limiti.` },
+      { cue: 'Prodotto: che cosa si aggiunge e si toglie?', body: r`$f(x)g(x+h)$: $$\frac{f(x+h)g(x+h)-f(x)g(x)}h=g(x+h)\,\frac{f(x+h)-f(x)}h+f(x)\,\frac{g(x+h)-g(x)}h.$$` },
+      { cue: r`Prodotto: perché $g(x+h)\to g(x)$?`, body: r`Perché $g$ è derivabile in $x$, quindi continua (dimostrazione n° 18). Il limite è $g(x)Df(x)+f(x)Dg(x)$.` },
+      { cue: 'Quoziente (omesso a lezione)', body: r`Per la permanenza del segno $g(x+h)\ne0$ per $h$ piccolo, e $$\frac{\frac1{g(x+h)}-\frac1{g(x)}}h=-\frac{g(x+h)-g(x)}h\cdot\frac1{g(x+h)g(x)}\to-\frac{Dg(x)}{g(x)^2}.$$ Poi $\frac fg=f\cdot\frac1g$ e la regola del prodotto danno $\frac{Df}g-\frac{f\,Dg}{g^2}=\frac{g\,Df-f\,Dg}{g^2}$. $\blacksquare$` }
+    ],
+    note: r`La derivata del prodotto <strong>non</strong> è il prodotto delle derivate: $D(x\cdot x)=2x$, non $1\cdot1$. Esempio della Lezione 16: $D\operatorname{tg}x=\frac{\cos x\cos x+\sin x\sin x}{\cos^2x}=\frac1{\cos^2x}$. La dimostrazione del quoziente non è negli appunti (il prof la omette): quella qui è nostra.`
+  },
+  {
+    id: 'T20', n: 20, sez: 5, mark: '*', q: '2.27',
+    titolo: 'Teorema di Fermat',
+    enunciato: r`Sia $f:(a,b)\to\R$ e sia $x_0\in(a,b)$ un punto di massimo o di minimo relativo. Se $f$ è derivabile in $x_0$, allora $f'(x_0)=0$: $x_0$ è un punto critico.`,
+    idea: r`In un massimo il numeratore del rapporto incrementale è sempre $\le0$: il rapporto è $\le0$ a destra e $\ge0$ a sinistra. La derivata, che esiste, deve essere tutte e due le cose.`,
+    steps: [
+      { cue: r`Dove serve che $x_0$ sia interno?`, body: r`Esiste $r>0$ con $I_r(x_0)\subset(a,b)$ (e $r$ non più grande del $\delta$ del massimo relativo): $f(x)\le f(x_0)$ per ogni $x\in I_r(x_0)$, da tutte e due le parti.` },
+      { cue: 'Segno del rapporto incrementale', body: r`Per $|h|\lt r$: $f(x_0+h)-f(x_0)\le0$. Quindi $\frac{f(x_0+h)-f(x_0)}h\le0$ per $h>0$ e $\ge0$ per $h\lt0$.` },
+      { cue: 'Passaggio al limite', body: r`$f'_+(x_0)\le0$ e $f'_-(x_0)\ge0$ (la disuguaglianza larga si conserva).` },
+      { cue: 'Dove entra la derivabilità?', body: r`$f$ è derivabile, quindi $0\ge f'_+(x_0)=f'(x_0)=f'_-(x_0)\ge0$, cioè $f'(x_0)=0$. Per il minimo è uguale con i segni scambiati. $\blacksquare$` }
+    ],
+    note: r`Ruolo delle ipotesi (Lezione 17): $|x|$ ha un minimo in $0$ ma non è derivabile, e nessuna derivata si annulla; in un estremo dell'intervallo (per esempio $x_0=a$ per una funzione crescente) la derivata può non essere nulla. Il viceversa è falso: $x^3$ ha $f'(0)=0$ senza estremo in $0$. Fermat dà una condizione <strong>necessaria</strong>.`
+  },
+  {
+    id: 'T21', n: 21, sez: 5, mark: '*', q: '2.29',
+    titolo: 'Teorema di Rolle',
+    enunciato: r`Sia $f:[a,b]\to\R$ continua in $[a,b]$ e derivabile in $(a,b)$, con $f(a)=f(b)$. Allora esiste $\xi\in(a,b)$ tale che $f'(\xi)=0$.`,
+    idea: r`Weierstrass dà massimo e minimo. Se stanno tutti e due agli estremi, $f$ è costante; altrimenti uno è interno, e lì Fermat annulla la derivata.`,
+    steps: [
+      { cue: 'Che cosa dà la continuità?', body: r`Per Weierstrass esistono $M=\max_{[a,b]}f=f(x_M)$ e $m=\min_{[a,b]}f=f(x_m)$, con $x_M,x_m\in[a,b]$.` },
+      { cue: 'Caso 1: tutti e due agli estremi', body: r`$x_m,x_M\in\{a,b\}$ e $f(a)=f(b)$ danno $m=M$: $f$ è costante, e $f'(x)=0$ per ogni $x\in(a,b)$.` },
+      { cue: 'Caso 2: uno è interno', body: r`Quel punto è un estremo (assoluto, quindi relativo), interno, e lì $f$ è derivabile: per <strong>Fermat</strong> la derivata vi si annulla. $\blacksquare$` }
+    ],
+    note: r`Ruolo delle ipotesi (Lezione 18): su $[a,b]\cup[c,d]$, che non è un intervallo, si può avere $f(a)=f(d)$ con $f'\ne0$ ovunque; $|x|$ su $[-1,1]$ ha $f(-1)=f(1)$ ma non è derivabile in $0$, e $f'=\pm1$ altrove.`
+  },
+  {
+    id: 'T22', n: 22, sez: 5, mark: '*', q: '2.30',
+    titolo: 'Teorema di Lagrange',
+    enunciato: r`Sia $f:[a,b]\to\R$ continua in $[a,b]$ e derivabile in $(a,b)$. Allora esiste $\xi\in(a,b)$ tale che $$f(b)-f(a)=f'(\xi)(b-a).$$ Geometricamente: in $(\xi,f(\xi))$ la tangente è parallela alla retta per $(a,f(a))$ e $(b,f(b))$.`,
+    idea: r`Si toglie a $f$ la retta secante: la differenza vale $0$ agli estremi, e Rolle le annulla la derivata in un punto.`,
+    steps: [
+      { cue: 'Quale funzione ausiliaria?', body: r`$g(x)=f(x)-\left[f(a)+\frac{f(b)-f(a)}{b-a}(x-a)\right]$ per $x\in[a,b]$.` },
+      { cue: 'Perché si applica Rolle?', body: r`$g$ è continua in $[a,b]$, derivabile in $(a,b)$, e $g(a)=0$, $g(b)=f(b)-f(a)-\frac{f(b)-f(a)}{b-a}(b-a)=0$.` },
+      { cue: 'Conclusione', body: r`Esiste $\xi\in(a,b)$ con $0=g'(\xi)=f'(\xi)-\frac{f(b)-f(a)}{b-a}$, cioè $f'(\xi)(b-a)=f(b)-f(a)$. $\blacksquare$` }
+    ],
+    note: r`Rolle è il caso $f(a)=f(b)$. Lagrange è lo strumento per passare da informazioni sulla derivata a informazioni sulla funzione: da lì vengono la caratterizzazione delle funzioni costanti, il test di monotonia, il teorema sul limite della derivata e stime come $|\sin b-\sin a|\le|b-a|$ (Esercitazione 9).`
+  },
+  {
+    id: 'T23', n: 23, sez: 5, mark: '*', q: '2.31',
+    titolo: 'Test di monotonia e funzioni costanti in un intervallo',
+    enunciato: r`Sia $I$ un <strong>intervallo</strong> e $f$ derivabile in $I$.<br>(a) Se $f'(x)=0$ per ogni $x\in I$, allora $f$ è costante in $I$.<br>(b) $f$ è crescente in $I$ $\iff$ $f'(x)\ge0$ per ogni $x\in I$; $f$ è decrescente in $I$ $\iff$ $f'(x)\le0$ per ogni $x\in I$.`,
+    idea: r`Lagrange su $[x_1,x_2]\subset I$ trasforma il segno di $f'$ nel segno di $f(x_2)-f(x_1)$. Al contrario, il segno del rapporto incrementale passa alla derivata con la permanenza del segno.`,
+    steps: [
+      { cue: '(a) Che cosa si confronta, e dove serve «intervallo»?', body: r`Due punti $x_1\lt x_2$ di $I$: poiché $I$ è un intervallo, $[x_1,x_2]\subset I$, e lì $f$ è continua e derivabile.` },
+      { cue: '(a) Lagrange e conclusione', body: r`$f(x_2)-f(x_1)=f'(\xi)(x_2-x_1)=0$ per qualche $\xi\in(x_1,x_2)$. Per l'arbitrarietà di $x_1,x_2$, $f$ è costante.` },
+      { cue: '(b) «⇒»', body: r`Se $f$ è crescente, $\frac{f(x)-f(x_0)}{x-x_0}\ge0$ per ogni $x\ne x_0$; passando al limite (permanenza del segno) $f'(x_0)\ge0$.` },
+      { cue: '(b) «⇐»', body: r`Per $x_1\lt x_2$ in $I$, Lagrange su $[x_1,x_2]\subset I$ dà $\frac{f(x_2)-f(x_1)}{x_2-x_1}=f'(\xi)\ge0$, quindi $f(x_2)\ge f(x_1)$: $f$ è crescente. Per «decrescente» si scambiano i versi. $\blacksquare$` }
+    ],
+    note: r`L'intervallo serve (Lezione 18): $f=1$ su $[0,1]$ e $f=2$ su $[2,3]$ ha $f'=0$ ma non è costante; $\operatorname{arctg}x+\operatorname{arctg}\frac1x$ ha $f'=0$ su $\R\setminus\{0\}$ e vale $\pm\frac\pi2$; $f=x$ su $(0,1)$ e $f=x-3$ su $(2,3)$ ha $f'=1$ ma non è crescente. Se $f'>0$ in $I$, $f$ è strettamente crescente; non viceversa ($x^3$, con $f'(0)=0$).`
+  },
+  {
+    id: 'T-staz', sez: 5, mark: '**', q: '2.32',
+    titolo: 'Natura dei punti stazionari con il test di monotonia',
+    enunciato: r`Sia $f$ derivabile in un intervallo $I$ e $x_0\in I$ con $f'(x_0)=0$. Se, in un intorno di $x_0$, $f'\le0$ a sinistra e $f'\ge0$ a destra, $x_0$ è un punto di <strong>minimo relativo</strong>; se $f'\ge0$ a sinistra e $f'\le0$ a destra, è di <strong>massimo relativo</strong>; se il segno è lo stesso dalle due parti, $x_0$ non è un estremo (punto di flesso).`,
+    idea: r`Sui due intervallini a sinistra e a destra di $x_0$ il test di monotonia dice se $f$ sale o scende; il resto è guardare il disegno.`,
+    steps: [
+      { cue: 'Su quali intervalli si usa il test?', body: r`Su $(x_0-\delta,x_0]$ e su $[x_0,x_0+\delta)$: sono intervalli, e $f$ è derivabile.` },
+      { cue: r`Caso $-$ / $+$`, body: r`$f'\le0$ a sinistra: $f$ è decrescente in $(x_0-\delta,x_0]$, quindi $f(x)\ge f(x_0)$ per $x\lt x_0$. $f'\ge0$ a destra: $f$ è crescente in $[x_0,x_0+\delta)$, quindi $f(x)\ge f(x_0)$ per $x>x_0$. Allora $f(x)\ge f(x_0)$ in tutto l'intorno: minimo relativo.` },
+      { cue: r`Caso $+$ / $-$ e segno costante`, body: r`Con i segni scambiati si ottiene $f(x)\le f(x_0)$: massimo relativo. Se $f'$ ha lo stesso segno dalle due parti (in senso stretto), $f$ è strettamente monotòna nell'intorno: a destra e a sinistra assume valori più grandi e più piccoli di $f(x_0)$, e $x_0$ non è un estremo. $\blacksquare$` }
+    ],
+    note: r`Esempio della Lezione 18: $f(x)=2x^3-6x$, $f'(x)=6(x+1)(x-1)$; $x=-1$ è di massimo relativo, $x=1$ di minimo relativo. La prof chiama «punto di flesso» il caso con segno costante; molti libri dicono flesso a tangente orizzontale. Il caso «segno costante» è scritto con le disuguaglianze strette per poter concludere che non c'è estremo: se $f'$ è nulla in tutto un tratto, $f$ è costante lì e ogni punto è sia di massimo sia di minimo relativo.`
+  },
+  {
+    id: 'T-limder', sez: 5, mark: '**',
+    titolo: 'Limite della derivata e derivabilità',
+    enunciato: r`Sia $f:[a,b]\to\R$ continua in $[a,b]$ e derivabile in $(a,b)\setminus\{x_0\}$, con $x_0\in(a,b)$. Se esiste finito $\lim_{x\to x_0}f'(x)=L\in\R$, allora $f$ è derivabile in $x_0$ e $f'(x_0)=L$.`,
+    idea: r`Per Lagrange ogni rapporto incrementale in $x_0$ è il valore di $f'$ in un punto intermedio; quando $h\to0$ quel punto va in $x_0$ e $f'$ va a $L$.`,
+    steps: [
+      { cue: 'Da destra: Lagrange su quale intervallo?', body: r`Su $[x_0,x_0+h]$, $h>0$: $f$ continua lì e derivabile in $(x_0,x_0+h)$, quindi $\frac{f(x_0+h)-f(x_0)}h=f'(\xi)$ con $\xi\in(x_0,x_0+h)$.` },
+      { cue: r`Che cosa succede per $h\to0^+$?`, body: r`$\xi\to x_0^+$ e, per ipotesi, $f'(\xi)\to L$: il limite destro del rapporto incrementale è $L$.` },
+      { cue: 'Da sinistra', body: r`Su $[x_0+h,x_0]$ con $h\lt0$: $\frac{f(x_0+h)-f(x_0)}h=f'(\eta)$ con $\eta\in(x_0+h,x_0)$, e $f'(\eta)\to L$ per $h\to0^-$.` },
+      { cue: 'Conclusione', body: r`I due limiti laterali del rapporto incrementale esistono finiti e valgono $L$: $f$ è derivabile in $x_0$ e $f'(x_0)=L$. $\blacksquare$` }
+    ],
+    note: r`Se i limiti laterali di $f'$ sono $L_1\ne L_2$ o infiniti, si ottengono $f'_+(x_0)=L_1$ e $f'_-(x_0)=L_2$, e $f$ non è derivabile. Se $\lim f'$ non esiste il teorema tace: $x^2\sin\frac1x$ è derivabile in $0$ (Lezione 17). La continuità serve: $\operatorname{sgn}x$ ha $f'\to0$ ma non è derivabile in $0$. Nel programma ha la stellina doppia ma nessun quesito dedicato.`
   }
   ];
 

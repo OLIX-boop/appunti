@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<link rel="stylesheet" href="../../assets/css/style.css?v=20261110a">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261123">
 <style>
   .retta { display: block; width: 100%; max-width: 340px; height: auto; margin: 6px 0 2px; }
   .retta .asse { stroke: var(--text-muted); stroke-width: 1.4; }
@@ -34,6 +34,7 @@
     <nav class="topnav">
       <a href="../seconda.html">Piano</a>
       <a href="4-limiti.html">4 · Limiti</a>
+      <a href="5-derivate.html">5 · Derivate</a>
       <a href="../teoremi.html">Teoremi</a>
       <a href="../quesiti.html">Quesiti</a>
       <a href="../domande.html">Domande</a>
@@ -76,6 +77,13 @@
     <a href="#composta" class="sub">Funzione composta</a>
     <a href="#inversa" class="sub">Funzione inversa</a>
     <a href="#discontinuita">12 · Punti di discontinuità</a>
+    <a href="#eliminabile" class="sub">Terza specie ed eliminabili</a>
+    <a href="#globali">13 · I teoremi sulle funzioni continue</a>
+    <a href="#permanenza-continue" class="sub">Permanenza del segno</a>
+    <a href="#zeri" class="sub">Esistenza degli zeri</a>
+    <a href="#valori-intermedi" class="sub">Valori intermedi</a>
+    <a href="#massimo" class="sub">Massimo e minimo assoluto</a>
+    <a href="#weierstrass" class="sub">Teorema di Weierstrass</a>
     <a href="#test">Mettiti alla prova</a>
     <a href="#errori">Errori tipici</a>
   </aside>
@@ -93,10 +101,21 @@
     </div>
 
     <div class="box warnb">
-      <div class="box-title">★ Novità delle Lezioni 12–13 (26 ottobre e 4 novembre)</div>
+      <div class="box-title">★ Novità delle Lezioni 15–16 (9 e 11 novembre) e dell'Esercitazione 7</div>
+      <ul class="mb0">
+        <li><strong>Lezione 15:</strong> gli ultimi casi dei <a href="#discontinuita">punti di discontinuità</a> (<a href="#eliminabile">terza specie ed eliminabili</a>, con la tabella per classificarli), l'<a href="#estensione">estensione continua</a>, la <a href="#permanenza-continue">permanenza del segno per funzioni continue</a>, il <a href="#zeri">teorema degli zeri</a> (n° 15) con il widget della bisezione e il <a href="#valori-intermedi">teorema dei valori intermedi</a> (n° 16)</li>
+        <li><strong>Lezione 16:</strong> <a href="#massimo">massimo e minimo assoluto</a> e il <a href="#weierstrass">teorema di Weierstrass</a> (n° 17), con i tre controesempi. Il resto della lezione apre la <a href="5-derivate.html">Sezione 5 sulle derivate</a></li>
+        <li><strong>Esercitazione 7 (6 novembre):</strong> limiti, asintoti e continuità con parametri, nella <a href="../esercizi.html?sez=4">palestra</a> (E4.23–E4.47, con i «per casa» risolti). Sui nomi delle discontinuità vale la <a href="#eliminabile">convenzione della prof</a></li>
+        <li>Le tre dimostrazioni nuove sono anche nella pagina <a href="../teoremi.html">Teoremi</a>; i quesiti 2.13–2.18 hanno la risposta modello in <a href="../quesiti.html">Quesiti</a></li>
+        <li><strong>Numeri delle lezioni:</strong> il 19 novembre la prof ha rinumerato le note. La lezione del 4 novembre ora è la <strong>Lezione 14</strong> (una Lezione 13 non c'è), quella del 9 novembre la 15 e quella dell'11 la 16. Il sito usa i numeri nuovi.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <div class="box-title">Lezioni 12 e 14 (26 ottobre e 4 novembre)</div>
       <ul class="mb0">
         <li><strong>Lezione 12:</strong> <a href="#infinito">le sei definizioni per $x\to\pm\infty$</a>, <a href="#intorni">intorni e punti di accumulazione</a>, <a href="#alfinito">limite per $x\to x_0$</a>, <a href="#destrosinistro">limiti destro e sinistro</a> con le tre osservazioni, <a href="#ponte">teorema ponte</a> e <a href="#nonesiste">la non esistenza di $\lim_{x\to0}\cos\frac1x$</a>, <a href="#teoremi">permanenza del segno, unicità, carabinieri, infinitesima per limitata</a>, <a href="#notevoli">limiti notevoli</a></li>
-        <li><strong>Lezione 13:</strong> <a href="#cambio">$x^\alpha\log_a x$, $x^{1/x}$ e $x^x$</a>, <a href="#ordini">infinitesimi, infiniti e o-piccolo</a>, <a href="#monotone">limiti di funzioni monotòne</a>, <a href="#asintoti">asintoti</a> con il <a href="#obliquo">teorema sull'asintoto obliquo</a>, <a href="#continue">funzioni continue</a> e <a href="#elementari">continuità delle funzioni elementari</a>, <a href="#composta">funzione composta</a>, <a href="#inversa">funzione inversa</a>, <a href="#discontinuita">punti di discontinuità</a></li>
+        <li><strong>Lezione 14:</strong> <a href="#cambio">$x^\alpha\log_a x$, $x^{1/x}$ e $x^x$</a>, <a href="#ordini">infinitesimi, infiniti e o-piccolo</a>, <a href="#monotone">limiti di funzioni monotòne</a>, <a href="#asintoti">asintoti</a> con il <a href="#obliquo">teorema sull'asintoto obliquo</a>, <a href="#continue">funzioni continue</a> e <a href="#elementari">continuità delle funzioni elementari</a>, <a href="#composta">funzione composta</a>, <a href="#inversa">funzione inversa</a>, <a href="#discontinuita">punti di discontinuità</a></li>
         <li>Le due dimostrazioni da orale di questa sezione (<a href="#obliquo">asintoti</a> e <a href="#elementari">continuità delle funzioni elementari</a>) sono anche nella pagina <a href="../teoremi.html">Teoremi</a>; i quesiti 2.1–2.13 e 2.19 hanno la risposta modello nella pagina <a href="../quesiti.html">Quesiti</a></li>
       </ul>
     </div>
@@ -110,7 +129,7 @@
       <div class="pbar" data-progress-for="s4"><span style="width:0"></span></div>
     </div>
     <div id="checklistBox"></div>
-    <p class="small muted">Le ultime voci (permanenza del segno per funzioni continue, zeri, valori intermedi, Weierstrass) arrivano con le prossime lezioni: la checklist contiene già tutto il programma della sezione.</p>
+    <p class="small muted">Con le Lezioni 15 e 16 la sezione è completa: tutte le voci della checklist sono negli appunti.</p>
 
     <!-- ============================================================ -->
     <h2 id="infinito">1 · Limiti per $x\to\pm\infty$</h2>
@@ -595,7 +614,7 @@
       <p class="mb0">Ogni limite notevole vale con al posto di $x$ una qualsiasi funzione che tende a $0$ (o a $+\infty$ per quello di $e$): $\frac{\sin(3x^2)}{3x^2}\to1$ per $x\to0$, $\frac{e^{1/x}-1}{1/x}\to1$ per $x\to+\infty$. È il <a href="#composta">teorema sul limite della funzione composta</a>, ed è lo stesso meccanismo degli asintotici della Sezione 2: $\sin t\sim t$, $1-\cos t\sim\frac{t^2}2$, $e^t-1\sim t$, $\log(1+t)\sim t$, $(1+t)^\alpha-1\sim\alpha t$ per $t\to0$.</p>
     </div>
 
-    <h3 id="cambio">Il cambio di variabile: gli esempi della Lezione 13</h3>
+    <h3 id="cambio">Il cambio di variabile: gli esempi della Lezione 14</h3>
     <details class="reveal proof" open><summary>$\displaystyle\lim_{x\to0^+}x^\alpha\log_ax=0$ per ogni $\alpha>0$, $a>1$</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
@@ -612,7 +631,7 @@
       <p class="small muted mb0">Morale: «il logaritmo perde contro qualsiasi potenza», anche vicino a $0$. Con $\alpha=1$ e $a=e$: $x\log x\to0$ per $x\to0^+$, che serve subito qui sotto.</p>
     </div></details>
     <div class="box ex">
-      <div class="box-title">Potenze con la variabile in base e in esponente (Lezione 13)</div>
+      <div class="box-title">Potenze con la variabile in base e in esponente (Lezione 14)</div>
       <p>Il trucco è sempre lo stesso: $f(x)^{g(x)}=e^{\log\left(f(x)^{g(x)}\right)}=e^{g(x)\log f(x)}$, si calcola il limite dell'esponente e si usa la continuità dell'esponenziale.</p>
       <ul class="mb0">
         <li>$\displaystyle\lim_{x\to+\infty}x^{\frac1x}=\lim_{x\to+\infty}e^{\frac1x\log x}=e^0=1$, perché $\frac{\log x}x\to0$ (gerarchia);</li>
@@ -623,11 +642,11 @@
     <!-- ============================================================ -->
     <h2 id="ordini">8 · Infinitesimi e infiniti</h2>
     <div class="box def">
-      <div class="box-title">Definizione (Lezione 13)</div>
+      <div class="box-title">Definizione (Lezione 14)</div>
       <p class="mb0">$f$ si dice <strong>infinitesima</strong> per $x\to x_0$ (o per $x\to\pm\infty$) se $\lim f(x)=0$, e <strong>infinita</strong> se $\lim f(x)=\pm\infty$.</p>
     </div>
     <div class="box def">
-      <div class="box-title">Confronto (Lezione 13) · $x_0\in\R\cup\{\pm\infty\}$</div>
+      <div class="box-title">Confronto (Lezione 14) · $x_0\in\R\cup\{\pm\infty\}$</div>
       <div class="tablewrap" style="margin:0">
         <table>
           <thead><tr><th>$\displaystyle\lim_{x\to x_0}\frac{f(x)}{g(x)}$</th><th>$f,g$ <strong>infinitesime</strong></th><th>$f,g$ <strong>infinite</strong></th></tr></thead>
@@ -647,7 +666,7 @@
       <p class="mb0">Il rapporto $\frac fg\to0$ dice che $f$ è «trascurabile» rispetto a $g$. Fra infinitesimi, trascurabile vuol dire che va a zero <em>più in fretta</em> (ordine superiore: $x^3$ rispetto a $x^2$ per $x\to0$). Fra infiniti vuol dire che va all'infinito <em>più piano</em> (ordine inferiore: $x^2$ rispetto a $x^3$ per $x\to+\infty$). Se ricordi questa frase non devi imparare la tabella.</p>
     </div>
     <div class="box def">
-      <div class="box-title">o-piccolo (Lezione 13)</div>
+      <div class="box-title">o-piccolo (Lezione 14)</div>
       <p>Se $\displaystyle\lim_{x\to x_0}\frac{f(x)}{g(x)}=0$ si scrive $f(x)=o(g(x))$ per $x\to x_0$. In particolare $\displaystyle\lim_{x\to x_0}\frac{o(g(x))}{g(x)}=0$.</p>
       <p class="mb0"><strong>Esempi.</strong> $x^3=o(x^2)$ per $x\to0$, perché $\frac{x^3}{x^2}=x\to0$; ma $x^2=o(x^3)$ per $x\to+\infty$, perché $\frac{x^2}{x^3}=\frac1x\to0$.</p>
     </div>
@@ -659,7 +678,7 @@
     <!-- ============================================================ -->
     <h2 id="monotone">9 · Limiti di funzioni monotòne</h2>
     <div class="box teo">
-      <div class="box-title">Teorema (Lezione 13)</div>
+      <div class="box-title">Teorema (Lezione 14)</div>
       <p>Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$.</p>
       <ul>
         <li>Se $f$ è <strong>crescente</strong>: $\displaystyle\lim_{x\to x_0^-}f(x)=\sup_{a\lt x\lt x_0}f(x)$ e $\displaystyle\lim_{x\to x_0^+}f(x)=\inf_{x_0\lt x\lt b}f(x)$.</li>
@@ -705,38 +724,38 @@
     <!-- ============================================================ -->
     <h2 id="asintoti">10 · Asintoti <span class="badge star2">dim. orale</span></h2>
     <div class="box def">
-      <div class="box-title">Asintoto verticale (Lezione 13)</div>
+      <div class="box-title">Asintoto verticale (Lezione 14)</div>
       <ul class="mb0">
         <li>Se $\lim_{x\to x_0}f(x)=\pm\infty$ (oppure $\lim_{x\to x_0^-}f(x)=\pm\infty$ e $\lim_{x\to x_0^+}f(x)=\mp\infty$), la retta $x=x_0$ è <strong>asintoto verticale</strong> per $f$.</li>
         <li>Se $\lim_{x\to x_0^-}f(x)=\pm\infty$, $x=x_0$ è <strong>asintoto verticale sinistro</strong>; se $\lim_{x\to x_0^+}f(x)=\pm\infty$, <strong>asintoto verticale destro</strong>.</li>
       </ul>
     </div>
     <div class="box ex">
-      <div class="box-title">Esempi (Lezione 13)</div>
+      <div class="box-title">Esempi (Lezione 14)</div>
       <p>$f(x)=\frac1x$ su $\R\setminus\{0\}$: $\lim_{x\to0^+}\frac1x=+\infty$ e $\lim_{x\to0^-}\frac1x=-\infty$, quindi $x=0$ è asintoto verticale.</p>
       <p class="mb0">$f(x)=\frac1{\sqrt x}$ su $(0,+\infty)$: $\lim_{x\to0^+}f(x)=+\infty$, quindi $x=0$ è asintoto verticale <strong>destro</strong> (a sinistra la funzione non è definita).</p>
     </div>
     <div class="box def">
-      <div class="box-title">Asintoto orizzontale (Lezione 13)</div>
+      <div class="box-title">Asintoto orizzontale (Lezione 14)</div>
       <p class="mb0">Se $\lim_{x\to\pm\infty}f(x)=b\in\R$, la retta $y=b$ è <strong>asintoto orizzontale</strong> per $f$ per $x\to\pm\infty$.</p>
     </div>
     <div class="box ex">
-      <div class="box-title">Esempi (Lezione 13)</div>
+      <div class="box-title">Esempi (Lezione 14)</div>
       <p>$f(x)=\operatorname{arctg}x$: $y=\frac\pi2$ è asintoto orizzontale per $x\to+\infty$, $y=-\frac\pi2$ per $x\to-\infty$. Gli asintoti a destra e a sinistra possono essere diversi.</p>
       <p class="mb0">$f(x)=\frac{\sin x}x$ su $\R\setminus\{0\}$: $\lim_{x\to\pm\infty}f(x)=0$ (infinitesima per limitata), quindi $y=0$ è asintoto orizzontale per $x\to\pm\infty$. Il grafico lo <strong>attraversa</strong> infinite volte: un asintoto non è una retta che il grafico non tocca mai.</p>
     </div>
 
     <h3 id="obliquo">Asintoto obliquo</h3>
     <div class="box def">
-      <div class="box-title">Definizione (Lezione 13)</div>
+      <div class="box-title">Definizione (Lezione 14)</div>
       <p class="mb0">Sia $f:(c,+\infty)\to\R$. La retta $y=mx+q$ è un <strong>asintoto</strong> per $f$ per $x\to+\infty$ se $$\lim_{x\to+\infty}\bigl[f(x)-mx-q\bigr]=0.$$ Se $m=0$ l'asintoto è <strong>orizzontale</strong>, se $m\ne0$ è <strong>obliquo</strong>. Per $x\to-\infty$ è lo stesso, con $f:(-\infty,c)\to\R$.</p>
     </div>
     <p>Come si stabilisce se ci sono $m$ e $q$? Con due limiti.</p>
     <div class="box teo">
-      <div class="box-title">Teorema (Lezione 13)</div>
+      <div class="box-title">Teorema (Lezione 14)</div>
       <p class="mb0">$f$ ha asintoto $y=mx+q$ per $x\to+\infty$ (o $-\infty$) $\iff$ esistono <strong>finiti</strong> i limiti $$m=\lim_{x\to+\infty}\frac{f(x)}x\qquad\text{e}\qquad q=\lim_{x\to+\infty}\bigl[f(x)-mx\bigr].$$</p>
     </div>
-    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 13)</summary><div class="reveal-body">
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 14)</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
@@ -755,7 +774,7 @@
       <p class="small muted mb0">Attenzione al «finiti»: se $\frac{f(x)}x\to\pm\infty$ (come per $x^2$) non c'è asintoto obliquo; e anche con $m$ finito, il secondo limite può non esistere o essere infinito.</p>
     </div></details>
     <div class="box ex">
-      <div class="box-title">Esempio della Lezione 13 · $f(x)=2x+\sin x$</div>
+      <div class="box-title">Esempio della Lezione 14 · $f(x)=2x+\sin x$</div>
       <p class="mb0">$\frac{f(x)}x=2+\frac{\sin x}x\to2$: esiste finito, quindi il candidato è $m=2$. Ma $f(x)-2x=\sin x$, che per $x\to+\infty$ <strong>non ha limite</strong>: l'asintoto non c'è. Il grafico oscilla attorno alla retta $y=2x$ senza avvicinarsi.</p>
     </div>
     <div class="box ex">
@@ -766,7 +785,7 @@
     <!-- ============================================================ -->
     <h2 id="continue">11 · Funzioni continue</h2>
     <div class="box def">
-      <div class="box-title">Definizione (Lezione 13)</div>
+      <div class="box-title">Definizione (Lezione 14)</div>
       <p>Siano $f:A\subseteq\R\to\R$ e $x_0\in A$ punto di accumulazione per $A$. $f$ è <strong>continua in $x_0$</strong> se $$\lim_{x\to x_0}f(x)=f(x_0).$$</p>
       <p><strong>Osservazione.</strong> Cioè $\forall\eps>0\ \exists\delta=\delta(\eps,x_0)>0$ t.c. $|f(x)-f(x_0)|\lt\eps$ per ogni $x\in A\cap I_\delta(x_0)$.</p>
       <p class="mb0">$f$ è <strong>continua in $A$</strong> se è continua in ogni $x_0\in A$.</p>
@@ -779,10 +798,10 @@
     <h3 id="elementari">Continuità delle funzioni elementari <span class="badge star2">dim. orale</span></h3>
     <p>Sono le dimostrazioni che giustificano il «sostituire». Il prof parte dall'esponenziale.</p>
     <div class="box prop">
-      <div class="box-title">Proposizione (Lezione 13)</div>
+      <div class="box-title">Proposizione (Lezione 14)</div>
       <p class="mb0">Sia $a>0$. Allora $\displaystyle\lim_{x\to0}a^x=a^0\ (=1)$, cioè $a^x$ è continua in $x_0=0$.</p>
     </div>
-    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 13)</summary><div class="reveal-body">
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 14)</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
@@ -804,22 +823,22 @@
       </div>
     </div></details>
     <div class="box prop">
-      <div class="box-title">Proposizione (Lezione 13)</div>
+      <div class="box-title">Proposizione (Lezione 14)</div>
       <p>La funzione esponenziale $a^x$, $a>0$, è continua in $\R$: $\lim_{x\to x_0}a^x=a^{x_0}$ per ogni $x_0\in\R$.</p>
       <p class="mb0"><em>Dim.</em> $a^x-a^{x_0}=a^{x_0}\bigl(a^{x-x_0}-1\bigr)\xrightarrow{x\to x_0}0$: con $y:=x-x_0$, quando $x\to x_0$ si ha $y\to0$, e $a^y-a^0\to0$ per la proposizione precedente. $\square$</p>
     </div>
     <div class="box prop">
-      <div class="box-title">Proposizione (Lezione 13)</div>
+      <div class="box-title">Proposizione (Lezione 14)</div>
       <p>I polinomi e le funzioni razionali sono continui nel loro insieme di definizione.</p>
       <p class="mb0"><em>Dim.</em> $\lim_{x\to x_0}x=x_0$ (cioè $f(x)=x$ è continua: basta $\delta=\eps$). Per l'algebra dei limiti $\lim_{x\to x_0}x^m=x_0^m$, poi per $P(x)=a_mx^m+\dots+a_0$:
       $$\lim_{x\to x_0}P(x)=a_m\lim_{x\to x_0}x^m+\dots+a_0=a_mx_0^m+\dots+a_0=P(x_0),$$
       e infine $\lim_{x\to x_0}\frac{P(x)}{Q(x)}=\frac{P(x_0)}{Q(x_0)}$ se $Q(x_0)\ne0$, ancora per l'algebra dei limiti. $\square$</p>
     </div>
     <div class="box prop">
-      <div class="box-title">Proposizione (Lezione 13)</div>
+      <div class="box-title">Proposizione (Lezione 14)</div>
       <p class="mb0">Le funzioni seno e coseno sono continue in $\R$.</p>
     </div>
-    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 13)</summary><div class="reveal-body">
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 14)</summary><div class="reveal-body">
       <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
       <div class="steps">
         <div class="step"><div class="step-n"></div><div class="step-body">
@@ -837,7 +856,7 @@
       <p class="small muted mb0">Negli appunti le due formule sono scritte con $\frac{x-x_0}2$ in entrambi i fattori (per esempio $\sin x-\sin x_0=-2\sin\frac{x-x_0}2\cos\frac{x-x_0}2$), ma nelle prostaferesi uno dei due argomenti è $\frac{x+x_0}2$. La stima e la conclusione non cambiano: usano solo che seno e coseno sono, in modulo, al più $1$, e che $|\sin t|\le|t|$.</p>
     </div></details>
     <div class="box prop">
-      <div class="box-title">Corollario (Lezione 13)</div>
+      <div class="box-title">Corollario (Lezione 14)</div>
       <p>$x\mapsto\operatorname{tg}x$ e $x\mapsto\operatorname{ctg}x$ sono continue nel loro insieme di definizione.</p>
       <p class="mb0"><em>Dim.</em> $\displaystyle\lim_{x\to x_0}\operatorname{tg}x=\lim_{x\to x_0}\frac{\sin x}{\cos x}=\frac{\lim_{x\to x_0}\sin x}{\lim_{x\to x_0}\cos x}=\frac{\sin x_0}{\cos x_0}=\operatorname{tg}x_0$: nell'ordine, definizione di tangente, algebra dei limiti, continuità di seno e coseno, definizione di tangente. $\square$</p>
     </div>
@@ -845,36 +864,36 @@
 
     <h3 id="composta">Limite e continuità della funzione composta</h3>
     <div class="box teo">
-      <div class="box-title">Teorema · limite della funzione composta (Lezione 13)</div>
+      <div class="box-title">Teorema · limite della funzione composta (Lezione 14)</div>
       <p class="mb0">Sia $\displaystyle\lim_{x\to x_0}f(x)=y_0$ e sia $g$ una funzione <strong>continua in $y_0$</strong>. Allora
       $$\lim_{x\to x_0}g\bigl(f(x)\bigr)=g\Bigl(\lim_{x\to x_0}f(x)\Bigr)=g(y_0).$$</p>
     </div>
     <p class="small muted">Negli appunti il primo membro è scritto $(f\circ g)(x)$, e così nel corollario. Con la notazione della Lezione 4, $(g\circ f)(x)=g(f(x))$ (prima $f$, poi $g$), la funzione di cui si parla è $g\circ f$: conta la formula $g[f(x)]$, che è quella giusta.</p>
     <div class="box prop">
-      <div class="box-title">Corollario · continuità della funzione composta (Lezione 13)</div>
+      <div class="box-title">Corollario · continuità della funzione composta (Lezione 14)</div>
       <p>Siano $f$ continua in $x_0$ e $g$ continua in $y_0=f(x_0)$. Allora $g\circ f$ è continua in $x_0$.</p>
       <p class="mb0"><em>Dim.</em> Bisogna provare che $\lim_{x\to x_0}g(f(x))=g(f(x_0))$. Per ipotesi $\lim_{x\to x_0}f(x)=f(x_0)=y_0$, e $g$ è continua in $y_0$, quindi per il teorema precedente $\lim_{x\to x_0}g[f(x)]=g\bigl[\lim_{x\to x_0}f(x)\bigr]=g[f(x_0)]$. $\square$</p>
     </div>
     <div class="box ex">
-      <div class="box-title">Esempi (Lezione 13)</div>
+      <div class="box-title">Esempi (Lezione 14)</div>
       <ul class="mb0">
         <li>$\displaystyle\lim_{x\to0}\sin(x^2)=\sin\Bigl(\lim_{x\to0}x^2\Bigr)=\sin0=0$;</li>
         <li>$\displaystyle\lim_{x\to0}e^{\operatorname{tg}x+1}=e^{\operatorname{tg}0+1}=e$.</li>
       </ul>
     </div>
     <div class="box teo">
-      <div class="box-title">Teorema · continuità con le successioni (Lezione 13)</div>
+      <div class="box-title">Teorema · continuità con le successioni (Lezione 14)</div>
       <p class="mb0">$f:A\subseteq\R\to\R$ è continua in $x_0\in A$ $\iff$ per ogni $\{x_n\}\subseteq A$ con $x_n\xrightarrow{n\to+\infty}x_0$ si ha $\displaystyle\lim_{n\to+\infty}f(x_n)=f(x_0)$.</p>
     </div>
     <p class="small muted">È il teorema ponte con $\ell=f(x_0)$; qui le successioni possono anche passare per $x_0$, perché in $x_0$ la funzione vale proprio $f(x_0)$.</p>
 
     <h3 id="inversa">Continuità della funzione inversa</h3>
     <div class="box teo">
-      <div class="box-title">Teorema (Lezione 13)</div>
+      <div class="box-title">Teorema (Lezione 14)</div>
       <p class="mb0">Sia $I\subseteq\R$ un <strong>intervallo</strong> e $f:I\to\R$ continua e invertibile in $I$. Allora $f(I)$ è un intervallo e $f^{-1}:f(I)\to I$ è continua su $f(I)$.</p>
     </div>
     <div class="box trap">
-      <div class="box-title">✗ L'ipotesi «intervallo» è necessaria (Lezione 13)</div>
+      <div class="box-title">✗ L'ipotesi «intervallo» è necessaria (Lezione 14)</div>
       <p>Sia $f(x)=\begin{cases}x & 0\le x\lt1\\ x-1 & 2\le x\le3\end{cases}$ su $D=[0,1)\cup[2,3]$, che <strong>non è un intervallo</strong>. $f$ è continua in $D$ e invertibile, con $f(D)=[0,2]$ e
       $$f^{-1}(y)=\begin{cases}y & 0\le y\lt1\\ y+1 & 1\le y\le2.\end{cases}$$</p>
       <p class="mb0">Ma $f^{-1}$ <strong>non è continua</strong> in $y=1$: $\lim_{y\to1^-}f^{-1}(y)=1\ne f^{-1}(1)=2$.</p>
@@ -900,28 +919,65 @@
       </svg>
     </div>
     <div class="box prop">
-      <div class="box-title">Osservazione (Lezione 13)</div>
+      <div class="box-title">Osservazione (Lezione 14)</div>
       <p class="mb0">Per questo teorema le inverse delle funzioni circolari ($\arcsin$, $\arccos$, $\operatorname{arctg}$) sono continue nei loro insiemi di definizione, e anche $\log_ax$, $a>0$, $a\ne1$, è continua in $(0,+\infty)$, perché è l'inversa di $a^x$.</p>
     </div>
 
     <!-- ============================================================ -->
     <h2 id="discontinuita">12 · Punti di discontinuità</h2>
     <div class="box def">
-      <div class="box-title">Definizione (Lezione 13)</div>
+      <div class="box-title">Definizione (Lezione 14)</div>
       <p class="mb0">Siano $f:D\subseteq\R\to\R$ e $x_0\in D$ punto di accumulazione per $D$. $x_0$ è un <strong>punto di discontinuità</strong> per $f$ se $f$ non è continua in $x_0$, cioè se $\lim_{x\to x_0}f(x)\ne f(x_0)$ (o il limite non esiste).</p>
     </div>
     <div class="box def">
-      <div class="box-title">Caso 1 · discontinuità di prima specie, o di salto (Lezione 13)</div>
+      <div class="box-title">Caso 1 · discontinuità di prima specie, o di salto (Lezione 14)</div>
       <p>Esistono <strong>finiti</strong> i limiti destro e sinistro, ma sono diversi: $\displaystyle\lim_{x\to x_0^-}f(x)=\ell_1\ne\ell_2=\lim_{x\to x_0^+}f(x)$. Il numero
       $$s(x_0)=\Bigl|\lim_{x\to x_0^+}f(x)-\lim_{x\to x_0^-}f(x)\Bigr|$$ è il <strong>salto</strong> di $f$ in $x_0$.</p>
       <p class="mb0"><strong>Esempio:</strong> la parte intera $f(x)=[x]$ in $x_0=1$: $\lim_{x\to1^-}[x]=0$, $\lim_{x\to1^+}[x]=1=[1]=f(1)$. Salto $s(1)=1$. La funzione è continua da destra ma non da sinistra.</p>
     </div>
     <div class="box def">
-      <div class="box-title">Caso 2 · discontinuità di seconda specie (Lezione 13)</div>
+      <div class="box-title">Caso 2 · discontinuità di seconda specie (Lezioni 14–15)</div>
       <p>Esistono i limiti destro e sinistro, ma <strong>almeno uno dei due è $\pm\infty$</strong>.</p>
       <p class="mb0"><strong>Esempio:</strong> $f(x)=e^{1/x}$ per $x\ne0$, $f(0)=0$, definita su $D=\R$. $\lim_{x\to0^-}f(x)=0$ (perché $\frac1x\to-\infty$) e $\lim_{x\to0^+}f(x)=+\infty$: $x_0=0$ è di seconda specie.</p>
     </div>
-    <p class="small muted">Gli appunti della Lezione 13 si chiudono con il grafico di $\frac1x$, su $\R\setminus\{0\}$, senza ancora il commento: lo aggiungiamo con la lezione successiva. Tieni presente che nella definizione $x_0$ deve stare nel dominio, e $0$ non sta nel dominio di $\frac1x$.</p>
+    <p class="small muted">Come secondo esempio la Lezione 15 disegna $f(x)=\frac1x$, con insieme di definizione $\R\setminus\{0\}$: i limiti in $0$ sono $-\infty$ da sinistra e $+\infty$ da destra. A rigore $0$ non sta nel dominio, quindi per la definizione non è un punto di discontinuità di $\frac1x$; lo diventa per ogni funzione che estende $\frac1x$ dando un valore in $0$. È il «prolungamento» di cui parla l'Esercitazione 7.</p>
+
+    <div class="box def">
+      <div class="box-title">Caso 3 · discontinuità di terza specie (Lezione 15)</div>
+      <p>Uno dei due limiti destro e sinistro, o tutti e due, <strong>non esistono</strong>.</p>
+      <p class="mb0"><strong>Esempio:</strong> $f(x)=\sin\frac1x$ per $x\ne0$, $f(0)=1$. Il limite $\lim_{x\to0^+}\sin\frac1x$ non esiste: con il teorema ponte bastano $x_m=\frac1{m\pi}$ e $y_m=\frac1{\frac\pi2+2m\pi}$, su cui $f$ vale $0$ e $1$ (è l'esercizio E4.8 della <a href="../esercizi.html?sez=4">palestra</a>). Quindi $x_0=0$ è un punto di discontinuità di terza specie.</p>
+    </div>
+
+    <div class="box def" id="eliminabile">
+      <div class="box-title">Caso 4 · discontinuità eliminabile (Lezione 15)</div>
+      <p>I limiti destro e sinistro esistono <strong>finiti e uguali</strong>, ma $f(x_0)$ ha un altro valore: $$\lim_{x\to x_0^+}f(x)=\ell=\lim_{x\to x_0^-}f(x)\qquad\text{ma}\qquad f(x_0)\ne\ell.$$ Si chiama eliminabile perché basta cambiare un solo valore: la funzione $$\tilde f(x)=\begin{cases}f(x)&x\in D\setminus\{x_0\}\\ \ell&x=x_0\end{cases}$$ è continua in $x_0$.</p>
+      <p class="mb0"><strong>Esempio:</strong> $f(x)=[\operatorname{sgn}(x)]^2$ in $x_0=0$: vale $1$ per $x\ne0$ e $0$ in $0$. I due limiti laterali valgono $1$ e $f(0)=0$, quindi $x_0=0$ è una discontinuità eliminabile, e $\tilde f(x)\equiv1$ è continua in tutto $\R$.</p>
+    </div>
+
+    <div class="box prop" id="estensione">
+      <div class="box-title">Osservazione · estensione continua (Lezione 15)</div>
+      <p>Sia $x_0\notin D$, ma di accumulazione per $D$, e sia $\lim_{x\to x_0^+}f(x)=\ell=\lim_{x\to x_0^-}f(x)$ con $\ell$ finito. Allora $$\tilde f(x)=\begin{cases}f(x)&x\in D\\ \ell&x=x_0\end{cases}$$ è continua in $x_0$: è l'<strong>estensione</strong> (o prolungamento) <strong>continua</strong> di $f$ in $x_0$.</p>
+      <p class="mb0"><strong>Esempio:</strong> $f(x)=\frac{\sin x}x$, definita su $\R\setminus\{0\}$. I limiti in $0^\pm$ valgono $1$, quindi $\tilde f(x)=\frac{\sin x}x$ per $x\ne0$ e $\tilde f(0)=1$ è l'estensione continua di $f$ in $0$.</p>
+    </div>
+    <p class="small muted">La differenza con il caso 4 è tutta nel dominio: nel caso 4 $x_0$ sta in $D$ e il valore $f(x_0)$ è «sbagliato»; qui $x_0$ non sta in $D$ e il valore si aggiunge.</p>
+
+    <div class="box tip">
+      <div class="box-title">✓ Come si classifica un punto, in pratica</div>
+      <p>Si calcolano i due limiti laterali e si guarda la riga giusta.</p>
+      <div class="tablewrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>Limiti laterali in $x_0$</th><th>Confronto con $f(x_0)$</th><th>Il punto è</th></tr></thead>
+          <tbody>
+            <tr><td>finiti e uguali a $\ell$</td><td>$f(x_0)=\ell$</td><td>di continuità</td></tr>
+            <tr><td>finiti e uguali a $\ell$</td><td>$f(x_0)\ne\ell$</td><td>discontinuità <strong>eliminabile</strong></td></tr>
+            <tr><td>finiti e diversi</td><td>non conta</td><td><strong>prima specie</strong> (salto)</td></tr>
+            <tr><td>esistono, almeno uno è $\pm\infty$</td><td>non conta</td><td><strong>seconda specie</strong></td></tr>
+            <tr><td>almeno uno non esiste</td><td>non conta</td><td><strong>terza specie</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="small muted">Convenzione del corso: la Lezione 15 chiama di <em>terza specie</em> i punti in cui un limite laterale non esiste, e tiene a parte le discontinuità <em>eliminabili</em>. Molti libri numerano in un altro modo: terza specie = eliminabile, e la seconda specie comprende anche i limiti che non esistono. Così faceva anche la prima versione dell'Esercitazione 7 («discontinuità di III specie (eliminabile)»), che il tutor ha corretto il 16 novembre in «di tipo eliminabile». All'esame usa i nomi della prof, oppure descrivi il caso a parole («limiti laterali finiti e uguali, diversi da $f(x_0)$»).</p>
 
     <div class="widget">
       <div class="widget-head"><span>Avvicinati da destra e da sinistra</span><span class="faint" style="text-transform:none;font-weight:400">prima rispondi, poi controlla</span></div>
@@ -934,6 +990,8 @@
               <option value="2">$\operatorname{arctg}\dfrac1x$ ($f(0)=0$) in $x_0=0$</option>
               <option value="3">$x\sin\dfrac1x$ ($f(0)=0$) in $x_0=0$</option>
               <option value="4">$\operatorname{sgn}x$ in $x_0=0$</option>
+              <option value="5">$\sin\dfrac1x$ ($f(0)=1$) in $x_0=0$</option>
+              <option value="6">$[\operatorname{sgn}x]^2$ in $x_0=0$</option>
             </select>
           </div>
           <div class="ctrl"><label for="dsH">distanza $h$ da $x_0$</label><input type="range" id="dsH" min="0" max="1" value="0.2" step="0.01"><output data-out="dsH"></output></div>
@@ -944,9 +1002,188 @@
           <button class="btn sm" data-ds="cont">continua in $x_0$</button>
           <button class="btn sm" data-ds="salto">1ª specie (salto)</button>
           <button class="btn sm" data-ds="seconda">2ª specie</button>
+          <button class="btn sm" data-ds="terza">3ª specie</button>
+          <button class="btn sm" data-ds="elim">eliminabile</button>
         </div>
         <div class="readout" id="dsVerdetto" style="display:none"></div>
       </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="globali">13 · I teoremi sulle funzioni continue</h2>
+    <p>Finora la continuità era una proprietà <em>locale</em>: dice che cosa succede vicino a un punto. I teoremi di questo paragrafo sono <strong>globali</strong>: se $f$ è continua su tutto un intervallo, allora si annulla dove cambia segno, prende tutti i valori intermedi, ha massimo e minimo. Zeri, valori intermedi e Weierstrass sono le dimostrazioni n° 15, 16 e 17 dello scritto. Le osservazioni del prof mostrano che cosa succede togliendo un'ipotesi alla volta: sono i controesempi da citare quando la domanda dice «discutere il ruolo delle ipotesi».</p>
+
+    <h3 id="permanenza-continue">Permanenza del segno per funzioni continue</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 15)</div>
+      <p class="mb0">Sia $f:A\subseteq\R\to\R$ continua e sia $x_0\in A$. Se $f(x_0)>c$ per qualche $c\in\R$, allora esiste $\delta>0$ tale che $$f(x)>c\qquad\forall x\in I_\delta(x_0)\cap A.$$ Lo stesso vale con $\lt$ al posto di $>$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">↳ Perché vale</div>
+      <p class="mb0">Il prof la ricava dalla <a href="#permanenza">permanenza del segno per i limiti</a>, applicata a $g(x)=f(x)-c$: $g$ è continua, quindi $\lim_{x\to x_0}g(x)=g(x_0)=f(x_0)-c>0$, e allora $g>0$ vicino a $x_0$. Rispetto alla versione con i limiti c'è una differenza: lì $x_0$ era escluso, qui no, perché in $x_0$ la disuguaglianza $f(x_0)>c$ è l'ipotesi.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ Senza continuità non vale (Lezione 15)</div>
+      <p>$f(x)=\frac12+\operatorname{sgn}(x)$ vale $-\frac12$ per $x\lt0$, $\frac12$ in $0$ e $\frac32$ per $x>0$. In $x_0=0$ si ha $f(0)=\frac12>0$, ma in ogni intorno di $0$ ci sono punti $x\lt0$ in cui $f(x)=-\frac12\lt0$. Il teorema non si applica perché $f$ non è continua in $0$.</p>
+      <svg class="retta" viewBox="0 0 300 150" role="img" aria-label="Grafico di un mezzo più il segno di x: tre livelli">
+        <line class="asse" x1="10" y1="95" x2="290" y2="95"/><line class="asse" x1="150" y1="140" x2="150" y2="8"/>
+        <line x1="12" y1="115" x2="146" y2="115" style="stroke:var(--accent);stroke-width:2.4"/>
+        <circle class="vuoto" cx="150" cy="115" r="4" style="stroke:var(--accent)"/>
+        <line x1="154" y1="35" x2="288" y2="35" style="stroke:var(--accent);stroke-width:2.4"/>
+        <circle class="vuoto" cx="150" cy="35" r="4" style="stroke:var(--accent)"/>
+        <circle cx="150" cy="75" r="4" style="fill:var(--danger)"/>
+        <text x="142" y="39" text-anchor="end">3/2</text><text x="142" y="79" text-anchor="end">1/2</text><text x="158" y="128">−1/2</text>
+        <text x="286" y="109" text-anchor="end">x</text>
+      </svg>
+    </div>
+
+    <h3 id="zeri">Teorema di esistenza degli zeri <span class="badge star">dim. scritto · n° 15</span></h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 15)</div>
+      <p class="mb0">Sia $f$ una funzione <strong>continua</strong> su un intervallo $[a,b]$, con $f(a)\lt0$ e $f(b)>0$. Allora esiste $x_0\in(a,b)$ tale che $f(x_0)=0$.</p>
+    </div>
+    <p class="small muted">Se invece $f(a)>0$ e $f(b)\lt0$ si applica il teorema a $-f$, che è ancora continua. Lo zero sta nell'intervallo <em>aperto</em> perché in $a$ e in $b$ la funzione non si annulla.</p>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 15, metodo di bisezione)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Qual è l'idea, e che cosa si fa con il punto medio?</div>
+          <div class="step-content">Si taglia l'intervallo a metà e si tiene la metà in cui $f$ cambia segno. Sia $c=\frac{a+b}2$: se $f(c)=0$ si prende $x_0=c$ e si ha finito; se $f(c)>0$ si pone $a_1=a$, $b_1=c$; se $f(c)\lt0$ si pone $a_1=c$, $b_1=b$. In tutti e due i casi $f(a_1)\lt0$ e $f(b_1)>0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa si costruisce ripetendo?</div>
+          <div class="step-content">Tre successioni: gli estremi sinistri $\{a_n\}$, i destri $\{b_n\}$ e i punti medi $c_n=\frac{a_n+b_n}2$, con
+          $$f(c_n)>0\Rightarrow a_{n+1}=a_n,\ b_{n+1}=c_n;\qquad f(c_n)\lt0\Rightarrow a_{n+1}=c_n,\ b_{n+1}=b_n.$$
+          Se a un passo $f(c_n)=0$, lo zero è $x_0=c_n$. Altrimenti, per costruzione, $f(a_n)\lt0$, $f(b_n)>0$ e $b_n-a_n=\frac{b-a}{2^n}$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Perché $\{a_n\}$ ha limite?</div>
+          <div class="step-content">$\{a_n\}$ è crescente e $\{b_n\}$ decrescente, per costruzione, e $a\le a_n\le b_n\le b$ per ogni $n$: sono monotone e limitate. Per il <strong>teorema di regolarità delle successioni monotone</strong> $a_n\to\xi\in\R$, e per confronto $a\le\xi\le b$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">E $\{b_n\}$ dove va?</div>
+          <div class="step-content">Nello stesso punto: $b_n=a_n+\frac{b-a}{2^n}\to\xi+0=\xi$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dove entra la continuità di $f$?</div>
+          <div class="step-content">Qui: $f$ è continua in $\xi\in[a,b]$, quindi (teorema ponte, cioè la continuità con le successioni) $f(a_n)\to f(\xi)$ e $f(b_n)\to f(\xi)$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Come si conclude? Attenzione al segno: $\lt$ o $\le$?</div>
+          <div class="step-content">$f(a_n)\lt0$ per ogni $n$, quindi il limite è $f(\xi)\le0$; $f(b_n)>0$, quindi $f(\xi)\ge0$. Passando al limite la disuguaglianza stretta diventa larga: è il corollario della permanenza del segno della Lezione 7. Allora $f(\xi)=0$, e $\xi\ne a,b$ perché $f(a)\lt0\lt f(b)$: $x_0=\xi\in(a,b)$ è lo zero cercato. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Negli appunti il passaggio al limite è giustificato con «il teorema della permanenza del segno»: è la sua forma per i limiti di successioni, $a_n\lt0\Rightarrow\lim a_n\le0$ (<a href="2-successioni.html#corollari">Sezione 2</a>).</p>
+    </div></details>
+
+    <div class="box prop">
+      <div class="box-title">Osservazioni (Lezione 15)</div>
+      <ol class="mb0">
+        <li><strong>Unicità.</strong> Se $f$ è strettamente monotòna, lo zero è <strong>unico</strong>. Senza monotonia gli zeri possono essere tanti: il teorema ne garantisce almeno uno.</li>
+        <li><strong>Il dominio deve essere un intervallo.</strong> $f:[-1,0]\cup[1,2]\to\R$, $f(x)=-1$ su $[-1,0]$ e $f(x)=2$ su $[1,2]$: è continua, $f(-1)\lt0$ e $f(2)>0$, ma non si annulla mai. Il «salto» avviene nel buco del dominio.</li>
+        <li><strong>Serve la continuità.</strong> $f(x)=\frac12+\operatorname{sgn}(x)$ su $[-1,1]$: l'intervallo va bene, $f(-1)=-\frac12\lt0$ e $f(1)=\frac32>0$, ma nessun $x$ dà $f(x)=0$.</li>
+        <li><strong>Intervalli illimitati.</strong> Se $f$ è continua in $[a,+\infty)$, $f(a)\lt0$ e $\lim_{x\to+\infty}f(x)>0$, c'è un punto $x_1>a$ con $f(x_1)>0$, e il teorema si applica su $[a,x_1]$.</li>
+      </ol>
+    </div>
+    <p class="small muted">Nella (iv) gli appunti scrivono la definizione di limite $+\infty$ («$\forall M>0\ \exists x_0$ t.c. $f(x)>M$»): copre il caso $\lim f=+\infty$. Se il limite è un numero $\ell>0$, il punto $x_1$ con $f(x_1)>0$ lo dà la <a href="#permanenza">permanenza del segno per i limiti</a>.</p>
+
+    <div class="widget">
+      <div class="widget-head"><span>Bisezione a mano</span><span class="faint" style="text-transform:none;font-weight:400">a ogni passo scegli tu la metà</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="bsSel">funzione</label>
+            <select id="bsSel">
+              <option value="0">$x^3-x-1$ su $[1,2]$</option>
+              <option value="1">$\cos x-x$ su $[0,1]$</option>
+              <option value="2">$e^x-3$ su $[0,2]$</option>
+            </select>
+          </div>
+        </div>
+        <canvas class="plot" id="bsPlot"></canvas>
+        <div class="readout" id="bsOut"></div>
+        <div class="btnrow" id="bsBtns" style="margin-top:10px">
+          <button class="btn sm" data-bs="sx">tengo $[a_n,c_n]$</button>
+          <button class="btn sm" data-bs="dx">tengo $[c_n,b_n]$</button>
+          <button class="btn sm ghost" data-bs="reset">ricomincia</button>
+        </div>
+        <div class="readout" id="bsMsg" style="display:none"></div>
+      </div>
+    </div>
+
+    <h3 id="valori-intermedi">Teorema dei valori intermedi <span class="badge star">dim. scritto · n° 16</span></h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 15)</div>
+      <p>Una funzione continua in un intervallo $I$ assume tutti i valori compresi fra $\inf_If$ e $\sup_If$: $$\forall y_0\in\Bigl(\inf_If,\ \sup_If\Bigr)\quad\exists x_0\in I\ \text{ t.c. }\ f(x_0)=y_0.$$</p>
+      <p class="mb0"><strong>Osservazione.</strong> L'immagine di un intervallo attraverso una funzione continua è un intervallo: $f(I)$ è un intervallo.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 15)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa ci danno $\inf$ e $\sup$?</div>
+          <div class="step-content">Siano $m:=\inf_If$, $M:=\sup_If$ e $y_0\in(m,M)$. Poiché $y_0>m$, $y_0$ non è un minorante di $f$: esiste $a\in I$ con $f(a)\lt y_0$. Poiché $y_0\lt M$, $y_0$ non è un maggiorante: esiste $b\in I$ con $f(b)>y_0$. Vale anche se $m=-\infty$ o $M=+\infty$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">A quale funzione si applica il teorema degli zeri?</div>
+          <div class="step-content">A $g(x)=f(x)-y_0$, continua in $I$, con $g(a)=f(a)-y_0\lt0$ e $g(b)=f(b)-y_0>0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dove entra l'ipotesi che $I$ sia un intervallo?</div>
+          <div class="step-content">Nel dire che tutto il segmento fra $a$ e $b$ sta in $I$, così che $g$ sia continua su di esso. Per il teorema degli zeri esiste $x_0$ fra $a$ e $b$ con $g(x_0)=0$, cioè $f(x_0)=y_0$. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Gli appunti scrivono $x_0\in(a,b)$, cioè sottintendono $a\lt b$. Se invece $b\lt a$, si applica il teorema degli zeri a $-g$ su $[b,a]$: $-g(b)\lt0\lt-g(a)$.</p>
+    </div></details>
+    <div class="box tip">
+      <div class="box-title">↳ Come si usa negli esercizi</div>
+      <p class="mb0">Per dire che un'equazione $f(x)=k$ ha soluzione in un intervallo basta trovare un punto in cui $f$ è sotto $k$ e uno in cui è sopra. Per esempio $x^3+x=5$ ha una soluzione in $(1,2)$: $f(x)=x^3+x$ è continua, $f(1)=2\lt5\lt10=f(2)$. Ed è unica, perché $f$ è strettamente crescente.</p>
+    </div>
+
+    <h3 id="massimo">Massimo e minimo assoluto</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 16)</div>
+      <p class="mb0">Sia $f:A\subseteq\R\to\R$ e $x_0\in A$. $x_0$ è un <strong>punto di massimo assoluto</strong> (di <strong>minimo assoluto</strong>) per $f$ in $A$ se $$f(x)\le f(x_0)\qquad(\text{risp. }f(x)\ge f(x_0))\qquad\forall x\in A.$$ Il numero $f(x_0)$ è il <strong>valore di massimo</strong> (di minimo) assoluto di $f$ in $A$, e si scrive $\max_Af$ ($\min_Af$).</p>
+    </div>
+    <p class="small muted">Il punto di massimo sta sull'asse $x$, il massimo sull'asse $y$. Il massimo, se c'è, è uno solo; i punti di massimo possono essere tanti: $\cos x$ ha massimo $1$ e punti di massimo $2k\pi$, $k\in\Z$.</p>
+
+    <h3 id="weierstrass">Teorema di Weierstrass <span class="badge star">dim. scritto · n° 17</span></h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 16)</div>
+      <p class="mb0">Sia $f:[a,b]\to\R$ continua in $[a,b]$. Allora $f$ ammette massimo e minimo assoluti in $[a,b]$.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ Togli un'ipotesi e il teorema cade (Lezione 16)</div>
+      <ol>
+        <li><strong>Intervallo non chiuso.</strong> $f(x)=x$ in $(-1,1)$: $\sup f=1$ e $\inf f=-1$ non sono assunti, quindi non ci sono né massimo né minimo.</li>
+        <li><strong>Intervallo chiuso ma illimitato.</strong> $f(x)=x$ in $\R$: è continua, ma $\sup_\R f=+\infty$ e $\inf_\R f=-\infty$.</li>
+        <li><strong>Funzione non continua.</strong> $f(x)=\frac1x$ per $x\ne0$, $f(0)=1$, su $[0,1]$, che è chiuso e limitato: $f$ non è continua in $0$ e $\sup_{[0,1]}f=+\infty$, quindi non c'è massimo.</li>
+      </ol>
+      <p class="mb0"><strong>N.B. (Lezione 16).</strong> Il dominio non deve per forza essere un intervallo: se $A=[a_1,b_1]\cup[a_2,b_2]$ con $b_1\lt a_2$ e $f$ è continua in $A$, $f$ ha massimo e minimo assoluti, perché $A$ è chiuso e limitato. Quello che conta è <strong>chiuso e limitato</strong>.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 16)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <p class="small muted">Tre passi: (1) $f$ è limitata superiormente; (2) $f$ ha massimo; (3) $f$ ha minimo.</p>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Passo 1: come si comincia, e che cosa si costruisce?</div>
+          <div class="step-content">Per assurdo: $f$ non è limitata superiormente in $[a,b]$. Divido $[a,b]$ in $\left[a,\frac{a+b}2\right]$ e $\left[\frac{a+b}2,b\right]$: in almeno una delle due metà $f$ è illimitata superiormente; la chiamo $[a_1,b_1]$. Iterando ottengo $[a,b]\supseteq[a_1,b_1]\supseteq\dots\supseteq[a_m,b_m]\supseteq\dots$, con $f$ illimitata superiormente su ogni $[a_m,b_m]$ e $b_m-a_m=\frac{b-a}{2^m}$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dove vanno a finire gli intervalli? E dove serve che $[a,b]$ sia chiuso?</div>
+          <div class="step-content">$\{a_m\}$ è crescente, $\{b_m\}$ decrescente, e $a\le a_m\le b_m\le b$: per la regolarità delle successioni monotone $a_m\to\alpha$, $b_m\to\beta$. Poiché $\beta-\alpha=\lim(b_m-a_m)=\lim\frac{b-a}{2^m}=0$, si ha $\alpha=\beta=:x_0$, e da $a\le a_m\le b$ segue $x_0\in[a,b]$. <strong>Qui serve il chiuso:</strong> in un intervallo aperto $x_0$ potrebbe essere un estremo, dove $f$ non è definita.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa dà la continuità in $x_0$?</div>
+          <div class="step-content">Con $\eps=1$: esiste $\delta>0$ tale che, se $x\in[a,b]$ e $|x-x_0|\lt\delta$, allora $|f(x)-f(x_0)|\lt1$, cioè $f(x_0)-1\lt f(x)\lt f(x_0)+1$. Quindi $f$ è <strong>limitata superiormente in un intorno di $x_0$</strong>.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dov'è l'assurdo?</div>
+          <div class="step-content">Con questo $\delta$, poiché $a_m,b_m\to x_0$, esistono $\nu_1,\nu_2$ con $|a_m-x_0|\lt\delta$ per $m>\nu_1$ e $|b_m-x_0|\lt\delta$ per $m>\nu_2$. Per $m>\nu_3:=\max\{\nu_1,\nu_2\}$: $x_0-\delta\lt a_m\le b_m\lt x_0+\delta$, cioè $[a_m,b_m]\subset(x_0-\delta,x_0+\delta)$. Allora $f\lt f(x_0)+1$ su $[a_m,b_m]$, mentre quegli intervalli erano stati costruiti con $f$ illimitata superiormente. Assurdo: $f$ è limitata superiormente in $[a,b]$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Passo 2: che cosa si suppone, e perché $M$ è un numero?</div>
+          <div class="step-content">Per assurdo, $f$ non ha massimo. Per il passo 1, $M:=\sup_{[a,b]}f\in\R$; non essendo assunto, $f(x)\lt M$ per ogni $x\in[a,b]$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale funzione ausiliaria, e perché è continua?</div>
+          <div class="step-content">$g(x)=\dfrac1{M-f(x)}$. Il denominatore è sempre $>0$, quindi $g$ è continua in $[a,b]$ (quoziente di funzioni continue). Per il passo 1, che vale per ogni funzione continua su $[a,b]$, $g$ è limitata superiormente: esiste $K>0$ con $g(x)\le K$ per ogni $x$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dov'è l'assurdo?</div>
+          <div class="step-content">$\dfrac1{M-f(x)}\le K\iff M-f(x)\ge\dfrac1K\iff f(x)\le M-\dfrac1K$ per ogni $x\in[a,b]$. Allora $M-\frac1K$ è un maggiorante di $f$ più piccolo di $M=\sup f$, che invece è il più piccolo dei maggioranti. Quindi esiste $x_M\in[a,b]$ con $f(x_M)=M=\max_{[a,b]}f$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Passo 3: e il minimo?</div>
+          <div class="step-content">$h(x)=-f(x)$ è continua, quindi per il passo 2 ha un punto di massimo $x_m$: $h(x_m)\ge h(x)$ per ogni $x$, cioè $f(x_m)\le f(x)$ per ogni $x\in[a,b]$. $x_m$ è un punto di minimo per $f$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box tip">
+      <div class="box-title">↳ Weierstrass e valori intermedi insieme</div>
+      <p class="mb0">Se $f$ è continua su $[a,b]$, Weierstrass dice che $\min f$ e $\max f$ esistono, e i valori intermedi dicono che tutto quello che sta in mezzo è assunto: $$f([a,b])=\Bigl[\min_{[a,b]}f,\ \max_{[a,b]}f\Bigr].$$ Un intervallo chiuso e limitato va in un intervallo chiuso e limitato. Per $(a,b)$ aperto o per $\R$ non è più vero: $\operatorname{arctg}$ manda $\R$ in $\left(-\frac\pi2,\frac\pi2\right)$, che è aperto.</p>
     </div>
 
     <!-- ============================================================ -->
@@ -962,12 +1199,17 @@
         <li><strong>Dimenticare $x_m\ne x_0$ nel teorema ponte</strong>: le successioni stanno in $A\setminus\{x_0\}$.</li>
         <li><strong>Dire che il limite non esiste perché destro e sinistro sono diversi senza calcolarli entrambi</strong>, oppure quando $x_0$ è di accumulazione da un lato solo (come $0$ per $\sqrt x$): lì il limite è quello dall'unico lato possibile.</li>
         <li><strong>Nelle verifiche con la definizione, scegliere $\delta$ che dipende da $x$.</strong> $\delta$ può dipendere solo da $\eps$ (e da $x_0$): è per questo che in $\lim_{x\to3}x^2$ si stima $|x+3|\lt7$.</li>
+        <li><strong>Classificare un punto che non sta nel dominio</strong> come discontinuità: per $\frac1x$ in $0$ si parla di asintoto verticale, o di discontinuità di un suo prolungamento. E con i nomi della prof l'eliminabile <strong>non</strong> è la terza specie.</li>
+        <li><strong>Applicare zeri, valori intermedi o Weierstrass fuori dalle ipotesi</strong>: su un dominio che non è un intervallo, su un intervallo aperto o illimitato, a una funzione non continua. Per ogni ipotesi c'è un <a href="#globali">controesempio</a>, ed è quello che chiede «discutere il ruolo delle ipotesi».</li>
+        <li><strong>Dire che il teorema degli zeri dà uno zero unico.</strong> Ne dà almeno uno; l'unicità viene dalla stretta monotonia.</li>
+        <li><strong>Confondere punto di massimo e massimo</strong>: il primo è un $x_0$ del dominio, il secondo è il valore $f(x_0)$.</li>
       </ul>
     </div>
 
     <div class="btnrow" style="margin-top:36px">
-      <a class="btn primary" href="../esercizi.html?sez=4">Esercizi della Sezione 4 →</a>
+      <a class="btn primary" href="5-derivate.html">Sezione 5 · Derivate →</a>
       <a class="btn" href="3-serie.html">← Sezione 3</a>
+      <a class="btn" href="../esercizi.html?sez=4">Esercizi della Sezione 4</a>
       <a class="btn" href="../seconda.html">Piano della seconda parte</a>
     </div>
   </main>
@@ -977,11 +1219,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
-<script src="../../assets/js/materie.js?v=20261110a"></script>
-<script src="../data/topics2.js?v=20261110a"></script>
-<script src="../data/quiz.js?v=20261110a"></script>
-<script src="../../assets/js/plot.js?v=20261110a"></script>
-<script src="../../assets/js/app.js?v=20261110a"></script>
+<script src="../../assets/js/materie.js?v=20261123"></script>
+<script src="../data/topics2.js?v=20261123"></script>
+<script src="../data/quiz.js?v=20261123"></script>
+<script src="../../assets/js/plot.js?v=20261123"></script>
+<script src="../../assets/js/app.js?v=20261123"></script>
 <script>
 document.addEventListener('am:ready', function () {
   AM.renderChecklist('#checklistBox', 4);
@@ -1147,9 +1389,13 @@ document.addEventListener('am:ready', function () {
       { f: function (x) { return x === 0 ? 0 : x * Math.sin(1 / x); }, x0: 0, fx0: 0, w: { xmin: -0.4, xmax: 0.4, ymin: -0.4, ymax: 0.4 }, nome: 'x·sen(1/x) in x₀ = 0', v: 'cont',
         sp: 'Oscilla, ma con ampiezza che va a zero: infinitesima per limitata, quindi il limite è 0 = f(0). È continua in 0.' },
       { f: function (x) { return x > 0 ? 1 : x < 0 ? -1 : 0; }, x0: 0, fx0: 0, w: { xmin: -1, xmax: 1, ymin: -1.6, ymax: 1.6 }, nome: 'sgn x in x₀ = 0', v: 'salto',
-        sp: 'Da sinistra −1, da destra 1: prima specie, salto 2. Il valore f(0) = 0 non c\'entra con il tipo di discontinuità.' }
+        sp: 'Da sinistra −1, da destra 1: prima specie, salto 2. Il valore f(0) = 0 non c\'entra con il tipo di discontinuità.' },
+      { f: function (x) { return x === 0 ? 1 : Math.sin(1 / x); }, x0: 0, fx0: 1, w: { xmin: -0.5, xmax: 0.5, ymin: -1.5, ymax: 1.5 }, nome: 'sen(1/x), f(0) = 1, in x₀ = 0', v: 'terza',
+        sp: 'Muovendo h i valori continuano a saltare fra −1 e 1, da tutte e due le parti: i limiti laterali non esistono (teorema ponte con 1/(mπ) e 1/(π/2 + 2mπ)). Terza specie, secondo la Lezione 15.' },
+      { f: function (x) { return x === 0 ? 0 : 1; }, x0: 0, fx0: 0, buco: 1, w: { xmin: -1, xmax: 1, ymin: -0.6, ymax: 1.6 }, nome: '[sgn x]² in x₀ = 0', v: 'elim',
+        sp: 'Da destra e da sinistra la funzione vale 1, ma f(0) = 0: limiti finiti e uguali, diversi dal valore. Discontinuità eliminabile: ridefinendo f(0) = 1 si ottiene la funzione costante 1, continua.' }
     ];
-    var NOMI = { cont: 'continua in x₀', salto: 'discontinuità di prima specie (salto)', seconda: 'discontinuità di seconda specie' };
+    var NOMI = { cont: 'continua in x₀', salto: 'discontinuità di prima specie (salto)', seconda: 'discontinuità di seconda specie', terza: 'discontinuità di terza specie', elim: 'discontinuità eliminabile' };
     var i = 0, h = 0.2, out = document.getElementById('dsOut'), ver = document.getElementById('dsVerdetto');
     var p = new Plot('dsPlot', Object.assign({ height: 300 }, F[0].w));
     function hh() { return Math.max(0.002, h * (F[i].w.xmax - F[i].x0)); }
@@ -1158,6 +1404,7 @@ document.addEventListener('am:ready', function () {
       g.vline(S.x0, { color: 'faint', width: 1, dash: [4, 3] });
       dueRami(g, S.f, S.x0, { color: 'accent', width: 2, samples: 2400 });
       if (S.f === Math.floor) { g.dot(1, 0, { hollow: true, color: 'accent', r: 4 }); }
+      if (S.buco !== undefined) { g.dot(S.x0, S.buco, { hollow: true, color: 'accent', r: 4 }); }
       g.dot(S.x0, S.fx0, { color: 'text', r: 4 });
       g.seg(S.x0 - d, g.ymin, S.x0 - d, Math.min(g.ymax, a), { color: 'purple', width: 1, dash: [3, 3] });
       g.seg(S.x0 + d, g.ymin, S.x0 + d, Math.min(g.ymax, b), { color: 'ok', width: 1, dash: [3, 3] });
@@ -1183,6 +1430,64 @@ document.addEventListener('am:ready', function () {
           : '<span style="color:var(--danger)"><b>✗ No: hai detto «' + NOMI[b.dataset.ds] + '», ma è ' + NOMI[S.v] + '.</b></span> ') + S.sp;
       };
     });
+  })();
+
+  /* ---------- Bisezione a mano ---------- */
+  (function () {
+    var F = [
+      { f: function (x) { return x * x * x - x - 1; }, a: 1, b: 2, nome: 'x³ − x − 1', w: { xmin: 0.85, xmax: 2.15, ymin: -1.8, ymax: 5.6 } },
+      { f: function (x) { return Math.cos(x) - x; }, a: 0, b: 1, nome: 'cos x − x', w: { xmin: -0.1, xmax: 1.1, ymin: -0.7, ymax: 1.15 } },
+      { f: function (x) { return Math.exp(x) - 3; }, a: 0, b: 2, nome: 'eˣ − 3', w: { xmin: -0.15, xmax: 2.15, ymin: -2.4, ymax: 4.7 } }
+    ];
+    var i = 0, a = F[0].a, b = F[0].b, n = 0, out = document.getElementById('bsOut'), msg = document.getElementById('bsMsg');
+    var p = new Plot('bsPlot', Object.assign({ height: 280 }, F[0].w));
+    function zero() {   // lo zero "vero", per il confronto finale
+      var S = F[i], lo = S.a, hi = S.b;
+      for (var k = 0; k < 60; k++) { var m = (lo + hi) / 2; if (S.f(m) < 0) lo = m; else hi = m; }
+      return (lo + hi) / 2;
+    }
+    function reset() { a = F[i].a; b = F[i].b; n = 0; msg.style.display = 'none'; p.redraw(); refresh(); }
+    p.draw(function (g) {
+      var S = F[i], c = (a + b) / 2;
+      g.vband(a, b, { color: 'accent', alpha: .12 });
+      g.hline(0, { color: 'faint', width: 1 });
+      g.fn(S.f, { color: 'text', width: 1.8, samples: 600 });
+      g.vline(c, { color: 'purple', width: 1, dash: [4, 3] });
+      g.dot(a, S.f(a), { color: 'danger', r: 4.5, ring: true });
+      g.dot(b, S.f(b), { color: 'ok', r: 4.5, ring: true });
+      g.dot(c, S.f(c), { color: 'purple', r: 4 });
+    });
+    function fmt(v) { return (Math.round(v * 1e6) / 1e6).toString().replace('-', '−'); }
+    function refresh() {
+      var S = F[i], c = (a + b) / 2, fc = S.f(c);
+      out.innerHTML = 'f(x) = <b>' + S.nome + '</b> &nbsp;·&nbsp; passo n = ' + n + '<br>' +
+        '<span style="color:var(--danger)">a<sub>n</sub> = ' + fmt(a) + ', f(a<sub>n</sub>) = ' + fmt(S.f(a)) + ' &lt; 0</span> &nbsp;·&nbsp; ' +
+        '<span style="color:var(--ok)">b<sub>n</sub> = ' + fmt(b) + ', f(b<sub>n</sub>) = ' + fmt(S.f(b)) + ' &gt; 0</span><br>' +
+        '<span style="color:var(--purple)">c<sub>n</sub> = ' + fmt(c) + ', f(c<sub>n</sub>) = <b>' + fmt(fc) + '</b></span> &nbsp;·&nbsp; b<sub>n</sub> − a<sub>n</sub> = ' + fmt(b - a) +
+        '<br><span style="color:var(--text-faint)">Quale metà contiene sicuramente uno zero?</span>';
+    }
+    document.getElementById('bsSel').onchange = function () { i = +this.value; p.setWindow(F[i].w); reset(); };
+    document.querySelectorAll('#bsBtns [data-bs]').forEach(function (btn) {
+      btn.onclick = function () {
+        var S = F[i], c = (a + b) / 2, fc = S.f(c), scelta = btn.dataset.bs;
+        if (scelta === 'reset') { reset(); return; }
+        var giusta = fc > 0 ? 'sx' : 'dx';
+        msg.style.display = '';
+        if (scelta !== giusta) {
+          msg.innerHTML = '<span style="color:var(--danger)"><b>✗ Non quella.</b></span> f(c<sub>n</sub>) è ' + (fc > 0 ? 'positivo' : 'negativo') +
+            ': nella metà che hai scelto f vale ' + (fc > 0 ? 'più di zero a tutti e due gli estremi' : 'meno di zero a tutti e due gli estremi') +
+            ', e il teorema non garantisce nessuno zero lì. Si tiene la metà in cui f cambia segno.';
+          return;
+        }
+        if (fc > 0) b = c; else a = c;
+        n++;
+        var z = zero();
+        msg.innerHTML = '<span style="color:var(--ok)"><b>✓ Giusto.</b></span> f(a<sub>n</sub>) &lt; 0 &lt; f(b<sub>n</sub>) anche nel nuovo intervallo, lungo la metà del precedente.' +
+          (n >= 8 ? ' Dopo ' + n + ' passi lo zero sta in un intervallo lungo ' + fmt(b - a) + ': il limite ξ di a<sub>n</sub> e b<sub>n</sub> è circa ' + fmt(z) + '.' : '');
+        p.redraw(); refresh();
+      };
+    });
+    reset();
   })();
 });
 </script>

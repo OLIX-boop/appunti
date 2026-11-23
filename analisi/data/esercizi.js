@@ -1216,7 +1216,7 @@ Fissato $\eps>0$, sia $\delta:=\min\left\{1,\frac\eps5\right\}$. Per $0\lt|x-2|\
            r`Prova $\delta=\frac1M$, sia da destra sia da sinistra.` ],
   sol: r`<strong>Da destra.</strong> Fissato $M>0$, sia $\delta:=\frac1M$. Se $x\in I^+_\delta(1)$, cioè $0\lt x-1\lt\frac1M$, allora $\frac1{x-1}>M$: è la definizione (11).<br>
 <strong>Da sinistra.</strong> Se $x\in I^-_\delta(1)$, cioè $-\frac1M\lt x-1\lt0$, allora $\frac1{x-1}\lt-M$: definizione (15).<br>
-I limiti laterali sono diversi, quindi $\nexists\lim_{x\to1}\frac1{x-1}$; e $x=1$ è <strong>asintoto verticale</strong> (limiti laterali infiniti di segno opposto, come per $\frac1x$ nella Lezione 13). $\blacksquare$` },
+I limiti laterali sono diversi, quindi $\nexists\lim_{x\to1}\frac1{x-1}$; e $x=1$ è <strong>asintoto verticale</strong> (limiti laterali infiniti di segno opposto, come per $\frac1x$ nella Lezione 14). $\blacksquare$` },
 
 { id: 'E4.7', sez: 4, tema: 'Teorema ponte', d: 1,
   t: r`Dimostrare che $\displaystyle\lim_{x\to+\infty}\sin x$ non esiste.`,
@@ -1247,7 +1247,7 @@ Limiti diversi lungo due successioni in $\R\setminus\{0\}$ che tendono a $0$: pe
 { id: 'E4.11', sez: 4, tema: 'Limiti notevoli', d: 1,
   t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{\sin(5x)}{3x}$ e $\displaystyle\lim_{x\to0^+}\sqrt x\,\log x$.`,
   hints: [ r`Nel primo moltiplica e dividi per $5x$.`,
-           r`Il secondo è $x^\alpha\log x$ con $\alpha=\frac12$ (Lezione 13).` ],
+           r`Il secondo è $x^\alpha\log x$ con $\alpha=\frac12$ (Lezione 14).` ],
   sol: r`$\dfrac{\sin(5x)}{3x}=\dfrac{\sin(5x)}{5x}\cdot\dfrac53\to1\cdot\dfrac53=\boxed{\tfrac53}$.<br>
 $\sqrt x\log x=x^{1/2}\log x\to\boxed{0}$ per $x\to0^+$, perché $\lim_{x\to0^+}x^\alpha\log_ax=0$ per ogni $\alpha>0$ (sostituzione $y=\frac1x$ e gerarchia degli infiniti). <strong>Controllo numerico:</strong> $x=10^{-6}$: $\frac{\sin(5\cdot10^{-6})}{3\cdot10^{-6}}\approx1{,}6667$; $\ \sqrt{10^{-6}}\log10^{-6}\approx-0{,}0138$. $\blacksquare$` },
 
@@ -1266,7 +1266,7 @@ In forma esplicita: $\dfrac{1-\cos2x}{(2x)^2}\cdot\dfrac{4x^2}{x\sin x}=\dfrac{1
 
 { id: 'E4.14', sez: 4, tema: 'Limiti notevoli', d: 2,
   t: r`Calcolare $\displaystyle\lim_{x\to+\infty}\left(1+\frac2x\right)^x$.`,
-  hints: [ r`Scrivi la potenza come esponenziale: $f^g=e^{g\log f}$ (Lezione 13).`,
+  hints: [ r`Scrivi la potenza come esponenziale: $f^g=e^{g\log f}$ (Lezione 14).`,
            r`L'esponente è $x\log\left(1+\frac2x\right)$, e $\log(1+t)\sim t$ con $t=\frac2x$.` ],
   sol: r`$\left(1+\frac2x\right)^x=e^{x\log\left(1+\frac2x\right)}$. Con $t=\frac2x\to0^+$: $x\log\left(1+\frac2x\right)=2\cdot\dfrac{\log(1+t)}t\to2$. Per la continuità dell'esponenziale il limite è $\boxed{e^2}$. <strong>Controllo:</strong> $x=10^6$ dà $\approx7{,}3890$, ed $e^2\approx7{,}3891$. $\blacksquare$<br><strong>Attenzione:</strong> «$1^\infty=1$» è falso: è una forma indeterminata.` },
 
@@ -1274,7 +1274,7 @@ In forma esplicita: $\dfrac{1-\cos2x}{(2x)^2}\cdot\dfrac{4x^2}{x\sin x}=\dfrac{1
   t: r`Calcolare $\displaystyle\lim_{x\to0^+}x^{\sin x}$.`,
   hints: [ r`Come per $x^x$: $x^{\sin x}=e^{\sin x\,\log x}$.`,
            r`$\sin x\log x=\dfrac{\sin x}x\cdot x\log x$.` ],
-  sol: r`$x^{\sin x}=e^{\sin x\log x}$ e $\sin x\log x=\dfrac{\sin x}x\cdot(x\log x)\to1\cdot0=0$, perché $x\log x\to0$ per $x\to0^+$ (Lezione 13). Quindi il limite è $e^0=\boxed{1}$. <strong>Controllo:</strong> $x=10^{-4}$: $\sin x\log x\approx-0{,}00092$ e $x^{\sin x}\approx0{,}9991$. $\blacksquare$` },
+  sol: r`$x^{\sin x}=e^{\sin x\log x}$ e $\sin x\log x=\dfrac{\sin x}x\cdot(x\log x)\to1\cdot0=0$, perché $x\log x\to0$ per $x\to0^+$ (Lezione 14). Quindi il limite è $e^0=\boxed{1}$. <strong>Controllo:</strong> $x=10^{-4}$: $\sin x\log x\approx-0{,}00092$ e $x^{\sin x}\approx0{,}9991$. $\blacksquare$` },
 
 { id: 'E4.16', sez: 4, tema: 'Asintoti', d: 2,
   t: r`Trovare gli asintoti di $f(x)=\dfrac{2x^2-3x+1}{x+2}$.`,
@@ -1290,7 +1290,7 @@ Asintoto obliquo $\boxed{y=2x-7}$, sia a $+\infty$ sia a $-\infty$. <strong>Cont
   hints: [ r`$\frac{\operatorname{arctg}x}x\to0$, quindi $m=1$ da entrambe le parti.`,
            r`$q=\lim[f(x)-x]=\lim\operatorname{arctg}x$: quanto vale a $+\infty$ e a $-\infty$?` ],
   sol: r`$m=\lim_{x\to\pm\infty}\left(1+\frac{\operatorname{arctg}x}x\right)=1$ (limitata su infinita). $q=\lim[f(x)-x]=\lim\operatorname{arctg}x$, che vale $\frac\pi2$ a $+\infty$ e $-\frac\pi2$ a $-\infty$.<br>
-Asintoti obliqui: $\boxed{y=x+\frac\pi2}$ per $x\to+\infty$ e $\boxed{y=x-\frac\pi2}$ per $x\to-\infty$. Come per $\operatorname{arctg}$ (Lezione 13), a destra e a sinistra l'asintoto può cambiare. $\blacksquare$` },
+Asintoti obliqui: $\boxed{y=x+\frac\pi2}$ per $x\to+\infty$ e $\boxed{y=x-\frac\pi2}$ per $x\to-\infty$. Come per $\operatorname{arctg}$ (Lezione 14), a destra e a sinistra l'asintoto può cambiare. $\blacksquare$` },
 
 { id: 'E4.18', sez: 4, tema: 'Asintoti', d: 3,
   t: r`Trovare gli asintoti di $f(x)=\sqrt{x^2+2x}$ (insieme di definizione $(-\infty,-2]\cup[0,+\infty)$).`,
@@ -1324,7 +1324,431 @@ Non ci sono asintoti verticali: $f$ è continua e limitata vicino a ogni punto d
   t: r`Classificare il punto $x_0=1$ per $f(x)=\begin{cases}\dfrac{x^2-1}{|x-1|} & x\ne1\\[4pt] 0 & x=1.\end{cases}$`,
   hints: [ r`$x^2-1=(x-1)(x+1)$, e $\frac{x-1}{|x-1|}$ vale $\pm1$.`,
            r`Calcola i due limiti laterali: sono finiti?` ],
-  sol: r`$f(x)=\dfrac{(x-1)(x+1)}{|x-1|}$. Per $x>1$: $f(x)=x+1\to2$. Per $x\lt1$: $f(x)=-(x+1)\to-2$. I limiti laterali sono finiti e diversi: <strong>discontinuità di prima specie</strong>, con salto $s(1)=|2-(-2)|=\boxed{4}$. Il valore $f(1)=0$ non cambia la classificazione. $\blacksquare$` }
+  sol: r`$f(x)=\dfrac{(x-1)(x+1)}{|x-1|}$. Per $x>1$: $f(x)=x+1\to2$. Per $x\lt1$: $f(x)=-(x+1)\to-2$. I limiti laterali sono finiti e diversi: <strong>discontinuità di prima specie</strong>, con salto $s(1)=|2-(-2)|=\boxed{4}$. Il valore $f(1)=0$ non cambia la classificazione. $\blacksquare$` },
+
+/* ---------- Esercitazione 7 (6 novembre): limiti, asintoti, continuità ---------- */
+{ id: 'E4.23', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{\log(\cos(3x))}{\sin(x-\pi)\,(e^x-1)}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`È una forma $\frac00$: studia numeratore e denominatore separatamente, con gli asintotici.`,
+           r`$\log(\cos3x)=\log\bigl(1+(\cos3x-1)\bigr)$, e $\cos3x-1\to0$.`,
+           r`$\sin(x-\pi)=-\sin x$ (formula di sottrazione).` ],
+  sol: r`<strong>Numeratore.</strong> $\log(\cos3x)=\log\bigl(1+(\cos3x-1)\bigr)\sim\cos3x-1=-(1-\cos3x)\sim-\frac12(3x)^2=-\frac92x^2$.<br>
+<strong>Denominatore.</strong> $\sin(x-\pi)=\sin x\cos(-\pi)+\sin(-\pi)\cos x=-\sin x\sim-x$ e $e^x-1\sim x$, quindi $\sin(x-\pi)(e^x-1)\sim-x^2$.<br>
+Allora $f(x)\sim\dfrac{-\frac92x^2}{-x^2}$ e il limite vale $\boxed{\tfrac92}$. <strong>Controllo numerico:</strong> $x=10^{-3}$ dà $4{,}4978$. $\blacksquare$` },
+
+{ id: 'E4.24', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to+\infty}\left(\frac{x^2}{x^2+1}\right)^{x(x-1)}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`È una forma $1^\infty$: scrivi la base come $1+\text{(qualcosa che tende a 0)}$.`,
+           r`$\frac{x^2}{x^2+1}=1+\frac{-1}{x^2+1}$.`,
+           r`Fai comparire l'esponente $x^2+1$, così da usare $\left(1+\frac ay\right)^y\to e^a$.` ],
+  sol: r`$\left(\dfrac{x^2}{x^2+1}\right)^{x^2-x}=\left(1+\dfrac{-1}{x^2+1}\right)^{x^2-x}=\left[\left(1+\dfrac{-1}{x^2+1}\right)^{x^2+1}\right]^{\frac{x^2-x}{x^2+1}}.$<br>
+La parentesi quadra tende a $e^{-1}$ (limite notevole con $y=x^2+1\to+\infty$) e l'esponente $\frac{x^2-x}{x^2+1}\to1$: il limite è $\left(e^{-1}\right)^1=\boxed{\tfrac1e}$. <strong>Controllo:</strong> $x=1000$ dà $0{,}3682$, e $\frac1e\approx0{,}3679$. $\blacksquare$` },
+
+{ id: 'E4.25', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to\frac12}\frac{\cos(\pi x)}{x-2x^2}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Per usare $\sin t\sim t$ serve un argomento che tende a $0$: scrivi $\pi x=\pi\left(x-\frac12\right)+\frac\pi2$.`,
+           r`$\cos\left(\theta+\frac\pi2\right)=-\sin\theta$.`,
+           r`Al denominatore raccogli: $x-2x^2=2x\left(\frac12-x\right)$.` ],
+  sol: r`$\cos(\pi x)=\cos\left(\pi\left(x-\tfrac12\right)+\tfrac\pi2\right)=\cos\left(\pi\left(x-\tfrac12\right)\right)\underbrace{\cos\tfrac\pi2}_{=0}-\sin\left(\pi\left(x-\tfrac12\right)\right)\underbrace{\sin\tfrac\pi2}_{=1}=-\sin\left(\pi\left(x-\tfrac12\right)\right)\sim\pi\left(\tfrac12-x\right).$<br>
+Con $x-2x^2=2x\left(\frac12-x\right)$ e $2x\to1$: $$\frac{\cos(\pi x)}{x-2x^2}\sim\frac{\pi\left(\frac12-x\right)}{\frac12-x}=\pi.$$ Il limite vale $\boxed{\pi}$. <strong>Controllo:</strong> $x=0{,}5001$ dà $3{,}1410$. $\blacksquare$` },
+
+{ id: 'E4.26', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to+\infty}\left[1+\sin\left(\frac2{x^2}\right)\right]^{x^3\log\left(1+\frac1{2x}\right)}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Forma $1^\infty$: scrivi la potenza come $e^{\text{esponente}\cdot\log(\text{base})}$.`,
+           r`Tre fattori infinitesimi o infiniti: $x^3$, $\log\left(1+\frac1{2x}\right)\sim\frac1{2x}$, $\log\left(1+\sin\frac2{x^2}\right)\sim\frac2{x^2}$.` ],
+  sol: r`$\left[1+\sin\frac2{x^2}\right]^{x^3\log\left(1+\frac1{2x}\right)}=e^{\,x^3\log\left(1+\frac1{2x}\right)\log\left(1+\sin\frac2{x^2}\right)}$. Per $x\to+\infty$: $$x^3\log\left(1+\frac1{2x}\right)\log\left(1+\sin\frac2{x^2}\right)\sim x^3\cdot\frac1{2x}\cdot\sin\frac2{x^2}\sim\frac{x^3}{2x}\cdot\frac2{x^2}=1.$$ Per la continuità dell'esponenziale il limite è $e^1=\boxed{e}$. <strong>Controllo:</strong> $x=1000$ dà $2{,}7176$. $\blacksquare$` },
+
+{ id: 'E4.27', sez: 4, tema: 'Calcolo di limiti', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{x\to0^-}\frac{\operatorname{tg}(2x)+4x^5+2^x}{\sin x+x^2}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Prima di cercare asintotici, sostituisci: il numeratore tende davvero a $0$?`,
+           r`Il denominatore: $\sin x=x+o(x)$ e $x^2=o(x)$. Che segno ha per $x\to0^-$?` ],
+  sol: r`Il numeratore tende a $0+0+2^0=1$, quindi è $\sim1$: <strong>non</strong> è una forma $\frac00$. Al denominatore $\sin x+x^2=x+o(x)+x^2=x+o(x)\sim x$, perché $x^2=o(x)$ per $x\to0$. Allora $$\frac{\operatorname{tg}(2x)+4x^5+2^x}{\sin x+x^2}\sim\frac1x\xrightarrow{x\to0^-}\frac1{0^-}=\boxed{-\infty}.$$ <strong>Controllo:</strong> $x=-10^{-5}$ dà circa $-10^5$. $\blacksquare$<br><em>Morale:</em> sostituire prima di tutto; da destra lo stesso limite vale $+\infty$.` },
+
+{ id: 'E4.28', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare, se esiste, $\displaystyle\lim_{x\to2}\frac{\operatorname{tg}(x-2)}{|x^2-4|}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`$\operatorname{tg}(x-2)\sim x-2$. Il modulo cambia forma a seconda che $x$ sia a destra o a sinistra di $2$.`,
+           r`$|x^2-4|=|x+2|\,|x-2|$: per $x\to2^+$ vale $(x+2)(x-2)$, per $x\to2^-$ vale $(x+2)(2-x)$.` ],
+  sol: r`$\operatorname{tg}(x-2)\sim x-2$. In un intorno destro di $2$ si ha $x-2>0$ e $|x^2-4|=(x+2)(x-2)$; in un intorno sinistro $x-2\lt0$ e $|x^2-4|=(x+2)(2-x)$. Quindi $$\lim_{x\to2^+}=\lim\frac{x-2}{(x+2)(x-2)}=\frac14,\qquad\lim_{x\to2^-}=\lim\frac{x-2}{(x+2)(2-x)}=-\frac14.$$ I limiti laterali sono diversi: il limite <strong>non esiste</strong>. Ogni prolungamento di $f$ in $x_0=2$ ha lì una discontinuità di prima specie (salto $\frac12$). <strong>Controllo:</strong> $x=2\pm10^{-4}$ dà $\pm0{,}25$. $\blacksquare$` },
+
+{ id: 'E4.29', sez: 4, tema: 'Calcolo di limiti', d: 3,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{\sqrt[3]{\sqrt{|x|}+1}-\cos^2x}{\sqrt{|x|}+\log\left(\cos^2x\right)}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Al numeratore aggiungi e togli $1$: $\left[(1+|x|^{1/2})^{1/3}-1\right]+\left[1-\cos^2x\right]$.`,
+           r`$(1+t)^{1/3}-1\sim\frac t3$; $1-\cos^2x=(1+\cos x)(1-\cos x)\sim x^2$. Quale dei due addendi comanda?`,
+           r`$x^2=o\left(|x|^{1/2}\right)$, perché $\frac{x^2}{|x|^{1/2}}=|x|^{3/2}\to0$. Lo stesso confronto serve al denominatore.` ],
+  sol: r`<strong>Numeratore.</strong> $\sqrt[3]{\sqrt{|x|}+1}-\cos^2x=\underbrace{(1+|x|^{1/2})^{1/3}-1}_{\sim\frac13|x|^{1/2}}+\underbrace{1-\cos^2x}_{\sim x^2}=\frac13|x|^{1/2}+o\left(|x|^{1/2}\right)+x^2+o(x^2)$. Poiché $x^2=o\left(|x|^{1/2}\right)$, il numeratore è $\frac13|x|^{1/2}+o\left(|x|^{1/2}\right)\sim\frac13|x|^{1/2}$.<br>
+<strong>Denominatore.</strong> $\log(\cos^2x)=\log\bigl(1+(\cos^2x-1)\bigr)\sim\cos^2x-1\sim-x^2$, quindi $\sqrt{|x|}+\log(\cos^2x)=|x|^{1/2}-x^2+o(x^2)=|x|^{1/2}+o\left(|x|^{1/2}\right)\sim|x|^{1/2}$ (assorbimento degli o-piccoli, Esercitazione 5).<br>
+Il rapporto è $\sim\frac{\frac13|x|^{1/2}}{|x|^{1/2}}$ e il limite vale $\boxed{\tfrac13}$. <strong>Controllo:</strong> $x=10^{-8}$ dà $0{,}33332$. $\blacksquare$` },
+
+{ id: 'E4.30', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to1^+}\log(x)\cdot\log\bigl[\log(x)\bigr]$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Forma $0\cdot\infty$. Sostituisci $t=\log x$: dove va $t$?`,
+           r`Resta $\lim_{t\to0^+}t\log t$. Sostituisci ancora $t=e^{-u}$.` ],
+  sol: r`Con $t=\log x$ si ha $t\to0^+$ per $x\to1^+$, e il limite diventa $\lim_{t\to0^+}t\log t$.<br>
+<strong>Metodo 1.</strong> $t=e^u$, con $u\to-\infty$: $\lim_{u\to-\infty}u\,e^u$. Per la gerarchia degli infiniti $|u|\le e^{-u/2}$ definitivamente per $u\to-\infty$, quindi $0\le|u\,e^u|\le e^u e^{-u/2}=e^{u/2}\to0$, e per confronto il limite è $0$.<br>
+<strong>Metodo 2.</strong> $t=e^{-u}$, con $u\to+\infty$: $\lim_{u\to+\infty}e^{-u}\log(e^{-u})=-\lim_{u\to+\infty}\frac u{e^u}=0$, direttamente per la gerarchia degli infiniti.<br>
+Il limite vale $\boxed{0}$ (da valori negativi). <strong>Controllo:</strong> $x=1+10^{-5}$ dà $-0{,}000115$. $\blacksquare$` },
+
+{ id: 'E4.31', sez: 4, tema: 'Calcolo di limiti', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}x\,e^{\sin(1/x)}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`$e^{\sin(1/x)}$ non ha limite per $x\to0$, ma è limitata: fra quali numeri?` ],
+  sol: r`Poiché $-1\le\sin\frac1x\le1$ e l'esponenziale è crescente, $\frac1e\le e^{\sin(1/x)}\le e$: la funzione è <strong>limitata</strong>. $x$ è infinitesima, e infinitesima per limitata è infinitesima: il limite vale $\boxed{0}$. In modo esplicito, $0\le\left|x\,e^{\sin(1/x)}\right|\le e|x|\to0$ e si conclude con i carabinieri. $\blacksquare$` },
+
+{ id: 'E4.32', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to+\infty}\log\left(1+e^x\right)\log\left(1+\frac1x\right)$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Il secondo fattore: $\log\left(1+\frac1x\right)\sim\frac1x$.`,
+           r`Il primo: raccogli $e^x$ dentro il logaritmo, $\log(1+e^x)=x+\log(1+e^{-x})$.` ],
+  sol: r`$\log(1+e^x)=\log\bigl(e^x(1+e^{-x})\bigr)=x+\log(1+e^{-x})\sim x$, perché $\log(1+e^{-x})\to0$. E $\log\left(1+\frac1x\right)\sim\frac1x$. Il prodotto è $\sim x\cdot\frac1x=1$: il limite vale $\boxed{1}$. <strong>Controllo:</strong> $x=300$ dà $0{,}9983$. $\blacksquare$` },
+
+{ id: 'E4.33', sez: 4, tema: 'Calcolo di limiti', d: 1,
+  t: r`Calcolare $\displaystyle\lim_{x\to0^+}\frac{\log\left(1+\sqrt x\sin x\right)}{2x}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`L'argomento del logaritmo: $\sqrt x\sin x\to0$, quindi $\log(1+t)\sim t$.`,
+           r`$\sqrt x\sin x\sim x^{3/2}$.` ],
+  sol: r`$\sqrt x\sin x\sim\sqrt x\cdot x=x^{3/2}\to0$, quindi $\log\left(1+\sqrt x\sin x\right)\sim x^{3/2}$ e $$\frac{\log\left(1+\sqrt x\sin x\right)}{2x}\sim\frac{x^{3/2}}{2x}=\frac{\sqrt x}2\to\boxed{0}.$$ <strong>Controllo:</strong> $x=10^{-6}$ dà $0{,}0005$. $\blacksquare$` },
+
+{ id: 'E4.34', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{e^{x^2}-\cos x}{x^2}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Aggiungi e togli $1$: $e^{x^2}-\cos x=(e^{x^2}-1)+(1-\cos x)$.`,
+           r`I due addendi sono dello stesso ordine: scrivili con gli o-piccoli e sommali.` ],
+  sol: r`$e^{x^2}-\cos x=\underbrace{e^{x^2}-1}_{\sim x^2}+\underbrace{1-\cos x}_{\sim\frac12x^2}=x^2+o(x^2)+\frac12x^2+o(x^2)=\frac32x^2+o(x^2)$. Diviso per $x^2$ tende a $\boxed{\tfrac32}$. <strong>Controllo:</strong> $x=10^{-3}$ dà $1{,}5000$. $\blacksquare$<br><strong>Attenzione:</strong> la somma di asintotici si fa con gli o-piccoli; qui funziona perché i coefficienti $1$ e $\frac12$ non si cancellano.` },
+
+{ id: 'E4.35', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{\log\left(1+x^2\right)-2\sqrt[3]{\left(e^x-1\right)^2}}{\sqrt[3]{x^2}}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Spezza la frazione in due.`,
+           r`$\log(1+x^2)\sim x^2$, e $x^2$ è $o\left(x^{2/3}\right)$.`,
+           r`$\dfrac{\sqrt[3]{(e^x-1)^2}}{\sqrt[3]{x^2}}=\sqrt[3]{\left(\dfrac{e^x-1}x\right)^2}$.` ],
+  sol: r`$\dfrac{\log(1+x^2)}{\sqrt[3]{x^2}}\sim\dfrac{x^2}{|x|^{2/3}}=|x|^{4/3}\to0$, e $\dfrac{2\sqrt[3]{(e^x-1)^2}}{\sqrt[3]{x^2}}=2\sqrt[3]{\left(\dfrac{e^x-1}x\right)^2}\to2\sqrt[3]{1}=2$, per la continuità della radice cubica. Il limite vale $0-2=\boxed{-2}$. <strong>Controllo:</strong> $x=\pm10^{-5}$ dà $-2{,}0000$. $\blacksquare$` },
+
+{ id: 'E4.36', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\frac{\sqrt2-\sqrt{1+\cos x}}{\sin^2x}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Differenza di radici: moltiplica e dividi per $\sqrt2+\sqrt{1+\cos x}$.`,
+           r`Il numeratore diventa $2-(1+\cos x)=1-\cos x\sim\frac{x^2}2$.` ],
+  sol: r`$$\frac{\sqrt2-\sqrt{1+\cos x}}{\sin^2x}=\frac{2-(1+\cos x)}{\sin^2x\left(\sqrt2+\sqrt{1+\cos x}\right)}=\frac{1-\cos x}{\sin^2x}\cdot\frac1{\sqrt2+\sqrt{1+\cos x}}.$$ Il primo fattore è $\sim\frac{x^2/2}{x^2}=\frac12$, il secondo tende a $\frac1{2\sqrt2}$. Il limite vale $\frac1{4\sqrt2}=\boxed{\tfrac{\sqrt2}8}$. <strong>Controllo:</strong> $x=10^{-3}$ dà $0{,}17678$, e $\frac{\sqrt2}8\approx0{,}17678$. $\blacksquare$` },
+
+{ id: 'E4.37', sez: 4, tema: 'Calcolo di limiti', d: 2,
+  t: r`Calcolare $\displaystyle\lim_{x\to0}\left(\cos x\right)^{\frac1{\sin^2x}}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Forma $1^\infty$: $(\cos x)^{1/\sin^2x}=e^{\frac{\log(\cos x)}{\sin^2x}}$.`,
+           r`$\log(\cos x)=\log\bigl(1+(\cos x-1)\bigr)\sim\cos x-1\sim-\frac{x^2}2$.` ],
+  sol: r`$(\cos x)^{1/\sin^2x}=e^{\log(\cos x)/\sin^2x}$, e $$\frac{\log(\cos x)}{\sin^2x}\sim\frac{\cos x-1}{x^2}\sim\frac{-\frac12x^2}{x^2}=-\frac12.$$ Il limite vale $\boxed{e^{-1/2}=\tfrac1{\sqrt e}}$. <strong>Controllo:</strong> $x=10^{-3}$ dà $0{,}60652$. $\blacksquare$` },
+
+{ id: 'E4.38', sez: 4, tema: 'Asintoti', d: 3,
+  t: r`Trovare il dominio e gli eventuali asintoti di $f(x)=\sqrt[3]{3x^3+5x^2+x}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`La radice cubica è definita ovunque. Per $x\to\pm\infty$ comanda $3x^3$: $f(x)\sim\sqrt[3]3\,x$.`,
+           r`$m=\sqrt[3]3$. Per $q$ raccogli $\sqrt[3]{3}\,x$: $f(x)-\sqrt[3]3x=\sqrt[3]3x\left(\sqrt[3]{1+\frac5{3x}+\frac1{3x^2}}-1\right)$.`,
+           r`$(1+t)^{1/3}-1\sim\frac t3$ con $t=\frac5{3x}+\frac1{3x^2}\to0$.` ],
+  sol: r`Il dominio è $\R$, e $f\to\pm\infty$ per $x\to\pm\infty$: niente asintoti orizzontali (né verticali). Poiché $3x^3+5x^2+x\sim3x^3$, $f(x)\sim\sqrt[3]3\,x$ e $m=\lim\frac{f(x)}x=\sqrt[3]3$. Poi $$f(x)-\sqrt[3]3\,x=\sqrt[3]3\,x\left(\sqrt[3]{1+\tfrac5{3x}+\tfrac1{3x^2}}-1\right)\sim\sqrt[3]3\,x\cdot\frac13\left(\frac5{3x}+\frac1{3x^2}\right)=\frac5{\sqrt[3]{3^5}}+\frac1{\sqrt[3]{3^5}\,x}\to\frac5{\sqrt[3]{3^5}}.$$ Asintoto obliquo $\boxed{y=\sqrt[3]3\,x+\frac5{3\sqrt[3]9}}$ sia a $+\infty$ sia a $-\infty$ ($\sqrt[3]{3^5}=3\sqrt[3]9$). <strong>Controllo:</strong> $\frac5{3\sqrt[3]9}\approx0{,}8012$, e $f(10^4)-\sqrt[3]3\cdot10^4\approx0{,}8012$. $\blacksquare$` },
+
+{ id: 'E4.39', sez: 4, tema: 'Asintoti', d: 2,
+  t: r`Trovare il dominio e gli eventuali asintoti di $f(x)=e^{\frac1{4-x^2}}$. <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Dominio: $4-x^2\ne0$. La funzione è pari: basta studiare $x\to2$ e $x\to+\infty$.`,
+           r`Per $x\to2^\pm$ l'esponente $\frac1{4-x^2}$ va a $\mp\infty$: attenzione al segno di $4-x^2$.` ],
+  sol: r`Dominio: $\R\setminus\{\pm2\}$. $f$ è pari, quindi basta studiare $2$ e $+\infty$.<ul class="mb0">
+<li>$x\to\pm\infty$: $\frac1{4-x^2}\to0$ e $f\to e^0=1$. La retta $\boxed{y=1}$ è asintoto orizzontale a $\pm\infty$ (e quindi non ci sono obliqui).</li>
+<li>$x\to2^+$: $4-x^2\to0^-$, l'esponente va a $-\infty$ e $f\to0$. $x\to2^-$: $4-x^2\to0^+$, l'esponente va a $+\infty$ e $f\to+\infty$. Quindi $\boxed{x=2}$ è asintoto verticale (da sinistra), e per simmetria $\boxed{x=-2}$ (da destra).</li></ul>
+<strong>Controllo:</strong> $f(1{,}99)\approx e^{25}$, $f(2{,}01)\approx e^{-25}$. $\blacksquare$` },
+
+{ id: 'E4.40', sez: 4, tema: 'Asintoti', d: 3,
+  t: r`Trovare il dominio e gli eventuali asintoti di $$f(x)=\begin{cases}e^{x\sin\left(\frac1x\right)-\operatorname{arctg}x}&x>0\\ 1&x=0\\ \dfrac{x^3-2x^2+1}{2x^2}&x\lt0.\end{cases}$$ <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Per $x\to+\infty$: $x\sin\frac1x=\frac{\sin(1/x)}{1/x}\to1$.`,
+           r`Per $x\to0^+$: $x\sin\frac1x$ è infinitesima per limitata. Per $x\to0^-$ guarda il numeratore.`,
+           r`Per $x\to-\infty$: $f(x)\sim\frac x2$, quindi $m=\frac12$; calcola $f(x)-\frac x2$.` ],
+  sol: r`Ogni ramo è definito dove serve: il dominio è $\R$.<ul class="mb0">
+<li>$x\to+\infty$: $x\sin\frac1x=\frac{\sin(1/x)}{1/x}\to1$ e $\operatorname{arctg}x\to\frac\pi2$, quindi $f\to e^{1-\pi/2}$: $\boxed{y=e^{1-\frac\pi2}}$ è asintoto orizzontale a $+\infty$.</li>
+<li>$x\to0^+$: $0\le\left|x\sin\frac1x\right|\le x\to0$ e $\operatorname{arctg}x\to0$, quindi $f\to e^0=1=f(0)$. $x\to0^-$: $\frac{x^3-2x^2+1}{2x^2}\to\frac1{0^+}=+\infty$. Quindi $\boxed{x=0}$ è asintoto verticale (da sinistra).</li>
+<li>$x\to-\infty$: $f\sim\frac{x^3}{2x^2}=\frac x2\to-\infty$. $\frac{f(x)}x=\frac{x^3-2x^2+1}{2x^3}\to\frac12$ e $f(x)-\frac x2=\frac{-2x^2+1}{2x^2}\to-1$: $\boxed{y=\frac12x-1}$ è asintoto obliquo a $-\infty$.</li></ul>
+<strong>Controllo:</strong> $f(-10^4)-\left(-\frac{10^4}2-1\right)\approx5\cdot10^{-9}$. $\blacksquare$` },
+
+{ id: 'E4.41', sez: 4, tema: 'Asintoti', d: 3,
+  t: r`Trovare il dominio e gli eventuali asintoti di $f(x)=\sqrt[3]{\dfrac{(x+1)^5}{x^2}}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Dominio: $x\ne0$. In $0$ il numeratore tende a $1$ e il denominatore a $0^+$.`,
+           r`Per $x\to\pm\infty$: $\frac{(x+1)^5}{x^2}=x^3\left(1+\frac1x\right)^5$, e la radice cubica di $x^3$ è $x$ (anche per $x\lt0$).`,
+           r`$f(x)-x=x\left[\left(1+\frac1x\right)^{5/3}-1\right]$, e $(1+t)^{5/3}-1\sim\frac53t$.` ],
+  sol: r`Dominio: $\R\setminus\{0\}$. Per $x\to0$: $\frac{(x+1)^5}{x^2}\to\frac1{0^+}=+\infty$ da entrambe le parti, quindi $f\to+\infty$ e $\boxed{x=0}$ è asintoto verticale.<br>
+Per $x\to\pm\infty$: $f(x)=\sqrt[3]{x^3\left(1+\frac1x\right)^5}=x\left(1+\frac1x\right)^{5/3}$. Allora $m=\lim\left(1+\frac1x\right)^{5/3}=1$ e $$f(x)-x=x\left[\left(1+\tfrac1x\right)^{5/3}-1\right]\sim x\cdot\frac53\cdot\frac1x=\frac53.$$ Asintoto obliquo $\boxed{y=x+\frac53}$ sia a $+\infty$ sia a $-\infty$. <strong>Controllo:</strong> $f(10^4)-10^4\approx1{,}66667$, $f(-10^4)+10^4\approx1{,}66666$. $\blacksquare$` },
+
+{ id: 'E4.42', sez: 4, tema: 'Asintoti', d: 2,
+  t: r`Trovare il dominio e gli eventuali asintoti di $f(x)=x-2\operatorname{arctg}x$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Dominio $\R$, funzione continua: niente asintoti verticali.`,
+           r`$\frac{f(x)}x=1-\frac{2\operatorname{arctg}x}x\to1$; $f(x)-x=-2\operatorname{arctg}x$ ha limiti diversi a $\pm\infty$.` ],
+  sol: r`Dominio $\R$ e $f$ continua: nessun asintoto verticale; $f\to\pm\infty$ per $x\to\pm\infty$, quindi nessun orizzontale. $m=\lim\left(1-\frac{2\operatorname{arctg}x}x\right)=1$ (limitata su infinita), e $q=\lim(-2\operatorname{arctg}x)$ vale $-\pi$ a $+\infty$ e $\pi$ a $-\infty$. Asintoti obliqui: $\boxed{y=x-\pi}$ per $x\to+\infty$ e $\boxed{y=x+\pi}$ per $x\to-\infty$. <strong>Controllo:</strong> $f(10^4)-(10^4-\pi)\approx2\cdot10^{-4}$. $\blacksquare$` },
+
+{ id: 'E4.43', sez: 4, tema: 'Asintoti', d: 1,
+  t: r`Trovare il dominio e gli eventuali asintoti di $f(x)=\dfrac{e^x}{\sqrt{e^{2x}+1}}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`Il denominatore non si annulla mai.`,
+           r`A $+\infty$ dividi numeratore e denominatore per $e^x$; a $-\infty$ guarda chi va a $0$.` ],
+  sol: r`Dominio $\R$, $f$ continua: nessun asintoto verticale. Per $x\to+\infty$: $f(x)=\dfrac1{\sqrt{1+e^{-2x}}}\to1$, asintoto orizzontale $\boxed{y=1}$. Per $x\to-\infty$: $e^x\to0$ e $\sqrt{e^{2x}+1}\to1$, quindi $f\to0$, asintoto orizzontale $\boxed{y=0}$. Con due asintoti orizzontali non ci sono obliqui. <strong>Controllo:</strong> $f(10)\approx1-10^{-9}$, $f(-10)\approx4{,}5\cdot10^{-5}$. $\blacksquare$` },
+
+{ id: 'E4.44', sez: 4, tema: 'Continuità e discontinuità', d: 2,
+  t: r`Determinare $\alpha,\beta\in\R$ tali che sia continua in $(-\infty,2\pi)$ la funzione $$f(x)=\begin{cases}\alpha\dfrac{\sqrt{1+4|x|}-1}{|x|}&x\lt0\\ \beta&x=0\\ \dfrac{e^{\sin^2x}-1}{\log(2-\cos x)}&0\lt x\lt2\pi.\end{cases}$$ <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Fuori da $0$ i rami sono continui (controlla che $\log(2-\cos x)\ne0$ in $(0,2\pi)$). Resta $x=0$.`,
+           r`Da sinistra: $(1+t)^{1/2}-1\sim\frac t2$ con $t=4|x|$.`,
+           r`Da destra: $e^{\sin^2x}-1\sim\sin^2x\sim x^2$ e $\log(2-\cos x)=\log\bigl(1+(1-\cos x)\bigr)\sim\frac{x^2}2$.` ],
+  sol: r`Per $x\lt0$ il primo ramo è continuo; per $x\in(0,2\pi)$ anche il terzo, perché $2-\cos x>1$ e quindi $\log(2-\cos x)\ne0$. Resta la continuità in $0$.<br>
+<strong>Da sinistra:</strong> $\alpha\dfrac{(1+4|x|)^{1/2}-1}{|x|}\sim\alpha\dfrac{\frac{4|x|}2}{|x|}=2\alpha$. <strong>Da destra:</strong> $\dfrac{e^{\sin^2x}-1}{\log\bigl(1+(1-\cos x)\bigr)}\sim\dfrac{\sin^2x}{1-\cos x}\sim\dfrac{x^2}{\frac12x^2}=2$.<br>
+Serve $2\alpha=\beta=2$: $\boxed{\alpha=1,\ \beta=2}$. <strong>Controllo:</strong> $x=\mp10^{-4}$ dà $1{,}9998$ e $2{,}0000$. $\blacksquare$` },
+
+{ id: 'E4.45', sez: 4, tema: 'Continuità e discontinuità', d: 2,
+  t: r`Discutere al variare di $\alpha\in\R$ la continuità di $f(x)=\begin{cases}\dfrac{e^{-x^2/3}-\cos x}{|x|^\alpha}&x\ne0\\ 0&x=0.\end{cases}$ <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`Fuori da $0$ è continua. Al numeratore aggiungi e togli $1$.`,
+           r`$e^{-x^2/3}-1\sim-\frac{x^2}3$ e $1-\cos x\sim\frac{x^2}2$: sommali con gli o-piccoli.`,
+           r`Il rapporto è $\sim\frac16|x|^{2-\alpha}$: dipende dal segno di $2-\alpha$.` ],
+  sol: r`$e^{-x^2/3}-\cos x=\left(e^{-x^2/3}-1\right)+(1-\cos x)=-\frac{x^2}3+\frac{x^2}2+o(x^2)=\frac16x^2+o(x^2)\sim\frac16x^2$. Quindi $$f(x)\sim\frac{\frac16|x|^2}{|x|^\alpha}=\frac16|x|^{2-\alpha}\xrightarrow{x\to0}\begin{cases}0&\alpha\lt2\\ \frac16&\alpha=2\\ +\infty&\alpha>2.\end{cases}$$ Con $f(0)=0$: $f$ è <strong>continua in $\R$ per $\alpha\lt2$</strong>; per $\alpha=2$ in $0$ c'è una <strong>discontinuità eliminabile</strong> (limiti laterali $\frac16$, valore $0$); per $\alpha>2$ una <strong>discontinuità di seconda specie</strong>. <strong>Controllo:</strong> con $\alpha=2$, $x=10^{-2}$ dà $0{,}16667$. $\blacksquare$<br><span class="small muted">Nella prima versione dell'esercitazione il tutor scriveva «discontinuità di III specie (eliminabile)», la numerazione di molti libri; nella versione del 16 novembre ha corretto in «di tipo eliminabile», come la prof, per la quale la terza specie è quella con un limite laterale che non esiste.</span>` },
+
+{ id: 'E4.46', sez: 4, tema: 'Continuità e discontinuità', d: 3,
+  t: r`Determinare $\alpha,\beta\in\R$ tali che sia continua in $[0,1]$ la funzione $f(x)=\begin{cases}\alpha&x=0\\ \dfrac{\sin[\pi(x+\log x)]}{\log x}&0\lt x\lt1\\ \beta&x=1.\end{cases}$ <span class="small muted">(Esercitazione 7)</span>`,
+  hints: [ r`In $0^+$: il seno è limitato e $|\log x|\to+\infty$.`,
+           r`In $1^-$: $\log x\sim x-1$, e l'argomento del seno tende a $\pi$, non a $0$: togli $\pi$ usando $\sin(\theta+\pi)=-\sin\theta$.`,
+           r`$\sin[\pi(x+\log x)]=-\sin[\pi(x-1)+\pi\log x]\sim-\pi(x-1)-\pi\log x$.` ],
+  sol: r`In $(0,1)$ la funzione è continua; bisogna imporre $\alpha=\lim_{x\to0^+}f$ e $\beta=\lim_{x\to1^-}f$.<br>
+<strong>In $0^+$:</strong> $0\le\left|\frac{\sin[\pi(x+\log x)]}{\log x}\right|\le\frac1{|\log x|}\to0$, quindi $\boxed{\alpha=0}$.<br>
+<strong>In $1^-$:</strong> $\log x=\log\bigl(1+(x-1)\bigr)\sim x-1$. Inoltre, per ogni $\theta$, $\sin(\theta+\pi)=\sin\theta\cos\pi+\cos\theta\sin\pi=-\sin\theta$, quindi $$\sin[\pi(x+\log x)]=-\sin[\pi(x+\log x)-\pi]=-\sin[\pi(x-1)+\pi\log x]\sim-\pi(x-1)-\pi\log x,$$ perché l'argomento tende a $0$. Allora $$f(x)\sim\frac{-\pi(x-1)-\pi\log x}{x-1}=-\pi-\pi\frac{\log x}{x-1}\to-\pi-\pi=-2\pi,$$ e $\boxed{\beta=-2\pi}$. <strong>Controllo:</strong> $x=1-10^{-5}$ dà $-6{,}2830$. $\blacksquare$<br><span class="small muted">Nella nota del tutor la formula è scritta $\sin(\theta+\pi)=\sin\theta\sin\pi-\cos\theta\cos\pi$ con $\sin\pi=-1$ e $\cos\pi=0$: sono due scambi fra seno e coseno che si compensano. Quella giusta è $\sin\theta\cos\pi+\cos\theta\sin\pi$, con $\cos\pi=-1$ e $\sin\pi=0$; il risultato $-\sin\theta$ è corretto.</span>` },
+
+{ id: 'E4.47', sez: 4, tema: 'Continuità e discontinuità', d: 3,
+  t: r`Stabilire per quali $\alpha,\beta\in\R$ è continua in $(0,+\infty)$ la funzione $$f(x)=\begin{cases}\dfrac{e^{x-1}-1}{x\sin(x^2-1)}&0\lt x\lt1\\ \alpha x+\beta&1\le x\le2\\ (x-2)^2\log^2(x-2)&x>2.\end{cases}$$ <span class="small muted">(Esercitazione 7, per casa)</span>`,
+  hints: [ r`I tre rami sono continui nei loro intervalli (nel primo, $\sin(x^2-1)\ne0$ per $0\lt x\lt1$). Restano $x=1$ e $x=2$.`,
+           r`In $1^-$: $e^{x-1}-1\sim x-1$ e $\sin(x^2-1)\sim x^2-1=(x-1)(x+1)$.`,
+           r`In $2^+$: con $t=x-2\to0^+$ il ramo è $(t\log t)^2$.` ],
+  sol: r`Nel primo ramo $x^2-1\in(-1,0)$, quindi $\sin(x^2-1)\ne0$: i tre rami sono continui. Il ramo lineare è continuo anche in $1$ e in $2$, quindi basta far coincidere i limiti dall'esterno con i suoi valori.<br>
+<strong>In $x=1$:</strong> $\dfrac{e^{x-1}-1}{x\sin(x^2-1)}\sim\dfrac{x-1}{x(x-1)(x+1)}=\dfrac1{x(x+1)}\to\dfrac12$, e $f(1)=\alpha+\beta$: serve $\alpha+\beta=\frac12$.<br>
+<strong>In $x=2$:</strong> con $t=x-2\to0^+$, $(x-2)^2\log^2(x-2)=(t\log t)^2\to0$ (Lezione 14), e $f(2)=2\alpha+\beta$: serve $2\alpha+\beta=0$.<br>
+Sottraendo: $\alpha=-\frac12$, $\beta=1$. $\boxed{\alpha=-\tfrac12,\ \beta=1}$. <strong>Controllo:</strong> $\alpha+\beta=\frac12$, $2\alpha+\beta=0$; $x=1-10^{-5}$ dà $0{,}500005$. $\blacksquare$<br><span class="small muted">Il seguito (derivabilità e massimo) è l'esercizio 1 dell'Esercitazione 9, E5.16.</span>` },
+
+/* ---------- Esercitazione 8 (13 novembre): natura dei punti di discontinuità ---------- */
+{ id: 'E4.48', sez: 4, tema: 'Continuità e discontinuità', d: 1,
+  t: r`Classificare i punti di discontinuità di $f(x)=\operatorname{arctg}\left(\dfrac1{x^3}\right)$. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Dominio $\R\setminus\{0\}$, e lì $f$ è composta di funzioni continue. Resta $x=0$.`,
+           r`$\frac1{x^3}\to\pm\infty$ per $x\to0^\pm$.` ],
+  sol: r`Su $\R\setminus\{0\}$ $f$ è composta di funzioni continue. Per $x\to0^+$: $\frac1{x^3}\to+\infty$ e $f\to\frac\pi2$; per $x\to0^-$: $\frac1{x^3}\to-\infty$ e $f\to-\frac\pi2$. Limiti finiti e diversi: ogni prolungamento di $f$ in $0$ ha lì una <strong>discontinuità di prima specie</strong> (salto $\pi$). $\blacksquare$<br><span class="small muted">«Ogni prolungamento», perché $0$ non sta nel dominio: per la definizione della Lezione 15 si classificano i punti del dominio.</span>` },
+
+{ id: 'E4.49', sez: 4, tema: 'Continuità e discontinuità', d: 3,
+  t: r`Classificare i punti di discontinuità di $g(x)=\log|\sin(x^2)|-\log(x^2)$. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Dominio: $x^2\ne0$ e $\sin(x^2)\ne0$, cioè $x^2\ne k\pi$. Poiché $x^2\ge0$, bastano i $k\in\N$.`,
+           r`$g$ è pari: studia i punti $\sqrt{k\pi}$. Per $k\ne0$ il primo logaritmo va a $-\infty$, il secondo a $\log(k\pi)$.`,
+           r`Per $k=0$ è $-\infty-(-\infty)$: riunisci in $\log\left|\frac{\sin(x^2)}{x^2}\right|$.` ],
+  sol: r`<strong>Dominio:</strong> $\R\setminus\{\pm\sqrt{k\pi}:k\in\N\}$, e lì $g$ è continua. $g$ è pari, quindi basta $x_0=\sqrt{k\pi}$.<br>
+<strong>$k\ge1$:</strong> $|\sin(x^2)|\to0^+$, quindi $\log|\sin(x^2)|\to-\infty$, mentre $\log(x^2)\to\log(k\pi)\in\R$: $g\to-\infty$ da tutte e due le parti, <strong>seconda specie</strong>.<br>
+<strong>$k=0$:</strong> $g(x)=\log\left|\frac{\sin(x^2)}{x^2}\right|\to\log1=0$: limiti finiti e uguali, discontinuità <strong>eliminabile</strong> (estensione continua con $g(0)=0$). $\blacksquare$<br><strong>Controllo:</strong> $g(10^{-3})\approx-1{,}7\cdot10^{-13}$.` },
+
+{ id: 'E4.50', sez: 4, tema: 'Continuità e discontinuità', d: 2,
+  t: r`Classificare i punti di discontinuità di $h(x)=\dfrac1{x\sqrt{1+\frac1{x^2}}}$. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Porta $x$ dentro la radice: $x\sqrt{1+\frac1{x^2}}=x\frac{\sqrt{x^2+1}}{|x|}$.`,
+           r`Il segno di $\frac x{|x|}$ cambia in $0$.` ],
+  sol: r`Dominio $\R\setminus\{0\}$, $h$ continua lì. Poiché $\sqrt{1+\frac1{x^2}}=\frac{\sqrt{x^2+1}}{|x|}$: $$h(x)=\frac{|x|}{x\sqrt{1+x^2}}=\begin{cases}-\frac1{\sqrt{1+x^2}}&x\lt0\\ \frac1{\sqrt{1+x^2}}&x>0.\end{cases}$$ Quindi $h\to-1$ per $x\to0^-$ e $h\to1$ per $x\to0^+$: <strong>prima specie</strong> in $x=0$, con salto $2$. $\blacksquare$<br><strong>Attenzione:</strong> $\sqrt{x^2}=|x|$, non $x$: è proprio il segno di $x$ che crea il salto.` },
+
+{ id: 'E4.51', sez: 4, tema: 'Continuità e discontinuità', d: 2,
+  t: r`Determinare $\alpha,\beta\in\R$ tali che $$f(x)=\begin{cases}\dfrac{\sin(2x)}x&-1\lt x\lt0\\ \beta&x=0\\ \alpha\left[\sin^2x\right]^{\frac1{\log(x^2)}}&0\lt x\lt1\end{cases}$$ abbia in $x_0=0$ una discontinuità eliminabile. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Eliminabile: limiti laterali finiti e uguali, e $f(0)$ diverso da quel valore.`,
+           r`Da destra: $[\sin^2x]^{1/\log(x^2)}=e^{\frac{\log(\sin^2x)}{\log(x^2)}}$, e $\sin^2x\sim x^2$.`,
+           r`Si può passare agli asintotici dentro il logaritmo perché $x^2\to0\ne1$ (Esercitazione 5).` ],
+  sol: r`<strong>Da sinistra:</strong> $\frac{\sin(2x)}x=2\cdot\frac{\sin(2x)}{2x}\to2$.<br>
+<strong>Da destra:</strong> $[\sin^2x]^{1/\log(x^2)}=e^{\frac{\log(\sin^2x)}{\log(x^2)}}$. Poiché $\sin^2x\sim x^2\to0\ne1$, $\log(\sin^2x)\sim\log(x^2)$, quindi l'esponente tende a $1$ e il limite è $\alpha e$.<br>
+Discontinuità eliminabile: $\alpha e=2$ e $\beta\ne2$, cioè $\boxed{\alpha=\tfrac2e,\ \beta\ne2}$. $\blacksquare$<br><strong>Controllo:</strong> $x=10^{-4}$ dà $[\sin^2x]^{1/\log(x^2)}\approx2{,}71828$.` },
+
+{ id: 'E4.52', sez: 4, tema: 'Continuità e discontinuità', d: 3,
+  t: r`Dimostrare che esiste un solo $x_0\ge0$ in cui è continua la funzione $f(x)=\sqrt{\operatorname{arctg}x}$ per $x\in[0,+\infty)\cap\Q$, $f(x)=-\log x$ per $x\in[0,+\infty)\setminus\Q$. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Prendi due successioni che tendono a $x_0$: una di razionali, una di irrazionali. Dove vanno $f(a_m)$ e $f(b_m)$?`,
+           r`$f$ è continua in $x_0$ se e solo se $\sqrt{\operatorname{arctg}x_0}=-\log x_0$.`,
+           r`Studia $g(x)=\sqrt{\operatorname{arctg}x}+\log x$ su $(0,+\infty)$: limiti agli estremi, monotonia, teorema degli zeri.` ],
+  sol: r`Sia $x_0>0$ e siano $a_m\to x_0$ razionali e $b_m\to x_0$ irrazionali (esistono sempre: per esempio troncamenti decimali di $x_0$, e $b_m=a_m+\frac{\sqrt2}m$). Per la continuità di $\sqrt{\operatorname{arctg}x}$ e di $\log x$: $f(a_m)\to\sqrt{\operatorname{arctg}x_0}$ e $f(b_m)\to-\log x_0$.<br>
+Se i due numeri sono diversi, per la caratterizzazione con le successioni $f$ non è continua in $x_0$. Se sono uguali, ogni successione $c_m\to x_0$ si spezza nella parte razionale e in quella irrazionale, che tendono allo stesso valore $f(x_0)$: $f$ è continua. In $x_0=0$, invece, $f(b_m)=-\log b_m\to+\infty\ne f(0)$.<br>
+Dunque $f$ è continua in $x_0$ se e solo se $g(x_0)=0$, con $g(x)=\sqrt{\operatorname{arctg}x}+\log x$. $g$ è continua su $(0,+\infty)$, $g\to-\infty$ per $x\to0^+$ e $g\to+\infty$ per $x\to+\infty$: per il <strong>teorema degli zeri</strong> (su un intervallo $[\varepsilon,M]$ opportuno) $g$ si annulla; ed è strettamente crescente (somma di crescenti), quindi lo zero è <strong>unico</strong>. $\blacksquare$<br><strong>Controllo numerico:</strong> $x_0\approx0{,}5047$, dove $\sqrt{\operatorname{arctg}x_0}\approx-\log x_0\approx0{,}6837$.` },
+
+/* ======================= SEZIONE 5 ======================= */
+{ id: 'E5.1', sez: 5, tema: 'Derivata con la definizione', d: 1,
+  t: r`Calcolare con la definizione la derivata di $f(x)=x^3$ in un punto $x$ qualsiasi.`,
+  hints: [ r`Scrivi il rapporto incrementale $\frac{(x+h)^3-x^3}h$.`,
+           r`$(x+h)^3=x^3+3x^2h+3xh^2+h^3$.` ],
+  sol: r`$$\frac{(x+h)^3-x^3}h=\frac{3x^2h+3xh^2+h^3}h=3x^2+3xh+h^2\xrightarrow{h\to0}3x^2.$$ Quindi $Dx^3=\boxed{3x^2}$, come dà la formula $Dx^\alpha=\alpha x^{\alpha-1}$. $\blacksquare$` },
+
+{ id: 'E5.2', sez: 5, tema: 'Derivata con la definizione', d: 1,
+  t: r`Calcolare con la definizione la derivata di $f(x)=\frac1x$ in un punto $x\ne0$.`,
+  hints: [ r`Fai il denominatore comune in $\frac1{x+h}-\frac1x$.`,
+           r`$\frac1{x+h}-\frac1x=\frac{-h}{x(x+h)}$.` ],
+  sol: r`$$\frac{\frac1{x+h}-\frac1x}h=\frac{x-(x+h)}{h\,x(x+h)}=-\frac1{x(x+h)}\xrightarrow{h\to0}-\frac1{x^2}.$$ $D\frac1x=\boxed{-\frac1{x^2}}$, che è $\alpha x^{\alpha-1}$ con $\alpha=-1$. <strong>Controllo:</strong> in $x=2$ la pendenza è $-\frac14$, e $\frac{1/2{,}001-1/2}{0{,}001}\approx-0{,}2499$. $\blacksquare$` },
+
+{ id: 'E5.3', sez: 5, tema: 'Derivata con la definizione', d: 2,
+  t: r`Dimostrare che $f(x)=|x|$ è continua ma non derivabile in $0$, mentre $g(x)=x|x|$ è derivabile in $0$. Quanto vale $g'(0)$?`,
+  hints: [ r`Scrivi i due rapporti incrementali in $0$: $\frac{|h|}h$ e $\frac{h|h|}h$.`,
+           r`$\frac{|h|}h$ vale $\pm1$ a seconda del segno di $h$; $\frac{h|h|}h=|h|$.` ],
+  sol: r`<strong>$|x|$.</strong> È continua in $0$ ($|x|\to0=|0|$). Il rapporto incrementale $\frac{|0+h|-|0|}h=\frac{|h|}h$ vale $1$ per $h>0$ e $-1$ per $h\lt0$: i limiti laterali sono diversi e il limite non esiste, quindi $|x|$ <strong>non è derivabile</strong> in $0$. È il controesempio al viceversa della dimostrazione n° 18.<br>
+<strong>$x|x|$.</strong> $\frac{g(h)-g(0)}h=\frac{h|h|}h=|h|\to0$: $g$ è derivabile in $0$ con $\boxed{g'(0)=0}$. $\blacksquare$<br><em>Morale:</em> moltiplicare per un fattore che si annulla nel punto «arrotonda» l'angolo.` },
+
+{ id: 'E5.4', sez: 5, tema: 'Regole di derivazione', d: 1,
+  t: r`Calcolare le derivate di: (a) $x^2\sin x$; (b) $\dfrac{e^x}{x^2+1}$; (c) $\log(x^2+1)$.`,
+  hints: [ r`(a) regola del prodotto; (b) regola del quoziente; (c) derivata della composta.`,
+           r`In (b) il numeratore è $e^x(x^2+1)-e^x\cdot2x$: raccogli $e^x$.` ],
+  sol: r`(a) $D[x^2\sin x]=2x\sin x+x^2\cos x$.<br>
+(b) $D\left[\dfrac{e^x}{x^2+1}\right]=\dfrac{e^x(x^2+1)-e^x\cdot2x}{(x^2+1)^2}=\dfrac{e^x(x-1)^2}{(x^2+1)^2}$.<br>
+(c) $D\log(x^2+1)=\dfrac1{x^2+1}\cdot2x=\dfrac{2x}{x^2+1}$.<br>
+<strong>Controllo</strong> con il rapporto incrementale simmetrico, $h=10^{-6}$, in $x=0{,}3$: i tre valori coincidono con le formule fino alla sesta cifra. $\blacksquare$` },
+
+{ id: 'E5.5', sez: 5, tema: 'Regole di derivazione', d: 2,
+  t: r`Calcolare le derivate di: (a) $e^{\sin x}$; (b) $\sqrt{1+x^2}$; (c) $\sin(\log x)$; (d) $x^x$ per $x>0$.`,
+  hints: [ r`Sono tutte composte: derivata della funzione esterna calcolata nell'interna, per la derivata dell'interna.`,
+           r`(d) Né $Dx^\alpha$ né $Da^x$: base ed esponente variano insieme. Scrivi $x^x=e^{x\log x}$, come fa il prof per $x^\alpha$.` ],
+  sol: r`(a) $De^{\sin x}=e^{\sin x}\cos x$.<br>
+(b) $D(1+x^2)^{1/2}=\frac12(1+x^2)^{-1/2}\cdot2x=\dfrac x{\sqrt{1+x^2}}$.<br>
+(c) $D\sin(\log x)=\cos(\log x)\cdot\dfrac1x$.<br>
+(d) $x^x=e^{x\log x}$, quindi $Dx^x=e^{x\log x}\cdot D(x\log x)=x^x\left(\log x+x\cdot\frac1x\right)=x^x(\log x+1)$.<br>
+<strong>Controllo numerico:</strong> in $x=1$, (d) dà $1\cdot(0+1)=1$, e $\frac{1{,}001^{1{,}001}-1}{0{,}001}\approx1{,}001$. $\blacksquare$<br><strong>Attenzione:</strong> $Dx^x=x\cdot x^{x-1}$ e $Dx^x=x^x\log x$ sono i due errori tipici: ognuno tratta come costante una delle due $x$.` },
+
+{ id: 'E5.6', sez: 5, tema: 'Retta tangente', d: 2,
+  t: r`Scrivere l'equazione della retta tangente: (a) al grafico di $\log x$ nel punto di ascissa $e$; (b) al grafico di $e^{2x}$ nel punto di ascissa $0$.`,
+  hints: [ r`La tangente in $x_0$ è $y=f(x_0)+f'(x_0)(x-x_0)$.`,
+           r`(a) $f(e)=1$, $f'(e)=\frac1e$. (b) $f(0)=1$, $f'(x)=2e^{2x}$.` ],
+  sol: r`(a) $y=1+\frac1e(x-e)=\boxed{\dfrac xe}$: passa per l'origine. (b) $y=1+2(x-0)=\boxed{2x+1}$.<br>
+<strong>Controllo:</strong> in (a), per $x=e$ la retta vale $1=\log e$; in (b), per $x=0$ vale $1=e^0$. $\blacksquare$` },
+
+{ id: 'E5.7', sez: 5, tema: 'Derivata della funzione inversa', d: 2,
+  t: r`Ricavare $D\operatorname{arctg}x$ con il teorema sulla derivata della funzione inversa, come il prof fa per $\arcsin$.`,
+  hints: [ r`$\operatorname{arctg}$ è l'inversa di $\operatorname{tg}y$ su $\left(-\frac\pi2,\frac\pi2\right)$, e $D\operatorname{tg}y=\frac1{\cos^2y}$.`,
+           r`Scrivi $\frac1{\cos^2y}=\frac{\cos^2y+\sin^2y}{\cos^2y}=1+\operatorname{tg}^2y$.` ],
+  sol: r`Con $y=\operatorname{arctg}x$, cioè $x=\operatorname{tg}y$, $y\in\left(-\frac\pi2,\frac\pi2\right)$: $$D\operatorname{arctg}x=\frac1{[D\operatorname{tg}y]_{y=\operatorname{arctg}x}}=\Bigl[\cos^2y\Bigr]_{y=\operatorname{arctg}x}=\frac1{1+\operatorname{tg}^2y}\Big|_{y=\operatorname{arctg}x}=\boxed{\frac1{1+x^2}},$$ usando $\cos^2y=\frac1{1+\operatorname{tg}^2y}$. Vale per ogni $x\in\R$, perché $D\operatorname{tg}y\ne0$ ovunque. <strong>Controllo:</strong> in $x=1$ la formula dà $\frac12$, e $\frac{\operatorname{arctg}(1{,}001)-\frac\pi4}{0{,}001}\approx0{,}49975$. $\blacksquare$` },
+
+{ id: 'E5.8', sez: 5, tema: 'Derivata con la definizione', d: 3,
+  t: r`Determinare $a,b\in\R$ in modo che $f(x)=\begin{cases}ax+b&x\le1\\ x^2&x>1\end{cases}$ sia derivabile in $x_0=1$.`,
+  hints: [ r`Derivabile implica continua: comincia imponendo la continuità in $1$.`,
+           r`Poi il rapporto incrementale $\frac{f(1+h)-f(1)}h$ deve avere limite: calcola i limiti per $h\to0^-$ e $h\to0^+$ (Sezione 4) e imponi che coincidano.` ],
+  sol: r`<strong>Continuità:</strong> $f(1)=a+b$ e $\lim_{x\to1^+}x^2=1$, quindi serve $a+b=1$.<br>
+<strong>Rapporto incrementale</strong>, con $f(1)=a+b=1$: per $h\lt0$, $\frac{a(1+h)+b-1}h=\frac{ah}h=a$; per $h>0$, $\frac{(1+h)^2-1}h=2+h\to2$. Il limite esiste se e solo se i limiti laterali coincidono: $a=2$, e quindi $b=-1$.<br>
+$\boxed{a=2,\ b=-1}$: $f$ si raccorda con la retta $y=2x-1$, la tangente a $x^2$ in $1$ (Q105). <strong>Controllo:</strong> con $h=\mp10^{-5}$ i rapporti incrementali valgono $2$ e $2{,}00001$. $\blacksquare$<br><span class="small muted">Senza imporre prima la continuità, per $h\to0^-$ il rapporto sarebbe $\frac{ah+a+b-1}h$, che diverge se $a+b\ne1$: la continuità serve davvero.</span>` },
+
+/* ---------- Esercitazione 8 (13 novembre): derivabilità ---------- */
+{ id: 'E5.9', sez: 5, tema: 'Regole di derivazione', d: 2,
+  t: r`Stabilire in quali punti del dominio sono derivabili, e calcolarne la derivata: (a) $|x|\,x$; (b) $\dfrac{x^2-2}{x(x+1)}$; (c) $\sqrt x\,e^{1-x^2}$. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`(a) Separa $x>0$ e $x\lt0$; in $0$ usa il rapporto incrementale.`,
+           r`(b) Quoziente; il numeratore si semplifica in $x^2+4x+2$.`,
+           r`(c) Prodotto; in $0$ guarda il fattore $\frac1{2\sqrt x}$.` ],
+  sol: r`(a) Dominio $\R$. Per $x>0$, $f=x^2$ e $f'=2x$; per $x\lt0$, $f=-x^2$ e $f'=-2x$; in $0$: $\frac{|h|h}h=|h|\to0$, quindi derivabile con $f'(0)=0$. In breve $f'(x)=2|x|$ ovunque.<br>
+(b) Dominio $\R\setminus\{0,-1\}$, derivabile ovunque lì: $$f'(x)=\frac{2x(x^2+x)-(x^2-2)(2x+1)}{[x(x+1)]^2}=\frac{x^2+4x+2}{x^2(x+1)^2}.$$
+(c) Dominio $[0,+\infty)$: $f'(x)=\left(\frac1{2\sqrt x}-2x\sqrt x\right)e^{1-x^2}$ per $x>0$; in $0$ il rapporto $\frac{\sqrt h\,e^{1-h^2}}h=\frac{e^{1-h^2}}{\sqrt h}\to+\infty$: <strong>non derivabile</strong> in $0$.<br>
+<strong>Controllo</strong> con il rapporto incrementale simmetrico in $x=1{,}7$ per (b) e $x=0{,}6$ per (c): coincide con le formule fino alla nona cifra. $\blacksquare$` },
+
+{ id: 'E5.10', sez: 5, tema: 'Regole di derivazione', d: 2,
+  t: r`Stabilire in quali punti del dominio sono derivabili, e calcolarne la derivata: (d) $\cos\sqrt{1+x^2}$; (e) $\left(x^{3/2}+1\right)^{\sin x}$; (f) $\log\bigl|\log(\cos x)\bigr|$. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`(e) Base ed esponente variano: scrivi $e^{\sin x\,\log(x^{3/2}+1)}$.`,
+           r`(f) Dominio: $\cos x>0$ e $\cos x\ne1$. Lì $0\lt\cos x\lt1$, quindi $\log(\cos x)\lt0$ e il modulo si toglie con un segno meno.` ],
+  sol: r`(d) Dominio $\R$: $f'(x)=-\sin\sqrt{1+x^2}\cdot\dfrac{2x}{2\sqrt{1+x^2}}=-\dfrac{x\sin\sqrt{1+x^2}}{\sqrt{1+x^2}}$.<br>
+(e) Dominio $[0,+\infty)$: $f=e^{\sin x\log(x^{3/2}+1)}$ e $$f'(x)=\left[\cos x\,\log\left(x^{3/2}+1\right)+\frac32\cdot\frac{\sqrt x\,\sin x}{x^{3/2}+1}\right]\left(x^{3/2}+1\right)^{\sin x}.$$
+(f) Dominio: $-\frac\pi2+2k\pi\lt x\lt\frac\pi2+2k\pi$, $x\ne2k\pi$ ($k\in\Z$). Lì $f=\log\bigl(-\log(\cos x)\bigr)$ e $$f'(x)=\frac1{-\log(\cos x)}\cdot\left(-\frac{-\sin x}{\cos x}\right)=\frac{\operatorname{tg}x}{-\log(\cos x)}=\frac{\operatorname{tg}x}{|\log(\cos x)|}.$$
+<strong>Controllo:</strong> in $x=1{,}3$, $0{,}8$, $0{,}5$ e $-0{,}9$ le formule coincidono con il rapporto incrementale numerico. $\blacksquare$` },
+
+{ id: 'E5.11', sez: 5, tema: 'Punti di non derivabilità', d: 3,
+  t: r`Determinare i punti di derivabilità, e calcolare la derivata, di $f(x)=\dfrac1{\sqrt{|x^2-x|+x}}$. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Togli il modulo: $x^2-x\ge0\iff x\le0\vee x\ge1$.`,
+           r`Viene $f=\frac1{|x|}$ per $x\lt0$ e per $x\ge1$, $f=\frac1{\sqrt{2x-x^2}}$ per $0\lt x\lt1$; in $0$ non è definita.`,
+           r`In $x_0=1$ calcola i due rapporti incrementali. A sinistra $\frac1{\sqrt{1-(x-1)^2}}-1\sim\frac12(x-1)^2$.` ],
+  sol: r`Per $x\lt0$ o $x\ge1$: $|x^2-x|+x=x^2$; per $0\lt x\lt1$: $x-x^2+x=2x-x^2>0$. In $0$ il radicando è $0$. Quindi $\mathrm{Dom}=\R\setminus\{0\}$ e $$f(x)=\begin{cases}-\frac1x&x\lt0\\ \frac1{\sqrt{2x-x^2}}&0\lt x\lt1\\ \frac1x&x\ge1.\end{cases}$$
+Derivate: $f'(x)=\frac1{x^2}$ in $(-\infty,0)$; $f'(x)=-\frac{2-2x}{2(2x-x^2)^{3/2}}=\frac{x-1}{(2x-x^2)^{3/2}}$ in $(0,1)$; $f'(x)=-\frac1{x^2}$ in $(1,+\infty)$.<br>
+<strong>In $x_0=1$</strong> ($f(1)=1$): da sinistra $\dfrac{\frac1{\sqrt{2x-x^2}}-1}{x-1}=\dfrac{1-\sqrt{1-(x-1)^2}}{\sqrt{2x-x^2}\,(x-1)}\sim\dfrac{\frac12(x-1)^2}{x-1}\to0$; da destra $\dfrac{\frac1x-1}{x-1}=-\dfrac1x\to-1$. Derivate laterali finite e diverse: <strong>punto angoloso</strong>, $f$ non è derivabile in $1$. $\blacksquare$<br><strong>Controllo:</strong> con $h=\mp10^{-6}$ i rapporti valgono circa $0$ e $-1$.` },
+
+{ id: 'E5.12', sez: 5, tema: 'Derivata con la definizione', d: 2,
+  t: r`Dimostrare che $f(x)=x^2\sin\frac1x$ per $x\ne0$, $f(0)=0$, è derivabile su tutto $\R$, ma che $f'$ non è continua in $0$. <span class="small muted">(Esercitazione 8; è anche l'esempio della Lezione 17)</span>`,
+  hints: [ r`Fuori da $0$ è composta di derivabili. In $0$ usa il rapporto incrementale e i carabinieri.`,
+           r`Per $x\ne0$, $f'(x)=2x\sin\frac1x-\cos\frac1x$: che cosa fa $\cos\frac1x$ per $x\to0$?` ],
+  sol: r`Per $x\ne0$ $f$ è derivabile (prodotto e composta di derivabili). In $0$: $\frac{f(x)-f(0)}x=x\sin\frac1x$ e $0\le\left|x\sin\frac1x\right|\le|x|\to0$, quindi $f'(0)=0$.<br>
+Per $x\ne0$: $f'(x)=2x\sin\frac1x+x^2\cos\frac1x\cdot\left(-\frac1{x^2}\right)=2x\sin\frac1x-\cos\frac1x$. Il primo termine tende a $0$, ma $\cos\frac1x$ non ha limite (oscilla fra $-1$ e $1$): $\lim_{x\to0}f'(x)$ <strong>non esiste</strong>, quindi $f'$ non è continua in $0$, pur essendo $f'(0)=0$. $\blacksquare$<br><em>Morale:</em> il teorema sul limite della derivata non si può usare al contrario: «il limite di $f'$ non esiste» non vuol dire «non derivabile».` },
+
+{ id: 'E5.13', sez: 5, tema: 'Derivata con la definizione', d: 3,
+  t: r`Data $f(x)=x^2$ per $x\in\Q$ e $f(x)=-x^2$ per $x\in\R\setminus\Q$, stabilire in quali $x\in\R$ è derivabile. <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Derivabile implica continua: dove è continua? Usa una successione di razionali e una di irrazionali.`,
+           r`In $x_0=0$: $\left|\frac{f(x)}x\right|=|x|$.` ],
+  sol: r`<strong>$x_0\ne0$.</strong> Con $a_m\to x_0$ razionali e $b_m\to x_0$ irrazionali: $f(a_m)=a_m^2\to x_0^2$ e $f(b_m)=-b_m^2\to-x_0^2\ne x_0^2$. Quindi $f$ non è continua in $x_0$, e tanto meno derivabile.<br>
+<strong>$x_0=0$.</strong> $0\le\left|\frac{f(x)-f(0)}x\right|=\frac{x^2}{|x|}=|x|\to0$: $f$ è derivabile in $0$ con $f'(0)=0$.<br>
+$f$ è derivabile <strong>solo</strong> in $x_0=0$. $\blacksquare$` },
+
+{ id: 'E5.14', sez: 5, tema: 'Derivabilità con parametri', d: 3,
+  t: r`Determinare $\alpha,\beta\in\R$ tali che $f(x)=\alpha\sqrt x\operatorname{arctg}x$ per $x\ge0$, $f(x)=\arcsin^2x+\beta$ per $x\in(-1,0)$ sia derivabile in $(-1,+\infty)$. Per quali di questi valori è derivabile in $(-1,+\infty)$ la funzione $g$ che vale $f'(x)$ per $x\ne0$ e $g(0)=0$? <span class="small muted">(Esercitazione 8)</span>`,
+  hints: [ r`Prima la continuità in $0$, poi il rapporto incrementale: $\frac{\operatorname{arctg}x}x\to1$, $\arcsin x\sim x$.`,
+           r`Per $g$: scrivi $f'$ sui due lati, controlla la continuità in $0$, poi i rapporti incrementali di $g$ da destra e da sinistra.`,
+           r`Da sinistra $\frac{g(x)}x=\frac{2\arcsin x}{x\sqrt{1-x^2}}\to2$. Da destra il rapporto contiene $\frac\alpha{\sqrt x}$.` ],
+  sol: r`<strong>$f$.</strong> Fuori da $0$ è derivabile per ogni $\alpha,\beta$. In $0$: $\lim_{0^+}f=0=f(0)$ e $\lim_{0^-}f=\beta$, quindi serve $\beta=0$. Poi $\frac{\alpha\sqrt x\operatorname{arctg}x}x=\alpha\sqrt x\cdot\frac{\operatorname{arctg}x}x\to0$ e $\frac{\arcsin^2x}x\sim\frac{x^2}x\to0$: $f$ è derivabile in $(-1,+\infty)$ per $\boxed{\beta=0}$ e ogni $\alpha$, con $f'(0)=0$.<br>
+<strong>$g$.</strong> $g(x)=\alpha\left[\frac{\operatorname{arctg}x}{2\sqrt x}+\frac{\sqrt x}{1+x^2}\right]$ per $x>0$, $g(x)=\frac{2\arcsin x}{\sqrt{1-x^2}}$ per $-1\lt x\lt0$. È continua in $0$ (i due rami tendono a $0$). Da destra: $\frac{g(x)}x=\alpha\left[\frac{\operatorname{arctg}x}x\cdot\frac1{2\sqrt x}+\frac1{\sqrt x(1+x^2)}\right]\to\pm\infty$ se $\alpha\ne0$, e $0$ se $\alpha=0$. Da sinistra: $\frac{2\arcsin x}{x\sqrt{1-x^2}}\to2$. Quindi $g$ <strong>non è derivabile in $0$ per nessun $\alpha$</strong>: per $\alpha=0$ le derivate laterali sono $0$ e $2$. $\blacksquare$<br><strong>Controllo:</strong> con $\alpha=1$, $h=10^{-6}$: rapporto destro $\approx1500$, sinistro $\approx2$.` },
+
+{ id: 'E5.15', sez: 5, tema: 'Derivata con la definizione', d: 2,
+  t: r`Siano $f,g:I\to\R$ derivabili sull'intervallo aperto $I$, con $f'(x)\ne0$ e $g'(x)\ne0$ per ogni $x\in I$, e sia $f\sim g$ per $x\to x_0\in I$. È vero che allora $f'\sim g'$ per $x\to x_0$? <span class="small muted">(Esercitazione 8, per casa)</span>`,
+  hints: [ r`Se $f(x_0)=g(x_0)\ne0$, $f\sim g$ è automatico per continuità.`,
+           r`Prova con due rette per lo stesso punto, con pendenze diverse.` ],
+  sol: r`<strong>No.</strong> Controesempio: $I=\R$, $x_0=0$, $f(x)=x+1$, $g(x)=2x+1$. Sono derivabili con $f'=1\ne0$ e $g'=2\ne0$, e $\frac{f(x)}{g(x)}\to\frac11=1$, cioè $f\sim g$. Ma $\frac{f'(x)}{g'(x)}=\frac12\not\to1$. $\blacksquare$<br><em>Morale:</em> gli asintotici non si derivano. Due funzioni possono avere lo stesso valore in un punto e pendenze diverse.` },
+
+/* ---------- Esercitazione 9 (20 novembre): massimi, minimi, Lagrange ---------- */
+{ id: 'E5.16', sez: 5, tema: 'Derivabilità con parametri', d: 3,
+  t: r`Per $f(x)=\dfrac{e^{x-1}-1}{x\sin(x^2-1)}$ in $(0,1)$, $\alpha x+\beta$ in $[1,2]$, $(x-2)^2\log^2(x-2)$ in $(2,+\infty)$, con $\alpha,\beta$ che la rendono continua in $(0,+\infty)$ (E4.47: $\alpha=-\frac12$, $\beta=1$): $f$ è derivabile in $(0,+\infty)$? Ammette massimo assoluto? <span class="small muted">(Esercitazioni 8 e 9)</span>`,
+  hints: [ r`Derivabile implica continua: restano solo $\alpha=-\frac12$, $\beta=1$. Controlla i punti di raccordo.`,
+           r`In $x=2$: da sinistra la pendenza è $\alpha$; da destra il rapporto è $\frac{t^2\log^2t}t=t\log^2t$ con $t=x-2$.`,
+           r`Per il massimo: che cosa fa $f$ per $x\to+\infty$?` ],
+  sol: r`La derivabilità richiede la continuità, quindi $\alpha=-\frac12$, $\beta=1$ (E4.47). In $x=2$, $f(2)=0$: da sinistra $\frac{-\frac12x+1-0}{x-2}=-\frac12$; da destra, con $t=x-2\to0^+$, $\frac{t^2\log^2t}t=\left(\sqrt t\log t\right)^2\to0$ (con $t=e^{-u}$: $\left(\frac u{e^{u/2}}\right)^2\to0$ per la gerarchia degli infiniti). Derivate laterali $-\frac12\ne0$: <strong>$f$ non è derivabile in $x=2$</strong>, per nessuna scelta dei parametri.<br>
+<strong>Massimo:</strong> $\lim_{x\to+\infty}(x-2)^2\log^2(x-2)=+\infty$, quindi $f$ non è limitata superiormente e <strong>non ha massimo assoluto</strong> in $(0,+\infty)$ (lo stesso succede per $x\to0^+$, dove $f\to+\infty$). $\blacksquare$<br><span class="small muted">In $x=1$ invece $f$ è derivabile: il rapporto incrementale da sinistra tende a $-\frac12=\alpha$ (controllo numerico), ma non serve per rispondere, perché basta il punto $x=2$.</span>` },
+
+{ id: 'E5.17', sez: 5, tema: 'Studio di funzione', d: 2,
+  t: r`Stabilire al variare di $c\in\R$ il numero delle soluzioni reali dell'equazione $x^2=\log x+c$. <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`Studia $f(x)=x^2-\log x-c$ su $(0,+\infty)$: limiti agli estremi e segno di $f'$.`,
+           r`$f'(x)=\frac{2x^2-1}x$: minimo in $\frac1{\sqrt2}$. Quanto vale $f$ lì?` ],
+  sol: r`$f(x)=x^2-\log x-c$ è continua e derivabile su $(0,+\infty)$, con $f\to+\infty$ per $x\to0^+$ e per $x\to+\infty$ (gerarchia degli infiniti). $f'(x)=2x-\frac1x=\frac{2x^2-1}x$: $f$ è strettamente decrescente in $\left(0,\frac1{\sqrt2}\right)$ e strettamente crescente in $\left(\frac1{\sqrt2},+\infty\right)$, con minimo assoluto $$f\left(\tfrac1{\sqrt2}\right)=\tfrac12-\log\tfrac1{\sqrt2}-c=\tfrac12(1+\log2)-c.$$
+Quindi (valori intermedi su ciascun tratto monotòno): <strong>due soluzioni</strong> se $c>\frac12(1+\log2)$, <strong>una</strong> se $c=\frac12(1+\log2)$, <strong>nessuna</strong> se $c\lt\frac12(1+\log2)$. $\blacksquare$<br><strong>Controllo:</strong> $\frac12(1+\log2)\approx0{,}8466$; per $c=1$ una soluzione è $x=1$ ($1=0+1$), l'altra sta in $\left(0,\frac1{\sqrt2}\right)$.` },
+
+{ id: 'E5.18', sez: 5, tema: 'Massimi e minimi', d: 2,
+  t: r`Stabilire se $f(x)=\left(1+\sqrt{\dfrac x{2-x}}\right)e^{-\sqrt{1-x}}$ ammette massimo e minimo assoluti, e in caso affermativo calcolarli. <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`Dominio: $\frac x{2-x}\ge0$ e $1-x\ge0$. Viene un intervallo chiuso e limitato: che teorema si usa?`,
+           r`Ognuno dei due fattori è positivo e crescente su $[0,1]$.` ],
+  sol: r`Dominio: $0\le x\lt2$ e $x\le1$, cioè $[0,1]$. $f$ è continua sull'intervallo chiuso e limitato $[0,1]$: per <strong>Weierstrass</strong> ha massimo e minimo assoluti.<br>
+<strong>Modo 1.</strong> Per $0\le a\lt b\le1$: $\frac a{2-a}\lt\frac b{2-b}$, quindi $1+\sqrt{\frac x{2-x}}$ è strettamente crescente; e $1-a>1-b$ dà $e^{-\sqrt{1-a}}\lt e^{-\sqrt{1-b}}$. Prodotto di funzioni positive strettamente crescenti: $f$ è strettamente crescente.<br>
+<strong>Modo 2.</strong> In $(0,1)$: $f'(x)=\left[\sqrt{\frac{2-x}x}\cdot\frac1{(2-x)^2}+\left(1+\sqrt{\frac x{2-x}}\right)\frac1{2\sqrt{1-x}}\right]e^{-\sqrt{1-x}}>0$.<br>
+Minimo in $x=0$: $f(0)=\boxed{\tfrac1e}$; massimo in $x=1$: $f(1)=(1+1)e^0=\boxed{2}$. $\blacksquare$` },
+
+{ id: 'E5.19', sez: 5, tema: 'Massimi e minimi', d: 2,
+  t: r`Determinare massimo e minimo assoluti di $f(x)=x\log|x|$ per $x\in[-1,1]\setminus\{0\}$, $f(0)=0$. <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`È continua in $0$? ($x\log x\to0$.) Allora vale Weierstrass.`,
+           r`$f$ è dispari: studia $(0,1)$, dove $f'(x)=\log x+1$.` ],
+  sol: r`$f$ è continua su $[-1,1]$ ($x\log|x|\to0=f(0)$, Lezione 14), quindi ha massimo e minimo assoluti. È dispari, quindi basta $[0,1]$: per $x\in(0,1)$, $f'(x)=\log x+1$, negativa per $0\lt x\lt\frac1e$ e positiva per $\frac1e\lt x\lt1$. Su $[0,1]$: minimo in $\frac1e$, e siccome $f(0)=f(1)=0$ i punti di massimo sono $0$ e $1$.<br>
+Per disparità su $[-1,0]$: massimo in $-\frac1e$, minimi in $-1$ e $0$. In tutto $[-1,1]$: $$\min f=f\left(\tfrac1e\right)=\boxed{-\tfrac1e},\qquad\max f=f\left(-\tfrac1e\right)=\boxed{\tfrac1e}.$$ $\blacksquare$ <strong>Controllo:</strong> su una griglia di passo $10^{-4}$ i valori estremi sono $\pm0{,}36788$.` },
+
+{ id: 'E5.20', sez: 5, tema: 'Lagrange', d: 1,
+  t: r`Dimostrare che per ogni $a,b\in\R$ vale $|\sin b-\sin a|\le|b-a|$. <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`Se $a=b$ è ovvio; altrimenti supponi $a\lt b$ e applica Lagrange a $\sin x$ su $[a,b]$.` ],
+  sol: r`Se $a=b$ è ovvio; sia $a\lt b$. $\sin x$ è derivabile su $\R$ con derivata $\cos x$: per <strong>Lagrange</strong> su $[a,b]$ esiste $c\in(a,b)$ con $\frac{\sin b-\sin a}{b-a}=\cos c$. Poiché $|\cos c|\le1$: $$\frac{|\sin b-\sin a|}{|b-a|}=|\cos c|\le1\ \Longrightarrow\ |\sin b-\sin a|\le|b-a|.$$ $\blacksquare$ <em>Morale:</em> è la stima che nella Lezione 14 si otteneva con le prostaferesi, qui in una riga.` },
+
+{ id: 'E5.21', sez: 5, tema: 'Funzioni costanti', d: 2,
+  t: r`Dimostrare che $\operatorname{arctg}x+\operatorname{arctg}\dfrac1x=\begin{cases}\frac\pi2&x>0\\ -\frac\pi2&x\lt0.\end{cases}$ <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`Deriva $f(x)=\operatorname{arctg}x+\operatorname{arctg}\frac1x$.`,
+           r`$f'=0$ su $(-\infty,0)$ e su $(0,+\infty)$: su ciascuno dei due intervalli $f$ è costante. Calcola la costante in un punto comodo.` ],
+  sol: r`$\mathrm{Dom}f=(-\infty,0)\cup(0,+\infty)$ e $$f'(x)=\frac1{1+x^2}+\frac1{1+\frac1{x^2}}\cdot\left(-\frac1{x^2}\right)=\frac1{1+x^2}-\frac1{x^2+1}=0.$$ Per la caratterizzazione delle funzioni costanti, $f$ è costante <strong>su ciascuno dei due intervalli</strong> (non su tutto il dominio, che non è un intervallo): $f=c_1$ su $(-\infty,0)$, $f=c_2$ su $(0,+\infty)$. $f(1)=2\operatorname{arctg}1=\frac\pi2$, e $f$ è dispari, quindi $f(-1)=-\frac\pi2$. $\blacksquare$<br>È l'esempio della Lezione 18 di funzione con derivata nulla e non costante.` },
+
+{ id: 'E5.22', sez: 5, tema: 'Funzioni costanti', d: 2,
+  t: r`Dimostrare che $\arccos x+\arcsin x=\frac\pi2$ per ogni $x\in[-1,1]$. <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`$D\arcsin x=\frac1{\sqrt{1-x^2}}$ (Lezione 16); $D\arccos x$ si ricava allo stesso modo con l'inversa di $\cos$ su $(0,\pi)$.`,
+           r`La derivata della somma è $0$ su $(-1,1)$, che è un intervallo. Poi controlla a parte $x=\pm1$.` ],
+  sol: r`<strong>$D\arccos x$.</strong> $\cos:[0,\pi]\to[-1,1]$ è invertibile e continua, con inversa continua, e $\cos'(t)=-\sin t\ne0$ per $t\in(0,\pi)$. Per la derivata dell'inversa, con $x=\cos t$: $(\arccos)'(x)=\frac1{-\sin t}=-\frac1{\sqrt{1-x^2}}$, perché $\sin t>0$ in $(0,\pi)$ e quindi $\sin t=\sqrt{1-\cos^2t}$.<br>
+<strong>La somma.</strong> $g(x)=\arccos x+\arcsin x$ è continua in $[-1,1]$ e in $(-1,1)$ ha $g'(x)=-\frac1{\sqrt{1-x^2}}+\frac1{\sqrt{1-x^2}}=0$: è costante sull'intervallo $(-1,1)$, e $g(0)=\frac\pi2+0=\frac\pi2$. Negli estremi: $g(-1)=\pi-\frac\pi2=\frac\pi2$ e $g(1)=0+\frac\pi2=\frac\pi2$. $\blacksquare$<br><span class="small muted">L'esercitazione rimanda alla derivata di $\arcsin$ «vista nella Lezione 15 dell'11/11/2026»: con la numerazione del 19 novembre è la Lezione 16.</span>` },
+
+{ id: 'E5.23', sez: 5, tema: 'Monotonia', d: 2,
+  t: r`Studiare la monotonia della successione $a_n=\sqrt{n^2+2}-(n+1)$. <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`Considera la funzione $f(x)=\sqrt{x^2+2}-(x+1)$, con $a_n=f(n)$.`,
+           r`$f'(x)=\frac x{\sqrt{x^2+2}}-1$: può essere $\ge0$?` ],
+  sol: r`Sia $f(x)=\sqrt{x^2+2}-(x+1)$, derivabile su $\R$, con $f'(x)=\dfrac x{\sqrt{x^2+2}}-1$. $f'(x)\ge0\iff x\ge\sqrt{x^2+2}$: impossibile per $x\lt0$, e per $x\ge0$ equivale a $x^2\ge x^2+2$, impossibile. Quindi $f'\lt0$ su $\R$: $f$ è strettamente decrescente, e $a_n=f(n)$ è <strong>strettamente decrescente</strong>. $\blacksquare$<br><strong>Controllo:</strong> $a_1\approx-0{,}268$, $a_2\approx-0{,}551$, $a_3\approx-0{,}683$, $a_{100}\approx-0{,}990$ (tende a $-1$).` },
+
+{ id: 'E5.24', sez: 5, tema: 'Punti di non derivabilità', d: 3,
+  t: r`Determinare gli eventuali punti di non derivabilità di $$f(x)=\begin{cases}\frac23x\,e^{\sqrt[3]x}+\sqrt[3]{x-1}&x\ge0\\ \arcsin x-1&-1\le x\lt0\\ \sqrt{-x-1}+x-\frac\pi2&x\lt-1\end{cases}$$ specificandone la natura. <span class="small muted">(Esercitazione 9)</span>`,
+  hints: [ r`Prima controlla la continuità nei raccordi $0$ e $-1$. Poi i punti sospetti sono $1$, $0$, $-1$ (per $\sqrt[3]{x-1}$, $\sqrt[3]x$, $\sqrt{-x-1}$).`,
+           r`Calcola $f'$ sui vari tratti e usa il teorema sul limite della derivata («tappabuchi»).`,
+           r`In $1$: il termine $\frac1{3\sqrt[3]{(x-1)^2}}$. In $-1$: da destra $\frac1{\sqrt{1-x^2}}$, da sinistra $-\frac1{2\sqrt{-x-1}}+1$.` ],
+  sol: r`<strong>Continuità.</strong> In $0$: $f(0)=\sqrt[3]{-1}=-1$ e $\lim_{0^-}(\arcsin x-1)=-1$. In $-1$: $f(-1)=-\frac\pi2-1$ e $\lim_{-1^-}\left(\sqrt{-x-1}+x-\frac\pi2\right)=-1-\frac\pi2$. $f$ è continua su $\R$ e derivabile fuori da $\{-1,0,1\}$.<br>
+<strong>$x_0=1$.</strong> Per $x>0$: $f'(x)=\frac23e^{\sqrt[3]x}+\frac29\sqrt[3]x\,e^{\sqrt[3]x}+\frac1{3\sqrt[3]{(x-1)^2}}\to+\infty$ per $x\to1^\pm$: <strong>flesso a tangente verticale</strong>.<br>
+<strong>$x_0=0$.</strong> $f'(x)\to\frac23+0+\frac13=1$ per $x\to0^+$, e $f'(x)=\frac1{\sqrt{1-x^2}}\to1$ per $x\to0^-$: per il teorema sul limite della derivata $f$ è <strong>derivabile</strong> in $0$, con $f'(0)=1$.<br>
+<strong>$x_0=-1$.</strong> $f'(x)=\frac1{\sqrt{1-x^2}}\to+\infty$ per $x\to-1^+$, e $f'(x)=-\frac1{2\sqrt{-x-1}}+1\to-\infty$ per $x\to-1^-$: <strong>cuspide</strong>. $\blacksquare$<br><span class="small muted">Nella soluzione del tutor il secondo termine è scritto $\frac23\sqrt[3]x\,e^{\sqrt[3]x}$: da $\frac23x\,e^{\sqrt[3]x}\cdot\frac1{3x^{2/3}}$ viene $\frac29\sqrt[3]x\,e^{\sqrt[3]x}$. Le conclusioni non cambiano, perché quel termine resta finito in $1$ e tende a $0$ in $0$.</span>` },
+
+{ id: 'E5.25', sez: 5, tema: 'Monotonia', d: 1,
+  t: r`Studiare la monotonia della successione $a_n=n-\frac23\log\left(1+n^2\right)$. <span class="small muted">(Esercitazione 9, per casa)</span>`,
+  hints: [ r`Studia $f(x)=x-\frac23\log(1+x^2)$ e il segno di $f'$.`,
+           r`$f'(x)=\frac{3x^2-4x+3}{3(1+x^2)}$: guarda il discriminante.` ],
+  sol: r`$f(x)=x-\frac23\log(1+x^2)$ ha $f'(x)=1-\frac23\cdot\frac{2x}{1+x^2}=\frac{3x^2-4x+3}{3(1+x^2)}$. Il numeratore ha discriminante $16-36\lt0$ e coefficiente direttore positivo: $f'(x)>0$ per ogni $x$. Quindi $f$ è strettamente crescente e $a_n=f(n)$ è <strong>strettamente crescente</strong>. $\blacksquare$<br><strong>Controllo:</strong> $a_0=0$, $a_1\approx0{,}538$, $a_2\approx0{,}927$, $a_3\approx1{,}465$.` },
+
+{ id: 'E5.26', sez: 5, tema: 'Monotonia', d: 3,
+  t: r`Stabilire il carattere semplice e assoluto della serie $\displaystyle\sum_{n=1}^{+\infty}(-1)^n\operatorname{tg}\left(\frac1n\right)\sqrt n$. <span class="small muted">(Esercitazione 9, per casa)</span>`,
+  hints: [ r`Assoluta: $\operatorname{tg}\frac1n\sim\frac1n$, quindi $|a_n|\sim\frac1{\sqrt n}$.`,
+           r`Semplice: Leibniz. Serve che $b_n=\sqrt n\operatorname{tg}\frac1n$ sia decrescente: studia $g(x)=\sqrt x\operatorname{tg}\frac1x$.`,
+           r`Con $t=\frac1x\in(0,1]$, $g'\lt0$ diventa $\sin(2t)\lt4t$.` ],
+  sol: r`<strong>Assoluta.</strong> $|a_n|=\sqrt n\operatorname{tg}\frac1n\sim\frac{\sqrt n}n=\frac1{\sqrt n}$, e $\sum\frac1{\sqrt n}$ diverge: per il confronto asintotico la serie <strong>non converge assolutamente</strong>.<br>
+<strong>Semplice.</strong> $b_n=\sqrt n\operatorname{tg}\frac1n>0$ e $b_n\to0$. Per la decrescenza, $g(x)=\sqrt x\operatorname{tg}\frac1x$ su $[1,+\infty)$ ha $$g'(x)=\frac{\operatorname{tg}\frac1x}{2\sqrt x}-\frac{\sqrt x}{x^2\cos^2\frac1x}=\frac1{x^{3/2}}\left[\frac{\operatorname{tg}t}{2t}-\frac1{\cos^2t}\right]_{t=1/x},$$ e $\frac{\operatorname{tg}t}{2t}\lt\frac1{\cos^2t}\iff\sin t\cos t\lt2t\iff\sin(2t)\lt4t$, vero per ogni $t>0$ perché $\sin(2t)\le2t$. Quindi $g'\lt0$, $b_n$ è decrescente, e per <strong>Leibniz</strong> la serie <strong>converge semplicemente</strong>. $\blacksquare$<br><strong>Controllo:</strong> $b_1\approx1{,}557$, $b_2\approx0{,}773$, e $b_n$ decresce per $n\le2000$.` }
   ];
 
   const AM = (window.AM = window.AM || {});

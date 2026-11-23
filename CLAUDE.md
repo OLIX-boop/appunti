@@ -33,7 +33,11 @@ aggiungere una materia sono nel `README.md`.
   cancellano a vicenda le pagine). L'11/11/2026 `gemini-2.5-flash` e `gemini-2.5-flash-lite` non
   esistevano più; hanno retto `gemini-3.5-flash-lite`, `gemini-3.1-flash-lite`,
   `gemini-flash-lite-latest` e `gemini-3.1-flash-lite-preview`, mentre `gemini-3.6-flash` si è
-  fermato in 429 dopo 14 pagine (le ultime 3 lette dalle immagini). Sulle pagine quasi vuote Gemini può inventare testo leggendo l'inchiostro
+  fermato in 429 dopo 14 pagine (le ultime 3 lette dalle immagini). Il 23/11/2026 quattro processi
+  in parallelo (`gemini-3.5-flash-lite`, `gemini-3.1-flash-lite`, `gemini-flash-lite-latest`,
+  `gemini-3.1-flash-lite-preview`) davano solo 429/503: Lezioni 17–18 ed Esercitazioni 8–9 sono state
+  lette dalle immagini. Gemini può anche andare in loop su una pagina (Esercitazione 7, p. 2: 196 KB di
+  spazi): se un `.md` è enorme, quella pagina si legge dall'immagine. Sulle pagine quasi vuote Gemini può inventare testo leggendo l'inchiostro
   dell'altra facciata: un esercizio senza enunciato si controlla sull'immagine (è successo con
   l'esercitazione del 14 ottobre, p. 14). Se lo script non è utilizzabile (manca la
   chiave, quota finita su tutti i modelli) si torna alle immagini in griglie 2×2 a risoluzione
@@ -51,6 +55,16 @@ aggiungere una materia sono nel `README.md`.
     definizioni di limite numerate (1)–(15) come nella Lezione 12; $\nu_\eps>0$ per
     $x\to+\infty$ e $\nu_\eps\lt0$ per $x\to-\infty$; permanenza del segno con $f(x)>\frac M2$;
     $\log$ per il logaritmo naturale, $\operatorname{tg}$, $\operatorname{arctg}$.
+    Il 19/11/2026 la prof ha **rinumerato** le note: dopo la Lezione 12 (26 ottobre) viene la
+    Lezione 14 (4 novembre), una Lezione 13 non c'è; 9 novembre = 15, 11 novembre = 16. Il sito
+    cita i numeri nuovi. Discontinuità (Lezione 15): 1ª specie = limiti laterali finiti e diversi,
+    2ª = esistono e almeno uno è $\pm\infty$, 3ª = almeno uno **non esiste**, e l'**eliminabile** è
+    un caso a parte (non «terza specie» come in molti libri). Derivate (Lezione 16): $f'(x_0)$,
+    $Df(x_0)$, $\frac{df}{dx}(x_0)$; $Da^x=\frac{a^x}{\log_ae}$; $(f\circ g)(x)=f(g(x))$, mentre
+    nella Lezione 14 la prof scriveva $f\circ g$ per $g(f(x))$ (segnalato sul sito). Lezioni 17–18:
+    $f'_+(x_0)$, $f'_-(x_0)$; punto angoloso, cuspide, «flesso a tangente verticale»; un punto
+    critico con $f'$ dello stesso segno dalle due parti è per lei un «punto di flesso»; «crescente»
+    è in senso largo ($f'\ge0$). Il tutor chiama «tappabuchi» il teorema sul limite della derivata.
   - Geometria: $\K$ per il campo, $\M_{\K}(m,n)$ per le matrici, $\tau_{\vv}$ per le traslazioni,
     gli assiomi di spazio vettoriale numerati (i)–(viii) nel suo ordine, «matrice
     **totalmente ridotta**» (non «forma a scala ridotta»), MEG-J in tre parti (MEG,
@@ -89,7 +103,7 @@ aggiungere una materia sono nel `README.md`.
 - Ad ogni lezione nuova di Analisi si aggiunge la card della lezione nella sezione «Materiale» di
   `analisi/seconda.html` (fino alla Lezione 11 stavano in `analisi/index.html`).
 - **Seconda parte di Analisi** (dalla Lezione 12): casa `analisi/seconda.html`, sezioni
-  `analisi/sezioni/4-limiti.html` e seguenti, programma in `analisi/data/topics2.js`, registrato
+  `analisi/sezioni/4-limiti.html`, `5-derivate.html` e seguenti, programma in `analisi/data/topics2.js`, registrato
   come materia a sé (`analisi2`) perché il blocco «Analisi primo parziale» dell'hub resti fermo alle
   Sezioni 1–3. Quiz, esercizi, quesiti, teoremi e `voce.js` restano nei file condivisi, con
   `sez: 4` e seguenti; nelle pagine condivise (Teoremi, Quesiti, Esercizi) ogni sezione nuova

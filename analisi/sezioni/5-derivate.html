@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 5 · Calcolo differenziale — Analisi 1</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/analisi-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/analisi-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1f5fa8">
+<meta name="apple-mobile-web-app-title" content="Analisi 1">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261123">
+<style>
+  .retta { display: block; width: 100%; max-width: 360px; height: auto; margin: 6px 0 2px; }
+  .retta .asse { stroke: var(--text-muted); stroke-width: 1.4; }
+  .retta text { font: 12px var(--font-sans, sans-serif); fill: var(--text); }
+  .retta .guida { stroke: var(--text-faint); stroke-width: 1; stroke-dasharray: 3 3; }
+  .retta .vuoto { fill: var(--bg-elev); stroke-width: 2; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">∫</span> Analisi 1</a>
+    <nav class="topnav">
+      <a href="../seconda.html">Piano</a>
+      <a href="4-limiti.html">4 · Limiti</a>
+      <a href="5-derivate.html">5 · Derivate</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../quesiti.html">Quesiti</a>
+      <a href="../domande.html">Domande</a>
+      <a href="../esercizi.html?sez=5">Esercizi</a>
+      <a href="../index.html">Prima parte</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 5</h4>
+    <a href="#checklist">Checklist del programma</a>
+    <a href="#derivata">1 · La derivata</a>
+    <a href="#geometrico">2 · Significato geometrico</a>
+    <a href="#tangente" class="sub">La retta tangente</a>
+    <a href="#differenziabile">3 · Differenziabilità</a>
+    <a href="#continua">4 · Derivabile implica continua</a>
+    <a href="#elementari">5 · Derivate delle funzioni elementari</a>
+    <a href="#regole">6 · Regole di derivazione</a>
+    <a href="#composta">7 · Composta e inversa</a>
+    <a href="#inversa" class="sub">Derivata della funzione inversa</a>
+    <a href="#tabella" class="sub">Tabella delle derivate</a>
+    <a href="#nonderivabili">8 · Non derivabilità</a>
+    <a href="#funzione-derivata">9 · La funzione derivata</a>
+    <a href="#estremi-relativi">10 · Massimi e minimi relativi</a>
+    <a href="#fermat">11 · Teorema di Fermat</a>
+    <a href="#ottimizzazione">12 · Massimi e minimi assoluti</a>
+    <a href="#rolle">13 · Teorema di Rolle</a>
+    <a href="#lagrange">14 · Teorema di Lagrange</a>
+    <a href="#monotonia">15 · Costanti e monotonia</a>
+    <a href="#punti-critici">16 · Classificare i punti critici</a>
+    <a href="#limite-derivata">17 · Limite della derivata</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 5 · Seconda parte</div>
+      <h1>Calcolo differenziale</h1>
+      <p class="lead">La derivata misura quanto in fretta cambia una funzione: è il limite del rapporto incrementale, e sul grafico è la pendenza della retta tangente. Con lei si studiano crescenza, massimi e minimi, forma del grafico, e si calcolano limiti che con gli asintotici non tornano.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Si parte dalla <strong>definizione</strong> (un limite della Sezione 4, nient'altro) e dal suo disegno, la tangente. Poi due teoremi da scritto che dicono che cos'è davvero una funzione derivabile: è <strong>differenziabile</strong>, cioè vicino al punto si confonde con una retta (n° 19), ed è <strong>continua</strong> (n° 18). Le <strong>regole di calcolo</strong> (somma, prodotto, quoziente, composta, inversa) servono a non usare più la definizione. Dopo arrivano i teoremi che legano il segno della derivata al comportamento della funzione: Fermat, Rolle, Lagrange.</p>
+    </div>
+
+    <div class="box warnb">
+      <div class="box-title">★ Novità delle Lezioni 16–18 (11, 16 e 18 novembre)</div>
+      <ul class="mb0">
+        <li><strong>Lezione 16:</strong> <a href="#derivata">definizione di derivata</a>, <a href="#geometrico">significato geometrico</a> con il widget secante → tangente, <a href="#differenziabile">differenziabilità</a> (n° 19), <a href="#continua">derivabile ⇒ continua</a> (n° 18), <a href="#elementari">derivate elementari</a>, <a href="#regole">regole di derivazione</a>, <a href="#composta">composta e inversa</a></li>
+        <li><strong>Lezione 17:</strong> <a href="#nonderivabili">derivata destra e sinistra, punti angolosi, cuspidi, flessi a tangente verticale</a> con il widget «Che punto è?», <a href="#funzione-derivata">la funzione derivata</a> (e $x^2\sin\frac1x$, derivabile con derivata non continua), <a href="#estremi-relativi">massimi e minimi relativi, punti critici</a>, <a href="#fermat">teorema di Fermat</a> (n° 20)</li>
+        <li><strong>Lezione 18:</strong> <a href="#ottimizzazione">calcolo di massimi e minimi assoluti</a>, <a href="#rolle">Rolle</a> (n° 21), <a href="#lagrange">Lagrange</a> (n° 22), <a href="#monotonia">funzioni costanti e test di monotonia</a> (n° 23), <a href="#punti-critici">classificazione dei punti critici</a>, <a href="#limite-derivata">limite della derivata</a></li>
+        <li><strong>Esercitazioni 8 e 9 (13 e 20 novembre):</strong> derivabilità con i parametri, punti di non derivabilità, massimi e minimi, identità con le derivate, nella <a href="../esercizi.html?sez=5">palestra</a> (E5.9–E5.26); le discontinuità dell'Esercitazione 8 sono nella <a href="../esercizi.html?sez=4">Sezione 4</a> (E4.48–E4.52)</li>
+        <li>Le dimostrazioni sono anche nella pagina <a href="../teoremi.html">Teoremi</a>, con i consigli per dirle a voce; i quesiti della sezione hanno la risposta modello in <a href="../quesiti.html">Quesiti</a></li>
+      </ul>
+    </div>
+
+    <h2 id="checklist">Checklist del programma</h2>
+    <div class="card" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <strong>Avanzamento Sezione 5</strong>
+        <span class="muted small"><span data-progress-txt="s5">0/0</span> · <span data-progress-pct="s5">0%</span></span>
+      </div>
+      <div class="pbar" data-progress-for="s5"><span style="width:0"></span></div>
+    </div>
+    <div id="checklistBox"></div>
+    <p class="small muted" id="checklistNota">La checklist contiene tutto il programma della sezione: con le Lezioni 16–18 sono arrivate le prime sedici voci, da derivate successive e convessità in poi arrivano con le prossime lezioni.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="derivata">1 · La derivata</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 16)</div>
+      <p>Sia $f:(a,b)\to\R$ e sia $x_0\in(a,b)$. $f$ è <strong>derivabile</strong> in $x_0$ se esiste <strong>finito</strong> il limite del <strong>rapporto incrementale</strong>
+      $$\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h,$$
+      e si pone $f'(x_0)=\displaystyle\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h$. Si scrive anche $Df(x_0)$ oppure $\dfrac{df}{dx}(x_0)$ (<strong>notazione di Leibniz</strong>).</p>
+      <p class="mb0"><strong>Osservazione.</strong> Ponendo $x=x_0+h$, cioè $h=x-x_0$, si ottiene la scrittura equivalente $$f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}.$$</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">↳ Che cosa c'è dentro la definizione</div>
+      <p>$f(x_0+h)-f(x_0)$ è di quanto cambia $f$ quando ci si sposta di $h$; diviso per $h$ è la <em>velocità media</em> di cambiamento su quel tratto. La derivata è la velocità «istantanea»: quella che resta quando il tratto si riduce a niente.</p>
+      <p class="mb0">Il limite è una forma $\frac00$ sempre, per costruzione: è proprio il tipo di limite della Sezione 4. E deve essere un <strong>numero</strong>: se il rapporto incrementale va a $\pm\infty$, la funzione non è derivabile in quel punto.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio · $x^2$ in $x_0=1$</div>
+      <p class="mb0">$$\frac{(1+h)^2-1}h=\frac{2h+h^2}h=2+h\xrightarrow{h\to0}2,$$ quindi $f'(1)=2$. Il prof fa lo stesso conto in un punto $x$ qualsiasi (paragrafo 5) e trova $Dx^2=2x$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="geometrico">2 · Significato geometrico</h2>
+    <p>Una retta $y=mx+q$ ha <strong>coefficiente angolare</strong> $m$, e per due punti $(x_0,y_0)$ e $(x_1,y_1)$ passa una sola retta, con $m=\dfrac{y_1-y_0}{x_1-x_0}$. La retta <strong>secante</strong> il grafico di $f$ nei punti $(x_0,f(x_0))$ e $(x_1,f(x_1))$ ha quindi coefficiente angolare
+    $$m=\frac{f(x_1)-f(x_0)}{x_1-x_0}\qquad\text{ed equazione}\qquad y=\frac{f(x_1)-f(x_0)}{x_1-x_0}(x-x_0)+f(x_0).$$
+    Quel coefficiente angolare <strong>è il rapporto incrementale</strong>. Quando $x_1\to x_0$ la secante ruota attorno a $(x_0,f(x_0))$ e si avvicina alla tangente, e il suo coefficiente angolare tende a $f'(x_0)$.</p>
+    <svg class="retta" viewBox="0 0 320 200" role="img" aria-label="Grafico di una funzione con una retta secante per due punti e la retta tangente nel primo punto">
+      <line class="asse" x1="22" y1="180" x2="312" y2="180"/><line class="asse" x1="30" y1="190" x2="30" y2="4"/>
+      <line class="guida" x1="80" y1="110" x2="80" y2="180"/><line class="guida" x1="30" y1="110" x2="80" y2="110"/>
+      <line class="guida" x1="230" y1="40" x2="230" y2="180"/><line class="guida" x1="30" y1="40" x2="230" y2="40"/>
+      <line x1="30" y1="133.3" x2="300" y2="7.3" style="stroke:var(--danger);stroke-width:2"/>
+      <line x1="30" y1="145" x2="220" y2="12" style="stroke:var(--ok);stroke-width:2;stroke-dasharray:6 4"/>
+      <polyline fill="none" style="stroke:var(--accent);stroke-width:2.4" points="32.5,164.3 36.8,154.2 41.1,147.0 45.4,141.2 49.7,136.1 54.0,131.5 58.3,127.4 62.5,123.5 66.8,119.9 71.1,116.5 75.4,113.3 79.7,110.2 84.0,107.3 88.3,104.4 92.6,101.7 96.9,99.0 101.2,96.5 105.5,94.0 109.8,91.6 114.0,89.2 118.3,87.0 122.6,84.7 126.9,82.5 131.2,80.4 135.5,78.3 139.8,76.3 144.1,74.3 148.4,72.3 152.7,70.4 157.0,68.5 161.3,66.6 165.5,64.7 169.8,62.9 174.1,61.2 178.4,59.4 182.7,57.7 187.0,56.0 191.3,54.3 195.6,52.6 199.9,51.0 204.2,49.4 208.5,47.8 212.8,46.2 217.0,44.6 221.3,43.1 225.6,41.5 229.9,40.0 234.2,38.5 238.5,37.1 242.8,35.6 247.1,34.1 251.4,32.7 255.7,31.3 260.0,29.9 264.3,28.5 268.5,27.1 272.8,25.7 277.1,24.4 281.4,23.0 285.7,21.7 290.0,20.4"/>
+      <circle cx="80" cy="110" r="4" style="fill:var(--text)"/><circle cx="230" cy="40" r="4" style="fill:var(--text)"/>
+      <text x="80" y="195" text-anchor="middle">x₀</text><text x="230" y="195" text-anchor="middle">x₁</text>
+      <text x="292" y="30">f</text>
+      <text x="246" y="70" style="fill:var(--danger)">secante</text>
+      <text x="150" y="40" style="fill:var(--ok)">tangente</text>
+    </svg>
+    <p class="small muted">La figura è disegnata con $f(x)=\sqrt x$, $x_0=1$ e $x_1=4$: la secante ha pendenza $\frac13$, la tangente $f'(1)=\frac12$.</p>
+
+    <h3 id="tangente">La retta tangente</h3>
+    <div class="box prop">
+      <div class="box-title">Significato geometrico (Lezione 16)</div>
+      <p class="mb0">$f'(x_0)$ è il <strong>coefficiente angolare della retta tangente</strong> al grafico di $f$ nel punto $(x_0,f(x_0))$. La tangente ha quindi equazione
+      $$y=f(x_0)+f'(x_0)(x-x_0).$$</p>
+    </div>
+    <p class="small muted">L'equazione della tangente non è scritta negli appunti, che si fermano al coefficiente angolare: è la retta per $(x_0,f(x_0))$ con pendenza $f'(x_0)$, e torna nel teorema sulla differenziabilità.</p>
+
+    <div class="widget">
+      <div class="widget-head"><span>Dalla secante alla tangente</span><span class="faint" style="text-transform:none;font-weight:400">prima rispondi, poi controlla</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="stSel">funzione</label>
+            <select id="stSel">
+              <option value="0">$x^2$ in $x_0=1$</option>
+              <option value="1">$\sin x$ in $x_0=0$</option>
+              <option value="2">$\sqrt x$ in $x_0=1$</option>
+              <option value="3">$\log x$ in $x_0=1$</option>
+              <option value="4">$e^x$ in $x_0=0$</option>
+            </select>
+          </div>
+          <div class="ctrl"><label for="stH">incremento $h$</label><input type="range" id="stH" min="-0.9" max="1" value="0.8" step="0.01"><output data-out="stH"></output></div>
+        </div>
+        <canvas class="plot" id="stPlot"></canvas>
+        <div class="readout" id="stOut"></div>
+        <div class="btnrow" id="stBtns" style="margin-top:10px"></div>
+        <div class="readout" id="stMsg" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="differenziabile">3 · Differenziabilità <span class="badge star">dim. scritto · n° 19</span></h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 16)</div>
+      <p class="mb0">Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$. $f$ è <strong>differenziabile</strong> in $x_0$ se esiste $\lambda\in\R$ tale che
+      $$f(x)=f(x_0)+\lambda(x-x_0)+o\bigl((x-x_0)\bigr)\qquad\text{per }x\to x_0.$$</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 16)</div>
+      <p class="mb0">Sia $f:I\subseteq\R\to\R$, con $I$ intervallo e $x_0$ un punto interno a $I$ ($x_0\in\mathring I$). Allora
+      $$f\text{ è differenziabile in }x_0\iff f\text{ è derivabile in }x_0,$$
+      e in tal caso $\lambda=f'(x_0)$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 16)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»: che cosa dice l'ipotesi, scritta come limite che fa zero?</div>
+          <div class="step-content">$f$ è derivabile: esiste $f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\in\R$. Portando tutto a sinistra, $$\lim_{x\to x_0}\left[\frac{f(x)-f(x_0)}{x-x_0}-f'(x_0)\right]=0.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»: come compare l'o-piccolo?</div>
+          <div class="step-content">Con il denominatore comune: $\displaystyle\lim_{x\to x_0}\frac{f(x)-f(x_0)-f'(x_0)(x-x_0)}{x-x_0}=0$. Per la definizione di o-piccolo questo significa $$f(x)-f(x_0)-f'(x_0)(x-x_0)=o\bigl((x-x_0)\bigr).$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»: conclusione</div>
+          <div class="step-content">$f(x)=f(x_0)+f'(x_0)(x-x_0)+o\bigl((x-x_0)\bigr)$: $f$ è differenziabile in $x_0$ con $\lambda=f'(x_0)$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: per che cosa si divide?</div>
+          <div class="step-content">Per $x-x_0$, con $x\ne x_0$: dalla definizione di differenziabilità $$\frac{f(x)-f(x_0)}{x-x_0}=\lambda+\frac{o\bigl((x-x_0)\bigr)}{x-x_0}.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: conclusione</div>
+          <div class="step-content">Il secondo addendo tende a $0$ per definizione di o-piccolo, quindi il rapporto incrementale tende a $\lambda\in\R$: il limite esiste finito, $f$ è derivabile e $f'(x_0)=\lambda$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box tip">
+      <div class="box-title">↳ Che cosa vuol dire</div>
+      <p>$f(x_0)+f'(x_0)(x-x_0)$ è la retta tangente. La differenziabilità dice che, vicino a $x_0$, sostituire $f$ con la tangente costa un errore che va a zero <strong>più in fretta</strong> di $x-x_0$. Con qualunque altra retta per lo stesso punto l'errore sarebbe dello stesso ordine di $x-x_0$: la tangente è l'unica retta che «si confonde» con il grafico.</p>
+      <p class="mb0">È anche il primo passo verso Taylor: $e^x=1+x+o(x)$, $\sin x=x+o(x)$, $\log(1+x)=x+o(x)$ per $x\to0$ sono esattamente le differenziabilità di queste funzioni in $0$, cioè i limiti notevoli letti con l'o-piccolo.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="continua">4 · Derivabile implica continua <span class="badge star">dim. scritto · n° 18</span></h2>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 16)</div>
+      <p class="mb0">Sia $f:I\subseteq\R\to\R$ e sia $x_0$ un punto interno a $I$. Se $f$ è derivabile in $x_0$, allora $f$ è continua in $x_0$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 16)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale identità fa comparire il rapporto incrementale?</div>
+          <div class="step-content">Per $x\ne x_0$: $$f(x)-f(x_0)=\underbrace{\frac{f(x)-f(x_0)}{x-x_0}}_{\text{rapporto incrementale}}\cdot(x-x_0).$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">A che cosa tendono i due fattori per $x\to x_0$? Dove entra l'ipotesi?</div>
+          <div class="step-content">Il primo tende a $f'(x_0)$, che è un <strong>numero</strong> perché $f$ è derivabile; il secondo tende a $0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Conclusione</div>
+          <div class="step-content">Per l'algebra dei limiti $\lim_{x\to x_0}[f(x)-f(x_0)]=f'(x_0)\cdot0=0$, cioè $\lim_{x\to x_0}f(x)=f(x_0)$: è la definizione di continuità in $x_0$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box trap">
+      <div class="box-title">✗ Il viceversa è falso</div>
+      <p>$f(x)=|x|$ è continua in $0$, ma il rapporto incrementale $\frac{|h|-|0|}h=\frac{|h|}h$ vale $1$ per $h>0$ e $-1$ per $h\lt0$: non ha limite, e $|x|$ <strong>non è derivabile</strong> in $0$. Sul grafico c'è un angolo, e nessuna retta è «la» tangente.</p>
+      <p class="mb0">Quindi: derivabile ⇒ continua; continua ⇏ derivabile. Detto al contrario, che è come si usa negli esercizi: <strong>se $f$ non è continua in $x_0$, non è derivabile in $x_0$</strong>, e non serve calcolare niente.</p>
+    </div>
+    <p class="small muted">L'esempio di $|x|$ è quello che la prof usa nella Lezione 17 per il <a href="#nonderivabili">punto angoloso</a>. Con il «finito» della definizione la dimostrazione funziona; con un rapporto incrementale che va a $+\infty$ no: $\operatorname{sgn}x$ in $0$ ha rapporto incrementale $\frac1{|h|}\to+\infty$ e non è continua.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="elementari">5 · Derivate delle funzioni elementari <span class="badge star2">dim. orale</span></h2>
+    <p>Il prof le ricava dalla definizione, una per una (Lezione 16). Sono la base: tutte le altre derivate si ottengono da queste con le regole del paragrafo 6 e del paragrafo 7.</p>
+    <div class="box prop">
+      <div class="box-title">Derivate con il rapporto incrementale (Lezione 16)</div>
+      <div class="tablewrap" style="margin:0">
+        <table>
+          <thead><tr><th>$f(x)$</th><th>$f'(x)$</th><th>Rapporto incrementale</th></tr></thead>
+          <tbody>
+            <tr><td>$c$ (costante)</td><td>$0$</td><td>$\frac{c-c}h=0$</td></tr>
+            <tr><td>$x$</td><td>$1$</td><td>$\frac{(x+h)-x}h=1$</td></tr>
+            <tr><td>$x^2$</td><td>$2x$</td><td>$\frac{(x+h)^2-x^2}h=\frac{h(h+2x)}h=h+2x$</td></tr>
+            <tr><td>$\sin x$</td><td>$\cos x$</td><td>$\sin x\,\frac{\cos h-1}h+\cos x\,\frac{\sin h}h$</td></tr>
+            <tr><td>$\cos x$</td><td>$-\sin x$</td><td>(analogo)</td></tr>
+            <tr><td>$\log_ax$</td><td>$\frac1x\log_ae$</td><td>$\frac{\log_a\left(1+\frac hx\right)}{\frac hx}\cdot\frac1x$</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <details class="reveal proof"><summary>I conti a passi coperti (Lezione 16)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\sin x$: quale formula, e quali limiti notevoli?</div>
+          <div class="step-content">La formula di addizione $\sin(x+h)=\sin x\cos h+\cos x\sin h$. Allora $$\frac{\sin(x+h)-\sin x}h=\sin x\underbrace{\frac{\cos h-1}h}_{\to0}+\cos x\underbrace{\frac{\sin h}h}_{\to1}\xrightarrow{h\to0}\cos x.$$ $\frac{\cos h-1}h\to0$ perché $\frac{1-\cos h}{h^2}\to\frac12$ e c'è un $h$ in più al numeratore.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\cos x$: come si adatta il conto?</div>
+          <div class="step-content">Con $\cos(x+h)=\cos x\cos h-\sin x\sin h$: $\frac{\cos(x+h)-\cos x}h=\cos x\frac{\cos h-1}h-\sin x\frac{\sin h}h\to-\sin x$. (Gli appunti scrivono solo il risultato.)</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">$\log_ax$: come si fa comparire un limite notevole?</div>
+          <div class="step-content">$\dfrac{\log_a(x+h)-\log_ax}h=\dfrac{\log_a\frac{x+h}x}h=\dfrac{\log_a\left(1+\frac hx\right)}{\frac hx}\cdot\dfrac1x\xrightarrow{h\to0}\log_ae\cdot\dfrac1x,$ con $t=\frac hx\to0$ nel limite notevole $\frac{\log_a(1+t)}t\to\log_ae$. Per $a=e$: $D\log x=\frac1x$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="regole">6 · Regole di derivazione <span class="badge star2">dim. orale</span></h2>
+    <div class="box teo">
+      <div class="box-title">Teorema · algebra delle derivate (Lezione 16)</div>
+      <p>Siano $f$ e $g$ due funzioni derivabili in $x$. Allora</p>
+      <ol class="mb0">
+        <li>$f\pm g$ è derivabile in $x$ e $D[f(x)\pm g(x)]=D[f(x)]\pm D[g(x)]$;</li>
+        <li>$f\cdot g$ è derivabile in $x$ e $D[f(x)g(x)]=g(x)\,D[f(x)]+f(x)\,D[g(x)]$;</li>
+        <li>$\frac fg$ (con $g(x)\ne0$) è derivabile in $x$ e $D\left[\dfrac{f(x)}{g(x)}\right]=\dfrac{g(x)\,D[f(x)]-f(x)\,D[g(x)]}{[g(x)]^2}$.</li>
+      </ol>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 16)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Somma: che cosa si fa del rapporto incrementale?</div>
+          <div class="step-content">Si spezza: $\dfrac{[f(x+h)+g(x+h)]-[f(x)+g(x)]}h=\dfrac{f(x+h)-f(x)}h+\dfrac{g(x+h)-g(x)}h\to D[f(x)]+D[g(x)]$, per l'algebra dei limiti.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Prodotto: quale termine si aggiunge e si toglie?</div>
+          <div class="step-content">$f(x)g(x+h)$: $$\frac{f(x+h)g(x+h)-f(x)g(x)}h=\frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}h$$ $$=g(x+h)\,\frac{f(x+h)-f(x)}h+f(x)\,\frac{g(x+h)-g(x)}h.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Prodotto: perché $g(x+h)\to g(x)$?</div>
+          <div class="step-content">Perché $g$ è derivabile in $x$, quindi continua (paragrafo 4). Il limite è $g(x)D[f(x)]+f(x)D[g(x)]$. Gli appunti fanno il passaggio senza dirlo: all'orale conviene dirlo.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quoziente (il prof lo omette)</div>
+          <div class="step-content">Si deriva prima $\frac1g$: $g(x+h)\ne0$ per $h$ piccolo (permanenza del segno, $g$ è continua) e $$\frac{\frac1{g(x+h)}-\frac1{g(x)}}h=-\frac{g(x+h)-g(x)}h\cdot\frac1{g(x+h)g(x)}\to-\frac{D[g(x)]}{[g(x)]^2}.$$ Poi $\frac fg=f\cdot\frac1g$ e la regola del prodotto dà $\frac{D[f]}g-\frac{f\,D[g]}{g^2}=\frac{g\,D[f]-f\,D[g]}{g^2}$. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Negli appunti la dimostrazione del prodotto è numerata (iii) e il quoziente «(iv) omettiamo», mentre nell'enunciato sono (ii) e (iii). Il quoziente qui sopra è nostro.</p>
+    </div></details>
+    <div class="box ex">
+      <div class="box-title">Esempio · la tangente (Lezione 16)</div>
+      <p class="mb0">$$D(\operatorname{tg}x)=D\left(\frac{\sin x}{\cos x}\right)=\frac{\cos x\cos x+\sin x\sin x}{(\cos x)^2}=\frac1{(\cos x)^2}.$$ Il numeratore è $\cos x\cdot D\sin x-\sin x\cdot D\cos x=\cos^2x+\sin^2x=1$. Equivalente: $D\operatorname{tg}x=1+\operatorname{tg}^2x$.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ La derivata del prodotto non è il prodotto delle derivate</div>
+      <p class="mb0">$D(x\cdot x)=Dx^2=2x$, mentre $Dx\cdot Dx=1$. E nel quoziente l'ordine conta: al numeratore c'è prima $g\,Df$, poi il meno.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="composta">7 · Derivata della funzione composta e della funzione inversa</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema · derivata della funzione composta (Lezione 16)</div>
+      <p class="mb0">Siano $f$ e $g$ due funzioni derivabili nel loro insieme di definizione. La funzione composta $f\circ g$ è derivabile e
+      $$D[(f\circ g)(x)]=f'\bigl(g(x)\bigr)\cdot g'(x).$$</p>
+    </div>
+    <p>A parole: la derivata della funzione <em>esterna</em>, calcolata nella funzione <em>interna</em>, per la derivata dell'interna. Qui $(f\circ g)(x)=f(g(x))$: prima $g$, poi $f$.</p>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 16) · l'ordine conta</div>
+      <p class="mb0">Con $f(x)=x^2$ e $g(x)=\sin x$:
+      $$(f\circ g)(x)=(\sin x)^2\ \Rightarrow\ D[(f\circ g)(x)]=2\sin x\cos x,$$
+      $$(g\circ f)(x)=\sin(x^2)\ \Rightarrow\ D[(g\circ f)(x)]=\cos(x^2)\cdot2x.$$</p>
+    </div>
+
+    <h3 id="inversa">Derivata della funzione inversa</h3>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 16)</div>
+      <p class="mb0">Sia $f$ una funzione invertibile, continua, con $f^{-1}$ continua. Supponiamo inoltre che $f$ sia derivabile in $x$ con $f'(x)\ne0$. Allora $f^{-1}$ è derivabile in $y=f(x)$ e
+      $$D\bigl[f^{-1}(y)\bigr]=\frac1{D[f(x)]\Big|_{x=f^{-1}(y)}}.$$</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">↳ Perché il reciproco</div>
+      <p class="mb0">Il grafico di $f^{-1}$ è il simmetrico di quello di $f$ rispetto alla bisettrice $y=x$, che scambia le coordinate: una tangente di pendenza $m$ diventa una tangente di pendenza $\frac1m$. Se $f'(x)=0$ la tangente di $f$ è orizzontale e quella di $f^{-1}$ verticale: per questo serve $f'(x)\ne0$. Esempio: $x^3$ ha derivata $0$ in $0$, e la sua inversa $\sqrt[3]y$ non è derivabile in $0$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 16)</div>
+      <ul class="mb0">
+        <li><strong>$a^x$</strong> ($a>1$), come inversa di $\log_ay$: $$D(a^x)=\frac1{[D(\log_ay)]\big|_{y=a^x}}=\frac1{\left.\frac{\log_ae}y\right|_{y=a^x}}=\frac{a^x}{\log_ae}.$$ Poiché $\log_ae=\frac1{\log a}$, è lo stesso che $a^x\log a$. Per $a=e$: $De^x=e^x$.</li>
+        <li><strong>$x^\alpha$</strong>, $\alpha\in\R$, $x>0$: $x^\alpha=e^{\log(x^\alpha)}=e^{\alpha\log x}$, e con la composta $$D(x^\alpha)=e^{\alpha\log x}\cdot\frac\alpha x=x^\alpha\cdot\frac\alpha x=\alpha x^{\alpha-1}.$$</li>
+        <li><strong>$\arcsin x$</strong>: $D(\arcsin x)=\dfrac1{[D(\sin y)]\big|_{y=\arcsin x}}=\dfrac1{\cos y}\Big|_{y=\arcsin x}$. Per $y\in\left(-\frac\pi2,\frac\pi2\right)$, cioè $x\in(-1,1)$, è $\cos y>0$, quindi $\cos y=\sqrt{1-\sin^2y}$ e $$D(\arcsin x)=\frac1{\sqrt{1-\sin^2y}}\Big|_{y=\arcsin x}=\frac1{\sqrt{1-x^2}},\qquad x\in(-1,1).$$</li>
+      </ul>
+    </div>
+    <p class="small muted">In $D(a^x)$ la trascrizione automatica degli appunti aveva letto $\frac{a^x}{\log a}$: sull'originale c'è $\frac{a^x}{\log_ae}$, che è giusto. Nel passaggio per $\arcsin$ gli appunti scrivono $\sin^2x+\cos^2x=1$ con la lettera $x$ al posto di $y$: è solo il nome della variabile.</p>
+
+    <h3 id="tabella">Tabella delle derivate</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>$f(x)$</th><th>$f'(x)$</th><th>Dove</th><th>Da dove viene</th></tr></thead>
+        <tbody>
+          <tr><td>$x^\alpha$</td><td>$\alpha x^{\alpha-1}$</td><td>$x>0$ (ovunque se $\alpha\in\N$)</td><td>composta, $e^{\alpha\log x}$</td></tr>
+          <tr><td>$a^x$</td><td>$a^x\log a$</td><td>$\R$</td><td>inversa di $\log_a$</td></tr>
+          <tr><td>$e^x$</td><td>$e^x$</td><td>$\R$</td><td>caso $a=e$</td></tr>
+          <tr><td>$\log_a x$</td><td>$\frac1x\log_ae=\frac1{x\log a}$</td><td>$x>0$</td><td>definizione</td></tr>
+          <tr><td>$\log x$</td><td>$\frac1x$</td><td>$x>0$</td><td>caso $a=e$</td></tr>
+          <tr><td>$\sin x$</td><td>$\cos x$</td><td>$\R$</td><td>definizione</td></tr>
+          <tr><td>$\cos x$</td><td>$-\sin x$</td><td>$\R$</td><td>definizione</td></tr>
+          <tr><td>$\operatorname{tg}x$</td><td>$\frac1{\cos^2x}=1+\operatorname{tg}^2x$</td><td>$x\ne\frac\pi2+k\pi$</td><td>quoziente</td></tr>
+          <tr><td>$\arcsin x$</td><td>$\frac1{\sqrt{1-x^2}}$</td><td>$(-1,1)$</td><td>inversa di $\sin$</td></tr>
+          <tr><td>$\arccos x$</td><td>$-\frac1{\sqrt{1-x^2}}$</td><td>$(-1,1)$</td><td>inversa di $\cos$ (Esercitazione 9)</td></tr>
+          <tr><td>$\operatorname{arctg}x$</td><td>$\frac1{1+x^2}$</td><td>$\R$</td><td>inversa di $\operatorname{tg}$ (Esercitazione 9, E5.7)</td></tr>
+          <tr><td>$|x|$</td><td>$\operatorname{sgn}x$</td><td>$x\ne0$</td><td>vale $\pm x$</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Le ultime tre righe non sono negli appunti della Lezione 16: $\arccos$ e $\operatorname{arctg}$ si ricavano con lo stesso metodo dell'arcoseno (le usa il tutor nell'Esercitazione 9), $|x|$ separando i due rami.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="nonderivabili">8 · Derivata destra e sinistra, punti di non derivabilità</h2>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 17)</div>
+      <p>Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$. Se $\displaystyle\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h$ <strong>non esiste</strong> oppure è <strong>infinito</strong>, $x_0$ è un <strong>punto di non derivabilità</strong>.</p>
+      <p class="mb0">La <strong>derivata destra</strong> e la <strong>derivata sinistra</strong> sono i limiti laterali del rapporto incrementale:
+      $$f'_+(x_0)=\lim_{h\to0^+}\frac{f(x_0+h)-f(x_0)}h,\qquad f'_-(x_0)=\lim_{h\to0^-}\frac{f(x_0+h)-f(x_0)}h.$$
+      Per la Sezione 4, $f$ è derivabile in $x_0$ se e solo se esistono finite e uguali.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 17)</div>
+      <p class="mb0">Tutti i punti di discontinuità di una funzione sono anche punti di non derivabilità: è il paragrafo 4 letto al contrario.</p>
+    </div>
+    <p>Fra i punti in cui $f$ è continua ma non derivabile, la prof ne distingue tre tipi, secondo come si comportano $f'_+(x_0)$ e $f'_-(x_0)$:</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Derivata destra e sinistra</th><th>Nome</th><th>Esempio (Lezione 17)</th></tr></thead>
+        <tbody>
+          <tr><td>finite e diverse: $f'_+(x_0)=\ell_1\ne\ell_2=f'_-(x_0)$</td><td><strong>punto angoloso</strong></td><td>$|x|$ in $0$: $f'_+=1$, $f'_-=-1$</td></tr>
+          <tr><td>il rapporto incrementale tende a $+\infty$ (oppure a $-\infty$) da tutte e due le parti</td><td><strong>flesso a tangente verticale</strong></td><td>$\sqrt[3]x$ in $0$: $\frac{\sqrt[3]h}h=\frac1{h^{2/3}}\to+\infty$</td></tr>
+          <tr><td>infinite di segno opposto: $f'_+=\pm\infty$, $f'_-=\mp\infty$</td><td><strong>cuspide</strong></td><td>$\sqrt[3]{|x|}$ in $0$: $f'_+=+\infty$, $f'_-=-\infty$</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="figure-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px 14px;margin:8px 0 12px">
+      <figure style="margin:0">
+        <svg class="retta" viewBox="0 0 150 110" role="img" aria-label="Grafico di modulo di x: un angolo nell'origine">
+          <line class="asse" x1="4" y1="95" x2="146" y2="95"/><line class="asse" x1="75" y1="106" x2="75" y2="6"/>
+          <polyline fill="none" style="stroke:var(--accent);stroke-width:2.4" points="9.0,29.0 75.0,95.0 141.0,29.0"/>
+          <circle cx="75" cy="95" r="3.5" style="fill:var(--danger)"/>
+        </svg>
+        <figcaption class="small muted">punto angoloso: $|x|$</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <svg class="retta" viewBox="0 0 150 110" role="img" aria-label="Grafico della radice cubica: tangente verticale nell'origine">
+          <line class="asse" x1="4" y1="55" x2="146" y2="55"/><line class="asse" x1="75" y1="106" x2="75" y2="4"/>
+          <polyline fill="none" style="stroke:var(--accent);stroke-width:2.4" points="9.0,94.0 14.5,92.9 20.0,91.7 25.5,90.4 31.0,89.1 36.5,87.6 42.0,86.0 47.5,84.1 53.0,82.1 58.5,79.6 62.9,77.2 66.2,74.9 68.4,73.1 70.6,70.8 72.8,67.6 73.9,65.0 75.0,55.0 76.1,45.0 77.2,42.4 79.4,39.2 81.6,36.9 83.8,35.1 87.1,32.8 91.5,30.4 97.0,27.9 102.5,25.9 108.0,24.0 113.5,22.4 119.0,20.9 124.5,19.6 130.0,18.3 135.5,17.1 141.0,16.0"/>
+          <circle cx="75" cy="55" r="3.5" style="fill:var(--danger)"/>
+        </svg>
+        <figcaption class="small muted">flesso a tangente verticale: $\sqrt[3]x$</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <svg class="retta" viewBox="0 0 150 110" role="img" aria-label="Grafico della radice cubica del modulo: una cuspide nell'origine">
+          <line class="asse" x1="4" y1="95" x2="146" y2="95"/><line class="asse" x1="75" y1="106" x2="75" y2="6"/>
+          <polyline fill="none" style="stroke:var(--accent);stroke-width:2.4" points="9.0,56.0 15.6,57.3 22.2,58.8 28.8,60.4 35.4,62.1 42.0,64.0 48.6,66.3 55.2,68.9 60.1,71.3 64.3,73.7 67.6,76.2 70.0,78.5 71.7,80.6 72.5,81.9 73.4,83.6 74.2,85.9 75.0,95.0 75.8,85.9 76.7,83.6 77.5,81.9 78.3,80.6 80.0,78.5 82.4,76.2 85.7,73.7 89.8,71.3 94.8,68.9 101.4,66.3 108.0,64.0 114.6,62.1 121.2,60.4 127.8,58.8 134.4,57.3 141.0,56.0"/>
+          <circle cx="75" cy="95" r="3.5" style="fill:var(--danger)"/>
+        </svg>
+        <figcaption class="small muted">cuspide: $\sqrt[3]{|x|}$</figcaption>
+      </figure>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Due casi che non hanno un nome (Lezione 17)</div>
+      <ul class="mb0">
+        <li>$f(x)=\sqrt[3]x$ per $x\ge0$, $f(x)=-x$ per $x\lt0$: è continua in $0$ (i limiti laterali valgono $0=f(0)$), il rapporto incrementale tende a $+\infty$ da destra e a $-1$ da sinistra. $0$ è un punto di non derivabilità, né angoloso né cuspide.</li>
+        <li>$f(x)=x\sin\frac1x$ per $x\ne0$, $f(0)=0$: è continua in $0$, ma $\frac{h\sin(1/h)}h=\sin\frac1h$ non ha limite. Anche qui $0$ è un punto di non derivabilità.</li>
+      </ul>
+    </div>
+    <p class="small muted">Nelle soluzioni d'esame e in alcuni libri il flesso a tangente verticale si riconosce anche così: $f'_+(x_0)=f'_-(x_0)=+\infty$ (o $-\infty$). È la stessa cosa detta con le derivate laterali.</p>
+
+    <div class="widget">
+      <div class="widget-head"><span>Che punto è?</span><span class="faint" style="text-transform:none;font-weight:400">prima rispondi, poi controlla</span></div>
+      <div class="widget-body">
+        <div class="controls">
+          <div class="ctrl"><label for="ndSel">funzione in $x_0=0$</label>
+            <select id="ndSel">
+              <option value="0">$|x|$</option>
+              <option value="1">$\sqrt[3]x$</option>
+              <option value="2">$\sqrt[3]{|x|}$</option>
+              <option value="3">$x|x|$</option>
+              <option value="4">$x\sin\dfrac1x$, $f(0)=0$</option>
+              <option value="5">$\sqrt[3]x$ per $x\ge0$, $-x$ per $x\lt0$</option>
+            </select>
+          </div>
+          <div class="ctrl"><label for="ndH">incremento $h$</label><input type="range" id="ndH" min="0.001" max="1" value="0.5" step="0.001"><output data-out="ndH"></output></div>
+        </div>
+        <canvas class="plot" id="ndPlot"></canvas>
+        <div class="readout" id="ndOut"></div>
+        <div class="btnrow" id="ndBtns" style="margin-top:10px">
+          <button class="btn sm" data-nd="der">derivabile</button>
+          <button class="btn sm" data-nd="ang">punto angoloso</button>
+          <button class="btn sm" data-nd="flv">flesso a tangente verticale</button>
+          <button class="btn sm" data-nd="cus">cuspide</button>
+          <button class="btn sm" data-nd="altro">non derivabile, senza nome</button>
+        </div>
+        <div class="readout" id="ndMsg" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="funzione-derivata">9 · La funzione derivata</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 17)</div>
+      <p class="mb0">$f:(a,b)\to\R$ è <strong>derivabile in $(a,b)$</strong> se è derivabile in ogni $x_0\in(a,b)$. In tal caso la funzione $$f':(a,b)\to\R,\qquad x\mapsto f'(x)$$ si chiama <strong>funzione derivata</strong> di $f$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 17)</div>
+      <p>$f(x)=\log(3+\sin x)$ è derivabile in $\R$, con $f'(x)=\dfrac{\cos x}{3+\sin x}$ (composta).</p>
+      <p class="mb0">$f(x)=x^2\sin\frac1x$ per $x\ne0$, $f(0)=0$. In $0$ è continua, e il rapporto incrementale $\frac{h^2\sin(1/h)}h=h\sin\frac1h\to0$: è <strong>derivabile</strong> con $f'(0)=0$. Per $x\ne0$ è una composizione di funzioni derivabili: $$f'(x)=2x\sin\frac1x+x^2\cos\frac1x\cdot\left(-\frac1{x^2}\right)=2x\sin\frac1x-\cos\frac1x.$$ Quindi $f$ è derivabile in tutto $\R$, ma $\lim_{x\to0}f'(x)=\lim_{x\to0}\left(2x\sin\frac1x-\cos\frac1x\right)$ <strong>non esiste</strong>.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ La derivata può non essere continua</div>
+      <p class="mb0">In generale $\lim_{x\to x_0}f'(x)\ne f'(x_0)$: nell'esempio $f'(0)=0$ esiste, ma il limite di $f'$ in $0$ no. Calcolare $f'(x_0)$ come «limite di $f'(x)$» funziona solo con le ipotesi del <a href="#limite-derivata">paragrafo 17</a>; se quel limite non esiste, bisogna tornare al rapporto incrementale.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="estremi-relativi">10 · Massimi e minimi relativi, punti critici</h2>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 17)</div>
+      <p>Sia $f:A\subseteq\R\to\R$. Un punto $x_0\in A$ è un <strong>punto di massimo relativo</strong> (di <strong>minimo relativo</strong>) se esiste un intorno $I$ di $x_0$, cioè esiste $\delta>0$, tale che $$f(x)\le f(x_0)\qquad(\text{risp. }f(x)\ge f(x_0))\qquad\forall x\in I_\delta(x_0)\cap A.$$ $x_0$ è un punto di <strong>estremo relativo</strong> se è di massimo o di minimo relativo.</p>
+      <p class="mb0">Sia $f:(a,b)\to\R$ e $x_0\in(a,b)$ (punto interno). $x_0$ è un <strong>punto critico</strong> (o <strong>stazionario</strong>) per $f$ se esiste $f'(x_0)=0$.</p>
+    </div>
+    <svg class="retta" viewBox="0 0 320 185" role="img" aria-label="Una funzione su un intervallo con due massimi relativi interni, un minimo relativo interno e i due estremi dell'intervallo che sono minimi relativi">
+      <line class="asse" x1="22" y1="165" x2="312" y2="165"/><line class="asse" x1="28" y1="176" x2="28" y2="6"/>
+      <line class="guida" x1="74.9" y1="26.5" x2="74.9" y2="165"/><line class="guida" x1="173.6" y1="134.1" x2="173.6" y2="165"/><line class="guida" x1="263.4" y1="49.1" x2="263.4" y2="165"/>
+      <line class="guida" x1="36" y1="60.2" x2="36" y2="165"/><line class="guida" x1="288" y1="64.7" x2="288" y2="165"/>
+      <polyline fill="none" style="stroke:var(--accent);stroke-width:2.4" points="36.0,60.2 39.0,55.9 42.0,51.7 45.0,47.8 48.0,44.1 51.0,40.6 54.0,37.4 57.0,34.6 60.0,32.2 63.0,30.2 66.0,28.6 69.0,27.4 72.0,26.7 75.0,26.5 78.0,26.8 81.0,27.5 84.0,28.7 87.0,30.4 90.0,32.6 93.0,35.1 96.0,38.1 99.0,41.5 102.0,45.2 105.0,49.3 108.0,53.6 111.0,58.2 114.0,63.0 117.0,68.0 120.0,73.0 123.0,78.2 126.0,83.3 129.0,88.5 132.0,93.5 135.0,98.4 138.0,103.2 141.0,107.8 144.0,112.0 147.0,116.1 150.0,119.7 153.0,123.0 156.0,126.0 159.0,128.5 162.0,130.5 165.0,132.1 168.0,133.3 171.0,133.9 174.0,134.1 177.0,133.8 180.0,133.0 183.0,131.8 186.0,130.1 189.0,128.0 192.0,125.5 195.0,122.7 198.0,119.5 201.0,116.0 204.0,112.2 207.0,108.2 210.0,104.0 213.0,99.7 216.0,95.3 219.0,90.9 222.0,86.4 225.0,82.1 228.0,77.8 231.0,73.7 234.0,69.8 237.0,66.1 240.0,62.7 243.0,59.6 246.0,56.8 249.0,54.5 252.0,52.5 255.0,51.0 258.0,49.9 261.0,49.3 264.0,49.1 267.0,49.5 270.0,50.3 273.0,51.6 276.0,53.4 279.0,55.6 282.0,58.2 285.0,61.3 288.0,64.7"/>
+      <circle cx="74.9" cy="26.5" r="4" style="fill:var(--danger)"/><circle cx="263.4" cy="49.1" r="4" style="fill:var(--danger)"/>
+      <circle cx="173.6" cy="134.1" r="4" style="fill:var(--ok)"/><circle cx="36" cy="60.2" r="4" style="fill:var(--ok)"/><circle cx="288" cy="64.7" r="4" style="fill:var(--ok)"/>
+      <text x="36" y="180" text-anchor="middle">a</text><text x="74.9" y="180" text-anchor="middle">x₁</text><text x="173.6" y="180" text-anchor="middle">x₃</text><text x="263.4" y="180" text-anchor="middle">x₂</text><text x="288" y="180" text-anchor="middle">b</text>
+    </svg>
+    <p class="small muted">Come nella figura della Lezione 17: $x_1$ e $x_2$ sono punti di massimo relativo (in rosso), $a$, $b$ e $x_3$ di minimo relativo (in verde). $x_1$ è anche il punto di massimo assoluto. Solo $x_1$, $x_2$, $x_3$ sono punti critici: $a$ e $b$ non sono interni.</p>
+    <div class="box prop">
+      <div class="box-title">Osservazioni (Lezione 17)</div>
+      <ul class="mb0">
+        <li>$x_0$ punto di massimo assoluto $\Rightarrow$ $x_0$ punto di massimo relativo; il viceversa è falso ($x_2$ nella figura).</li>
+        <li>La retta tangente al grafico in $x_0$ è $y=f'(x_0)(x-x_0)+f(x_0)$; se $x_0$ è un punto critico diventa $y=f(x_0)$, <strong>parallela all'asse $x$</strong>.</li>
+        <li><strong>Esempio.</strong> $f(x)=2-x^2$: $f'(x)=-2x=0\iff x=0$. $x=0$ è l'unico punto critico (ed è il punto di massimo assoluto); la tangente lì è $y=2$.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="fermat">11 · Teorema di Fermat <span class="badge star">dim. scritto · n° 20</span></h2>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 17)</div>
+      <p class="mb0">Sia $f:(a,b)\subseteq\R\to\R$ e sia $x_0\in(a,b)$ un punto di massimo o di minimo relativo (punto di estremo relativo). Se $f$ è derivabile in $x_0$, allora $$f'(x_0)=0,$$ cioè $x_0$ è un <strong>punto critico</strong>.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 17)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dove serve che $x_0$ sia interno?</div>
+          <div class="step-content">Per avere spazio da tutte e due le parti: $x_0\in(a,b)$, quindi esiste $r>0$ con $I_r(x_0)\subset(a,b)$. Facciamo il caso del massimo (il minimo è uguale): prendendo $r$ abbastanza piccolo, $f(x)\le f(x_0)$ per ogni $x\in I_r(x_0)$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che segno ha il numeratore del rapporto incrementale?</div>
+          <div class="step-content">Per $|h|\lt r$ si ha $x_0+h\in I_r(x_0)$, quindi $f(x_0+h)-f(x_0)\le0$: il numeratore non è mai positivo.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">E il rapporto, da destra e da sinistra?</div>
+          <div class="step-content">Per $h>0$ il rapporto $\frac{f(x_0+h)-f(x_0)}h$ è $\le0$, per $h\lt0$ è $\ge0$. Passando al limite (la disuguaglianza larga si conserva): $$f'_+(x_0)\le0,\qquad f'_-(x_0)\ge0.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Dove entra la derivabilità?</div>
+          <div class="step-content">$f$ è derivabile in $x_0$, quindi le derivate laterali coincidono con $f'(x_0)$: $$0\ge f'_+(x_0)=f'(x_0)=f'_-(x_0)\ge0\quad\Longrightarrow\quad f'(x_0)=0.$$ $x_0$ è un punto critico. $\blacksquare$</div></div></div>
+      </div>
+      <p class="small muted mb0">Negli appunti la dimostrazione comincia con «esiste $r>0$ t.c. $I_r(x_0)\subset(a,b)$» e poi usa $f(x)\le f(x_0)$ su $I_r(x_0)$: sottintende di prendere $r$ non più grande del $\delta$ della definizione di massimo relativo.</p>
+    </div></details>
+    <div class="box trap">
+      <div class="box-title">✗ Il ruolo delle ipotesi (Lezione 17)</div>
+      <ol class="mb0">
+        <li><strong>Serve la derivabilità.</strong> $f(x)=|x|$, $x_0=0$: è interno a $\R$ ed è un punto di minimo relativo, ma $f$ non è derivabile in $0$, e infatti non c'è nessuna derivata nulla.</li>
+        <li><strong>Serve che $x_0$ sia interno.</strong> Su $[a,b]$ una funzione crescente ha in $x_0=a$ un punto di minimo relativo, ma $f'(a)\ne0$.</li>
+        <li><strong>Il viceversa è falso.</strong> $f(x)=x^3$: $x_0=0$ è un punto critico ($f'(0)=0$), ma non è un estremo relativo. Fermat dà una condizione <strong>necessaria</strong>, non sufficiente: i punti critici sono solo i candidati.</li>
+      </ol>
+    </div>
+    <p class="small muted">Nella (iii) gli appunti scrivono «$f'(x)=x^3$»: è un refuso per $f(x)=x^3$. Con $f'(x)=x^3$, cioè $f(x)=\frac{x^4}4+c$, lo $0$ sarebbe proprio un minimo.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="ottimizzazione">12 · Calcolo di massimi e minimi assoluti</h2>
+    <p>È il <strong>problema di ottimizzazione</strong> (Lezione 18): trovare massimo e minimo assoluti di $f:[a,b]\to\R$ continua. Weierstrass dice che esistono, in punti $x_M$ e $x_m$. Dove possono essere? O agli estremi $a$, $b$; oppure all'interno, e lì $f$ o non è derivabile, o è derivabile e allora, per Fermat, $f'=0$.</p>
+    <div class="box prop">
+      <div class="box-title">Il metodo (Lezione 18)</div>
+      <ol class="mb0">
+        <li>Si scrivono i candidati: (1) gli <strong>estremi</strong> $a$ e $b$; (2) i <strong>punti di non derivabilità</strong> di $f$; (3) i <strong>punti critici</strong>, dove $f'=0$.</li>
+        <li>Si calcola $f$ in tutti i candidati e si confrontano i valori: il più grande è il massimo assoluto, il più piccolo il minimo assoluto.</li>
+      </ol>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esercizio (Lezione 18) · $f(x)=e^{1-x^2}$ su $[-3,3]$</div>
+      <p class="mb0">$f$ è continua su $[-3,3]$: per Weierstrass ha massimo e minimo assoluti. (1) Estremi: $f(3)=f(-3)=e^{1-9}=e^{-8}$. (2) Non ci sono punti di non derivabilità. (3) $f'(x)=-2x\,e^{1-x^2}=0\iff x=0$, e $f(0)=e$. Quindi $\max_{[-3,3]}f=e$, con punto di massimo $x_3=0$, e $\min_{[-3,3]}f=e^{-8}$, con punti di minimo $x_1=3$, $x_2=-3$.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ Non basta $f'=0$</div>
+      <p class="mb0">Dimenticare gli estremi dell'intervallo è l'errore più comune: qui il minimo sta proprio in $\pm3$, dove $f'\ne0$. E dimenticare i punti di non derivabilità fa perdere i massimi di funzioni come $1-|x|$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rolle">13 · Teorema di Rolle <span class="badge star">dim. scritto · n° 21</span></h2>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 18)</div>
+      <p class="mb0">Sia $f:[a,b]\to\R$ <strong>continua in $[a,b]$</strong> e <strong>derivabile in $(a,b)$</strong>, con $f(a)=f(b)$. Allora esiste $\xi\in(a,b)$ tale che $f'(\xi)=0$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 18)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa dà la continuità su $[a,b]$?</div>
+          <div class="step-content">Il teorema di <strong>Weierstrass</strong>: $f$ ha massimo $M=\max_{[a,b]}f$ e minimo $m=\min_{[a,b]}f$ assoluti, in punti $x_M,x_m\in[a,b]$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Caso 1: $x_m$ e $x_M$ sono tutti e due agli estremi</div>
+          <div class="step-content">Allora $x_m,x_M\in\{a,b\}$ e, per l'ipotesi $f(a)=f(b)$, $m=f(x_m)=f(x_M)=M$. Massimo e minimo coincidono: $f$ è <strong>costante</strong> in $[a,b]$, quindi $f'(x)=0$ per ogni $x\in(a,b)$, e va bene qualunque $\xi$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Caso 2: almeno uno dei due è interno. Quale teorema?</div>
+          <div class="step-content"><strong>Fermat</strong>: quel punto è interno, è un estremo (assoluto, quindi anche relativo) e lì $f$ è derivabile per ipotesi. Quindi la derivata vi si annulla: è il $\xi$ cercato. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box trap">
+      <div class="box-title">✗ Il ruolo delle ipotesi (Lezione 18)</div>
+      <ol class="mb0">
+        <li><strong>Serve un intervallo.</strong> Su $A=[a,b]\cup[c,d]$, con $b\lt c$, una funzione può avere $f(a)=f(d)$ e $f'(x)\ne0$ per ogni $x\in A$ (per esempio crescente sul primo pezzo e decrescente sul secondo).</li>
+        <li><strong>Serve la derivabilità in tutto $(a,b)$.</strong> $f(x)=|x|$ su $[-1,1]$: è continua e $f(-1)=f(1)=1$, ma non è derivabile in $0$, e $f'(x)=\pm1\ne0$ per ogni $x\in(-1,1)\setminus\{0\}$. Il teorema non si applica.</li>
+      </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="lagrange">14 · Teorema di Lagrange <span class="badge star">dim. scritto · n° 22</span></h2>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 18)</div>
+      <p class="mb0">Sia $f:[a,b]\to\R$ continua in $[a,b]$ e derivabile in $(a,b)$. Allora esiste $\xi\in(a,b)$ tale che $$f(b)-f(a)=f'(\xi)(b-a),\qquad\text{cioè}\qquad f'(\xi)=\frac{f(b)-f(a)}{b-a}.$$</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">↳ Che cosa vuol dire</div>
+      <p class="mb0">$\frac{f(b)-f(a)}{b-a}$ è la pendenza della retta per $(a,f(a))$ e $(b,f(b))$. Il teorema dice che in qualche punto interno la <strong>tangente è parallela a quella secante</strong>. In termini di velocità: se in due ore hai fatto 120 km, in almeno un istante andavi a 60 km/h. Rolle è il caso $f(a)=f(b)$, con la secante orizzontale.</p>
+    </div>
+    <svg class="retta" viewBox="0 0 320 190" role="img" aria-label="Grafico con la secante fra a e b e la tangente parallela nel punto xi">
+      <line class="asse" x1="22" y1="180" x2="312" y2="180"/><line class="asse" x1="30" y1="188" x2="30" y2="4"/>
+      <line class="guida" x1="57.5" y1="130.5" x2="57.5" y2="180"/><line class="guida" x1="277.5" y1="31.5" x2="277.5" y2="180"/><line class="guida" x1="140" y1="81" x2="140" y2="180"/>
+      <line x1="41" y1="137.9" x2="299.5" y2="21.6" style="stroke:var(--danger);stroke-width:1.8"/>
+      <line x1="41" y1="125.6" x2="299.5" y2="9.2" style="stroke:var(--ok);stroke-width:1.8;stroke-dasharray:6 4"/>
+      <polyline fill="none" style="stroke:var(--accent);stroke-width:2.4" points="35.5,157.9 41.0,148.7 46.5,141.7 52.0,135.7 57.5,130.5 63.0,125.8 68.5,121.4 74.0,117.4 79.5,113.6 85.0,110.0 90.5,106.6 96.0,103.3 101.5,100.2 107.0,97.2 112.5,94.3 118.0,91.5 123.5,88.7 129.0,86.1 134.5,83.5 140.0,81.0 145.5,78.6 151.0,76.2 156.5,73.8 162.0,71.6 167.5,69.3 173.0,67.1 178.5,65.0 184.0,62.9 189.5,60.8 195.0,58.8 200.5,56.8 206.0,54.8 211.5,52.8 217.0,50.9 222.5,49.0 228.0,47.2 233.5,45.4 239.0,43.5 244.5,41.8 250.0,40.0 255.5,38.3 261.0,36.5 266.5,34.8 272.0,33.2 277.5,31.5 283.0,29.9 288.5,28.2 294.0,26.6 299.5,25.0 305.0,23.5"/>
+      <circle cx="57.5" cy="130.5" r="4" style="fill:var(--text)"/><circle cx="277.5" cy="31.5" r="4" style="fill:var(--text)"/><circle cx="140" cy="81" r="4" style="fill:var(--ok)"/>
+      <text x="57.5" y="190" text-anchor="middle">a</text><text x="140" y="190" text-anchor="middle">ξ</text><text x="277.5" y="190" text-anchor="middle">b</text>
+    </svg>
+    <p class="small muted">Disegnato con $f(x)=\sqrt x$ su $\left[\frac12,\frac92\right]$: la secante ha pendenza $\frac{\sqrt{9/2}-\sqrt{1/2}}4=\frac{\sqrt2}4$, e $f'(\xi)=\frac1{2\sqrt\xi}=\frac{\sqrt2}4$ dà $\xi=2$.</p>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 18)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Quale funzione ausiliaria? (L'idea: togliere la secante)</div>
+          <div class="step-content">$$g(x)=f(x)-\left[f(a)+\frac{f(b)-f(a)}{b-a}(x-a)\right],\qquad x\in[a,b]:$$ la differenza fra $f$ e la retta secante.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Perché a $g$ si applica Rolle?</div>
+          <div class="step-content">$g$ è continua in $[a,b]$ e derivabile in $(a,b)$ (differenza di $f$ e di un polinomio di primo grado), e $g(a)=f(a)-f(a)=0$, $g(b)=f(b)-\left[f(a)+\frac{f(b)-f(a)}{b-a}(b-a)\right]=f(b)-f(a)-f(b)+f(a)=0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa dà Rolle, e come si conclude?</div>
+          <div class="step-content">Esiste $\xi\in(a,b)$ con $g'(\xi)=0$. Poiché $g'(x)=f'(x)-\frac{f(b)-f(a)}{b-a}$, si ha $f'(\xi)=\frac{f(b)-f(a)}{b-a}$, cioè $f'(\xi)(b-a)=f(b)-f(a)$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+
+    <!-- ============================================================ -->
+    <h2 id="monotonia">15 · Conseguenze di Lagrange: funzioni costanti e test di monotonia <span class="badge star">dim. scritto · n° 23</span></h2>
+    <div class="box teo">
+      <div class="box-title">Teorema · caratterizzazione delle funzioni costanti (Lezione 18)</div>
+      <p class="mb0">Sia $f:I\to\R$, con $I$ <strong>intervallo</strong>, continua e derivabile in $I$. Se $f'(x)=0$ per ogni $x\in I$, allora $f$ è costante in $I$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 18)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa si confronta, e dove serve «intervallo»?</div>
+          <div class="step-content">Due punti qualsiasi $x_1\lt x_2$ di $I$. Poiché $I$ è un intervallo, $[x_1,x_2]\subset I$: su quel segmento $f$ è continua e derivabile.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa dà Lagrange?</div>
+          <div class="step-content">Esiste $\xi\in(x_1,x_2)$ con $f(x_2)-f(x_1)=f'(\xi)(x_2-x_1)=0$, perché $f'(\xi)=0$ per ipotesi. Quindi $f(x_2)=f(x_1)$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Conclusione</div>
+          <div class="step-content">$x_1$ e $x_2$ erano arbitrari: $f$ assume lo stesso valore in tutti i punti di $I$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box trap">
+      <div class="box-title">✗ Senza intervallo non vale (Lezione 18)</div>
+      <ol class="mb0">
+        <li>$I=[0,1]\cup[2,3]$, $f=1$ su $[0,1]$ e $f=2$ su $[2,3]$: $f'(x)=0$ per ogni $x\in I$, ma $f\left(\frac12\right)=1\ne2=f\left(\frac52\right)$.</li>
+        <li>$f(x)=\operatorname{arctg}x+\operatorname{arctg}\frac1x$ su $I=\R\setminus\{0\}$: $f'(x)=0$ per ogni $x\in I$, ma $f(1)=\frac\pi2$ e $f(-1)=-\frac\pi2$. È costante <em>su ciascuno</em> dei due intervalli (l'Esercitazione 9 lo usa per dimostrare l'identità).</li>
+      </ol>
+    </div>
+
+    <div class="box teo">
+      <div class="box-title">Teorema · test di monotonia (Lezione 18)</div>
+      <p class="mb0">Sia $f$ derivabile in un <strong>intervallo</strong> $I$. Allora $$f\text{ è crescente in }I\iff f'(x)\ge0\quad\forall x\in I,$$ $$f\text{ è decrescente in }I\iff f'(x)\le0\quad\forall x\in I.$$</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 18)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: che segno ha il rapporto incrementale di una funzione crescente?</div>
+          <div class="step-content">Se $f$ è crescente, $f(x)-f(x_0)$ e $x-x_0$ hanno lo stesso segno (o il numeratore è nullo): $\frac{f(x)-f(x_0)}{x-x_0}\ge0$ per ogni $x,x_0\in I$, $x\ne x_0$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇒»: come si arriva a $f'(x_0)$?</div>
+          <div class="step-content">$f$ è derivabile in $x_0$, quindi $f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}\ge0$, per la permanenza del segno (un limite di quantità $\ge0$ è $\ge0$).</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»: su che cosa si applica Lagrange, e dove serve «intervallo»?</div>
+          <div class="step-content">Su $[x_1,x_2]$, con $x_1\lt x_2$ in $I$: è contenuto in $I$ perché $I$ è un intervallo, e lì $f$ è continua e derivabile. Esiste $\xi\in(x_1,x_2)$ con $f'(\xi)=\frac{f(x_2)-f(x_1)}{x_2-x_1}$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">«⇐»: conclusione</div>
+          <div class="step-content">Per ipotesi $f'(\xi)\ge0$, quindi $\frac{f(x_2)-f(x_1)}{x_2-x_1}\ge0$ e, siccome $x_2-x_1>0$, $f(x_2)\ge f(x_1)$. Per l'arbitrarietà di $x_1\lt x_2$, $f$ è crescente in $I$. Per «decrescente» si ragiona allo stesso modo con $\le$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box trap">
+      <div class="box-title">✗ Due cose da non dire (Lezione 18)</div>
+      <ul class="mb0">
+        <li><strong>Senza intervallo il test non vale.</strong> $f(x)=x$ su $(0,1)$ e $f(x)=x-3$ su $(2,3)$: $f'(x)=1>0$ ovunque, ma $f\left(\frac12\right)=\frac12>-\frac12=f\left(\frac52\right)$. È il motivo per cui $\frac1x$ è decrescente su $(-\infty,0)$ e su $(0,+\infty)$, ma non su $\R\setminus\{0\}$.</li>
+        <li><strong>$f'>0$ è sufficiente, non necessaria, per la stretta monotonia.</strong> Se $f'(x)>0$ per ogni $x\in I$, allora $f$ è strettamente crescente (stessa dimostrazione con $>$). Il viceversa è falso: $x^3$ è strettamente crescente ma $f'(0)=0$.</li>
+      </ul>
+    </div>
+    <p class="small muted">«Crescente» negli appunti vuol dire $x_1\lt x_2\Rightarrow f(x_1)\le f(x_2)$, come per le successioni monotòne: è la versione larga, ed è quella che corrisponde a $f'\ge0$.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="punti-critici">16 · Classificazione dei punti critici <span class="badge star2">dim. orale</span></h2>
+    <p>Il test di monotonia, applicato a destra e a sinistra di un punto critico $x_0$ (con $f$ derivabile in un intervallo $I$ e $f'(x_0)=0$), dice di che tipo è (Lezione 18):</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Segno di $f'$ prima di $x_0$</th><th>Segno di $f'$ dopo $x_0$</th><th>Monotonia</th><th>$x_0$ è</th></tr></thead>
+        <tbody>
+          <tr><td>$-$</td><td>$+$</td><td>↘ poi ↗</td><td>punto di <strong>minimo relativo</strong></td></tr>
+          <tr><td>$+$</td><td>$-$</td><td>↗ poi ↘</td><td>punto di <strong>massimo relativo</strong></td></tr>
+          <tr><td>$+$</td><td>$+$</td><td>↗ e ↗</td><td>punto di <strong>flesso</strong>, non è un estremo</td></tr>
+          <tr><td>$-$</td><td>$-$</td><td>↘ e ↘</td><td>punto di <strong>flesso</strong>, non è un estremo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">La prof chiama «punto di flesso» il terzo caso; per distinguerlo dal flesso a tangente verticale del paragrafo 8, molti libri dicono <em>flesso a tangente orizzontale</em> (la tangente è $y=f(x_0)$). Il segno di $f'$ va studiato in un intorno di $x_0$, cioè su un intervallo: è lì che si usa il test.</p>
+    <div class="box ex">
+      <div class="box-title">Esercizio (Lezione 18) · $f(x)=2x^3-6x$</div>
+      <p class="mb0">$f'(x)=6x^2-6=6(x+1)(x-1)$, che si annulla in $x_1=1$ e $x_2=-1$: sono i punti critici. $f'>0$ per $x\lt-1$, $f'\lt0$ per $-1\lt x\lt1$, $f'>0$ per $x>1$. Quindi $x_2=-1$ è punto di <strong>massimo relativo</strong>, $x_1=1$ di <strong>minimo relativo</strong>; $f$ è crescente in $(-\infty,-1)$ e in $(1,+\infty)$, decrescente in $(-1,1)$. Nessuno dei due è assoluto, perché $f\to\pm\infty$ per $x\to\pm\infty$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="limite-derivata">17 · Limite della derivata e derivabilità <span class="badge star2">dim. orale</span></h2>
+    <div class="box teo">
+      <div class="box-title">Teorema (Lezione 18)</div>
+      <p class="mb0">Sia $f:[a,b]\to\R$ <strong>continua</strong> in $[a,b]$ e derivabile in $(a,b)\setminus\{x_0\}$, con $x_0\in(a,b)$. Supponiamo che esista <strong>finito</strong> $$\lim_{x\to x_0}f'(x)=L\in\R.$$ Allora $f$ è derivabile in $x_0$ e $f'(x_0)=L$.</p>
+    </div>
+    <details class="reveal proof"><summary>Dimostrazione a passi coperti (Lezione 18)</summary><div class="reveal-body">
+      <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+      <div class="steps">
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Da destra: su quale intervallo si usa Lagrange?</div>
+          <div class="step-content">Su $[x_0,x_0+h]$ con $h>0$: lì $f$ è continua, e derivabile in $(x_0,x_0+h)$. Esiste $\xi\in(x_0,x_0+h)$ con $$f'(\xi)=\frac{f(x_0+h)-f(x_0)}h.$$</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Che cosa succede per $h\to0^+$?</div>
+          <div class="step-content">$x_0\lt\xi\lt x_0+h$, quindi $\xi\to x_0^+$, e per ipotesi $f'(\xi)\to L$. Allora $\displaystyle\lim_{h\to0^+}\frac{f(x_0+h)-f(x_0)}h=L$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Da sinistra?</div>
+          <div class="step-content">Stesso argomento su $[x_0+h,x_0]$ con $h\lt0$: esiste $\eta\in(x_0+h,x_0)$ con $f'(\eta)=\frac{f(x_0)-f(x_0+h)}{x_0-(x_0+h)}=\frac{f(x_0+h)-f(x_0)}h$, e per $h\to0^-$ si ha $\eta\to x_0$ e $f'(\eta)\to L$.</div></div></div>
+        <div class="step"><div class="step-n"></div><div class="step-body">
+          <div class="step-cue">Conclusione</div>
+          <div class="step-content">I limiti destro e sinistro del rapporto incrementale esistono, sono finiti e uguali a $L$: $f$ è derivabile in $x_0$ e $f'(x_0)=L$. $\blacksquare$</div></div></div>
+      </div>
+    </div></details>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 18)</div>
+      <p class="mb0">Con le stesse ipotesi, se $\lim_{x\to x_0^+}f'(x)=L_1$ e $\lim_{x\to x_0^-}f'(x)=L_2$ (finiti o infiniti), allora $f'_+(x_0)=L_1$ e $f'_-(x_0)=L_2$. Se $L_1$ o $L_2$ è infinito, oppure $L_1\ne L_2$, $f$ <strong>non</strong> è derivabile in $x_0$, e il tipo di punto si legge dalla tabella del paragrafo 8.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ Quando il teorema non dice niente</div>
+      <ul class="mb0">
+        <li><strong>Se $\lim f'(x)$ non esiste</strong>, non si può concludere nulla: $x^2\sin\frac1x$ (paragrafo 9) è derivabile in $0$ anche se $f'$ non ha limite. Si torna al rapporto incrementale.</li>
+        <li><strong>Serve la continuità in $x_0$.</strong> $\operatorname{sgn}x$ ha $f'(x)=0$ per ogni $x\ne0$, quindi $\lim_{x\to0}f'(x)=0$, ma non è derivabile in $0$, perché non è nemmeno continua. Negli esercizi con i parametri la continuità si impone <strong>prima</strong>.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esercizio (Lezione 18) · $f(x)=\alpha x^2+\beta x$ per $x\ge0$, $x^3+x$ per $x\lt0$</div>
+      <p class="mb0">Per quali $\alpha,\beta\in\R$ è derivabile in $0$? (1) <strong>Continuità:</strong> $\lim_{x\to0^+}(\alpha x^2+\beta x)=0=f(0)$ e $\lim_{x\to0^-}(x^3+x)=0$: è continua per ogni $\alpha,\beta$. (2) <strong>Derivabilità:</strong> $f'(x)=2\alpha x+\beta\to\beta$ per $x\to0^+$ e $f'(x)=3x^2+1\to1$ per $x\to0^-$. Quindi $f$ è derivabile in $0$ se e solo se $\beta=1$, per ogni $\alpha\in\R$. Con il rapporto incrementale: $\frac{\alpha h^2+\beta h}h\to\beta$ e $\frac{h^3+h}h\to1$, stesso risultato.</p>
+    </div>
+    <p class="small muted">Nell'Esercitazione 9 il tutor lo chiama teorema «tappabuchi»: tappa il buco in $x_0$ dove le regole di derivazione non arrivano.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 5</h2>
+    <div class="box trap">
+      <ul class="mb0">
+        <li><strong>Dimenticare il «finito»</strong> nella definizione di derivata: un rapporto incrementale che va a $\pm\infty$ non dà una derivata.</li>
+        <li><strong>Credere che continua implichi derivabile.</strong> $|x|$ in $0$ è il controesempio. Vale il contrario: se $f$ non è continua in $x_0$, non è derivabile.</li>
+        <li><strong>Derivare il prodotto come prodotto delle derivate</strong>, o scambiare l'ordine nel numeratore del quoziente.</li>
+        <li><strong>Dimenticare la derivata dell'interna</strong> nella composta: $D\sin(x^2)=2x\cos(x^2)$, non $\cos(x^2)$.</li>
+        <li><strong>Confondere $Dx^\alpha$ e $Da^x$</strong>: $D2^x=2^x\log2$, non $x\,2^{x-1}$. Per $x^x$ non vale né l'una né l'altra: si scrive $e^{x\log x}$.</li>
+        <li><strong>Scrivere la tangente come $y=f'(x_0)x$</strong>: passa per l'origine, non per il punto. La tangente è $y=f(x_0)+f'(x_0)(x-x_0)$.</li>
+        <li><strong>Prendere i punti critici per estremi.</strong> Fermat è una condizione necessaria: $x^3$ ha $f'(0)=0$ e in $0$ non ha né massimo né minimo. Il tipo si decide con il segno di $f'$ a destra e a sinistra.</li>
+        <li><strong>Cercare il massimo assoluto solo dove $f'=0$</strong>, dimenticando gli estremi dell'intervallo e i punti di non derivabilità.</li>
+        <li><strong>Applicare Rolle, Lagrange o il test di monotonia fuori da un intervallo</strong>: $\frac1x$ ha $f'\lt0$ ma non è decrescente su $\R\setminus\{0\}$; $\operatorname{arctg}x+\operatorname{arctg}\frac1x$ ha $f'=0$ ma non è costante.</li>
+        <li><strong>Calcolare $f'(x_0)$ come $\lim_{x\to x_0}f'(x)$ senza controllare la continuità</strong>, o concludere «non derivabile» perché quel limite non esiste: $x^2\sin\frac1x$ è derivabile in $0$.</li>
+        <li><strong>Chiamare cuspide ogni punto di non derivabilità.</strong> Cuspide vuol dire derivate laterali infinite di segno opposto; con derivate laterali finite e diverse è un punto angoloso.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="../esercizi.html?sez=5">Esercizi della Sezione 5 →</a>
+      <a class="btn" href="4-limiti.html">← Sezione 4</a>
+      <a class="btn" href="../seconda.html">Piano della seconda parte</a>
+    </div>
+  </main>
+</div>
+
+<footer>Analisi Matematica 1 · Sezione 5 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261123"></script>
+<script src="../data/topics2.js?v=20261123"></script>
+<script src="../data/quiz.js?v=20261123"></script>
+<script src="../../assets/js/plot.js?v=20261123"></script>
+<script src="../../assets/js/app.js?v=20261123"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.renderChecklist('#checklistBox', 5);
+  AM.mountQuiz('#quizBox', AM.quizPerSezione(5), { statKey: 'sez5' });
+  function fmt(v) {
+    if (!isFinite(v)) return v > 0 ? '+∞' : v < 0 ? '−∞' : '—';
+    return (Math.round(v * 1e4) / 1e4).toString().replace('-', '−');
+  }
+
+  /* ---------- Dalla secante alla tangente ---------- */
+  (function () {
+    var F = [
+      { f: function (x) { return x * x; }, x0: 1, d: 2, nome: 'x²', w: { xmin: -0.6, xmax: 2.4, ymin: -0.8, ymax: 4.6 }, hmin: -1, hmax: 1,
+        opz: [{ v: 2, giusta: true }, { v: 1, perche: 'è f(x₀), il valore della funzione, non la pendenza' }, { v: 3, perche: 'è la pendenza della secante con h = 1: la tangente è il limite per h → 0' }] },
+      { f: Math.sin, x0: 0, d: 1, nome: 'sen x', w: { xmin: -2, xmax: 2, ymin: -1.5, ymax: 1.5 }, hmin: -1, hmax: 1,
+        opz: [{ v: 1, giusta: true }, { v: 0, perche: 'è f(0) = sen 0, il valore, non la pendenza' }, { v: Math.sin(1), perche: 'è la pendenza della secante con h = 1 (sen 1 ≈ 0,84)' }] },
+      { f: Math.sqrt, x0: 1, d: 0.5, nome: '√x', w: { xmin: -0.2, xmax: 2.4, ymin: -0.4, ymax: 1.8 }, hmin: -1, hmax: 1,
+        opz: [{ v: 0.5, giusta: true }, { v: 1, perche: 'è f(1) = √1, il valore, non la pendenza' }, { v: Math.SQRT2 - 1, perche: 'è la pendenza della secante con h = 1 (√2 − 1 ≈ 0,41)' }] },
+      { f: Math.log, x0: 1, d: 1, nome: 'log x', w: { xmin: 0.05, xmax: 2.4, ymin: -2.2, ymax: 1.2 }, hmin: -0.9, hmax: 1,
+        opz: [{ v: 1, giusta: true }, { v: 0, perche: 'è f(1) = log 1, il valore, non la pendenza' }, { v: Math.log(2), perche: 'è la pendenza della secante con h = 1 (log 2 ≈ 0,69)' }] },
+      { f: Math.exp, x0: 0, d: 1, nome: 'eˣ', w: { xmin: -1.6, xmax: 1.4, ymin: -0.4, ymax: 3.6 }, hmin: -1, hmax: 1,
+        opz: [{ v: 1, giusta: true }, { v: Math.E - 1, perche: 'è la pendenza della secante con h = 1 (e − 1 ≈ 1,72)' }, { v: 0, perche: 'la funzione cresce: la pendenza della tangente non può essere 0' }] }
+    ];
+    var i = 0, h = 0.8, risposto = false;
+    var out = document.getElementById('stOut'), msg = document.getElementById('stMsg'), btns = document.getElementById('stBtns');
+    var p = new Plot('stPlot', Object.assign({ height: 300 }, F[0].w));
+    function hh() { var S = F[i]; var v = Math.max(S.hmin, Math.min(S.hmax, h)); return Math.abs(v) < 0.005 ? (v < 0 ? -0.005 : 0.005) : v; }
+    function retta(g, x0, y0, m, o) { g.seg(g.xmin, y0 + m * (g.xmin - x0), g.xmax, y0 + m * (g.xmax - x0), o); }
+    p.draw(function (g) {
+      var S = F[i], d = hh(), y0 = S.f(S.x0), x1 = S.x0 + d, y1 = S.f(x1), m = (y1 - y0) / d;
+      g.fn(S.f, { color: 'accent', width: 2.2, samples: 600 });
+      retta(g, S.x0, y0, m, { color: 'danger', width: 1.6 });
+      if (risposto) retta(g, S.x0, y0, S.d, { color: 'ok', width: 1.8, dash: [6, 4] });
+      g.dot(S.x0, y0, { color: 'text', r: 4.5 });
+      g.dot(x1, y1, { color: 'danger', r: 4.5, ring: true });
+    });
+    function refresh() {
+      var S = F[i], d = hh(), m = (S.f(S.x0 + d) - S.f(S.x0)) / d;
+      document.querySelector('[data-out="stH"]').textContent = fmt(d);
+      out.innerHTML = 'f(x) = <b>' + S.nome + '</b>, x₀ = ' + S.x0 + ' &nbsp;·&nbsp; h = ' + fmt(d) + '<br>' +
+        '<span style="color:var(--danger)">pendenza della secante = [f(x₀ + h) − f(x₀)] / h = <b>' + fmt(m) + '</b></span><br>' +
+        '<span style="color:var(--text-faint)">Porta h vicino a 0, da destra e da sinistra: quale numero si avvicina?</span>';
+    }
+    function bottoni() {
+      var S = F[i];
+      var ordine = AM.shuffle ? AM.shuffle(S.opz.slice()) : S.opz.slice();
+      btns.innerHTML = ordine.map(function (o, k) { return '<button class="btn sm" data-k="' + S.opz.indexOf(o) + '">tangente: pendenza ' + fmt(o.v) + '</button>'; }).join('');
+      btns.querySelectorAll('button').forEach(function (b) {
+        b.onclick = function () {
+          var o = S.opz[+b.dataset.k];
+          msg.style.display = '';
+          if (o.giusta) {
+            risposto = true; p.redraw();
+            msg.innerHTML = '<span style="color:var(--ok)"><b>✓ Giusto: f\'(' + S.x0 + ') = ' + fmt(S.d) + '.</b></span> La retta tratteggiata verde è la tangente y = f(x₀) + f\'(x₀)(x − x₀); muovi h e guarda la secante avvicinarsi.';
+          } else {
+            msg.innerHTML = '<span style="color:var(--danger)"><b>✗ No:</b></span> ' + fmt(o.v) + ' ' + o.perche + '. Prova a rendere h più piccolo.';
+          }
+        };
+      });
+    }
+    document.getElementById('stSel').onchange = function () { i = +this.value; risposto = false; msg.style.display = 'none'; p.setWindow(F[i].w); bottoni(); p.redraw(); refresh(); };
+    plotSlider('stH', function (v) { h = v; p.redraw(); refresh(); });
+    bottoni(); refresh();
+  })();
+
+  /* ---------- Che punto è? ---------- */
+  (function () {
+    var F = [
+      { f: Math.abs, nome: '|x|', v: 'ang', w: { xmin: -1.2, xmax: 1.2, ymin: -0.4, ymax: 1.4 },
+        sp: 'Da destra il rapporto incrementale vale 1, da sinistra −1: derivate laterali finite e diverse, punto angoloso (Lezione 17).' },
+      { f: Math.cbrt, nome: '∛x', v: 'flv', w: { xmin: -1.2, xmax: 1.2, ymin: -1.3, ymax: 1.3 },
+        sp: 'Il rapporto incrementale è 1/h^(2/3) e va a +∞ da tutte e due le parti: la tangente in 0 è l\'asse y. Flesso a tangente verticale (Lezione 17).' },
+      { f: function (x) { return Math.cbrt(Math.abs(x)); }, nome: '∛|x|', v: 'cus', w: { xmin: -1.2, xmax: 1.2, ymin: -0.4, ymax: 1.3 },
+        sp: 'Da destra il rapporto va a +∞, da sinistra a −∞: infiniti di segno opposto, cuspide (Lezione 17).' },
+      { f: function (x) { return x * Math.abs(x); }, nome: 'x|x|', v: 'der', w: { xmin: -1.2, xmax: 1.2, ymin: -1.3, ymax: 1.3 },
+        sp: 'Il rapporto incrementale è h|h|/h = |h| → 0 da tutte e due le parti: derivabile, con f\'(0) = 0. Il fattore x «arrotonda» l\'angolo di |x| (Esercitazione 8).' },
+      { f: function (x) { return x === 0 ? 0 : x * Math.sin(1 / x); }, nome: 'x·sen(1/x)', v: 'altro', w: { xmin: -0.5, xmax: 0.5, ymin: -0.5, ymax: 0.5 },
+        sp: 'Il rapporto incrementale è sen(1/h), che continua a oscillare fra −1 e 1: non ha limite né da destra né da sinistra. Non derivabile, e non è nessuno dei tre tipi (Lezione 17).' },
+      { f: function (x) { return x >= 0 ? Math.cbrt(x) : -x; }, nome: '∛x per x ≥ 0, −x per x < 0', v: 'altro', w: { xmin: -1.2, xmax: 1.2, ymin: -0.4, ymax: 1.3 },
+        sp: 'Da destra il rapporto va a +∞, da sinistra vale −1: una derivata laterale infinita e una finita. Non derivabile, ma né angoloso né cuspide (Lezione 17).' }
+    ];
+    var NOMI = { der: 'derivabile in 0', ang: 'punto angoloso', flv: 'flesso a tangente verticale', cus: 'cuspide', altro: 'punto di non derivabilità senza nome' };
+    var i = 0, h = 0.5, out = document.getElementById('ndOut'), msg = document.getElementById('ndMsg');
+    var p = new Plot('ndPlot', Object.assign({ height: 280 }, F[0].w));
+    function hh() { return Math.max(0.001, h * F[i].w.xmax); }
+    p.draw(function (g) {
+      var S = F[i], d = hh(), y0 = S.f(0), yd = S.f(d), ys = S.f(-d);
+      g.fn(S.f, { color: 'accent', width: 2.2, samples: 2400 });
+      g.seg(0, y0, d, yd, { color: 'ok', width: 1.6 });
+      g.seg(0, y0, -d, ys, { color: 'purple', width: 1.6 });
+      g.dot(0, y0, { color: 'text', r: 4 });
+      g.dot(d, yd, { color: 'ok', r: 4.5, ring: true });
+      g.dot(-d, ys, { color: 'purple', r: 4.5, ring: true });
+    });
+    function refresh() {
+      var S = F[i], d = hh();
+      document.querySelector('[data-out="ndH"]').textContent = fmt(d);
+      out.innerHTML = 'f(x) = <b>' + S.nome + '</b>, x₀ = 0 &nbsp;·&nbsp; h = ' + fmt(d) + '<br>' +
+        '<span style="color:var(--ok)">da destra: [f(h) − f(0)] / h = <b>' + fmt((S.f(d) - S.f(0)) / d) + '</b></span> &nbsp;·&nbsp; ' +
+        '<span style="color:var(--purple)">da sinistra: [f(−h) − f(0)] / (−h) = <b>' + fmt((S.f(-d) - S.f(0)) / -d) + '</b></span><br>' +
+        '<span style="color:var(--text-faint)">Porta h verso 0 e guarda dove vanno i due rapporti, poi scegli.</span>';
+    }
+    document.getElementById('ndSel').onchange = function () { i = +this.value; msg.style.display = 'none'; p.setWindow(F[i].w); p.redraw(); refresh(); };
+    plotSlider('ndH', function (v) { h = v; p.redraw(); refresh(); });
+    document.querySelectorAll('#ndBtns [data-nd]').forEach(function (b) {
+      b.onclick = function () {
+        var S = F[i], giusta = b.dataset.nd === S.v;
+        msg.style.display = '';
+        msg.innerHTML = (giusta ? '<span style="color:var(--ok)"><b>✓ Giusto: ' + NOMI[S.v] + '.</b></span> '
+          : '<span style="color:var(--danger)"><b>✗ No: hai detto «' + NOMI[b.dataset.nd] + '», ma è ' + NOMI[S.v] + '.</b></span> ') + S.sp;
+      };
+    });
+    refresh();
+  })();
+});
+</script>
+</body>
+</html>
