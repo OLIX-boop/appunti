@@ -1390,7 +1390,8 @@ Il limite vale $\boxed{0}$ (da valori negativi). <strong>Controllo:</strong> $x=
 
 { id: 'E4.31', sez: 4, tema: 'Calcolo di limiti', d: 1,
   t: r`Calcolare $\displaystyle\lim_{x\to0}x\,e^{\sin(1/x)}$. <span class="small muted">(Esercitazione 7, per casa)</span>`,
-  hints: [ r`$e^{\sin(1/x)}$ non ha limite per $x\to0$, ma è limitata: fra quali numeri?` ],
+  hints: [ r`$e^{\sin(1/x)}$ non ha limite per $x\to0$, ma è limitata: fra quali numeri?`,
+           r`$\frac1e\le e^{\sin(1/x)}\le e$, e $x\to0$: quale teorema sul prodotto conosci?` ],
   sol: r`Poiché $-1\le\sin\frac1x\le1$ e l'esponenziale è crescente, $\frac1e\le e^{\sin(1/x)}\le e$: la funzione è <strong>limitata</strong>. $x$ è infinitesima, e infinitesima per limitata è infinitesima: il limite vale $\boxed{0}$. In modo esplicito, $0\le\left|x\,e^{\sin(1/x)}\right|\le e|x|\to0$ e si conclude con i carabinieri. $\blacksquare$` },
 
 { id: 'E4.32', sez: 4, tema: 'Calcolo di limiti', d: 2,
@@ -1704,7 +1705,8 @@ Per disparità su $[-1,0]$: massimo in $-\frac1e$, minimi in $-1$ e $0$. In tutt
 
 { id: 'E5.20', sez: 5, tema: 'Lagrange', d: 1,
   t: r`Dimostrare che per ogni $a,b\in\R$ vale $|\sin b-\sin a|\le|b-a|$. <span class="small muted">(Esercitazione 9)</span>`,
-  hints: [ r`Se $a=b$ è ovvio; altrimenti supponi $a\lt b$ e applica Lagrange a $\sin x$ su $[a,b]$.` ],
+  hints: [ r`Se $a=b$ è ovvio; altrimenti supponi $a\lt b$ e applica Lagrange a $\sin x$ su $[a,b]$.`,
+           r`Lagrange dà $\frac{\sin b-\sin a}{b-a}=\cos c$ per un $c\in(a,b)$: quanto può valere al massimo $|\cos c|$?` ],
   sol: r`Se $a=b$ è ovvio; sia $a\lt b$. $\sin x$ è derivabile su $\R$ con derivata $\cos x$: per <strong>Lagrange</strong> su $[a,b]$ esiste $c\in(a,b)$ con $\frac{\sin b-\sin a}{b-a}=\cos c$. Poiché $|\cos c|\le1$: $$\frac{|\sin b-\sin a|}{|b-a|}=|\cos c|\le1\ \Longrightarrow\ |\sin b-\sin a|\le|b-a|.$$ $\blacksquare$ <em>Morale:</em> è la stima che nella Lezione 14 si otteneva con le prostaferesi, qui in una riga.` },
 
 { id: 'E5.21', sez: 5, tema: 'Funzioni costanti', d: 2,
