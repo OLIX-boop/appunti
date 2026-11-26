@@ -93,9 +93,9 @@ def scrivi(percorso, titolo, pagine):
     percorso.write_text(f"# {titolo}\n\n{corpo}\n", encoding="utf-8")
 
 
-def trascrivi_pagina(client, types, immagine, modello):
+def trascrivi_pagina(client, types, immagine, modello, tentativi=6):
     attesa = 20
-    for tentativo in range(6):
+    for tentativo in range(tentativi):
         try:
             r = client.models.generate_content(
                 model=modello,
@@ -108,7 +108,7 @@ def trascrivi_pagina(client, types, immagine, modello):
             if "404" in msg and "NOT_FOUND" in msg:
                 sys.exit(f"Il modello {modello} non è disponibile. Elenca quelli attivi con --modelli "
                          "e scegline uno con --modello oppure con la variabile GEMINI_MODEL.")
-            if tentativo < 5 and any(s in msg for s in ("429", "RESOURCE_EXHAUSTED", "503", "500", "UNAVAILABLE")):
+            if tentativo < tentativi - 1 and any(s in msg for s in ("429", "RESOURCE_EXHAUSTED", "503", "500", "UNAVAILABLE")):
                 print(f"   limite o errore temporaneo, riprovo fra {attesa} s", flush=True)
                 time.sleep(attesa)
                 attesa = min(attesa * 2, 300)
@@ -124,6 +124,8 @@ def main():
     ap.add_argument("--modello", default=MODELLO)
     ap.add_argument("--dpi", type=int, default=150)
     ap.add_argument("--pausa", type=float, default=4.0, help="secondi fra una pagina e l'altra")
+    ap.add_argument("--tentativi", type=int, default=6,
+                    help="tentativi per pagina dopo un 429/503; pochi se si vuole passare presto a un altro modello")
     ap.add_argument("--rifai", action="store_true", help="ritrascrive anche le pagine già fatte")
     ap.add_argument("--prova", action="store_true", help="renderizza soltanto, senza chiamare l'API")
     a = ap.parse_args()
@@ -165,7 +167,7 @@ def main():
     for k, n in enumerate(da_fare):
         jpg = doc[n - 1].get_pixmap(dpi=a.dpi).tobytes("jpeg")
         print(f"   pagina {n} ({k + 1}/{len(da_fare)})", flush=True)
-        pagine[n] = trascrivi_pagina(client, types, jpg, a.modello)
+        pagine[n] = trascrivi_pagina(client, types, jpg, a.modello, a.tentativi)
         scrivi(uscita, pdf.name, pagine)  # salvataggio a ogni pagina: si può interrompere e riprendere
         if k + 1 < len(da_fare):
             time.sleep(a.pausa)

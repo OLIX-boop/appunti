@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 12 · Coniche e quadriche — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105c">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
+      <a href="9-diagonalizzazione.html">9 · Diagonalizzazione</a>
+      <a href="10-euclidei.html">10 · Spazi euclidei</a>
+      <a href="11-forme.html">11 · Forme quadratiche</a>
+      <a href="12-quadriche.html">12 · Quadriche</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+      <a href="../laboratorio.html">Laboratorio</a>
+      <a href="../come-si-risolve.html">Come si risolve</a>
+      <a href="../esami.html">Esame</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 12</h4>
+    <a href="#mappa">Mappa del capitolo</a>
+    <a href="#definizione">1 · Quadriche e coniche</a>
+    <a href="#classificazione">2 · Affine e metrica</a>
+    <a href="#centro">3 · Quadriche a centro</a>
+    <a href="#canonica">4 · La forma canonica</a>
+    <a href="#esempio-xy" class="sub">L'iperbole $xy=1$</a>
+    <a href="#non-vuote" class="sub">Quali sono non vuote</a>
+    <a href="#ellissoide" class="sub">Un ellissoide</a>
+    <a href="#coniche">5 · Classificazione delle coniche</a>
+    <a href="#parabola" class="sub">Vertice e asse di una parabola</a>
+    <a href="#quadriche-r3">6 · Quadriche in $\R^3$: il caso I</a>
+    <a href="#cilindri">7 · Caso II: cilindri</a>
+    <a href="#paraboloidi">8 · Caso III: paraboloidi</a>
+    <a href="#cilindro-parabolico" class="sub">Il cilindro parabolico</a>
+    <a href="#riassunto">9 · Il riassunto</a>
+    <a href="#simmetria">10 · Piani di simmetria</a>
+    <a href="#rotazione">11 · Quadriche di rotazione</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 12 · Geometria e Algebra Lineare · Lezione 15</div>
+      <h1>Coniche e quadriche</h1>
+      <p class="lead">Una quadrica è l'insieme degli zeri di un polinomio di secondo grado. Con una traslazione e una base ortonormale di autovettori l'equazione si riduce a una forma canonica, da cui si legge che cosa è: ellisse, iperbole, parabola, oppure ellissoide, iperboloide, cono, cilindro, paraboloide.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Tutto il capitolo è un'applicazione del <a href="10-euclidei.html#spettrale">teorema spettrale</a>. L'equazione ha tre pezzi: una <a href="11-forme.html">forma quadratica</a>, una parte lineare, un termine noto. La <strong>traslazione</strong> nel centro elimina la parte lineare, la <strong>rotazione</strong> nella base di autovettori elimina i termini misti. Restano i segni degli autovalori e del termine noto, e una tabella dice che figura è. All'esame le coniche e le quadriche escono sia nei quiz («che conica è?») sia come esercizio di Parte B: <a href="../esami.html#argomenti">Cosa esce all'esame</a>.</p>
+    </div>
+    <p class="small muted">Dagli appunti: <em>Lezione 15</em> (versione 2024), in tre PDF: <em>Quadriche</em> (pp. 1-57 del prof: definizioni, centro, forma canonica, coniche), <em>parte 2</em> (pp. 58-77: quadriche di $\R^3$ con centro) e <em>parte 3</em> (pp. 78-125: paraboloidi, riassunto, simmetrie, rotazione). Il prodotto vettoriale e il completamento ortogonale sono nella <a href="10-euclidei.html">Sezione 10</a>.</p>
+
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="definizione">1 · Quadriche e coniche</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 15)</div>
+      <p class="mb0">Una <strong>quadrica</strong> (o ipersuperficie quadrica) è un insieme $S\subset\R^n$ descritto da un'equazione algebrica di secondo grado:
+      $$S=\{\vx\in\R^n:\ p(\vx)=0\},\qquad p(\vx):=\underbrace{\sum_{i,j=1}^n a_{ij}x_ix_j}_{\text{forma quadratica}}+\underbrace{2\sum_{i=1}^n b_ix_i}_{\text{forma lineare}}+\underbrace{c}_{\text{termine noto}},$$
+      con $a_{ij}=a_{ji}$ e $A:=[a_{ij}]\ne[0]$: se la parte quadratica fosse nulla l'equazione sarebbe di primo grado.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Forma matriciale (Lezione 15, Osservazione 3)</div>
+      <p class="mb0">Con $A$ simmetrica e $\vb:=(b_1,\dots,b_n)$,
+      $$p(\vx)=\langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c=\vx^TA\vx+2\vx^T\vb+c.$$
+      Il $2$ davanti alla parte lineare è una comodità: con questa scelta il centro sarà la soluzione di $A\vx=-\vb$, senza fattori $\frac12$. Attenzione quando si legge $\vb$ da un'equazione: per $2x-6y$ è $\vb=(1,-3)$.</p>
+    </div>
+    <ul>
+      <li>«Ipersuperficie» sta a «superficie» come «iperpiano» sta a «piano»: in $\R^n$ è un oggetto di dimensione $n-1$, cioè di <strong>codimensione</strong> $1$. In $\R^3$ si parla di <strong>superfici quadriche</strong>.</li>
+      <li>Esempio: $x^2+y^2+z^2+2(x-z)-2=0$ si riscrive $(x+1)^2+y^2+(z-1)^2=4$, la sfera di centro $(-1,0,1)$ e raggio $2$.</li>
+      <li>Una quadrica può ridursi a un punto, come $x^2+y^2+z^2=0$, o essere vuota, come $x^2+y^2+z^2+1=0$.</li>
+      <li>Le quadriche non vuote del piano sono curve: si può dimostrare che ognuna è l'intersezione di un cono con un piano, e per questo si chiamano <strong>(sezioni) coniche</strong>. Ogni conica è un'<strong>ellisse</strong> (con la circonferenza e il punto come casi particolari), un'<strong>iperbole</strong> (o due rette incidenti) o una <strong>parabola</strong> (o due rette parallele). La parabola, in un certo senso, sta sulla frontiera fra ellissi e iperboli.</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="classificazione">2 · Classificazione affine e metrica</h2>
+    <p><strong>Problema</strong> (Lezione 15): data una quadrica $\langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c=0$, trovare un cambio di variabili che semplifica l'equazione.</p>
+    <div class="box prop">
+      <div class="box-title">Tre modi di dire la stessa cosa (Lezione 15)</div>
+      <ul class="mb0">
+        <li>Un <strong>cambio di variabili</strong> («il gioco con le formule») corrisponde, a livello geometrico, a un <strong>cambio del sistema di riferimento</strong>.</li>
+        <li>A livello algebrico è una <strong>trasformazione affine</strong>: una traslazione composta con un automorfismo lineare, $\vy=T(\vx)=M(\vx-\vx_0)$, con $M$ invertibile di ordine $n$.</li>
+        <li>Se si passa da un riferimento cartesiano a un altro riferimento cartesiano, $T$ è un'<strong>isometria</strong>, e questo succede se e solo se $M$ è <a href="10-euclidei.html#matrici-ortogonali">ortogonale</a>.</li>
+      </ul>
+    </div>
+    <div class="box def">
+      <div class="box-title">Affine contro metrica (Lezione 15)</div>
+      <p>Se si ammettono tutte le trasformazioni affini si parla di <strong>classificazione affine</strong>. Se si usano solo isometrie si parla di <strong>classificazione metrica</strong>.</p>
+      <p class="mb0">Esempio: nella classificazione affine ogni ellisse è nella stessa categoria della circonferenza unitaria, perché con una traslazione e una mappa lineare si arriva a $x^2+y^2=1$. Nella classificazione metrica si può portare il centro nell'origine e ruotare gli assi su quelli dell'ellisse, ma non si possono cambiare le misure: la <strong>forma canonica metrica</strong> di un'ellisse è $\frac{x^2}{a^2}+\frac{y^2}{b^2}-1=0$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Quale delle due chiede l'esame</div>
+      <p class="mb0">La forma canonica <strong>metrica</strong> conserva le misure: da lì si leggono i semiassi, il vertice, l'asse. È quella che chiedono gli esercizi d'esame («forma canonica metrica», «piani di simmetria», «asse e vertice»). La forma affine dice solo il <em>tipo</em> di figura.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="centro">3 · Quadriche a centro</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 15) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Un <strong>centro</strong> della quadrica $S:\ \langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c=0$ è un punto $\vx_0\in\R^n$ tale che
+      $$A\vx_0=-\vb.$$
+      Se $S$ ammette almeno un centro si dice una <strong>quadrica a centro</strong>.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Perché si chiama centro (Lezione 15)</div>
+      <p>Da $A\vx_0=-\vb$ segue $\langle\vx,\vb\rangle=-\langle\vx,A\vx_0\rangle$, e siccome $A$ è simmetrica $\langle\vx,A\vx_0\rangle=\langle\vx_0,A\vx\rangle$. Con $\vy:=\vx-\vx_0$ i conti danno
+      $$\langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle=\langle\vy,A\vy\rangle-\langle\vx_0,A\vx_0\rangle,$$
+      quindi nelle coordinate $\vy$ la parte lineare sparisce:
+      $$S:\ \langle\vy,A\vy\rangle+\tilde c=0,\qquad\tilde c:=c-\langle\vx_0,A\vx_0\rangle.$$</p>
+      <p class="mb0">Siccome $\langle-\vy,A(-\vy)\rangle=\langle\vy,A\vy\rangle$, vale $\vy\in S\iff-\vy\in S$: la quadrica è simmetrica rispetto all'origine delle $\vy$, cioè rispetto al suo centro. Un modo comodo di calcolare il nuovo termine noto: $\tilde c=c+\langle\vx_0,\vb\rangle$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Tre esempi (Lezione 15)</div>
+      <ul class="mb0">
+        <li>$x^2+y^2+2x=0$: $A=I$, $\vb=(1,0)$, $A\vx=-\vb$ ha l'unica soluzione $\vx_0=(-1,0)$. Infatti è la circonferenza unitaria di centro $(-1,0)$.</li>
+        <li>$x^2+y^2-2xy-2y-1=0$: $A=\begin{bmatrix}1&-1\\-1&1\end{bmatrix}$ è singolare e $\vb=(0,-1)$. Il sistema $x-y=0$, $-x+y=1$ non ha soluzioni: <strong>non è a centro</strong>. È una parabola: $y=\frac12+\frac12(x-y)^2$.</li>
+        <li>$x^2+y^2-2xy+2x-2y-3=0$: stessa $A$, $\vb=(1,-1)$. Il sistema si riduce a $y=x+1$: <strong>infiniti centri</strong>, una retta. Infatti l'equazione è $(x-y+1)^2-4=0$, cioè le due rette $y=x-1$ e $y=x+3$.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="canonica">4 · La forma canonica quando $A$ è invertibile</h2>
+    <div class="box teo">
+      <div class="box-title">Proposizione (Lezione 15) <span class="badge star">risultato centrale</span></div>
+      <p>Sia $S$ la quadrica $\langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c=0$ in $\R^n$. Se $A$ è invertibile, cioè non ha l'autovalore $0$:</p>
+      <ol class="mb0">
+        <li>$S$ è a centro, e il centro è unico: $\vx_0=-A^{-1}\vb$;</li>
+        <li>$S$ ha la <strong>forma canonica metrica</strong> $\ \lambda_1z_1^2+\lambda_2z_2^2+\dots+\lambda_nz_n^2+\tilde c=0$, dove $\lambda_1,\dots,\lambda_n$ sono gli autovalori di $A$;</li>
+        <li>$S$ ha la <strong>forma canonica affine</strong> $\ w_1^2+\dots+w_k^2-(w_{k+1}^2+\dots+w_n^2)+\hat C=0$, con $\hat C=-1$ oppure $\hat C=0$.</li>
+      </ol>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione informale a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Primo passo: come sparisce la parte lineare?</div>
+            <div class="step-content">$A$ invertibile ⇒ $A\vx=-\vb$ ha l'unica soluzione $\vx_0=-A^{-1}\vb$. Nelle variabili $\vy:=\vx-\vx_0$ la quadrica diventa $\langle\vy,A\vy\rangle+\tilde c=0$ (§3).</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Secondo passo: come spariscono i termini misti?</div>
+            <div class="step-content">$A$ è simmetrica: per il teorema spettrale $A=QDQ^T$ con $Q$ ortogonale e $D=\diag(\lambda_1,\dots,\lambda_n)$. Le colonne di $Q$ sono una base ortonormale di autovettori. Si passa a questa base: $\vy=Q\vz$, cioè $\vz=Q^T\vy$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa diventa $\langle\vy,A\vy\rangle$?</div>
+            <div class="step-content">$\langle Q\vz,QDQ^TQ\vz\rangle=\langle Q\vz,Q(D\vz)\rangle$ usando $Q^TQ=I$. La moltiplicazione per $Q$ è un'isometria lineare, quindi conserva il prodotto scalare: resta $\langle\vz,D\vz\rangle=\lambda_1z_1^2+\dots+\lambda_nz_n^2$. Il termine noto non cambia, perché cambiare base non lo tocca.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E la forma affine?</div>
+            <div class="step-content">Se $\tilde c\ne0$ si pone $w_i:=\sqrt{|\lambda_i/\tilde c|}\,z_i$; si moltiplica per $-1/\tilde c$ e si riordinano le variabili, e si arriva a $\hat C=-1$. Se $\tilde c=0$ si pone $w_i:=\sqrt{|\lambda_i|}\,z_i$ e si arriva a $\hat C=0$. Queste mappe non sono isometrie, ed è per questo che la forma affine perde le misure.</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box tip">
+      <div class="box-title">✓ La ricetta</div>
+      <ol class="mb0">
+        <li>Si scrivono $A$ (metà dei coefficienti misti fuori diagonale), $\vb$ (metà dei coefficienti lineari) e $c$.</li>
+        <li>Si risolve $A\vx_0=-\vb$ e si calcola $\tilde c=c+\langle\vx_0,\vb\rangle$.</li>
+        <li>Si trovano gli autovalori di $A$: la forma metrica è $\sum\lambda_iz_i^2+\tilde c=0$. Se serve la posizione degli assi, si trova anche la base ortonormale di autovettori.</li>
+      </ol>
+    </div>
+
+    <h3 id="esempio-xy">L'iperbole $xy=1$</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio 1 (Lezione 15)</div>
+      <p>Forma canonica metrica e affine di $S:\ xy=1$. Non c'è parte lineare: la quadrica è già centrata, e basta diagonalizzare ortogonalmente la matrice della forma $xy$, cioè $A=\begin{bmatrix}0&1/2\\1/2&0\end{bmatrix}$. Gli autovalori sono $\pm\frac12$, con $W_{1/2}=\operatorname{span}\{(1,1)\}$ e $W_{-1/2}=\operatorname{span}\{(1,-1)\}$, ortogonali come previsto.</p>
+      <p>Il prof prende la base ortonormale $B=\bigl\{\frac1{\sqrt2}(1,-1),\ \frac1{\sqrt2}(1,1)\bigr\}$: $x=\frac{1}{\sqrt2}(z_1+z_2)$, $y=\frac1{\sqrt2}(z_2-z_1)$. Sostituendo,
+      $$\boxed{\tfrac12z_2^2-\tfrac12z_1^2-1=0},$$
+      e con $w_1:=z_2/\sqrt2$, $w_2:=z_1/\sqrt2$ la forma affine è $w_1^2-w_2^2-1=0$: un'iperbole, gli assi ruotati di $45^\circ$.</p>
+      <p class="small muted mb0">Negli appunti la matrice di $xy$ è scritta $\begin{bmatrix}0&-1/2\\-1/2&0\end{bmatrix}$, con il segno sbagliato, e di conseguenza le etichette dei due autospazi sono scambiate: con la matrice giusta $(1,-1)$ va con $-\frac12$. La forma canonica finale, che si ricava sostituendo, è giusta.</p>
+    </div>
+
+    <h3 id="non-vuote">Quali sono non vuote</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio 2 (Lezione 15)</div>
+      <p>$S_1:\ x^2+y^2+xy+2x+3y+4=0$. $A=\begin{bmatrix}1&1/2\\1/2&1\end{bmatrix}$, $\det A=\frac34\ne0$: c'è un unico centro. $A\vx_0=-\vb=(-1,-\frac32)$ dà $\vx_0=(-\frac13,-\frac43)$, e sostituendo $x=\tilde x-\frac13$, $y=\tilde y-\frac43$ si trova $\tilde x^2+\tilde y^2+\tilde x\tilde y+\frac53=0$: la parte quadratica è la stessa, la lineare sparisce, il termine noto cambia. Gli autovalori sono $\frac12$ e $\frac32$, quindi la forma metrica è $\frac12z_1^2+\frac32z_2^2+\frac53=0$: tre termini positivi, <strong>$S_1$ è vuota</strong>.</p>
+      <p>$S_2:\ x^2+y^2+3xy+2x+y+2=0$. Non serve trovare gli autovalori, basta il segno della forma quadratica: $x^2+y^2+3xy=(x+y)^2+xy$ vale $-x^2\lt0$ sulla retta $y=-x$ e $x^2>0$ sulla retta $y=0$. È indefinita, quindi gli autovalori hanno segni opposti e <strong>$S_2$ non è vuota</strong>: è un'iperbole, con forma affine $w_1^2-w_2^2-1=0$.</p>
+      <p class="small muted">Per dire «iperbole» e non «due rette incidenti» serve anche $\tilde c\ne0$, e negli appunti questo controllo è sottinteso. Qui il centro è $(\frac15,-\frac45)$ e $\tilde c=2+\frac15-\frac25=\frac95\ne0$: è davvero un'iperbole.</p>
+      <p class="mb0">$S_3:\ x^2+y^2+xy-x+2y-2=0$. Stessa parte quadratica di $S_1$, autovalori $\frac12$ e $\frac32$. Il centro è $(\frac43,-\frac53)$ e la forma centrata $\tilde x^2+\tilde x\tilde y+\tilde y^2-\frac{13}3=0$, quindi la forma metrica è $\frac12z_1^2+\frac32z_2^2-\frac{13}3=0$: un'<strong>ellisse</strong>, con forma affine $w_1^2+w_2^2-1=0$.</p>
+    </div>
+
+    <h3 id="ellissoide">Un ellissoide</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio 3 (Lezione 15)</div>
+      <p>L'ellissoide, già centrato, $57x^2+43y^2+48xy+50z^2=900$: trovare gli estremi dei semiassi. Basta diagonalizzare $A=\begin{bmatrix}57&24&0\\24&43&0\\0&0&50\end{bmatrix}$:
+      $$\det(A-\lambda I)=(50-\lambda)\bigl(\lambda^2-100\lambda+1875\bigr)=(50-\lambda)\bigl((\lambda-50)^2-25^2\bigr),$$
+      quindi $\lambda=25,\,50,\,75$. $W_{25}=\operatorname{span}\{(\frac34,-1,0)\}$, normalizzato $\vu_1=(\frac35,-\frac45,0)$; $W_{50}$ dà $\vu_2=(0,0,1)$. Per il terzo il prof usa il <a href="10-euclidei.html#vettoriale">prodotto vettoriale</a>: $\vu_1\times\vu_2=(-\frac45,-\frac35,0)$, e per avere meno segni meno prende l'opposto, $\vu_3=(\frac45,\frac35,0)$.</p>
+      <p>Con $\vx=Q\vz$, $Q=[\vu_1|\vu_2|\vu_3]$, l'equazione diventa $25z_1^2+50z_2^2+75z_3^2=900$: i semiassi sono $6$, $3\sqrt2$ e $2\sqrt3$ lungo gli autovettori. Gli estremi, nelle coordinate originali, si ottengono moltiplicando per $Q$:
+      $$Q\begin{bmatrix}6\\0\\0\end{bmatrix}=\begin{bmatrix}18/5\\-24/5\\0\end{bmatrix},\qquad Q\begin{bmatrix}0\\3\sqrt2\\0\end{bmatrix}=\begin{bmatrix}0\\0\\3\sqrt2\end{bmatrix},\qquad Q\begin{bmatrix}0\\0\\2\sqrt3\end{bmatrix}=\begin{bmatrix}8\sqrt3/5\\6\sqrt3/5\\0\end{bmatrix}.$$</p>
+      <p class="mb0"><strong>Controllo:</strong> $57\cdot\frac{324}{25}+43\cdot\frac{576}{25}-48\cdot\frac{432}{25}=\frac{18468+24768-20736}{25}=900$ ✓.</p>
+      <p class="small muted mb0">Negli appunti c'è scritto «moltiplicare per l'inversa della matrice di passaggio», ma il conto, giusto, moltiplica per $Q$: dalle coordinate nuove alle vecchie si va con $\vx=Q\vz$, come nella <a href="5-lineari.html#passaggio">Sezione 5</a>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="coniche">5 · Classificazione delle coniche</h2>
+    <p>Sia $S:\ \langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c=0$ in $\R^2$. Il problema è descrivere geometricamente $S$ al variare di $A$, $\vb$, $c$.</p>
+    <div class="box prop">
+      <div class="box-title">Caso I: $A$ invertibile (Lezione 15)</div>
+      <p>Si arriva alla forma canonica metrica $\lambda_1x^2+\lambda_2y^2+C=0$, con $\lambda_1,\lambda_2\ne0$.</p>
+      <ul class="mb0">
+        <li><strong>Ia</strong>: $C\ne0$ e $\lambda_1,\lambda_2,C$ tutti dello stesso segno: $S=\emptyset$.</li>
+        <li><strong>Ib</strong>: $C=0$ e $\lambda_1,\lambda_2$ dello stesso segno: $S$ è un punto, il centro.</li>
+        <li><strong>Ic</strong>: $\lambda_1,\lambda_2$ dello stesso segno e $C$ di segno opposto: un'<strong>ellisse</strong> di semiassi $a=|C/\lambda_1|^{1/2}$, $b=|C/\lambda_2|^{1/2}$. La forma affine è $w_1^2+w_2^2-1=0$.</li>
+        <li><strong>Id</strong>: $\lambda_1,\lambda_2$ di segni opposti e $C=0$: $|\lambda_1|x^2=|\lambda_2|y^2$, cioè le <strong>due rette incidenti</strong> $y=\pm\sqrt{|\lambda_1/\lambda_2|}\,x$.</li>
+        <li><strong>Ie</strong>: $\lambda_1>0$, $\lambda_2\lt0$, $C\lt0$: $x=\pm\alpha\sqrt{1+(y/\beta)^2}$ con $\alpha=\sqrt{|C/\lambda_1|}$, $\beta=\sqrt{|C/\lambda_2|}$. Siccome $\sqrt{1+u^2}\approx|u|+\frac1{2|u|}$ per $u$ grande, sono i due rami di un'<strong>iperbole</strong> con asintoti le rette del caso Id. (Se $C>0$ si moltiplica per $-1$ e si scambiano $x$ e $y$.)</li>
+      </ul>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Caso II: $A$ non invertibile (Lezione 15)</div>
+      <p>$A\ne0$, quindi un autovalore $\lambda$ è non nullo e l'altro è $0$.</p>
+      <ul class="mb0">
+        <li><strong>IIa</strong>, la conica è a centro: centrata e ruotata diventa $\lambda x^2+C=0$. Se $C=0$ è la retta $x=0$ (contata due volte); se $C\lambda>0$ è vuota; se $C\lambda\lt0$ sono le <strong>due rette parallele</strong> $x=\pm\sqrt{|C/\lambda|}$.</li>
+        <li><strong>IIb</strong>, la conica non è a centro: ruotata diventa $\lambda x^2+2ax+2by+c=0$; con $\tilde x:=x+\frac a\lambda$ si ha $\lambda\tilde x^2+2by+\tilde c=0$, $\tilde c:=c-\frac{a^2}\lambda$. Non essendo a centro, $b\ne0$: è la <strong>parabola</strong> $y=-\frac{\tilde c}{2b}-\frac{\lambda}{2b}\tilde x^2$.</li>
+      </ul>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Autovalori di $A$</th><th>Termine noto dopo il centro</th><th>Conica</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">stesso segno ($\det A>0$)</td><td>stesso segno degli autovalori</td><td>vuota</td></tr>
+        <tr><td>$0$</td><td>un punto</td></tr>
+        <tr><td>segno opposto</td><td><strong>ellisse</strong></td></tr>
+        <tr><td rowspan="2">segni opposti ($\det A\lt0$)</td><td>$0$</td><td>due rette incidenti</td></tr>
+        <tr><td>$\ne0$</td><td><strong>iperbole</strong></td></tr>
+        <tr><td rowspan="2">uno nullo ($\det A=0$)</td><td>a centro</td><td>vuota, una retta, due rette parallele</td></tr>
+        <tr><td>non a centro</td><td><strong>parabola</strong></td></tr>
+      </tbody>
+    </table></div>
+    <div class="box tip">
+      <div class="box-title">✓ «Che conica è?» in trenta secondi</div>
+      <p class="mb0">Il segno di $\det A$ dice già la famiglia: positivo ellisse, negativo iperbole, zero parabola. Poi un solo controllo per i casi degeneri: con $\det A\ne0$ si calcola $\tilde c$; con $\det A=0$ si guarda se $A\vx=-\vb$ ha soluzioni. Gli autovalori servono solo se si vuole la forma metrica.</p>
+    </div>
+
+    <h3 id="parabola">Vertice e asse di una parabola</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio 4 (Lezione 15)</div>
+      <p>Coordinate del vertice ed equazione dell'asse della parabola $(x-y)^2+x+2y=0$.</p>
+      <p>La forma $(x-y)^2$ si annulla sulla retta $y=x$, quindi $\vu_2:=\frac1{\sqrt2}(1,1)$ genera l'autospazio dell'autovalore nullo. Questo ragionamento vale perché la forma è <strong>semidefinita</strong>: per una forma indefinita gli zeri non sono un autospazio. L'altro autospazio è ortogonale: $\vu_1=\frac1{\sqrt2}(1,-1)$. Con $\begin{bmatrix}x\\y\end{bmatrix}=[\vu_1|\vu_2]\begin{bmatrix}z_1\\z_2\end{bmatrix}$, cioè $x=\frac{z_1+z_2}{\sqrt2}$, $y=\frac{z_2-z_1}{\sqrt2}$:
+      $$2z_1^2+\tfrac{3\sqrt2}2z_2-\tfrac{\sqrt2}2z_1=0\iff\Bigl(z_1-\tfrac{\sqrt2}8\Bigr)^2-\tfrac1{32}+\tfrac{3\sqrt2}4z_2=0.$$</p>
+      <p>Con $\tilde z_1:=z_1-\frac{\sqrt2}8$: $\tilde z_2=\frac{\sqrt2}{48}-\frac{2\sqrt2}3\tilde z_1^2$, una parabola con vertice in $(0,\frac{\sqrt2}{48})$, asse $\tilde z_1=0$, rivolta verso le $\tilde z_2$ decrescenti.</p>
+      <p class="mb0">Tornando indietro: il vertice è $(z_1,z_2)=(\frac{\sqrt2}8,\frac{\sqrt2}{48})$, cioè $(x,y)=\bigl(\frac7{48},-\frac5{48}\bigr)$. Per l'asse serve la trasformazione inversa, che con una matrice ortogonale è la trasposta: $z_1=\frac{x-y}{\sqrt2}$, quindi $z_1=\frac{\sqrt2}8\iff x-y=\frac14$. L'asse è $y=x-\frac14$. <strong>Controllo:</strong> $\bigl(\frac{12}{48}\bigr)^2+\frac{7}{48}-\frac{10}{48}=\frac1{16}-\frac1{16}=0$ ✓.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="quadriche-r3">6 · Quadriche in $\R^3$: il caso I</h2>
+    <p>Come nel piano, tre casi (Lezione 15, parte 2): <strong>I</strong> $A$ invertibile, quindi la quadrica è a centro; <strong>II</strong> $A$ ha l'autovalore $0$ ma la quadrica è a centro; <strong>III</strong> $A$ non è invertibile e la quadrica non è a centro.</p>
+    <div class="box prop">
+      <div class="box-title">Caso I: tre autovalori non nulli (Lezione 15)</div>
+      <p>La forma canonica metrica è $\lambda_1z_1^2+\lambda_2z_2^2+\lambda_3z_3^2+C=0$.</p>
+      <p><strong>I.1, autovalori dello stesso segno.</strong> $C=0$: un solo punto. $C$ dello stesso segno: vuota. $C$ di segno opposto: un <strong>ellissoide</strong> di semiassi $\sqrt{|C/\lambda_i|}$, orientati lungo gli autovettori (come nell'<a href="#ellissoide">Esempio 3</a>).</p>
+      <p class="mb0"><strong>I.2, autovalori di segni diversi.</strong> La quadrica non è mai vuota. A meno di scambiare le variabili e moltiplicare per $-1$, $\lambda_1>0$ e $\lambda_2,\lambda_3\lt0$. Con $\tilde z_j:=\sqrt{|\lambda_j|}\,z_j$ (lineare, ma non un'isometria) si arriva a $\tilde z_1^2-(\tilde z_2^2+\tilde z_3^2)+C=0$: la superficie che si ottiene ruotando la conica $\tilde z_1^2-\tilde z_2^2+C=0$ attorno all'asse $\tilde z_1$. Quindi $C=0$ dà un <strong>cono</strong>, $C>0$ un <strong>iperboloide a una falda</strong>, $C\lt0$ un <strong>iperboloide a due falde</strong>.</p>
+    </div>
+    <p class="small muted">Negli appunti $\tilde z_2^2+\tilde z_3^2$ è detta «la distanza» dall'asse $\tilde z_1$: è il suo quadrato. Il prof aggiunge che è una distanza nello spazio delle $\tilde z$, diversa da quella vera, perché la mappa $\vz\mapsto\tilde\vz$ non è isometrica (lo è solo se $|\lambda_1|=|\lambda_2|=|\lambda_3|=1$).</p>
+    <div class="box tip">
+      <div class="box-title">✓ Una falda o due?</div>
+      <p class="mb0">Con un autovalore positivo e due negativi: $\tilde z_1^2=\tilde z_2^2+\tilde z_3^2-C$. Se $C>0$ il secondo membro può annullarsi lontano dall'asse ma $\tilde z_1$ prende tutti i valori: la superficie è un unico pezzo, una falda. Se $C\lt0$, $\tilde z_1^2\ge-C>0$: c'è un buco intorno a $\tilde z_1=0$ e due pezzi separati. Il prof mostra i tre casi con $x^2-y^2-z^2+\frac32yz+c=0$, che ha autovalori $1$, $-\frac74$, $-\frac14$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 5 (Lezione 15)</div>
+      <p><strong>(a)</strong> $x^2-2y^2+z^2+2x=0$. Basta completare il quadrato: $(x+1)^2-2y^2+z^2-1=0$. Nelle coordinate $\tilde x=x+1$, $\tilde y=y$, $\tilde z=z$ si ottiene ruotando l'iperbole $\tilde x^2-2\tilde y^2=1$, cioè $\tilde x=\pm\sqrt{1+2\tilde y^2}$, attorno all'asse $\tilde y$: un <strong>iperboloide di rotazione a una falda</strong>, con asse $x+1=z=0$, la retta parallela all'asse $y$ per $(-1,0,0)$.</p>
+      <p><strong>(b)</strong> $2x^2-2y^2+z^2=0$: forma canonica con $C=0$ e autovalori $2,-2,1$ di segni diversi, quindi un <strong>cono</strong>. L'asse ha la direzione dell'autovettore dell'autovalore di segno opposto agli altri due: l'asse $y$. Ma non è un cono di rotazione: le sezioni con i piani $y=a$, ortogonali all'asse, sono le ellissi $2x^2+z^2=2a^2$, con i semiassi in rapporto $1:\sqrt2$.</p>
+      <p class="mb0"><strong>(c)</strong> $4x^2+y^2-z^2+1=0$. Con $\tilde x:=2x$ diventa $\tilde x^2+\tilde y^2-\tilde z^2+1=0$, autovalori $1,1,-1$: ruotando $\tilde z=\pm\sqrt{1+\tilde y^2}$ attorno all'asse $\tilde z$ si ha un iperboloide a due falde. Tornando a $x=\tilde x/2$ la superficie si schiaccia nella direzione $x$: è un <strong>iperboloide a due falde</strong>, ma non di rotazione.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="cilindri">7 · Caso II: cilindri</h2>
+    <div class="box prop">
+      <div class="box-title">Caso II: $\lambda=0$ è autovalore, ma la quadrica è a centro (Lezione 15)</div>
+      <p>Si centra la quadrica e si passa alla base ortonormale di autovettori, ordinata in modo che $\lambda_3=0$. La forma canonica metrica è $\lambda_1\tilde x^2+\lambda_2\tilde y^2+c=0$: la variabile $\tilde z$ non compare. Quindi a ogni punto della conica nel piano $(\tilde x,\tilde y)$ corrisponde la retta per quel punto parallela all'asse $\tilde z$, e queste rette formano la quadrica.</p>
+      <ul class="mb0">
+        <li>$\lambda_1,\lambda_2$ dello stesso segno: conica vuota, un punto o un'ellisse; la quadrica è vuota, una retta parallela a $\tilde z$, o un <strong>cilindro ellittico</strong>.</li>
+        <li>$\lambda_1,\lambda_2$ non nulli e di segni opposti: un'iperbole o due rette; la quadrica è un <strong>cilindro iperbolico</strong> o due piani che si tagliano lungo l'asse $\tilde z$.</li>
+        <li>Uno dei due è nullo anche lui: conica vuota, una retta, due rette parallele; la quadrica è vuota, un piano, due piani paralleli.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi 6 (Lezione 15)</div>
+      <p>La parte quadratica $(x-y)^2+z^2$ ha matrice $A=\begin{bmatrix}1&-1&0\\-1&1&0\\0&0&1\end{bmatrix}$ e $P_A(\lambda)=(1-\lambda)\bigl[(1-\lambda)^2-1\bigr]$: autovalori $1,2,0$, con $W_0=\ker A=\operatorname{span}\{(1,1,0)\}$.</p>
+      <ul>
+        <li>$(x-y)^2+z^2+1=0$ è vuota; $(x-y)^2+z^2=0$ è la retta $x-y=z=0$.</li>
+        <li>$(x-y)^2+z^2-1=0$: il termine noto ha segno opposto ai due autovalori non nulli, è un <strong>cilindro ellittico</strong> fatto di rette parallele a $(1,1,0)$.</li>
+        <li>$(x-y)^2-z^2+1=0$: autovalori $-1,2,0$ e $c\ne0$, un <strong>cilindro iperbolico</strong>, sempre con rette parallele a $(1,1,0)$.</li>
+      </ul>
+      <p class="mb0">$(x-y+2z)^2=0$ equivale a $x-y+2z=0$: un piano. E il prodotto delle equazioni di due piani qualsiasi, $(a_1x+b_1y+c_1z+d_1)(a_2x+b_2y+c_2z+d_2)=0$, è una quadrica: l'unione dei due piani.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="paraboloidi">8 · Caso III: paraboloidi</h2>
+    <p>$A$ ha un autovalore nullo e la quadrica <strong>non</strong> è a centro. Si passa a una base ortonormale di autovettori senza centrare, con $\lambda_3=0$: l'equazione diventa $\lambda_1x^2+\lambda_2y^2+2(b_1x+b_2y+b_3z)+c=0$.</p>
+    <div class="box prop">
+      <div class="box-title">III.1: $\lambda_1,\lambda_2$ non nulli e dello stesso segno (Lezione 15)</div>
+      <p>Con $\tilde x:=x+\frac{b_1}{\lambda_1}$, $\tilde y:=y+\frac{b_2}{\lambda_2}$ spariscono i termini lineari in $x$ e $y$: $\lambda_1\tilde x^2+\lambda_2\tilde y^2+2b_3z+\tilde c=0$, e $b_3\ne0$ perché la quadrica non è a centro. Riscalando si arriva a $\hat z=\hat x^2+\hat y^2$: la parabola $\hat z=\hat x^2$ ruotata attorno all'asse $\hat z$. Nelle coordinate isometriche la superficie non è per forza di rotazione: si chiama <strong>paraboloide ellittico</strong>.</p>
+      <p class="mb0">L'<strong>asse</strong> del paraboloide è parallelo a $W_0$. Un suo punto si trova risolvendo $A\vx=-\vb'$, dove $\vb'=\vb-\langle\vb,\vu_3\rangle\vu_3$ è la proiezione di $\vb$ su $W_0^\perp$ e $\vu_3$ è un versore di $W_0$. Le sezioni con i piani ortogonali all'asse, se non sono vuote né un punto, sono ellissi con i semiassi in rapporto $|\lambda_2|^{1/2}:|\lambda_1|^{1/2}$, e i loro assi sono paralleli a $W_{\lambda_1}$ e $W_{\lambda_2}$.</p>
+    </div>
+    <p class="small muted">Negli appunti, a p. 82, c'è $\|\vu_3\|=0$ per un versore: è $\|\vu_3\|=1$.</p>
+    <div class="box ex">
+      <div class="box-title">Esempio 7 (Lezione 15)</div>
+      <p>Asse e vertice del paraboloide $(x+y)^2+z^2+2(x+z)=0$. $A=\begin{bmatrix}1&1&0\\1&1&0\\0&0&1\end{bmatrix}$, $P_A(\lambda)=(1-\lambda)\bigl[(1-\lambda)^2-1\bigr]$, autovalori $1,2,0$, e $W_0=\ker A=\operatorname{span}\{(1,-1,0)\}$, la retta $y=-x$ del piano $z=0$.</p>
+      <p class="small muted">Negli appunti c'è scritto «la retta $y=x$»: $(1,-1,0)$ genera la retta $y=-x$.</p>
+      <p>$\vb=(1,0,1)$ non sta in $\operatorname{im}A$. Infatti, per una matrice diagonalizzabile $\operatorname{im}A$ è la somma degli autospazi degli autovalori non nulli, e se $A$ è simmetrica questa somma è $W_0^\perp$; ma $\langle\vb,(1,-1,0)\rangle=1\ne0$. Quindi $A\vx=-\vb$ non ha soluzioni e la quadrica non è a centro. Gli autovalori non nulli, $1$ e $2$, hanno lo stesso segno: è un <strong>paraboloide ellittico</strong>.</p>
+      <p class="mb0">L'asse ha direzione $\vv_3=(1,-1,0)$. Per un suo punto: $\vb=\tilde\vb+\vb'$ con $\tilde\vb=\frac{\langle\vb,\vv_3\rangle}{\|\vv_3\|^2}\vv_3=\bigl(\frac12,-\frac12,0\bigr)$ e $\vb'=\bigl(\frac12,\frac12,1\bigr)\in W_0^\perp$. Il sistema $A\vx=-\vb'$ è $x+y=-\frac12$, $z=-1$: è proprio l'<strong>asse</strong>, $x+y+\frac12=z+1=0$. Intersecando con la quadrica: $\frac14+1+2(x-1)=0$, $x=\frac38$, $y=-\frac78$. Il vertice è $\bigl(\frac38,-\frac78,-1\bigr)$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">III.2: $\lambda_1,\lambda_2$ non nulli e di segni opposti (Lezione 15)</div>
+      <p class="mb0">Come prima, ma le sezioni ortogonali a $W_0$ sono iperboli invece di ellissi: la superficie ha la forma di una sella e si chiama <strong>paraboloide iperbolico</strong>. Esempio: $x^2-y^2+z=0$, cioè $z=y^2-x^2$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ L'osservazione che rende tutto più semplice (Lezione 15)</div>
+      <p class="mb0">Anche se la quadrica non è a centro, la parte lineare si elimina in parte: con una traslazione si annulla la proiezione di $\vb$ su $W_0^\perp$, e resta solo la sua componente lungo $W_0$. Nel caso II, viceversa, la quadrica è a centro <strong>se e solo se</strong> la proiezione di $\vb$ su $W_0$ è nulla, cioè $\vb\in W_0^\perp$.</p>
+    </div>
+
+    <h3 id="cilindro-parabolico">Il cilindro parabolico</h3>
+    <div class="box prop">
+      <div class="box-title">III.3: non a centro, autovalore nullo doppio (Lezione 15)</div>
+      <p class="mb0">Per l'osservazione si può supporre $\vb\in W_0$. Si prende $\vu_1$ versore dell'unico autovalore non nullo $\lambda_1$, $\vu_2:=\vb/\|\vb\|$ in $W_0$, e $\vu_3:=\vu_1\times\vu_2$. Nelle coordinate rispetto a $\{\vu_1,\vu_2,\vu_3\}$ l'equazione è $\lambda_1\tilde x^2+\|\vb\|\,\tilde y+\tilde c=0$: nel piano $(\tilde x,\tilde y)$ è una parabola, e nello spazio la quadrica è il <strong>cilindro parabolico</strong> formato dalle rette parallele all'asse $\tilde z$ per i punti di quella parabola.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 8 (Lezione 15)</div>
+      <p>Classificare $(x+y+z)^2-12y+7=0$. La matrice della parte quadratica è quella di tutti $1$, con $r(A)=1$: per rango più nullità $\dim\ker A=2$, e $\ker A=W_0$, quindi $0$ è un autovalore doppio. L'unico autovalore non nullo è $\lambda_1=3$ (la traccia), con $W_3=\operatorname{im}A=\operatorname{span}\{(1,1,1)\}=W_0^\perp$.</p>
+      <p>La parte lineare è $-12y=2\langle\vx,\vb\rangle$ con $\vb=(0,-6,0)$. Con l'autovalore nullo, il criterio per essere a centro è $\vb\in W_0^\perp$: ma $(0,-6,0)\notin\operatorname{span}\{(1,1,1)\}$. Non è a centro e $0$ è doppio: è un <strong>cilindro parabolico</strong>.</p>
+      <p>Per la forma canonica: (1) la componente di $\vb$ ortogonale a $W_0$ è $\vb'=\frac{-6}{3}(1,1,1)=(-2,-2,-2)$; una soluzione di $A\vx_*=-\vb'$ è $\vx_*=-\frac1{\lambda_1}\vb'=\bigl(\frac23,\frac23,\frac23\bigr)$, e con $\vx=\vx_*+\tilde\vx$ l'equazione diventa $(\tilde x+\tilde y+\tilde z)^2+2\langle\tilde\vx,\tilde\vb\rangle+3=0$ con $\tilde\vb=\vb-\vb'=(2,-4,2)\in W_0$. (2) Base ortonormale: $\vu_1=\frac1{\sqrt3}(1,1,1)$, $\vu_2=\tilde\vb/\|\tilde\vb\|=\frac1{\sqrt6}(1,-2,1)$, $\vu_3=\vu_1\times\vu_2=\frac1{\sqrt2}(1,0,-1)$. (3) Nelle coordinate $\hat x,\hat y,\hat z$:
+      $$3\hat x^2+4\sqrt6\,\hat y+3=0.$$</p>
+      <p class="mb0">L'asse $\hat y$ è la retta per $\vx_*$ parallela a $\vu_2$; le rette che formano il cilindro sono parallele a $\vu_3$.</p>
+      <p class="small muted mb0">Negli appunti $\vu_2$ è scritto «$\frac1{\tilde\vb}\|\tilde\vb\|$» (è $\tilde\vb/\|\tilde\vb\|$) e $\vu_3$ in colonna come $(\frac1{\sqrt2},0,\frac1{\sqrt2})$, mentre il prodotto vettoriale, scritto una riga sopra, dà $\frac1{\sqrt2}\vec\imath-\frac1{\sqrt2}\vec k$: la terza componente è $-\frac1{\sqrt2}$, come il prof usa più avanti.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="riassunto">9 · Il riassunto</h2>
+    <div class="box prop">
+      <div class="box-title">Summary (Lezione 15) <span class="badge star">risultato centrale</span></div>
+      <p>Per la quadrica $\langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c=0$ di $\R^3$:</p>
+      <ul class="mb0">
+        <li>se $\lambda_1,\lambda_2,\lambda_3\ne0$: iperboloide, cono, ellissoide, un punto, oppure vuota;</li>
+        <li>se $A$ ha un autovalore nullo e un autovettore $\vu$ di $\lambda=0$ con $\langle\vu,\vb\rangle=0$, la quadrica è vuota oppure un cilindro: iperbolico, ellittico o due piani incidenti se gli altri due autovalori sono non nulli; un piano o due piani paralleli se $\lambda=0$ è doppio e la quadrica è a centro ($\vb$ nullo o autovettore dell'autovalore non nullo); un cilindro parabolico se $0$ è doppio e la quadrica non è a centro;</li>
+        <li>se l'autovalore nullo è semplice e la quadrica non è a centro ($\langle\vu,\vb\rangle\ne0$ per un autovettore $\vu$ di $0$, e quindi per tutti): un paraboloide, ellittico se gli altri due autovalori hanno lo stesso segno, iperbolico se hanno segni opposti. Nella base ortonormale di autovettori è il grafico $z=\alpha x^2+\beta y^2$, con $\alpha\beta>0$ o $\alpha\beta\lt0$.</li>
+      </ul>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Segni degli autovalori</th><th>Altre condizioni</th><th>Quadrica</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">$+,+,+$ (o $-,-,-$)</td><td>$\tilde c$ di segno opposto</td><td><strong>ellissoide</strong></td></tr>
+        <tr><td>$\tilde c=0$</td><td>un punto</td></tr>
+        <tr><td>$\tilde c$ dello stesso segno</td><td>vuota</td></tr>
+        <tr><td rowspan="3">due di un segno, uno dell'altro</td><td>$\tilde c=0$</td><td><strong>cono</strong></td></tr>
+        <tr><td>$\tilde c$ concorde con i due</td><td><strong>iperboloide a due falde</strong></td></tr>
+        <tr><td>$\tilde c$ concorde con quello isolato</td><td><strong>iperboloide a una falda</strong></td></tr>
+        <tr><td rowspan="2">$\pm,\pm,0$ a centro</td><td>gli altri due concordi</td><td>cilindro ellittico (o retta, o vuota)</td></tr>
+        <tr><td>gli altri due discordi</td><td>cilindro iperbolico (o due piani incidenti)</td></tr>
+        <tr><td rowspan="2">$\pm,\pm,0$ non a centro</td><td>gli altri due concordi</td><td><strong>paraboloide ellittico</strong></td></tr>
+        <tr><td>gli altri due discordi</td><td><strong>paraboloide iperbolico</strong></td></tr>
+        <tr><td rowspan="2">$\pm,0,0$</td><td>a centro</td><td>un piano, due piani paralleli, vuota</td></tr>
+        <tr><td>non a centro</td><td><strong>cilindro parabolico</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted">La riga degli iperboloidi è la regola del caso I.2 detta senza normalizzare: con $\lambda_1>0$, $\lambda_2,\lambda_3\lt0$, una falda per $C>0$ e due falde per $C\lt0$. La tabella è nostra, riassume il «summary» del prof.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="simmetria">10 · Piani di simmetria</h2>
+    <p>Con traslazioni e una base ortonormale, ogni quadrica di $\R^3$ si riduce a una delle due forme canoniche metriche
+    $$\text{(1)}\ \ \lambda_1\tilde x^2+\lambda_2\tilde y^2+\lambda_3\tilde z^2+\tilde c=0\qquad\text{oppure}\qquad\text{(2)}\ \ \lambda_1\tilde x^2+\lambda_2\tilde y^2+a\tilde z=0,\ a\ne0.$$
+    La (1) vale per le quadriche a centro, cioè tutte tranne paraboloidi e cilindri parabolici; la (2) per quelle non a centro.</p>
+    <div class="box prop">
+      <div class="box-title">Dove sono i piani di simmetria (Lezione 15)</div>
+      <ul class="mb0">
+        <li><strong>Forma (1)</strong>: i tre piani coordinati $(\tilde x,\tilde y)$, $(\tilde y,\tilde z)$, $(\tilde z,\tilde x)$ sono piani di simmetria. Nelle coordinate originali: i piani per il centro (o per uno dei centri) ortogonali a un autovettore di $A$.</li>
+        <li><strong>Forma (2)</strong>: $(\tilde y,\tilde z)$ e $(\tilde z,\tilde x)$ lo sono, $(\tilde x,\tilde y)$ no. Nelle coordinate originali, ogni piano di simmetria è ortogonale a un autovettore $\vu$ di un autovalore non nullo, oppure a un autovettore $\vu$ di $\lambda=0$ con $\langle\vu,\vb\rangle=0$; e passa per una soluzione di $A\vx=-\vb'$, dove $\vb'$ è la proiezione di $\vb$ su $W_0^\perp$.</li>
+      </ul>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 15)</div>
+      <p><strong>Ellissoide dell'Esempio 3.</strong> Centro nell'origine, autovettori $(\frac35,-\frac45,0)$, $(0,0,1)$, $(\frac45,\frac35,0)$: i piani di simmetria sono $3x-4y=0$, $z=0$ e $4x+3y=0$.</p>
+      <p class="small muted">Negli appunti il terzo è scritto $4x+5y=0$: il piano ortogonale a $(\frac45,\frac35,0)$ per l'origine è $4x+3y=0$.</p>
+      <p><strong>Paraboloide dell'Esempio 7.</strong> L'autovettore di $0$, $(1,-1,0)$, ha $\langle\vv_3,\vb\rangle\ne0$ ed è escluso. I piani di simmetria sono ortogonali a $\vv_1=(0,0,1)$ o a $\vv_2=(1,1,0)$ e contengono l'asse $x+y+\frac12=z+1=0$: sono esattamente due, $\Pi_1:\ z=-1$ e $\Pi_2:\ x+y=-\frac12$, e si tagliano proprio nell'asse.</p>
+      <p class="mb0"><strong>Cilindro parabolico dell'Esempio 8.</strong> $W_0$ è il piano ortogonale a $(1,1,1)$. I piani di simmetria sono ortogonali a $(1,1,1)$ oppure a $\vv_3=(1,0,-1)$, l'autovettore di $0$ ortogonale a $\tilde\vb$. Le soluzioni di $A\vx=-\vb'=(2,2,2)$ formano il piano $\Pi_0:\ x+y+z=2$, per $(\frac23,\frac23,\frac23)$. L'unico piano di simmetria ortogonale a $(1,1,1)$ è $\Pi_0$; invece <strong>tutti</strong> i piani $x-z=a$ sono di simmetria. Infiniti piani di simmetria: è un cilindro.</p>
+      <p class="small muted mb0">Negli appunti questi ultimi piani sono detti «ortogonali a $\vv_2$, cioè $x+z=a$»: il vettore giusto è $\vv_3=(1,0,-1)$, e i piani sono $x-z=a$. Un piano $x+z=a$ non è ortogonale alle rette del cilindro, che hanno direzione $(1,0,-1)$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="rotazione">11 · Quadriche di rotazione</h2>
+    <p>L'altro caso con infiniti piani di simmetria è quello delle superfici di rotazione.</p>
+    <div class="box teo">
+      <div class="box-title">Quadriche di rotazione (Lezione 15)</div>
+      <p>Una quadrica non vuota di $\R^3$ che non si riduce a un punto è una superficie di rotazione se e solo se vale una delle due condizioni:</p>
+      <ol class="mb0" type="a">
+        <li>$A$ ha un autovalore doppio non nullo, o un autovalore triplo;</li>
+        <li>$\lambda=0$ è un autovalore doppio e la quadrica è a centro.</li>
+      </ol>
+    </div>
+    <ul>
+      <li>Nel caso (b) la quadrica è un piano o due piani paralleli, e ogni retta ortogonale a $W_0=\ker A$ è un asse di rotazione.</li>
+      <li>Nel caso (a), con un autovalore triplo si ha una <strong>sfera</strong>, e ogni retta per il centro è un asse di rotazione.</li>
+      <li>Nel caso (a), con un autovalore non nullo doppio, l'asse di rotazione è <strong>unico</strong>: la retta per il centro nella direzione dell'autovettore dell'autovalore semplice. Se la quadrica non è a centro, al posto del centro si prende una soluzione di $A\vx=-\vb'$, con $\vb'$ la proiezione di $\vb$ sull'autospazio dell'autovalore doppio; e in realtà l'asse è esattamente l'insieme delle soluzioni di $A\vx=-\vb'$.</li>
+    </ul>
+    <div class="box ex">
+      <div class="box-title">Esempi semplici 9 (Lezione 15)</div>
+      <p><strong>(a)</strong> $x^2+y^2+2z^2-1=0$: autovalori $1,1,2$, $W_1$ è il piano $(x,y)$ e $W_2$ l'asse $z$. Centro nell'origine: un <strong>ellissoide di rotazione</strong> con l'asse $z$ come unico asse di rotazione.</p>
+      <p><strong>(b)</strong> $x^2+z^2+2x=0$, cioè $(x+1)^2+z^2=1$: autovalori $1,1,0$, $W_0$ è l'asse $y$ e $\vb=(1,0,0)\perp W_0$, quindi è a centro. È un <strong>cilindro circolare</strong> con asse parallelo all'asse $y$; i centri formano l'asse di rotazione, la soluzione di $A\vx=-\vb$: $x+1=z=0$.</p>
+      <p class="mb0"><strong>(c)</strong> $x^2+z^2+2x-2y=0$, cioè $y=\frac{(x+1)^2+z^2-1}2$: stessi autovalori, ma $\vb=(1,-1,0)$ non è ortogonale a $W_0$. È un <strong>paraboloide di rotazione</strong>; con $\vb'=(1,0,0)$, la proiezione sul piano $(x,z)$, l'asse è ancora $x+1=z=0$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 12</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Dove si cade</div>
+      <ul class="mb0">
+        <li><strong>Leggere $\vb$ senza dividere per $2$.</strong> L'equazione ha $2\langle\vx,\vb\rangle$: per $2x+3y$ è $\vb=(1,\frac32)$, e il centro risolve $A\vx_0=-\vb$.</li>
+        <li><strong>Dimenticare che il termine noto cambia quando si centra.</strong> La rotazione non lo tocca, la traslazione sì: $\tilde c=c+\langle\vx_0,\vb\rangle$.</li>
+        <li><strong>Dire «iperbole» senza controllare $\tilde c\ne0$.</strong> Con $\tilde c=0$ sono due rette incidenti.</li>
+        <li><strong>Confondere forma metrica e forma affine.</strong> La metrica tiene gli autovalori come coefficienti e conserva le misure; la affine ha solo $\pm1$ e serve a dire il tipo.</li>
+        <li><strong>Cercare il centro di una parabola o di un paraboloide.</strong> Non ce l'hanno: $A\vx=-\vb$ è impossibile. Per l'asse si usa $\vb'$, la proiezione di $\vb$ su $W_0^\perp$.</li>
+        <li><strong>Tornare alle coordinate vecchie con $Q^T$ invece che con $Q$.</strong> Dalle nuove alle vecchie: $\vx=Q\vz$; dalle vecchie alle nuove: $\vz=Q^T\vx$.</li>
+        <li><strong>Usare gli zeri di una forma indefinita come autospazio.</strong> Il trucco dell'Esempio 4 vale solo per le forme semidefinite.</li>
+        <li><strong>Scambiare una falda e due falde.</strong> Con un autovalore positivo e due negativi: termine noto positivo, una falda; negativo, due falde.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="../teoremi.html">Teoremi e dimostrazioni →</a>
+      <a class="btn" href="11-forme.html">← Sezione 11</a>
+      <a class="btn" href="../esercizi.html?sez=12">Esercizi della Sezione 12</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 12 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261126"></script>
+<script src="../data/quiz.js?v=20261126"></script>
+<script src="../data/mappe.js?v=20261126"></script>
+<script src="../data/primalettura.js?v=20261105c"></script>
+<script src="../data/primalettura-altre.js?v=20261111"></script>
+<script src="../data/primalettura-10-12.js?v=20261126"></script>
+<script src="../data/schemi.js?v=20261105c"></script>
+<script src="../data/schemi-altre.js?v=20261111"></script>
+<script src="../data/schemi-10-12.js?v=20261126"></script>
+<script src="../../assets/js/app.js?v=20261106"></script>
+<script src="../../assets/js/capitolo.js?v=20261117b"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.mappaCapitolo('#mappaBox', 12);
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 12; }), { statKey: 'geo12' });
+});
+</script>
+</body>
+</html>

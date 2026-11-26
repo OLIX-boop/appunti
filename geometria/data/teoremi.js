@@ -632,6 +632,110 @@ $$\operatorname{span}\{\vv_1,\dots,\vv_n\}=\Big\{\sum_{j=1}^{n}\alpha_j\vv_j\ :\
       { cue: r`Binet`, body: r`$P_B(\lambda)=\det S^{-1}\det(A-\lambda I)\det S=\det(A-\lambda I)=P_A(\lambda)$. $\blacksquare$` }
     ],
     note: r`Il viceversa è falso: $I$ e $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ hanno lo stesso polinomio $(1-\lambda)^2$ ma non sono simili. Conseguenza: il polinomio caratteristico di un endomorfismo non dipende dalla base.`
+  },
+
+  /* ---------- Sezione 10 · Spazi euclidei ---------- */
+  {
+    id: 'G-carnot', sez: 10, mark: '*', q: 'Lez. 11',
+    titolo: 'Teoremi di Carnot e di Pitagora (Teorema 1)',
+    enunciato: r`In uno spazio euclideo, per ogni $\vu,\vv$: (i) $\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2+2\langle\vu,\vv\rangle$; (ii) se $\vu\perp\vv$, $\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2$.`,
+    idea: r`Si sviluppa $\langle\vu+\vv,\vu+\vv\rangle$ con la bilinearità, e la simmetria unisce i due termini misti.`,
+    steps: [
+      { cue: r`Da dove si parte?`, body: r`$\|\vu+\vv\|^2=\langle\vu+\vv,\vu+\vv\rangle$, per definizione di norma.` },
+      { cue: r`Come si sviluppa?`, body: r`Linearità nel primo argomento, poi nel secondo: $\langle\vu,\vu\rangle+\langle\vu,\vv\rangle+\langle\vv,\vu\rangle+\langle\vv,\vv\rangle$.` },
+      { cue: r`Dove entra la simmetria?`, body: r`$\langle\vv,\vu\rangle=\langle\vu,\vv\rangle$: resta $\|\vu\|^2+2\langle\vu,\vv\rangle+\|\vv\|^2$, cioè Carnot.` },
+      { cue: r`E Pitagora?`, body: r`Se $\vu\perp\vv$ il termine $2\langle\vu,\vv\rangle$ è nullo. $\blacksquare$` }
+    ],
+    note: r`Ricavando $\langle\vu,\vv\rangle$ da Carnot si ha la polarizzazione: $\langle\vu,\vv\rangle=\frac12(\|\vu+\vv\|^2-\|\vu\|^2-\|\vv\|^2)$.`
+  },
+  {
+    id: 'G-csb', sez: 10, mark: '*', q: 'Lez. 11',
+    titolo: 'Disuguaglianza di Cauchy-Schwarz (Teorema 2)',
+    enunciato: r`In uno spazio euclideo $|\langle\vv,\vw\rangle|\le\|\vv\|\,\|\vw\|$, con l'uguaglianza se e solo se $\vv$ e $\vw$ sono linearmente dipendenti.`,
+    idea: r`Si proietta $\vv$ sulla retta di $\vw$: per Pitagora la proiezione non è più lunga di $\vv$, e la sua lunghezza è $|\langle\vv,\vw\rangle|/\|\vw\|$.`,
+    steps: [
+      { cue: r`Il caso facile`, body: r`Se $\vw=\vzero$ entrambi i lati sono $0$, e i vettori sono dipendenti.` },
+      { cue: r`Con $\vw\ne\vzero$: come si spezza $\vv$?`, body: r`$\vv=\vv_0+\vv_1$ con $\vv_0=\frac{\langle\vv,\vw\rangle}{\|\vw\|^2}\vw$ e $\vv_1=\vv-\vv_0\perp\vw$; quindi $\vv_0\perp\vv_1$.` },
+      { cue: r`Dove entra Pitagora?`, body: r`$\|\vv\|^2=\|\vv_0\|^2+\|\vv_1\|^2\ge\|\vv_0\|^2$, e $\|\vv_0\|=\frac{|\langle\vv,\vw\rangle|}{\|\vw\|}$. Moltiplicando per $\|\vw\|$ si ha la tesi.` },
+      { cue: r`Quando vale l'uguale?`, body: r`Se e solo se $\|\vv_1\|=0$, cioè $\vv=\vv_0\in\operatorname{span}\{\vw\}$: vettori dipendenti. $\blacksquare$` }
+    ],
+    note: r`Dà senso all'angolo, $\cos\theta=\frac{\langle\vv,\vw\rangle}{\|\vv\|\|\vw\|}\in[-1,1]$, e con Carnot dà la disuguaglianza triangolare.`
+  },
+  {
+    id: 'G-triangolare', sez: 10, mark: '**', q: 'Lez. 11',
+    titolo: 'Disuguaglianza triangolare',
+    enunciato: r`In uno spazio euclideo $\|\vu+\vv\|\le\|\vu\|+\|\vv\|$ e $\|\vu-\vv\|\le\|\vu\|+\|\vv\|$.`,
+    idea: r`Carnot per il quadrato, Cauchy-Schwarz per il termine misto, poi si toglie il quadrato.`,
+    steps: [
+      { cue: r`Carnot`, body: r`$\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2+2\langle\vu,\vv\rangle$.` },
+      { cue: r`Cauchy-Schwarz`, body: r`$\langle\vu,\vv\rangle\le\|\vu\|\,\|\vv\|$, quindi $\|\vu+\vv\|^2\le(\|\vu\|+\|\vv\|)^2$.` },
+      { cue: r`Togliere il quadrato`, body: r`I due lati sono $\ge0$: $\|\vu+\vv\|\le\|\vu\|+\|\vv\|$. Per $\vu-\vv$ si applica a $\vu+(-\vv)$, con $\|-\vv\|=\|\vv\|$. $\blacksquare$` }
+    ]
+  },
+  {
+    id: 'G-ortogonale-indip', sez: 10, mark: '*', q: 'Lez. 11',
+    titolo: 'Un sistema ortogonale è indipendente (Teorema 3)',
+    enunciato: r`Ogni sistema ortogonale di vettori non nulli è linearmente indipendente.`,
+    idea: r`Si fa il prodotto scalare di una combinazione nulla con un $\vv_j$: sopravvive solo $c_j\|\vv_j\|^2$.`,
+    steps: [
+      { cue: r`Per assurdo`, body: r`$\sum c_i\vv_i=\vzero$ con qualche $c_j\ne0$.` },
+      { cue: r`Prodotto con $\vv_j$`, body: r`$0=\bigl\langle\sum c_i\vv_i,\vv_j\bigr\rangle=\sum c_i\langle\vv_i,\vv_j\rangle=c_j\|\vv_j\|^2$, perché i termini con $i\ne j$ sono nulli.` },
+      { cue: r`La contraddizione`, body: r`$c_j\ne0$ dà $\|\vv_j\|=0$, cioè $\vv_j=\vzero$, contro l'ipotesi. $\blacksquare$` }
+    ],
+    note: r`Corollario: $n$ vettori non nulli a due a due ortogonali in uno spazio di dimensione $n$ sono una base.`
+  },
+  {
+    id: 'G-fourier', sez: 10, mark: '*', q: 'Lez. 11',
+    titolo: 'Coordinate in una base ortogonale (Teorema 4)',
+    enunciato: r`Se $\{\vv_1,\dots,\vv_n\}$ è una base ortogonale di $V$, le coordinate di $\vv$ sono $c_i=\frac{\langle\vv,\vv_i\rangle}{\|\vv_i\|^2}$; in una base ortonormale $c_i=\langle\vv,\vv_i\rangle$.`,
+    idea: r`Lo stesso trucco del Teorema 3: prodotto scalare con $\vv_j$, e resta un solo termine.`,
+    steps: [
+      { cue: r`Che cosa vuol dire «coordinate»?`, body: r`$\vv=\sum_i c_i\vv_i$.` },
+      { cue: r`Come si isola $c_j$?`, body: r`$\langle\vv,\vv_j\rangle=\sum_i c_i\langle\vv_i,\vv_j\rangle=c_j\|\vv_j\|^2$, per l'ortogonalità.` },
+      { cue: r`Si può dividere?`, body: r`Sì: i vettori di una base non sono nulli, quindi $\|\vv_j\|\ne0$. $\blacksquare$` }
+    ],
+    note: r`Chiesto in Parte C nel gennaio 2026. Si controlla ricomponendo $\vv=\sum c_i\vv_i$.`
+  },
+  {
+    id: 'G-spettrale', sez: 10, mark: '*', q: 'Lez. 12',
+    titolo: 'Teorema spettrale: autospazi ortogonali',
+    enunciato: r`Una matrice reale è ortogonalmente diagonalizzabile se e solo se è simmetrica. Se $A$ è simmetrica, i suoi autovalori sono reali e autovettori relativi ad autovalori diversi sono ortogonali. (Negli appunti è dimostrata quest'ultima parte.)`,
+    idea: r`$\langle A\vv,\vw\rangle$ calcolato in due modi: una volta con l'autovalore di $\vv$, una volta, spostando $A$ dall'altra parte, con quello di $\vw$.`,
+    steps: [
+      { cue: r`L'identità che serve`, body: r`$\langle A\vx,\vy\rangle=(A\vx)^T\vy=\vx^TA^T\vy=\langle A^T\vy,\vx\rangle$ per ogni matrice reale.` },
+      { cue: r`Primo modo`, body: r`Con $A\vv=\lambda_1\vv$: $\langle A\vv,\vw\rangle=\lambda_1\langle\vv,\vw\rangle$.` },
+      { cue: r`Secondo modo`, body: r`Con $A^T=A$ e $A\vw=\lambda_2\vw$: $\langle A\vv,\vw\rangle=\langle A\vw,\vv\rangle=\lambda_2\langle\vv,\vw\rangle$.` },
+      { cue: r`Conclusione`, body: r`$(\lambda_2-\lambda_1)\langle\vv,\vw\rangle=0$ con $\lambda_1\ne\lambda_2$: $\langle\vv,\vw\rangle=0$. $\blacksquare$` }
+    ],
+    note: r`In pratica: autovettori di autovalori diversi sono già ortogonali; Gram-Schmidt serve solo dentro un autospazio di dimensione $\ge2$.`
+  },
+  {
+    id: 'G-complemento', sez: 10, mark: '*', q: 'Lez. 14',
+    titolo: r`Completamento ortogonale: $V=W\oplus W^\perp$ (Proposizione 2)`,
+    enunciato: r`Se $W$ è un sottospazio di uno spazio euclideo $V$ di dimensione finita, $W^\perp$ è un sottospazio e $V=W\oplus W^\perp$; in particolare $\dim W^\perp=\dim V-\dim W$.`,
+    idea: r`Esistenza con la proiezione ortogonale su $W$; unicità perché $W\cap W^\perp=\{\vzero\}$.`,
+    steps: [
+      { cue: r`$W^\perp$ è un sottospazio`, body: r`Se $\langle\vu,\vw\rangle=\langle\vv,\vw\rangle=0$ per ogni $\vw\in W$, allora $\langle\alpha\vu+\beta\vv,\vw\rangle=0$ per linearità.` },
+      { cue: r`Esistenza della scrittura`, body: r`$\vw:=$ proiezione di $\vv$ su $W$, $\vw^\perp:=\vv-\vw$, che è ortogonale a tutto $W$.` },
+      { cue: r`Unicità`, body: r`Da due scritture, $\tilde\vw-\vw=\vw^\perp-\tilde\vw^\perp\in W\cap W^\perp$.` },
+      { cue: r`Perché $W\cap W^\perp=\{\vzero\}$?`, body: r`Un vettore in entrambi è ortogonale a sé stesso: $\langle\vx,\vx\rangle=0$, quindi $\vx=\vzero$. $\blacksquare$` }
+    ],
+    note: r`Per calcolarlo: se $W=\ker A$, $W^\perp=\operatorname{Row}(A)$; se $W=\operatorname{span}\{\vw_i\}$, $W^\perp$ è il nucleo della matrice con i $\vw_i$ come righe.`
+  },
+
+  /* ---------- Sezione 11 · Forme quadratiche ---------- */
+  {
+    id: 'G-segno-autovalori', sez: 11, mark: '*', q: 'Lez. 12bis',
+    titolo: 'Definità e segno degli autovalori (Teorema 4)',
+    enunciato: r`Una matrice simmetrica reale è definita positiva (negativa) se e solo se tutti i suoi autovalori sono $>0$ ($\lt0$), semidefinita se sono tutti $\ge0$ ($\le0$), indefinita se ne ha uno positivo e uno negativo.`,
+    idea: r`Nella base ortonormale di autovettori la forma è $\lambda_1y_1^2+\dots+\lambda_ny_n^2$.`,
+    steps: [
+      { cue: r`Teorema spettrale`, body: r`$A=SDS^T$ con $S$ ortogonale e $D=\diag(\lambda_1,\dots,\lambda_n)$ reale.` },
+      { cue: r`Spostare $S$`, body: r`$\langle S\mathbf a,\mathbf b\rangle=\langle\mathbf a,S^T\mathbf b\rangle$, quindi $Q(\vx)=\langle DS^T\vx,S^T\vx\rangle=Q_0(S^T\vx)$, con $Q_0(\vy)=\sum\lambda_iy_i^2$.` },
+      { cue: r`Il segno di $Q_0$`, body: r`Una somma di quadrati con coefficienti $\lambda_i$ ha il segno dei $\lambda_i$.` },
+      { cue: r`Perché vale anche per $Q$?`, body: r`$\vx\mapsto S^T\vx$ è biiettiva: $Q$ e $Q_0$ prendono gli stessi valori. $\blacksquare$` }
+    ],
+    note: r`Per una $2\times2$: $\det A>0$ definita (positiva se $a_{11}>0$), $\det A\lt0$ indefinita, $\det A=0$ semidefinita.`
   }
   ];
 

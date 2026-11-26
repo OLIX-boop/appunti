@@ -22,7 +22,8 @@
       { id: 'mt26', nome: 'Prova in itinere (la tua)', data: '30/10/2026', tipo: 'itinere' }
     ],
 
-    // macro-argomenti: sez = sezione del sito che lo copre, null se non è ancora stato fatto a lezione
+    // macro-argomenti: sez = sezione del sito che lo copre, null se non è ancora stato fatto a lezione.
+    // K, L, M sono arrivati con le Lezioni 11-15 (integrate il 26/11/2026)
     argomenti: {
       A: { t: 'Sistemi lineari, rango, Rouché-Capelli', sez: [1, 2] },
       B: { t: 'Algebra delle matrici, inversa', sez: [2] },
@@ -34,9 +35,9 @@
       H: { t: 'Rette, piani, sottospazi affini', sez: [6] },
       I: { t: 'Determinanti', sez: [8] },
       J: { t: 'Autovalori, diagonalizzazione, similitudine', sez: [9, 8] },
-      K: { t: 'Prodotto scalare, ortogonalità, proiezioni', sez: null },
-      L: { t: 'Matrici simmetriche, forme quadratiche', sez: null },
-      M: { t: 'Coniche e quadriche', sez: null }
+      K: { t: 'Prodotto scalare, ortogonalità, proiezioni', sez: [10] },
+      L: { t: 'Matrici simmetriche, forme quadratiche', sez: [11, 10] },
+      M: { t: 'Coniche e quadriche', sez: [12] }
     },
 
     // Parte A: le domande a risposta multipla. p = schema ricorrente della domanda
@@ -121,32 +122,32 @@
       sottospazi: { t: 'Sottospazi: basi, U ∩ W, U + W', fare: 'basi, equazioni, Grassmann', sez: 7 },
       rappresentativa: { t: 'Matrice rappresentativa e cambio di base', fare: 'colonne = coordinate delle immagini', sez: 5 },
       autovalori: { t: 'Autovalori, autovettori, diagonalizzazione', fare: 'polinomio caratteristico, autospazi, molteplicità', sez: 9 },
-      coniche: { t: 'Coniche e quadriche', fare: 'forma canonica metrica, classificazione, assi', sez: null },
-      scalare: { t: 'Prodotto scalare, Gram-Schmidt, proiezioni', fare: 'basi ortonormali, proiezioni, U⊥', sez: null },
+      coniche: { t: 'Coniche e quadriche', fare: 'forma canonica metrica, classificazione, assi', sez: 12, scheda: false },
+      scalare: { t: 'Prodotto scalare, Gram-Schmidt, proiezioni', fare: 'basi ortonormali, proiezioni, U⊥', sez: 10, scheda: false },
       geometria: { t: 'Rette, piani e sottospazi affini', fare: 'equazioni, parallele, perpendicolari, intersezioni', sez: 6 },
-      simmetriche: { t: 'Matrici simmetriche e forme quadratiche', fare: 'autovalori reali, definitezza', sez: null }
+      simmetriche: { t: 'Matrici simmetriche e forme quadratiche', fare: 'autovalori reali, definitezza', sez: 11, scheda: false }
     },
 
     // Parte C: tipo = def (definizione), teo (enunciato e dimostrazione), es (esempio da costruire)
     teoria: [
       { prova: 'g25', tipo: 'def', t: 'Dipendenza e indipendenza lineare', sito: '5-lineari.html#dip-def' },
-      { prova: 'g25', tipo: 'def', t: 'Matrice ortogonale', sito: null },
+      { prova: 'g25', tipo: 'def', t: 'Matrice ortogonale', sito: '10-euclidei.html#matrici-ortogonali' },
       { prova: 'g25', tipo: 'teo', t: 'Formula di Grassmann', sito: '7-grassmann.html#grassmann' },
       { prova: 'g25', tipo: 'es', t: 'Una mappa lineare suriettiva ma non biiettiva' },
-      { prova: 'g25', tipo: 'es', t: 'Una forma quadratica su ℝ², non nulla, semidefinita positiva ma non definita' },
-      { prova: 'f25', tipo: 'def', t: 'Complemento ortogonale di un sottospazio', sito: '7-grassmann.html#ortogonale' },
+      { prova: 'g25', tipo: 'es', t: 'Una forma quadratica su ℝ², non nulla, semidefinita positiva ma non definita', sito: '11-forme.html#segno' },
+      { prova: 'f25', tipo: 'def', t: 'Complemento ortogonale di un sottospazio', sito: '10-euclidei.html#complemento' },
       { prova: 'f25', tipo: 'def', t: 'Dimensione di uno spazio vettoriale', sito: '5-lineari.html#dimensione' },
       { prova: 'f25', tipo: 'teo', t: 'Invertibilità del prodotto di due matrici', sito: '3-spazi.html#prodotto' },
-      { prova: 'f25', tipo: 'es', t: 'Una base ortonormale di ℝ² non fatta di multipli della canonica, con le coordinate di (2,1)' },
+      { prova: 'f25', tipo: 'es', t: 'Una base ortonormale di ℝ² non fatta di multipli della canonica, con le coordinate di (2,1)', sito: '10-euclidei.html#fourier' },
       { prova: 'f25', tipo: 'es', t: 'Una matrice 3×3 con tre autospazi distinti', sito: '9-diagonalizzazione.html#esempi-parte-c' },
       { prova: 's25', tipo: 'def', t: 'Sottospazio di uno spazio vettoriale', sito: '3-spazi.html#sottospazio' },
       { prova: 's25', tipo: 'def', t: 'Inversa di una matrice quadrata', sito: '2-matrici.html#inversa' },
       { prova: 's25', tipo: 'teo', t: 'Determinante di matrici simili', sito: '8-determinanti.html#simili' },
       { prova: 's25', tipo: 'es', t: 'Uno spazio vettoriale di dimensione infinita' },
-      { prova: 's25', tipo: 'es', t: 'Una matrice 3×3 non diagonale, ortogonalmente diagonalizzabile, con un autovalore multiplo' },
+      { prova: 's25', tipo: 'es', t: 'Una matrice 3×3 non diagonale, ortogonalmente diagonalizzabile, con un autovalore multiplo', sito: '10-euclidei.html#esempi-spettrale' },
       { prova: 'g26', tipo: 'def', t: 'Endomorfismo diagonalizzabile', sito: '9-diagonalizzazione.html#problema' },
-      { prova: 'g26', tipo: 'def', t: 'Forma quadratica definita positiva', sito: null },
-      { prova: 'g26', tipo: 'teo', t: 'Coordinate rispetto a una base ortogonale (coefficienti di Fourier)', sito: null },
+      { prova: 'g26', tipo: 'def', t: 'Forma quadratica definita positiva', sito: '11-forme.html#segno' },
+      { prova: 'g26', tipo: 'teo', t: 'Coordinate rispetto a una base ortogonale (coefficienti di Fourier)', sito: '10-euclidei.html#fourier' },
       { prova: 'g26', tipo: 'es', t: 'Una matrice 2×2 diagonalizzabile su ℂ ma non su ℝ', sito: '9-diagonalizzazione.html#esempi-parte-c' },
       { prova: 'g26', tipo: 'es', t: 'Due rette U, W per l\'origine di ℝ³ con U + W uguale al piano x + y + z = 0' }
     ]

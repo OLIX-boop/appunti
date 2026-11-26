@@ -143,6 +143,55 @@
         { id: 'potenze', r: 5, t: 'Potenze e Fibonacci', a: '#potenze-diag', da: ['base'], idea: r`$A^k=SD^kS^{-1}$, e la formula di Binet.` },
         { id: 'esponenziale', r: 5, t: 'Esponenziale', a: '#esponenziale', da: ['base'], idea: r`$e^{tA}=S\diag(e^{t\lambda_i})S^{-1}$ risolve i sistemi di equazioni differenziali.` }
       ]
+    },
+    10: {
+      frase: r`Un prodotto scalare dà lunghezze, angoli e perpendicolarità. Nelle basi ortonormali le coordinate e le proiezioni si calcolano con un prodotto scalare, e ogni matrice simmetrica ha una base ortonormale di autovettori.`,
+      nodi: [
+        { id: 'bilineari', r: 0, t: 'Forme bilineari', a: '#forme-bilineari', idea: r`Due vettori entrano, un numero esce, ed è lineare in ciascun argomento.` },
+        { id: 'scalare', r: 1, t: 'Prodotto scalare', a: '#prodotto-scalare', da: ['bilineari'], idea: r`Una forma bilineare simmetrica e definita positiva.` },
+        { id: 'norma', r: 2, t: 'Norma e ortogonalità', a: '#norma', da: ['scalare'], idea: r`$\|\vv\|=\sqrt{\langle\vv,\vv\rangle}$, e $\vv\perp\vw$ se $\langle\vv,\vw\rangle=0$.` },
+        { id: 'pitagora', r: 3, t: 'Carnot e Pitagora', a: '#pitagora', da: ['norma'], idea: r`$\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2+2\langle\vu,\vv\rangle$.` },
+        { id: 'basi', r: 3, t: 'Basi ortogonali', a: '#basi-ortogonali', da: ['norma'], idea: r`Vettori non nulli e a due a due ortogonali sono sempre indipendenti.` },
+        { id: 'proiezione', r: 4, t: 'Proiezione su una retta', a: '#proiezione', da: ['pitagora'], idea: r`Il punto della retta più vicino a $\vv$: $\frac{\langle\vv,\vw\rangle}{\|\vw\|^2}\vw$.` },
+        { id: 'fourier', r: 4, t: 'Coordinate di Fourier', a: '#fourier', da: ['basi'], idea: r`In una base ortogonale $c_i=\langle\vv,\vv_i\rangle/\|\vv_i\|^2$, senza sistemi.` },
+        { id: 'csb', r: 5, t: 'Cauchy-Schwarz', a: '#csb', da: ['proiezione'], idea: r`$|\langle\vv,\vw\rangle|\le\|\vv\|\,\|\vw\|$: da qui l'angolo e la disuguaglianza triangolare.` },
+        { id: 'gs', r: 5, t: 'Gram-Schmidt', a: '#gram-schmidt', da: ['proiezione', 'basi'], idea: r`Da una base qualsiasi a una ortogonale, togliendo a ogni vettore le proiezioni sui precedenti.` },
+        { id: 'complemento', r: 5, t: 'Completamento ortogonale', a: '#complemento', da: ['proiezione'], idea: r`$W^\perp$, e $V=W\oplus W^\perp$.` },
+        { id: 'ortogonali', r: 6, t: 'Matrici ortogonali', a: '#matrici-ortogonali', da: ['gs'], idea: r`$Q^TQ=I$: le colonne sono una base ortonormale.` },
+        { id: 'vettoriale', r: 6, t: 'Prodotto vettoriale', a: '#vettoriale', da: ['complemento'], idea: r`In $\R^3$, un vettore ortogonale a due vettori dati.` },
+        { id: 'diag', r: 6, t: 'Autovalori', a: '9-diagonalizzazione.html', ext: true, idea: r`Dalla Sezione 9: autovalori, autospazi, diagonalizzazione con $S$ e $D$.` },
+        { id: 'spettrale', r: 7, t: 'Teorema spettrale', a: '#spettrale', da: ['ortogonali', 'diag'], idea: r`Ortogonalmente diagonalizzabile se e solo se simmetrica.` },
+        { id: 'isometrie', r: 7, t: 'Isometrie', a: '#isometrie', da: ['ortogonali'], idea: r`Le mappe che conservano le distanze hanno matrici ortogonali.` },
+        { id: 'orientazione', r: 8, t: 'Orientazione', a: '#orientazione', da: ['isometrie'], idea: r`Il segno del determinante: rotazione contro riflessione.` }
+      ]
+    },
+    11: {
+      frase: r`Una forma quadratica è una matrice simmetrica. Il suo segno si legge dai segni degli autovalori, oppure, senza calcolarli, dai minori di testa.`,
+      nodi: [
+        { id: 'definizione', r: 0, t: 'Forme quadratiche', a: '#definizione', idea: r`$Q(\vx)=\langle A\vx,\vx\rangle$ con $A$ simmetrica.` },
+        { id: 'spettrale', r: 0, t: 'Teorema spettrale', a: '10-euclidei.html#spettrale', ext: true, idea: r`Dalla Sezione 10: una matrice simmetrica si diagonalizza con una base ortonormale.` },
+        { id: 'segno', r: 1, t: 'Definite e indefinite', a: '#segno', da: ['definizione'], idea: r`Sempre positiva, sempre $\ge0$, o di tutti e due i segni.` },
+        { id: 'autovalori', r: 2, t: 'Il segno dagli autovalori', a: '#autovalori', da: ['segno', 'spettrale'], idea: r`Nella base giusta $Q=\sum\lambda_iy_i^2$: decidono i segni dei $\lambda_i$.` },
+        { id: 'duepdue', r: 3, t: r`Il caso $2\times2$`, a: '#due-per-due', da: ['autovalori'], idea: r`Basta il segno di $\det A$, e poi quello di $a_{11}$.` },
+        { id: 'sylvester', r: 3, t: 'Criterio di Sylvester', a: '#sylvester', da: ['autovalori'], idea: r`I minori di testa: tutti positivi, o a segni alterni.` }
+      ]
+    },
+    12: {
+      frase: r`Una traslazione nel centro toglie la parte lineare, una rotazione nella base di autovettori toglie i termini misti: restano i segni degli autovalori e del termine noto, e una tabella dice che figura è.`,
+      nodi: [
+        { id: 'definizione', r: 0, t: 'Quadriche e coniche', a: '#definizione', idea: r`Gli zeri di $\langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c$.` },
+        { id: 'forme', r: 0, t: 'Forme quadratiche', a: '11-forme.html', ext: true, idea: r`Dalla Sezione 11: matrice simmetrica e segni degli autovalori.` },
+        { id: 'classificazione', r: 1, t: 'Affine e metrica', a: '#classificazione', da: ['definizione'], idea: r`Con le isometrie si conservano le misure: è la forma che chiede l'esame.` },
+        { id: 'centro', r: 1, t: 'Il centro', a: '#centro', da: ['definizione'], idea: r`$A\vx_0=-\vb$: spostando l'origine lì sparisce la parte lineare.` },
+        { id: 'canonica', r: 2, t: 'Forma canonica', a: '#canonica', da: ['classificazione', 'centro', 'forme'], idea: r`$\sum\lambda_iz_i^2+\tilde c=0$ quando $A$ è invertibile.` },
+        { id: 'coniche', r: 3, t: 'Coniche', a: '#coniche', da: ['canonica'], idea: r`Ellisse, iperbole, parabola, più i casi degeneri.` },
+        { id: 'r3', r: 3, t: 'Ellissoidi, iperboloidi, coni', a: '#quadriche-r3', da: ['canonica'], idea: r`Le quadriche di $\R^3$ con tre autovalori non nulli.` },
+        { id: 'cilindri', r: 4, t: 'Cilindri', a: '#cilindri', da: ['r3'], idea: r`Un autovalore nullo e un centro: una conica che scorre lungo una retta.` },
+        { id: 'paraboloidi', r: 4, t: 'Paraboloidi', a: '#paraboloidi', da: ['r3'], idea: r`Un autovalore nullo e nessun centro.` },
+        { id: 'riassunto', r: 5, t: 'Il riassunto', a: '#riassunto', da: ['cilindri', 'paraboloidi'], idea: r`La tabella: dai segni al nome della quadrica.` },
+        { id: 'simmetria', r: 6, t: 'Piani di simmetria', a: '#simmetria', da: ['riassunto'], idea: r`Per il centro, ortogonali agli autovettori.` },
+        { id: 'rotazione', r: 6, t: 'Quadriche di rotazione', a: '#rotazione', da: ['riassunto'], idea: r`Servono due autovalori uguali.` }
+      ]
     }
   };
 })();

@@ -53,6 +53,9 @@
       <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
       <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
       <a href="sezioni/9-diagonalizzazione.html">9 · Diagonalizzazione</a>
+      <a href="sezioni/10-euclidei.html">10 · Spazi euclidei</a>
+      <a href="sezioni/11-forme.html">11 · Forme quadratiche</a>
+      <a href="sezioni/12-quadriche.html">12 · Quadriche</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
       <a href="laboratorio.html">Laboratorio</a>
@@ -171,14 +174,15 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script src="../assets/js/materie.js?v=20261104"></script>
-<script src="data/topics.js?v=20261111"></script>
-<script src="data/esami.js?v=20261111"></script>
+<script src="data/topics.js?v=20261126"></script>
+<script src="data/esami.js?v=20261126"></script>
 <script src="../assets/js/plot.js?v=20261104"></script>
 <script src="../assets/js/app.js?v=20261106"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var E = window.ESAMI_GEO, el = function (id) { return document.getElementById(id); };
-  var FILE = { 1: '1-sistemi', 2: '2-matrici', 3: '3-spazi', 5: '5-lineari', 6: '6-posizione', 7: '7-grassmann', 8: '8-determinanti', 9: '9-diagonalizzazione' };
+  var FILE = { 1: '1-sistemi', 2: '2-matrici', 3: '3-spazi', 5: '5-lineari', 6: '6-posizione', 7: '7-grassmann', 8: '8-determinanti', 9: '9-diagonalizzazione',
+    10: '10-euclidei', 11: '11-forme', 12: '12-quadriche' };
   var prova = {}; E.prove.forEach(function (p) { prova[p.id] = p; });
   var completi = E.prove.filter(function (p) { return p.tipo === 'completo'; }).map(function (p) { return p.id; });
   var MESI = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
@@ -230,7 +234,8 @@ document.addEventListener('am:ready', function () {
     tipi.map(function (t) {
       var d = E.tipi[t.k];
       return '<tr><td><strong>' + d.t + '</strong></td><td class="small">' + d.fare + '</td><td class="num">' + t.app + '/' + completi.length + '</td><td class="num">' + t.n + '</td>' +
-        '<td>' + (d.sez ? '<a href="sezioni/' + FILE[d.sez] + '.html">Sezione ' + d.sez + '</a> · <a href="come-si-risolve.html#' + t.k + '">scheda</a>' : '<span class="badge">non ancora a lezione</span>') + '</td></tr>';
+        '<td>' + (d.sez ? '<a href="sezioni/' + FILE[d.sez] + '.html">Sezione ' + d.sez + '</a>' +
+          (d.scheda === false ? ' · <span class="small muted">scheda da fare</span>' : ' · <a href="come-si-risolve.html#' + t.k + '">scheda</a>') : '<span class="badge">non ancora a lezione</span>') + '</td></tr>';
     }).join('') + '</tbody>';
   el('eserciziBox').innerHTML = '<ul class="lista-teoria mb0">' + E.esercizi.map(function (e) {
     return '<li>' + chip(e.prova) + ' Es. ' + e.n + ': ' + e.t + '</li>';

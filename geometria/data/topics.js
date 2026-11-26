@@ -251,6 +251,66 @@
         { id: 'g9-13', t: r`Invarianza del polinomio caratteristico per similitudine; il viceversa è falso`, mark: '*', q: 'Lez. 10' },
         { id: 'g9-14', t: r`Esponenziale di una matrice e sistemi di equazioni differenziali`, q: 'Lez. 10' }
       ]
+    },
+    {
+      n: 10,
+      slug: 'sezioni/10-euclidei.html',
+      titolo: 'Spazi euclidei',
+      sommario: r`Prodotto scalare, norma e ortogonalità, Cauchy-Schwarz, basi ortonormali e Gram-Schmidt, matrici ortogonali, teorema spettrale, completamento ortogonale, prodotto vettoriale.`,
+      topics: [
+        { id: 'g10-01', t: r`Prodotto cartesiano; forme bilineari; il determinante $2\times2$ come forma bilineare`, q: 'Lez. 11' },
+        { id: 'g10-02', t: r`Forme simmetriche e definite positive; prodotto scalare (prodotto interno)`, mark: '*', q: 'Lez. 11' },
+        { id: 'g10-03', t: r`Esempi e controesempi di prodotti scalari; $L^2[a,b]$ e $P_n$ con l'integrale`, q: 'Lez. 11' },
+        { id: 'g10-04', t: r`Spazio euclideo; norma, distanza, vettori ortogonali`, q: 'Lez. 11' },
+        { id: 'g10-05', t: r`Proprietà della norma: definità positiva, omogeneità, disuguaglianza triangolare`, q: 'Lez. 11' },
+        { id: 'g10-06', t: r`Teorema 1: Carnot e Pitagora; teorema del coseno; polarizzazione`, mark: '*', q: 'Lez. 11' },
+        { id: 'g10-07', t: r`Proiezione ortogonale su una retta; coefficiente di Fourier`, mark: '*', q: 'Lez. 11' },
+        { id: 'g10-08', t: r`Teorema 2: disuguaglianza di Cauchy-Schwarz-Bunyakovskii; angolo fra due vettori`, mark: '*', q: 'Lez. 11' },
+        { id: 'g10-09', t: r`Sistemi ortogonali e Teorema 3 (indipendenza); basi ortogonali e ortonormali`, mark: '*', q: 'Lez. 11' },
+        { id: 'g10-10', t: r`Teorema 4: coordinate in una base ortogonale; versori`, mark: '*', q: 'Lez. 11' },
+        { id: 'g10-11', t: r`Proiezione su un sottospazio; ortogonalizzazione di Gram-Schmidt`, mark: '*', q: 'Lez. 12' },
+        { id: 'g10-12', t: r`Matrici ortogonali: $Q^TQ=I$, $Q^{-1}=Q^T$, colonne e righe ortonormali`, q: 'Lez. 12' },
+        { id: 'g10-13', t: r`Diagonalizzazione ortogonale; matrici simmetriche; teorema spettrale`, mark: '*', q: 'Lez. 12' },
+        { id: 'g10-14', t: r`Isometrie; Proposizione 1; $\det L=\pm1$ per un endomorfismo isometrico`, q: 'Lez. 14' },
+        { id: 'g10-15', t: r`Orientazione: automorfismi, determinante di un endomorfismo, basi concordi`, q: 'Lez. 14' },
+        { id: 'g10-16', t: r`Completamento ortogonale; Proposizione 2: $V=W\oplus W^\perp$`, mark: '*', q: 'Lez. 14' },
+        { id: 'g10-17', t: r`Base di $W^\perp$: $W^\perp=\operatorname{Row}(A)$ e Proposizione 3`, q: 'Lez. 14' },
+        { id: 'g10-18', t: r`Prodotto vettoriale: definizione geometrica e formula analitica`, q: 'Lez. 14' }
+      ]
+    },
+    {
+      n: 11,
+      slug: 'sezioni/11-forme.html',
+      titolo: 'Forme quadratiche',
+      sommario: r`Forme quadratiche e matrici simmetriche, forme definite e indefinite, il segno dagli autovalori, il criterio di Sylvester.`,
+      topics: [
+        { id: 'g11-01', t: r`Forma quadratica e matrice simmetrica associata, $Q(\vx)=\langle A\vx,\vx\rangle$`, q: 'Lez. 12bis' },
+        { id: 'g11-02', t: r`Forme definite, semidefinite, indefinite; esempi`, mark: '*', q: 'Lez. 12bis' },
+        { id: 'g11-03', t: r`Teorema 4: definità e segni degli autovalori`, mark: '*', q: 'Lez. 12bis' },
+        { id: 'g11-04', t: r`Il caso $2\times2$: determinante e traccia`, q: 'Lez. 12bis' },
+        { id: 'g11-05', t: r`Minori di testa; criterio di Sylvester`, mark: '*', q: 'Lez. 12tres' },
+        { id: 'g11-06', t: r`Minori nulli: Sylvester non distingue semidefinite e indefinite`, q: 'Lez. 12tres' }
+      ]
+    },
+    {
+      n: 12,
+      slug: 'sezioni/12-quadriche.html',
+      titolo: 'Coniche e quadriche',
+      sommario: r`Quadriche e coniche, centro, forme canoniche metrica e affine, classificazione nel piano e nello spazio, piani di simmetria, quadriche di rotazione.`,
+      topics: [
+        { id: 'g12-01', t: r`Quadriche e coniche; forma matriciale $\langle\vx,A\vx\rangle+2\langle\vx,\vb\rangle+c$`, q: 'Lez. 15' },
+        { id: 'g12-02', t: r`Cambio di riferimento; classificazione affine e metrica`, q: 'Lez. 15' },
+        { id: 'g12-03', t: r`Centro di una quadrica, $A\vx_0=-\vb$; quadriche a centro`, mark: '*', q: 'Lez. 15' },
+        { id: 'g12-04', t: r`Forme canoniche metrica e affine quando $A$ è invertibile`, mark: '*', q: 'Lez. 15' },
+        { id: 'g12-05', t: r`Esempi: l'iperbole $xy=1$, coniche vuote e non vuote, un ellissoide`, q: 'Lez. 15' },
+        { id: 'g12-06', t: r`Classificazione delle coniche`, mark: '*', q: 'Lez. 15' },
+        { id: 'g12-07', t: r`Vertice e asse di una parabola`, q: 'Lez. 15' },
+        { id: 'g12-08', t: r`Quadriche di $\R^3$ a centro: ellissoide, iperboloidi, cono`, q: 'Lez. 15' },
+        { id: 'g12-09', t: r`Cilindri ellittico e iperbolico; coppie di piani`, q: 'Lez. 15' },
+        { id: 'g12-10', t: r`Paraboloidi ellittico e iperbolico; cilindro parabolico`, q: 'Lez. 15' },
+        { id: 'g12-11', t: r`Il riassunto della classificazione delle quadriche`, mark: '*', q: 'Lez. 15' },
+        { id: 'g12-12', t: r`Piani di simmetria; quadriche di rotazione`, q: 'Lez. 15' }
+      ]
     }
   ];
 
@@ -258,7 +318,7 @@
   window.AM.registraMateria({
     key: 'geometria',
     nome: 'Geometria e Algebra Lineare',
-    sottotitolo: 'Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari, determinanti, diagonalizzazione',
+    sottotitolo: 'Sistemi lineari, matrici, spazi vettoriali, applicazioni lineari, determinanti, diagonalizzazione, spazi euclidei, forme quadratiche, quadriche',
     base: 'geometria/',
     prefisso: 'g',
     qLabel: '',

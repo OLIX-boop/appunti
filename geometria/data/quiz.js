@@ -931,7 +931,199 @@
   q: r`Per quali $h\in\R$ la matrice $\begin{bmatrix}1&h&0\\0&1&0\\0&0&2\end{bmatrix}$ è diagonalizzabile?`,
   opts: [ r`solo per $h=0$`, r`per ogni $h$`, r`per nessun $h$`, r`solo per $h\ne0$` ],
   a: 0,
-  why: r`Gli autovalori sono $1$ (doppio) e $2$ (semplice). $A-I=\begin{bmatrix}0&h&0\\0&0&0\\0&0&1\end{bmatrix}$ ha rango $2$ se $h\ne0$, e allora $m_g(1)=1\lt2$; ha rango $1$ se $h=0$, e allora $m_g(1)=2$. «Per ogni $h$» è l'errore di chi si ferma agli autovalori reali.` }
+  why: r`Gli autovalori sono $1$ (doppio) e $2$ (semplice). $A-I=\begin{bmatrix}0&h&0\\0&0&0\\0&0&1\end{bmatrix}$ ha rango $2$ se $h\ne0$, e allora $m_g(1)=1\lt2$; ha rango $1$ se $h=0$, e allora $m_g(1)=2$. «Per ogni $h$» è l'errore di chi si ferma agli autovalori reali.` },
+
+/* ---------- Sezione 10 · Spazi euclidei (Lezioni 11, 12, 14) ---------- */
+
+{ id: 'GQ115', sez: 10, tag: 'prodotto scalare',
+  q: r`Quale di queste forme è un prodotto scalare su $\R^2$?`,
+  opts: [ r`$x_1y_1+2x_2y_2$`, r`$x_1y_1-x_2y_2$`, r`$x_1y_2+x_2y_1$`, r`$x_1y_1+x_2y_2+1$` ],
+  a: 0,
+  why: r`$x_1y_1+2x_2y_2$ è bilineare, simmetrica, e $L(\vx,\vx)=x_1^2+2x_2^2>0$ per $\vx\ne\vzero$. $x_1y_1-x_2y_2$ dà $-1$ in $(0,1)$; $x_1y_2+x_2y_1$ dà $0$ in $(1,0)$ e $-2$ in $(1,-1)$; con il $+1$ non è nemmeno bilineare, perché in $\vx=\vzero$ vale $1$.` },
+
+{ id: 'GQ116', sez: 10, tag: 'Carnot',
+  q: r`In uno spazio euclideo $\|\vu\|=2$, $\|\vv\|=3$ e $\|\vu+\vv\|=4$. Quanto vale $\langle\vu,\vv\rangle$?`,
+  opts: [ r`$\frac32$`, r`$3$`, r`$-\frac32$`, r`$0$` ],
+  a: 0,
+  why: r`Per Carnot $16=4+9+2\langle\vu,\vv\rangle$, quindi $\langle\vu,\vv\rangle=\frac32$. Chi risponde $3$ dimentica il $2$ davanti al termine misto; $0$ sarebbe giusto solo se valesse Pitagora, cioè se fosse $16=13$.` },
+
+{ id: 'GQ117', sez: 10, tag: 'proiezione',
+  q: r`Proiezione ortogonale di $\vv=(1,2,3)$ sulla retta generata da $\vw=(1,0,1)$:`,
+  opts: [ r`$(2,0,2)$`, r`$(4,0,4)$`, r`$(1,0,3)$`, r`$(\sqrt2,0,\sqrt2)$` ],
+  a: 0,
+  why: r`$\frac{\langle\vv,\vw\rangle}{\|\vw\|^2}\vw=\frac42(1,0,1)=(2,0,2)$, e $\vv-(2,0,2)=(-1,2,1)$ è ortogonale a $\vw$ ✓. $(4,0,4)$ dimentica di dividere per $\|\vw\|^2$, $(\sqrt2,0,\sqrt2)$ divide per $\|\vw\|$ una volta sola; $(1,0,3)$ non sta nemmeno sulla retta.` },
+
+{ id: 'GQ118', sez: 10, tag: 'Cauchy-Schwarz',
+  q: r`In uno spazio euclideo $\|\vv\|=1$ e $\|\vw\|=2$. Quale valore di $\langle\vv,\vw\rangle$ è impossibile?`,
+  opts: [ r`$3$`, r`$-2$`, r`$0$`, r`$\frac32$` ],
+  a: 0,
+  why: r`Per Cauchy-Schwarz $|\langle\vv,\vw\rangle|\le\|\vv\|\,\|\vw\|=2$, quindi $3$ è impossibile. $-2$ si ottiene con $\vw=-2\vv$ (vettori dipendenti, il caso di uguaglianza), $0$ con vettori ortogonali, $\frac32$ con un angolo intermedio.` },
+
+{ id: 'GQ119', sez: 10, tag: 'coordinate',
+  q: r`Coordinate di $\vv=(3,1)$ rispetto alla base ortogonale $\{(1,1),(1,-1)\}$:`,
+  opts: [ r`$(2,1)$`, r`$(4,2)$`, r`$(1,2)$`, r`$(2\sqrt2,\sqrt2)$` ],
+  a: 0,
+  why: r`Con i coefficienti di Fourier: $c_1=\frac{\langle\vv,(1,1)\rangle}{2}=\frac42=2$ e $c_2=\frac{\langle\vv,(1,-1)\rangle}{2}=\frac22=1$. Controllo: $2(1,1)+(1,-1)=(3,1)$ ✓. $(4,2)$ dimentica il denominatore $\|\vv_i\|^2=2$, che non è $1$: la base è ortogonale, non ortonormale.` },
+
+{ id: 'GQ120', sez: 10, tag: 'Gram-Schmidt',
+  q: r`Gram-Schmidt su $\vv_1=(1,0,1)$, $\vv_2=(1,1,0)$: quanto vale $\vw_2$?`,
+  opts: [ r`$\bigl(\frac12,1,-\frac12\bigr)$`, r`$(0,1,-1)$`, r`$(1,1,0)$`, r`$\bigl(\frac12,1,\frac12\bigr)$` ],
+  a: 0,
+  why: r`$\vw_2=\vv_2-\frac{\langle\vv_2,\vw_1\rangle}{\|\vw_1\|^2}\vw_1=(1,1,0)-\frac12(1,0,1)=\bigl(\frac12,1,-\frac12\bigr)$, e $\langle\vw_2,\vw_1\rangle=\frac12-\frac12=0$ ✓. $(0,1,-1)$ toglie tutto $\vv_1$ senza il coefficiente: non è ortogonale a $\vv_1$. $\vv_2$ da solo non va, perché $\langle\vv_1,\vv_2\rangle=1\ne0$.` },
+
+{ id: 'GQ121', sez: 10, tag: 'matrici ortogonali',
+  q: r`Quale di queste matrici è ortogonale?`,
+  opts: [ r`$\frac1{\sqrt2}\begin{bmatrix}1&1\\-1&1\end{bmatrix}$`, r`$\begin{bmatrix}1&1\\-1&1\end{bmatrix}$`, r`$\begin{bmatrix}2&0\\0&1/2\end{bmatrix}$`, r`$\begin{bmatrix}1&2\\0&1\end{bmatrix}$` ],
+  a: 0,
+  why: r`Servono colonne ortonormali. La seconda ha le colonne ortogonali ma di norma $\sqrt2$: $Q^TQ=2I$. La terza ha $\det=1$ ma non conserva le lunghezze: $\det=\pm1$ è necessario, non sufficiente. La quarta ha colonne non ortogonali.` },
+
+{ id: 'GQ122', sez: 10, tag: 'teorema spettrale',
+  q: r`Che cosa è vero per <strong>ogni</strong> matrice reale simmetrica $A$?`,
+  opts: [ r`$\R^n$ ha una base ortonormale di autovettori di $A$`, r`$A$ è invertibile`, r`$A$ ha $n$ autovalori distinti`, r`$A$ è già diagonale` ],
+  a: 0,
+  why: r`È il teorema spettrale (Lezione 12). Le altre sono false: $\begin{bmatrix}1&1\\1&1\end{bmatrix}$ è simmetrica e non invertibile, $I$ ha un solo autovalore ripetuto, e una simmetrica non è per forza diagonale.` },
+
+{ id: 'GQ123', sez: 10, tag: 'simmetriche',
+  q: r`$A$ è simmetrica $3\times3$, $A(1,2,0)=3\,(1,2,0)$ e $A\vx=5\vx$ con $\vx\ne\vzero$. Quale può essere $\vx$?`,
+  opts: [ r`$(2,-1,7)$`, r`$(1,2,1)$`, r`$(2,1,0)$`, r`$(-1,-2,0)$` ],
+  a: 0,
+  why: r`Autovettori di una simmetrica relativi ad autovalori diversi sono ortogonali, quindi $\vx\perp(1,2,0)$: solo $(2,-1,7)$ ha prodotto scalare $2-2+0=0$. $(-1,-2,0)$ è un multiplo di $(1,2,0)$, quindi ha autovalore $3$, non $5$.` },
+
+{ id: 'GQ124', sez: 10, tag: 'completamento ortogonale',
+  q: r`$W=\operatorname{span}\{(1,1,0),(0,1,1)\}\subset\R^3$. Chi è $W^\perp$?`,
+  opts: [ r`$\operatorname{span}\{(1,-1,1)\}$`, r`$\operatorname{span}\{(1,0,-1)\}$`, r`il piano $x-y+z=0$`, r`$\{\vzero\}$` ],
+  a: 0,
+  why: r`$W^\perp$ è il nucleo della matrice con i generatori come righe: $x+y=0$, $y+z=0$, cioè $\operatorname{span}\{(1,-1,1)\}$, di dimensione $3-2=1$. $(1,0,-1)=(1,1,0)-(0,1,1)$ sta in $W$, non in $W^\perp$; e il piano $x-y+z=0$ è proprio $W$.` },
+
+{ id: 'GQ125', sez: 10, tag: 'prodotto vettoriale',
+  q: r`Quanto vale $(1,2,0)\times(0,1,1)$?`,
+  opts: [ r`$(2,-1,1)$`, r`$(2,1,1)$`, r`$(-2,1,-1)$`, r`$(0,2,0)$` ],
+  a: 0,
+  why: r`$\bigl(2\cdot1-0\cdot1,\ -(1\cdot1-0\cdot0),\ 1\cdot1-2\cdot0\bigr)=(2,-1,1)$. Controllo: è ortogonale a $(1,2,0)$ e a $(0,1,1)$ ✓. $(2,1,1)$ dimentica il segno meno della componente $\vec\jmath$; $(-2,1,-1)$ è $(0,1,1)\times(1,2,0)$, con l'ordine scambiato.` },
+
+{ id: 'GQ126', sez: 10, tag: 'isometrie',
+  q: r`$Q$ è una matrice ortogonale $3\times3$. Quanto può valere $\det Q$?`,
+  opts: [ r`solo $1$ o $-1$`, r`qualsiasi numero non nullo`, r`solo $1$`, r`solo $0$ o $1$` ],
+  a: 0,
+  why: r`Da $Q^TQ=I$ e Binet: $(\det Q)^2=1$. Valgono tutti e due: una rotazione ha $\det=1$, una riflessione $\det=-1$ (Lezione 14).` },
+
+/* ---------- Sezione 11 · Forme quadratiche (Lezioni 12bis, 12tres) ---------- */
+
+{ id: 'GQ127', sez: 11, tag: 'matrice',
+  q: r`Matrice simmetrica della forma quadratica $Q(x,y,z)=x^2+4xy-z^2$:`,
+  opts: [ r`$\begin{bmatrix}1&2&0\\2&0&0\\0&0&-1\end{bmatrix}$`, r`$\begin{bmatrix}1&4&0\\4&0&0\\0&0&-1\end{bmatrix}$`, r`$\begin{bmatrix}1&4&0\\0&0&0\\0&0&-1\end{bmatrix}$`, r`$\begin{bmatrix}1&2&0\\2&1&0\\0&0&-1\end{bmatrix}$` ],
+  a: 0,
+  why: r`Sulla diagonale i coefficienti dei quadrati ($1$, $0$, $-1$), fuori la metà del coefficiente di $xy$ nei due posti $(1,2)$ e $(2,1)$. Con $4$ fuori dalla diagonale si otterrebbe $8xy$; la terza non è simmetrica; la quarta inventa un $y^2$.` },
+
+{ id: 'GQ128', sez: 11, tag: 'segno',
+  q: r`La forma $Q(x,y)=2x^2+2xy+y^2$ è:`,
+  opts: [ r`definita positiva`, r`semidefinita positiva ma non definita`, r`indefinita`, r`definita negativa` ],
+  a: 0,
+  why: r`$A=\begin{bmatrix}2&1\\1&1\end{bmatrix}$ ha $\det A=1>0$ e $a_{11}=2>0$: definita positiva. Infatti $Q=x^2+(x+y)^2$, che si annulla solo in $(0,0)$.` },
+
+{ id: 'GQ129', sez: 11, tag: 'segno',
+  q: r`La forma $Q(x,y)=x^2+6xy+y^2$ è:`,
+  opts: [ r`indefinita`, r`definita positiva`, r`semidefinita positiva`, r`definita negativa` ],
+  a: 0,
+  why: r`$\det\begin{bmatrix}1&3\\3&1\end{bmatrix}=-8\lt0$: autovalori di segni opposti ($4$ e $-2$). Per esempio $Q(1,-1)=-4$ e $Q(1,0)=1$. «Definita positiva perché $x^2$ e $y^2$ hanno coefficienti positivi» è l'errore tipico: conta anche il termine misto.` },
+
+{ id: 'GQ130', sez: 11, tag: 'autovalori',
+  q: r`$A$ è simmetrica $3\times3$ con autovalori $2$, $0$, $5$. La forma $\langle A\vx,\vx\rangle$ è:`,
+  opts: [ r`semidefinita positiva, non definita`, r`definita positiva`, r`indefinita`, r`non si può dire senza conoscere $A$` ],
+  a: 0,
+  why: r`Per il Teorema 4 decidono i segni degli autovalori: tutti $\ge0$ e uno nullo, quindi semidefinita positiva. Non è definita: sull'autovettore di $0$ la forma vale $0$.` },
+
+{ id: 'GQ131', sez: 11, tag: 'Sylvester',
+  q: r`Una simmetrica $3\times3$ ha minori di testa $\Delta_1=-2$, $\Delta_2=3$, $\Delta_3=-1$. Allora è:`,
+  opts: [ r`definita negativa`, r`indefinita`, r`definita positiva`, r`semidefinita negativa, non definita` ],
+  a: 0,
+  why: r`I segni alternano $-,+,-$, cioè $(-1)^k\Delta_k>0$: per Sylvester è definita negativa. Chi dice «indefinita» si aspetta tutti i $\Delta_k$ negativi, ma $\Delta_2$ è un prodotto di due autovalori negativi, quindi è positivo.` },
+
+{ id: 'GQ132', sez: 11, tag: 'Sylvester',
+  q: r`Una simmetrica $3\times3$ ha minori di testa $\Delta_1=1$, $\Delta_2=0$, $\Delta_3=0$. Che cosa si può concludere?`,
+  opts: [ r`che non è definita, ma non se sia semidefinita o indefinita`, r`che è semidefinita positiva`, r`che è indefinita`, r`che è definita positiva` ],
+  a: 0,
+  why: r`Con un minore di testa nullo Sylvester dice solo «non definita». L'esempio della Lezione 12tres, $(x+y)^2-z^2$, ha proprio questi minori ed è indefinita; $(x+y)^2$ in $\R^3$ ha minori $1,0,0$ ed è semidefinita.` },
+
+{ id: 'GQ133', sez: 11, tag: 'parametro',
+  q: r`Per quali $k\in\R$ la forma $x^2+2kxy+4y^2$ è definita positiva?`,
+  opts: [ r`$-2\lt k\lt2$`, r`$k>0$`, r`$-2\le k\le2$`, r`per ogni $k$` ],
+  a: 0,
+  why: r`$A=\begin{bmatrix}1&k\\k&4\end{bmatrix}$: serve $\det A=4-k^2>0$, con $a_{11}=1>0$ già positivo. Per $k=\pm2$ il determinante è $0$ e la forma è $(x\pm2y)^2$, solo semidefinita.` },
+
+{ id: 'GQ134', sez: 11, tag: 'esempio',
+  q: r`Quale forma su $\R^2$ è semidefinita positiva ma <strong>non</strong> definita?`,
+  opts: [ r`$(x-2y)^2$`, r`$x^2+y^2$`, r`$x^2-y^2$`, r`$-x^2$` ],
+  a: 0,
+  why: r`$(x-2y)^2\ge0$ e si annulla in $(2,1)\ne\vzero$. $x^2+y^2$ è definita, $x^2-y^2$ indefinita, $-x^2$ semidefinita <em>negativa</em>. È il tipo di esempio chiesto in Parte C nel gennaio 2025.` },
+
+{ id: 'GQ135', sez: 11, tag: 'prodotto da una matrice',
+  q: r`Per quale $A$ la formula $\langle\vx,\vy\rangle_A:=\vx^TA\vy$ è un prodotto scalare su $\R^2$?`,
+  opts: [ r`$\begin{bmatrix}2&1\\1&1\end{bmatrix}$`, r`$\begin{bmatrix}1&2\\2&1\end{bmatrix}$`, r`$\begin{bmatrix}1&1\\0&1\end{bmatrix}$`, r`$\begin{bmatrix}1&0\\0&0\end{bmatrix}$` ],
+  a: 0,
+  why: r`Serve $A$ simmetrica (per la simmetria) e definita positiva. La prima ha $\det=1>0$ e $a_{11}=2>0$. La seconda è indefinita ($\det=-3$), la terza non è simmetrica, la quarta è solo semidefinita: $\langle(0,1),(0,1)\rangle_A=0$.` },
+
+/* ---------- Sezione 12 · Coniche e quadriche (Lezione 15) ---------- */
+
+{ id: 'GQ136', sez: 12, tag: 'che conica è',
+  q: r`La conica $x^2+4xy+y^2=1$ è:`,
+  opts: [ r`un'iperbole`, r`un'ellisse`, r`una parabola`, r`una coppia di rette` ],
+  a: 0,
+  why: r`$A=\begin{bmatrix}1&2\\2&1\end{bmatrix}$ ha $\det A=-3\lt0$: autovalori $3$ e $-1$ di segni opposti. Non c'è parte lineare e il termine noto è $-1\ne0$: forma metrica $3z_1^2-z_2^2-1=0$, un'iperbole. «Ellisse» guarda solo i coefficienti di $x^2$ e $y^2$.` },
+
+{ id: 'GQ137', sez: 12, tag: 'che conica è',
+  q: r`La conica $x^2-2xy+y^2+x=0$ è:`,
+  opts: [ r`una parabola`, r`una coppia di rette parallele`, r`un'iperbole`, r`un'ellisse degenere` ],
+  a: 0,
+  why: r`$\det A=0$, quindi un autovalore è nullo. $\vb=(\frac12,0)$ e $A\vx=-\vb$ è $x-y=-\frac12$, $-x+y=0$: impossibile. Senza centro e con $\det A=0$ è una parabola. Rette parallele si avrebbero se ci fosse un centro.` },
+
+{ id: 'GQ138', sez: 12, tag: 'centro',
+  q: r`Il centro della conica $x^2+2y^2-2x+8y+1=0$ è:`,
+  opts: [ r`$(1,-2)$`, r`$(2,-8)$`, r`$(-1,2)$`, r`$(1,-4)$` ],
+  a: 0,
+  why: r`$A=\diag(1,2)$ e $\vb=(-1,4)$, la metà dei coefficienti lineari. $A\vx_0=-\vb=(1,-4)$ dà $\vx_0=(1,-2)$. Completando i quadrati: $(x-1)^2+2(y+2)^2-8=0$ ✓. $(2,-8)$ dimentica di dimezzare, $(-1,2)$ sbaglia il segno, $(1,-4)$ dimentica di dividere per l'autovalore $2$.` },
+
+{ id: 'GQ139', sez: 12, tag: 'forma canonica',
+  q: r`Una forma canonica metrica di $5x^2+4xy+2y^2=6$ è:`,
+  opts: [ r`$z_1^2+6z_2^2-6=0$`, r`$5z_1^2+2z_2^2-6=0$`, r`$z_1^2+6z_2^2-1=0$`, r`$7z_1^2+6z_2^2-6=0$` ],
+  a: 0,
+  why: r`$A=\begin{bmatrix}5&2\\2&2\end{bmatrix}$ ha traccia $7$ e determinante $6$, quindi autovalori $1$ e $6$. Non c'è parte lineare, il termine noto resta $-6$. La seconda butta via il termine misto; la terza cambia il termine noto, che una rotazione non tocca; la quarta mette traccia e determinante al posto degli autovalori.` },
+
+{ id: 'GQ140', sez: 12, tag: 'quadriche',
+  q: r`In $\R^3$ la quadrica $x^2+y^2-z^2=0$ è:`,
+  opts: [ r`un cono`, r`un iperboloide a una falda`, r`un iperboloide a due falde`, r`un paraboloide iperbolico` ],
+  a: 0,
+  why: r`Autovalori $1,1,-1$ di segni diversi e termine noto $0$: è un cono (di rotazione attorno all'asse $z$). Con termine noto non nullo sarebbe un iperboloide.` },
+
+{ id: 'GQ141', sez: 12, tag: 'falde',
+  q: r`In $\R^3$ la quadrica $x^2-y^2-z^2=1$ è:`,
+  opts: [ r`un iperboloide a due falde`, r`un iperboloide a una falda`, r`un cono`, r`un ellissoide` ],
+  a: 0,
+  why: r`$x^2=1+y^2+z^2\ge1$, quindi $|x|\ge1$: due pezzi separati, uno con $x\ge1$ e uno con $x\le-1$. Autovalori $1,-1,-1$: il termine noto ($-1$ portato a sinistra) è concorde con i due autovalori negativi.` },
+
+{ id: 'GQ142', sez: 12, tag: 'paraboloidi',
+  q: r`In $\R^3$ la quadrica $z=x^2+3y^2$ è:`,
+  opts: [ r`un paraboloide ellittico`, r`un paraboloide iperbolico`, r`un cilindro ellittico`, r`un cono` ],
+  a: 0,
+  why: r`Autovalori $1,3,0$ e nessun centro ($z$ compare solo al primo grado); gli autovalori non nulli sono concordi: paraboloide ellittico. Con $x^2-3y^2$ sarebbe iperbolico, la sella.` },
+
+{ id: 'GQ143', sez: 12, tag: 'cilindri',
+  q: r`In $\R^3$ l'equazione $x^2+2y^2=4$ descrive:`,
+  opts: [ r`un cilindro ellittico`, r`un'ellisse`, r`un ellissoide`, r`un paraboloide ellittico` ],
+  a: 0,
+  why: r`La variabile $z$ non compare: per ogni punto dell'ellisse $x^2+2y^2=4$ del piano $(x,y)$ c'è tutta la retta parallela all'asse $z$. Autovalori $1,2,0$ e la quadrica è a centro: cilindro ellittico. In $\R^2$ la stessa equazione sarebbe un'ellisse.` },
+
+{ id: 'GQ144', sez: 12, tag: 'affine e metrica',
+  q: r`Le coniche $\frac{x^2}4+y^2=1$ e $x^2+y^2=1$:`,
+  opts: [ r`hanno la stessa forma canonica affine ma non la stessa metrica`, r`hanno la stessa forma canonica metrica`, r`hanno forme canoniche affini diverse`, r`non sono confrontabili` ],
+  a: 0,
+  why: r`Sono due ellissi, quindi la forma affine è la stessa, $w_1^2+w_2^2-1=0$. Una isometria però conserva le misure: semiassi $2,1$ contro $1,1$, quindi le forme metriche sono diverse.` },
+
+{ id: 'GQ145', sez: 12, tag: 'rotazione',
+  q: r`Quale di queste quadriche è di rotazione?`,
+  opts: [ r`$2x^2+2y^2+z^2=1$`, r`$x^2+2y^2+3z^2=1$`, r`$x^2-y^2=z$`, r`$x^2+2y^2=z$` ],
+  a: 0,
+  why: r`Serve un autovalore doppio non nullo: $2,2,1$. L'asse è l'asse $z$, autovettore dell'autovalore semplice. Le altre hanno autovalori non nulli tutti diversi.` }
 
   ];
 

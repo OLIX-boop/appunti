@@ -1698,8 +1698,222 @@ $M\in A$ se e solo se la diagonale è nulla e $m_{ji}=-m_{ij}$: $\dim A=3$, base
   sol: r`<strong>(i)</strong> $(A^{2})^{T}=(AA)^{T}=A^{T}A^{T}=AA=A^{2}$.<br>
 <strong>(ii)</strong> $A^{2}\vv=A(A\vv)=A(\lambda\vv)=\lambda A\vv=\lambda^{2}\vv$, e $\vv\ne\vzero$: autovettore di $A^{2}$ relativo a $\lambda^{2}$.<br>
 <strong>(iii)</strong> $\lambda_1^{2},\lambda_2^{2},\lambda_3^{2}$. Se $A=SDS^{-1}$ con $D=\diag(\lambda_1,\lambda_2,\lambda_3)$, allora $A^{2}=SD^{2}S^{-1}$ e $D^{2}=\diag(\lambda_1^{2},\lambda_2^{2},\lambda_3^{2})$ ✓.<br><br>
-<strong>Attenzione:</strong> il punto (iii) usa che una matrice simmetrica reale è <strong>diagonalizzabile</strong>, un teorema che arriverà con le matrici simmetriche. Il punto (iv) del tema, «$A^{2}$ è definita positiva», usa le forme quadratiche, che non sono ancora state fatte a lezione.<br>
-<strong>Controllo</strong> su un caso: $A=\diag(2,-1,3)$ è simmetrica, $A^{2}=\diag(4,1,9)$ ✓. $\blacksquare$` }
+<strong>Attenzione:</strong> il punto (iii) usa che una matrice simmetrica reale è <strong>diagonalizzabile</strong>, il <a href="sezioni/10-euclidei.html#spettrale">teorema spettrale</a> della Lezione 12. Il punto (iv) del tema, «$A^{2}$ è definita positiva», usa le forme quadratiche: è l'esercizio G11.4.<br>
+<strong>Controllo</strong> su un caso: $A=\diag(2,-1,3)$ è simmetrica, $A^{2}=\diag(4,1,9)$ ✓. $\blacksquare$` },
+
+/* ---------- Sezione 10 · Spazi euclidei (Lezioni 11, 12, 14) ---------- */
+
+{ id: 'G10.1', sez: 10, tema: 'Prodotto scalare', d: 1,
+  t: r`Sia $L(\vx,\vy):=2x_1y_1+x_1y_2+x_2y_1+x_2y_2$ su $\R^2$. (i) Verificare che $L$ è un prodotto scalare. (ii) Calcolare, con questo prodotto scalare, le norme di $\mathbf e_1=(1,0)$ ed $\mathbf e_2=(0,1)$ e l'angolo fra loro.`,
+  hints: [ r`Bilinearità e simmetria si vedono dalla formula. Per la definità positiva scrivi $L(\vx,\vx)$ e completa un quadrato.`,
+           r`$L(\vx,\vx)=2x_1^2+2x_1x_2+x_2^2=x_1^2+(x_1+x_2)^2$.`,
+           r`$\langle\mathbf e_1,\mathbf e_2\rangle=L\bigl((1,0),(0,1)\bigr)=1$.` ],
+  sol: r`<strong>(i)</strong> Ogni termine è una coordinata di $\vx$ per una di $\vy$: $L$ è bilineare. Scambiando $\vx$ e $\vy$ i termini $x_1y_2$ e $x_2y_1$ si scambiano: è simmetrica. Infine $L(\vx,\vx)=2x_1^2+2x_1x_2+x_2^2=x_1^2+(x_1+x_2)^2\ge0$, e vale $0$ solo se $x_1=0$ e $x_1+x_2=0$, cioè $\vx=\vzero$: è definita positiva.<br><br>
+<strong>(ii)</strong> $\|\mathbf e_1\|^2=L(\mathbf e_1,\mathbf e_1)=2$, $\|\mathbf e_2\|^2=1$, $\langle\mathbf e_1,\mathbf e_2\rangle=1$. Quindi
+$$\cos\theta=\frac{1}{\sqrt2\cdot1}=\frac{\sqrt2}2,\qquad\theta=\frac\pi4.$$
+<strong>Morale:</strong> con questo prodotto scalare la base canonica <em>non</em> è ortogonale. Lunghezze e angoli dipendono dal prodotto scalare scelto.<br>
+<strong>Controllo:</strong> Cauchy-Schwarz, $|1|\le\sqrt2\cdot1$ ✓. $\blacksquare$` },
+
+{ id: 'G10.2', sez: 10, tema: 'Proiezioni', d: 1,
+  t: r`In $\R^3$, con il prodotto standard, trovare la proiezione ortogonale di $\vv=(2,1,3)$ sulla retta generata da $\vw=(1,1,1)$, e la distanza di $\vv$ dalla retta.`,
+  hints: [ r`$\vv_0=\frac{\langle\vv,\vw\rangle}{\|\vw\|^2}\vw$.`,
+           r`$\langle\vv,\vw\rangle=6$, $\|\vw\|^2=3$.`,
+           r`La distanza è la norma di $\vv-\vv_0$, il pezzo perpendicolare.` ],
+  sol: r`$\vv_0=\frac63(1,1,1)=(2,2,2)$. Il resto è $\vv-\vv_0=(0,-1,1)$.<br>
+<strong>Controllo:</strong> $\langle(0,-1,1),(1,1,1)\rangle=0$ ✓: il resto è ortogonale alla retta.<br>
+La distanza di $\vv$ dalla retta è la distanza da $\vv_0$, il punto più vicino: $\|(0,-1,1)\|=\sqrt2$. $\blacksquare$` },
+
+{ id: 'G10.3', sez: 10, tema: 'Basi ortonormali', d: 2,
+  t: r`Siano $\vu_1=\frac13(1,2,2)$ e $\vu_2=\frac13(2,1,-2)$. (i) Verificare che $\{\vu_1,\vu_2\}$ è un sistema ortonormale. (ii) Completarlo a una base ortonormale di $\R^3$ orientata a mano destra. (iii) Trovare le coordinate di $\vv=(3,0,3)$ in questa base.`,
+  hints: [ r`Servono $\|\vu_1\|=\|\vu_2\|=1$ e $\langle\vu_1,\vu_2\rangle=0$.`,
+           r`Il terzo vettore: $\vu_3:=\vu_1\times\vu_2$, già di norma $1$ e a mano destra.`,
+           r`In una base ortonormale $c_i=\langle\vv,\vu_i\rangle$.` ],
+  sol: r`<strong>(i)</strong> $\|\vu_1\|^2=\frac{1+4+4}9=1$, $\|\vu_2\|^2=\frac{4+1+4}9=1$, $\langle\vu_1,\vu_2\rangle=\frac{2+2-4}9=0$ ✓.<br><br>
+<strong>(ii)</strong> $\vu_3=\vu_1\times\vu_2=\frac19\bigl(2\cdot(-2)-2\cdot1,\ 2\cdot2-1\cdot(-2),\ 1\cdot1-2\cdot2\bigr)=\frac19(-6,6,-3)=\frac13(-2,2,-1)$. È ortogonale ai primi due, ha norma $\frac13\sqrt{4+4+1}=1$, e $\{\vu_1,\vu_2,\vu_1\times\vu_2\}$ è a mano destra per definizione del prodotto vettoriale.<br><br>
+<strong>(iii)</strong> Per il Teorema 4 in una base ortonormale: $c_1=\langle\vv,\vu_1\rangle=\frac{3+0+6}3=3$, $c_2=\frac{6+0-6}3=0$, $c_3=\frac{-6+0-3}3=-3$.<br>
+<strong>Controllo:</strong> $3\vu_1-3\vu_3=(1,2,2)-(-2,2,-1)=(3,0,3)$ ✓. $\blacksquare$` },
+
+{ id: 'G10.4', sez: 10, tema: 'Gram-Schmidt', d: 2,
+  t: r`Trovare una base ortonormale di $W=\operatorname{span}\{(1,1,0,0),(1,0,1,0),(0,1,1,1)\}\subset\R^4$.`,
+  hints: [ r`Gram-Schmidt: $\vw_1=\vv_1$, poi $\vw_2=\vv_2-\frac{\langle\vv_2,\vw_1\rangle}{\|\vw_1\|^2}\vw_1$.`,
+           r`$\vw_2=\bigl(\frac12,-\frac12,1,0\bigr)$: puoi usare il multiplo $(1,-1,2,0)$ per evitare le frazioni.`,
+           r`Per $\vw_3$ si toglie la proiezione su $\vw_1$ e su $(1,-1,2,0)$: coefficienti $\frac12$ e $\frac16$.` ],
+  sol: r`<strong>Primo vettore.</strong> $\vw_1=(1,1,0,0)$, $\|\vw_1\|^2=2$.<br>
+<strong>Secondo.</strong> $\langle\vv_2,\vw_1\rangle=1$: $\vw_2=(1,0,1,0)-\frac12(1,1,0,0)=\bigl(\frac12,-\frac12,1,0\bigr)$. Lo sostituisco con il multiplo $(1,-1,2,0)$, di norma al quadrato $6$.<br>
+<strong>Terzo.</strong> $\langle\vv_3,\vw_1\rangle=1$ e $\langle\vv_3,(1,-1,2,0)\rangle=-1+2=1$:
+$$\vw_3=(0,1,1,1)-\tfrac12(1,1,0,0)-\tfrac16(1,-1,2,0)=\Bigl(-\tfrac23,\tfrac23,\tfrac23,1\Bigr),$$
+che sostituisco con $(-2,2,2,3)$, di norma al quadrato $21$.<br>
+<strong>Controllo:</strong> $\langle(1,1,0,0),(1,-1,2,0)\rangle=0$, $\langle(1,1,0,0),(-2,2,2,3)\rangle=0$, $\langle(1,-1,2,0),(-2,2,2,3)\rangle=-2-2+4=0$ ✓.<br>
+Normalizzando:
+$$\Bigl\{\tfrac1{\sqrt2}(1,1,0,0),\ \tfrac1{\sqrt6}(1,-1,2,0),\ \tfrac1{\sqrt{21}}(-2,2,2,3)\Bigr\}.$$
+<strong>Morale:</strong> moltiplicare un $\vw_i$ per un numero non nullo non rovina nulla, e i conti successivi diventano più puliti. $\blacksquare$` },
+
+{ id: 'G10.5', sez: 10, tema: 'Proiezioni', d: 2,
+  t: r`Sia $W$ il piano $x+y+z=0$ di $\R^3$ e $P:\R^3\to\R^3$ la proiezione ortogonale su $W$. (i) Calcolare $P(1,2,6)$ e la distanza di $(1,2,6)$ da $W$. (ii) Trovare $\ker P$ e $\operatorname{Im}P$.`,
+  hints: [ r`Conviene passare da $W^\perp$: è la retta generata dalla normale $\mathbf n=(1,1,1)$.`,
+           r`$\vv=\vv_W+\vv_{W^\perp}$: la parte in $W^\perp$ è la proiezione di $\vv$ su $\mathbf n$.`,
+           r`$P$ manda in $\vzero$ i vettori di $W^\perp$ e lascia fermi quelli di $W$.` ],
+  sol: r`<strong>(i)</strong> $V=W\oplus W^\perp$ con $W^\perp=\operatorname{span}\{(1,1,1)\}$. La componente di $\vv=(1,2,6)$ lungo la normale è $\frac{\langle\vv,\mathbf n\rangle}{\|\mathbf n\|^2}\mathbf n=\frac93(1,1,1)=(3,3,3)$, quindi
+$$P(\vv)=\vv-(3,3,3)=(-2,-1,3).$$
+<strong>Controllo:</strong> $-2-1+3=0$, quindi $P(\vv)\in W$ ✓; e $(3,3,3)\perp W$ ✓. La distanza da $W$ è $\|(3,3,3)\|=3\sqrt3$.<br><br>
+<strong>(ii)</strong> $P(\vv)=\vzero$ se e solo se $\vv$ è tutto lungo la normale: $\ker P=W^\perp=\operatorname{span}\{(1,1,1)\}$. Ogni vettore di $W$ è la proiezione di sé stesso: $\operatorname{Im}P=W$. Rango più nullità: $2+1=3$ ✓.<br>
+<strong>Morale:</strong> il nucleo e l'immagine di una proiezione ortogonale sono $W^\perp$ e $W$. Nel gennaio 2026 l'esercizio 2 chiedeva proprio nucleo e immagine di una proiezione. $\blacksquare$` },
+
+{ id: 'G10.6', sez: 10, tema: 'Teorema spettrale', d: 2,
+  t: r`Sia $A=\begin{bmatrix}3&1&1\\1&3&1\\1&1&3\end{bmatrix}$. Trovare una matrice ortogonale $Q$ e una diagonale $D$ con $A=QDQ^T$.`,
+  hints: [ r`$A=2I+\begin{bmatrix}1&1&1\\1&1&1\\1&1&1\end{bmatrix}$: la seconda ha rango $1$.`,
+           r`Autovalori: $5$ con $(1,1,1)$, e $2$ doppio con l'autospazio $x+y+z=0$.`,
+           r`Nel piano $x+y+z=0$ prendi $(1,-1,0)$ e ortogonalizza $(1,0,-1)$ con Gram-Schmidt.` ],
+  sol: r`<strong>Autovalori.</strong> $A-2I$ ha tutte le righe uguali a $(1,1,1)$: rango $1$, quindi $2$ è autovalore con $m_g=2$, e $W_2$ è il piano $x+y+z=0$. Dalla traccia, $9=2+2+\lambda_3$, il terzo è $\lambda_3=5$, con $A(1,1,1)=(5,5,5)$ ✓. $A$ è simmetrica, quindi $W_5=W_2^\perp=\operatorname{span}\{(1,1,1)\}$.<br><br>
+<strong>Base ortonormale di $W_2$.</strong> $(1,-1,0)$ e $(1,0,-1)$ stanno in $W_2$ ma non sono ortogonali. Gram-Schmidt: $(1,0,-1)-\frac12(1,-1,0)=\bigl(\frac12,\frac12,-1\bigr)$, cioè $(1,1,-2)$.<br><br>
+$$Q=\begin{bmatrix}1/\sqrt3&1/\sqrt2&1/\sqrt6\\1/\sqrt3&-1/\sqrt2&1/\sqrt6\\1/\sqrt3&0&-2/\sqrt6\end{bmatrix},\qquad D=\diag(5,2,2).$$
+<strong>Controllo:</strong> $A(1,-1,0)=(2,-2,0)$ ✓, $A(1,1,-2)=(2,2,-4)$ ✓, e le colonne di $Q$ sono a due a due ortogonali e di norma $1$ ✓.<br>
+<strong>Attenzione:</strong> la base $\{(1,-1,0),(1,0,-1)\}$ uscita dal MEG va benissimo per una $S$ qualsiasi, ma non per una $Q$ ortogonale. $\blacksquare$` },
+
+{ id: 'G10.7', sez: 10, tema: 'Completamento ortogonale', d: 2,
+  t: r`Sia $W=\{\vx\in\R^4:\ x_1+x_2-x_4=0,\ x_2+x_3=0\}$. Trovare una base di $W^\perp$ e una di $W$, e controllare che $\dim W+\dim W^\perp=4$.`,
+  hints: [ r`$W$ è dato con equazioni: $W=\ker A$, quindi $W^\perp=\operatorname{Row}(A)$.`,
+           r`Per una base di $W$ risolvi il sistema con due parametri.` ],
+  sol: r`<strong>$W^\perp$.</strong> Le righe della matrice dei coefficienti sono già una base: $W^\perp=\operatorname{span}\{(1,1,0,-1),(0,1,1,0)\}$ (indipendenti: non sono proporzionali).<br>
+<strong>$W$.</strong> $x_3=-x_2$, $x_4=x_1+x_2$; con $x_1=s$, $x_2=t$: $(s,t,-t,s+t)=s(1,0,0,1)+t(0,1,-1,1)$. Base: $\{(1,0,0,1),(0,1,-1,1)\}$.<br>
+<strong>Controllo:</strong> $2+2=4$ ✓, e ogni vettore della base di $W$ è ortogonale a ogni vettore della base di $W^\perp$: per esempio $\langle(0,1,-1,1),(1,1,0,-1)\rangle=1-1=0$ ✓. $\blacksquare$` },
+
+{ id: 'G10.8', sez: 10, tema: 'Prodotto vettoriale', d: 1,
+  t: r`Trovare l'equazione cartesiana del piano per $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$ e l'area del triangolo $ABC$.`,
+  hints: [ r`Un vettore normale è $\overrightarrow{AB}\times\overrightarrow{AC}$.`,
+           r`$\overrightarrow{AB}=(-1,2,0)$, $\overrightarrow{AC}=(-1,0,3)$.`,
+           r`L'area del triangolo è metà della norma del prodotto vettoriale.` ],
+  sol: r`$\overrightarrow{AB}\times\overrightarrow{AC}=(2\cdot3-0\cdot0,\ 0\cdot(-1)-(-1)\cdot3,\ (-1)\cdot0-2\cdot(-1))=(6,3,2)$. Il piano è $6x+3y+2z=d$, e passando per $A$: $d=6$.<br>
+<strong>Controllo:</strong> $B$: $6$ ✓, $C$: $6$ ✓.<br>
+Area: $\frac12\|(6,3,2)\|=\frac12\sqrt{36+9+4}=\frac72$. $\blacksquare$` },
+
+{ id: 'G10.9', sez: 10, tema: 'Prodotto scalare', d: 3,
+  t: r`Su $P_1$ (polinomi di grado $\le1$) si considera $\langle p,q\rangle:=\int_0^1 p(t)\,q(t)\dd t$. (i) Trovare una base ortonormale di $P_1$ partendo da $\{1,t\}$. (ii) Trovare il polinomio di $P_1$ più vicino a $t^2$, cioè la proiezione ortogonale di $t^2$ su $P_1$ dentro $P_2$ con lo stesso prodotto scalare.`,
+  hints: [ r`Gram-Schmidt: $\langle t,1\rangle=\frac12$ e $\|1\|^2=1$.`,
+           r`$\vw_2=t-\frac12$, con $\|t-\frac12\|^2=\int_0^1(t-\frac12)^2\dd t=\frac1{12}$.`,
+           r`Proiezione con la base ortogonale $\{1,\,t-\frac12\}$: servono $\langle t^2,1\rangle=\frac13$ e $\langle t^2,t-\frac12\rangle=\frac1{12}$.` ],
+  sol: r`<strong>(i)</strong> $\vw_1=1$, $\|1\|^2=\int_0^1 1\dd t=1$. $\langle t,1\rangle=\int_0^1t\dd t=\frac12$, quindi $\vw_2=t-\frac12\cdot1=t-\frac12$. $\|t-\frac12\|^2=\int_0^1\bigl(t-\frac12\bigr)^2\dd t=\frac1{12}$. Base ortonormale:
+$$\Bigl\{1,\ \sqrt{12}\bigl(t-\tfrac12\bigr)\Bigr\}=\Bigl\{1,\ 2\sqrt3\,t-\sqrt3\Bigr\}.$$
+<strong>(ii)</strong> Con la base ortogonale $\{1,t-\frac12\}$:
+$$\frac{\langle t^2,1\rangle}{\|1\|^2}\cdot1+\frac{\langle t^2,t-\frac12\rangle}{\|t-\frac12\|^2}\Bigl(t-\frac12\Bigr)=\frac13+\frac{1/12}{1/12}\Bigl(t-\frac12\Bigr)=t-\frac16.$$
+<strong>Controllo:</strong> il resto $t^2-t+\frac16$ dev'essere ortogonale a $P_1$: $\int_0^1(t^2-t+\frac16)\dd t=\frac13-\frac12+\frac16=0$ ✓ e $\int_0^1(t^3-t^2+\frac t6)\dd t=\frac14-\frac13+\frac1{12}=0$ ✓.<br>
+<strong>Morale:</strong> è lo stesso schema di $\R^n$; cambia solo il modo di calcolare i prodotti scalari. Nel febbraio 2025 l'esercizio 3 era su un prodotto scalare di $P_1$. $\blacksquare$` },
+
+/* ---------- Sezione 11 · Forme quadratiche (Lezioni 12bis, 12tres) ---------- */
+
+{ id: 'G11.1', sez: 11, tema: 'Segno di una forma', d: 1,
+  t: r`Stabilire il segno delle forme quadratiche su $\R^2$: (a) $x^2+2xy+3y^2$; (b) $x^2+4xy+4y^2$; (c) $2xy+y^2$.`,
+  hints: [ r`Scrivi le matrici simmetriche: la metà del coefficiente misto fuori dalla diagonale.`,
+           r`Per le $2\times2$ basta il segno di $\det A$, e se è positivo quello di $a_{11}$.` ],
+  sol: r`<strong>(a)</strong> $A=\begin{bmatrix}1&1\\1&3\end{bmatrix}$, $\det A=2>0$, $a_{11}=1>0$: <strong>definita positiva</strong>. Infatti $Q=(x+y)^2+2y^2$.<br>
+<strong>(b)</strong> $A=\begin{bmatrix}1&2\\2&4\end{bmatrix}$, $\det A=0$: <strong>semidefinita positiva</strong>, non definita. Infatti $Q=(x+2y)^2$, nulla in $(2,-1)$.<br>
+<strong>(c)</strong> $A=\begin{bmatrix}0&1\\1&1\end{bmatrix}$, $\det A=-1\lt0$: <strong>indefinita</strong>. Controllo: $Q(0,1)=1$ e $Q(1,-1)=-2+1=-1$ ✓. $\blacksquare$` },
+
+{ id: 'G11.2', sez: 11, tema: 'Segno di una forma', d: 2,
+  t: r`Stabilire se $Q(x,y,z)=2x^2+y^2+3z^2+2xy+2yz$ è definita positiva.`,
+  hints: [ r`La matrice è $\begin{bmatrix}2&1&0\\1&1&1\\0&1&3\end{bmatrix}$.`,
+           r`Criterio di Sylvester: calcola $\Delta_1$, $\Delta_2$, $\Delta_3$.` ],
+  sol: r`$A=\begin{bmatrix}2&1&0\\1&1&1\\0&1&3\end{bmatrix}$. Minori di testa: $\Delta_1=2$, $\Delta_2=2\cdot1-1\cdot1=1$, $\Delta_3=\det A=2(3-1)-1(3-0)=1$. Tutti positivi: per Sylvester $Q$ è <strong>definita positiva</strong>.<br>
+<strong>Controllo:</strong> traccia $6$ e determinante $1$ sono la somma e il prodotto degli autovalori, coerenti con tre autovalori positivi; e su un vettore scelto apposta con segni misti, $Q(1,-2,1)=2+4+3-4-4=1>0$ ✓. $\blacksquare$` },
+
+{ id: 'G11.3', sez: 11, tema: 'Segno di una forma', d: 3,
+  t: r`Per quali $k\in\R$ la forma $Q(x,y,z)=x^2+y^2+z^2+2kxy+2yz$ è definita positiva? Che cosa è per gli altri valori?`,
+  hints: [ r`$A=\begin{bmatrix}1&k&0\\k&1&1\\0&1&1\end{bmatrix}$.`,
+           r`$\Delta_1=1$, $\Delta_2=1-k^2$, $\Delta_3=-k^2$.`,
+           r`Se $\Delta_3\lt0$ la forma non può essere definita positiva. Per $k=\pm1$ un minore è nullo: guarda determinante e traccia.` ],
+  sol: r`Minori di testa: $\Delta_1=1$, $\Delta_2=1-k^2$, $\Delta_3=\det A=1\cdot(1-1)-k\cdot k=-k^2$.<br><br>
+<strong>Definita positiva?</strong> Servirebbe $\Delta_3>0$, ma $-k^2\le0$ sempre: <strong>per nessun $k$</strong>.<br><br>
+<strong>Gli altri casi.</strong>
+<ul>
+<li>$k\ne0$, $k\ne\pm1$: i minori sono tutti non nulli, $\Delta_1>0$ ma $\Delta_3\lt0$, né $+,+,+$ né $-,+,-$: <strong>indefinita</strong> per Sylvester (c).</li>
+<li>$k=\pm1$: $\Delta_2=0$ e Sylvester non decide. Però $\det A=-1\lt0$ è il prodotto dei tre autovalori, quindi uno o tre sono negativi; la traccia è $3>0$, quindi non sono tutti negativi. Uno negativo e due positivi: <strong>indefinita</strong>.</li>
+<li>$k=0$: $A=\begin{bmatrix}1&0&0\\0&1&1\\0&1&1\end{bmatrix}$, autovalori $1$, $0$, $2$: <strong>semidefinita positiva</strong>. Infatti $Q=x^2+(y+z)^2$.</li>
+</ul>
+<strong>Morale:</strong> quando un minore di testa si annulla, Sylvester tace, e servono gli autovalori o un argomento con traccia e determinante. $\blacksquare$` },
+
+{ id: 'G11.4', sez: 11, tema: 'Matrici simmetriche', d: 2,
+  t: r`Sia $A$ una matrice reale simmetrica di ordine $n$. Dimostrare che la forma $\langle A^2\vx,\vx\rangle$ è semidefinita positiva, e che è definita positiva se $A$ è invertibile. (È il punto (iv) del tema di febbraio 2026 visto in G9.10, qui con la teoria delle forme quadratiche.)`,
+  hints: [ r`Usa $\langle A\vx,\vy\rangle=\langle\vx,A^T\vy\rangle$ e $A^T=A$.`,
+           r`$\langle A^2\vx,\vx\rangle=\langle A\vx,A\vx\rangle=\|A\vx\|^2$.`,
+           r`Oppure: gli autovalori di $A^2$ sono i $\lambda_i^2$.` ],
+  sol: r`$A^2$ è simmetrica, quindi definisce una forma quadratica. Per ogni $\vx$:
+$$\langle A^2\vx,\vx\rangle=\langle A(A\vx),\vx\rangle=\langle A\vx,A^T\vx\rangle=\langle A\vx,A\vx\rangle=\|A\vx\|^2\ge0:$$
+semidefinita positiva. Se $A$ è invertibile e $\vx\ne\vzero$, allora $A\vx\ne\vzero$ e $\|A\vx\|^2>0$: definita positiva.<br><br>
+<strong>Seconda via, col Teorema 4.</strong> Gli autovalori di $A$ sono reali (teorema spettrale) e quelli di $A^2$ sono i loro quadrati, quindi tutti $\ge0$. Se $A$ è invertibile nessun $\lambda_i$ è $0$, quindi tutti i $\lambda_i^2>0$.<br>
+<strong>Controllo</strong> su un caso: $A=\diag(2,-1)$ ha $A^2=\diag(4,1)$, definita positiva ✓; $A=\diag(1,0)$ ha $A^2=\diag(1,0)$, solo semidefinita ✓. $\blacksquare$` },
+
+{ id: 'G11.5', sez: 11, tema: 'Matrice di una forma', d: 1,
+  t: r`Scrivere la matrice simmetrica di $Q(x,y,z)=3x^2-2xz+y^2+4yz$, calcolare $Q(1,-1,1)$ in due modi, e dedurre se $Q$ è definita.`,
+  hints: [ r`Fuori dalla diagonale la metà dei coefficienti misti: $-1$ per $xz$, $2$ per $yz$.`,
+           r`$Q(\vx)=\langle A\vx,\vx\rangle$: calcola prima $A\vx$.` ],
+  sol: r`$A=\begin{bmatrix}3&0&-1\\0&1&2\\-1&2&0\end{bmatrix}$.<br>
+Dal polinomio: $Q(1,-1,1)=3-2+1-4=-2$. Dalla matrice: $A(1,-1,1)=(2,1,-3)$ e $\langle(2,1,-3),(1,-1,1)\rangle=2-1-3=-2$ ✓.<br>
+Siccome $Q(1,0,0)=3>0$ e $Q(1,-1,1)=-2\lt0$, la forma è <strong>indefinita</strong>, senza bisogno di altri conti. $\blacksquare$` },
+
+/* ---------- Sezione 12 · Coniche e quadriche (Lezione 15) ---------- */
+
+{ id: 'G12.1', sez: 12, tema: 'Coniche', d: 1,
+  t: r`Riconoscere le coniche: (a) $x^2+2y^2-4x+4y+4=0$; (b) $x^2-y^2+2x+2y=0$; (c) $y=x^2-2x$.`,
+  hints: [ r`Nessuna ha il termine $xy$: basta completare i quadrati.`,
+           r`(b): $(x+1)^2-(y-1)^2=0$.` ],
+  sol: r`<strong>(a)</strong> $(x-2)^2+2(y+1)^2-2=0$: centro $(2,-1)$, forma $\tilde x^2+2\tilde y^2=2$, cioè $\frac{\tilde x^2}{2}+\tilde y^2=1$: <strong>ellisse</strong> di semiassi $\sqrt2$ e $1$. Controllo: $(2+\sqrt2,-1)$ soddisfa l'equazione ✓.<br>
+<strong>(b)</strong> $(x+1)^2-(y-1)^2=0$: $\det A=-1\lt0$ e $\tilde c=0$, quindi <strong>due rette incidenti</strong>, $y-1=\pm(x+1)$, cioè $y=x+2$ e $y=-x$.<br>
+<strong>(c)</strong> $y=(x-1)^2-1$: $\det A=0$ e nessun centro, una <strong>parabola</strong> con vertice $(1,-1)$ e asse $x=1$. $\blacksquare$` },
+
+{ id: 'G12.2', sez: 12, tema: 'Forma canonica', d: 2,
+  t: r`Trovare la forma canonica metrica dell'ellisse $3x^2+2xy+3y^2=8$ e gli estremi dei suoi semiassi.`,
+  hints: [ r`È già centrata. $A=\begin{bmatrix}3&1\\1&3\end{bmatrix}$: traccia $6$, determinante $8$.`,
+           r`Autovalori $4$ con $(1,1)$ e $2$ con $(1,-1)$.`,
+           r`$2z_1^2+4z_2^2=8$: semiasse $2$ lungo $(1,-1)$ e $\sqrt2$ lungo $(1,1)$.` ],
+  sol: r`Non c'è parte lineare. $A=\begin{bmatrix}3&1\\1&3\end{bmatrix}$ ha autovalori $2$ e $4$ (somma $6$, prodotto $8$), con $W_2=\operatorname{span}\{(1,-1)\}$ e $W_4=\operatorname{span}\{(1,1)\}$, ortogonali. Con $\vu_1=\frac1{\sqrt2}(1,-1)$, $\vu_2=\frac1{\sqrt2}(1,1)$:
+$$2z_1^2+4z_2^2=8\iff\frac{z_1^2}{4}+\frac{z_2^2}{2}=1.$$
+Semiassi $2$ e $\sqrt2$. Estremi: $\pm2\vu_1=\pm(\sqrt2,-\sqrt2)$ e $\pm\sqrt2\,\vu_2=\pm(1,1)$.<br>
+<strong>Controllo:</strong> $3+2+3=8$ in $(1,1)$ ✓ e $6-4+6=8$ in $(\sqrt2,-\sqrt2)$ ✓. $\blacksquare$` },
+
+{ id: 'G12.3', sez: 12, tema: 'Coniche', d: 2,
+  t: r`Trovare vertice e asse della parabola $(x+y)^2-4x+4y=0$.`,
+  hints: [ r`La forma $(x+y)^2$ si annulla sulla retta $y=-x$: lì c'è l'autospazio di $0$.`,
+           r`Base ortonormale: $\vu_1=\frac1{\sqrt2}(1,1)$ (autovalore $2$), $\vu_2=\frac1{\sqrt2}(1,-1)$ (autovalore $0$).`,
+           r`$x+y=\sqrt2z_1$ e $x-y=\sqrt2z_2$.` ],
+  sol: r`$A=\begin{bmatrix}1&1\\1&1\end{bmatrix}$, autovalori $2$ e $0$. Con $x=\frac{z_1+z_2}{\sqrt2}$, $y=\frac{z_1-z_2}{\sqrt2}$ si ha $x+y=\sqrt2z_1$ e $-4x+4y=-4\sqrt2z_2$, quindi
+$$2z_1^2-4\sqrt2\,z_2=0\iff z_2=\frac{z_1^2}{2\sqrt2}.$$
+Vertice in $(z_1,z_2)=(0,0)$, cioè $(x,y)=(0,0)$. Asse $z_1=0$, cioè $x+y=0$; la parabola si apre verso le $z_2$ crescenti, nella direzione $(1,-1)$.<br>
+<strong>Controllo:</strong> con $z_1=2$, $z_2=\sqrt2$: $(x,y)=(\sqrt2+1,\sqrt2-1)$, e $(2\sqrt2)^2-4\cdot2=0$ ✓. Anche il simmetrico rispetto all'asse, $(1-\sqrt2,-1-\sqrt2)$, sta sulla parabola ✓. $\blacksquare$` },
+
+{ id: 'G12.4', sez: 12, tema: 'Quadriche', d: 2,
+  t: r`Classificare la quadrica $x^2+y^2-z^2+2z=0$ di $\R^3$.`,
+  hints: [ r`Completa il quadrato in $z$.`,
+           r`$x^2+y^2-(z-1)^2+1=0$.` ],
+  sol: r`$x^2+y^2-(z-1)^2+1=0$, cioè $(z-1)^2=x^2+y^2+1$. Centro $(0,0,1)$, autovalori $1,1,-1$ e termine noto $1$, concorde con i due autovalori positivi: <strong>iperboloide a due falde</strong>. Infatti $|z-1|\ge1$: una falda con $z\ge2$, una con $z\le0$.<br>
+Due autovalori uguali: è anche di rotazione, attorno alla retta $x=y=0$ (l'asse $z$).<br>
+<strong>Controllo:</strong> i vertici $(0,0,0)$ e $(0,0,2)$ stanno sulla quadrica ✓. $\blacksquare$` },
+
+{ id: 'G12.5', sez: 12, tema: 'Quadriche', d: 3,
+  t: r`Classificare la quadrica $x^2+2y^2+z^2+2xz-2y=0$ e trovarne l'asse.`,
+  hints: [ r`$A=\begin{bmatrix}1&0&1\\0&2&0\\1&0&1\end{bmatrix}$, $\vb=(0,-1,0)$.`,
+           r`Autovalori $0$ con $(1,0,-1)$ e $2$ doppio. È a centro? Controlla se $\vb\perp W_0$.`,
+           r`$A\vx=-\vb$: $x+z=0$, $2y=1$.` ],
+  sol: r`<strong>Autovalori.</strong> $x^2+2xz+z^2=(x+z)^2$, quindi $A$ ha l'autovalore $0$ con $W_0=\operatorname{span}\{(1,0,-1)\}$ e l'autovalore $2$ doppio, con autospazio $\operatorname{span}\{(1,0,1),(0,1,0)\}$.<br>
+<strong>Centro.</strong> $\vb=(0,-1,0)$ è ortogonale a $(1,0,-1)$: la quadrica è a centro (caso II). $A\vx=-\vb$ dà $x+z=0$ e $y=\frac12$: i centri sono la retta per $(0,\frac12,0)$ parallela a $(1,0,-1)$. $\tilde c=c+\langle\vx_0,\vb\rangle=0-\frac12=-\frac12$.<br>
+<strong>Forma canonica.</strong> $2z_1^2+2z_2^2-\frac12=0$: un <strong>cilindro circolare</strong> di raggio $\frac12$, con asse la retta dei centri, $x+z=0$, $y=\frac12$.<br>
+<strong>Controllo:</strong> $(0,0,0)$ e $(0,1,0)$ stanno sulla quadrica e distano $\frac12$ dall'asse ✓.<br>
+<strong>Morale:</strong> due autovalori uguali e non nulli, e un centro: è una superficie di rotazione, e l'asse è la retta dei centri. $\blacksquare$` },
+
+{ id: 'G12.6', sez: 12, tema: 'Quadriche', d: 1,
+  t: r`Classificare $z=x^2+y^2+2x$ e trovarne vertice e asse.`,
+  hints: [ r`$z=(x+1)^2+y^2-1$.` ],
+  sol: r`$z+1=(x+1)^2+y^2$: autovalori $1,1,0$ e nessun centro ($z$ compare al primo grado). È un <strong>paraboloide ellittico</strong>, anzi di rotazione. Vertice $(-1,0,-1)$, asse la retta $x=-1$, $y=0$, parallela all'asse $z$.<br>
+<strong>Controllo:</strong> il vertice soddisfa l'equazione: $-1=1+0-2$ ✓. $\blacksquare$` },
+
+{ id: 'G12.7', sez: 12, tema: 'Piani di simmetria', d: 3,
+  t: r`Sia $S:\ 2x^2+2y^2+3z^2+2xy=6$. (i) Forma canonica metrica. (ii) È una quadrica di rotazione? Con che asse? (iii) Descrivere i piani di simmetria.`,
+  hints: [ r`$A=\begin{bmatrix}2&1&0\\1&2&0\\0&0&3\end{bmatrix}$: autovalori $3$, $1$ e di nuovo $3$.`,
+           r`$W_1=\operatorname{span}\{(1,-1,0)\}$, $W_3=\operatorname{span}\{(1,1,0),(0,0,1)\}$.`,
+           r`Con un autovalore doppio i piani di simmetria sono infiniti.` ],
+  sol: r`<strong>(i)</strong> È centrata nell'origine. Autovalori: $3$ con $(1,1,0)$ e $(0,0,1)$, $1$ con $(1,-1,0)$. Forma canonica: $z_1^2+3z_2^2+3z_3^2=6$, un <strong>ellissoide</strong> di semiassi $\sqrt6$, $\sqrt2$, $\sqrt2$.<br>
+<strong>(ii)</strong> Sì: c'è un autovalore doppio non nullo. L'asse di rotazione è la retta per il centro nella direzione dell'autovalore semplice: $\operatorname{span}\{(1,-1,0)\}$, cioè $x+y=0$, $z=0$.<br>
+<strong>(iii)</strong> Sono piani di simmetria il piano per l'origine ortogonale all'asse, $x-y=0$, e <strong>tutti</strong> i piani che contengono l'asse: infiniti, come per ogni superficie di rotazione.<br>
+<strong>Controllo:</strong> $\sqrt3(1,-1,0)$, a distanza $\sqrt6$ dal centro lungo l'asse, soddisfa $2\cdot3+2\cdot3+0-2\cdot3=6$ ✓. $\blacksquare$` }
 
   ];
 

@@ -7,7 +7,7 @@ Appunti interattivi del primo anno, raccolti in un unico sito.
 | Materia | Contenuto | Stato |
 |---|---|---|
 | [Analisi Matematica 1](https://olix-boop.github.io/appunti/analisi/seconda.html) | Numeri reali e complessi · successioni e limiti · serie numeriche · limiti di funzioni e continuità · calcolo differenziale | prima parte completa; seconda parte fino alla Lezione 18 |
-| [Geometria e Algebra Lineare](https://olix-boop.github.io/appunti/geometria/) | Preliminari · sistemi lineari e MEG · matrici e invertibilità · spazi vettoriali · numeri complessi · applicazioni lineari e rango · posizione reciproca, ortogonalità, fasci · somma di sottospazi e Grassmann · determinanti | programma fino alla Lezione 9 |
+| [Geometria e Algebra Lineare](https://olix-boop.github.io/appunti/geometria/) | Preliminari · sistemi lineari e MEG · matrici e invertibilità · spazi vettoriali · numeri complessi · applicazioni lineari e rango · posizione reciproca, ortogonalità, fasci · somma di sottospazi e Grassmann · determinanti · diagonalizzazione · spazi euclidei · forme quadratiche · coniche e quadriche | programma fino alla Lezione 15 |
 | [Fondamenti di Informatica](https://olix-boop.github.io/appunti/informatica/) | Algoritmi · macchina astratta C · istruzioni · array e stringhe | 5 capitoli |
 
 ## Cosa c'è dentro
@@ -51,9 +51,11 @@ geometria/
   index.html teoremi.html esercizi.html laboratorio.html
   sezioni/0-preliminari.html 1-sistemi.html 2-matrici.html 3-spazi.html
            4-complessi.html 5-lineari.html 6-posizione.html
-           7-grassmann.html 8-determinanti.html
-  data/                    topics · teoremi · esercizi · quiz · laboratorio
-                           mappe · primalettura · primalettura-altre · schemi · schemi-altre
+           7-grassmann.html 8-determinanti.html 9-diagonalizzazione.html
+           10-euclidei.html 11-forme.html 12-quadriche.html
+  data/                    topics · teoremi · esercizi · quiz · laboratorio · esami · metodo
+                           mappe · primalettura · primalettura-altre · primalettura-10-12
+                           schemi · schemi-altre · schemi-10-12
   materiale/               PDF del corso
 informatica/               single-page app autonoma, installabile come PWA
 ```

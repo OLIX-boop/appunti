@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 10 · Spazi euclidei — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105c">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
+      <a href="9-diagonalizzazione.html">9 · Diagonalizzazione</a>
+      <a href="10-euclidei.html">10 · Spazi euclidei</a>
+      <a href="11-forme.html">11 · Forme quadratiche</a>
+      <a href="12-quadriche.html">12 · Quadriche</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+      <a href="../laboratorio.html">Laboratorio</a>
+      <a href="../come-si-risolve.html">Come si risolve</a>
+      <a href="../esami.html">Esame</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 10</h4>
+    <a href="#mappa">Mappa del capitolo</a>
+    <a href="#forme-bilineari">1 · Forme bilineari</a>
+    <a href="#prodotto-scalare">2 · Prodotto scalare</a>
+    <a href="#funzioni" class="sub">Funzioni e polinomi</a>
+    <a href="#norma">3 · Norma e ortogonalità</a>
+    <a href="#pitagora">4 · Carnot e Pitagora</a>
+    <a href="#proiezione">5 · Proiezione su una retta</a>
+    <a href="#csb">6 · Cauchy-Schwarz</a>
+    <a href="#angolo" class="sub">Angolo e disuguaglianza triangolare</a>
+    <a href="#basi-ortogonali">7 · Basi ortogonali</a>
+    <a href="#fourier">8 · Coordinate di Fourier</a>
+    <a href="#gram-schmidt">9 · Gram-Schmidt</a>
+    <a href="#proiezione-w" class="sub">Proiezione su un sottospazio</a>
+    <a href="#gs-dipendenti" class="sub">Con vettori dipendenti</a>
+    <a href="#matrici-ortogonali">10 · Matrici ortogonali</a>
+    <a href="#spettrale">11 · Teorema spettrale</a>
+    <a href="#diag-ortogonale" class="sub">Il problema</a>
+    <a href="#esempi-spettrale" class="sub">Tre esempi</a>
+    <a href="#isometrie">12 · Isometrie</a>
+    <a href="#orientazione">13 · Orientazione</a>
+    <a href="#complemento">14 · Completamento ortogonale</a>
+    <a href="#complemento-calcolo" class="sub">Come si trova una base di $W^\perp$</a>
+    <a href="#vettoriale">15 · Prodotto vettoriale</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 10 · Geometria e Algebra Lineare · Lezioni 11, 12 e 14</div>
+      <h1>Spazi euclidei</h1>
+      <p class="lead">Un prodotto scalare porta dentro uno spazio vettoriale le lunghezze, gli angoli e la perpendicolarità. Da lì arrivano le basi ortonormali, in cui le coordinate si trovano senza risolvere sistemi, le matrici ortogonali e il teorema spettrale: ogni matrice simmetrica si diagonalizza con una base ortonormale.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">Finora i vettori si sommavano e si moltiplicavano per un numero, ma non avevano una lunghezza. Il <strong>prodotto scalare</strong> aggiunge questa informazione, e con lei la distanza, l'angolo e l'ortogonalità. La parola chiave del capitolo è <strong>ortogonale</strong>: le basi ortogonali rendono facili le coordinate e le proiezioni, Gram-Schmidt le costruisce, e il teorema spettrale dice che una matrice simmetrica ne ha sempre una fatta di autovettori. Le due sezioni che seguono, <a href="11-forme.html">forme quadratiche</a> e <a href="12-quadriche.html">quadriche</a>, si appoggiano su questo teorema. All'esame il prodotto scalare esce sia nei quiz sia in un tipo di esercizio a sé: vedi <a href="../esami.html#argomenti">Cosa esce all'esame</a>.</p>
+    </div>
+    <p class="small muted">Dagli appunti: <em>Lezione 11</em> e <em>Lezione 12</em> (versione 2022) e <em>Lezione 14</em>. Libro: <em>ALG</em> cap. 7 §§2-5, pp. 348-372 e 382-385; cap. 8 §2, pp. 418-421. Nella cartella del prof non c'è una Lezione 13. Il prodotto scalare standard di $\R^n$ era già nella <a href="0-preliminari.html#scalare">Sezione 0</a> e il complemento ortogonale nella <a href="7-grassmann.html#ortogonale">Sezione 7</a>: qui diventano casi particolari di una teoria generale.</p>
+
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="forme-bilineari">1 · Forme bilineari</h2>
+    <p>Un prodotto scalare prende <strong>due</strong> vettori e restituisce un numero. Per dirlo con precisione serve l'insieme delle coppie.</p>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11): prodotto cartesiano</div>
+      <p class="mb0">Siano $X$ e $Y$ due insiemi. Il <strong>prodotto cartesiano</strong> di $X$ per $Y$ è l'insieme delle coppie ordinate
+      $$X\times Y:=\{(x,y):\ x\in X,\ y\in Y\}.$$
+      Per esempio $\R\times\R=\R^2$, e $[0,1]\times[0,2]=\{(x,y)\in\R^2:\ 0\le x\le1,\ 0\le y\le2\}$ è un rettangolo.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11): forma bilineare</div>
+      <p class="mb0">Sia $V$ uno spazio vettoriale su $\R$. Una <strong>forma bilineare</strong> in $V$ è una mappa $L:V\times V\to\R$ tale che, per ogni $\vv_0\in V$, le due mappe $L_1,L_2:V\to\R$ definite da
+      $$L_1(\vv):=L(\vv,\vv_0),\qquad L_2(\vv):=L(\vv_0,\vv)$$
+      sono lineari. In parole: tenendo fermo uno dei due argomenti, $L$ è lineare nell'altro.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 1 (Lezione 11): il determinante $2\times2$</div>
+      <p>$L:\R^2\times\R^2\to\R$, $L(\vx,\vy):=\begin{vmatrix}x_1&y_1\\x_2&y_2\end{vmatrix}=x_1y_2-x_2y_1$ è una forma bilineare. Per ogni $\vx',\vx''\in\R^2$ e $\alpha,\beta\in\R$:
+      $$L(\alpha\vx'+\beta\vx'',\vy)=(\alpha x_1'+\beta x_1'')y_2-(\alpha x_2'+\beta x_2'')y_1=\alpha L(\vx',\vy)+\beta L(\vx'',\vy),$$</p>
+      <p class="mb0">cioè $L$ è lineare rispetto a $\vx$, e allo stesso modo rispetto a $\vy$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 2 (Lezione 11): il prodotto scalare standard</div>
+      <p class="mb0">$\langle\vx,\vy\rangle=\sum_{i=1}^{n}x_iy_i$ è una forma bilineare in $\R^n$. Ha due proprietà in più. È <strong>simmetrica</strong>: $\langle\vx,\vy\rangle=\langle\vy,\vx\rangle$. Ed è <strong>definita positiva</strong>: $\langle\vx,\vx\rangle=\sum x_i^2\ge0$, con $\langle\vx,\vx\rangle=0$ solo per $\vx=\vzero$.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ Bilineare non vuol dire lineare</div>
+      <p class="mb0">Una forma bilineare <strong>non</strong> è una mappa lineare da $V\times V$ a $\R$: raddoppiando tutti e due gli argomenti il valore si moltiplica per $4$, $L(2\vv,2\vw)=2\cdot2\,L(\vv,\vw)$. È lineare in ciascun argomento <em>separatamente</em>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="prodotto-scalare">2 · Prodotto scalare e spazi euclidei</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11) <span class="badge star">risultato centrale</span></div>
+      <p>In uno spazio vettoriale $V$ su $\R$, non necessariamente $\R^n$, si chiama <strong>prodotto scalare</strong> (detto anche <strong>prodotto interno</strong>) una forma bilineare $L:V\times V\to\R$ che soddisfa:</p>
+      <ol class="mb0">
+        <li><strong>simmetricità</strong>: $L(\vu,\vv)=L(\vv,\vu)$ per ogni $\vu,\vv\in V$;</li>
+        <li><strong>definità positiva</strong>: $L(\vv,\vv)\ge0$ per ogni $\vv\in V$, con $L(\vv,\vv)=0$ solo se $\vv=\vzero$.</li>
+      </ol>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 11)</div>
+      <p class="mb0">Per la linearità ogni forma bilineare soddisfa $L(\vzero,\vv)=L(\vv,\vzero)=0$ per ogni $\vv$; in particolare $L(\vzero,\vzero)=0$. Per questo nella definità positiva la parte importante è «$=0$ <strong>solo</strong> per $\vv=\vzero$».</p>
+    </div>
+    <p>Gli esempi del prof, messi in fila. Tutte le forme sono in $\R^2$ tranne la seconda.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Forma $L(\vx,\vy)$</th><th>Simmetrica?</th><th>Definita positiva?</th><th>Prodotto scalare?</th></tr></thead>
+      <tbody>
+        <tr><td>$x_1y_2-x_2y_1$ (il determinante)</td><td>no: $L(\vy,\vx)=-L(\vx,\vy)$</td><td>no: $L(\vx,\vx)=0$ sempre</td><td>no</td></tr>
+        <tr><td>$\sum_{i=1}^n x_iy_i$ in $\R^n$</td><td>sì</td><td>sì</td><td><strong>sì</strong></td></tr>
+        <tr><td>$x_1y_1+x_2y_2+\frac12(x_1y_2+x_2y_1)$</td><td>sì</td><td>sì (vedi sotto)</td><td><strong>sì</strong></td></tr>
+        <tr><td>$x_1y_1+x_2y_2+3(x_1y_2+x_2y_1)$</td><td>sì</td><td>no: $L\bigl((1,-1),(1,-1)\bigr)=-4$</td><td>no</td></tr>
+        <tr><td>$x_1y_1+x_2y_2+(x_1y_2+x_2y_1)$</td><td>sì</td><td>no: $L(\vx,\vx)=(x_1+x_2)^2$ si annulla in $(1,-1)$</td><td>no</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted">Negli appunti questi esempi sono numerati 1, 2, 3, 3, 4: il numero 3 compare due volte. Per non confonderli li citiamo per formula.</p>
+    <div class="box ex">
+      <div class="box-title">Perché la terza è definita positiva (Lezione 11)</div>
+      <p>$L(\vx,\vx)=x_1^2+x_2^2+x_1x_2$. Se $x_1=0$ e $x_2\ne0$ vale $x_2^2>0$. Se $x_1\ne0$, con $t:=x_2/x_1$,
+      $$L(\vx,\vx)=x_1^2\Bigl(1+\frac{x_2^2}{x_1^2}+\frac{x_2}{x_1}\Bigr)=x_1^2\,(t^2+t+1)>0,$$</p>
+      <p class="mb0">perché $t^2+t+1$ ha discriminante $-3\lt0$ ed è positivo per ogni $t$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Come si controlla che una forma sia un prodotto scalare</div>
+      <ol class="mb0">
+        <li><strong>Bilineare</strong>: in ogni termine compare una coordinata di $\vx$ per una di $\vy$; niente costanti, niente $x_1^2$ da solo.</li>
+        <li><strong>Simmetrica</strong>: scambiando $\vx$ e $\vy$ la formula non cambia.</li>
+        <li><strong>Definita positiva</strong>: si scrive $L(\vx,\vx)$ e si cerca di riconoscerla come somma di quadrati. Per dire di <strong>no</strong> basta un solo vettore $\vx\ne\vzero$ con $L(\vx,\vx)\le0$. Per dire di sì serve un argomento che valga per tutti: nella <a href="11-forme.html">Sezione 11</a> arriva un criterio con gli autovalori.</li>
+      </ol>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11): spazio euclideo</div>
+      <p class="mb0">Uno <strong>spazio euclideo</strong> è uno spazio vettoriale $V$ su $\R$ dotato di un prodotto scalare, cioè una coppia ordinata $(V,L)$. Quando il prodotto scalare è chiaro dal contesto si scrive solo $V$ e il prodotto si indica con $\langle\cdot,\cdot\rangle$. Lo stesso simbolo, in spazi diversi, indica prodotti scalari diversi.</p>
+    </div>
+    <ul>
+      <li>$\R^n$ con il prodotto scalare standard è uno spazio euclideo.</li>
+      <li>Ogni sottospazio di uno spazio euclideo è a sua volta uno spazio euclideo, con il prodotto scalare dello spazio intero.</li>
+    </ul>
+
+    <h3 id="funzioni">Funzioni e polinomi</h3>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 11)</div>
+      <p>$V=L^2[a,b]:=\{f:[a,b]\to\R$ a quadrato integrabili$\}$, cioè con $\int_a^b|f(x)|^2\dd x$ finito. In Analisi si dimostra che per $f,g\in L^2[a,b]$ il prodotto $fg$ è integrabile, quindi
+      $$\langle f,g\rangle:=\int_a^b f(x)\,g(x)\dd x$$
+      è un prodotto scalare: $L^2[a,b]$ è uno spazio euclideo di dimensione infinita.</p>
+      <p class="mb0">Lo spazio $P_n$ dei polinomi di grado $\le n$ è un sottospazio di $L^2[a,b]$, quindi con lo stesso integrale diventa uno spazio euclideo. Per valori diversi di $a$ e $b$ la formula dà prodotti scalari <strong>diversi</strong> su $P_n$.</p>
+    </div>
+    <p class="small muted">Questo tipo di prodotto scalare è uscito all'esame: nel febbraio 2025 l'esercizio 3 chiedeva di verificare un prodotto scalare su $P_1$ e di trovarne una base ortonormale.</p>
+    <div class="box warnb">
+      <div class="box-title">Solo su $\R$</div>
+      <p class="mb0">L'analogo per $\K=\C$ è lo <strong>spazio hermitiano</strong>: la teoria è simile, ma i dettagli cambiano molto. Il corso considera solo spazi euclidei, ed è per questo che in $\C^n$ non si definisce il prodotto scalare (<a href="0-preliminari.html#cn">Sezione 0</a>).</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="norma">3 · Norma, distanza, ortogonalità</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11): norma e distanza</div>
+      <p>Sia $V$ uno spazio euclideo. La <strong>norma</strong> di $\vv\in V$ è il numero
+      $$\|\vv\|:=\sqrt{\langle\vv,\vv\rangle}.$$
+      La <strong>distanza</strong> fra due elementi di $V$ è $\operatorname{dist}(\vu,\vv):=\|\vv-\vu\|$.</p>
+      <p class="mb0">In $\R^2$ con il prodotto standard, $\|(x,y)\|=\sqrt{x^2+y^2}$ è la lunghezza della freccia, e $\|\vv-\vu\|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ è la distanza fra i punti $(x_1,y_1)$ e $(x_2,y_2)$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Le tre proprietà della norma (Lezione 11)</div>
+      <ul class="mb0">
+        <li><strong>Definità positiva</strong>: $\|\vv\|\ge0$, e $\|\vv\|=0$ se e solo se $\vv=\vzero$.</li>
+        <li><strong>Omogeneità</strong>: $\|\alpha\vv\|=\sqrt{\langle\alpha\vv,\alpha\vv\rangle}=\sqrt{\alpha^2\langle\vv,\vv\rangle}=|\alpha|\,\|\vv\|$. In particolare $\|-\vv\|=\|\vv\|$.</li>
+        <li><strong>Disuguaglianza triangolare</strong>: $\|\vu\pm\vv\|\le\|\vu\|+\|\vv\|$. Si dimostra con Cauchy-Schwarz, nel <a href="#angolo">§6</a>.</li>
+      </ul>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11): vettori ortogonali</div>
+      <p class="mb0">In uno spazio euclideo, $\vv$ è <strong>ortogonale</strong> a $\vu$, e si scrive $\vv\perp\vu$, se $\langle\vv,\vu\rangle=0$. Secondo la definizione il vettore nullo è ortogonale a ogni vettore.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ «Ortogonale» dipende dal prodotto scalare</div>
+      <p class="mb0">Con il prodotto standard $(1,0)\perp(0,1)$. Con il prodotto scalare $x_1y_1+x_2y_2+\frac12(x_1y_2+x_2y_1)$ del §2 invece $\langle(1,0),(0,1)\rangle=\frac12\ne0$: gli stessi due vettori <strong>non</strong> sono più ortogonali. Lunghezze e angoli sono quelli che il prodotto scalare decide.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="pitagora">4 · Teoremi di Carnot e di Pitagora</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 11): teoremi di Pitagora e di Carnot <span class="badge star">risultato centrale</span></div>
+      <p>Sia $V$ uno spazio euclideo e siano $\vu,\vv\in V$. Allora:</p>
+      <ol class="mb0">
+        <li>$\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2+2\langle\vu,\vv\rangle$ (<strong>teorema di Carnot</strong>);</li>
+        <li>se $\vu\perp\vv$, allora $\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2$ (<strong>teorema di Pitagora</strong>).</li>
+      </ol>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Da dove si parte per (i)?</div>
+            <div class="step-content">Dalla definizione di norma: $\|\vu+\vv\|^2=\langle\vu+\vv,\vu+\vv\rangle$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si «sviluppa» il prodotto?</div>
+            <div class="step-content">Per la linearità rispetto al primo argomento è $\langle\vu,\vu+\vv\rangle+\langle\vv,\vu+\vv\rangle$, e per la linearità rispetto al secondo $\langle\vu,\vu\rangle+\langle\vu,\vv\rangle+\langle\vv,\vu\rangle+\langle\vv,\vv\rangle$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché i due termini in mezzo diventano $2\langle\vu,\vv\rangle$?</div>
+            <div class="step-content">Per la <strong>simmetricità</strong> $\langle\vv,\vu\rangle=\langle\vu,\vv\rangle$. Con la definizione di norma si ottiene $\|\vu\|^2+2\langle\vu,\vv\rangle+\|\vv\|^2$: è Carnot.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">(ii): dove entra l'ipotesi $\vu\perp\vv$?</div>
+            <div class="step-content">Per definizione $\langle\vu,\vv\rangle=0$, quindi in Carnot il termine misto sparisce: $\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box tip">
+      <div class="box-title">✓ Perché si chiamano così (Lezione 11)</div>
+      <p>In un triangolo rettangolo con cateti $a=\|\vu\|$, $b=\|\vv\|$ e ipotenusa $c=\|\vu+\vv\|$, la (ii) è $c^2=a^2+b^2$.</p>
+      <p class="mb0">La (i) generalizza il <strong>teorema del coseno</strong>. Se $\alpha$ è l'angolo fra $\vu$ e $\vv$, il terzo lato è $c=\|\vv-\vu\|=\|(-\vu)+\vv\|$, e Carnot dà
+      $$c^2=\|\vu\|^2+\|\vv\|^2-2\langle\vu,\vv\rangle=a^2+b^2-2ab\cos\alpha,$$
+      usando il fatto che nel piano $\langle\vu,\vv\rangle=\|\vu\|\,\|\vv\|\cos\alpha$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Conseguenza: la norma decide il prodotto scalare</div>
+      <p class="mb0">Ricavando $\langle\vu,\vv\rangle$ da Carnot,
+      $$\langle\vu,\vv\rangle=\tfrac12\bigl(\|\vu+\vv\|^2-\|\vu\|^2-\|\vv\|^2\bigr).$$
+      È la <strong>formula di polarizzazione</strong>: chi conosce le lunghezze conosce anche il prodotto scalare. Negli appunti non c'è con questo nome, ma è una riga di Carnot, e nei quiz d'esame sul prodotto scalare esce.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="proiezione">5 · Proiezione ortogonale su una retta</h2>
+    <p>Sia $W$ un sottospazio di dimensione $1$ di uno spazio euclideo $V$, cioè $W=\operatorname{span}\{\vw\}$ con $\vw\ne\vzero$, e sia $\vv\in V\setminus W$. <strong>Problema</strong> (Lezione 11): trovare l'elemento $\vv_0\in W$ più vicino a $\vv$, cioè quello che rende minima $\|\vv-\vv_0\|$.</p>
+    <div class="box ex">
+      <div class="box-title">Soluzione (Lezione 11)</div>
+      <p>Gli elementi di $W$ sono i multipli $t\vw$. Per Carnot e l'omogeneità
+      $$\|\vv-t\vw\|^2=\|\vv\|^2+\|{-t}\vw\|^2+2\langle\vv,-t\vw\rangle=\|\vw\|^2\,t^2-2\langle\vv,\vw\rangle\,t+\|\vv\|^2.$$</p>
+      <p class="mb0">Siccome $\vw\ne\vzero$, $\|\vw\|^2>0$: è una parabola in $t$ rivolta verso l'alto, con il minimo nel vertice $t_0=\langle\vv,\vw\rangle/\|\vw\|^2$.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11) <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Il vettore
+      $$\boxed{\vv_0=\frac{\langle\vv,\vw\rangle}{\|\vw\|^2}\,\vw}$$
+      si chiama la <strong>proiezione ortogonale</strong> di $\vv$ sulla retta $W$. Il numero $t_0=\langle\vv,\vw\rangle/\|\vw\|^2$ si chiama il <strong>coefficiente di Fourier</strong> di $\vv$ rispetto a $\vw$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 11)</div>
+      <p>Proiezione di $\vv:=(3,2)$ sulla retta $y=x$. La retta passa per l'origine, quindi è generata da un suo vettore non nullo qualsiasi, per esempio $\vw:=(1,1)$:
+      $$t_0=\frac{3\cdot1+2\cdot1}{1^2+1^2}=\frac52,\qquad \vv_0=t_0\vw=\Bigl(\frac52,\frac52\Bigr).$$</p>
+      <p class="mb0">E $\vv-\vv_0=\bigl(\frac12,-\frac12\bigr)$ è ortogonale alla retta: $\frac12\cdot1-\frac12\cdot1=0$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 11): il resto è ortogonale</div>
+      <p class="mb0">La differenza fra $\vv$ e la sua proiezione è sempre ortogonale a $W$:
+      $$\langle\vv-\vv_0,\vw\rangle=\langle\vv,\vw\rangle-\frac{\langle\vv,\vw\rangle}{\|\vw\|^2}\langle\vw,\vw\rangle=\langle\vv,\vw\rangle-\langle\vv,\vw\rangle=0.$$
+      Quindi $\vv=\vv_0+(\vv-\vv_0)$ spezza $\vv$ in un pezzo parallelo a $\vw$ e uno perpendicolare.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Il controllo che costa un prodotto</div>
+      <p class="mb0">Dopo aver calcolato una proiezione si verifica $\langle\vv-\vv_0,\vw\rangle=0$. Se non viene zero, di solito ci si è dimenticati di dividere per $\|\vw\|^2$: la formula senza denominatore vale solo per i <strong>versori</strong>, cioè per $\|\vw\|=1$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="csb">6 · Disuguaglianza di Cauchy-Schwarz</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 2 (Lezione 11): disuguaglianza di Schwarz, o di Cauchy-Schwarz-Bunyakovskii <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Per ogni coppia di vettori $\vv,\vw$ di uno spazio euclideo
+      $$|\langle\vv,\vw\rangle|\le\|\vv\|\cdot\|\vw\|,$$
+      e l'uguaglianza vale <strong>se e solo se</strong> $\vv$ e $\vw$ sono linearmente dipendenti.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa succede se $\vw=\vzero$?</div>
+            <div class="step-content">$\vv$ e $\vw$ sono dipendenti, e $\langle\vv,\vw\rangle=0=\|\vv\|\cdot\|\vw\|$: l'enunciato vale.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Se $\vw\ne\vzero$: qual è l'idea?</div>
+            <div class="step-content">Si proietta $\vv$ sulla retta generata da $\vw$ (§5): $\vv=\vv_0+\vv_1$ con $\vv_0:=\frac{\langle\vv,\vw\rangle}{\|\vw\|^2}\vw$ parallelo a $\vw$ e $\vv_1:=\vv-\vv_0\perp\vw$. In particolare $\vv_0\perp\vv_1$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dove entra Pitagora?</div>
+            <div class="step-content">$\|\vv\|^2=\|\vv_0\|^2+\|\vv_1\|^2\ge\|\vv_0\|^2$, quindi $\|\vv\|\ge\|\vv_0\|$. Chiamiamo (1) questa disuguaglianza: la proiezione non è mai più lunga del vettore.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quanto è lunga la proiezione?</div>
+            <div class="step-content">Per l'omogeneità $\|\vv_0\|=\frac{|\langle\vv,\vw\rangle|}{\|\vw\|^2}\|\vw\|=\frac{|\langle\vv,\vw\rangle|}{\|\vw\|}$. Da (1), $\frac{|\langle\vv,\vw\rangle|}{\|\vw\|}\le\|\vv\|$, e moltiplicando per $\|\vw\|$ si ha la disuguaglianza (2) $|\langle\vv,\vw\rangle|\le\|\vv\|\,\|\vw\|$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Quando vale l'uguaglianza?</div>
+            <div class="step-content">In (2) vale l'uguaglianza se e solo se vale in (1), cioè se e solo se $\|\vv_1\|=0$. Per la definità positiva della norma: $\|\vv_1\|=0\iff\vv_1=\vzero\iff\vv=\vv_0\in\operatorname{span}\{\vw\}\iff\vv,\vw$ dipendenti. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <h3 id="angolo">Angolo e disuguaglianza triangolare</h3>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11): angolo fra due vettori</div>
+      <p class="mb0">Siano $\vv,\vw$ due vettori <strong>non nulli</strong> di uno spazio euclideo. Il numero
+      $$\widehat{(\vv,\vw)}:=\arccos\frac{\langle\vv,\vw\rangle}{\|\vv\|\cdot\|\vw\|}$$
+      si chiama (l'ampiezza del)l'<strong>angolo</strong> formato da $\vv$ e $\vw$. È Cauchy-Schwarz a garantire che la frazione stia in $[-1,1]$, quindi che l'arcocoseno abbia senso.</p>
+    </div>
+    <p class="small muted">Un esempio nostro: fra $(1,0,1)$ e $(0,1,1)$ il coseno vale $\frac{1}{\sqrt2\cdot\sqrt2}=\frac12$, quindi l'angolo è $\frac\pi3$.</p>
+    <div class="box teo">
+      <div class="box-title">Disuguaglianza triangolare (Lezione 11)</div>
+      <p class="mb0">Per ogni $\vu,\vv$ di uno spazio euclideo, $\|\vu+\vv\|\le\|\vu\|+\|\vv\|$ e $\|\vu-\vv\|\le\|\vu\|+\|\vv\|$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché conviene lavorare con i quadrati?</div>
+            <div class="step-content">Perché per $\|\vu+\vv\|^2$ c'è Carnot: $\|\vu+\vv\|^2=\|\vu\|^2+\|\vv\|^2+2\langle\vu,\vv\rangle$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si stima il termine misto?</div>
+            <div class="step-content">Con Cauchy-Schwarz: $\langle\vu,\vv\rangle\le\|\vu\|\,\|\vv\|$. Quindi $\|\vu+\vv\|^2\le\|\vu\|^2+\|\vv\|^2+2\|\vu\|\,\|\vv\|=(\|\vu\|+\|\vv\|)^2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Si può togliere il quadrato?</div>
+            <div class="step-content">Sì: entrambi i lati sono $\ge0$, e la radice è crescente. Quindi $\|\vu+\vv\|\le\|\vu\|+\|\vv\|$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">E la versione con $\vu-\vv$?</div>
+            <div class="step-content">$\|\vu-\vv\|=\|\vu+(-\vv)\|\le\|\vu\|+\|-\vv\|=\|\vu\|+\|\vv\|$, per l'omogeneità. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- ============================================================ -->
+    <h2 id="basi-ortogonali">7 · Sistemi e basi ortogonali</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11)</div>
+      <p class="mb0">Un sistema di vettori $S:=\{\vv_1,\dots,\vv_k\}$ di uno spazio euclideo si dice <strong>ortogonale</strong> se $\vv_i\perp\vv_j$ per ogni $i\ne j$.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Teorema 3 (Lezione 11): indipendenza di un sistema ortogonale <span class="badge star">risultato centrale</span></div>
+      <p class="mb0">Ogni sistema ortogonale composto di vettori <strong>non nulli</strong> è linearmente indipendente.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che strategia usa il prof?</div>
+            <div class="step-content">Per assurdo: supponiamo $S=\{\vv_1,\dots,\vv_k\}$ dipendente. Allora esiste $\mathbf c\in\R^k\setminus\{\vzero\}$ con (3) $\sum_{i=1}^k c_i\vv_i=\vzero$, e un indice $j$ con $c_j\ne0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Con quale vettore conviene fare il prodotto scalare?</div>
+            <div class="step-content">Con $\vv_j$. Da (3): $\bigl\langle\sum_i c_i\vv_i,\vv_j\bigr\rangle=\langle\vzero,\vv_j\rangle=0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa resta della somma?</div>
+            <div class="step-content">Per la linearità è $\sum_i c_i\langle\vv_i,\vv_j\rangle$, e siccome il sistema è ortogonale sopravvive solo il termine $i=j$: $c_j\langle\vv_j,\vv_j\rangle=c_j\|\vv_j\|^2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dov'è la contraddizione?</div>
+            <div class="step-content">$c_j\|\vv_j\|^2=0$ con $c_j\ne0$ dà $\|\vv_j\|=0$, cioè $\vv_j=\vzero$. Ma per ipotesi i vettori sono non nulli. Quindi $S$ è indipendente. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box prop">
+      <div class="box-title">Corollario (Lezione 11)</div>
+      <p class="mb0">Se $\dim V=n$, ogni sistema ortogonale di $n$ vettori non nulli è una <strong>base</strong> di $V$. Basta il <a href="5-lineari.html#condizioni-base">criterio di una base</a> (Teorema 2 della Lezione 5): $n$ vettori indipendenti in dimensione $n$ sono una base.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11): basi ortogonali e ortonormali</div>
+      <p class="mb0">Una base $B=\{\vv_1,\dots,\vv_n\}$ di uno spazio euclideo si dice <strong>ortogonale</strong> se è un sistema ortogonale, e <strong>ortonormale</strong> se in più $\|\vv_i\|=1$ per ogni $i$. Cioè $B$ è ortonormale se
+      $$\langle\vv_i,\vv_j\rangle=\begin{cases}0&\text{se }i\ne j,\\1&\text{se }i=j.\end{cases}$$
+      Da una base ortogonale si passa a una ortonormale <strong>normalizzando</strong>: $\vu_i:=\frac{1}{\|\vv_i\|}\vv_i$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 11)</div>
+      <ul class="mb0">
+        <li>La base canonica di $\R^n$, con il prodotto standard, è ortonormale.</li>
+        <li>$(1,2,0,0)$, $(2,-1,1,-1)$, $(0,0,1,1)$ formano un sistema ortogonale in $\R^4$: i tre prodotti valgono $2-2$, $0$ e $1-1$. Però <strong>non</strong> sono una base di $\R^4$: ne servono quattro.</li>
+        <li>$\sin x$, $\sin2x$, $\sin3x$ formano un sistema ortogonale in $L^2[0,2\pi]$: per esempio $\int_0^{2\pi}\sin x\sin2x\dd x=\int_0^{2\pi}\frac12(\cos x-\cos3x)\dd x=0$. Quindi sono indipendenti, senza fare altri conti.</li>
+        <li>$\vv_1=(2,1,1)$, $\vv_2=(-1,1,1)$, $\vv_3=(0,-1,1)$ sono tre vettori non nulli e a due a due ortogonali in $\R^3$, quindi una base ortogonale. Normalizzando, $\vu_1=\frac{1}{\sqrt6}\vv_1$, $\vu_2=\frac1{\sqrt3}\vv_2$, $\vu_3=\frac1{\sqrt2}\vv_3$ danno una base ortonormale.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="fourier">8 · Coordinate in una base ortogonale</h2>
+    <p>Il grande vantaggio delle basi ortogonali è che le coordinate si trovano <strong>senza risolvere un sistema</strong>. Il prof cita la compressione MP3, che passa dalla base canonica di $\R^n$, con $n=576$, a una base adatta all'analisi psicoacustica: per fortuna quella base è ortogonale.</p>
+    <div class="box teo">
+      <div class="box-title">Teorema 4 (Lezione 11): coordinate rispetto a una base ortogonale <span class="badge star">risultato centrale</span> <span class="badge purple">chiesto in Parte C · gennaio 2026</span></div>
+      <p class="mb0">Sia $B=\{\vv_1,\dots,\vv_n\}$ una base ortogonale di uno spazio euclideo $V$. Le coordinate di $\vv\in V$ rispetto a $B$ sono i coefficienti di Fourier di $\vv$ rispetto a $\vv_1,\dots,\vv_n$:
+      $$\boxed{c_i=\frac{\langle\vv,\vv_i\rangle}{\|\vv_i\|^2}},\qquad i=1,\dots,n.$$
+      Per una base <strong>ortonormale</strong> la formula diventa $c_i=\langle\vv,\vv_i\rangle$.</p>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa vuol dire che $\mathbf c$ è il vettore delle coordinate?</div>
+            <div class="step-content">Che $\vv=\sum_{i=1}^n c_i\vv_i$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si isola un solo $c_j$?</div>
+            <div class="step-content">Facendo il prodotto scalare con $\vv_j$: $\langle\vv,\vv_j\rangle=\bigl\langle\sum_i c_i\vv_i,\vv_j\bigr\rangle=\sum_i c_i\langle\vv_i,\vv_j\rangle$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Dove entra l'ortogonalità?</div>
+            <div class="step-content">L'unico termine non nullo della somma è quello con $i=j$: $\langle\vv,\vv_j\rangle=c_j\|\vv_j\|^2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché si può dividere?</div>
+            <div class="step-content">Gli elementi di una base sono per forza non nulli, quindi $\|\vv_j\|\ne0$. Dividendo, $c_j=\langle\vv,\vv_j\rangle/\|\vv_j\|^2$ per ogni $j$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 11)</div>
+      <p>$B:=\bigl\{(\frac{\sqrt2}2,\frac{\sqrt2}2),(\frac{\sqrt2}2,-\frac{\sqrt2}2)\bigr\}$ è una base ortonormale di $\R^2$. Le coordinate di $\vx:=(3,2)$ sono
+      $$c_1=\Bigl\langle(3,2),\bigl(\tfrac{\sqrt2}2,\tfrac{\sqrt2}2\bigr)\Bigr\rangle=\frac{5\sqrt2}2,\qquad c_2=\Bigl\langle(3,2),\bigl(\tfrac{\sqrt2}2,-\tfrac{\sqrt2}2\bigr)\Bigr\rangle=\frac{\sqrt2}2.$$</p>
+      <p class="mb0"><strong>Controllo:</strong> $\frac{5\sqrt2}2\bigl(\frac{\sqrt2}2,\frac{\sqrt2}2\bigr)+\frac{\sqrt2}2\bigl(\frac{\sqrt2}2,-\frac{\sqrt2}2\bigr)=\bigl(\frac52,\frac52\bigr)+\bigl(\frac12,-\frac12\bigr)=(3,2)$ ✓.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio da costruire <span class="badge purple">chiesto in Parte C · febbraio 2025</span></div>
+      <p><em>Una base ortonormale di $\R^2$ non fatta di multipli dei vettori della base canonica, con le coordinate di $(2,1)$.</em></p>
+      <p class="mb0">$\vu_1=\bigl(\frac35,\frac45\bigr)$, $\vu_2=\bigl(-\frac45,\frac35\bigr)$: hanno norma $1$ e $\langle\vu_1,\vu_2\rangle=-\frac{12}{25}+\frac{12}{25}=0$. Per il Teorema 4, $c_1=\frac65+\frac45=2$ e $c_2=-\frac85+\frac35=-1$. Controllo: $2\vu_1-\vu_2=\bigl(\frac{6}{5}+\frac45,\frac85-\frac35\bigr)=(2,1)$ ✓.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 11)</div>
+      <p class="mb0">Un <strong>versore</strong> di uno spazio euclideo è un vettore $\vv$ con $\|\vv\|=1$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="gram-schmidt">9 · Ortogonalizzazione di Gram-Schmidt</h2>
+    <h3 id="proiezione-w">Proiezione su un sottospazio</h3>
+    <p>La proiezione su una retta del §5 è l'unico vettore della retta a distanza minima da $\vv$. Lo stesso si fa su un sottospazio $W$ qualsiasi, a una condizione: la base di $W$ dev'essere <strong>ortogonale</strong>.</p>
+    <div class="box prop">
+      <div class="box-title">Proiezione ortogonale su un sottospazio (Lezione 12)</div>
+      <p class="mb0">Se $\{\vw_1,\dots,\vw_k\}$ è una base <strong>ortogonale</strong> di $W$, la proiezione ortogonale di $\vv$ su $W$ è
+      $$\vv_0=\sum_{i=1}^{k}\frac{\langle\vv,\vw_i\rangle}{\|\vw_i\|^2}\,\vw_i,$$
+      cioè la somma delle proiezioni sulle rette $\operatorname{span}\{\vw_i\}$. Come per una retta, $\vv-\vv_0$ è ortogonale a ogni vettore di $W$, e si scrive $\vv-\vv_0\perp W$.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ Con una base non ortogonale la formula sbaglia</div>
+      <p class="mb0">Sommare le proiezioni sui singoli generatori funziona solo se sono a due a due ortogonali. Se non lo sono, prima si ortogonalizza la base, ed è proprio quello che fa Gram-Schmidt.</p>
+    </div>
+    <p><strong>Problema di ortogonalizzazione</strong> (Lezione 12). Dato un sistema $\{\vv_1,\dots,\vv_k\}$ linearmente indipendente di uno spazio euclideo, sia $W:=\operatorname{span}\{\vv_1,\dots,\vv_k\}$: trovare una base ortogonale di $W$. Una base di $W$ l'abbiamo già, $B_0=\{\vv_1,\dots,\vv_k\}$, ma in generale non è ortogonale.</p>
+    <div class="box teo">
+      <div class="box-title">Algoritmo di Gram-Schmidt (Lezione 12) <span class="badge star">risultato centrale</span></div>
+      <ul class="mb0">
+        <li><strong>Prima mossa</strong>: $\vw_1:=\vv_1$.</li>
+        <li><strong>Passo</strong>: se $\vw_1,\dots,\vw_i$ sono già trovati, sia $W_i:=\operatorname{span}\{\vw_1,\dots,\vw_i\}$. Siccome i $\vw_j$ sono ortogonali, la proiezione di $\vv_{i+1}$ su $W_i$ è
+        $$\vv_{i+1}^{0}=\sum_{j=1}^{i}\frac{\langle\vv_{i+1},\vw_j\rangle}{\|\vw_j\|^2}\,\vw_j,\qquad\text{e si pone}\qquad \vw_{i+1}:=\vv_{i+1}-\vv_{i+1}^{0}.$$</li>
+      </ul>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Perché funziona</div>
+      <p class="mb0">$\vw_{i+1}$ è «quello che resta» di $\vv_{i+1}$ dopo avergli tolto la parte che sta in $W_i$: per l'osservazione del §5 è ortogonale a tutto $W_i$, quindi a tutti i $\vw$ già trovati. E $\operatorname{span}\{\vw_1,\dots,\vw_{i+1}\}=\operatorname{span}\{\vv_1,\dots,\vv_{i+1}\}$, perché ogni $\vw$ è $\vv$ meno una combinazione dei precedenti.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 12)</div>
+      <p>Base ortogonale di $W:=\operatorname{span}\{\vv_1,\vv_2,\vv_3\}\subset\R^4$ con $\vv_1:=(1,0,0,1)$, $\vv_2:=(1,2,0,0)$, $\vv_3:=(1,2,2,1)$.</p>
+      <ul>
+        <li>$\vw_1:=\vv_1=(1,0,0,1)$.</li>
+        <li>$\vv_2^0=\frac{\langle\vv_2,\vw_1\rangle}{\|\vw_1\|^2}\vw_1=\frac12\vw_1=\bigl(\frac12,0,0,\frac12\bigr)$, quindi $\vw_2=\vv_2-\vv_2^0=\bigl(\frac12,2,0,-\frac12\bigr)$.</li>
+        <li>$\vv_3^0=\frac{2}{2}\vw_1+\frac{4}{9/2}\vw_2=\bigl(\frac{13}9,\frac{16}9,0,\frac59\bigr)$, quindi $\vw_3=\vv_3-\vv_3^0=\bigl(-\frac49,\frac29,2,\frac49\bigr)$.</li>
+      </ul>
+      <p class="mb0"><strong>Controllo:</strong> $\langle\vw_1,\vw_2\rangle=\frac12-\frac12=0$, $\langle\vw_1,\vw_3\rangle=-\frac49+\frac49=0$, $\langle\vw_2,\vw_3\rangle=-\frac29+\frac49-\frac29=0$ ✓.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Un trucco per le frazioni</div>
+      <p class="mb0">Moltiplicare un $\vw_i$ per un numero non nullo non cambia né la sua direzione né l'ortogonalità con gli altri. Si può quindi usare $(1,4,0,-1)$ al posto di $\bigl(\frac12,2,0,-\frac12\bigr)$ nei passi successivi: i conti diventano più puliti e il risultato finale è lo stesso, a meno di multipli. Non è negli appunti, ma è lecito.</p>
+    </div>
+
+    <h3 id="gs-dipendenti">Se i vettori sono dipendenti</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 12)</div>
+      <p>Quattro vettori di $\R^3$ sono per forza dipendenti: $\vv_1:=(1,2,3)$, $\vv_2:=(3,2,1)$, $\vv_3:=(1,1,1)$, $\vv_4:=(0,1,0)$. Gram-Schmidt dà $\vw_1=(1,2,3)$, $\vw_2=(3,2,1)-\frac57(1,2,3)=\frac47(4,1,-2)$, e poi
+      $$\vv_3^0=\tfrac37(1,2,3)+\tfrac17(4,1,-2)=(1,1,1)\quad\Longrightarrow\quad \vw_3=\vzero.$$</p>
+      <p class="mb0">Un vettore nullo vuol dire che $\vv_3$ stava già nello span dei precedenti: lo si scarta e si va avanti proiettando su $\vw_1,\vw_2$. Si trova $\vv_4^0=\frac17(1,2,3)+\frac1{21}(4,1,-2)=\bigl(\frac13,\frac13,\frac13\bigr)$ e $\vw_4=\frac13(-1,2,-1)$. $\{\vw_1,\vw_2,\vw_4\}$ è una base ortogonale di $\R^3$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Conseguenza (Lezione 12)</div>
+      <p class="mb0">Ogni spazio euclideo di dimensione finita ammette una <strong>base ortonormale</strong>: si prende una base qualsiasi, la si ortogonalizza con Gram-Schmidt e si normalizzano i vettori.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="matrici-ortogonali">10 · Matrici ortogonali</h2>
+    <p>Sia $B=\{\vu_1,\dots,\vu_n\}$ una base ortonormale di $\R^n$. La matrice di passaggio dalla base canonica a $B$, $Q:=[\vu_1|\vu_2|\dots|\vu_n]$, ha una proprietà particolare: $Q^TQ=I$. Infatti l'elemento di posto $(i,j)$ di $Q^TQ$ è la riga $i$ di $Q^T$ per la colonna $j$ di $Q$, cioè
+    $$\langle\vu_i,\vu_j\rangle=\delta_{ij}:=\begin{cases}1&\text{se }i=j,\\0&\text{se }i\ne j,\end{cases}$$
+    il <strong>simbolo di Kronecker</strong>. E $I=[\delta_{ij}]$.</p>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 12) <span class="badge purple">chiesta in Parte C · gennaio 2025</span></div>
+      <p class="mb0">Una matrice quadrata $Q$ a elementi reali si dice <strong>ortogonale</strong> se $Q^TQ=I$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione e Proposizione (Lezione 12)</div>
+      <p>Ogni matrice ortogonale è invertibile e $Q^{-1}=Q^T$. Anche $Q^T$ è ortogonale, perché $Q^TQ=I$ implica $QQ^T=I$, cioè $(Q^T)^TQ^T=I$.</p>
+      <p>Per una matrice $Q$ di ordine $n$ a elementi reali sono equivalenti:</p>
+      <ol class="mb0">
+        <li>$Q$ è ortogonale;</li>
+        <li>le <strong>colonne</strong> di $Q$ formano una base ortonormale di $\R^n$;</li>
+        <li>le <strong>righe</strong> di $Q$ formano una base ortonormale di $\R^n$.</li>
+      </ol>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 12)</div>
+      <p>$I$ è ortogonale: $I^TI=I$, e le sue righe e colonne sono la base canonica.</p>
+      <p class="mb0">$Q:=\begin{bmatrix}3/5&-4/5\\4/5&3/5\end{bmatrix}$ è ortogonale:
+      $$Q^TQ=\begin{bmatrix}3/5&4/5\\-4/5&3/5\end{bmatrix}\begin{bmatrix}3/5&-4/5\\4/5&3/5\end{bmatrix}=\begin{bmatrix}\frac9{25}+\frac{16}{25}&-\frac{12}{25}+\frac{12}{25}\\-\frac{12}{25}+\frac{12}{25}&\frac{16}{25}+\frac9{25}\end{bmatrix}=I.$$
+      Le sue colonne sono due versori ortogonali, e lo stesso le righe.</p>
+    </div>
+    <div class="box trap">
+      <div class="box-title">✗ Colonne ortogonali non basta</div>
+      <p class="mb0">$\begin{bmatrix}1&1\\-1&1\end{bmatrix}$ ha le colonne ortogonali ma di norma $\sqrt2$: non è ortogonale, perché $Q^TQ=2I$. Il nome inganna: una matrice «ortogonale» ha le colonne orto<strong>normali</strong>.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="spettrale">11 · Matrici simmetriche e teorema spettrale</h2>
+    <h3 id="diag-ortogonale">Il problema della diagonalizzazione ortogonale</h3>
+    <p>Diagonalizzare un endomorfismo $L:V\to V$ vuol dire trovare una base in cui la sua matrice è diagonale (<a href="9-diagonalizzazione.html#problema">Sezione 9</a>). Se $V$ è uno spazio euclideo c'è una variante naturale: cercare una base <strong>ortogonale</strong> con questa proprietà.</p>
+    <div class="box prop">
+      <div class="box-title">Perché basta studiare $\R^n$ (Lezione 12)</div>
+      <p>Con Gram-Schmidt ogni spazio euclideo di dimensione $n$ ha una base ortonormale $\tilde B=\{\vu_1,\dots,\vu_n\}$. Se $\mathbf b,\mathbf c$ sono le coordinate di $\vv,\vw$ rispetto a $\tilde B$,
+      $$\langle\vv,\vw\rangle=\Bigl\langle\sum_i b_i\vu_i,\sum_j c_j\vu_j\Bigr\rangle=\sum_i b_i\Bigl(\sum_j c_j\langle\vu_i,\vu_j\rangle\Bigr)=\sum_i b_i\Bigl(\sum_j c_j\delta_{ij}\Bigr)=\sum_i b_ic_i=\langle\mathbf b,\mathbf c\rangle.$$</p>
+      <p class="mb0">In una base ortonormale il prodotto scalare di $V$ diventa il prodotto <strong>standard</strong> delle coordinate. Per questo fissare una base ortonormale identifica $V$ con $\R^n$, e una base qualsiasi non lo farebbe. Il problema si riduce alle matrici: una base ortonormale di autovettori di $A$ ha come matrice di passaggio una matrice ortogonale.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 12)</div>
+      <p class="mb0">Una matrice quadrata $A$ a elementi reali si dice <strong>ortogonalmente diagonalizzabile</strong> se esiste una matrice ortogonale $Q$ tale che $Q^TAQ$ è diagonale. Qui non si distingue fra $\R$ e $\C$: la diagonalizzazione ortogonale è sempre su $\R$, perché $A$ è la matrice di un endomorfismo dello spazio euclideo $\R^n$, non di $\C^n$.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 12)</div>
+      <p class="mb0">Una matrice quadrata $A$ si dice <strong>simmetrica</strong> se $A^T=A$. Per esempio $\begin{bmatrix}1&0&4\\0&2&5\\4&5&3\end{bmatrix}$ è simmetrica, $\begin{bmatrix}0&-1\\1&1\end{bmatrix}$ no.</p>
+    </div>
+    <p>Se $A$ è ortogonalmente diagonalizzabile, $A=QDQ^T$ con $Q$ ortogonale e $D$ diagonale, quindi
+    $$A^T=(QDQ^T)^T=(Q^T)^TD^TQ^T=QDQ^T=A:$$
+    <strong>ogni matrice ortogonalmente diagonalizzabile è simmetrica</strong>. Il fatto sorprendente è che vale anche il viceversa.</p>
+    <div class="box teo">
+      <div class="box-title">Teorema 1 (Lezione 12): teorema spettrale <span class="badge star">risultato centrale</span></div>
+      <p>Una matrice quadrata $A$ a elementi reali è ortogonalmente diagonalizzabile <strong>se e solo se</strong> è simmetrica. In particolare, se $A$ è simmetrica:</p>
+      <ol class="mb0">
+        <li>tutti gli autovalori di $A$ sono <strong>reali</strong>;</li>
+        <li>gli autospazi di $A$ sono <strong>ortogonali a due a due</strong>: $\vv\perp\vw$ per ogni coppia di autovettori relativi ad autovalori diversi.</li>
+      </ol>
+    </div>
+    <p class="small muted">Negli appunti è dimostrata solo la parte (ii), qui sotto. Il resto del teorema si usa senza dimostrazione.</p>
+    <details class="reveal proof">
+      <summary>Dimostrazione di (ii) a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che identità vale per ogni matrice reale, anche non simmetrica?</div>
+            <div class="step-content">$\langle A\vx,\vy\rangle=(A\vx)^T\vy=\vx^TA^T\vy=\langle A^T\vy,\vx\rangle$ per ogni $\vx,\vy\in\R^n$: la matrice «salta» dall'altra parte trasposta.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Siano $A\vv=\lambda_1\vv$ e $A\vw=\lambda_2\vw$ con $\lambda_1\ne\lambda_2$. Quanto vale $\langle A\vv,\vw\rangle$, calcolato in due modi?</div>
+            <div class="step-content">Da una parte $\langle A\vv,\vw\rangle=\langle\lambda_1\vv,\vw\rangle=\lambda_1\langle\vv,\vw\rangle$. Dall'altra, usando l'identità e $A^T=A$: $\langle A\vv,\vw\rangle=\langle A^T\vw,\vv\rangle=\langle A\vw,\vv\rangle=\lambda_2\langle\vw,\vv\rangle=\lambda_2\langle\vv,\vw\rangle$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Come si conclude?</div>
+            <div class="step-content">$\lambda_1\langle\vv,\vw\rangle=\lambda_2\langle\vv,\vw\rangle$, cioè $(\lambda_2-\lambda_1)\langle\vv,\vw\rangle=0$. Siccome $\lambda_2\ne\lambda_1$, $\langle\vv,\vw\rangle=0$: $\vv\perp\vw$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box tip">
+      <div class="box-title">✓ Come si usa in pratica</div>
+      <ul class="mb0">
+        <li>Autovettori di autovalori <strong>diversi</strong> sono già ortogonali: basta normalizzarli.</li>
+        <li>Dentro un autospazio di dimensione $\ge2$ una base trovata col MEG di solito non è ortogonale: lì serve <strong>Gram-Schmidt</strong>. È l'unico punto in cui serve.</li>
+        <li>In $\R^3$, se un autospazio è un piano $ax+by+cz=0$, l'autospazio dell'altro autovalore è la retta generata dalla sua normale $(a,b,c)$, senza fare il MEG.</li>
+      </ul>
+    </div>
+
+    <h3 id="esempi-spettrale">Tre esempi</h3>
+    <div class="box ex">
+      <div class="box-title">Esempio 1 (Lezione 12): autovalori semplici</div>
+      <p>Una base ortonormale di $\R^3$ in cui $L(x,y,z):=(x+y,\,x+y,\,3z)$ ha matrice diagonale. La matrice di $L$ rispetto alla base canonica è $A=\begin{bmatrix}1&1&0\\1&1&0\\0&0&3\end{bmatrix}$, simmetrica: per il teorema spettrale la base esiste.</p>
+      <p>Sviluppando lungo la terza riga, $P_A(\lambda)=(3-\lambda)\begin{vmatrix}1-\lambda&1\\1&1-\lambda\end{vmatrix}=(3-\lambda)\,\lambda\,(\lambda-2)$. Gli autospazi, col MEG: $W_0=\operatorname{span}\{(-1,1,0)\}$, $W_2=\operatorname{span}\{(1,1,0)\}$, $W_3=\operatorname{span}\{(0,0,1)\}$.</p>
+      <p class="mb0">Sono già ortogonali (autovalori distinti), basta normalizzare: $\vu_1=\bigl(-\frac{\sqrt2}2,\frac{\sqrt2}2,0\bigr)$, $\vu_2=\bigl(\frac{\sqrt2}2,\frac{\sqrt2}2,0\bigr)$, $\vu_3=(0,0,1)$. In questa base la matrice di $L$ è $\tilde A=\diag(0,2,3)$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 2 (Lezione 12): un parametro e un autovalore doppio</div>
+      <p>Per quali $\varkappa\in\R$ la matrice $A_\varkappa:=\begin{bmatrix}3&0&\varkappa\\0&1&0\\2&0&3\end{bmatrix}$ è ortogonalmente diagonalizzabile? Per il teorema spettrale se e solo se è simmetrica, cioè per $\varkappa=2$.</p>
+      <p>Con la regola di Sarrus $\det(A_2-\lambda I)=(1-\lambda)\bigl((3-\lambda)^2-4\bigr)=(1-\lambda)^2(5-\lambda)$. Per $\lambda=1$ il sistema $(A_2-I)\vx=\vzero$ si riduce alla sola equazione $2x+2z=0$, con $y$ e $z$ libere: $W_1=\operatorname{span}\{(0,1,0),(-1,0,1)\}$.</p>
+      <p class="small muted">Negli appunti $A_2-I$ è scritta con la riga centrale $(2,0,2)$: è $(0,0,0)$, perché il posto $(2,2)$ di $A_2$ è $1$. La conclusione, una sola equazione $2x+2z=0$, è giusta.</p>
+      <p>Per $\lambda=5$ il prof non risolve un sistema: $W_5$ è ortogonale al piano $W_1$, cioè generato dalla sua normale, $W_5=\operatorname{span}\{(2,0,2)\}$. La base $\{(0,1,0),(-1,0,1),(2,0,2)\}$ è già ortogonale (una fortuna: i due vettori di $W_1$ sono usciti ortogonali), e normalizzando
+      $$Q=\begin{bmatrix}0&-\sqrt2/2&\sqrt2/2\\1&0&0\\0&\sqrt2/2&\sqrt2/2\end{bmatrix},\qquad D=\diag(1,1,5),\qquad A_2=QDQ^T.$$</p>
+      <p class="mb0">La risposta non è unica: cambiando l'ordine dei vettori, insieme agli autovalori in $D$, o il segno di qualcuno, si ottiene un'altra coppia $Q$, $D$ altrettanto giusta.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio 3 (Lezione 12): qui serve Gram-Schmidt</div>
+      <p>Base ortonormale di $\R^3$ fatta di autovettori di $A:=\begin{bmatrix}2&-1&-1\\-1&2&1\\-1&1&2\end{bmatrix}$. Con $R_3\to R_3-R_2$, raccogliendo $(1-\lambda)$ e sviluppando: $\det(A-\lambda I)=(1-\lambda)^2(4-\lambda)$.</p>
+      <p>$W_1$: $A-I$ si riduce a $x-y-z=0$, con base $\{(1,1,0),(1,0,1)\}$. Ma $\langle(1,1,0),(1,0,1)\rangle=1\ne0$: non è ortogonale. Gram-Schmidt: $\vw_1=(1,1,0)$, $\vw_2=(1,0,1)-\frac12(1,1,0)=\bigl(\frac12,-\frac12,1\bigr)$, e normalizzando $\vu_1=\bigl(\frac1{\sqrt2},\frac1{\sqrt2},0\bigr)$, $\vu_2=\bigl(\frac{\sqrt6}6,-\frac{\sqrt6}6,\frac{\sqrt6}3\bigr)$.</p>
+      <p class="mb0">$W_4\perp W_1$, quindi $W_4$ è la normale al piano $x-y-z=0$: $W_4=\operatorname{span}\{(1,-1,-1)\}$, e $\vu_3=\bigl(\frac{\sqrt3}3,-\frac{\sqrt3}3,-\frac{\sqrt3}3\bigr)$. <strong>Controllo:</strong> $A(1,-1,-1)=(4,-4,-4)$ ✓.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio da costruire <span class="badge purple">chiesto in Parte C · settembre 2025</span></div>
+      <p class="mb0"><em>Una matrice $3\times3$ non diagonale, ortogonalmente diagonalizzabile, con un autovalore multiplo.</em> La matrice dell'Esempio 3 va bene: è simmetrica, quindi ortogonalmente diagonalizzabile per il teorema spettrale; non è diagonale; e $\lambda=1$ è doppio. Anche $A_2$ dell'Esempio 2 funziona.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="isometrie">12 · Isometrie</h2>
+    <p>Un <strong>isomorfismo</strong> fra due spazi vettoriali è una mappa lineare biiettiva. Fra spazi euclidei si può chiedere di più: che la mappa rispetti anche il prodotto scalare. Il prof tiene la parola «isomorfismo» per il primo significato, e usa un nome nuovo per il secondo.</p>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 14)</div>
+      <p class="mb0">Siano $V$ e $U$ spazi euclidei. Un isomorfismo $L:V\to U$ che preserva il prodotto scalare,
+      $$\langle L(\vv_1),L(\vv_2)\rangle_U=\langle\vv_1,\vv_2\rangle_V\qquad\forall\,\vv_1,\vv_2\in V,$$
+      si chiama una <strong>isometria</strong> di $V$ su $U$. «Isometria» vuol dire «mappa che preserva le distanze»; ogni isometria è iniettiva, e «su» dice che è anche suriettiva.</p>
+    </div>
+    <div class="box teo">
+      <div class="box-title">Proposizione 1 (Lezione 14)</div>
+      <p>Siano $V$, $U$ spazi euclidei con $\dim V=\dim U\lt+\infty$, $B$ e $C$ basi ortonormali di $V$ e $U$, e $L:V\to U$ lineare. Sono equivalenti:</p>
+      <ol class="mb0">
+        <li>$L$ preserva le norme: $\|L(\vv)\|_U=\|\vv\|_V$ per ogni $\vv$;</li>
+        <li>$L$ preserva il prodotto scalare;</li>
+        <li>la matrice rappresentativa $Q$ di $L$ rispetto a $B$ e $C$ è <strong>ortogonale</strong>.</li>
+      </ol>
+    </div>
+    <p>La (i) dice davvero che le distanze si conservano: per la linearità $\|L(\vv_2)-L(\vv_1)\|_U=\|L(\vv_2-\vv_1)\|_U=\|\vv_2-\vv_1\|_V$. E da (i) segue (ii) con la <a href="#pitagora">formula di polarizzazione</a>: se una mappa conserva le lunghezze, conserva anche i prodotti scalari (questa giustificazione è nostra; negli appunti la proposizione non è dimostrata).</p>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 14)</div>
+      <p>La <strong>rotazione</strong> di angolo $\theta$ in senso antiorario, $A_\theta:=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$, conserva lunghezze e angoli, e infatti $A_\theta^TA_\theta=\begin{bmatrix}\cos^2\theta+\sin^2\theta&0\\0&\sin^2\theta+\cos^2\theta\end{bmatrix}=I$.</p>
+      <p class="mb0">La <strong>riflessione</strong> rispetto all'asse $y$ ha matrice $Q:=\begin{bmatrix}-1&0\\0&1\end{bmatrix}$: le colonne $(-1,0)$ e $(0,1)$ sono una base ortonormale, quindi $Q$ è ortogonale.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 14)</div>
+      <p class="mb0">Se $L:V\to V$ è un endomorfismo isometrico di uno spazio euclideo di dimensione finita, allora $\det L=\pm1$. Infatti la sua matrice $Q$ in una base ortonormale soddisfa $Q^TQ=I$, e per Binet $\det(Q^T)\det Q=(\det Q)^2=1$. Inoltre si può dimostrare che ogni autovalore $\lambda$ di una matrice ortogonale, anche complesso, ha $|\lambda|=1$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="orientazione">13 · Orientazione</h2>
+    <p>La rotazione e la riflessione conservano entrambe le distanze, ma differiscono per il <strong>segno del determinante</strong>: $\det A_\theta=\cos^2\theta+\sin^2\theta=1$, $\det Q=-1$. Disegnando due vettori $\vu$, $\vv$ e le loro immagini, la rotazione lascia $\vv$ dalla stessa parte di $\vu$, mentre la riflessione la scambia.</p>
+    <div class="box prop">
+      <div class="box-title">Il determinante di un endomorfismo (Lezione 14)</div>
+      <p class="mb0">Un isomorfismo $L:V\to V$ di uno spazio in sé stesso si chiama <strong>automorfismo</strong>. La sua matrice ha $\det A\ne0$: se fosse $0$ il nucleo non sarebbe banale e $L$ non sarebbe biiettiva. E $\det A$ non dipende dalla base, perché le matrici dello stesso endomorfismo in basi diverse sono <a href="8-determinanti.html#simili">simili</a> e hanno lo stesso determinante. Questo numero si chiama il <strong>determinante dell'endomorfismo</strong>.</p>
+    </div>
+    <div class="box def">
+      <div class="box-title">Definizioni (Lezione 14)</div>
+      <p>Un automorfismo $L$ di uno spazio di dimensione finita <strong>preserva l'orientazione</strong> se $\det L>0$.</p>
+      <p class="mb0">Due basi $B$ e $\tilde B$ di $V$ hanno la <strong>stessa orientazione</strong> se la matrice $S$ di passaggio da $B$ a $\tilde B$ ha $\det S>0$, e <strong>orientazioni contrarie</strong> se $\det S\lt0$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 14): mano destra e mano sinistra</div>
+      <p class="mb0">Sia $\vec\imath,\vec\jmath,\vec k$ la base degli assi $x,y,z$ di un riferimento orientato «a mano destra». Scambiando gli assi $x$ e $y$ si ottiene un riferimento «a mano sinistra», con base $\tilde B=\{\vec\jmath,\vec\imath,\vec k\}$. La matrice di passaggio è $S=\begin{bmatrix}0&1&0\\1&0&0\\0&0&1\end{bmatrix}$ e, scambiando le prime due colonne, $\det S=-\det I=-1$: le due basi hanno orientazioni contrarie.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="complemento">14 · Completamento ortogonale</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 14) <span class="badge purple">chiesta in Parte C · febbraio 2025</span></div>
+      <p class="mb0">Sia $W$ un sottospazio di uno spazio euclideo $V$. Il <strong>completamento ortogonale</strong> $W^\perp$ di $W$ è l'insieme dei vettori di $V$ ortogonali a ogni elemento di $W$:
+      $$W^\perp:=\{\vv\in V:\ \langle\vv,\vw\rangle=0\ \ \forall\,\vw\in W\}.$$</p>
+    </div>
+    <p class="small muted">Nella Lezione 8 il prof lo chiamava <a href="7-grassmann.html#ortogonale">complemento ortogonale</a>, in $\R^n$; nella Lezione 14 lo chiama completamento ortogonale. È lo stesso oggetto, ora in uno spazio euclideo qualsiasi.</p>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 14)</div>
+      <ul class="mb0">
+        <li>$W=\{\vzero\}$: $W^\perp=V$. E $W=V$: $W^\perp=\{\vzero\}$.</li>
+        <li>In $\R^3$, se $W$ è il piano $(x,y)$, $W^\perp$ è l'asse $z$; se $W$ è l'asse $x$, $W^\perp$ è il piano $(y,z)$.</li>
+      </ul>
+    </div>
+    <p class="small muted">Nell'ultimo esempio negli appunti c'è scritto «$W$ è il piano $(y,z)$»: manca il $\perp$.</p>
+    <div class="box teo">
+      <div class="box-title">Proposizione 2 (Lezione 14) <span class="badge star">risultato centrale</span></div>
+      <p>Sia $W$ un sottospazio di uno spazio euclideo $V$ di dimensione finita. Allora:</p>
+      <ol class="mb0">
+        <li>$W^\perp$ è un sottospazio di $V$;</li>
+        <li>$(W^\perp)^\perp=W$;</li>
+        <li>$V=W\oplus W^\perp$, e in particolare $\dim W^\perp=\dim V-\dim W$;</li>
+        <li>se $B_W$ è una base ortogonale (ortonormale) di $W$ e $B_{W^\perp}$ una di $W^\perp$, allora $B_W\cup B_{W^\perp}$ è una base ortogonale (ortonormale) di tutto $V$.</li>
+      </ol>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione di (i) e (iii) a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">(i): che cosa bisogna controllare?</div>
+            <div class="step-content">Che una combinazione lineare di elementi di $W^\perp$ stia ancora in $W^\perp$. Siano $\vu,\vv\in W^\perp$: per ogni $\vw\in W$, $\langle\vu,\vw\rangle=\langle\vv,\vw\rangle=0$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa dà la linearità?</div>
+            <div class="step-content">Per ogni $\alpha,\beta\in\R$ e $\vw\in W$: $\langle\alpha\vu+\beta\vv,\vw\rangle=\alpha\langle\vu,\vw\rangle+\beta\langle\vv,\vw\rangle=0$. Quindi $\alpha\vu+\beta\vv\in W^\perp$: è un sottospazio.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">(iii): che cosa vuol dire $V=W\oplus W^\perp$?</div>
+            <div class="step-content">Che ogni $\vv\in V$ si scrive in modo <strong>unico</strong> come $\vv=\vw+\vw^\perp$ con $\vw\in W$ e $\vw^\perp\in W^\perp$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Esistenza: chi sono $\vw$ e $\vw^\perp$?</div>
+            <div class="step-content">$\vw:=$ la proiezione ortogonale di $\vv$ su $W$, e $\vw^\perp:=\vv-\vw$. Per l'osservazione sulla proiezione $\vw^\perp$ è ortogonale a ogni elemento di $W$, quindi sta in $W^\perp$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Unicità: e se ci fossero due scritture?</div>
+            <div class="step-content">Da $\vw+\vw^\perp=\tilde\vw+\tilde\vw^\perp$ segue $\tilde\vw-\vw=\vw^\perp-\tilde\vw^\perp$. A sinistra c'è un elemento di $W$, a destra uno di $W^\perp$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché allora sono entrambi nulli? (la «domanda al pubblico» del prof)</div>
+            <div class="step-content">Perché $W\cap W^\perp=\{\vzero\}$: un vettore che sta in entrambi è ortogonale a sé stesso, $\langle\vx,\vx\rangle=0$, e per la definità positiva è $\vzero$. Quindi $\tilde\vw=\vw$ e $\tilde\vw^\perp=\vw^\perp$. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+
+    <h3 id="complemento-calcolo">Come si trova una base di $W^\perp$</h3>
+    <div class="box prop">
+      <div class="box-title">Caso 1: $W$ dato con equazioni cartesiane (Lezione 14)</div>
+      <p class="mb0">Fissata una base ortonormale, $V\cong\R^n$. Se $W$ è l'insieme delle soluzioni di $A\vx=\vzero$, cioè $W=\ker A$, allora $W$ è fatto dei vettori ortogonali a ogni riga di $A$, quindi a tutto lo spazio riga:
+      $$W=\ker A=\operatorname{Row}(A)^\perp\qquad\Longrightarrow\qquad\boxed{W^\perp=\operatorname{Row}(A)}.$$
+      I coefficienti delle equazioni sono già i generatori di $W^\perp$.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio (Lezione 14)</div>
+      <p>$A:=\begin{bmatrix}2&1&1\\1&2&-1\\1&-1&2\end{bmatrix}$. (1) Il MEG porta $A$ a $U=\begin{bmatrix}1&-1&2\\0&1&-1\\0&0&0\end{bmatrix}$, quindi $\ker A=\operatorname{span}\{(-1,1,1)\}$.</p>
+      <p>(2) Base ortonormale di autovettori. $A$ è simmetrica, quindi esiste. $W_0=\ker A$, e $P_A(\lambda)=-\lambda(\lambda-3)^2$: l'altro autospazio è $W_3$, con $\dim W_3=m_a(3)=2$. Non serve risolvere $(A-3I)\vx=\vzero$: siccome $\R^3=W_0\oplus W_3$ ($A$ è diagonalizzabile) e $W_0\perp W_3$ (teorema spettrale),
+      $$W_3=W_0^\perp=(\ker U)^\perp=\operatorname{Row}(U)=\operatorname{span}\{(1,-1,2),(0,1,-1)\}.$$</p>
+      <p class="mb0">Gram-Schmidt in $W_3$: $\vw_3=(0,1,-1)$ e $\vw_2=(1,-1,2)+\frac32(0,1,-1)=\bigl(1,\frac12,\frac12\bigr)$. Normalizzando: $\vu_1=\frac1{\sqrt3}(-1,1,1)$, $\vu_2=\frac1{\sqrt6}(2,1,1)$, $\vu_3=\frac1{\sqrt2}(0,1,-1)$.</p>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Caso 2: $W$ dato con i generatori · Proposizione 3 (Lezione 14)</div>
+      <p class="mb0">Se $W=\operatorname{span}\{\vw_1,\dots,\vw_m\}$, allora $W^\perp=\{\vv:\ \langle\vv,\vw_1\rangle=\dots=\langle\vv,\vw_m\rangle=0\}$, cioè $W^\perp=\ker A$ dove $A$ è la matrice che ha i vettori $\vw_1,\dots,\vw_m$ come <strong>righe</strong>.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio A (Lezione 14)</div>
+      <p>Equazioni cartesiane della retta $\ell$ per $P_0(1,2,3)$ ortogonale al piano $W$ generato da $\vw_1=(1,0,1)$ e $\vw_2=(2,1,0)$.</p>
+      <p class="mb0">$\ell_0:=W^\perp$ è la retta per l'origine parallela a $\ell$, e $W^\perp=\ker\begin{bmatrix}1&0&1\\2&1&0\end{bmatrix}$: $\ell_0:\ x+z=0,\ 2x+y=0$. La retta $\ell$ ha gli stessi coefficienti e passa per $P_0$: $x+z=1+3=4$ e $2x+y=2+2=4$. <strong>Risposta:</strong> $x+z-4=2x+y-4=0$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="vettoriale">15 · Prodotto vettoriale</h2>
+    <div class="box def">
+      <div class="box-title">Definizione geometrica (Lezione 14)</div>
+      <p>Siano $\vec u$, $\vec v$ due vettori liberi dello spazio euclideo. Il <strong>prodotto vettoriale</strong> $\vec u\times\vec v$ è l'unico vettore $\vec w$ tale che:</p>
+      <ol class="mb0">
+        <li>$\|\vec w\|=\|\vec u\|\,\|\vec v\|\sin\widehat{(\vec u,\vec v)}$: la lunghezza di $\vec w$ è l'<strong>area del parallelogramma</strong> formato da $\vec u$ e $\vec v$;</li>
+        <li>$\vec w\perp\vec u$ e $\vec w\perp\vec v$;</li>
+        <li>se $\vec u$, $\vec v$ sono indipendenti (cioè $\|\vec w\|\ne0$), $\{\vec u,\vec v,\vec w\}$ è una base orientata «a mano destra» (regola della mano destra).</li>
+      </ol>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Formula analitica (Lezione 14)</div>
+      <p class="mb0">Se $\vec\imath,\vec\jmath,\vec k$ sono i versori di un riferimento cartesiano orientato a mano destra, $\vec u=(x_1,y_1,z_1)$ e $\vec v=(x_2,y_2,z_2)$:
+      $$\vec u\times\vec v=\begin{vmatrix}\vec\imath&\vec\jmath&\vec k\\x_1&y_1&z_1\\x_2&y_2&z_2\end{vmatrix}=\begin{vmatrix}y_1&z_1\\y_2&z_2\end{vmatrix}\vec\imath-\begin{vmatrix}x_1&z_1\\x_2&z_2\end{vmatrix}\vec\jmath+\begin{vmatrix}x_1&y_1\\x_2&y_2\end{vmatrix}\vec k.$$
+      Il prof, negli esempi, scrive la componente $\vec\jmath$ come $+\begin{vmatrix}z_1&x_1\\z_2&x_2\end{vmatrix}$: scambiare le colonne cambia segno, quindi è lo stesso numero, ed è più facile da ricordare in modo «ciclico» ($y,z$ → $z,x$ → $x,y$).</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi B e C (Lezione 14)</div>
+      <p>Equazione parametrica della retta $\ell$ dell'Esempio A. Un vettore direzione è ortogonale al piano generato da $\vec w_1=(1,0,1)$ e $\vec w_2=(2,1,0)$, quindi si può prendere
+      $$\vec w_1\times\vec w_2=\begin{vmatrix}0&1\\1&0\end{vmatrix}\vec\imath+\begin{vmatrix}1&1\\0&2\end{vmatrix}\vec\jmath+\begin{vmatrix}1&0\\2&1\end{vmatrix}\vec k=-\vec\imath+2\vec\jmath+\vec k,$$
+      e $\ell:\ \vec r=(1,2,3)+t\,(-1,2,1)$. <strong>Controllo:</strong> $(-1,2,1)$ soddisfa $x+z=0$ e $2x+y=0$ ✓.</p>
+      <p class="mb0">L'area del parallelogramma formato da $\vec w_1$ e $\vec w_2$ è $\|(-1,2,1)\|=\sqrt6$, quindi l'area del triangolo è $\frac{\sqrt6}2$.</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ A che cosa serve, oltre agli esempi</div>
+      <p class="mb0">Esiste solo in $\R^3$. Dà al volo un vettore ortogonale a due vettori dati: la direzione di una retta perpendicolare a un piano, la normale a un piano per tre punti, e, nella <a href="12-quadriche.html#canonica">Sezione 12</a>, il terzo vettore di una base ortonormale quando i primi due sono già trovati. Se la base deve essere a mano destra, $\vu_3=\vu_1\times\vu_2$ e non il suo opposto.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 10</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Dove si cade</div>
+      <ul class="mb0">
+        <li><strong>Confondere bilineare con lineare.</strong> $L(2\vv,2\vw)=4L(\vv,\vw)$: una forma bilineare è lineare in un argomento alla volta.</li>
+        <li><strong>Fermarsi a $L(\vx,\vx)\ge0$.</strong> Per un prodotto scalare serve anche che $L(\vx,\vx)=0$ solo per $\vx=\vzero$: $(x_1+x_2)^2$ è $\ge0$ ma si annulla in $(1,-1)$.</li>
+        <li><strong>Dimenticare il denominatore $\|\vw\|^2$</strong> nella proiezione e nei coefficienti di Fourier. Senza denominatore vale solo per i versori.</li>
+        <li><strong>Proiettare su un sottospazio con una base non ortogonale.</strong> La somma delle proiezioni sui generatori è giusta solo se i generatori sono ortogonali.</li>
+        <li><strong>In Gram-Schmidt proiettare sui $\vv_j$</strong> di partenza invece che sui $\vw_j$ già ortogonalizzati.</li>
+        <li><strong>Chiamare ortogonale una matrice con colonne solo ortogonali.</strong> Devono essere anche di norma $1$: $Q^TQ=I$.</li>
+        <li><strong>Usare il teorema spettrale per una matrice non simmetrica.</strong> Una matrice diagonalizzabile qualsiasi non ha, in generale, autovettori ortogonali.</li>
+        <li><strong>Prendere la base di un autospazio doppio così come esce dal MEG</strong> e normalizzarla: se i due vettori non sono ortogonali, prima serve Gram-Schmidt.</li>
+        <li><strong>Confondere i due casi del completamento ortogonale.</strong> Con le equazioni $A\vx=\vzero$, $W^\perp=\operatorname{Row}(A)$; con i generatori, $W^\perp$ è il <em>nucleo</em> della matrice che li ha come righe.</li>
+        <li><strong>Sbagliare il segno della componente $\vec\jmath$</strong> nel prodotto vettoriale. Il controllo è immediato: il risultato deve essere ortogonale a entrambi i vettori.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="11-forme.html">Sezione 11 · Forme quadratiche →</a>
+      <a class="btn" href="9-diagonalizzazione.html">← Sezione 9</a>
+      <a class="btn" href="../esercizi.html?sez=10">Esercizi della Sezione 10</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 10 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261126"></script>
+<script src="../data/quiz.js?v=20261126"></script>
+<script src="../data/mappe.js?v=20261126"></script>
+<script src="../data/primalettura.js?v=20261105c"></script>
+<script src="../data/primalettura-altre.js?v=20261111"></script>
+<script src="../data/primalettura-10-12.js?v=20261126"></script>
+<script src="../data/schemi.js?v=20261105c"></script>
+<script src="../data/schemi-altre.js?v=20261111"></script>
+<script src="../data/schemi-10-12.js?v=20261126"></script>
+<script src="../../assets/js/app.js?v=20261106"></script>
+<script src="../../assets/js/capitolo.js?v=20261117b"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.mappaCapitolo('#mappaBox', 10);
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 10; }), { statKey: 'geo10' });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezione 11 · Forme quadratiche — Geometria</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/geometria-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/geometria-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1c7a4e">
+<meta name="apple-mobile-web-app-title" content="Geometria">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261104">
+<link rel="stylesheet" href="../../assets/css/capitolo.css?v=20261105c">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="../../index.html"><span class="brand-mark">G</span> Geometria</a>
+    <nav class="topnav">
+      <a href="../index.html">Piano</a>
+      <a href="0-preliminari.html">0 · Preliminari</a>
+      <a href="1-sistemi.html">1 · Sistemi</a>
+      <a href="2-matrici.html">2 · Matrici</a>
+      <a href="3-spazi.html">3 · Spazi vettoriali</a>
+      <a href="4-complessi.html">4 · Complessi</a>
+      <a href="5-lineari.html">5 · Lineari</a>
+      <a href="6-posizione.html">6 · Posizione</a>
+      <a href="7-grassmann.html">7 · Grassmann</a>
+      <a href="8-determinanti.html">8 · Determinanti</a>
+      <a href="9-diagonalizzazione.html">9 · Diagonalizzazione</a>
+      <a href="10-euclidei.html">10 · Spazi euclidei</a>
+      <a href="11-forme.html">11 · Forme quadratiche</a>
+      <a href="12-quadriche.html">12 · Quadriche</a>
+      <a href="../teoremi.html">Teoremi</a>
+      <a href="../esercizi.html">Esercizi</a>
+      <a href="../laboratorio.html">Laboratorio</a>
+      <a href="../come-si-risolve.html">Come si risolve</a>
+      <a href="../esami.html">Esame</a>
+    </nav>
+    <span class="topbar-spacer"></span>
+    <button class="icon-btn" id="themeBtn" aria-label="Tema chiaro/scuro">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h4>Sezione 11</h4>
+    <a href="#mappa">Mappa del capitolo</a>
+    <a href="#definizione">1 · Forme quadratiche</a>
+    <a href="#segno">2 · Definite e indefinite</a>
+    <a href="#autovalori">3 · Il segno dagli autovalori</a>
+    <a href="#due-per-due" class="sub">Il caso $2\times2$</a>
+    <a href="#sylvester">4 · Criterio di Sylvester</a>
+    <a href="#quale-strumento" class="sub">Quale strumento usare</a>
+    <a href="#test">Mettiti alla prova</a>
+    <a href="#errori">Errori tipici</a>
+  </aside>
+
+  <main>
+    <div class="page-head">
+      <div class="eyebrow">Sezione 11 · Geometria e Algebra Lineare · Lezioni 12bis e 12tres</div>
+      <h1>Forme quadratiche</h1>
+      <p class="lead">Un polinomio di secondo grado senza termini lineari né costanti si scrive con una matrice simmetrica. Il suo segno, cioè se è sempre positivo, sempre negativo o di tutti e due i segni, si legge dagli autovalori della matrice oppure, senza calcolarli, dai suoi minori di testa.</p>
+    </div>
+
+    <div class="box tip">
+      <div class="box-title">↳ Dove stiamo andando</div>
+      <p class="mb0">La domanda di tutto il capitolo è una sola: <strong>che segno ha $Q(\vx)$ quando $\vx$ varia?</strong> Serve per decidere se una forma bilineare è un <a href="10-euclidei.html#prodotto-scalare">prodotto scalare</a>, e nella <a href="12-quadriche.html">Sezione 12</a> per riconoscere coniche e quadriche (ellisse o iperbole, ellissoide o iperboloide). Lo strumento è il <a href="10-euclidei.html#spettrale">teorema spettrale</a>: nella base giusta la forma diventa una somma di quadrati con gli autovalori come coefficienti. All'esame esce quasi ogni volta un quiz su «segnatura o definitezza di una forma quadratica».</p>
+    </div>
+    <p class="small muted">Dagli appunti: <em>12bis Forme quadratiche</em> (pagine numerate dal prof 26-34 e 44-50) e <em>12tres Criterio di Sylvester</em> (pagine 35-38, poi altri esempi). Le pagine 39-43 non ci sono. Il criterio di Sylvester comincia con «Nel caso $n>2$…», quindi qui viene dopo il caso $2\times2$; i numeri dei teoremi (Teorema 4 per gli autovalori, Teorema 3 per Sylvester) sono quelli del prof.</p>
+
+    <h2 id="mappa">Mappa del capitolo</h2>
+    <div id="mappaBox"></div>
+
+    <!-- ============================================================ -->
+    <h2 id="definizione">1 · Forme quadratiche e matrici simmetriche</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 12bis)</div>
+      <p class="mb0">Una <strong>forma quadratica</strong> in $\R^n$ è un polinomio omogeneo $Q:\R^n\to\R$ di secondo grado in $n$ variabili: ogni termine ha grado esattamente $2$.</p>
+    </div>
+    <p>In $\R^2$ una forma quadratica è $Q(x,y)=ax^2+by^2+cxy$, e si scrive con una matrice simmetrica:
+    $$Q(x,y)=\Bigl\langle\begin{bmatrix}a&c/2\\c/2&b\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix},\begin{bmatrix}x\\y\end{bmatrix}\Bigr\rangle.$$</p>
+    <div class="box prop">
+      <div class="box-title">Forme quadratiche e matrici simmetriche (Lezione 12bis)</div>
+      <p>Ogni matrice simmetrica $A=[a_{jk}]$ di ordine $n$ definisce una forma quadratica
+      $$Q(\vx)=\sum_{j,k=1}^{n}a_{jk}\,x_jx_k=\langle A\vx,\vx\rangle.\qquad(1)$$
+      Il coefficiente di $x_j^2$ è $a_{jj}$; per $j\ne k$ il coefficiente di $x_jx_k$ è $a_{jk}+a_{kj}=2a_{jk}$.</p>
+      <p class="mb0">Viceversa, per ogni forma quadratica $Q$ esiste un'<strong>unica</strong> matrice simmetrica $A$ di ordine $n$ per cui vale la (1).</p>
+    </div>
+    <div class="box tip">
+      <div class="box-title">✓ Come si scrive la matrice in un colpo</div>
+      <p>Sulla diagonale vanno i coefficienti dei quadrati. Fuori dalla diagonale, nei due posti $(j,k)$ e $(k,j)$, va <strong>la metà</strong> del coefficiente di $x_jx_k$. Per esempio
+      $$x^2+y^2+z^2+xy+2yz\quad\longrightarrow\quad\begin{bmatrix}1&1/2&0\\1/2&1&1\\0&1&1\end{bmatrix}.$$</p>
+      <p class="mb0">Il ponte con la <a href="10-euclidei.html#prodotto-scalare">Sezione 10</a>: la forma bilineare $\langle A\vx,\vy\rangle$ è un prodotto scalare proprio quando $A$ è simmetrica e la sua forma quadratica è definita positiva. Il prodotto $x_1y_1+x_2y_2+\frac12(x_1y_2+x_2y_1)$ della Lezione 11 ha matrice $\begin{bmatrix}1&1/2\\1/2&1\end{bmatrix}$. (Questo collegamento è nostro: il prof lo usa negli esempi senza enunciarlo.)</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="segno">2 · Definite, semidefinite, indefinite</h2>
+    <div class="box def">
+      <div class="box-title">Definizione (Lezione 12bis) <span class="badge purple">chiesta in Parte C · gennaio 2026</span></div>
+      <p>Una matrice simmetrica $A$ di ordine $n$, e la forma quadratica associata $Q(\vx):=\langle A\vx,\vx\rangle$, si dice:</p>
+      <ul class="mb0">
+        <li><strong>definita positiva</strong> (negativa) se $Q(\vx)>0$ ($Q(\vx)\lt0$) per ogni $\vx\in\R^n\setminus\{\vzero\}$;</li>
+        <li><strong>semidefinita positiva</strong> (negativa) se $Q(\vx)\ge0$ ($Q(\vx)\le0$) per ogni $\vx\in\R^n$;</li>
+        <li><strong>indefinita</strong> se esistono $\vx',\vx''$ con $Q(\vx')>0$ e $Q(\vx'')\lt0$.</li>
+      </ul>
+    </div>
+    <p>Gli esempi della lezione, tutti sistemati a mano completando i quadrati.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Matrice</th><th>$Q$</th><th>Tipo</th><th>Perché</th></tr></thead>
+      <tbody>
+        <tr><td>$\diag(1,2,3)$</td><td>$x^2+2y^2+3z^2$</td><td>definita positiva</td><td>se una variabile è $\ne0$, $Q>0$</td></tr>
+        <tr><td>$\diag(2,0,3)$</td><td>$2x^2+3z^2$</td><td>semidefinita positiva, non definita</td><td>$Q\ge0$, ma $Q(0,1,0)=0$</td></tr>
+        <tr><td>$\begin{bmatrix}1&1\\1&1\end{bmatrix}$</td><td>$(x+y)^2$</td><td>semidefinita positiva, non definita</td><td>$Q\ge0$, ma $Q(1,-1)=0$</td></tr>
+        <tr><td>$\begin{bmatrix}1&1\\1&2\end{bmatrix}$</td><td>$(x+y)^2+y^2$</td><td>definita positiva</td><td>$Q=0\iff x+y=0,\ y=0\iff(x,y)=\vzero$</td></tr>
+        <tr><td>$\diag(1,-1,2)$</td><td>$x^2-y^2+2z^2$</td><td>indefinita</td><td>$Q(1,0,0)=1$, $Q(0,1,0)=-1$</td></tr>
+        <tr><td>$\begin{bmatrix}0&1/2\\1/2&0\end{bmatrix}$</td><td>$xy$</td><td>indefinita</td><td>$Q(1,1)=1$, $Q(1,-1)=-1$</td></tr>
+        <tr><td>$\begin{bmatrix}1&2\\2&2\end{bmatrix}$</td><td>$(x+2y)^2-2y^2$</td><td>indefinita</td><td>$Q(1,0)=1$, $Q(-2,1)=-2$</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted">Per $(x+y)^2$ negli appunti c'è scritto che si annulla in $(x,y)=(1,1)$: lì vale $4$. Il punto giusto è $(1,-1)$, o un qualsiasi multiplo non nullo.</p>
+    <div class="box tip">
+      <div class="box-title">✓ Come si dimostra ciascuna cosa</div>
+      <ul class="mb0">
+        <li><strong>Non è definita</strong>: basta un vettore $\vx\ne\vzero$ con $Q(\vx)=0$.</li>
+        <li><strong>È indefinita</strong>: bastano due vettori con segni opposti.</li>
+        <li><strong>È definita</strong>: serve un argomento per tutti i vettori. Il prof scrive $Q$ come somma di quadrati, verifica che sia semidefinita, e poi che si annulli <strong>solo</strong> nell'origine. Il metodo generale arriva nel §3.</li>
+      </ul>
+    </div>
+    <div class="box prop">
+      <div class="box-title">Osservazione (Lezione 12bis)</div>
+      <p class="mb0">Non servono esempi separati di forme definite negative: $Q$ è definita negativa se e solo se $-Q$ è definita positiva.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempio da costruire <span class="badge purple">chiesto in Parte C · gennaio 2025</span></div>
+      <p class="mb0"><em>Una forma quadratica su $\R^2$, non nulla, semidefinita positiva ma non definita.</em> $Q(x,y)=(x+y)^2$, con matrice $\begin{bmatrix}1&1\\1&1\end{bmatrix}$: $Q\ge0$ ovunque, $Q(1,0)=1$ quindi non è nulla, e $Q(1,-1)=0$ quindi non è definita. Va bene anche $Q(x,y)=x^2$.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="autovalori">3 · Il segno dagli autovalori</h2>
+    <div class="box teo">
+      <div class="box-title">Teorema 4 (Lezione 12bis): definità e segno degli autovalori <span class="badge star">risultato centrale</span></div>
+      <p>Sia $A$ una matrice simmetrica reale di ordine $n$, con autovalori $\lambda_1,\dots,\lambda_n$. Allora:</p>
+      <ul class="mb0">
+        <li>$A$ è definita positiva (negativa) se e solo se $\lambda_j>0$ ($\lambda_j\lt0$) per ogni $j$;</li>
+        <li>$A$ è semidefinita positiva (negativa) se e solo se $\lambda_j\ge0$ ($\lambda_j\le0$) per ogni $j$;</li>
+        <li>$A$ è indefinita se e solo se ha almeno un autovalore positivo e almeno uno negativo, cioè $\lambda_j\lambda_k\lt0$ per qualche $j,k$.</li>
+      </ul>
+    </div>
+    <details class="reveal proof">
+      <summary>Dimostrazione a passi coperti</summary>
+      <div class="reveal-body">
+        <div class="btnrow" style="margin-top:0"><button class="btn sm ghost" data-reveal-all>Mostra tutto</button></div>
+        <div class="steps">
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che cosa dice il teorema spettrale di $A$?</div>
+            <div class="step-content">$A$ è simmetrica, quindi i suoi autovalori sono reali ed esiste una matrice ortogonale $S$ con $A=SDS^T$, $D:=\diag(\lambda_1,\dots,\lambda_n)$. Ricorda che per le matrici ortogonali $S^{-1}=S^T$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che identità serve per spostare $S$ dentro il prodotto scalare?</div>
+            <div class="step-content">$\langle S\mathbf a,\mathbf b\rangle=\mathbf b^TS\mathbf a=(S^T\mathbf b)^T\mathbf a=\langle\mathbf a,S^T\mathbf b\rangle$, per ogni $\mathbf a,\mathbf b\in\R^n$ e ogni matrice $S$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Che forma prende $Q$?</div>
+            <div class="step-content">$Q(\vx)=\langle SDS^T\vx,\vx\rangle=\langle DS^T\vx,S^T\vx\rangle=Q_0(S^T\vx)$, dove $Q_0(\vy):=\langle D\vy,\vy\rangle=\lambda_1y_1^2+\lambda_2y_2^2+\dots+\lambda_ny_n^2$.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché il segno di $Q_0$ è evidente?</div>
+            <div class="step-content">È una somma di quadrati con coefficienti $\lambda_j$: è definita positiva (negativa) se e solo se tutti i $\lambda_j$ sono $>0$ ($\lt0$), semidefinita se sono tutti $\ge0$ ($\le0$), indefinita se ce n'è almeno uno positivo e uno negativo.</div></div></div>
+          <div class="step"><div class="step-n"></div><div class="step-body">
+            <div class="step-cue">Perché $Q$ ha lo stesso segno di $Q_0$?</div>
+            <div class="step-content">$S^T$ è invertibile, quindi $\vx\mapsto S^T\vx$ è biiettiva: quando $\vx$ percorre $\R^n$ (o $\R^n\setminus\{\vzero\}$), $\vy=S^T\vx$ percorre lo stesso insieme. $Q$ e $Q_0$ assumono gli stessi valori. $\blacksquare$</div></div></div>
+        </div>
+      </div>
+    </details>
+    <div class="box tip">
+      <div class="box-title">✓ L'idea in una riga</div>
+      <p class="mb0">Nella base ortonormale di autovettori la forma perde i termini misti: $Q=\lambda_1y_1^2+\dots+\lambda_ny_n^2$. Una somma di quadrati ha il segno dei suoi coefficienti.</p>
+    </div>
+
+    <h3 id="due-per-due">Il caso $2\times2$</h3>
+    <p>Per $A=\begin{bmatrix}a&c\\c&b\end{bmatrix}$ non serve calcolare gli autovalori: bastano determinante e traccia, perché $\det A=\lambda_1\lambda_2$ e $a+b=\tr A=\lambda_1+\lambda_2$ (<a href="9-diagonalizzazione.html#traccia">Sezione 9</a>).</p>
+    <div class="box prop">
+      <div class="box-title">Matrici simmetriche $2\times2$ (Lezione 12bis)</div>
+      <ul>
+        <li>$\det A>0$: gli autovalori hanno lo stesso segno, quindi $A$ è <strong>definita</strong>.</li>
+        <li>$\det A\lt0$: hanno segni opposti, quindi $A$ è <strong>indefinita</strong>.</li>
+        <li>$\det A=0$: uno è nullo, quindi $A$ è <strong>semidefinita ma non definita</strong>.</li>
+      </ul>
+      <p class="mb0">Se $\det A=ab-c^2>0$, allora $ab>c^2\ge0$: $a$ e $b$ hanno lo stesso segno. Se $a>0$ la traccia è positiva, quindi $\lambda_1+\lambda_2>0$ e $A$ è <strong>definita positiva</strong>; se $a\lt0$ è <strong>definita negativa</strong>.</p>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Controllo sugli esempi del §2</div>
+      <p class="mb0">$\begin{bmatrix}1&1\\1&2\end{bmatrix}$: $\det=1>0$ e $a=1>0$, definita positiva ✓. $\begin{bmatrix}1&2\\2&2\end{bmatrix}$: $\det=-2\lt0$, indefinita ✓. $\begin{bmatrix}1&1\\1&1\end{bmatrix}$: $\det=0$, semidefinita, e la traccia $2>0$ dice positiva ✓.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="sylvester">4 · Criterio di Sylvester</h2>
+    <p>Per $n>2$ trovare gli autovalori costa. Il criterio di Sylvester decide la definità con qualche determinante, senza autovalori. Si chiama $\Delta_k$ il minore formato dalle prime $k$ righe e dalle prime $k$ colonne di $A$: per una $3\times3$,
+    $$\Delta_1=a_{11},\qquad\Delta_2=\begin{vmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{vmatrix},\qquad\Delta_3=\det A.$$
+    I minori $\Delta_1,\dots,\Delta_n$ si chiamano <strong>minori di testa</strong>, o <strong>di nord-ovest</strong> (in inglese <em>leading principal minors</em>).</p>
+    <div class="box teo">
+      <div class="box-title">Teorema 3 (Lezione 12tres): criterio di Sylvester, senza dimostrazione <span class="badge star">risultato centrale</span></div>
+      <p>Sia $A$ una matrice simmetrica di ordine $n$ con minori di testa $\Delta_1,\dots,\Delta_n$. Allora:</p>
+      <ol class="mb0" type="a">
+        <li>$A$ è definita positiva se e solo se $\Delta_k>0$ per $k=1,\dots,n$;</li>
+        <li>$A$ è definita negativa se e solo se $(-1)^k\Delta_k>0$ per $k=1,\dots,n$, cioè i segni alternano $-,+,-,\dots$;</li>
+        <li>se $\Delta_k\ne0$ per ogni $k$ ma nessuna delle due condizioni vale, $A$ è indefinita.</li>
+      </ol>
+    </div>
+    <div class="box ex">
+      <div class="box-title">Esempi (Lezione 12tres)</div>
+      <p>$Q_1=x^2+y^2+z^2+xy+2yz$, $A=\begin{bmatrix}1&1/2&0\\1/2&1&1\\0&1&1\end{bmatrix}$: $\Delta_1=1$, $\Delta_2=\frac34$, $\Delta_3=\frac34-1=-\frac14$ (sviluppo lungo la terza riga). Tutti non nulli, ma né $+,+,+$ né $-,+,-$: per la (c) $Q_1$ è <strong>indefinita</strong>.</p>
+      <p>$Q_2=-x^2-y^2-2z^2+xy+2yz$, $A=\begin{bmatrix}-1&1/2&0\\1/2&-1&1\\0&1&-2\end{bmatrix}$: $\Delta_1=-1$, $\Delta_2=\frac34$, $\Delta_3=-2\cdot\frac34+1=-\frac12$. Segni $-,+,-$: <strong>definita negativa</strong>.</p>
+      <p class="mb0">$Q_3=x^2+2y^2+3z^2+4w^2-2xy+4zw$, $A=\begin{bmatrix}1&-1&0&0\\-1&2&0&0\\0&0&3&2\\0&0&2&4\end{bmatrix}$: $\Delta_1=1$, $\Delta_2=1$, $\Delta_3=3$, $\Delta_4=8$. Tutti positivi: <strong>definita positiva</strong>.</p>
+    </div>
+    <div class="box warnb">
+      <div class="box-title">Osservazione (Lezione 12tres): quando un minore è nullo</div>
+      <p>Dal teorema segue che se $A$ è semidefinita ma non definita, almeno un minore di testa è nullo. Il viceversa è <strong>falso</strong>:
+      $$A=\begin{bmatrix}1&1&0\\1&1&0\\0&0&-1\end{bmatrix},\qquad Q=(x+y)^2-z^2,$$
+      ha $\Delta_1=1$, $\Delta_2=0$, $\Delta_3=0$, ed è indefinita: $Q(1,0,0)=1$, $Q(0,0,1)=-1$.</p>
+      <p class="mb0">Se un minore di testa è nullo, Sylvester dice solo che la forma <strong>non è definita</strong>. Per distinguere semidefinita da indefinita i minori di testa non bastano: c'è una versione del criterio con tutti i minori principali, ma il prof la indica come materiale <strong>facoltativo</strong>, in un articolo in inglese allegato al PDF (J. E. Prussing, <em>The Principal Minor Test for Semidefinite Matrices</em>, 1986).</p>
+    </div>
+
+    <h3 id="quale-strumento">Quale strumento usare</h3>
+    <div class="box tip">
+      <div class="box-title">✓ Il percorso più corto</div>
+      <ol class="mb0">
+        <li>Si scrive la matrice simmetrica, con la <strong>metà</strong> dei coefficienti misti fuori dalla diagonale.</li>
+        <li>Se è $2\times2$: segno di $\det A$, e se è positivo il segno di $a_{11}$.</li>
+        <li>Se è $n\times n$ con $n\ge3$: i minori di testa. Tutti positivi, oppure $-,+,-,\dots$: definita. Tutti non nulli ma con altri segni: indefinita.</li>
+        <li>Se un minore di testa è $0$: la forma non è definita. Per decidere fra semidefinita e indefinita si cercano due vettori con segni opposti, oppure si calcolano gli autovalori.</li>
+        <li>Se gli autovalori sono già noti, per esempio perché l'esercizio chiedeva di diagonalizzare, basta leggerne i segni.</li>
+      </ol>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="test">Mettiti alla prova</h2>
+    <div id="quizBox"></div>
+
+    <h2 id="errori">Errori tipici della Sezione 11</h2>
+    <div class="box trap">
+      <div class="box-title">✗ Dove si cade</div>
+      <ul class="mb0">
+        <li><strong>Mettere fuori dalla diagonale il coefficiente intero del termine misto.</strong> Per $4xy$ si scrive $2$ nei posti $(1,2)$ e $(2,1)$, non $4$.</li>
+        <li><strong>Guardare i segni della diagonale invece degli autovalori.</strong> $\begin{bmatrix}1&2\\2&1\end{bmatrix}$ ha la diagonale positiva ma $\det=-3\lt0$: è indefinita.</li>
+        <li><strong>Sylvester per le definite negative: «tutti i $\Delta_k\lt0$».</strong> È sbagliato: i segni devono alternare $-,+,-,\dots$, perché $\Delta_2$ è un prodotto di due autovalori negativi.</li>
+        <li><strong>Dedurre «semidefinita» da un minore di testa nullo.</strong> L'esempio $(x+y)^2-z^2$ ha due minori nulli ed è indefinita.</li>
+        <li><strong>Ridurre la matrice col MEG e leggere il segno dalla matrice ridotta.</strong> Il MEG cambia gli autovalori (<a href="9-diagonalizzazione.html#controlli">Sezione 9</a>).</li>
+        <li><strong>Dire «definita» quando $Q\ge0$.</strong> Definita vuol dire $Q(\vx)>0$ per ogni $\vx\ne\vzero$, con il maggiore stretto.</li>
+      </ul>
+    </div>
+
+    <div class="btnrow" style="margin-top:36px">
+      <a class="btn primary" href="12-quadriche.html">Sezione 12 · Coniche e quadriche →</a>
+      <a class="btn" href="10-euclidei.html">← Sezione 10</a>
+      <a class="btn" href="../esercizi.html?sez=11">Esercizi della Sezione 11</a>
+    </div>
+  </main>
+</div>
+
+<footer>Geometria e Algebra Lineare · Sezione 11 · Appunti non ufficiali</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/js/materie.js?v=20261104"></script>
+<script src="../data/topics.js?v=20261126"></script>
+<script src="../data/quiz.js?v=20261126"></script>
+<script src="../data/mappe.js?v=20261126"></script>
+<script src="../data/primalettura.js?v=20261105c"></script>
+<script src="../data/primalettura-altre.js?v=20261111"></script>
+<script src="../data/primalettura-10-12.js?v=20261126"></script>
+<script src="../data/schemi.js?v=20261105c"></script>
+<script src="../data/schemi-altre.js?v=20261111"></script>
+<script src="../data/schemi-10-12.js?v=20261126"></script>
+<script src="../../assets/js/app.js?v=20261106"></script>
+<script src="../../assets/js/capitolo.js?v=20261117b"></script>
+<script>
+document.addEventListener('am:ready', function () {
+  AM.mappaCapitolo('#mappaBox', 11);
+  AM.mountQuiz('#quizBox', AM.QUIZ_GEO.filter(function (q) { return q.sez === 11; }), { statKey: 'geo11' });
+});
+</script>
+</body>
+</html>

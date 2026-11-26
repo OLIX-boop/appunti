@@ -32,6 +32,9 @@
       <a href="sezioni/7-grassmann.html">7 · Grassmann</a>
       <a href="sezioni/8-determinanti.html">8 · Determinanti</a>
       <a href="sezioni/9-diagonalizzazione.html">9 · Diagonalizzazione</a>
+      <a href="sezioni/10-euclidei.html">10 · Spazi euclidei</a>
+      <a href="sezioni/11-forme.html">11 · Forme quadratiche</a>
+      <a href="sezioni/12-quadriche.html">12 · Quadriche</a>
       <a href="teoremi.html">Teoremi</a>
       <a href="esercizi.html">Esercizi</a>
       <a href="laboratorio.html">Laboratorio</a>
@@ -68,6 +71,9 @@
       <button class="chip" data-v="7">7 · Grassmann</button>
       <button class="chip" data-v="8">8 · Determinanti</button>
       <button class="chip" data-v="9">9 · Diagonalizzazione</button>
+      <button class="chip" data-v="10">10 · Spazi euclidei</button>
+      <button class="chip" data-v="11">11 · Forme quadratiche</button>
+      <button class="chip" data-v="12">12 · Quadriche</button>
     </div>
     <div class="chips" id="fDiff">
       <span class="small muted" style="align-self:center;margin-right:6px">Difficoltà:</span>
@@ -101,15 +107,15 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script src="../assets/js/materie.js?v=20261104"></script>
-<script src="data/topics.js?v=20261111"></script>
-<script src="data/esercizi.js?v=20261111b"></script>
+<script src="data/topics.js?v=20261126"></script>
+<script src="data/esercizi.js?v=20261126"></script>
 <script src="../assets/js/plot.js?v=20261104"></script>
 <script src="../assets/js/app.js?v=20261106"></script>
 <script>
 document.addEventListener('am:ready', function () {
   var E = AM.ESERCIZI_GEO;
   var fs = 'all', fd = 'all', ft = 'all';
-  var m = /[?&]sez=([0-9])/.exec(location.search);
+  var m = /[?&]sez=([0-9]+)/.exec(location.search);
   if (m) fs = m[1];
 
   function temi() {
